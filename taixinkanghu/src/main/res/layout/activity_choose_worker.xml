@@ -1,0 +1,169 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="xiezheng.com.taixinkanghu.MainActivity">
+
+    <!--logo+名称-->
+    <include layout="@layout/include_header" />
+
+    <!--筛选功能按键-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#000"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/select_date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0.5dp"
+            android:layout_marginLeft="1.0dp"
+            android:layout_marginRight="0.5dp"
+            android:layout_marginTop="1.0dp"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:gravity="center"
+            android:text="服务时间  选择服务时间  ∨" />
+
+        <TextView
+            android:id="@+id/select_city"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0.5dp"
+            android:layout_marginLeft="0.5dp"
+            android:layout_marginRight="1.0dp"
+            android:layout_marginTop="1.0dp"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:gravity="center"
+            android:text="服务地址  选择省市区县  ∨" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/buttionline01"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#000"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/select_screening"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginLeft="1.0dp"
+                    android:layout_marginRight="0.5dp"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_weight="1"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="筛选条件  选择筛选条件  ∨" />
+
+                <TextView
+                    android:id="@+id/select_sort"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginLeft="0.5dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_weight="1"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="排序条件  选择排序条件  ∨" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/buttionline02"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="#fff">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#000"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/showDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="1.0dp"
+                        android:layout_marginLeft="1.0dp"
+                        android:layout_marginRight="1.0dp"
+                        android:layout_marginTop="0.5dp"
+                        android:background="#fff"
+                        android:gravity="center"
+                        android:text="请先设置服务开始时间和结束时间"
+                        android:textColor="#cc0000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--<android.support.v7.widget.RecyclerView-->
+                        <!--android:id="@+id/recyclerview"-->
+                        <!--android:layout_width="fill_parent"-->
+                        <!--android:layout_height="match_parent"/>-->
+
+                    <include layout="@layout/item_worker_list"/>
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:background="#000"-->
+            <!--android:orientation="vertical">-->
+
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:background="#000"-->
+            <!--android:orientation="vertical">-->
+
+            <!--&lt;!&ndash;主要功能按钮&ndash;&gt;-->
+
+            <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <!--底部功能菜单-->
+            <include layout="@layout/item_rg_main" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>

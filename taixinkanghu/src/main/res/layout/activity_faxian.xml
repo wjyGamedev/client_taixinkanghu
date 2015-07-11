@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="xiezheng.com.taixinkanghu.dingdan">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        tools:context="xiezheng.com.taixinkanghu.dingdan">
+
+    </LinearLayout>
+
+
+    <!--底部功能菜单-->
+    <RadioGroup
+        android:id="@+id/rg_dingdan"
+        android:layout_width="match_parent"
+        android:layout_height="50.0dip"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:paddingTop="5.0dip">
+
+        <RadioButton
+            style="@style/home_radio_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:drawableTop="@drawable/tab_home"
+            android:text="f首页" />
+
+        <RadioButton
+            style="@style/home_radio_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:drawableTop="@drawable/tab_order"
+            android:text="我的订单" />
+
+        <RadioButton
+            style="@style/home_radio_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:checked="true"
+            android:drawableTop="@drawable/tab_personal"
+            android:text="我的发现" />
+
+        <RadioButton
+            style="@style/home_radio_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:drawableTop="@drawable/tab_more"
+            android:text="客服" />
+
+    </RadioGroup>
+
+</LinearLayout>

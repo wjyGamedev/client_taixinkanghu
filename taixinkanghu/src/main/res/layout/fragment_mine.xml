@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="200dip"
+    android:layout_height="280dip"
+    android:orientation="vertical"
+    android:background="@drawable/bg_order_rb"
+    tools:context="xiezheng.com.taixinkanghu.Mine">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bg_order_rb"
+        android:gravity="center"
+        android:text="陪护订单"
+        android:textSize="18dip" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@drawable/bg_order_rb"
+        android:text="产品订单" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@drawable/bg_order_rb"
+        android:text="我的财富" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@drawable/bg_order_rb"
+        android:text="我的设置" />
+
+</LinearLayout>

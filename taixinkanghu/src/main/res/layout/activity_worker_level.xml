@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_header" />
+
+    <RadioGroup
+        android:id="@+id/rg_worker_level"
+        android:layout_width="match_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginTop="10dip"
+        android:orientation="horizontal"
+        android:paddingTop="5.0dip">
+
+        <RadioButton
+            style="@style/home_radio_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_order_rb"
+            android:checked="true"
+            android:text="初级护理员" />
+
+        <RadioButton
+            style="@style/home_radio_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_order_rb"
+            android:text="中级护理员" />
+
+
+        <RadioButton
+            style="@style/home_radio_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_order_rb"
+            android:text="高级护理员" />
+
+        <RadioButton
+            style="@style/home_radio_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_order_rb"
+            android:text="特级护理员" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="中级护理" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="有具体6个月以上护理院工作经验。。。。。。。。。。。。。。。" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="服务内容" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="包括初级护理的所有的服务内容。。。。。。。。。。。。。。。。" />
+
+    </LinearLayout>
+
+    <include layout="@layout/include_main_button"/>
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_header" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10.0dip"
+            android:layout_marginTop="60.0dip"
+            android:background="@mipmap/logo_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60.0dip"
+            android:layout_marginTop="10.0dip"
+            android:text="v1.1 for Android"
+            android:textColor="@color/text_color_gray"
+            android:textSize="18.0sp" />
+
+        <LinearLayout
+            android:id="@id/item2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="15.0dip"
+            android:paddingTop="15.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30.0dip"
+                android:layout_marginRight="30.0dip"
+                android:layout_weight="1.0"
+                android:text="泰心康护是一家专注于康复护理产业资源整合的服务性公司......"
+                android:textColor="@color/text_color_black"
+                android:textSize="16.0sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
