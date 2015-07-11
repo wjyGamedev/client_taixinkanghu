@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="48.0dip"
+    android:background="@color/main_color">
+
+    <ImageButton
+        android:id="@id/btn_back"
+        android:layout_width="48.0dip"
+        android:layout_height="48.0dip"
+        android:background="@drawable/bg_btn_translucent"
+        android:src="@mipmap/btn_back"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@id/page_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:textSize="18.0sp" />
+
+</RelativeLayout>

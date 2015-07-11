@@ -12,19 +12,21 @@
  * 2015/7/9		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.ui;
+package com.taixinkanghu.app.ui.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
 import com.example.wjy.taixinkanghu.R;
 import com.taixinkanghu.app.model.event.net.QuestHospitalListEvent;
+import com.taixinkanghu.app.ui.activity.MainActivity;
 
 import de.greenrobot.event.EventBus;
 
-public class Welcome extends Activity
+public class WelcomeActivity extends Activity
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -72,8 +74,8 @@ public class Welcome extends Activity
 	};
 
 	private void goMain(){
-//		Intent i = new Intent(this, MainActivity.class);
-//		startActivity(i);
+		Intent i = new Intent(this, MainActivity.class);
+		startActivity(i);
 		finish();
 	}
 	private EventBus m_eventBus = EventBus.getDefault();

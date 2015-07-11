@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#70000000"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/find"
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dip"
+        android:background="@drawable/bg_order_btn"
+        android:gravity="center"
+        android:text="我自己选护理员"
+        android:textColor="#ff666666"
+        android:textSize="14.0sp" />
+
+    <TextView
+        android:id="@+id/recommend"
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dip"
+        android:layout_marginTop="-0.5dip"
+        android:background="@drawable/bg_order_btn"
+        android:gravity="center"
+        android:text="请泰心给我推荐"
+        android:textColor="#ff666666"
+        android:textSize="14.0sp" />
+</LinearLayout>

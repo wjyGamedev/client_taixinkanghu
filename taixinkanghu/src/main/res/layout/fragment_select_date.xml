@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="93dip"
+        android:background="#00000000"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="开始时间"
+            android:textColor="@color/text_color_black"
+            android:textSize="14.0sp" />
+
+        <View
+            android:layout_width="0.5dip"
+            android:layout_height="fill_parent"
+            android:background="@color/divider_color" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="结束时间"
+            android:textColor="@color/text_color_black"
+            android:textSize="14.0sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:orientation="horizontal">
+
+        <com.taixinkanghu.widget.wheelview.WheelView
+            android:id="@id/startWheelView"
+            android:layout_width="70dp"
+            android:layout_height="300dp"
+            android:layout_weight="1.0" />
+
+        <View
+            android:layout_width="0.5dip"
+            android:layout_height="fill_parent"
+            android:background="@color/divider_color" />
+
+        <com.taixinkanghu.widget.wheelview.WheelView
+            android:id="@id/endWheelView"
+            android:layout_width="70dp"
+            android:layout_height="300dp"
+            android:layout_weight="1.0" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@id/btn_cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:background="@drawable/bg_btn_white"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/text_color_black"
+            android:textSize="14.0sp" />
+
+        <View
+            android:layout_width="0.5dip"
+            android:layout_height="fill_parent"
+            android:background="@color/divider_color" />
+
+        <Button
+            android:id="@id/btn_confirm"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:background="@drawable/bg_btn_white"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/main_color"
+            android:textSize="14.0sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/divider_color" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:gravity="center"
+        android:padding="5.0dip"
+        android:text="注：开始时间的早上9：00到次日早上9：00为一天"
+        android:textColor="@color/text_color_gray"
+        android:textSize="13.0sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/divider_color" />
+
+    <View
+        android:id="@id/bg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#70000000" />
+</LinearLayout>
