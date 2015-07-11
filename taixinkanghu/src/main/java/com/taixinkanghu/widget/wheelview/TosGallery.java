@@ -192,7 +192,7 @@ public class TosGallery extends TosAbsSpinner implements GestureDetector.OnGestu
             setAnimationDuration(animationDuration);
         }
 
-        int spacing = a.getDimensionPixelOffset(R.styleable.Gallery_spacing, 0);
+        int spacing = a.getDimensionPixelOffset(R.styleable.Gallery_spacing_1, 0);
         setSpacing(spacing);
 
         float unselectedAlpha = a.getFloat(R.styleable.Gallery_unselectedAlpha, 0.5f);
