@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/title"
+    android:id="@+id/main_page"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="1"
@@ -9,9 +9,11 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+		android:id="@+id/main_page_container">
         <!--logo+名称-->
-        <include layout="@layout/include_header" />
+        <include layout="@layout/include_header"
+				 android:id="@+id/title"/>
 
         <!--公司介绍，滚动viewpager-->
         <LinearLayout
@@ -21,7 +23,8 @@
             android:layout_below="@+id/linearLayout"
             android:layout_weight="1"
             android:background="#fff"
-            android:orientation="vertical">
+            android:orientation="vertical"
+			android:id="@+id/content">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -30,7 +33,8 @@
                 android:layout_below="@+id/linearLayout"
                 android:layout_weight="4.0"
                 android:background="#fff"
-                android:orientation="vertical">
+                android:orientation="vertical"
+				android:id="@+id/display_pics">
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewpager"
@@ -64,20 +68,13 @@
 
             <!--主要功能按钮-->
             <FrameLayout
-                android:id="@+id/fragment"
+                android:id="@+id/display_function"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3.0">
 
 
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4.0">
-
-                </FrameLayout>
-
-                <android.support.v7.widget.RecyclerView
+				<android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerview"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
@@ -119,7 +116,8 @@
         </LinearLayout>
 
         <!--底部功能菜单-->
-        <include layout="@layout/item_rg_main" />
+        <include layout="@layout/item_rg_main"
+				 android:id="@+id/btngrps"/>
 
     </LinearLayout>
 </FrameLayout>
