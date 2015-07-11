@@ -42,10 +42,10 @@ public class SaleInfoActivity extends Activity implements View.OnClickListener {
 
         switch (position) {
             case 1:
-                img_info.setBackground(getResources().getDrawable(R.mipmap.img_home_1));
+                img_info.setBackground(getResources().getDrawable(R.mipmap.img_company));
                 break;
             case 2:
-                img_info.setBackground(getResources().getDrawable(R.mipmap.img_home_2));
+                img_info.setBackground(getResources().getDrawable(R.mipmap.img_promotions));
                 break;
         }
 

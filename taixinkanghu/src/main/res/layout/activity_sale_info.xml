@@ -17,7 +17,7 @@
             android:id="@id/img_info"
             android:layout_width="fill_parent"
             android:layout_height="240dip"
-            android:background="@mipmap/img_home_1">
+            android:background="@mipmap/img_company">
 
         </ImageView>
 
