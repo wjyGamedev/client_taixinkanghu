@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 
 /**
  * Created by Administrator on 2015/7/10.

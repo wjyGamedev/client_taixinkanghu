@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
 import com.taixinkanghu.util.datewidget.DateWidgetUtils;
 import com.taixinkanghu.widget.wheelview.TosGallery;

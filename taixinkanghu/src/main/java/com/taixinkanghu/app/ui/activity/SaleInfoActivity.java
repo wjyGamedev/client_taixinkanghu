@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 
 
 public class SaleInfoActivity extends Activity implements View.OnClickListener {

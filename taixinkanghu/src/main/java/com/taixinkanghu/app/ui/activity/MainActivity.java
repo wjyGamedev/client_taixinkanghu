@@ -18,7 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.adapter.MainRecyclerViewAdapter;
 import com.taixinkanghu.app.ui.adapter.MainViewPagerAdapter;
 import com.taixinkanghu.app.ui.data.MainButtonData;

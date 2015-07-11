@@ -36,7 +36,7 @@ import android.view.ViewGroup;
 import android.view.animation.Transformation;
 import android.widget.Scroller;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 
 /**
  * A view that shows items in a center-locked, horizontally scrolling list.

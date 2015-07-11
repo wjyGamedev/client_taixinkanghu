@@ -13,9 +13,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.taixinkanghu.R;
+
 import java.util.ArrayList;
 import java.util.List;
-import com.example.wjy.taixinkanghu.R;
 
 
 /**

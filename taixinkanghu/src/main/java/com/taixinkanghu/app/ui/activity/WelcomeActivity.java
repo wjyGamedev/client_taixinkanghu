@@ -20,9 +20,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.event.net.QuestHospitalListEvent;
-import com.taixinkanghu.app.ui.activity.MainActivity;
 
 import de.greenrobot.event.EventBus;
 

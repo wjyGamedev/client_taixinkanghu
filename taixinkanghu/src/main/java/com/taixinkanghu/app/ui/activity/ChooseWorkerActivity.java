@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.fragment.SelectDateFragment;
 import com.taixinkanghu.app.ui.fragment.SelectScreeningFragment;
 import com.taixinkanghu.app.ui.fragment.SelectSortFragment;

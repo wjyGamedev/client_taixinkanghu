@@ -30,7 +30,7 @@ import android.view.animation.Interpolator;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 
 /**
  * An abstract base class for spinner widgets. SDK users will probably not need to use this class.

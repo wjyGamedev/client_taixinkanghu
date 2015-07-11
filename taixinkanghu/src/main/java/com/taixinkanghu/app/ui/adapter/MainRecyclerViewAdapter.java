@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.data.MainButtonData;
 
 /**

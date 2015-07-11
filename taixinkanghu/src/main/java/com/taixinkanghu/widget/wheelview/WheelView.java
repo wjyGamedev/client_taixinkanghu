@@ -11,7 +11,7 @@ import android.view.Gravity;
 import android.view.SoundEffectConstants;
 import android.view.View;
 
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 
 public class WheelView extends TosGallery {
     /**

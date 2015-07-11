@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import com.example.wjy.taixinkanghu.R;
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
 
 public class SelsctCityFragment extends Fragment implements View.OnClickListener {
