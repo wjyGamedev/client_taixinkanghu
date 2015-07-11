@@ -1,0 +1,71 @@
+01.	总结有用的业务逻辑类。
+		b->a->a
+		java.util.Locale相关的类。
+		b->a->aa
+		围绕PROVIDER和PUID的容器类。
+		b->a->ab
+		app信息封装类。AppInfo，key，version，version_index，package_name，sdk_type，sdk_version，channel，wrapper_type，wrapper_version，vertical_type。
+		b->a->ad
+		基于业务路基的switch case，具体看不清。
+		b->a->aw
+        设备信息类。os_version，resolution，is_jailbroken，is_pirated，device_board，device_brand，device_manutime，device_manufacturer，device_manuid，device_name
+							DeviceInfo，device_id，device_id，mac_address，open_udid，model，cpu，os。
+
+							  private static final jf l = new jf("MiscInfo");
+                                private static final iv m = new iv("time_zone", (byte)8, (short)1);
+                                private static final iv n = new iv("language", (byte)11, (short)2);
+                                private static final iv o = new iv("country", (byte)11, (short)3);
+                                private static final iv p = new iv("latitude", (byte)4, (short)4);
+                                private static final iv q = new iv("longitude", (byte)4, (short)5);
+                                private static final iv r = new iv("carrier", (byte)11, (short)6);
+                                private static final iv s = new iv("latency", (byte)8, (short)7);
+                                private static final iv t = new iv("display_name", (byte)11, (short)8);
+                                private static final iv u = new iv("access_type", (byte)8, (short)9);
+                                private static final iv v = new iv("access_subtype", (byte)11, (short)10);
+
+                                    private static final jf i = new jf("Session");
+                                    private static final iv j = new iv("id", (byte)11, (short)1);
+                                    private static final iv k = new iv("start_time", (byte)10, (short)2);
+                                    private static final iv l = new iv("end_time", (byte)10, (short)3);
+                                    private static final iv m = new iv("duration", (byte)10, (short)4);
+                                    private static final iv n = new iv("pages", (byte)15, (short)5);
+                                    private static final iv o = new iv("locations", (byte)15, (short)6);
+                                    private static final iv p = new iv("traffic", (byte)12, (short)7);
+
+                                    private static final jf d = new jf("Traffic");
+                                        private static final iv e = new iv("upload_traffic", (byte)8, (short)1);
+                                        private static final iv f = new iv("download_traffic", (byte)8, (short)2);
+
+                                            private static final jf m = new jf("UALogEntry");
+                                            private static final iv n = new iv("client_stats", (byte)12, (short)1);
+                                            private static final iv o = new iv("app_info", (byte)12, (short)2);
+                                            private static final iv p = new iv("device_info", (byte)12, (short)3);
+                                            private static final iv q = new iv("misc_info", (byte)12, (short)4);
+                                            private static final iv r = new iv("activate_msg", (byte)12, (short)5);
+                                            private static final iv s = new iv("instant_msgs", (byte)15, (short)6);
+                                            private static final iv t = new iv("sessions", (byte)15, (short)7);
+                                            private static final iv u = new iv("imprint", (byte)12, (short)8);
+                                            private static final iv v = new iv("id_tracking", (byte)12, (short)9);
+                                            private static final iv w = new iv("active_user", (byte)12, (short)10);
+                                            private static final iv x = new iv("control_policy", (byte)12, (short)11);
+
+                                                private static final jf l = new jf("UMEnvelope");
+                                                private static final iv m = new iv("version", (byte)11, (short)1);
+                                                private static final iv n = new iv("address", (byte)11, (short)2);
+                                                private static final iv o = new iv("signature", (byte)11, (short)3);
+                                                private static final iv p = new iv("serial_num", (byte)8, (short)4);
+                                                private static final iv q = new iv("ts_secs", (byte)8, (short)5);
+                                                private static final iv r = new iv("length", (byte)8, (short)6);
+                                                private static final iv s = new iv("entity", (byte)11, (short)7);
+                                                private static final iv t = new iv("guid", (byte)11, (short)8);
+                                                private static final iv u = new iv("checksum", (byte)11, (short)9);
+                                                private static final iv v = new iv("codex", (byte)8, (short)10);
+
+                                                    private static final String a = "session_start_time";
+                                                    private static final String b = "session_end_time";
+                                                    private static final String c = "session_id";
+                                                    private static final String f = "activities";
+                                                    private static String g = null;
+                                                    private final String d = "a_start_time";
+                                                    private final String e = "a_end_time";
+
