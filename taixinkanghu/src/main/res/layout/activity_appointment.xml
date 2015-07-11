@@ -26,7 +26,7 @@
                 android:layout_marginLeft="10dip"
                 android:orientation="horizontal">
 
-                <xiezheng.com.taixinkanghu.widget.CircleImageView
+                <com.taixinkanghu.widget.circleimageview.CircleImageView
                     android:layout_width="100.0dip"
                     android:layout_height="100.0dip"
                     android:layout_margin="15.0dip"

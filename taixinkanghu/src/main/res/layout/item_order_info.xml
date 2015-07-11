@@ -9,7 +9,7 @@
     android:orientation="horizontal"
     android:padding="10.0dip">
 
-    <xiezheng.com.taixinkanghu.widget.CircleImageView
+    <com.taixinkanghu.widget.circleimageview.CircleImageView
         android:id="@+id/pic"
         android:layout_width="116dp"
         android:layout_height="99dp"

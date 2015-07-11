@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="xiezheng.com.taixinkanghu.MainActivity">
+    tools:context="com.taixinkanghu.app.ui.activity.chooseworker">
 
     <!--logo+名称-->
     <include layout="@layout/include_header"/>

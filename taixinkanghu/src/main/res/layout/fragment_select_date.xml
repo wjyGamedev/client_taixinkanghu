@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="93dip"
+        android:background="#00000000"></LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -46,7 +51,7 @@
         android:background="#ffffffff"
         android:orientation="horizontal">
 
-        <xiezheng.com.taixinkanghu.widget.WheelView
+        <com.taixinkanghu.widget.wheelview.WheelView
             android:id="@id/startWheelView"
             android:layout_width="70dp"
             android:layout_height="300dp"
@@ -57,7 +62,7 @@
             android:layout_height="fill_parent"
             android:background="@color/divider_color" />
 
-        <xiezheng.com.taixinkanghu.widget.WheelView
+        <com.taixinkanghu.widget.wheelview.WheelView
             android:id="@id/endWheelView"
             android:layout_width="70dp"
             android:layout_height="300dp"

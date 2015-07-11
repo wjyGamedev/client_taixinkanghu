@@ -44,7 +44,7 @@
                             android:layout_weight="1"
                             android:text="护理员：" />
 
-                        <xiezheng.com.taixinkanghu.widget.CircleImageView
+                        <com.taixinkanghu.widget.circleimageview.CircleImageView
                             android:layout_width="77dp"
                             android:layout_height="73dp"
                             android:layout_centerInParent="true"

@@ -197,7 +197,7 @@
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
 
-                <xiezheng.com.taixinkanghu.widget.CircleImageView
+                <com.taixinkanghu.widget.circleimageview.CircleImageView
                     android:id="@+id/worker_pic"
                     android:layout_width="55.0dip"
                     android:layout_height="55.0dip"

@@ -41,7 +41,7 @@
         <!--android:drawableTop="@drawable/tab_personal"-->
 
         <RadioButton
-            android:id="@+id/main_rg_taixin"
+            android:id="@+id/main_rg_about"
             style="@style/home_radio_button_style"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

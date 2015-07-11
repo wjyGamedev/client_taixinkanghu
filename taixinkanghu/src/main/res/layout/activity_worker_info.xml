@@ -189,7 +189,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <xiezheng.com.taixinkanghu.widget.CircleImageView
+                    <com.taixinkanghu.widget.circleimageview.CircleImageView
                         app:border_color="#ff33c5b8"
                         app:border_width="1.0dip"
                         android:layout_width="100.0dip"
