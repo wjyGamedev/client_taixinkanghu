@@ -1,1 +1,1 @@
-include ':app', ':volley', ':taixinkanghu', ':EventBus'
+include ':volley', ':taixinkanghu', ':EventBus'
