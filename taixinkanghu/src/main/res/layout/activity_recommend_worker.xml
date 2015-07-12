@@ -7,18 +7,18 @@
     <include layout="@layout/include_header" />
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1.0">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@id/item_phone"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10.0dip"
                 android:layout_marginTop="10.0dip"
@@ -61,7 +61,7 @@
 
             <LinearLayout
                 android:id="@id/item_date"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10.0dip"
                 android:background="@drawable/bg_order_btn"
@@ -99,13 +99,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_order_btn"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
@@ -120,7 +120,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10.0dip"
                     android:layout_marginTop="10.0dip"
@@ -148,7 +148,7 @@
 
                 <LinearLayout
                     android:id="@+id/item_date"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <!--android:background="@drawable/bg_order_btn"-->
@@ -174,7 +174,7 @@
 
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_order_btn"
                 android:orientation="vertical">
@@ -188,7 +188,7 @@
                     android:textSize="16.0sp" />
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -331,7 +331,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="10dip"
@@ -390,7 +390,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -415,14 +415,14 @@
             </LinearLayout>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dip"
                 android:layout_marginTop="10.0dip"
                 android:text="用户协议" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="30dip"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -445,7 +445,7 @@
     </ScrollView>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dip"
         android:orientation="horizontal">
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include layout="@layout/include_header" />
@@ -10,29 +10,29 @@
     <!--<android.support.v4.widget.SwipeRefreshLayout-->
     <LinearLayout
         android:id="@id/swipeRefreshLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1.0">
 
         <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1.0">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:paddingBottom="10.0dip">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="100dip"
                         android:orientation="horizontal">
 
@@ -62,17 +62,17 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="fill_parent"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="中级护理员" />
 
                             <TextView
-                                android:layout_width="fill_parent"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="姓名：王瑾瑜" />
 
                             <TextView
-                                android:layout_width="fill_parent"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="工号：5124" />
 
@@ -103,7 +103,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:layout_marginTop="20dip"
                             android:orientation="horizontal">
 
@@ -128,7 +128,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:layout_marginTop="20dip"
                             android:orientation="horizontal">
 
@@ -153,7 +153,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:layout_marginBottom="20dip"
                             android:layout_marginTop="20dip"
                             android:orientation="horizontal">
@@ -181,7 +181,7 @@
 
                     <EditText
                         android:id="@id/content"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="100.0dip"
                         android:layout_marginLeft="20.0dip"
                         android:layout_marginRight="20.0dip"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,13 +11,13 @@
         android:background="#00000000"></LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="40.0dip"
             android:layout_weight="1.0"
             android:gravity="center"
@@ -27,11 +27,11 @@
 
         <View
             android:layout_width="0.5dip"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:background="@color/divider_color" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="40.0dip"
             android:layout_weight="1.0"
             android:gravity="center"
@@ -41,12 +41,12 @@
     </LinearLayout>
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0.5dip"
         android:background="@color/divider_color" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:orientation="horizontal">
@@ -59,7 +59,7 @@
 
         <View
             android:layout_width="0.5dip"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:background="@color/divider_color" />
 
         <com.taixinkanghu.widget.wheelview.WheelView
@@ -71,19 +71,19 @@
     </LinearLayout>
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0.5dip"
         android:background="@color/divider_color" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:orientation="horizontal">
 
         <Button
             android:id="@id/btn_cancel"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="40.0dip"
             android:layout_weight="1.0"
             android:background="@drawable/bg_btn_white"
@@ -94,12 +94,12 @@
 
         <View
             android:layout_width="0.5dip"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:background="@color/divider_color" />
 
         <Button
             android:id="@id/btn_confirm"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="40.0dip"
             android:layout_weight="1.0"
             android:background="@drawable/bg_btn_white"
@@ -110,12 +110,12 @@
     </LinearLayout>
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0.5dip"
         android:background="@color/divider_color" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:gravity="center"
@@ -125,13 +125,13 @@
         android:textSize="13.0sp" />
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0.5dip"
         android:background="@color/divider_color" />
 
     <View
         android:id="@id/bg"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#70000000" />
 </LinearLayout>

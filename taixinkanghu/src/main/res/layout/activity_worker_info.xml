@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/main_bg_color"
     android:orientation="vertical">
 
@@ -10,29 +10,29 @@
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@id/swipeRefreshLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1.0">
 
         <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1.0">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingBottom="10.0dip"
                 android:weightSum="1">
 
                 <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:id="@id/up"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="65.0dip"
                         android:background="@color/main_color"
                         android:gravity="bottom"
@@ -75,7 +75,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="65.0dip"
                         android:layout_below="@id/up"
                         android:orientation="vertical"
@@ -83,7 +83,7 @@
                         android:paddingTop="5.0dip">
 
                         <LinearLayout
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
@@ -128,7 +128,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3.0dip"
                             android:gravity="center_vertical"
@@ -199,7 +199,7 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="0.2dip"
                     android:background="@color/divider_color" />
 
@@ -209,7 +209,7 @@
                     android:layout_height="wrap_content" />
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
@@ -218,7 +218,7 @@
 
                     <TextView
                         android:id="@+id/selfIntro"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="自我介绍：本人为人聪明能干，善于沟通，擅长护理脑瘫病人，会使用普通话进行沟通。"
                         android:textColor="@color/text_color_black"
@@ -226,7 +226,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10.0dip"
                     android:background="@drawable/bg_order_btn"
@@ -243,7 +243,7 @@
 
                     <TextView
                         android:id="@id/hospital"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="脑外科"
                         android:textColor="@color/text_color_black"
@@ -251,7 +251,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
@@ -268,7 +268,7 @@
 
                     <TextView
                         android:id="@+id/department"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="脑外科"
                         android:textColor="@color/text_color_black"
@@ -276,7 +276,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
@@ -293,7 +293,7 @@
 
                     <TextView
                         android:id="@+id/certificate"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="健康证"
                         android:textColor="@color/text_color_black"
@@ -301,7 +301,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
@@ -320,7 +320,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
@@ -366,7 +366,7 @@
 
                 <LinearLayout
                     android:id="@id/item_level_des"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10.0dip"
                     android:background="@drawable/bg_order_btn"
@@ -376,7 +376,7 @@
 
                     <TextView
                         android:id="@id/level_des"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
                         android:text="近日陪护时间安排"
@@ -395,7 +395,7 @@
 
                 <LinearLayout
                     android:id="@id/comment_title"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
@@ -433,15 +433,15 @@
 
                 <LinearLayout
                     android:id="@id/comment_item1"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:orientation="vertical"
                     android:paddingTop="10.0dip">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginBottom="10dip"
                         android:orientation="vertical">
 
@@ -500,15 +500,15 @@
 
                 <LinearLayout
                     android:id="@id/comment_item1"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:orientation="vertical"
                     android:paddingTop="10.0dip">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginBottom="10dip"
                         android:orientation="vertical">
 
@@ -567,7 +567,7 @@
 
                 <LinearLayout
                     android:id="@id/comment_item1"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.63"
                     android:background="@drawable/bg_order_btn"
@@ -575,8 +575,8 @@
                     android:paddingTop="10.0dip">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginBottom="10dip"
                         android:orientation="vertical">
 
@@ -635,7 +635,7 @@
 
                 <LinearLayout
                     android:id="@id/order_title"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10.0dip"
                     android:background="@drawable/bg_order_btn"
@@ -655,7 +655,7 @@
 
                 <LinearLayout
                     android:id="@id/order_item1"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:orientation="vertical"
@@ -681,7 +681,7 @@
 
                 <LinearLayout
                     android:id="@id/order_item2"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:orientation="vertical"
@@ -707,7 +707,7 @@
 
                 <LinearLayout
                     android:id="@id/order_item3"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
                     android:orientation="vertical"
@@ -736,12 +736,12 @@
     <!--</   android:id="@id/swipeRefreshLayout">-->
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0.100000024dip"
         android:background="@color/divider_color" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:orientation="horizontal">
@@ -763,7 +763,7 @@
 
         <Button
             android:id="@id/btn_select"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="48.0dip"
             android:background="@drawable/bg_btn_main_color"
             android:text="选择"

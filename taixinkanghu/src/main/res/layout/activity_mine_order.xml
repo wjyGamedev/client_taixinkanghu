@@ -7,7 +7,7 @@
     <include layout="@layout/include_header" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
@@ -15,14 +15,14 @@
 
         <LinearLayout
             android:id="@id/item_phone"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10.0dip"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="54.0dip"
                 android:layout_marginTop="10.0dip"
                 android:background="@drawable/bg_order_btn"
@@ -61,7 +61,7 @@
             </LinearLayout>
 
             <!--<ListView-->
-                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="match_parent"-->
                 <!--android:gravity="center_vertical">-->
 

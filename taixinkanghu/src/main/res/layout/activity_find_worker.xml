@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
     tools:context="com.taixinkanghu.app.ui.activity.chooseworker">
@@ -37,7 +37,7 @@
 
     <FrameLayout
         android:id="@+id/buttionline01"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff">
 
@@ -74,7 +74,7 @@
 
             <FrameLayout
                 android:id="@+id/buttionline02"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#fff">
 
@@ -110,7 +110,7 @@
 
                     <!--<android.support.v7.widget.RecyclerView-->
                     <!--android:id="@+id/recyclerview"-->
-                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="match_parent"/>-->
 
                 </LinearLayout>
@@ -127,7 +127,7 @@
 
                 <!--<android.support.v7.widget.RecyclerView-->
                 <!--android:id="@+id/recyclerview"-->
-                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="match_parent"/>-->
 
             </LinearLayout>
@@ -154,7 +154,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:orientation="vertical">

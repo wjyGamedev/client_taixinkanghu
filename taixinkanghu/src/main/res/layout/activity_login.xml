@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include layout="@layout/include_header" />
 
     <ScrollView
         android:id="@id/login_form"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="15.0dip">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="44.0dip"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@id/phone"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="2.0"
                     android:background="@drawable/bg_main_input"
                     android:hint="手机号"
@@ -36,8 +36,8 @@
 
                 <Button
                     android:id="@id/btn_postSms"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="10.0dip"
                     android:layout_weight="3.0"
                     android:background="@drawable/btn_main_fillet"
@@ -48,7 +48,7 @@
 
             <EditText
                 android:id="@id/authCode"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="44.0dip"
                 android:layout_marginTop="15.0dip"
                 android:background="@drawable/bg_main_input"
@@ -57,7 +57,7 @@
                 android:maxLength="6" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="44.0dip"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -80,7 +80,7 @@
 
             <Button
                 android:id="@id/btn_login"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="44.0dip"
                 android:layout_marginTop="10.0dip"
                 android:background="@drawable/btn_main_fillet"

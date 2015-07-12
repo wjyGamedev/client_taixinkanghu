@@ -1,14 +1,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_page"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:weightSum="1"
     tools:context="com.taixinkanghu.app.ui.activity.MainActivity">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
 		android:id="@+id/main_page_container">
         <!--logo+名称-->
@@ -38,14 +38,14 @@
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewpager"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@mipmap/img_company"
 					android:layout_alignParentEnd="true"></android.support.v4.view.ViewPager>
 
                 <LinearLayout
                     android:id="@+id/ll"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:gravity="center_horizontal"
@@ -70,14 +70,14 @@
             <!--主要功能按钮-->
             <FrameLayout
                 android:id="@+id/display_function"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3.0">
 
 
 				<android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerview"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="3.0"></android.support.v7.widget.RecyclerView>
 
