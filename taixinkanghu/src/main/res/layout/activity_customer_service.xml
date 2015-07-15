@@ -18,13 +18,13 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="240dip"
                 android:background="@mipmap/img_company" />
 
             <LinearLayout
+                android:id="@+id/call"
                 android:layout_width="match_parent"
                 android:layout_height="54.0dip"
                 android:layout_gravity="center_vertical"
@@ -94,6 +94,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/question_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="54.0dip"
                 android:layout_gravity="center_vertical"
@@ -124,14 +125,7 @@
                         android:textSize="16.0sp" />
 
                 </LinearLayout>
-
             </LinearLayout>
-
-
         </LinearLayout>
-
-
-        <!--底部功能菜单-->
-        <include layout="@layout/item_rg_main" />
     </LinearLayout>
 </FrameLayout>

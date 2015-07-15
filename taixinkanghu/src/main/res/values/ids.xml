@@ -136,4 +136,7 @@
     <item name="btn_goto_main" type="id">btn_goto_main</item>
     <item name="btn_reviews" type="id">btn_reviews</item>
     <item name="worker_date" type="id">worker_date</item>
+    <item name="company_info" type="id">company_info</item>
+    <item name="service_introduction" type="id">service_introduction</item>
+    <item name="goto_faq" type="id">goto_faq</item>
 </resources>

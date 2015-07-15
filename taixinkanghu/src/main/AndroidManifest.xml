@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.taixinkanghu" >
+    package="com.taixinkanghu">
 
     <!-- 用户权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 
     <!-- 下载列表 -->
@@ -16,10 +17,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".app.ui.activity.WelcomeActivity"
-            android:label="@string/welcome_activity_name" >
+            android:label="@string/welcome_activity_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -68,8 +69,31 @@
             android:label="MineOrderActivity" />
         <activity
             android:name=".app.ui.activity.WorkerDateActivity"
-            android:label="@string/title_activity_worker_date" >
-        </activity>
+            android:label="@string/title_activity_worker_date"></activity>
+        <activity
+            android:name=".app.ui.activity.FaqActivity"
+            android:label="@string/title_activity_faq"></activity>
+        <activity
+            android:name=".app.ui.activity.CompanyInfoActivity"
+            android:label="@string/title_activity_company_info"></activity>
+        <activity
+            android:name=".app.ui.activity.ServiceIntroductionActivity"
+            android:label="@string/title_activity_service_introduction"></activity>
+        <activity
+            android:name=".app.ui.activity.WorkerLevelActivity"
+            android:label="@string/title_activity_worker_level"></activity>
+        <activity
+            android:name=".app.ui.activity.QuestionFeedBackActivity"
+            android:label="@string/title_activity_question_feed_back"></activity>
+        <activity
+            android:name=".app.ui.activity.MyWealthActivity"
+            android:label="@string/title_activity_my_wealth"></activity>
+        <activity
+            android:name=".app.ui.activity.MySetActivity"
+            android:label="@string/title_activity_my_set"></activity>
+        <activity
+            android:name=".app.ui.activity.MyScoreActivity"
+            android:label="@string/title_activity_my_score"></activity>
     </application>
 
 </manifest>

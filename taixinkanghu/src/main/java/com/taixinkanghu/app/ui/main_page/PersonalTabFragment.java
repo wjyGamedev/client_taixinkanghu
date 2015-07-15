@@ -16,4 +16,8 @@ package com.taixinkanghu.app.ui.main_page;
 
 public class PersonalTabFragment extends HomeTabFragment
 {
+
+
+
+
 }

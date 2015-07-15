@@ -1,6 +1,7 @@
 package com.taixinkanghu.app.ui.main_page;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -15,9 +16,13 @@ import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
+import com.taixinkanghu.app.ui.activity.MineOrderActivity;
+import com.taixinkanghu.app.ui.activity.MySetActivity;
+import com.taixinkanghu.app.ui.activity.MyWealthActivity;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnAfterTabChangeListener;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnBeforeTabChangeListener;
@@ -173,10 +178,19 @@ public class MainActivity extends FragmentActivity
 			}
 				return true;
 			case R.id.shopping_order:
+			{
+				MainActivity.this.OpenProductOrder();
+			}
 				return true;
 			case R.id.personal_wealth:
+			{
+				MainActivity.this.OpenMyWealth();
+			}
 				return true;
 			case R.id.personal_setting:
+			{
+				MainActivity.this.OpenMySet();
+			}
 				return true;
 			default:
 				break;
@@ -185,9 +199,28 @@ public class MainActivity extends FragmentActivity
 		}
 	}
 
+	//陪护订单
 	private void OpenNursingOrder()
 	{
+		startActivity(new Intent(MainActivity.this, MineOrderActivity.class));
+	}
 
+	//产品订单
+	private void OpenProductOrder()
+	{
+		Toast.makeText(this,R.string.function_is_not_open, Toast.LENGTH_SHORT).show();
+	}
+
+	//我的财富
+	private void OpenMyWealth()
+	{
+		startActivity(new Intent(MainActivity.this, MyWealthActivity.class));
+	}
+
+	//我的设置
+	private void OpenMySet()
+	{
+		startActivity(new Intent(MainActivity.this, MySetActivity.class));
 	}
 
 	private class ImpTabClickListener implements OnTabClickListener

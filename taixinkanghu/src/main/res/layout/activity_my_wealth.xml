@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/my_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10.0dip"
@@ -85,7 +86,7 @@
 
 
     <Button
-        android:id="@id/btn_submit"
+        android:id="@id/btn_goto_main"
         android:layout_width="match_parent"
         android:layout_height="48.0dip"
         android:background="@drawable/bg_btn_main_color"

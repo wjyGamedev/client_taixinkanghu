@@ -8,20 +8,35 @@
     <string name="title_activity_main">MainActivity</string>
 
     <string name="main_tab_name">首页</string>
-	<string name="mine_tab_name">我的</string>
-	<string name="service_tab_name">服务</string>
-	<string name="company_tab_name">泰心</string>
+    <string name="mine_tab_name">我的</string>
+    <string name="service_tab_name">服务</string>
+    <string name="company_tab_name">泰心</string>
     <string name="main_func_text">泰心康护是衣架专注于康复护理产业资源整合的服务性公司。泰心昂胡在大健康产品迅猛发展，医改大变革的背景下，对专家团队，培训机构，研发企业，生产企业，销售队伍，护理团队...</string>
-	<string name="main_persional_popmenu_nursing_order_name">陪护订单</string>
-	<string name="main_persional_popmenu_shopping_order_name">产品订单</string>
-	<string name="main_persional_popmenu_wealth_name">我的财富</string>
-	<string name="main_persional_popmenu_setting_name">我的设置</string>
+    <string name="main_persional_popmenu_nursing_order_name">陪护订单</string>
+    <string name="main_persional_popmenu_shopping_order_name">产品订单</string>
+    <string name="main_persional_popmenu_wealth_name">我的财富</string>
+    <string name="main_persional_popmenu_setting_name">我的设置</string>
 
     <string name="about_us_title">泰心康护</string>
 
     <string name="service_title">客服</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <string name="faq_title">问题反馈</string>
+
+    <string name="worker_level_title">护理员级别</string>
+
+    <string name="my_wealth_title">我的财富</string>
+
+    <string name="my_set_title">我的设置</string>
+
+    <string name="my_sorce_title">我的积分</string>
+
+    <string name="question_feed_back_title">问题反馈</string>
+
+    <string name="function_is_not_open">功能未开放</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_find_hugong">find_hugong</string>
     <string name="title_activity_dingdan">dingdan</string>
@@ -31,6 +46,14 @@
     <string name="title_activity_gg_02">GG_02</string>
     <string name="title_activity_recommend_hugong">recommend_hugong</string>
     <string name="title_activity_worker_date">WorkerDateActivity</string>
+    <string name="title_activity_faq">FaqActivity</string>
+    <string name="title_activity_company_info">CompanyInfoActivity</string>
+    <string name="title_activity_service_introduction">ServiceIntroductionActivity</string>
+    <string name="title_activity_worker_level">WorkerLevelActivity</string>
+    <string name="title_activity_question_feed_back">QuestionFeedBackActivity</string>
+    <string name="title_activity_my_wealth">MyWealthActivity</string>
+    <string name="title_activity_my_set">MySetActivity</string>
+    <string name="title_activity_my_score">MyScoreActivity</string>
 
 
     <string name="sunday">日</string>
