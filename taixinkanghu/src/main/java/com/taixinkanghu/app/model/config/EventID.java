@@ -19,9 +19,12 @@ public class EventID
 	/**
 	 * network 100~999
 	 */
-	public final static int NETWORK_DEFAULT = 100;
+	public final static int NETWORK_DEFAULT     = 100;
 	public final static int QUEST_HOSPITAL_LIST = 101;
 
-
+	/**
+	 * UI event
+	 */
 	public final static int UI_DEFAULT = 1000;
+	public final static int UI_SWITCH_IMAGE= 1001;
 }

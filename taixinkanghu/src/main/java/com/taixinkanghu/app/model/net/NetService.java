@@ -40,14 +40,14 @@ public class NetService extends Service
 	public void onCreate()
 	{
 		super.onCreate();
-		m_eventBus.getDefault().register(this);
+		m_eventBus.register(this);
 		onCreateEvent();
 	}
 
 	@Override
 	public void onDestroy()
 	{
-		m_eventBus.getDefault().unregister(this);
+		m_eventBus.unregister(this);
 		super.onDestroy();
 		Log.e("NetService", "NetService onDestroy");
 	}
