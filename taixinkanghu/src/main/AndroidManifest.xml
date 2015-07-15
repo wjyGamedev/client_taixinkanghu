@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.taixinkanghu.app.ui.activity.MainActivity"
+            android:name=".app.ui.main_page.MainActivity"
             android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
