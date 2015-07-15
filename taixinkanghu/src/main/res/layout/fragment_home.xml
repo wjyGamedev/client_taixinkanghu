@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:orientation="vertical"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:id="@+id/home_linearlayout">
+
+	<!--logo+名称-->
+	<include layout="@layout/include_header"
+			 android:id="@+id/title"/>
+
+	<!--功能区-->
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<!--展示图片：公司/优惠信息-->
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/display_imgs_linearlayout"
+			android:layout_gravity="top|center_vertical">
+
+			<ViewFlipper
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/view_flipper"/>
+		</LinearLayout>
+
+		<!--主要功能按钮-->
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/function_linearlayout"
+			android:layout_gravity="bottom|center_vertical">
+
+			<ScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/scrollview">
+
+				<LinearLayout
+					android:orientation="vertical"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/frame_linearlayout">
+
+					<LinearLayout
+						android:orientation="vertical"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/ele_linearlayout">
+
+						<GridLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/function_gridlayout">
+						</GridLayout>
+					</LinearLayout>
+
+					<LinearLayout
+						android:orientation="vertical"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/others_linlayout">
+
+						<EditText
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:inputType="textMultiLine"
+							android:ems="10"
+							android:id="@+id/func_text"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			</ScrollView>
+		</LinearLayout>
+	</LinearLayout>
+
+
+</LinearLayout>

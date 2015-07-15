@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:id="@id/up"
+                        android:id="@+id/up"
                         android:layout_width="match_parent"
                         android:layout_height="65.0dip"
                         android:background="@color/main_color"
@@ -77,7 +77,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="65.0dip"
-                        android:layout_below="@id/up"
+                        android:layout_below="@+id/up"
                         android:orientation="vertical"
                         android:paddingLeft="130.0dip"
                         android:paddingTop="5.0dip">

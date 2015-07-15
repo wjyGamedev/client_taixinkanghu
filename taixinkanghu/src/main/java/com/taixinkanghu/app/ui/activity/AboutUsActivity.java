@@ -28,7 +28,7 @@ public class AboutUsActivity extends Activity implements RadioGroup.OnCheckedCha
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         page_title = (TextView) findViewById(R.id.page_title);
 
-        page_title.setText("æ³°å¿ƒåº·æŠ¤");
+        page_title.setText("Ì©ÐÄ¿µ»¤");
 
         btn_back.setVisibility(View.GONE);
 

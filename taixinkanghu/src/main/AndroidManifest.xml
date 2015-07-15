@@ -27,8 +27,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".app.ui.activity.MainActivity"
-            android:label="@string/title_activity_main" >
+            android:name=".app.ui.main_page.MainActivity"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>

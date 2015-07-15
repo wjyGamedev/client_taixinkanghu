@@ -7,6 +7,13 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <string name="main_tab_name">首页</string>
+	<string name="mine_tab_name">我的</string>
+	<string name="service_tab_name">服务</string>
+	<string name="company_tab_name">泰心</string>
+    <string name="main_func_text">泰心康护是衣架专注于康复护理产业资源整合的服务性公司。泰心昂胡在大健康产品迅猛发展，医改大变革的背景下，对专家团队，培训机构，研发企业，生产企业，销售队伍，护理团队...</string>
+
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_find_hugong">find_hugong</string>
@@ -26,4 +33,5 @@
     <string name="thursday">四</string>
     <string name="friday">五</string>
     <string name="saturday">六</string>
+    <string name="display_complay_decription">company displays</string>
 </resources>
