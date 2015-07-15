@@ -36,5 +36,6 @@ public class MainActivityConfig
 
 	public final static double COFFE_DELTA = 0.618;
 
+	public final static int MAIN_PERSONAL_TAB_INDEX = 1;
 }
 

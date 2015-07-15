@@ -41,6 +41,11 @@ public class FragmentTabHostEx extends FragmentTabHost
 		void onAfterTabChanged(String tabId);
 	}
 
+	public interface OnTabClickListener
+	{
+		void onTabClick(int index);
+	}
+
 	@Override
 	public void onTabChanged(String tabId)
 	{
@@ -61,11 +66,33 @@ public class FragmentTabHostEx extends FragmentTabHost
 		}
 	}
 
-	public void setOnTabChangedListener(OnBeforeTabChangeListener listener)
+	@Override
+	public void setCurrentTab(int index)
+	{
+		if (m_onTabClickListener != null)
+		{
+			m_onTabClickListener.onTabClick(index);
+		}
+
+		super.setCurrentTab(index);
+	}
+
+	public void setOnBeforeTabChangeListener(OnBeforeTabChangeListener listener)
 	{
 		m_onBeforeTabChangeListener = listener;
 	}
 
+	public void setOnAfterTabChangeListener(OnAfterTabChangeListener listener)
+	{
+		m_onAfterTabChangeListener = listener;
+	}
+
+	public void setOnTabClickListener(OnTabClickListener listener)
+	{
+		m_onTabClickListener = listener;
+	}
+
 	private OnBeforeTabChangeListener m_onBeforeTabChangeListener = null;
-	private OnAfterTabChangeListener m_onAfterTabChangeListener = null;
+	private OnAfterTabChangeListener  m_onAfterTabChangeListener  = null;
+	private OnTabClickListener        m_onTabClickListener        = null;
 }
