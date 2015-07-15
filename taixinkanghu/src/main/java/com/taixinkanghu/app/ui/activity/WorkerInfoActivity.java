@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.main_page.MainActivity;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
 /**

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.fragment.MineFragment;
+import com.taixinkanghu.app.ui.main_page.MainActivity;
 
 /**
  * Created by Administrator on 2015/7/14.
