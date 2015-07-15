@@ -134,4 +134,6 @@
     <item name="btn_submit" type="id">btn_submit</item>
     <item name="worker_pic" type="id">worker_pic</item>
     <item name="btn_goto_main" type="id">btn_goto_main</item>
+    <item name="btn_reviews" type="id">btn_reviews</item>
+    <item name="worker_date" type="id">worker_date</item>
 </resources>

@@ -11,7 +11,7 @@ import android.widget.Button;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
 
-public class SelsctCityFragment extends Fragment implements View.OnClickListener {
+public class SelectCityFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class SelsctCityFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_selsct_city, container, false);
+        view = inflater.inflate(R.layout.fragment_select_city, container, false);
         view.setOnClickListener(this);
 
         btn1 = (Button) view.findViewById(R.id.item1);
@@ -60,13 +60,13 @@ public class SelsctCityFragment extends Fragment implements View.OnClickListener
             case R.id.item1:
                 btn1.setSelected(true);
                 getFragmentManager().popBackStack();
-                activity.tv_city.setText("服务地址              " + btn1.getText() + "  ∨");
+                activity.tv_hospital.setText("服务地址              " + btn1.getText() + "  ∨");
                 activity.selected_city = BEIJING;
                 break;
             case R.id.item2:
                 btn2.setSelected(true);
                 getFragmentManager().popBackStack();
-                activity.tv_city.setText("服务地址              " + btn2.getText() + "  ∨");
+                activity.tv_hospital.setText("服务地址              " + btn2.getText() + "  ∨");
                 activity.selected_city = TIANJIN;
                 break;
             default:

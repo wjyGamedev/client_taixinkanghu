@@ -11,48 +11,40 @@ import android.widget.TextView;
 import com.taixinkanghu.R;
 
 /**
- * Created by Administrator on 2015/7/11.
+ * Created by Administrator on 2015/7/13.
  */
-public class AppointmentActivity extends Activity implements View.OnClickListener {
+public class ReviewsActivity extends Activity implements View.OnClickListener {
 
-    private ImageButton btn_back;
-    private TextView page_title;
+    private TextView tv_title;
     private Button btn_goto_main;
-    private Button btn_submit;
-
-
+    private ImageButton btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointment);
-
-        btn_submit = (Button) findViewById(R.id.btn_submit);
+        setContentView(R.layout.activity_reviews);
         btn_goto_main = (Button) findViewById(R.id.btn_goto_main);
-        page_title = (TextView) findViewById(R.id.page_title);
         btn_back = (ImageButton) findViewById(R.id.btn_back);
+        tv_title = (TextView) findViewById(R.id.page_title);
 
-        page_title.setText("预约护理员");
+        tv_title.setText("服务评价");
 
-        btn_submit.setOnClickListener(this);
+
         btn_goto_main.setOnClickListener(this);
         btn_back.setOnClickListener(this);
+
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_submit:
-                startActivity(new Intent(this,OrderConfirmActivity.class));
-                break;
-            case R.id.btn_goto_main:
-                startActivity(new Intent(this,MainActivity.class));
-                break;
+        switch (v.getId()) {
             case R.id.btn_back:
                 finish();
                 break;
+            case R.id.btn_goto_main:
+                startActivity(new Intent(this, MainActivity.class));
+                break;
         }
     }
-
 }

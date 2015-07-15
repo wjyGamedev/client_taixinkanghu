@@ -1,0 +1,145 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.taixinkanghu.app.ui.activity.SelectCity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="93dip"
+        android:background="#00000000"
+        android:orientation="vertical" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff">
+
+        <LinearLayout
+            android:id="@id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="15.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="请选择医院"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.0"
+                    android:text="更多城市敬请期待"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="14.0sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="15.0dip"
+            android:paddingLeft="10.0dip"
+            android:paddingRight="10.0dip">
+
+            <Button
+                android:id="@id/item1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/bg_btn_city_selector"
+                android:gravity="center"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip"
+                android:text="北京朝阳医院"
+                android:textColor="@color/city_btn_color"
+                android:textSize="14.0sp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@id/item2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/bg_btn_city_selector"
+                android:gravity="center"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip"
+                android:text="北京天坛医院"
+                android:textColor="@color/city_btn_color"
+                android:textSize="14.0sp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@id/item3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/bg_btn_city_selector"
+                android:gravity="center"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip"
+                android:text="医科院肿瘤医院"
+                android:textColor="@color/city_btn_color"
+                android:textSize="14.0sp"
+                android:visibility="visible" />
+
+            <!--<Button-->
+            <!--android:id="@id/item4"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="5.0dip"-->
+            <!--android:layout_marginRight="5.0dip"-->
+            <!--android:layout_weight="1.0"-->
+            <!--android:background="@drawable/bg_btn_city_selector"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingBottom="8.0dip"-->
+            <!--android:paddingTop="8.0dip"-->
+            <!--android:textColor="@color/city_btn_color"-->
+            <!--android:textSize="14.0sp"-->
+            <!--android:visibility="invisible" />-->
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/divider_color" />
+
+    <View
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" />
+
+</LinearLayout>

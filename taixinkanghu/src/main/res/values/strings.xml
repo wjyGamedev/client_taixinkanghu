@@ -27,6 +27,15 @@
     <string name="title_activity_gg_01">GG_01</string>
     <string name="title_activity_gg_02">GG_02</string>
     <string name="title_activity_recommend_hugong">recommend_hugong</string>
-    <string name="title_activity_test111111111111111111111">test111111111111111111111</string>
+    <string name="title_activity_worker_date">WorkerDateActivity</string>
+
+
+    <string name="sunday">日</string>
+    <string name="monday">一</string>
+    <string name="thesday">二</string>
+    <string name="wednesday">三</string>
+    <string name="thursday">四</string>
+    <string name="friday">五</string>
+    <string name="saturday">六</string>
     <string name="display_complay_decription">company displays</string>
 </resources>

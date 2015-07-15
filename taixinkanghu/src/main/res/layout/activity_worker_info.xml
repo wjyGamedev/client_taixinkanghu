@@ -190,6 +190,7 @@
                     </LinearLayout>
 
                     <com.taixinkanghu.widget.circleimageview.CircleImageView
+                        android:id="@+id/pic"
                         app:border_color="#ff33c5b8"
                         app:border_width="1.0dip"
                         android:layout_width="100.0dip"
@@ -365,7 +366,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@id/item_level_des"
+                    android:id="@id/worker_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10.0dip"
@@ -394,7 +395,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@id/comment_title"
+                    android:id="@id/btn_reviews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_order_btn"
@@ -748,7 +749,7 @@
 
 
         <Button
-            android:id="@id/btn_pay"
+            android:id="@id/btn_goto_main"
             android:layout_width="60dip"
             android:layout_height="48.0dip"
             android:background="@drawable/bg_btn_main_color"
