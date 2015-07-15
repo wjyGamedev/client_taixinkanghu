@@ -19,6 +19,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GestureDetectorCompat;
+import android.util.Log;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -165,6 +166,7 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 		rlParams.height = (int)(iWidth * 0.5 * MainActivityConfig.COFFE_DELTA);
 		relativeLayout.requestLayout();
 
+		//
 	}
 
 	public void initData()
@@ -172,6 +174,9 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 		m_viewFlipper = (ViewFlipper)this.getActivity().findViewById(R.id.view_flipper);
 		m_gestureDetectorCompat = new GestureDetectorCompat(this.getActivity(), this);
 		m_gridLayout = (GridLayout)this.getActivity().findViewById(R.id.function_gridlayout);
+		//功能事件监听
+		m_impNursingOrderClickListener = new ImpFuncClickListener();
+		m_impShoppingClickListener = new ImpFuncClickListener();
 	}
 
 
@@ -205,10 +210,13 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 		m_gridLayout.setColumnCount(MainActivityConfig.MAIN_FUNCTION_NUM);
 		View view = null;
 		view = setFunctionWidget(this.getActivity(), R.drawable.main_shopping, MainActivityConfig.FUNC_SHOPPING_TEXT);
+		view.setOnClickListener(m_impNursingOrderClickListener);
 		m_gridLayout.addView(view, MainActivityConfig.MAIN_FUNCTION_GROUP_FLAG);
+
 
 		view = setFunctionWidget(this.getActivity(), R.drawable.main_appointment_nursing, MainActivityConfig
 										 .FUNC_APPOINTMENT_NURSING_TEXT);
+		view.setOnClickListener(m_impShoppingClickListener);
 		m_gridLayout.addView(view, MainActivityConfig.MAIN_FUNCTION_GROUP_FLAG);
 
 		//下面文字区
@@ -218,6 +226,7 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 		m_editText.setFocusable(false);
 		m_editText.setHorizontallyScrolling(false);
 		m_editText.setText(R.string.main_func_text);
+
 
 	}
 
@@ -233,6 +242,15 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 		return view;
 	}
 
+	private class ImpFuncClickListener implements View.OnClickListener
+	{
+
+		@Override
+		public void onClick(View v)
+		{
+			Log.w("onClick", "test");
+		}
+	}
 	/**
 	 * 数据区
 	 */
@@ -240,5 +258,7 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 	private ViewFlipper           m_viewFlipper           = null;
 	private GridLayout            m_gridLayout            = null;
 	private EditText			   m_editText				= null;
+	private ImpFuncClickListener  m_impNursingOrderClickListener = null;
+	private ImpFuncClickListener  m_impShoppingClickListener = null;
 
 }
