@@ -5,3 +5,4 @@
 .DS_Store
 /build
 /captures
+/EventBus/build/libs/EventBus-2.4.1-SNAPSHOT.jar
