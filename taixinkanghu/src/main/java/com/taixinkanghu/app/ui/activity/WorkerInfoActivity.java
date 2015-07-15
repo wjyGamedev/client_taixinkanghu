@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.main_page.MainActivity;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
 /**
@@ -83,9 +84,9 @@ public class WorkerInfoActivity extends Activity implements View.OnClickListener
             case R.id.btn_goto_main:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.worker_date:
-                startActivity(new Intent(this, WorkerDateActivity.class));
-                break;
+//            case R.id.worker_date:
+//                startActivity(new Intent(this, WorkerDateActivity.class));
+//                break;
         }
     }
 }

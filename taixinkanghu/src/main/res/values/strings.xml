@@ -17,6 +17,9 @@
 	<string name="main_persional_popmenu_wealth_name">我的财富</string>
 	<string name="main_persional_popmenu_setting_name">我的设置</string>
 
+    <string name="about_us_title">泰心康护</string>
+
+    <string name="service_title">客服</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

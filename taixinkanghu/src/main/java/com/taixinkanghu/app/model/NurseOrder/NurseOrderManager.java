@@ -2,7 +2,7 @@ package com.taixinkanghu.app.model.NurseOrder;
 
 import java.util.HashMap;
 
-import com.taixinkanghu.util.NurseOrder.NurseOrderUtil;
+import com.taixinkanghu.util.nursingorder.NurseOrderUtil;
 import com.taixinkanghu.util.manager.Manager;
 
 /**

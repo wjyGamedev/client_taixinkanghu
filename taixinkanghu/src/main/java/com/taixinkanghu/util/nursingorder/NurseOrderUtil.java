@@ -12,7 +12,7 @@
  * 2015/7/6		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.util.nurseorder;
+package com.taixinkanghu.util.nursingorder;
 
 public class NurseOrderUtil
 {
