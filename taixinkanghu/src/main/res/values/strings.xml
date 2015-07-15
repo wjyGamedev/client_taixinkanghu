@@ -12,6 +12,10 @@
 	<string name="service_tab_name">服务</string>
 	<string name="company_tab_name">泰心</string>
     <string name="main_func_text">泰心康护是衣架专注于康复护理产业资源整合的服务性公司。泰心昂胡在大健康产品迅猛发展，医改大变革的背景下，对专家团队，培训机构，研发企业，生产企业，销售队伍，护理团队...</string>
+	<string name="main_persional_popmenu_nursing_order_name">陪护订单</string>
+	<string name="main_persional_popmenu_shopping_order_name">产品订单</string>
+	<string name="main_persional_popmenu_wealth_name">我的财富</string>
+	<string name="main_persional_popmenu_setting_name">我的设置</string>
 
 
 <!-- TODO: Remove or change this placeholder text -->
