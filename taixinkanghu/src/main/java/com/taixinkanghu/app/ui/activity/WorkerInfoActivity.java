@@ -83,9 +83,9 @@ public class WorkerInfoActivity extends Activity implements View.OnClickListener
             case R.id.btn_goto_main:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.worker_date:
-                startActivity(new Intent(this, WorkerDateActivity.class));
-                break;
+//            case R.id.worker_date:
+//                startActivity(new Intent(this, WorkerDateActivity.class));
+//                break;
         }
     }
 }
