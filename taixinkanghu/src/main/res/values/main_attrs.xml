@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="func_imageview_width">80dp</dimen>
+	<dimen name="func_imageview_height">80dp</dimen>
+	<dimen name="tab_imageview_width">32dp</dimen>
+	<dimen name="tab_imageview_height">32dp</dimen>
+</resources>
