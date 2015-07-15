@@ -3,19 +3,24 @@ package com.taixinkanghu.app.ui.main_page;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
+import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx;
 
 
-public class MainActivity extends FragmentActivity
+public class MainActivity extends FragmentActivity implements FragmentTabHostEx.OnBeforeTabChangeListener, FragmentTabHostEx.OnAfterTabChangeListener
 {
 
     @Override
@@ -45,14 +50,15 @@ public class MainActivity extends FragmentActivity
 
 	private void initData()
 	{
-//		m_viewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
-//		m_gestureDetectorCompat = new GestureDetectorCompat(this, this);
+		m_fragmentTabHost = (FragmentTabHostEx)findViewById(android.R.id.tabhost);
+		m_impMenuItemClickListener = new ImpMenuItemClickListener();
 	}
 
 	private void initWidget()
 	{
-		m_fragmentTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
+
 		m_fragmentTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
+		m_fragmentTabHost.setOnTabChangedListener(this);
 
 		TabHost.TabSpec tabSpec = null;
 		tabSpec = setIndicator(this,
@@ -83,6 +89,31 @@ public class MainActivity extends FragmentActivity
 							   R.drawable.main_tab_company_imgs
 							  );
 		m_fragmentTabHost.addTab(tabSpec, CompanyTabContainer.class, null);
+	}
+
+	@Override
+	public boolean onBeforeTabChanged(String tabId)
+	{
+		//弹出菜单
+		if (tabId.equals(MainActivityConfig.MAIN_PERSONAL_TAB_FLAG))
+		{
+			if (m_popupMenu == null)
+			{
+				m_popupMenu = new PopupMenu(this, m_fragmentTabHost.getCurrentTabView());
+				Menu menu = m_popupMenu.getMenu();
+				MenuInflater menuInflater = getMenuInflater();
+				menuInflater.inflate(R.menu.main_personal_popup_menu, menu);
+			}
+			m_popupMenu.show();
+			m_popupMenu.setOnMenuItemClickListener(m_impMenuItemClickListener);
+		}
+		return true;
+
+	}
+
+	@Override
+	public void onAfterTabChanged(String tabId)
+	{
 
 	}
 
@@ -116,15 +147,43 @@ public class MainActivity extends FragmentActivity
 
 		textView.setText(inString);
 		imageView.setBackgroundResource(iIcon);
-
-		imageView.getLayoutParams().width = (int)getResources().getDimension(R.dimen.tab_imageview_width);
-		imageView.getLayoutParams().height = (int)getResources().getDimension(R.dimen.tab_imageview_height);
 		return spec.setIndicator(view);
 	}
 
+	private class ImpMenuItemClickListener implements OnMenuItemClickListener
+	{
 
-//	private GestureDetectorCompat m_gestureDetectorCompat = null;
-//	private ViewFlipper           m_viewFlipper           = null;
-	private FragmentTabHost       m_fragmentTabHost       = null;
+		@Override
+		public boolean onMenuItemClick(MenuItem item)
+		{
+			switch (item.getItemId())
+			{
+			case R.id.nursing_order:
+				return true;
+			case R.id.shopping_order:
+				return true;
+			case R.id.personal_wealth:
+				return true;
+			case R.id.personal_setting:
+				return true;
+			default:
+				break;
+			}
+			return false;
+		}
+	}
 
+	private class ImpClickListener implements View.OnClickListener
+	{
+
+		@Override
+		public void onClick(View v)
+		{
+
+		}
+	}
+
+	private FragmentTabHostEx m_fragmentTabHost = null;
+	private PopupMenu m_popupMenu = null;
+	private ImpMenuItemClickListener m_impMenuItemClickListener = null;
 }

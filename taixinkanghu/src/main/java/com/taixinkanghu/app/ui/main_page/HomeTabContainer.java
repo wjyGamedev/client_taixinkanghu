@@ -5,7 +5,7 @@
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p/>
+ * <p>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
@@ -24,20 +24,24 @@ import com.taixinkanghu.R;
 public class HomeTabContainer extends BaseTabContainer
 {
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	{
 		return inflater.inflate(R.layout.main_base_tab_framelayout, null);
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
+	public void onActivityCreated(Bundle savedInstanceState)
+	{
 		super.onActivityCreated(savedInstanceState);
-		if (!m_isViewInited) {
+		if (!m_isViewInited)
+		{
 			m_isViewInited = true;
 			initView();
 		}
 	}
 
-	private void initView() {
+	private void initView()
+	{
 		replaceFragment(new HomeTabFragment(), false);
 	}
 
