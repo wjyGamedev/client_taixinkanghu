@@ -30,7 +30,7 @@ public class CustomerServiceActivity extends Activity implements RadioGroup.OnCh
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         page_title = (TextView) findViewById(R.id.page_title);
 
-        page_title.setText("¿Í·þ");
+        page_title.setText(R.string.service_title);
 
         btn_back.setVisibility(View.GONE);
 
