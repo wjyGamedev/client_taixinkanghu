@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/select_city"
+                android:id="@+id/select_hospital"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -40,10 +40,12 @@
 
         </LinearLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/buttionline01"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
             android:background="#fff">
 
             <LinearLayout
@@ -75,46 +77,34 @@
                         android:text="排序条件  选择排序条件  ∨" />
                 </LinearLayout>
 
-                <FrameLayout
-                    android:id="@+id/buttionline02"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#fff">
+                    android:layout_height="20dp"
+                    android:background="@drawable/bg_order_rb"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:background="@drawable/bg_order_rb"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/showDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#fff"
-                            android:gravity="center"
-                            android:text="请先设置服务开始时间和结束时间"
-                            android:textColor="#cc0000" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/showDate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="20dip"
-                        android:orientation="vertical">
+                        android:background="#fff"
+                        android:gravity="center"
+                        android:text="请先设置服务开始时间和结束时间"
+                        android:textColor="#cc0000" />
 
-                        <!--<android.support.v7.widget.RecyclerView-->
-                        <!--android:id="@+id/recyclerview"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"/>-->
+                </LinearLayout>
 
-                        <include layout="@layout/item_worker_list" />
+                <ListView
+                    android:id="@+id/listView_workerinfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffffff"
+                    android:choiceMode="singleChoice"
+                    android:divider="@color/divider_color"
+                    android:dividerHeight="0.100000024dip"
+                    android:listSelector="@drawable/bg_btn_translucent"
+                    android:scrollbars="none" />
 
-                    </LinearLayout>
-
-
-                </FrameLayout>
 
                 <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
@@ -135,17 +125,9 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:orientation="vertical">
+        </LinearLayout>
 
-                <!--底部功能菜单-->
-                <include layout="@layout/include_main_button" />
-
-            </LinearLayout>
-
-        </FrameLayout>
+        <!--底部功能菜单-->
+        <include layout="@layout/include_main_button" />
     </LinearLayout>
 </FrameLayout>

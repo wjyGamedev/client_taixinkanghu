@@ -122,6 +122,7 @@ public class SelectDateFragment extends Fragment implements View.OnClickListener
                 getFragmentManager().popBackStack();
                 ChooseWorkerActivity activity = (ChooseWorkerActivity) getActivity();
                 activity.tv.setText("服务时间：" + dateArray[start_Date] + " - " + dateArray[end_Date] + " 共" + days + "天");
+                activity.tv_date.setText("服务时间             已选择  ∨");
                 activity.tv.setTextColor(0xffcc0000);
             }
         });

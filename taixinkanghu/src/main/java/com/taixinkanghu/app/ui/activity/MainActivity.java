@@ -158,6 +158,11 @@ public class MainActivity extends Activity implements OnPageChangeListener, Radi
         rv = (RecyclerView) findViewById(R.id.recyclerview);
 
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        System.out.println(mLayoutManager.getWidth());
+        System.out.println(mLayoutManager.getWidth());
+        System.out.println(mLayoutManager.getWidth());
+        System.out.println(mLayoutManager.getWidth());
+        System.out.println(mLayoutManager.getWidth());
 
         rv.setLayoutManager(mLayoutManager);
 

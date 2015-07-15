@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,14 +43,15 @@ public class SelectSortFragment extends Fragment implements View.OnClickListener
         View view = inflater.inflate(R.layout.fragment_select_sort, container, false);
         view.setOnClickListener(this);
         sortListView = (ListView) view.findViewById(R.id.listView_sort);
-        arrayAdapter_sort = new ArrayAdapter<String>(container.getContext(), android.R.layout.simple_list_item_1, getSortListData());
+        arrayAdapter_sort = new ArrayAdapter<String>(container.getContext(), R.layout.item_text_select_screening, getSortListData());
         sortListView.setAdapter(arrayAdapter_sort);
 
         sortListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Container.getContext(), "你选择了：" + sortListView.getAdapter().getItem(position), Toast.LENGTH_SHORT).show();
                 getFragmentManager().popBackStack();
+                ChooseWorkerActivity activity = (ChooseWorkerActivity) getActivity();
+                activity.tv_sort.setText("排序条件    " + sortListView.getAdapter().getItem(position) + "  ∨");
             }
         });
 

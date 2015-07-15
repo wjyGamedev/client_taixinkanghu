@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,10 +55,10 @@ public class SelectScreeningFragment extends Fragment implements View.OnClickLis
         mainListView = (ListView) view.findViewById(R.id.mainListView);
         subListView = (ListView) view.findViewById(R.id.subListView);
 
-        arrayAdapter_main = new ArrayAdapter<String>(container.getContext(), android.R.layout.simple_list_item_1, getMainListData());
-        arrayAdapter_sub_sex = new ArrayAdapter<String>(container.getContext(), android.R.layout.simple_list_item_1, getSubListData(SEX));
-        arrayAdapter_sub_city = new ArrayAdapter<String>(container.getContext(), android.R.layout.simple_list_item_1, getSubListData(CITY));
-        arrayAdapter_sub_level = new ArrayAdapter<String>(container.getContext(), android.R.layout.simple_list_item_1, getSubListData(LEVEL));
+        arrayAdapter_main = new ArrayAdapter<String>(container.getContext(), R.layout.item_text_select_screening, getMainListData());
+        arrayAdapter_sub_sex = new ArrayAdapter<String>(container.getContext(), R.layout.item_text_select_screening, getSubListData(SEX));
+        arrayAdapter_sub_city = new ArrayAdapter<String>(container.getContext(), R.layout.item_text_select_screening, getSubListData(CITY));
+        arrayAdapter_sub_level = new ArrayAdapter<String>(container.getContext(), R.layout.item_text_select_screening, getSubListData(LEVEL));
 
 
         mainListView.setAdapter(arrayAdapter_main);
@@ -101,8 +101,9 @@ public class SelectScreeningFragment extends Fragment implements View.OnClickLis
         subListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Container.getContext(), "你选择了：" + subListView.getAdapter().getItem(position), Toast.LENGTH_SHORT).show();
                 getFragmentManager().popBackStack();
+                ChooseWorkerActivity activity = (ChooseWorkerActivity) getActivity();
+                activity.tv_screening.setText("筛选条件    " + subListView.getAdapter().getItem(position) + "  ∨");
             }
         });
 

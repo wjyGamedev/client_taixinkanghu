@@ -4,6 +4,7 @@ package com.taixinkanghu.app.ui.fragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.activity.MineOrderActivity;
 
 
 /**
@@ -54,7 +56,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_nurs_order:
-                Toast.makeText(getActivity(), "你选择了" + tv_nurs_order.getText(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), MineOrderActivity.class));
                 break;
             case R.id.tv_product_order:
                 Toast.makeText(getActivity(), "你选择了" + tv_product_order.getText(), Toast.LENGTH_SHORT).show();
@@ -66,17 +68,22 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(), "你选择了" + tv_my_set.getText(), Toast.LENGTH_SHORT).show();
                 break;
             default:
-                //蒙版点击一下之后消失的处理
-                FragmentManager fgManager = getFragmentManager();
-                Fragment fragment = fgManager.findFragmentById(R.id.title);
-                FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
-                fragmentTransaction.remove(fragment);
-                String tag = null;
-                fragmentTransaction.addToBackStack(tag);
-                fragmentTransaction.commit();
                 break;
         }
-
-
+        closeThisFragment();
     }
+
+    private void closeThisFragment(){
+        //蒙版点击一下之后消失的处理
+        FragmentManager fgManager = getFragmentManager();
+        Fragment fragment = fgManager.findFragmentById(R.id.title);
+        FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
+        fragmentTransaction.remove(fragment);
+        String tag = null;
+        fragmentTransaction.addToBackStack(tag);
+        fragmentTransaction.commit();
+    }
+
+
+
 }

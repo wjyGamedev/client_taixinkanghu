@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_page"
+    android:id="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
@@ -12,8 +12,7 @@
         android:orientation="vertical"
 		android:id="@+id/main_page_container">
         <!--logo+名称-->
-        <include layout="@layout/include_header"
-				 android:id="@+id/title"/>
+        <include layout="@layout/include_header"/>
 
         <!--公司介绍，滚动viewpager-->
         <LinearLayout
