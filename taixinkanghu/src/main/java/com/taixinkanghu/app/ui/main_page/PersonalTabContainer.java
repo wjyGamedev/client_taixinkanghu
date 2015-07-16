@@ -20,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.MainActivityConfig;
+import com.taixinkanghu.app.model.controller.CMainPage;
 
 public class PersonalTabContainer extends BaseTabContainer
 {
@@ -31,15 +33,35 @@ public class PersonalTabContainer extends BaseTabContainer
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		if (!m_isViewInited) {
-			m_isViewInited = true;
+//		if (m_isHomeViewInited == false || m_isServiceViewInited == false || m_isCompanyViewInited == false) {
 			initView();
-		}
+//		}
 	}
 
 	private void initView() {
-		replaceFragment(new PersonalTabFragment(), false);
+        String lastTabTag = CMainPage.getInstance().getMainPage().getCurrentTabTag();
+		if (lastTabTag.equals(MainActivityConfig.MAIN_HOME_TAB_FLAG))
+		{
+			replaceFragment(new PersonalTabFragmentHome(), false);
+//			m_isHomeViewInited = true;
+		}
+		else if (lastTabTag.equals(MainActivityConfig.MAIN_SERVICE_TAB_FLAG))
+		{
+			replaceFragment(new PersonalTabFragmentService(), false);
+//			m_isServiceViewInited = true;
+		}
+		else if (lastTabTag.equals(MainActivityConfig.MAIN_COMPANT_TAB_FLAG))
+		{
+			replaceFragment(new PersonalTabFragmentCompany(), false);
+//			m_isCompanyViewInited = true;
+		}
+		else
+		{
+			//nothing
+		}
 	}
 
-	private boolean m_isViewInited;
+//	private boolean m_isHomeViewInited;
+//	private boolean m_isServiceViewInited;
+//	private boolean m_isCompanyViewInited;
 }

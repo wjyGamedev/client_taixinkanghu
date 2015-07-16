@@ -19,14 +19,24 @@ public class DMainPage
 
 	public String getCurrentTabTag()
 	{
-		return  m_stringTabTag;
+		return m_strCurrTabTag;
 	}
+	public String getLastTabTag() { return m_strLastTabTag; }
 	public void setCurrentTabTag(final String tabTag)
 	{
-		m_stringTabTag = tabTag;
+		if (m_strLastTabTag != m_strCurrTabTag)
+		{
+			m_strLastTabTag = m_strCurrTabTag;
+		}
+		m_strCurrTabTag = tabTag;
+		if (m_strLastTabTag == null)
+		{
+			m_strLastTabTag = m_strCurrTabTag;
+		}
 	}
 	/**
 	 * 数据区
 	 */
-	private String m_stringTabTag = null;
+	private String m_strCurrTabTag = null;
+	private String m_strLastTabTag = null;
 }

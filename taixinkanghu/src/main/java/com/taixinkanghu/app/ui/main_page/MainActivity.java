@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
+import com.taixinkanghu.app.model.controller.CMainPage;
 import com.taixinkanghu.app.ui.activity.MineOrderActivity;
 import com.taixinkanghu.app.ui.activity.MySetActivity;
 import com.taixinkanghu.app.ui.activity.MyWealthActivity;
@@ -235,7 +236,8 @@ public class MainActivity extends FragmentActivity
 					m_popupMenu.show();
 				}
 			}
-
+			String currentTabTag = MainActivity.this.m_fragmentTabHost.getCurrentTabTag();
+			CMainPage.getInstance().getMainPage().setCurrentTabTag(currentTabTag);
 		}
 
 	}
