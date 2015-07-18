@@ -9,9 +9,9 @@
     <color name="date_select_text">#ffa4aeb9</color>
     <color name="divider_color">#ffd2d2d2</color>
     <color name="main_bg_color">#fff7f7f7</color>
-    <color name="main_color">#ff34cca5</color>
+    <color name="main_color">#ff028df2</color>
     <color name="main_color_disable">#ffcccccc</color>
-    <color name="main_color_focus">#ff2aa384</color>
+    <color name="main_color_focus">#ff0383e1</color>
     <color name="tb_munion_item_force">#ffe3e3e3</color>
     <color name="text_color_black">#ff666666</color>
     <color name="text_color_gray">#ff969696</color>
@@ -28,4 +28,5 @@
     <color name="list_selected_back_ground">#10000000</color>
     <color name="list_back_ground">#ffffffff</color>
     <color name="white">#ffffffff</color>
+    <color name="mask">#55000000</color>
 </resources>

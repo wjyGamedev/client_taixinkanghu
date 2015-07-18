@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <include layout="@layout/include_header" />
@@ -19,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_order_rb"
-            android:checked="true"
+            android:textColor="@drawable/text_color_page_tab"
             android:text="初级护理员" />
 
         <RadioButton
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_order_rb"
+            android:textColor="@drawable/text_color_page_tab"
             android:text="中级护理员" />
 
 
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_order_rb"
+            android:textColor="@drawable/text_color_page_tab"
             android:text="高级护理员" />
 
         <RadioButton
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_order_rb"
+            android:textColor="@drawable/text_color_page_tab"
             android:text="特级护理员" />
 
     </RadioGroup>

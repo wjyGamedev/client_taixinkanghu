@@ -19,19 +19,29 @@
 
     <string name="about_us_title">泰心康护</string>
 
-    <string name="service_title">客服</string>
+    <string name="service_title">泰心服务</string>
 
     <string name="faq_title">问题反馈</string>
+
+    <string name="agreement_title">用户协议</string>
 
     <string name="worker_level_title">护理员级别</string>
 
     <string name="my_wealth_title">我的财富</string>
 
-    <string name="my_set_title">我的设置</string>
+    <string name="my_setting_title">我的设置</string>
 
     <string name="my_sorce_title">我的积分</string>
 
     <string name="question_feed_back_title">问题反馈</string>
+
+    <string name="login_title">用户注册</string>
+
+    <string name="nurs_order_title">陪护订单</string>
+
+    <string name="nurs_order_info_title">陪护订单</string>
+
+    <string name="nurs_order_reviews_title">评价</string>
 
     <string name="function_is_not_open">功能未开放</string>
 
@@ -45,6 +55,7 @@
     <string name="title_activity_gg_01">GG_01</string>
     <string name="title_activity_gg_02">GG_02</string>
     <string name="title_activity_recommend_hugong">recommend_hugong</string>
+    <string name="title_activity_nurs_order">NursOrderActivity</string>
     <string name="title_activity_worker_date">WorkerDateActivity</string>
     <string name="title_activity_faq">FaqActivity</string>
     <string name="title_activity_company_info">CompanyInfoActivity</string>
@@ -54,6 +65,11 @@
     <string name="title_activity_my_wealth">MyWealthActivity</string>
     <string name="title_activity_my_set">MySetActivity</string>
     <string name="title_activity_my_score">MyScoreActivity</string>
+    <string name="title_activity_agreement">AgreementActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_nurs_order_info">OrderInfoActivity</string>
+    <string name="title_activity_nurs_order_reviews">NursOrderReviewsActivity</string>
+    <string name="title_activity_worker_info_more">WorkerInfoMoreActivity</string>
 
 
     <string name="sunday">日</string>

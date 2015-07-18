@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="93dip"
-        android:background="#00000000"
+        android:background="#70000000"
         android:orientation="vertical" />
 
 
@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.0"
-                    android:text="更多城市敬请期待"
+                    android:text="更多医院敬请期待"
                     android:textColor="@color/text_color_gray"
                     android:textSize="14.0sp" />
             </LinearLayout>

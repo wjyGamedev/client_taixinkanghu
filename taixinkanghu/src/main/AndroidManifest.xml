@@ -65,8 +65,8 @@
             android:name=".app.ui.activity.ReviewsActivity"
             android:label="ReviewsActivity" />
         <activity
-            android:name=".app.ui.activity.MineOrderActivity"
-            android:label="MineOrderActivity" />
+            android:name=".app.ui.activity.NursOrderActivity"
+            android:label="@string/title_activity_nurs_order" />
         <activity
             android:name=".app.ui.activity.WorkerDateActivity"
             android:label="@string/title_activity_worker_date"></activity>
@@ -89,11 +89,26 @@
             android:name=".app.ui.activity.MyWealthActivity"
             android:label="@string/title_activity_my_wealth"></activity>
         <activity
-            android:name=".app.ui.activity.MySetActivity"
+            android:name=".app.ui.activity.MySettingActivity"
             android:label="@string/title_activity_my_set"></activity>
         <activity
             android:name=".app.ui.activity.MyScoreActivity"
             android:label="@string/title_activity_my_score"></activity>
+        <activity
+            android:name=".app.ui.activity.AgreementActivity"
+            android:label="@string/title_activity_agreement"></activity>
+        <activity
+            android:name=".app.ui.activity.LoginActivity"
+            android:label="@string/title_activity_login"></activity>
+        <activity
+            android:name=".app.ui.activity.NursOrderInfoActivity"
+            android:label="@string/title_activity_nurs_order_info"></activity>
+        <activity
+            android:name=".app.ui.activity.NursOrderReviewsActivity"
+            android:label="@string/title_activity_nurs_order_reviews"></activity>
+        <activity
+            android:name=".app.ui.activity.WorkerInfoMoreActivity"
+            android:label="@string/title_activity_worker_info_more" />
     </application>
 
 </manifest>

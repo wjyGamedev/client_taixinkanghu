@@ -3,7 +3,6 @@
     android:id="@+id/layout_calendar"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#99CCFF"
     android:orientation="vertical"
     android:visibility="visible">
 
@@ -11,35 +10,42 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/main_color">
 
         <TextView
             android:id="@+id/calendarCenter"
             style="@style/main_bar_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="8dp" />
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
         <ImageButton
             android:id="@+id/calendarLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:background="@null"
             android:contentDescription="@null"
             android:padding="8dp"
-            android:src="@mipmap/calendar_month_left" />
+            android:src="@drawable/calendar_month_left"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/calendarCenter"
+            android:layout_toStartOf="@+id/calendarCenter" />
 
         <ImageButton
             android:id="@+id/calendarRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:background="@null"
             android:contentDescription="@null"
             android:padding="8dp"
-            android:src="@mipmap/calendar_month_right" />
+            android:src="@drawable/calendar_month_right"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/calendarCenter"
+            android:layout_toEndOf="@+id/calendarCenter"
+            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp" />
     </RelativeLayout>
 
     <com.taixinkanghu.widget.calendarview.CalendarView
@@ -49,13 +55,18 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/calendarCenter" />
 
-    <Button
-        android:id="@+id/buttonDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="44dp"
-        android:text="提交" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="#CCCCCC"/>
+
+    <!--<Button-->
+        <!--android:id="@+id/buttonDate"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="44dp"-->
+        <!--android:text="提交" />-->
 
 </LinearLayout>

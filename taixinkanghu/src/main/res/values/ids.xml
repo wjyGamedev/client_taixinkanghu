@@ -139,4 +139,10 @@
     <item name="company_info" type="id">company_info</item>
     <item name="service_introduction" type="id">service_introduction</item>
     <item name="goto_faq" type="id">goto_faq</item>
+    <item name="btn_verification_id" type="id">btn_verification_id</item>
+    <item name="btn_protocol" type="id">btn_protocol</item>
+    <item name="btn_goto_reviews" type="id">btn_goto_reviews</item>
+    <item name="btn_continue" type="id">btn_continue</item>
+    <item name="btn_address" type="id">btn_address</item>
+    <item name="add_info" type="id">add_info</item>
 </resources>

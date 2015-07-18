@@ -32,6 +32,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#fff"
+            android:textColor="@drawable/text_color_page_tab"
             android:text="非常满意" />
 
         <View
@@ -45,6 +46,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#fff"
+            android:textColor="@drawable/text_color_page_tab"
             android:text="满意" />
 
         <View
@@ -58,6 +60,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#fff"
+            android:textColor="@drawable/text_color_page_tab"
             android:text="一般" />
 
         <View

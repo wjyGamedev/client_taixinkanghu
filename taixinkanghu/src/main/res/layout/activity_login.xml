@@ -35,7 +35,7 @@
                     android:maxLength="11" />
 
                 <Button
-                    android:id="@id/btn_postSms"
+                    android:id="@id/btn_verification_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10.0dip"
@@ -70,11 +70,11 @@
                     android:textSize="14.0sp" />
 
                 <TextView
-                    android:id="@id/protocol"
+                    android:id="@id/btn_protocol"
                     android:layout_width="wrap_content"
                     android:layout_height="44.0dip"
                     android:gravity="center"
-                    android:textColor="@color/text_color_green"
+                    android:textColor="@color/main_color"
                     android:textSize="14.0sp" />
             </LinearLayout>
 
