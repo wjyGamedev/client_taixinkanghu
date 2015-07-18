@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_header" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10.0dip"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btn_screening"
+                    android:layout_width="match_parent"
+                    android:layout_height="54.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:background="@drawable/bg_order_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="筛选条件:"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="全部"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="20.0sp" />
+
+                    <TextView
+                        android:id="@id/phone_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:hint="V"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="18.0sp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/lv_order_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="391dp"
+                    android:gravity="center_vertical">
+
+                </ListView>
+
+                <!--<include layout="@layout/item_order_info" />-->
+
+                <!--<include layout="@layout/item_order_info" />-->
+
+                <!--<include layout="@layout/item_order_info" />-->
+
+                <!--<include layout="@layout/item_order_info" />-->
+
+                <!--<include layout="@layout/item_order_info" />-->
+
+                <!--<include layout="@layout/item_order_info" />-->
+
+            </LinearLayout>
+        </ScrollView>
+
+        <include layout="@layout/item_rg_main" />
+    </LinearLayout>
+</FrameLayout>
+
+

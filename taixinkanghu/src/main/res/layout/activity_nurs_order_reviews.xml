@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_header" />
+
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+    <LinearLayout
+        android:id="@id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingBottom="10.0dip">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="40dip"
+                            android:layout_weight="1"
+                            android:text="护理员：" />
+
+                        <com.taixinkanghu.widget.circleimageview.CircleImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dip"
+                            android:src="@mipmap/face_img"
+                            app:border_color="@color/main_color"
+                            app:border_width="5.0dip" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="40dip"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="中级护理员" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="姓名：王瑾瑜" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="工号：5124" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_order_rb"
+                        android:orientation="vertical"
+                        android:paddingTop="10.0dip">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="30dip"
+                            android:layout_weight="1"
+                            android:text="服务评价"
+                            android:textColor="@color/text_color_black"
+                            android:textSize="16.0sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dip"
+                            android:background="#ffd2d2d2" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="115dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dip"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="70dip"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="非常满意"
+                                    android:textColor="@color/text_color_black"
+                                    android:textSize="16.0sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="70dip"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="满意"
+                                    android:textColor="@color/text_color_black"
+                                    android:textSize="16.0sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="70dip"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="一般"
+                                    android:textColor="@color/text_color_black"
+                                    android:textSize="16.0sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dip"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+
+                                <RadioGroup
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="10dip"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <RadioButton
+                                        style="@style/home_radio_button_style"
+                                        android:layout_width="20.0dip"
+                                        android:layout_height="20dip"
+                                        android:background="@drawable/bg_radio_button_tick" />
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="10.0dip" />
+
+                                    <RadioButton
+                                        style="@style/home_radio_button_style"
+                                        android:layout_width="20.0dip"
+                                        android:layout_height="20dip"
+                                        android:background="@drawable/bg_radio_button_tick" />
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="10.0dip" />
+
+                                    <RadioButton
+                                        style="@style/home_radio_button_style"
+                                        android:layout_width="20.0dip"
+                                        android:layout_height="20dip"
+                                        android:background="@drawable/bg_radio_button_tick" />
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="10.0dip" />
+
+
+                                </RadioGroup>
+
+
+                                <!--<ImageView-->
+                                <!--android:id="@id/history_img"-->
+                                <!--android:layout_width="20.0dip"-->
+                                <!--android:layout_height="20.0dip"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:src="@drawable/btn_pay_select" />-->
+
+                                <!--<ImageView-->
+                                <!--android:id="@id/history_img"-->
+                                <!--android:layout_width="20.0dip"-->
+                                <!--android:layout_height="20.0dip"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:src="@drawable/btn_pay_select" />-->
+
+                                <!--<ImageView-->
+                                <!--android:id="@id/history_img"-->
+                                <!--android:layout_width="20.0dip"-->
+                                <!--android:layout_height="20.0dip"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:src="@drawable/btn_pay_select" />-->
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@id/content"
+                        android:layout_width="match_parent"
+                        android:layout_height="100.0dip"
+                        android:layout_marginLeft="20.0dip"
+                        android:layout_marginRight="20.0dip"
+                        android:layout_marginTop="20dip"
+                        android:gravity="top|left|center"
+                        android:hint="说点什么" />
+
+                    <ScrollView
+                        android:id="@+id/scrollView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48.0dip"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@id/btn_goto_main"
+            android:layout_width="80dip"
+            android:layout_height="48.0dip"
+            android:background="@drawable/bg_btn_main_color"
+            android:text="首页"
+            android:textColor="#ffffffff"
+            android:textSize="20.0sp" />
+
+        <View
+            android:layout_width="0.5dip"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="48.0dip"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_main_color"
+            android:text="发表评论"
+            android:textColor="#ffffffff"
+            android:textSize="20.0sp" />
+
+    </LinearLayout>
+</LinearLayout>

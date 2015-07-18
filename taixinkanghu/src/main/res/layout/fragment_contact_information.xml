@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@color/mask"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="146dip">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/rg_main"
+            android:layout_width="match_parent"
+            android:layout_height="55.0dip"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/main_rg_main"
+                style="@style/home_radio_button_style"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_bule_frame_all"
+                android:text="手机" />
+            <!--android:drawableTop="@drawable/tab_home"-->
+
+            <RadioButton
+                android:id="@+id/main_rg_mine"
+                style="@style/home_radio_button_style"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_bule_frame_all"
+                android:text="QQ" />
+            <!--android:drawableTop="@drawable/tab_order"-->
+
+            <RadioButton
+                android:id="@+id/main_rg_service"
+                style="@style/home_radio_button_style"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_bule_frame_all"
+                android:text="邮箱" />
+            <!--android:drawableTop="@drawable/tab_personal"-->
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/bg_bule_frame_all">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_gravity="center_vertical"
+            android:hint="请输入联系方式"
+            android:textSize="16dip"
+            android:background="#00000000"
+            android:gravity="left"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/text_color_gray"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
