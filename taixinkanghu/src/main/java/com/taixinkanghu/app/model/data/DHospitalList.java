@@ -22,7 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DHospitalList
 {
@@ -37,10 +37,10 @@ public class DHospitalList
 
 	public boolean serialization(JSONObject response)
 	{
-		if (m_dHospitals != null &&
-				m_dHospitals.size() != 0)
+		if (m_dHospitalHashMap != null &&
+				m_dHospitalHashMap.size() != 0)
 		{
-			m_dHospitals.clear();
+			m_dHospitalHashMap.clear();
 		}
 
 		JSONArray jsonArray = null;
@@ -65,6 +65,12 @@ public class DHospitalList
 			try
 			{
 				jsonObject=(JSONObject)jsonArray.get(index);
+				hospital = new DHospital();
+				hospital.serialization(jsonObject);
+
+				Integer iHospitalID = jsonObject.getInt(DataConfig.DHOSPITAL_ID);
+				m_dHospitalHashMap.put(iHospitalID, hospital);
+
 			}
 			catch (JSONException e)
 			{
@@ -73,14 +79,11 @@ public class DHospitalList
 				return false;
 			}
 
-			hospital = new DHospital();
-			hospital.serialization(jsonObject);
-			m_dHospitals.add(hospital);
 		}
 		return  true;
 
 	}
 
-	private static DHospitalList s_dHospitalList = new DHospitalList();
-	private ArrayList<DHospital> m_dHospitals = new ArrayList<>();
+	private static DHospitalList           s_dHospitalList    = new DHospitalList();
+	private        HashMap<Integer, DHospital> m_dHospitalHashMap = new HashMap<Integer, DHospital>();
 }
