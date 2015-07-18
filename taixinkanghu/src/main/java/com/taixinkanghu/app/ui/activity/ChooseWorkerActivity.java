@@ -80,7 +80,6 @@ public class ChooseWorkerActivity extends Activity implements View.OnClickListen
         ChooseWorkerListViewAdapter adapter = new ChooseWorkerListViewAdapter(this);
         lv_worker.setAdapter(adapter);
 
-
         lv_worker.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -244,7 +243,9 @@ public class ChooseWorkerActivity extends Activity implements View.OnClickListen
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectDateFragment()).commit();
                 break;
             case R.id.select_hospital:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectHospitalFragment()).commit();
+                SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
+                selectHospitalFragment.way = 1;
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
                 break;
             case R.id.select_sort:
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectSortFragment()).commit();

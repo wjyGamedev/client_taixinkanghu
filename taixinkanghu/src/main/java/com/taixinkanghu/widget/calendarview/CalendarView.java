@@ -122,8 +122,15 @@ public class CalendarView extends View implements View.OnTouchListener {
         // 计算日期
         calculateDate();
         // 按下状态，选择状态背景色
+
         if (isDraw) {
-            drawDownOrSelectedBg(canvas);
+            for (int i = 0; i < datedata.length; i += 2) {
+                selectedStartDate = datedata[i];
+                selectedEndDate = datedata[i + 1];
+                drawDownOrSelectedBg(canvas);
+//                calendar.drawDownOrSelectedBg(datedata[i], datedata[i + 1]);
+//            calendar.drawDownOrSelectedBg(selectedStartDate, selectedEndDate);
+            }
         }
         // write date number
         // today index
@@ -266,10 +273,52 @@ public class CalendarView extends View implements View.OnTouchListener {
         }
     }
 
+//    public void drawDownOrSelectedBg(Canvas canvas) {
+//        // down and not up
+//        if (downDate != null) {
+//            drawCellBg(canvas, downIndex, surface.cellDownColor);
+//        }
+//        // selected bg color
+//        if (!selectedEndDate.before(showFirstDate)
+//                && !selectedStartDate.after(showLastDate)) {
+//            int[] section = new int[]{-1, -1};
+//            calendar.setTime(curDate);
+//            calendar.add(Calendar.MONTH, -1);
+//            findSelectedIndex(0, curStartIndex, calendar, section);
+//            if (section[1] == -1) {
+//                calendar.setTime(curDate);
+//                findSelectedIndex(curStartIndex, curEndIndex, calendar, section);
+//            }
+//            if (section[1] == -1) {
+//                calendar.setTime(curDate);
+//                calendar.add(Calendar.MONTH, 1);
+//                findSelectedIndex(curEndIndex, 42, calendar, section);
+//            }
+//            if (section[0] == -1) {
+//                section[0] = 0;
+//            }
+//            if (section[1] == -1) {
+//                section[1] = 41;
+//            }
+//            for (int i = section[0]; i <= section[1]; i++) {
+//                drawCellBg(canvas, i, surface.cellSelectedColor);
+//            }
+//        }
+//    }
+
     public void drawDownOrSelectedBg(Date mStartDate, Date mEndDate) {
         // down and not up
         selectedStartDate = mStartDate;
         selectedEndDate = mEndDate;
+
+        invalidate();
+    }
+
+    private Date[] datedata;
+
+    public void drawDownOrSelectedBg(Date[] m_datedata) {
+        // down and not up
+        datedata = m_datedata;
 
         invalidate();
     }
@@ -472,7 +521,7 @@ public class CalendarView extends View implements View.OnTouchListener {
         private int borderColor = Color.parseColor("#CCCCCC");
         public int todayNumberColor = Color.RED;
         public int cellDownColor = Color.parseColor("#CCFFFF");
-        public int cellSelectedColor = Color.parseColor("#99CCFF");
+        public int cellSelectedColor = Color.parseColor("#ff028df2");
         public Paint borderPaint;
         public Paint monthPaint;
         public Paint weekPaint;
@@ -482,7 +531,8 @@ public class CalendarView extends View implements View.OnTouchListener {
         public Path boxPath; // 边框路径
         //public Path preMonthBtnPath; // 上一月按钮三角形
         //public Path nextMonthBtnPath; // 下一月按钮三角形
-        public String[] weekText = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+//        public String[] weekText = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        public String[] weekText = {"日", "一", "二", "三", "四", "五", "六"};
         //public String[] monthText = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 
         public void init() {

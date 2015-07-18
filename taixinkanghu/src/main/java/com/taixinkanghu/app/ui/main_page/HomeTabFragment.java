@@ -41,6 +41,7 @@ import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.data.DMainPageImages;
 import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
+import com.taixinkanghu.app.ui.activity.SaleInfoActivity;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,7 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
         m_viewFlipper.stopFlipping();
         m_viewFlipper.setAutoStart(false);
 
+//        startActivity(new Intent(getActivity(), SaleInfoActivity.class));
 
         return false;
     }

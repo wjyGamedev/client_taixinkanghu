@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.activity.MineOrderActivity;
+import com.taixinkanghu.app.ui.activity.NursOrderActivity;
 
 
 /**
@@ -56,7 +56,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_nurs_order:
-                startActivity(new Intent(getActivity(), MineOrderActivity.class));
+                startActivity(new Intent(getActivity(), NursOrderActivity.class));
                 break;
             case R.id.tv_product_order:
                 Toast.makeText(getActivity(), "你选择了" + tv_product_order.getText(), Toast.LENGTH_SHORT).show();

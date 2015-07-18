@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,7 +23,7 @@ public class OrderConfirmActivity extends Activity implements View.OnClickListen
     private Button btn_pay;
     private ImageButton btn_back;
     private TextView page_title;
-    private Activity myActivity = this;
+    private TextView user_protocol;
     private Intent intent;
 
     @Override
@@ -33,6 +34,7 @@ public class OrderConfirmActivity extends Activity implements View.OnClickListen
         btn_pay = (Button) findViewById(R.id.btn_pay);
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         page_title = (TextView) findViewById(R.id.page_title);
+        user_protocol = (TextView) findViewById(R.id.user_protocol);
 
         page_title.setText("确认订单");
 
@@ -41,6 +43,14 @@ public class OrderConfirmActivity extends Activity implements View.OnClickListen
 
         intent = new Intent(this, MainActivity.class);
 
+        user_protocol.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
+
+        user_protocol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OrderConfirmActivity.this,AgreementActivity.class));
+            }
+        });
     }
 
     @Override

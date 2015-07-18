@@ -5,7 +5,7 @@
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p/>
+ * <p>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
@@ -29,7 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.activity.FaqActivity;
 import com.taixinkanghu.app.ui.activity.QuestionFeedBackActivity;
 
 public class ServiceTabFragment extends Fragment {
@@ -63,7 +62,7 @@ public class ServiceTabFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 //拨打电话
                                 Toast.makeText(getActivity(), "拨打电话", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent("android.intent.action.CALL", Uri.parse("tel:13581562246"));
+                                Intent intent = new Intent("android.intent.action.CALL", Uri.parse("tel:4008517517"));
                                 getActivity().startActivity(intent);
                             }
                         })

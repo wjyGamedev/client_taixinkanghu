@@ -7,7 +7,7 @@ import com.taixinkanghu.R;
  */
 public class ChooseWorkerData {
 
-    public int pic = R.mipmap.ic_launcher;
+    public int pic = R.mipmap.ic_launcher; //头像
     public String name = "姓名";
     public float star = 3f;
     public int price = 200;
@@ -47,8 +47,5 @@ public class ChooseWorkerData {
         }
 
     }
-
-
-
 
 }

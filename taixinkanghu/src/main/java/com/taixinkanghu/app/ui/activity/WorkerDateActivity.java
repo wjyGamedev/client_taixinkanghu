@@ -20,13 +20,15 @@ public class WorkerDateActivity extends Activity {
 
     private CalendarView calendar;
     private ImageButton calendarLeft;
-    private Button buttonDate;
+//    private Button buttonDate;
     private TextView calendarCenter;
     private ImageButton calendarRight;
     private SimpleDateFormat format;
 
     private ImageButton btn_back;
     private TextView page_title;
+
+    private Date[] datedata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class WorkerDateActivity extends Activity {
         calendarLeft = (ImageButton) findViewById(R.id.calendarLeft);
         calendarCenter = (TextView) findViewById(R.id.calendarCenter);
         calendarRight = (ImageButton) findViewById(R.id.calendarRight);
-        buttonDate = (Button) findViewById(R.id.buttonDate);
+//        buttonDate = (Button) findViewById(R.id.buttonDate);
 
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new OnClickListener() {
@@ -101,18 +103,11 @@ public class WorkerDateActivity extends Activity {
             }
         });
 
-        buttonDate.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int year = 2015 - 1900;
-                Date selectedStartDate = new Date(year, 6, 1);
-                Date selectedEndDate = new Date(year, 6, 31);
-                calendar.isDraw = true;
-                calendar.drawDownOrSelectedBg(selectedStartDate, selectedEndDate);
-
-            }
-        });
-
+        //绘画底色
+        int year = 2015 - 1900;
+        datedata = new Date[]{new Date(year, 6, 1),new Date(year, 6, 5),new Date(year, 6, 9),new Date(year, 6, 12),new Date(year, 6, 20),new Date(year, 6, 21),new Date(year, 7, 20),new Date(year, 7, 21)};
+        calendar.isDraw = true;
+        calendar.drawDownOrSelectedBg(datedata);
 
     }
 }

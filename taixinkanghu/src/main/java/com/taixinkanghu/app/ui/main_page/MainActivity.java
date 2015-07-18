@@ -21,8 +21,8 @@ import android.widget.Toast;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.controller.CMainPage;
-import com.taixinkanghu.app.ui.activity.MineOrderActivity;
-import com.taixinkanghu.app.ui.activity.MySetActivity;
+import com.taixinkanghu.app.ui.activity.NursOrderActivity;
+import com.taixinkanghu.app.ui.activity.MySettingActivity;
 import com.taixinkanghu.app.ui.activity.MyWealthActivity;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnAfterTabChangeListener;
@@ -203,7 +203,7 @@ public class MainActivity extends FragmentActivity
 	//陪护订单
 	private void OpenNursingOrder()
 	{
-		startActivity(new Intent(MainActivity.this, MineOrderActivity.class));
+		startActivity(new Intent(MainActivity.this, NursOrderActivity.class));
 	}
 
 	//产品订单
@@ -221,7 +221,7 @@ public class MainActivity extends FragmentActivity
 	//我的设置
 	private void OpenMySet()
 	{
-		startActivity(new Intent(MainActivity.this, MySetActivity.class));
+		startActivity(new Intent(MainActivity.this, MySettingActivity.class));
 	}
 
 	private class ImpTabClickListener implements OnTabClickListener
