@@ -31,8 +31,10 @@ public class MainActivityConfig
 	public final static int MAIN_FUNCTION_NUM = 2;
 	public final static int MAIN_FUNCTION_GROUP_FLAG = 0;
 
+	public final static String FUNC_APPOINTMENT_NURSING_FALG = "FUNC_APPOINTMENT_NURSING_FALG";
 	public final static String FUNC_APPOINTMENT_NURSING_TEXT = "预约陪护";
 	public final static String FUNC_SHOPPING_TEXT = "康复辅助用品";
+	public final static String FUNC_SHOPPING_FLAG = "FUNC_SHOPPING_FLAG";
 
 	public final static double COFFE_DELTA = 0.618;
 
