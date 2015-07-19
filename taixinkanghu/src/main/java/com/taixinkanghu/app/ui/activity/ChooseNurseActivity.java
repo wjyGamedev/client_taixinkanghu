@@ -19,7 +19,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.listener.HandlerClickEventChooseNurse;
+import com.taixinkanghu.app.ui.listener.view.HandlerClickEventChooseNurse;
 import com.taixinkanghu.app.ui.data.ChooseWorkerData;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 

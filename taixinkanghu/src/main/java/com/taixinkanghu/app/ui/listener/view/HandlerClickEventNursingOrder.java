@@ -12,25 +12,25 @@
  * 2015/7/19		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.listener;
+package com.taixinkanghu.app.ui.listener.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
-import com.taixinkanghu.app.model.exception.RuntimeExceptions.HandlerRTException;
+import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
 
-public class BaseHandleOnClickEvent extends IViewOnClickListener
+public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
 {
-	public BaseHandleOnClickEvent(Context context)
+	public HandlerClickEventNursingOrder(Context context)
 	{
-		m_context = context;
+		super(context);
 	}
 
 	@Override
 	public void onClick(View v)
 	{
-		throw new HandlerRTException("extends BaseHandleOnClickEvent");
+		m_context.startActivity(new Intent(m_context, ChooseNurseActivity.class));
 	}
 
-	protected Context m_context = null;
 }
