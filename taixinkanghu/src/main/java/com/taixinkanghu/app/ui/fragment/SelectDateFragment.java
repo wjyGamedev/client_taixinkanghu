@@ -16,7 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
+import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
 import com.taixinkanghu.util.datewidget.DateWidgetUtils;
 import com.taixinkanghu.widget.wheelview.TosGallery;
 import com.taixinkanghu.widget.wheelview.WheelView;
@@ -120,7 +120,7 @@ public class SelectDateFragment extends Fragment implements View.OnClickListener
             public void onClick(View v) {
                 int days = end_Date - start_Date;
                 getFragmentManager().popBackStack();
-                ChooseWorkerActivity activity = (ChooseWorkerActivity) getActivity();
+                ChooseNurseActivity activity = (ChooseNurseActivity) getActivity();
                 activity.tv.setText("服务时间：" + dateArray[start_Date] + " - " + dateArray[end_Date] + " 共" + days + "天");
                 activity.tv_date.setText("服务时间             已选择  ∨");
                 activity.tv.setTextColor(0xffcc0000);

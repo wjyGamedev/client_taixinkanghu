@@ -11,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
+import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class SelectSortFragment extends Fragment implements View.OnClickListener
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 getFragmentManager().popBackStack();
-                ChooseWorkerActivity activity = (ChooseWorkerActivity) getActivity();
+                ChooseNurseActivity activity = (ChooseNurseActivity) getActivity();
                 activity.tv_sort.setText("排序条件    " + sortListView.getAdapter().getItem(position) + "  ∨");
             }
         });

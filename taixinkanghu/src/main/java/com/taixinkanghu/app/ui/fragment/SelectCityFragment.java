@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
+import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
 
 public class SelectCityFragment extends Fragment implements View.OnClickListener {
 
@@ -38,7 +38,7 @@ public class SelectCityFragment extends Fragment implements View.OnClickListener
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
 
-        ChooseWorkerActivity activity = (ChooseWorkerActivity) getActivity();
+        ChooseNurseActivity activity = (ChooseNurseActivity) getActivity();
 
         switch (activity.selected_city) {
             case BEIJING:
@@ -55,7 +55,7 @@ public class SelectCityFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        ChooseWorkerActivity activity = (ChooseWorkerActivity) getActivity();
+        ChooseNurseActivity activity = (ChooseNurseActivity) getActivity();
         switch (v.getId()) {
             case R.id.item1:
                 btn1.setSelected(true);

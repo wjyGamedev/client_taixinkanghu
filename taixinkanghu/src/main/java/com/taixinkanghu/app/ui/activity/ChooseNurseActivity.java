@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ChooseWorkerActivity extends Activity implements View.OnClickListener {
+public class ChooseNurseActivity extends Activity implements View.OnClickListener {
 
     public TextView tv;
     public TextView tv_hospital;
@@ -93,7 +93,7 @@ public class ChooseWorkerActivity extends Activity implements View.OnClickListen
                 String name = (String) tv_name.getText();
                 System.out.println("name = " + name);
 
-                Intent intent = new Intent(ChooseWorkerActivity.this, WorkerInfoActivity.class);
+                Intent intent = new Intent(ChooseNurseActivity.this, WorkerInfoActivity.class);
                 intent.putExtra("name", name);
                 startActivity(intent);
 

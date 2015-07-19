@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
+import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
 import com.taixinkanghu.app.ui.activity.WorkerInfoMoreActivity;
 import com.taixinkanghu.app.ui.data.TempData;
 
@@ -75,7 +75,7 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (way == 1) {
-            ChooseWorkerActivity activity = (ChooseWorkerActivity) getActivity();
+            ChooseNurseActivity activity = (ChooseNurseActivity) getActivity();
             switch (v.getId()) {
                 case R.id.item1:
                     btn1.setSelected(true);
