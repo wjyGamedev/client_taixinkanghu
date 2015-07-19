@@ -246,7 +246,11 @@ public class SelectDateFragment extends Fragment implements View.OnClickListener
     protected class WheelTextAdapter extends BaseAdapter {
         ArrayList<TextInfo> mData = null;
         int mWidth = ViewGroup.LayoutParams.MATCH_PARENT;
-        int mHeight = 50;
+
+        float scale = getActivity().getResources().getDisplayMetrics().density;
+
+        int mHeight = (int) (28 * scale + 0.5f);
+
         Context mContext = null;
 
         public WheelTextAdapter(Context context) {
