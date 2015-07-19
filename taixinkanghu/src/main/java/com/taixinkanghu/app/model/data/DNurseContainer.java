@@ -28,7 +28,7 @@ public class DNurseContainer
 
 	}
 
-	public static DNurseContainer getInstance()
+	public static DNurseContainer GetInstance()
 	{
 		return s_dNurseList;
 	}
@@ -43,6 +43,10 @@ public class DNurseContainer
 		return m_dNurseSeniorList.serialization(response);
 	}
 
+	public DNurseBasicsList GetNurseBaisicsList()
+	{
+		return m_dNurseBasicsList;
+	}
 
 	/**
 	 * 数据区

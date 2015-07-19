@@ -26,7 +26,7 @@ public class ResNurseSeniorListHandler extends IResponseListener
 	@Override
 	public void onResponse(JSONObject response)
 	{
-		boolean bReturnFlag = DNurseContainer.getInstance().serialSeniorList(response);
+		boolean bReturnFlag = DNurseContainer.GetInstance().serialSeniorList(response);
 		if (bReturnFlag == false)
 		{
 			Log.w("error", "bReturnFlag == false");
