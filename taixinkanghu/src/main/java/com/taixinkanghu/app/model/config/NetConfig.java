@@ -16,5 +16,7 @@ package com.taixinkanghu.app.model.config;
 
 public class NetConfig
 {
-	public final static String s_testAddress = "http://54.169.146.74:8888/downloads/hostpitallist/";
+	public final static String s_hospitalListAddress = "http://54.223.209.101:8888/downloads/hospital_list/";
+	public final static String s_nurseBasicsListAddress = "http://54.223.209.101:8888/downloads/nurse_basics_list/";
+	public final static String s_nurseSeniorListAddress = "http://54.223.209.101:8888/downloads/nurse_senior_list/";
 }
