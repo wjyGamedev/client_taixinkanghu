@@ -1,33 +1,19 @@
 package com.taixinkanghu.app.ui.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Matrix;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.adapter.list_view.ChooseNurseAdapter;
-import com.taixinkanghu.app.ui.data.ChooseWorkerData;
 import com.taixinkanghu.app.ui.listener.view.HandlerClickEventChooseNurse;
-import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,94 +54,6 @@ public class ChooseNurseActivity extends Activity
 
             }
         });
-    }
-
-
-
-    public final class ViewHolder {
-        public CircleImageView civ_pic;
-        public TextView tv_name;
-        public RatingBar rb_star;
-        public TextView tv_price;
-        public LinearLayout btn;
-    }
-
-
-    private CircleImageView civ_pic;
-    private TextView tv_name;
-    private RatingBar rb_star;
-    private TextView tv_price;
-    private LinearLayout btn;
-
-    public class ChooseWorkerListViewAdapter extends BaseAdapter {
-        private LayoutInflater mInflater;
-
-        public ChooseWorkerListViewAdapter(Context context) {
-            this.mInflater = LayoutInflater.from(context);
-        }
-
-        @Override
-        public int getCount() {
-            // TODO Auto-generated method stub
-            return mData.size();
-        }
-
-        @Override
-        public Object getItem(int arg0) {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-        @Override
-        public long getItemId(int arg0) {
-            // TODO Auto-generated method stub
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
-            if (convertView == null) {
-                holder = new ViewHolder();
-
-                convertView = mInflater.inflate(R.layout.item_worker_list, null);
-                holder.btn = (LinearLayout) convertView.findViewById(R.id.worker_btn);
-                holder.civ_pic = (CircleImageView) convertView.findViewById(R.id.pic);
-                holder.tv_name = (TextView) convertView.findViewById(R.id.name);
-                holder.rb_star = (RatingBar) convertView.findViewById(R.id.star);
-                holder.tv_price = (TextView) convertView.findViewById(R.id.price);
-
-                convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder) convertView.getTag();
-            }
-
-            holder.tv_name.setText((String) mData.get(position).get("name"));
-            holder.tv_price.setText((String) mData.get(position).get("price"));
-            holder.rb_star.setRating((float) mData.get(position).get("star"));
-            holder.civ_pic.setImageResource((int) mData.get(position).get("pic"));
-            return convertView;
-        }
-
-    }
-
-    private List<Map<String, Object>> getData() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map = new HashMap<String, Object>();
-        ChooseWorkerData worker = new ChooseWorkerData(1);
-        map.put("name", worker.name);
-        map.put("pic", worker.pic);
-        map.put("star", worker.star);
-        map.put("price", worker.price + "");
-        list.add(map);
-        map = new HashMap<String, Object>();
-        worker = new ChooseWorkerData(2);
-        map.put("name", worker.name);
-        map.put("pic", worker.pic);
-        map.put("star", worker.star);
-        map.put("price", worker.price + "");
-        list.add(map);
-        return list;
     }
 
     private void init()

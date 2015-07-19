@@ -56,5 +56,6 @@ public class HandlerClickEventChooseNurse extends BaseHandleOnClickEvent
 			activity.finish();
 			break;
 		}
+
 	}
 }
