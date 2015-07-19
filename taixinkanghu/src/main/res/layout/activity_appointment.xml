@@ -140,254 +140,266 @@
                 android:layout_height="0.5dip"
                 android:background="@color/divider_color" />
 
-
-            <LinearLayout
+            <FrameLayout
+                android:id="@+id/title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="10dip"
-                android:orientation="vertical">
-
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_top"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dip"
-                        android:layout_marginLeft="20dip"
-                        android:gravity="center_vertical"
-                        android:text="姓名：" />
-
-
-                    <EditText
-                        android:id="@id/name"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="30dip"
+                        android:layout_height="40dip"
                         android:layout_weight="1"
-                        android:background="#00000000"
-                        android:gravity="right"
-                        android:hint="点击填写"
-                        android:imeOptions="actionNext"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/text_color_gray"
-                        android:textSize="14.0sp" />
+                        android:background="@drawable/bg_bule_frame_top"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="20dip"
+                            android:gravity="center_vertical"
+                            android:text="姓名：" />
+
+
+                        <EditText
+                            android:id="@id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dip"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="right"
+                            android:hint="点击填写"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/text_color_gray"
+                            android:textSize="14.0sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_bule_frame_all"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:id="@+id/btn_gender">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="20dip"
+                            android:gravity="center_vertical"
+                            android:text="性别：" />
+
+
+                        <TextView
+                            android:id="@+id/gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="right"
+                            android:hint=""
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/text_color_gray"
+                            android:textSize="14.0sp" />
+
+                        <ImageView
+                            android:id="@+id/dwon_gender"
+                            android:layout_width="20dip"
+                            android:layout_height="20dip"
+                            android:layout_marginRight="30dip"
+                            android:background="@mipmap/img_down" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_bule_frame_all"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="20dip"
+                            android:gravity="center_vertical"
+                            android:text="年龄：" />
+
+                        <EditText
+                            android:id="@id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dip"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="right"
+                            android:hint="点击填写"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/text_color_gray"
+                            android:textSize="14.0sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_bule_frame_all"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="20dip"
+                            android:gravity="center_vertical"
+                            android:text="体重（kg）：" />
+
+
+                        <EditText
+                            android:id="@id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dip"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="right"
+                            android:hint="点击填写"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/text_color_gray"
+                            android:textSize="14.0sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_bule_frame_all"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="20dip"
+                            android:gravity="center_vertical"
+                            android:text="所在科室：" />
+
+
+                        <EditText
+                            android:id="@id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dip"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="right"
+                            android:hint="点击填写"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/text_color_gray"
+                            android:textSize="14.0sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_bule_frame_all"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="20dip"
+                            android:gravity="center_vertical"
+                            android:text="病房号：" />
+
+
+                        <EditText
+                            android:id="@id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dip"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="right"
+                            android:hint="点击填写"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/text_color_gray"
+                            android:textSize="14.0sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_bule_frame_bottom"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="20dip"
+                            android:gravity="center_vertical"
+                            android:text="床位号：" />
+
+
+                        <EditText
+                            android:id="@id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dip"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="right"
+                            android:hint="点击填写"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/text_color_gray"
+                            android:textSize="14.0sp" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
+            </FrameLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_all"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dip"
-                        android:layout_marginLeft="20dip"
-                        android:gravity="center_vertical"
-                        android:text="性别：" />
-
-
-                    <EditText
-                        android:id="@id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="30dip"
-                        android:layout_weight="1"
-                        android:background="#00000000"
-                        android:gravity="right"
-                        android:hint="点击填写"
-                        android:imeOptions="actionNext"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/text_color_gray"
-                        android:textSize="14.0sp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_all"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dip"
-                        android:layout_marginLeft="20dip"
-                        android:gravity="center_vertical"
-                        android:text="年龄：" />
-
-
-                    <EditText
-                        android:id="@id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="30dip"
-                        android:layout_weight="1"
-                        android:background="#00000000"
-                        android:gravity="right"
-                        android:hint="点击填写"
-                        android:imeOptions="actionNext"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/text_color_gray"
-                        android:textSize="14.0sp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_all"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dip"
-                        android:layout_marginLeft="20dip"
-                        android:gravity="center_vertical"
-                        android:text="体重（kg）：" />
-
-
-                    <EditText
-                        android:id="@id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="30dip"
-                        android:layout_weight="1"
-                        android:background="#00000000"
-                        android:gravity="right"
-                        android:hint="点击填写"
-                        android:imeOptions="actionNext"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/text_color_gray"
-                        android:textSize="14.0sp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_all"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dip"
-                        android:layout_marginLeft="20dip"
-                        android:gravity="center_vertical"
-                        android:text="所在科室：" />
-
-
-                    <EditText
-                        android:id="@id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="30dip"
-                        android:layout_weight="1"
-                        android:background="#00000000"
-                        android:gravity="right"
-                        android:hint="点击填写"
-                        android:imeOptions="actionNext"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/text_color_gray"
-                        android:textSize="14.0sp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_all"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dip"
-                        android:layout_marginLeft="20dip"
-                        android:gravity="center_vertical"
-                        android:text="病房号：" />
-
-
-                    <EditText
-                        android:id="@id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="30dip"
-                        android:layout_weight="1"
-                        android:background="#00000000"
-                        android:gravity="right"
-                        android:hint="点击填写"
-                        android:imeOptions="actionNext"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/text_color_gray"
-                        android:textSize="14.0sp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_bottom"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dip"
-                        android:layout_marginLeft="20dip"
-                        android:gravity="center_vertical"
-                        android:text="床位号：" />
-
-
-                    <EditText
-                        android:id="@id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="30dip"
-                        android:layout_weight="1"
-                        android:background="#00000000"
-                        android:gravity="right"
-                        android:hint="点击填写"
-                        android:imeOptions="actionNext"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/text_color_gray"
-                        android:textSize="14.0sp" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
 
             <!--<LinearLayout-->
             <!--android:layout_width="match_parent"-->
