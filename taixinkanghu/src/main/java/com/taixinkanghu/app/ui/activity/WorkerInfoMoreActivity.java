@@ -25,6 +25,8 @@ public class WorkerInfoMoreActivity extends Activity implements View.OnClickList
     private int position;
     private String name;
 
+    public int selected_hospital;
+
     private TextView tv_name;
     private CircleImageView civ_pic;
 

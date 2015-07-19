@@ -3,6 +3,9 @@ package com.taixinkanghu.app.ui.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -13,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -52,15 +56,6 @@ public class ChooseNurseActivity extends Activity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_worker);
-
-
-        DisplayMetrics metrics=new DisplayMetrics();
-        int widthPixels=metrics.widthPixels;
-        int heightPixels=metrics.heightPixels;
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        System.out.println("widthPixels = " + widthPixels);
-        System.out.println("heightPixels = " + heightPixels);
-
 
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_goto_main = (Button) findViewById(R.id.btn_goto_main);

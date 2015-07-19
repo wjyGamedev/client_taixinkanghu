@@ -1,6 +1,7 @@
 package com.taixinkanghu.app.ui.fragment;
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
@@ -33,8 +35,7 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 
     public int way = 0;
 
-
-    private TempData tempdata = new TempData();
+    private LinearLayout titleLinearLayout;
 
     private View view;
 
@@ -53,22 +54,43 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
 
+        titleLinearLayout = (LinearLayout)view.findViewById(R.id.titleLinearLayout);
+        titleLinearLayout.setBackground(getResources().getDrawable(R.color.all_null));
+
 
 //        Activity activity = getActivity();
 //        activity.getComponentName();
 //        System.out.println("activity.getComponentName() = "+activity.getComponentName());
 
-        switch (tempdata.selected_hospital) {
-            case CHAOYANGYIYUAN:
-                btn1.setSelected(true);
-                break;
-            case TIANTANYIYUAN:
-                btn2.setSelected(true);
-                break;
-            case ZHONGLIUYIYUAN:
-                btn3.setSelected(true);
-                break;
+
+        if (way == 1) {
+            ChooseNurseActivity activity = (ChooseNurseActivity) getActivity();
+            switch (activity.selected_hospital) {
+                case CHAOYANGYIYUAN:
+                    btn1.setSelected(true);
+                    break;
+                case TIANTANYIYUAN:
+                    btn2.setSelected(true);
+                    break;
+                case ZHONGLIUYIYUAN:
+                    btn3.setSelected(true);
+                    break;
+            }
+        }else if (way == 2) {
+            WorkerInfoMoreActivity activity = (WorkerInfoMoreActivity) getActivity();
+            switch (activity.selected_hospital) {
+                case CHAOYANGYIYUAN:
+                    btn1.setSelected(true);
+                    break;
+                case TIANTANYIYUAN:
+                    btn2.setSelected(true);
+                    break;
+                case ZHONGLIUYIYUAN:
+                    btn3.setSelected(true);
+                    break;
+            }
         }
+
         return view;
     }
 
@@ -80,20 +102,20 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
                 case R.id.item1:
                     btn1.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.tv_hospital.setText("服务地址  " + btn1.getText() + "  ∨");
-                    tempdata.selected_hospital = CHAOYANGYIYUAN;
+                    activity.tv_hospital.setText(btn1.getText());
+                    activity.selected_hospital = CHAOYANGYIYUAN;
                     break;
                 case R.id.item2:
                     btn2.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.tv_hospital.setText("服务地址  " + btn2.getText() + "  ∨");
-                    tempdata.selected_hospital = TIANTANYIYUAN;
+                    activity.tv_hospital.setText(btn2.getText());
+                    activity.selected_hospital = TIANTANYIYUAN;
                     break;
                 case R.id.item3:
                     btn2.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.tv_hospital.setText("服务地址  " + btn3.getText() + "  ∨");
-                    tempdata.selected_hospital = ZHONGLIUYIYUAN;
+                    activity.tv_hospital.setText(btn3.getText());
+                    activity.selected_hospital = ZHONGLIUYIYUAN;
                     break;
                 default:
                     //蒙版点击一下之后消失的处理
@@ -107,26 +129,26 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
                     break;
             }
 
-        }else if(way ==2 ){
+        } else if (way == 2) {
             WorkerInfoMoreActivity activity = (WorkerInfoMoreActivity) getActivity();
             switch (v.getId()) {
                 case R.id.item1:
                     btn1.setSelected(true);
                     getFragmentManager().popBackStack();
                     activity.add_info.setText(btn1.getText());
-                    tempdata.selected_hospital = CHAOYANGYIYUAN;
+                    activity.selected_hospital = CHAOYANGYIYUAN;
                     break;
                 case R.id.item2:
                     btn2.setSelected(true);
                     getFragmentManager().popBackStack();
                     activity.add_info.setText(btn2.getText());
-                    tempdata.selected_hospital = TIANTANYIYUAN;
+                    activity.selected_hospital = TIANTANYIYUAN;
                     break;
                 case R.id.item3:
                     btn2.setSelected(true);
                     getFragmentManager().popBackStack();
                     activity.add_info.setText(btn3.getText());
-                    tempdata.selected_hospital = ZHONGLIUYIYUAN;
+                    activity.selected_hospital = ZHONGLIUYIYUAN;
                     break;
                 default:
                     //蒙版点击一下之后消失的处理
