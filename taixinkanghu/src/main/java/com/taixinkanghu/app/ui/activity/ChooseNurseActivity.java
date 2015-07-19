@@ -50,7 +50,7 @@ public class ChooseNurseActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_worker);
-		
+
         init();
 		initListener();
 
@@ -177,33 +177,6 @@ public class ChooseNurseActivity extends Activity
         list.add(map);
         return list;
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.select_date:
-//                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectDateFragment()).commit();
-//                break;
-//            case R.id.select_hospital:
-//                SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-//                selectHospitalFragment.way = 1;
-//                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
-//                break;
-//            case R.id.select_sort:
-//                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectSortFragment()).commit();
-//                break;
-//            case R.id.select_screening:
-//                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectScreeningFragment()).commit();
-//                break;
-//            case R.id.btn_back:
-//                finish();
-//                break;
-//            case R.id.btn_goto_main:
-//                finish();
-//                break;
-//        }
-//
-//    }
 
     private void init()
     {
