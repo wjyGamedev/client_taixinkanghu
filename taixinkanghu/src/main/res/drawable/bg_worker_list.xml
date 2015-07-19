@@ -4,8 +4,8 @@
         <layer-list>
             <item>
                 <shape>
-                    <solid android:color="@color/main_color" />
-                    <padding android:bottom="0.5dip" android:top="0.5dip" />
+                    <solid android:color="@color/divider_color" />
+                    <padding android:bottom="1.0dip"/>
                 </shape>
             </item>
             <item>
@@ -19,8 +19,8 @@
         <layer-list>
             <item>
                 <shape>
-                    <solid android:color="@color/main_color_focus" />
-                    <padding android:bottom="0.5dip" android:top="0.5dip" />
+                    <solid android:color="@color/divider_color" />
+                    <padding android:bottom="1.0dip" />
                 </shape>
             </item>
             <item>
