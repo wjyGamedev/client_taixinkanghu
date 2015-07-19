@@ -87,7 +87,7 @@ public class ChooseNurseAdapter extends IBaseAdapter
 		}
 
 		viewHolder.initContent(m_dNurseBasicsList,position);
-		return null;
+		return convertView;
 	}
 
 
@@ -127,12 +127,14 @@ final class ViewHolder {
 	public void initContent(DNurseBasicsList nurseBasicsList, int position)
 	{
 
-		if (m_dNurseBasicsHashMap == null)
+		if (m_dNurseBasicsHashMap == null ||
+				m_dNurseBasicsHashMap.size() == 0)
 		{
 			initHashMap(nurseBasicsList);
 		}
 
-		if (m_dNurseBasicsArrayList == null)
+		if (m_dNurseBasicsArrayList == null ||
+				m_dNurseBasicsArrayList.size() == 0)
 		{
 			initArrayList(nurseBasicsList);
 		}
@@ -156,11 +158,11 @@ final class ViewHolder {
 		m_faceImage.setImageResource(iImageID);
 		m_tvName.setText(tmpNurseBasics.getName());
 		m_starLevel.setRating(tmpNurseBasics.getStarLevel());
-		m_tvAge.setText(tmpNurseBasics.getAge());
+		m_tvAge.setText(tmpNurseBasics.getAge().toString());
 		m_tvHomeTown.setText(tmpNurseBasics.getHomeTown());
 		m_tvNursingExp.setText(tmpNurseBasics.getNursingExp());
 		m_tvNursingLevel.setText(tmpNurseBasics.getNursingLevel());
-		m_tvServiceChargePerDay.setText(tmpNurseBasics.getServiceChargePerDay());
+		m_tvServiceChargePerDay.setText(tmpNurseBasics.getServiceChargePerDay().toString());
 		m_tvServiceStatus.setText(tmpNurseBasics.getServiceStatus());
 
 	}

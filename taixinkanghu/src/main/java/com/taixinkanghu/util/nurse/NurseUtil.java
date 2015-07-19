@@ -137,7 +137,19 @@ public class NurseUtil
 			return AppUtil.getResources().getText(R.string.nurse_status_free).toString();
 		}
 
-		return AppUtil.getResources().getText(R.string.nurse_status_services).toString();
+		if (iStatus == s_iFree)
+		{
+			return AppUtil.getResources().getText(R.string.nurse_status_free).toString();
+		}
+		else if (iStatus == s_iServices)
+		{
+			return AppUtil.getResources().getText(R.string.nurse_status_services).toString();
+		}
+		else
+		{
+			//TODO:ERROR
+			return AppUtil.getResources().getText(R.string.nurse_status_free).toString();
+		}
 	}
 
 	public static String GetStatusByString(String strStatus)

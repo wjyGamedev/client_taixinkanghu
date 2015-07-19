@@ -78,7 +78,7 @@ public class DNurseBasics
 		return m_iStarLevel;
 	}
 
-	public int getAge()
+	public Integer getAge()
 	{
 		return m_iAge;
 	}
@@ -98,7 +98,7 @@ public class DNurseBasics
 		return m_strNursingLevel;
 	}
 
-	public int getServiceChargePerDay()
+	public Integer getServiceChargePerDay()
 	{
 		return m_iServiceChargePerDay;
 	}

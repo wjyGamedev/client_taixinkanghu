@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,8 +17,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.listener.view.HandlerClickEventChooseNurse;
+import com.taixinkanghu.app.ui.adapter.list_view.ChooseNurseAdapter;
 import com.taixinkanghu.app.ui.data.ChooseWorkerData;
+import com.taixinkanghu.app.ui.listener.view.HandlerClickEventChooseNurse;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
 import java.util.ArrayList;
@@ -43,7 +42,6 @@ public class ChooseNurseActivity extends Activity
     public int selected_hospital;
     public int selected_city;
     public ListView lv_worker;
-    private ArrayAdapter<ChooseWorkerData> arrayAdapter_worker;
     private List<Map<String, Object>> mData;
 
     @Override
@@ -53,32 +51,13 @@ public class ChooseNurseActivity extends Activity
 
         init();
 		initListener();
-
-
-
-        DisplayMetrics metrics=new DisplayMetrics();
-        int widthPixels=metrics.widthPixels;
-        int heightPixels=metrics.heightPixels;
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-
-
-
-
-        page_title.setText(R.string.owner_choose_nurse);
-        lv_worker.setAdapter(arrayAdapter_worker);
-
-        mData = getData();
-        ChooseWorkerListViewAdapter adapter = new ChooseWorkerListViewAdapter(this);
-        lv_worker.setAdapter(adapter);
+        initModule();
 
         lv_worker.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView tv_name = (TextView) lv_worker.getAdapter().getView(position, view, parent).findViewById(R.id.name);
                 String name = (String) tv_name.getText();
-                System.out.println("name = " + name);
-
                 Intent intent = new Intent(ChooseNurseActivity.this, WorkerInfoActivity.class);
                 intent.putExtra("name", name);
                 startActivity(intent);
@@ -86,6 +65,8 @@ public class ChooseNurseActivity extends Activity
             }
         });
     }
+
+
 
     public final class ViewHolder {
         public CircleImageView civ_pic;
@@ -186,6 +167,7 @@ public class ChooseNurseActivity extends Activity
 		lv_worker = (ListView) findViewById(R.id.listView_workerinfo);
 
 		m_handlerClickEventChooseNurse = new HandlerClickEventChooseNurse(this);
+        m_chooseNurseAdapter = new ChooseNurseAdapter(this);
     }
 
 	private void initListener()
@@ -197,6 +179,13 @@ public class ChooseNurseActivity extends Activity
 		tv_sort.setOnClickListener(m_handlerClickEventChooseNurse);
 		tv_date.setOnClickListener(m_handlerClickEventChooseNurse);
 	}
-    private HandlerClickEventChooseNurse m_handlerClickEventChooseNurse = null;
 
+    private void initModule()
+    {
+        page_title.setText(R.string.owner_choose_nurse);
+        lv_worker.setAdapter(m_chooseNurseAdapter);
+    }
+
+    private HandlerClickEventChooseNurse m_handlerClickEventChooseNurse = null;
+    private ChooseNurseAdapter           m_chooseNurseAdapter           = null;
 }
