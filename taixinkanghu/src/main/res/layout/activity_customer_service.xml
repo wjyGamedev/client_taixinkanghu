@@ -29,13 +29,15 @@
                 android:layout_height="54.0dip"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="10.0dip"
-                android:background="@drawable/bg_order_btn"
+                android:background="@drawable/bg_bule_frame_top"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
                     android:orientation="horizontal">
 
                     <TextView
@@ -98,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="54.0dip"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/bg_order_btn"
+                android:background="@drawable/bg_bule_frame_bottom"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 

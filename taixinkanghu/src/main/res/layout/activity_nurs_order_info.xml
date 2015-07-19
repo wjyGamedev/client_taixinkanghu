@@ -56,7 +56,7 @@
                     android:id="@+id/statusDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_order_btn"
+                    android:background="@drawable/bg_bule_frame"
                     android:gravity="center"
                     android:padding="10.0dip"
                     android:text="该订单已取消"
@@ -93,7 +93,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50.0dip"
-                    android:background="@drawable/bg_order_btn"
+                    android:background="@drawable/bg_bule_frame_top"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <!--android:layout_marginTop="-0.5dip"-->
@@ -102,6 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
+                        android:layout_marginLeft="15dip"
                         android:text="服务时间:"
                         android:textColor="@color/text_color_black"
                         android:textSize="16.0sp" />
@@ -138,6 +139,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dip"
                         android:text="天"
                         android:textColor="@android:color/black"
                         android:textSize="18.0sp" />
@@ -172,7 +174,7 @@
                     android:id="@id/item_worker"
                     android:layout_width="match_parent"
                     android:layout_height="80.0dip"
-                    android:background="@drawable/bg_order_btn"
+                    android:background="@drawable/bg_bule_frame_bottom"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -180,6 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
+                        android:layout_marginLeft="15dip"
                         android:text="护理师:"
                         android:textColor="#ff494949"
                         android:textSize="16.0sp" />
@@ -198,6 +201,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:minWidth="100.0dip"
+                        android:layout_marginRight="15dip"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -289,7 +293,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50.0dip"
-                    android:background="@drawable/bg_order_btn"
+                    android:background="@drawable/bg_bule_frame_top"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -297,6 +301,7 @@
                         android:id="@id/service_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dip"
                         android:layout_weight="1.0"
                         android:text="高级护理服务"
                         android:textColor="#ff494949"
@@ -306,6 +311,7 @@
                         android:id="@+id/service_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dip"
                         android:text="250*1"
                         android:textColor="@android:color/black"
                         android:textSize="18.0sp" />
@@ -355,7 +361,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50.0dip"
-                    android:background="@drawable/bg_order_btn"
+                    android:background="@drawable/bg_bule_frame_bottom"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <!--android:layout_marginTop="-0.5dip"-->
@@ -364,6 +370,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
+                        android:layout_marginLeft="15dip"
                         android:text="总金额:"
                         android:textColor="#ff494949"
                         android:textSize="16.0sp" />
@@ -372,6 +379,7 @@
                         android:id="@+id/total_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dip"
                         android:text="￥180"
                         android:textColor="@color/date_select_orange"
                         android:textSize="18.0sp" />
@@ -399,7 +407,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_order_btn"
+                    android:background="@drawable/bg_bule_frame"
                     android:orientation="vertical"
                     android:paddingBottom="5.0dip"
                     android:paddingTop="5.0dip">
@@ -408,6 +416,8 @@
                         android:id="@id/history5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dip"
+                        android:layout_marginRight="15dip"
                         android:orientation="horizontal"
                         android:paddingBottom="10.0dip"
                         android:paddingTop="10.0dip">
@@ -441,6 +451,8 @@
                         android:id="@id/history4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dip"
+                        android:layout_marginRight="15dip"
                         android:orientation="horizontal"
                         android:paddingBottom="10.0dip"
                         android:paddingTop="10.0dip">
@@ -472,6 +484,8 @@
                         android:id="@id/history3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dip"
+                        android:layout_marginRight="15dip"
                         android:orientation="horizontal"
                         android:paddingBottom="10.0dip"
                         android:paddingTop="10.0dip">
@@ -579,8 +593,8 @@
             android:id="@id/btn_goto_main"
             android:layout_width="match_parent"
             android:layout_height="48.0dip"
-            android:background="@drawable/bg_btn_main_color"
             android:layout_weight="1"
+            android:background="@drawable/bg_btn_main_color"
             android:text="首页"
             android:textColor="#ffffffff"
             android:textSize="18.0sp" />
@@ -593,8 +607,8 @@
             android:id="@id/btn_goto_reviews"
             android:layout_width="match_parent"
             android:layout_height="48.0dip"
-            android:background="@drawable/bg_btn_main_color"
             android:layout_weight="1"
+            android:background="@drawable/bg_btn_main_color"
             android:text="评价"
             android:textColor="#ffffffff"
             android:textSize="18.0sp" />
@@ -607,8 +621,8 @@
             android:id="@id/btn_continue"
             android:layout_width="match_parent"
             android:layout_height="48.0dip"
-            android:background="@drawable/bg_btn_main_color"
             android:layout_weight="1"
+            android:background="@drawable/bg_btn_main_color"
             android:text="续订"
             android:textColor="#ffffffff"
             android:textSize="18.0sp" />
