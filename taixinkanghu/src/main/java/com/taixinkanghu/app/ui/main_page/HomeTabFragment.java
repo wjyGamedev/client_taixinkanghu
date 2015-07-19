@@ -15,12 +15,10 @@
 package com.taixinkanghu.app.ui.main_page;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GestureDetectorCompat;
-import android.util.Log;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -35,13 +33,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.data.DMainPageImages;
-import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
+import com.taixinkanghu.app.model.listener.HandlerClickEventNursingOrder;
+import com.taixinkanghu.app.model.listener.HandlerClickEventShopping;
 
 import java.util.ArrayList;
 
@@ -165,8 +163,8 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
         m_gestureDetectorCompat = new GestureDetectorCompat(this.getActivity(), this);
         m_gridLayout = (GridLayout) this.getActivity().findViewById(R.id.function_gridlayout);
         //功能事件监听
-        m_impNursingOrderClickListener = new ImpFuncClickListener();
-        m_impShoppingClickListener = new ImpFuncClickListener();
+		m_handlerClickEventNursingOrder = new HandlerClickEventNursingOrder(this.getActivity());
+		m_handlerClickEventShopping = new HandlerClickEventShopping(this.getActivity());
     }
 
 
@@ -198,14 +196,14 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
         m_gridLayout.setColumnCount(MainActivityConfig.MAIN_FUNCTION_NUM);
         View view = null;
         view = setFunctionWidget(this.getActivity(), R.drawable.main_shopping, MainActivityConfig.FUNC_SHOPPING_TEXT);
-        view.setOnClickListener(m_impNursingOrderClickListener);
+        view.setOnClickListener(m_handlerClickEventShopping);
 		view.setTag(MainActivityConfig.FUNC_SHOPPING_FLAG);
         m_gridLayout.addView(view, MainActivityConfig.MAIN_FUNCTION_GROUP_FLAG);
 
 
         view = setFunctionWidget(this.getActivity(), R.drawable.main_appointment_nursing, MainActivityConfig
                 .FUNC_APPOINTMENT_NURSING_TEXT);
-        view.setOnClickListener(m_impShoppingClickListener);
+        view.setOnClickListener(m_handlerClickEventNursingOrder);
 		view.setTag(MainActivityConfig.FUNC_APPOINTMENT_NURSING_FALG);
         m_gridLayout.addView(view, MainActivityConfig.MAIN_FUNCTION_GROUP_FLAG);
 
@@ -231,34 +229,14 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
         return view;
     }
 
-    private class ImpFuncClickListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v)
-		{
-			if (v.getTag().equals(MainActivityConfig.FUNC_APPOINTMENT_NURSING_FALG))
-			{
-				startActivity(new Intent(getActivity(), ChooseWorkerActivity.class));
-			}
-			else if (v.getTag().equals(MainActivityConfig.FUNC_SHOPPING_FLAG))
-			{
-				Toast.makeText(getActivity(), R.string.function_is_not_open, Toast.LENGTH_SHORT).show();
-			}
-			else
-			{
-				Log.e("error", "v.getTag() is error!");
-			}
-        }
-    }
-
-    /**
-     * 数据区
-     */
-    private GestureDetectorCompat m_gestureDetectorCompat = null;
-    private ViewFlipper m_viewFlipper = null;
-    private GridLayout m_gridLayout = null;
-    private EditText m_editText = null;
-    private ImpFuncClickListener m_impNursingOrderClickListener = null;
-    private ImpFuncClickListener m_impShoppingClickListener = null;
+	/**
+	 * 数据区
+	 */
+	private GestureDetectorCompat         m_gestureDetectorCompat         = null;
+	private ViewFlipper                   m_viewFlipper                   = null;
+	private GridLayout                    m_gridLayout                    = null;
+	private EditText                      m_editText                      = null;
+	private HandlerClickEventNursingOrder m_handlerClickEventNursingOrder = null;
+	private HandlerClickEventShopping m_handlerClickEventShopping = null;
 
 }
