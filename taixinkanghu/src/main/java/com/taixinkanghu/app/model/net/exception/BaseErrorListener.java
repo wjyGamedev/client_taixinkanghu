@@ -18,6 +18,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.net.IErrorListener;
 
 public class BaseErrorListener extends IErrorListener
@@ -30,7 +31,8 @@ public class BaseErrorListener extends IErrorListener
 	@Override
 	public void onErrorResponse(VolleyError error)
 	{
-		Toast.makeText(m_context, error.toString(), Toast.LENGTH_SHORT).show();
+		//TODO:error
+		Toast.makeText(m_context, R.string.error_disconnect, Toast.LENGTH_SHORT).show();
 	}
 
 	private Context m_context = null;
