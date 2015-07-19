@@ -21,6 +21,8 @@ public class EventID
 	 */
 	public final static int NETWORK_DEFAULT     = 100;
 	public final static int QUEST_HOSPITAL_LIST = 101;
+	public final static int QUEST_NURSE_BASIC_LIST = 102;
+	public final static int QUEST_NURSE_SENIOR_LIST = 103;
 
 	/**
 	 * UI event

@@ -21,7 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.event.net.QuestHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.ReqHospitalListEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 
 import de.greenrobot.event.EventBus;
@@ -42,7 +42,7 @@ public class WelcomeActivity extends Activity
 	protected void onStart()
 	{
 		super.onStart();
-		m_eventBus.post(new QuestHospitalListEvent());
+		m_eventBus.post(new ReqHospitalListEvent());
 	}
 
 	@Override

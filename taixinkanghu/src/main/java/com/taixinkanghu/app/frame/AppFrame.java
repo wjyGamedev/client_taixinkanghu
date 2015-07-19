@@ -24,6 +24,7 @@ import android.util.Log;
 
 import com.taixinkanghu.app.model.net.NetService;
 import com.taixinkanghu.net.BaseHttp;
+import com.taixinkanghu.util.android.AppUtil;
 
 import de.greenrobot.event.EventBus;
 
@@ -81,6 +82,7 @@ public class AppFrame extends Application
 	private void onModuleInit()
 	{
 		BaseHttp.getInstance().init(this);
+		AppUtil.init(this);
 	}
 
 	private void onServiceInit()

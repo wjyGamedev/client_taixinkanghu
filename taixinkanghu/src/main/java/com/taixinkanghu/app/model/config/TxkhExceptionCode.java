@@ -23,6 +23,10 @@ public class TxkhExceptionCode
 	public static final Integer REX_MANAGER_UNIMPLEMENT = 10001;
 	public static final Integer REX_NET = 10002;
 
+	public static final Integer REX_UTIL = 20000;
+
+	public static final Integer REX_HANDLE = 30000;
+
 	/**
 	 * exception code
 	 */

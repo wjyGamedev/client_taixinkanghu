@@ -44,7 +44,7 @@
             android:name=".app.ui.activity.AboutUsActivity"
             android:label="AboutUsActivity" />
         <activity
-            android:name=".app.ui.activity.ChooseWorkerActivity"
+            android:name=".app.ui.activity.ChooseNurseActivity"
             android:label="ChooseWorkerActivity" />
         <activity
             android:name=".app.ui.activity.CustomerServiceActivity"

@@ -21,15 +21,16 @@ import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.taixinkanghu.app.model.config.NetConfig;
-import com.taixinkanghu.app.model.data.DHospitalList;
-import com.taixinkanghu.app.model.event.net.QuestHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.ReqHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.ReqNurseBasicListEvent;
+import com.taixinkanghu.app.model.net.event.ReqNurseSeniorListEvent;
+import com.taixinkanghu.app.model.net.exception.BaseErrorListener;
+import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
+import com.taixinkanghu.app.model.net.handler.ResNurseBasicListHandler;
+import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
 import com.taixinkanghu.net.BaseHttp;
-
-import org.json.JSONObject;
 
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.EventBusException;
@@ -40,17 +41,24 @@ public class NetService extends Service
 	public void onCreate()
 	{
 		super.onCreate();
-		m_eventBus.register(this);
-		onCreateEvent();
+
+		init();
+		initModule();
+		initEvent();
+
 	}
+
+
+
 
 	@Override
 	public void onDestroy()
 	{
-		m_eventBus.unregister(this);
+		cleanupModule();
 		super.onDestroy();
-		Log.e("NetService", "NetService onDestroy");
 	}
+
+
 
 	@Override
 	public IBinder onBind(Intent intent)
@@ -73,63 +81,84 @@ public class NetService extends Service
 	}
 
 
-
-	private void onCreateEvent()
+	private void init()
 	{
-		QuestHospitalListEvent hospitalListEvent = new QuestHospitalListEvent();
+		m_eventBus = EventBus.getDefault();
+		m_baseErrorListener = new BaseErrorListener(this);
+		m_resHospitalListHandler = new ResHospitalListHandler();
+		m_resNurseBasicListHandler = new ResNurseBasicListHandler();
+		m_resNurseSeniorListHandler = new ResNurseSeniorListHandler();
+		m_requestQueue = BaseHttp.getInstance().getRequestQueue();
+	}
+	private void initModule()
+	{
+		m_eventBus.register(this);
+	}
+	private void initEvent()
+	{
+		ReqHospitalListEvent hospitalListEvent = new ReqHospitalListEvent();
+		ReqNurseBasicListEvent nurseBasicList = new ReqNurseBasicListEvent();
+		ReqNurseSeniorListEvent nurseSeniorList = new ReqNurseSeniorListEvent();
 		try
 		{
 			m_eventBus.post(hospitalListEvent);
+			m_eventBus.post(nurseBasicList);
+			m_eventBus.post(nurseSeniorList);
 		}
 		catch (EventBusException e)
 		{
 			Log.e("error", e.getMessage().toString());
 		}
+	}
 
+	private void cleanupModule()
+	{
+		m_eventBus.unregister(this);
 	}
 
 	/**
 	 * event handler
 	 */
-	public void onEventAsync(QuestHospitalListEvent event)
+	public void onEventAsync(ReqNurseBasicListEvent event)
 	{
-		RequestQueue queue = BaseHttp.getInstance().getRequestQueue();
-
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
 														NetConfig.s_hospitalListAddress,
 														null,
-														onReqHospitalListSuccessListener(),
-														onReqHospitalListErrorListener());
+														m_resHospitalListHandler,
+														m_baseErrorListener);
 
-		queue.add(myReq);
+		m_requestQueue.add(myReq);
 	}
 
-	public Response.Listener<JSONObject> onReqHospitalListSuccessListener()
+	public void onEventAsync(ReqNurseSeniorListEvent event)
 	{
-		return new Response.Listener<JSONObject>() {
-			@Override
-			public void onResponse(JSONObject response) {
-				boolean bReturnFlag = DHospitalList.getInstance().serialization(response);
-				if (bReturnFlag == false)
-				{
-					Log.w("error", "bReturnFlag == false");
-				}
-			}
-		};
+		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
+														NetConfig.s_nurseBasicsListAddress,
+														null,
+														m_resNurseBasicListHandler,
+														m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
 	}
 
-	public Response.ErrorListener onReqHospitalListErrorListener()
+	public void onEventAsync(ReqHospitalListEvent event)
 	{
-		return new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				Log.w("error", error.getMessage());
-			}
-		};
+		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
+														NetConfig.s_nurseSeniorListAddress,
+														null,
+														m_resNurseSeniorListHandler,
+														m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
 	}
 	/**
 	 * 数据区
 	 */
-	private EventBus m_eventBus = EventBus.getDefault();
-
+	private EventBus                  m_eventBus                  = null;//EventBus.getDefault();
+	private BaseErrorListener         m_baseErrorListener         = null;
+	private ResHospitalListHandler    m_resHospitalListHandler    = null;
+	private ResNurseBasicListHandler  m_resNurseBasicListHandler  = null;
+	private ResNurseSeniorListHandler m_resNurseSeniorListHandler = null;
+	private RequestQueue m_requestQueue = null;
+	private JsonObjectRequest m_jsonObjectRequest = null;
 }
