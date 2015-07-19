@@ -20,24 +20,56 @@
             android:layout_height="45dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/select_hospital"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_order_rb"
-                android:gravity="center"
-                android:text="服务地址  选择所在医院  ∨" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/select_date"
+                <TextView
+                    android:id="@+id/select_hospital"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="服务地址  选择所在医院" />
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginRight="10dip"
+                    android:background="@mipmap/img_down"
+                    android:id="@+id/dwon_hospital" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_order_rb"
-                android:gravity="center"
-                android:text="服务时间  选择服务时间  ∨" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/select_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="服务时间  选择服务时间" />
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginRight="10dip"
+                    android:background="@mipmap/img_down"/>
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -45,8 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="#fff">
+            android:background="#fff"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,23 +90,57 @@
                     android:layout_height="45dp"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/select_screening"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_order_rb"
-                        android:gravity="center"
-                        android:text="筛选条件  选择筛选条件  ∨" />
 
-                    <TextView
-                        android:id="@+id/select_sort"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="45dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_order_rb"
-                        android:gravity="center"
-                        android:text="排序条件  选择排序条件  ∨" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/select_screening"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dip"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="筛选条件  选择筛选条件" />
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginRight="10dip"
+                            android:background="@mipmap/img_down"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_order_rb"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/select_sort"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dip"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="排序条件  选择排序条件" />
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginRight="10dip"
+                            android:background="@mipmap/img_down"/>
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout

@@ -52,7 +52,7 @@
                             android:layout_marginRight="10dip"
                             android:src="@mipmap/face_img"
                             app:border_color="@color/main_color"
-                            app:border_width="5.0dip" />
+                            app:border_width="0.5dip" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/bg_order_rb"
+                        android:background="@drawable/bg_bule_frame"
                         android:orientation="vertical"
                         android:paddingTop="10.0dip">
 

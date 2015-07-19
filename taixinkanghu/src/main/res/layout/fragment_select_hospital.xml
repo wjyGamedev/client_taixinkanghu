@@ -6,6 +6,7 @@
     tools:context="com.taixinkanghu.app.ui.activity.SelectCity">
 
     <LinearLayout
+        android:id="@+id/titleLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="93dip"
         android:background="#70000000"
@@ -54,13 +55,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="15.0dip"
             android:paddingLeft="10.0dip"
             android:paddingRight="10.0dip">
 
@@ -75,7 +75,7 @@
                 android:gravity="center"
                 android:paddingBottom="8.0dip"
                 android:paddingTop="8.0dip"
-                android:text="北京朝阳医院"
+                android:text="全部"
                 android:textColor="@color/city_btn_color"
                 android:textSize="14.0sp"
                 android:visibility="visible" />
@@ -95,51 +95,67 @@
                 android:textColor="@color/city_btn_color"
                 android:textSize="14.0sp"
                 android:visibility="visible" />
-
-            <Button
-                android:id="@id/item3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginRight="5.0dip"
-                android:layout_weight="1.0"
-                android:background="@drawable/bg_btn_city_selector"
-                android:gravity="center"
-                android:paddingBottom="8.0dip"
-                android:paddingTop="8.0dip"
-                android:text="医科院肿瘤医院"
-                android:textColor="@color/city_btn_color"
-                android:textSize="14.0sp"
-                android:visibility="visible" />
-
-            <!--<Button-->
-            <!--android:id="@id/item4"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="5.0dip"-->
-            <!--android:layout_marginRight="5.0dip"-->
-            <!--android:layout_weight="1.0"-->
-            <!--android:background="@drawable/bg_btn_city_selector"-->
-            <!--android:gravity="center"-->
-            <!--android:paddingBottom="8.0dip"-->
-            <!--android:paddingTop="8.0dip"-->
-            <!--android:textColor="@color/city_btn_color"-->
-            <!--android:textSize="14.0sp"-->
-            <!--android:visibility="invisible" />-->
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip">
+
+                <Button
+                    android:id="@id/item3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/bg_btn_city_selector"
+                    android:gravity="center"
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip"
+                    android:text="北京朝阳医院"
+                    android:textColor="@color/city_btn_color"
+                    android:textSize="14.0sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@id/item4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/bg_btn_city_selector"
+                    android:gravity="center"
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip"
+                    android:text="医科院肿瘤医院"
+                    android:textColor="@color/city_btn_color"
+                    android:textSize="14.0sp"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dip"></LinearLayout>
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dip"
-        android:background="@color/divider_color" />
-
-    <View
-        android:id="@+id/bg"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#70000000" />
-
+        android:layout_weight="1"
+        android:background="@color/mask"></LinearLayout>
 </LinearLayout>
