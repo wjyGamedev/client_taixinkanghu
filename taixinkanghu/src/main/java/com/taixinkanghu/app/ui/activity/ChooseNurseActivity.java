@@ -19,11 +19,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.listener.HandlerClickEventChooseNurse;
 import com.taixinkanghu.app.ui.data.ChooseWorkerData;
-import com.taixinkanghu.app.ui.fragment.SelectDateFragment;
-import com.taixinkanghu.app.ui.fragment.SelectHospitalFragment;
-import com.taixinkanghu.app.ui.fragment.SelectScreeningFragment;
-import com.taixinkanghu.app.ui.fragment.SelectSortFragment;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
 import java.util.ArrayList;
@@ -32,7 +29,8 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ChooseNurseActivity extends Activity implements View.OnClickListener {
+public class ChooseNurseActivity extends Activity
+{
 
     public TextView tv;
     public TextView tv_hospital;
@@ -51,35 +49,28 @@ public class ChooseNurseActivity extends Activity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_worker);
+		setContentView(R.layout.activity_choose_worker);
+		
+        init();
+		initListener();
+
 
 
         DisplayMetrics metrics=new DisplayMetrics();
         int widthPixels=metrics.widthPixels;
         int heightPixels=metrics.heightPixels;
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        System.out.println("widthPixels = " + widthPixels);
-        System.out.println("heightPixels = " + heightPixels);
 
 
-        btn_back = (ImageButton) findViewById(R.id.btn_back);
-        btn_goto_main = (Button) findViewById(R.id.btn_goto_main);
-        btn_back.setOnClickListener(this);
-        btn_goto_main.setOnClickListener(this);
-        page_title = (TextView) findViewById(R.id.page_title);
+
+
+
         page_title.setText("我自己选护理员");
-        tv = (TextView) findViewById(R.id.showDate);
-        tv_hospital = (TextView) findViewById(R.id.select_hospital);
-        tv_date = (TextView) findViewById(R.id.select_date);
-        tv_sort = (TextView) findViewById(R.id.select_sort);
-        tv_screening = (TextView) findViewById(R.id.select_screening);
 
-        tv_hospital.setOnClickListener(this);
-        tv_screening.setOnClickListener(this);
-        tv_sort.setOnClickListener(this);
-        tv_date.setOnClickListener(this);
 
-        lv_worker = (ListView) findViewById(R.id.listView_workerinfo);
+
+
+
         lv_worker.setAdapter(arrayAdapter_worker);
 
         mData = getData();
@@ -99,7 +90,6 @@ public class ChooseNurseActivity extends Activity implements View.OnClickListene
 
             }
         });
-//        initRecyclerView();
     }
 
     public final class ViewHolder {
@@ -188,31 +178,57 @@ public class ChooseNurseActivity extends Activity implements View.OnClickListene
         return list;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.select_date:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectDateFragment()).commit();
-                break;
-            case R.id.select_hospital:
-                SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-                selectHospitalFragment.way = 1;
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
-                break;
-            case R.id.select_sort:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectSortFragment()).commit();
-                break;
-            case R.id.select_screening:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectScreeningFragment()).commit();
-                break;
-            case R.id.btn_back:
-                finish();
-                break;
-            case R.id.btn_goto_main:
-                finish();
-                break;
-        }
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.select_date:
+//                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectDateFragment()).commit();
+//                break;
+//            case R.id.select_hospital:
+//                SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
+//                selectHospitalFragment.way = 1;
+//                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
+//                break;
+//            case R.id.select_sort:
+//                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectSortFragment()).commit();
+//                break;
+//            case R.id.select_screening:
+//                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectScreeningFragment()).commit();
+//                break;
+//            case R.id.btn_back:
+//                finish();
+//                break;
+//            case R.id.btn_goto_main:
+//                finish();
+//                break;
+//        }
+//
+//    }
 
+    private void init()
+    {
+		btn_back = (ImageButton) findViewById(R.id.btn_back);
+		btn_goto_main = (Button) findViewById(R.id.btn_goto_main);
+		page_title = (TextView) findViewById(R.id.page_title);
+		tv = (TextView) findViewById(R.id.showDate);
+		tv_hospital = (TextView) findViewById(R.id.select_hospital);
+		tv_date = (TextView) findViewById(R.id.select_date);
+		tv_sort = (TextView) findViewById(R.id.select_sort);
+		tv_screening = (TextView) findViewById(R.id.select_screening);
+		lv_worker = (ListView) findViewById(R.id.listView_workerinfo);
+
+		m_handlerClickEventChooseNurse = new HandlerClickEventChooseNurse(this);
     }
+
+	private void initListener()
+	{
+		btn_back.setOnClickListener(m_handlerClickEventChooseNurse);
+		btn_goto_main.setOnClickListener(m_handlerClickEventChooseNurse);
+		tv_hospital.setOnClickListener(m_handlerClickEventChooseNurse);
+		tv_screening.setOnClickListener(m_handlerClickEventChooseNurse);
+		tv_sort.setOnClickListener(m_handlerClickEventChooseNurse);
+		tv_date.setOnClickListener(m_handlerClickEventChooseNurse);
+	}
+    private HandlerClickEventChooseNurse m_handlerClickEventChooseNurse = null;
 
 }
