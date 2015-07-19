@@ -12,3 +12,5 @@
 /app/build
 /viewflow/build
 /import-summary.txt
+/viewflow/build.gradle
+/viewflow/src
