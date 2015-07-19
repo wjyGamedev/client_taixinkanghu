@@ -17,9 +17,7 @@ package com.taixinkanghu.app.model.data;
 import android.util.Log;
 
 import com.taixinkanghu.app.model.config.DataConfig;
-import com.taixinkanghu.app.model.config.NurseServiceStatus;
-import com.taixinkanghu.app.model.config.NursingExp;
-import com.taixinkanghu.app.model.config.NursingLevel;
+import com.taixinkanghu.util.nurse.NurseUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,15 +36,15 @@ public class DNurseBasics
 
 			int itmp = 0;
 			itmp = response.getInt(DataConfig.NURSE_NURING_EXP);
-			m_strNursingExp = NursingExp.GetExpByInteger(itmp);
+			m_strNursingExp = NurseUtil.GetServiceExpByInteger(itmp);
 
 			itmp = response.getInt(DataConfig.NURSE_NURING_LEVEL);
-			m_strNursingLevel = NursingLevel.GetLevelByInteger(itmp);
+			m_strNursingLevel = NurseUtil.GetNursingLevelByInteger(itmp);
 
 			m_iServiceChargePerDay = response.getInt(DataConfig.NURSE_SERVICE_CHARGE_PER_DAY);
 
 			itmp = response.getInt(DataConfig.NURSE_SERVICE_STATUS);
-			m_strServiceStatus = NurseServiceStatus.GetStatusByInteger(itmp);
+			m_strServiceStatus = NurseUtil.GetStatusByInteger(itmp);
 
 
 		}

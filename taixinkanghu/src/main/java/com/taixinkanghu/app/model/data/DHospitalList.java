@@ -46,23 +46,14 @@ public class DHospitalList
 		JSONArray jsonArray = null;
 		try
 		{
-			jsonArray = response.getJSONArray(DataConfig.JSON_CONTAINER_KEY);
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-		}
+			jsonArray = response.getJSONArray(DataConfig.DHOSPITAL_LIST);
 
-		if (jsonArray == null)
-			return false;
+			if (jsonArray == null)
+				return false;
 
-		JSONObject jsonObject = null;
-		DHospital hospital = null;
-		for (int index = 0; index < jsonArray.length(); index++)
-		{
-
-			try
+			JSONObject jsonObject = null;
+			DHospital hospital = null;
+			for (int index = 0; index < jsonArray.length(); index++)
 			{
 				jsonObject=(JSONObject)jsonArray.get(index);
 				hospital = new DHospital();
@@ -70,16 +61,16 @@ public class DHospitalList
 
 				Integer iHospitalID = jsonObject.getInt(DataConfig.DHOSPITAL_ID);
 				m_dHospitalHashMap.put(iHospitalID, hospital);
-
-			}
-			catch (JSONException e)
-			{
-				e.printStackTrace();
-				Log.e("error", e.getMessage().toString());
-				return false;
 			}
 
 		}
+		catch (JSONException e)
+		{
+			e.printStackTrace();
+			Log.e("error", e.getMessage().toString());
+			return false;
+		}
+
 		return  true;
 
 	}

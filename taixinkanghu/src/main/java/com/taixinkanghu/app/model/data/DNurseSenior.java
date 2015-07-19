@@ -36,12 +36,24 @@ public class DNurseSenior
 			m_strDepartments = response.getString(DataConfig.NURSE_DEPARTMENTS);
 			m_strCertificate = response.getString(DataConfig.NURSE_CERTIFICATE);
 			m_strServiceContent = response.getString(DataConfig.NURSE_SERVICE_CONTENT);
+
+			m_dScheduleList.init(m_iID);
+			if (m_dScheduleList.serialization(response) == false)
+			{
+				return false;
+			}
+
+			m_dComment.initID(m_iID);
+			if (m_dComment.serialization(response) == false)
+			{
+				return false;
+			}
 		}
 		catch (JSONException e)
 		{
 			e.printStackTrace();
 			Log.e("error", e.getMessage().toString());
-			return  false;
+			return false;
 		}
 		return true;
 	}
@@ -91,17 +103,32 @@ public class DNurseSenior
 		return m_strServiceContent;
 	}
 
+	public DScheduleList getdScheduleList()
+	{
+		return m_dScheduleList;
+	}
+
+	public DCommentList getdComment()
+	{
+		return m_dComment;
+	}
+
 	/**
 	 * 数据区
 	 */
-	private int m_iID = 0;          					//ID
+	private int m_iID = 0;                         //ID
 
-	private int    m_iJobNum          = 0;        //工号
-	private String m_strLanguageLevel = null;    //语言水平
-	private String m_strEducation     = null;    //文化程度
-	private String m_strNation = null;			//民族
-	private String m_strIntro       = null; 		//自我介绍
-	private String m_strDepartments = null; 		//擅长科室
-	private String m_strCertificate = null; 		//持有证书
-	private String m_strServiceContent = null;								//服务内容
+	private int    m_iJobNum           = 0;       //工号
+	private String m_strLanguageLevel  = null;   //语言水平
+	private String m_strEducation      = null;   //文化程度
+	private String m_strNation         = null;    //民族
+	private String m_strIntro          = null;   //自我介绍
+	private String m_strDepartments    = null;  //擅长科室
+	private String m_strCertificate    = null;  //持有证书
+	private String m_strServiceContent = null;  //服务内容
+
+	private DScheduleList  m_dScheduleList   = new DScheduleList();
+	private DCommentList   m_dComment        = new DCommentList();
+
+
 }
