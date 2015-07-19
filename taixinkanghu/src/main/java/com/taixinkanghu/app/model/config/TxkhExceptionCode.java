@@ -25,6 +25,8 @@ public class TxkhExceptionCode
 
 	public static final Integer REX_UTIL = 20000;
 
+	public static final Integer REX_HANDLE = 30000;
+
 	/**
 	 * exception code
 	 */
