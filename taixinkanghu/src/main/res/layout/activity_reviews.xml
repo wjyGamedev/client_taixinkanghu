@@ -32,8 +32,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#fff"
-            android:textColor="@drawable/text_color_page_tab"
-            android:text="非常满意" />
+            android:text="非常满意"
+            android:textColor="@drawable/text_color_page_tab" />
 
         <View
             android:layout_width="0.5dip"
@@ -46,8 +46,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#fff"
-            android:textColor="@drawable/text_color_page_tab"
-            android:text="满意" />
+            android:text="满意"
+            android:textColor="@drawable/text_color_page_tab" />
 
         <View
             android:layout_width="0.5dip"
@@ -60,8 +60,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#fff"
-            android:textColor="@drawable/text_color_page_tab"
-            android:text="一般" />
+            android:text="一般"
+            android:textColor="@drawable/text_color_page_tab" />
 
         <View
             android:layout_width="0.5dip"
@@ -70,327 +70,20 @@
 
     </RadioGroup>
 
-    <ScrollView
+    <ListView
+        android:layout_weight="1"
+        android:id="@+id/listView_reviews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_order_btn"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="15********6"
-                    android:textSize="14dip" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="评价时间：2015-06-24 00:42"
-                    android:textSize="14dip" />
-
-
-            </LinearLayout>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dip"
-                android:background="#99000000"
-                android:textSize="14dip" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="10dip"
-                android:text="相关评论000000000000000000000000000000000000000"
-                android:textSize="14dip" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dip"
-                android:background="#99000000"
-                android:textSize="14dip" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:text="下订单时间：2015-16-14 10:40"
-                android:textSize="14dip" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dip"
-                android:background="@drawable/bg_order_btn"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="15********6"
-                        android:textSize="14dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="评价时间：2015-06-24 00:42"
-                        android:textSize="14dip" />
-
-
-                </LinearLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dip"
-                    android:background="#99000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:layout_marginTop="10dip"
-                    android:text="相关评论000000000000000000000000000000000000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dip"
-                    android:background="#99000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:text="下订单时间：2015-16-14 10:40"
-                    android:textSize="14dip" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dip"
-                android:background="@drawable/bg_order_btn"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="15********6"
-                        android:textSize="14dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="评价时间：2015-06-24 00:42"
-                        android:textSize="14dip" />
-
-
-                </LinearLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dip"
-                    android:background="#99000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:layout_marginTop="10dip"
-                    android:text="相关评论000000000000000000000000000000000000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dip"
-                    android:background="#99000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:text="下订单时间：2015-16-14 10:40"
-                    android:textSize="14dip" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dip"
-                android:background="@drawable/bg_order_btn"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="15********6"
-                        android:textSize="14dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="评价时间：2015-06-24 00:42"
-                        android:textSize="14dip" />
-
-
-                </LinearLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dip"
-                    android:background="#99000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:layout_marginTop="10dip"
-                    android:text="相关评论000000000000000000000000000000000000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dip"
-                    android:background="#99000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:text="下订单时间：2015-16-14 10:40"
-                    android:textSize="14dip" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_order_btn"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="15********6"
-                        android:textSize="14dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="评价时间：2015-06-24 00:42"
-                        android:textSize="14dip" />
-
-
-                </LinearLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dip"
-                    android:background="#99000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:layout_marginTop="10dip"
-                    android:text="相关评论000000000000000000000000000000000000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dip"
-                    android:background="#99000000"
-                    android:textSize="14dip" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:text="下订单时间：2015-16-14 10:40"
-                    android:textSize="14dip" />
-
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-
-
-    <!--<android.support.v7.widget.RecyclerView--><!--android:id="@+id/recyclerview"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="#0f0"--><!--android:layout_weight="1.0">-->
-
-    <!--</android.support.v7.widget.RecyclerView>-->
-
+        android:background="@color/white"
+        android:divider="@color/divider_color"
+        android:dividerHeight="0.5dip"
+        android:listSelector="@drawable/bg_btn_translucent"
+        android:scrollbars="none"
+        android:choiceMode="singleChoice">
+
+    </ListView>
 
     <include layout="@layout/include_main_button" />
-
 
 </LinearLayout>

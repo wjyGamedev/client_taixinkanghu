@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -34,6 +35,7 @@ import java.util.Map;
 public class NursOrderActivity extends Activity implements View.OnClickListener {
 
     private ImageButton btn_back;
+    private Button btn_goto_main;
     private TextView page_title;
     public ListView lv_order;
     private LinearLayout btn_screening;
@@ -48,6 +50,7 @@ public class NursOrderActivity extends Activity implements View.OnClickListener 
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         page_title = (TextView) findViewById(R.id.page_title);
         btn_screening = (LinearLayout) findViewById(R.id.btn_screening);
+        btn_goto_main = (Button) findViewById(R.id.btn_goto_main);
 
         lv_order = (ListView) findViewById(R.id.lv_order_info);
         lv_order.setAdapter(arrayAdapter_worker);
@@ -60,6 +63,7 @@ public class NursOrderActivity extends Activity implements View.OnClickListener 
 
         btn_back.setOnClickListener(this);
         btn_screening.setOnClickListener(this);
+        btn_goto_main.setOnClickListener(this);
 
         lv_order.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -206,6 +210,9 @@ public class NursOrderActivity extends Activity implements View.OnClickListener 
                 break;
             case R.id.btn_screening:
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new NursOrderScreeningFragment()).commit();
+                break;
+            case R.id.btn_goto_main:
+                finish();
                 break;
         }
     }

@@ -84,7 +84,7 @@
             </LinearLayout>
         </ScrollView>
 
-        <include layout="@layout/item_rg_main" />
+        <include layout="@layout/include_main_button" />
     </LinearLayout>
 </FrameLayout>
 

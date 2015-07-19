@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,14 +48,19 @@ public class ChooseWorkerActivity extends Activity implements View.OnClickListen
     private ArrayAdapter<ChooseWorkerData> arrayAdapter_worker;
     private List<Map<String, Object>> mData;
 
-    private ChooseWorkerListViewAdapter adapter;
-
-    private LinearLayout linearLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_worker);
+
+
+        DisplayMetrics metrics=new DisplayMetrics();
+        int widthPixels=metrics.widthPixels;
+        int heightPixels=metrics.heightPixels;
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        System.out.println("widthPixels = " + widthPixels);
+        System.out.println("heightPixels = " + heightPixels);
+
 
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_goto_main = (Button) findViewById(R.id.btn_goto_main);
