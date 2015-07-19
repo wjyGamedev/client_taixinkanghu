@@ -65,6 +65,10 @@ public class DNurseBasicsList
 		return  true;
 	}
 
+	public HashMap<Integer, DNurseBasics> GetNurseBasicsHashMap()
+	{
+		return m_dNurseBasicsHashMap;
+	}
 
 	private HashMap<Integer, DNurseBasics> m_dNurseBasicsHashMap = new HashMap<Integer, DNurseBasics>();
 }

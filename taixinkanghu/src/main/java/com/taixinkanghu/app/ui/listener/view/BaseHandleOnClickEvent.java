@@ -12,24 +12,25 @@
  * 2015/7/19		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.listener;
+package com.taixinkanghu.app.ui.listener.view;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.Toast;
 
-import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.HandlerRTException;
 
-public class HandlerClickEventShopping extends BaseHandleOnClickEvent
+public class BaseHandleOnClickEvent extends IViewOnClickListener
 {
-	public HandlerClickEventShopping(Context context)
+	public BaseHandleOnClickEvent(Context context)
 	{
-		super(context);
+		m_context = context;
 	}
 
 	@Override
 	public void onClick(View v)
 	{
-		Toast.makeText(m_context, R.string.function_is_not_open, Toast.LENGTH_SHORT).show();
+		throw new HandlerRTException("extends BaseHandleOnClickEvent");
 	}
+
+	protected Context m_context = null;
 }

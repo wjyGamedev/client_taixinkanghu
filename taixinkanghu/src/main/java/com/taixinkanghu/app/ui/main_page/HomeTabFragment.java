@@ -38,8 +38,8 @@ import android.widget.ViewFlipper;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.data.DMainPageImages;
-import com.taixinkanghu.app.model.listener.HandlerClickEventNursingOrder;
-import com.taixinkanghu.app.model.listener.HandlerClickEventShopping;
+import com.taixinkanghu.app.ui.listener.view.HandlerClickEventNursingOrder;
+import com.taixinkanghu.app.ui.listener.view.HandlerClickEventShopping;
 
 import java.util.ArrayList;
 

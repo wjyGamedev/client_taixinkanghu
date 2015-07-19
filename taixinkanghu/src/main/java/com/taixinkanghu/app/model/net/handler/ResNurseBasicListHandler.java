@@ -26,7 +26,7 @@ public class ResNurseBasicListHandler extends IResponseListener
 	@Override
 	public void onResponse(JSONObject response)
 	{
-		boolean bReturnFlag = DNurseContainer.getInstance().serialBasiclist(response);
+		boolean bReturnFlag = DNurseContainer.GetInstance().serialBasiclist(response);
 		if (bReturnFlag == false)
 		{
 			Log.w("error", "bReturnFlag == false");

@@ -31,6 +31,7 @@ public class DNurseBasics
 			m_iID = response.getInt(DataConfig.NURSE_ID);
 			m_iHospitalID = response.getInt(DataConfig.NURSE_HOSPITAL_ID);
 			m_strName = response.getString(DataConfig.NURSE_NAME);
+			m_iStarLevel = response.getInt(DataConfig.NURSE_STAR_LEVEL);
 			m_iAge = response.getInt(DataConfig.NURSE_AGE);
 			m_strHomeTown = response.getString(DataConfig.NURSE_HOMETOWN);
 
@@ -57,47 +58,52 @@ public class DNurseBasics
 		return true;
 	}
 
-	public int getiID()
+	public int getID()
 	{
 		return m_iID;
 	}
 
-	public int getiHospitalID()
+	public int getHospitalID()
 	{
 		return m_iHospitalID;
 	}
 
-	public String getStrName()
+	public String getName()
 	{
 		return m_strName;
 	}
 
-	public int getiAge()
+	public int getStarLevel()
+	{
+		return m_iStarLevel;
+	}
+
+	public int getAge()
 	{
 		return m_iAge;
 	}
 
-	public String getStrHomeTown()
+	public String getHomeTown()
 	{
 		return m_strHomeTown;
 	}
 
-	public String getStrNursingExp()
+	public String getNursingExp()
 	{
 		return m_strNursingExp;
 	}
 
-	public String getStrNursingLevel()
+	public String getNursingLevel()
 	{
 		return m_strNursingLevel;
 	}
 
-	public int getiServiceChargePerDay()
+	public int getServiceChargePerDay()
 	{
 		return m_iServiceChargePerDay;
 	}
 
-	public String getStrServiceStatus()
+	public String getServiceStatus()
 	{
 		return m_strServiceStatus;
 	}
@@ -108,6 +114,7 @@ public class DNurseBasics
 	private int    m_iID             = 0;          //ID
 	private int	m_iHospitalID	   = 0;			 //hospital ID
 	private String m_strName         = null;      //姓名
+	private int    m_iStarLevel	   = 0;			//星级
 	private int    m_iAge            = 0;         //年龄
 	private String m_strHomeTown     = null; 	//籍贯
 	private String m_strNursingExp   = null;		//护理经验

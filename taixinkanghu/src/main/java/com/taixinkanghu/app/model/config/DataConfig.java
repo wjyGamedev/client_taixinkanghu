@@ -25,6 +25,7 @@ public class DataConfig
 	public final static String NURSE_ID = "id";
 	public final static String NURSE_HOSPITAL_ID = "hospital_id";
 	public final static String NURSE_NAME = "name";
+	public final static String NURSE_STAR_LEVEL = "star_level";
 	public final static String NURSE_AGE = "age";
 	public final static String NURSE_HOMETOWN = "hometown";
 	public final static String NURSE_NURING_EXP = "nursing_exp";

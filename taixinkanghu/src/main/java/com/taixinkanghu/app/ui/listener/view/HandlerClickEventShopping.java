@@ -12,17 +12,17 @@
  * 2015/7/19		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.listener;
+package com.taixinkanghu.app.ui.listener.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
+import android.widget.Toast;
 
-import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
+import com.taixinkanghu.R;
 
-public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
+public class HandlerClickEventShopping extends BaseHandleOnClickEvent
 {
-	public HandlerClickEventNursingOrder(Context context)
+	public HandlerClickEventShopping(Context context)
 	{
 		super(context);
 	}
@@ -30,7 +30,6 @@ public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
 	@Override
 	public void onClick(View v)
 	{
-		m_context.startActivity(new Intent(m_context, ChooseNurseActivity.class));
+		Toast.makeText(m_context, R.string.function_is_not_open, Toast.LENGTH_SHORT).show();
 	}
-
 }
