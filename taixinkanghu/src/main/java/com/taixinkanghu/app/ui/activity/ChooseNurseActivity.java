@@ -65,12 +65,7 @@ public class ChooseNurseActivity extends Activity
 
 
 
-        page_title.setText("我自己选护理员");
-
-
-
-
-
+        page_title.setText(R.string.owner_choose_nurse);
         lv_worker.setAdapter(arrayAdapter_worker);
 
         mData = getData();
