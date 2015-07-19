@@ -188,60 +188,6 @@ public class ChooseWorkerActivity extends Activity implements View.OnClickListen
         return list;
     }
 
-
-//    private LinearLayoutManager mLayoutManager;
-//    private RecyclerView rv;
-//
-//    private static final int CHOOSE_WORKER = 0;
-//    private ChooseWorkerData[] data = new ChooseWorkerData[]{
-//            new ChooseWorkerData(1),
-//            new ChooseWorkerData(2),
-//            new ChooseWorkerData(1),
-//            new ChooseWorkerData(1),
-//            new ChooseWorkerData(2),
-//            new ChooseWorkerData(1),
-//            new ChooseWorkerData(1),
-//            new ChooseWorkerData(2),
-//            new ChooseWorkerData(1),
-//    };
-//
-//    private void initRecyclerView() {
-//
-//        mLayoutManager = new LinearLayoutManager(this);
-//
-//        rv = (RecyclerView) findViewById(R.id.recyclerview);
-//
-//        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//
-//        rv.setLayoutManager(mLayoutManager);
-//
-//        rv.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), rv, new RecyclerItemClickListener.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemLongClick(View view, int position) {
-////                Toast.makeText(getApplicationContext(), "长按" + position, Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                switch (position) {
-//                    case CHOOSE_WORKER:
-//                        //弹出fragment，选择自选、或者推荐
-////                        getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment, new Select_the_way()).commit();
-//                        //直接打开自选界面
-//                        startActivity(new Intent(ChooseWorkerActivity.this, WorkerInfoActivity.class));
-//                        break;
-////                    case 1:
-////                        Toast.makeText(getApplicationContext(), "功能暂未开放", Toast.LENGTH_SHORT).show();
-////                        break;
-//                }
-//            }
-//        }));
-//
-//        rv.setAdapter(new RecyclerViewAdapter(data));
-//        rv.setOnClickListener(this);
-//    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
