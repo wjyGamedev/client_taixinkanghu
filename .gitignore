@@ -9,3 +9,5 @@
 /taixinkanghu/*.apk
 /.idea/inspectionProfiles
 /.idea/misc.xml
+/app/build
+/viewflow/build
