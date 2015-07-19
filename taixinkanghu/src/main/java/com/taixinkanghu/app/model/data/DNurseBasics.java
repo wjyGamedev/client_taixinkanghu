@@ -31,6 +31,7 @@ public class DNurseBasics
 		try
 		{
 			m_iID = response.getInt(DataConfig.NURSE_ID);
+			m_iHospitalID = response.getInt(DataConfig.NURSE_HOSPITAL_ID);
 			m_strName = response.getString(DataConfig.NURSE_NAME);
 			m_iAge = response.getInt(DataConfig.NURSE_AGE);
 			m_strHomeTown = response.getString(DataConfig.NURSE_HOMETOWN);
@@ -46,6 +47,8 @@ public class DNurseBasics
 
 			itmp = response.getInt(DataConfig.NURSE_SERVICE_STATUS);
 			m_strServiceStatus = NurseServiceStatus.GetStatusByInteger(itmp);
+
+
 		}
 		catch (JSONException e)
 		{
@@ -59,6 +62,11 @@ public class DNurseBasics
 	public int getiID()
 	{
 		return m_iID;
+	}
+
+	public int getiHospitalID()
+	{
+		return m_iHospitalID;
 	}
 
 	public String getStrName()
@@ -90,10 +98,17 @@ public class DNurseBasics
 	{
 		return m_iServiceChargePerDay;
 	}
+
+	public String getStrServiceStatus()
+	{
+		return m_strServiceStatus;
+	}
+
 	/**
 	 * 数据区
 	 */
 	private int    m_iID             = 0;          //ID
+	private int	m_iHospitalID	   = 0;			 //hospital ID
 	private String m_strName         = null;      //姓名
 	private int    m_iAge            = 0;         //年龄
 	private String m_strHomeTown     = null; 	//籍贯

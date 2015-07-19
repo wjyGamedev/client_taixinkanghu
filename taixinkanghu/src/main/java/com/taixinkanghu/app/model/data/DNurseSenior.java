@@ -96,12 +96,12 @@ public class DNurseSenior
 	 */
 	private int m_iID = 0;          					//ID
 
-	private int    m_iJobNum          = 0;            //工号
-	private String m_strLanguageLevel = null;    	//语言水平
-	private String m_strEducation     = null;        //文化程度
-	private String m_strNation = null;				//民族
-	private String m_strIntro       = null; 		               	//自我介绍
-	private String m_strDepartments = null; 	//擅长科室
-	private String m_strCertificate = null; 	//持有证书
+	private int    m_iJobNum          = 0;        //工号
+	private String m_strLanguageLevel = null;    //语言水平
+	private String m_strEducation     = null;    //文化程度
+	private String m_strNation = null;			//民族
+	private String m_strIntro       = null; 		//自我介绍
+	private String m_strDepartments = null; 		//擅长科室
+	private String m_strCertificate = null; 		//持有证书
 	private String m_strServiceContent = null;								//服务内容
 }
