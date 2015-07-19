@@ -96,7 +96,7 @@ public class NetService extends Service
 		RequestQueue queue = BaseHttp.getInstance().getRequestQueue();
 
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
-														NetConfig.s_testAddress,
+														NetConfig.s_hospitalListAddress,
 														null,
 														onReqHospitalListSuccessListener(),
 														onReqHospitalListErrorListener());
