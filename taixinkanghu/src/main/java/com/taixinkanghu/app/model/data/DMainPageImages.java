@@ -26,6 +26,11 @@ public class DMainPageImages
 {
 	private DMainPageImages()
 	{
+		initTestData();
+	}
+
+	private void initTestData()
+	{
 		m_ImageArrayList.add(R.drawable.img_company);
 		m_ImageArrayList.add(R.drawable.img_promotions);
 	}

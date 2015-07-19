@@ -9,7 +9,7 @@
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/7/11		WangJY		1.0.0		create
+ * 2015/7/18		WangJY		1.0.0		create
  */
 
 package com.taixinkanghu.app.model.data;
@@ -24,23 +24,29 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class DHospitalList
+public class DNurseList
 {
-	private DHospitalList()
+	private DNurseList()
 	{
+		initDataTest();
 	}
 
-	public static DHospitalList getInstance()
+	private void initDataTest()
 	{
-		return s_dHospitalList;
+
 	}
 
-	public boolean serialization(JSONObject response)
+	public static DNurseList getInstance()
 	{
-		if (m_dHospitalHashMap != null &&
-				m_dHospitalHashMap.size() != 0)
+		return s_dNurseList;
+	}
+
+	public boolean serialization(JSONObject response) throws JSONException
+	{
+		if (m_dNurseHashMap != null &&
+				m_dNurseHashMap.size() != 0)
 		{
-			m_dHospitalHashMap.clear();
+			m_dNurseHashMap.clear();
 		}
 
 		JSONArray jsonArray = null;
@@ -58,19 +64,13 @@ public class DHospitalList
 			return false;
 
 		JSONObject jsonObject = null;
-		DHospital hospital = null;
+		DNurse dNurse = null;
 		for (int index = 0; index < jsonArray.length(); index++)
 		{
 
 			try
 			{
 				jsonObject=(JSONObject)jsonArray.get(index);
-				hospital = new DHospital();
-				hospital.serialization(jsonObject);
-
-				Integer iHospitalID = jsonObject.getInt(DataConfig.DHOSPITAL_ID);
-				m_dHospitalHashMap.put(iHospitalID, hospital);
-
 			}
 			catch (JSONException e)
 			{
@@ -79,11 +79,31 @@ public class DHospitalList
 				return false;
 			}
 
+			dNurse = new DNurse();
+			dNurse.serialization(jsonObject);
+
+			Integer iHospitalID = null;
+			try
+			{
+				iHospitalID = jsonObject.getInt(DataConfig.NURSE_ID);
+			}
+			catch (JSONException e)
+			{
+				e.printStackTrace();
+				Log.e("error", e.getMessage().toString());
+				return false;
+			}
+
+			m_dNurseHashMap.put(iHospitalID, dNurse);
 		}
 		return  true;
 
 	}
+	/**
+	 * 数据区
+	 */
+	private static DNurseList               s_dNurseList    = new DNurseList();
+	private        HashMap<Integer, DNurse> m_dNurseHashMap = new HashMap<Integer, DNurse>();
 
-	private static DHospitalList           s_dHospitalList    = new DHospitalList();
-	private        HashMap<Integer, DHospital> m_dHospitalHashMap = new HashMap<Integer, DHospital>();
+
 }

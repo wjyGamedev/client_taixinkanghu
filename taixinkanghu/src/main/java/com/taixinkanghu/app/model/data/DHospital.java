@@ -29,15 +29,6 @@ public class DHospital
 		try
 		{
 			m_iID = response.getInt(DataConfig.DHOSPITAL_ID);
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return  false;
-		}
-		try
-		{
 			m_strName = response.getString(DataConfig.DHOSPITAL_NAME);
 		}
 		catch (JSONException e)

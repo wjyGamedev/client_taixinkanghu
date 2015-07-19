@@ -35,13 +35,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.data.DMainPageImages;
 import com.taixinkanghu.app.ui.activity.ChooseWorkerActivity;
-import com.taixinkanghu.app.ui.activity.SaleInfoActivity;
 
 import java.util.ArrayList;
 
@@ -194,16 +194,19 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
         }
 
         //功能区初始化
+        //这里先后面按钮，后前面按钮
         m_gridLayout.setColumnCount(MainActivityConfig.MAIN_FUNCTION_NUM);
         View view = null;
         view = setFunctionWidget(this.getActivity(), R.drawable.main_shopping, MainActivityConfig.FUNC_SHOPPING_TEXT);
         view.setOnClickListener(m_impNursingOrderClickListener);
+		view.setTag(MainActivityConfig.FUNC_SHOPPING_FLAG);
         m_gridLayout.addView(view, MainActivityConfig.MAIN_FUNCTION_GROUP_FLAG);
 
 
         view = setFunctionWidget(this.getActivity(), R.drawable.main_appointment_nursing, MainActivityConfig
                 .FUNC_APPOINTMENT_NURSING_TEXT);
         view.setOnClickListener(m_impShoppingClickListener);
+		view.setTag(MainActivityConfig.FUNC_APPOINTMENT_NURSING_FALG);
         m_gridLayout.addView(view, MainActivityConfig.MAIN_FUNCTION_GROUP_FLAG);
 
         //下面文字区
@@ -231,8 +234,20 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
     private class ImpFuncClickListener implements View.OnClickListener {
 
         @Override
-        public void onClick(View v) {
-            startActivity(new Intent(getActivity(), ChooseWorkerActivity.class));
+        public void onClick(View v)
+		{
+			if (v.getTag().equals(MainActivityConfig.FUNC_APPOINTMENT_NURSING_FALG))
+			{
+				startActivity(new Intent(getActivity(), ChooseWorkerActivity.class));
+			}
+			else if (v.getTag().equals(MainActivityConfig.FUNC_SHOPPING_FLAG))
+			{
+				Toast.makeText(getActivity(), R.string.function_is_not_open, Toast.LENGTH_SHORT).show();
+			}
+			else
+			{
+				Log.e("error", "v.getTag() is error!");
+			}
         }
     }
 
