@@ -66,6 +66,10 @@
 	<string name="junior_high_school_level_and_below">初中及以下水平</string>
 	<string name="senior_middle_schoole">高中</string>
 
+	<string name="nurse_intro">自我介绍:</string>
+	<string name="nurse_departments">擅长科室:</string>
+	<string name="nurse_certificate">持有证书:</string>
+	<string name="nurse_service_content">服务内容:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
