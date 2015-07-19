@@ -4,6 +4,7 @@
     android:id="@+id/worker_btn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_bule_frame_all"
     android:orientation="vertical">
 
     <LinearLayout
@@ -153,9 +154,4 @@
     </LinearLayout>
 
 
-    <ImageView
-        android:id="@+id/ib_line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/main_color" />
 </LinearLayout>
