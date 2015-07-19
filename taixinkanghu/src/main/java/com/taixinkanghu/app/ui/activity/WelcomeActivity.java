@@ -49,14 +49,12 @@ public class WelcomeActivity extends Activity
 	protected void onRestart()
 	{
 		super.onRestart();
-		m_eventBus.post(new QuestHospitalListEvent());
 	}
 
 	@Override
 	protected void onResume()
 	{
 		super.onResume();
-		m_eventBus.post(new QuestHospitalListEvent());
 	}
 
 	private Handler  mHandler   = new Handler()
