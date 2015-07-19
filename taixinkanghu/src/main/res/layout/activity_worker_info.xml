@@ -328,7 +328,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_order_btn"
+                        android:background="@drawable/bg_bule_frame_bottom"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingBottom="10.0dip"
@@ -340,6 +340,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:layout_marginLeft="15dip"
                             android:text="服务价格："
                             android:textColor="@color/text_color_black"
                             android:textSize="14.0sp" />
@@ -363,6 +364,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="3.0dip"
+                            android:layout_marginRight="15dip"
                             android:layout_weight="1.0"
                             android:text="元/天"
                             android:textColor="@color/text_color_gray"
@@ -375,7 +377,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10.0dip"
-                        android:background="@drawable/bg_order_btn"
+                        android:background="@drawable/bg_bule_frame_top"
                         android:gravity="center_vertical"
                         android:paddingBottom="10.0dip"
                         android:paddingTop="10.0dip">
@@ -384,6 +386,7 @@
                             android:id="@id/level_des"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dip"
                             android:layout_weight="1.0"
                             android:text="近日陪护时间安排"
                             android:textColor="@color/text_color_black"
@@ -393,6 +396,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10.0dip"
+                            android:layout_marginRight="15.0dip"
                             android:hint=">"
                             android:textColorHint="@color/text_color_gray"
                             android:textSize="14.0sp" />
@@ -524,7 +528,6 @@
                                     android:id="@id/mobile"
                                     android:layout_width="wrap_content"
                                     android:layout_height="18.0dip"
-                                    android:layout_marginTop="5.0dip"
                                     android:text="非常满意"
                                     android:textColor="@color/text_color_black"
                                     android:textSize="16.0sp" />
@@ -591,7 +594,6 @@
                                     android:id="@id/mobile"
                                     android:layout_width="wrap_content"
                                     android:layout_height="18.0dip"
-                                    android:layout_marginTop="5.0dip"
                                     android:text="非常满意"
                                     android:textColor="@color/text_color_black"
                                     android:textSize="16.0sp" />
@@ -659,7 +661,6 @@
                                     android:id="@id/mobile"
                                     android:layout_width="wrap_content"
                                     android:layout_height="18.0dip"
-                                    android:layout_marginTop="5.0dip"
                                     android:text="非常满意"
                                     android:textColor="@color/text_color_black"
                                     android:textSize="16.0sp" />
@@ -675,8 +676,13 @@
 
                             </LinearLayout>
                         </LinearLayout>
-
                     </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dip"
+                        android:background="@color/main_color"/>
 
                     <LinearLayout
                         android:id="@id/order_title"
@@ -774,6 +780,7 @@
                             android:layout_marginTop="3.0dip"
                             android:textColor="@color/text_color_black"
                             android:textSize="14.0sp" />
+
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>

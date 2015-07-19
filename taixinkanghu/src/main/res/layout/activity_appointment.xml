@@ -81,7 +81,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dip"
+                android:layout_height="1.0dip"
                 android:background="@color/divider_color" />
 
             <LinearLayout
@@ -151,9 +151,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dip"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_all"
+                    android:background="@drawable/bg_bule_frame_top"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -184,9 +185,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dip"
                     android:layout_weight="1"
                     android:background="@drawable/bg_bule_frame_all"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -217,9 +219,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dip"
                     android:layout_weight="1"
                     android:background="@drawable/bg_bule_frame_all"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -250,9 +253,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dip"
                     android:layout_weight="1"
                     android:background="@drawable/bg_bule_frame_all"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -283,9 +287,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dip"
                     android:layout_weight="1"
                     android:background="@drawable/bg_bule_frame_all"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -316,9 +321,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dip"
                     android:layout_weight="1"
                     android:background="@drawable/bg_bule_frame_all"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -349,9 +355,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dip"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bule_frame_all"
+                    android:background="@drawable/bg_bule_frame_bottom"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -466,9 +473,9 @@
                     android:layout_height="64dp"
                     android:layout_marginLeft="15dip"
                     android:layout_marginRight="15dip"
+                    android:hint="备注（选填）："
                     android:imeOptions="actionGo"
                     android:singleLine="true"
-                    android:hint="备注（选填）："
                     android:textColorHint="@color/text_color_gray"
                     android:textSize="14dip" />
 
@@ -510,8 +517,8 @@
             android:id="@id/btn_goto_main"
             android:layout_width="match_parent"
             android:layout_height="48.0dip"
-            android:background="@drawable/bg_btn_main_color"
             android:layout_weight="2"
+            android:background="@drawable/bg_btn_main_color"
             android:text="首页"
             android:textColor="#ffffffff"
             android:textSize="20.0sp" />
@@ -524,8 +531,8 @@
             android:id="@id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="48.0dip"
-            android:background="@drawable/bg_btn_main_color"
             android:layout_weight="1"
+            android:background="@drawable/bg_btn_main_color"
             android:text="确定预约"
             android:textColor="#ffffffff"
             android:textSize="20.0sp" />
