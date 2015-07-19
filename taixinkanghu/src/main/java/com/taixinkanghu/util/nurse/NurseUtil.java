@@ -15,7 +15,7 @@
 package com.taixinkanghu.util.nurse;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.util.android.FragmentUtil;
+import com.taixinkanghu.util.android.AppUtil;
 
 public class NurseUtil
 {
@@ -34,21 +34,21 @@ public class NurseUtil
 		if (iLevel < s_iJuniorHighSchoolLevelAndBelow || iLevel > s_iEndLevel)
 		{
 			//TODO:error
-			return FragmentUtil.GetInstance().getResources().getText(R.string.junior_high_school_level_and_below).toString();
+			return AppUtil.getResources().getText(R.string.junior_high_school_level_and_below).toString();
 		}
 
 		if (iLevel == s_iJuniorHighSchoolLevelAndBelow)
 		{
-			return FragmentUtil.GetInstance().getResources().getText(R.string.junior_high_school_level_and_below).toString();
+			return AppUtil.getResources().getText(R.string.junior_high_school_level_and_below).toString();
 		}
 		else if (iLevel == s_iSeniorMiddleSchoole)
 		{
-			return FragmentUtil.GetInstance().getResources().getText(R.string.senior_middle_schoole).toString();
+			return AppUtil.getResources().getText(R.string.senior_middle_schoole).toString();
 		}
 		else
 		{
 			//TODO:error
-			return FragmentUtil.GetInstance().getResources().getText(R.string.junior_high_school_level_and_below).toString();
+			return AppUtil.getResources().getText(R.string.junior_high_school_level_and_below).toString();
 		}
 	}
 
@@ -78,20 +78,20 @@ public class NurseUtil
 		String strBits = null;
 		if (iBits == s_iGeneral)
 		{
-			strBits = FragmentUtil.GetInstance().getResources().getText(R.string.language_level_general).toString();
+			strBits = AppUtil.getResources().getText(R.string.language_level_general).toString();
 		}
 		else if (iBits == s_iGood)
 		{
-			strBits = FragmentUtil.GetInstance().getResources().getText(R.string.language_level_good).toString();
+			strBits = AppUtil.getResources().getText(R.string.language_level_good).toString();
 		}
 		else if (iBits == s_iSkilled)
 		{
-			strBits = FragmentUtil.GetInstance().getResources().getText(R.string.language_level_skilled).toString();
+			strBits = AppUtil.getResources().getText(R.string.language_level_skilled).toString();
 		}
 		else
 		{
 			//TODO:ERROR
-			strBits = FragmentUtil.GetInstance().getResources().getText(R.string.language_level_general).toString();
+			strBits = AppUtil.getResources().getText(R.string.language_level_general).toString();
 		}
 
 		//语种
@@ -99,16 +99,16 @@ public class NurseUtil
 		String  strType       = null;
 		if (iLanguageType == s_iCN)
 		{
-			strType = FragmentUtil.GetInstance().getResources().getText(R.string.language_type_cn).toString();
+			strType = AppUtil.getResources().getText(R.string.language_type_cn).toString();
 		}
 		else if (iLanguageType == s_iEN)
 		{
-			strType = FragmentUtil.GetInstance().getResources().getText(R.string.language_type_en).toString();
+			strType = AppUtil.getResources().getText(R.string.language_type_en).toString();
 		}
 		else
 		{
 			//TODO:ERROR
-			strType = FragmentUtil.GetInstance().getResources().getText(R.string.language_type_cn).toString();
+			strType = AppUtil.getResources().getText(R.string.language_type_cn).toString();
 		}
 
 		return (strBits + strType);
@@ -134,10 +134,10 @@ public class NurseUtil
 		if (iStatus < s_iFree || iStatus > s_iServices)
 		{
 			//TODO:Log
-			return FragmentUtil.GetInstance().getResources().getText(R.string.nurse_status_free).toString();
+			return AppUtil.getResources().getText(R.string.nurse_status_free).toString();
 		}
 
-		return FragmentUtil.GetInstance().getResources().getText(R.string.nurse_status_services).toString();
+		return AppUtil.getResources().getText(R.string.nurse_status_services).toString();
 	}
 
 	public static String GetStatusByString(String strStatus)
@@ -175,15 +175,15 @@ public class NurseUtil
 		if (iExp < 0 )
 		{
 			//TODO:Log error
-			return FragmentUtil.GetInstance().getResources().getText(R.string.no_nursing_exp).toString();
+			return AppUtil.getResources().getText(R.string.no_nursing_exp).toString();
 		}
 		else if (iExp == 0)
 		{
-			return FragmentUtil.GetInstance().getResources().getText(R.string.no_nursing_exp).toString();
+			return AppUtil.getResources().getText(R.string.no_nursing_exp).toString();
 		}
 		else
 		{
-			return (iExp.toString() + FragmentUtil.GetInstance().getResources().getText(R.string.year_nursing_exp).toString());
+			return (iExp.toString() + AppUtil.getResources().getText(R.string.year_nursing_exp).toString());
 		}
 
 	}
@@ -209,7 +209,7 @@ public class NurseUtil
 			return s_strJunior;
 		}
 
-		s_strJunior = FragmentUtil.GetInstance().getResources().getText(R.string.nurse_junior).toString();
+		s_strJunior = AppUtil.getResources().getText(R.string.nurse_junior).toString();
 		return s_strJunior;
 	}
 
@@ -220,7 +220,7 @@ public class NurseUtil
 			return s_strIntermediates;
 		}
 
-		s_strIntermediates = FragmentUtil.GetInstance().getResources().getText(R.string.nurse_junior).toString();
+		s_strIntermediates = AppUtil.getResources().getText(R.string.nurse_junior).toString();
 		return s_strIntermediates;
 	}
 
@@ -231,7 +231,7 @@ public class NurseUtil
 			return s_strSenior;
 		}
 
-		s_strSenior = FragmentUtil.GetInstance().getResources().getText(R.string.nurse_junior).toString();
+		s_strSenior = AppUtil.getResources().getText(R.string.nurse_junior).toString();
 		return s_strSenior;
 	}
 
@@ -242,7 +242,7 @@ public class NurseUtil
 			return s_strSuper;
 		}
 
-		s_strSuper = FragmentUtil.GetInstance().getResources().getText(R.string.nurse_junior).toString();
+		s_strSuper = AppUtil.getResources().getText(R.string.nurse_junior).toString();
 		return s_strSuper;
 	}
 
@@ -278,7 +278,7 @@ public class NurseUtil
 	 */
 	public static String GetIntroByString(String strIntro)
 	{
-		return  (strIntro + FragmentUtil.GetInstance().getResources().getText(R.string.nurse_intro).toString());
+		return  (strIntro + AppUtil.getResources().getText(R.string.nurse_intro).toString());
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class NurseUtil
 	 */
 	public static String GetDepartmentsByString(String strDepartments)
 	{
-		return  (strDepartments + FragmentUtil.GetInstance().getResources().getText(R.string.nurse_departments).toString());
+		return  (strDepartments + AppUtil.getResources().getText(R.string.nurse_departments).toString());
 	}
 
 	/**
@@ -294,7 +294,7 @@ public class NurseUtil
 	 */
 	public static String GetCertificateByString(String strCertificate)
 	{
-		return  (strCertificate + FragmentUtil.GetInstance().getResources().getText(R.string.nurse_certificate).toString());
+		return  (strCertificate + AppUtil.getResources().getText(R.string.nurse_certificate).toString());
 	}
 
 	/**
@@ -302,7 +302,7 @@ public class NurseUtil
 	 */
 	public static String GetServiceContentByString(String strServiceContent)
 	{
-		return  (strServiceContent + FragmentUtil.GetInstance().getResources().getText(R.string.nurse_service_content).toString());
+		return  (strServiceContent + AppUtil.getResources().getText(R.string.nurse_service_content).toString());
 	}
 
 }
