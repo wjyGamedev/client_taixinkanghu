@@ -36,7 +36,7 @@ public class MainActivityConfig
 	public final static String FUNC_SHOPPING_TEXT = "康复辅助用品";
 	public final static String FUNC_SHOPPING_FLAG = "FUNC_SHOPPING_FLAG";
 
-	public final static double COFFE_DELTA = 0.618;
+	public final static double COFFE_DELTA = 1.5;
 
 	public final static int MAIN_PERSONAL_TAB_INDEX = 1;
 }

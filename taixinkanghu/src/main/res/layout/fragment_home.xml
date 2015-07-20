@@ -61,20 +61,6 @@
 						</GridLayout>
 					</LinearLayout>
 
-					<LinearLayout
-						android:orientation="vertical"
-						android:layout_width="match_parent"
-						android:layout_height="match_parent"
-						android:id="@+id/others_linlayout">
-
-						<EditText
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:inputType="textMultiLine"
-							android:ems="10"
-							android:id="@+id/func_text"
-							/>
-					</LinearLayout>
 				</LinearLayout>
 			</ScrollView>
 		</LinearLayout>

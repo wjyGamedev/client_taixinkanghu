@@ -27,7 +27,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -208,20 +207,20 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
         m_gridLayout.addView(view, MainActivityConfig.MAIN_FUNCTION_GROUP_FLAG);
 
         //下面文字区
-        m_editText = (EditText) getActivity().findViewById(R.id.func_text);
-        m_editText.setBackground(null);
-        m_editText.setEnabled(false);
-        m_editText.setFocusable(false);
-        m_editText.setHorizontallyScrolling(false);
+//        m_editText = (EditText) getActivity().findViewById(R.id.func_text);
+//        m_editText.setBackground(null);
+//        m_editText.setEnabled(false);
+//        m_editText.setFocusable(false);
+//        m_editText.setHorizontallyScrolling(false);
 //        m_editText.setText(R.string.main_func_text);
 
 
     }
 
     private View setFunctionWidget(Context ctx, int iIcon, String inString) {
-        View view = LayoutInflater.from(ctx).inflate(R.layout.main_tab_item, null);
-        TextView textView = (TextView) view.findViewById(R.id.main_tab_textview);
-        ImageView imageView = (ImageView) view.findViewById(R.id.main_tab_imgview);
+        View view = LayoutInflater.from(ctx).inflate(R.layout.main_func_item, null);
+        TextView textView = (TextView) view.findViewById(R.id.main_func_textview);
+        ImageView imageView = (ImageView) view.findViewById(R.id.main_func_imgview);
         textView.setText(inString);
         imageView.setBackgroundResource(iIcon);
         imageView.getLayoutParams().width = (int) getResources().getDimension(R.dimen.func_imageview_width);
@@ -235,7 +234,7 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 	private GestureDetectorCompat         m_gestureDetectorCompat         = null;
 	private ViewFlipper                   m_viewFlipper                   = null;
 	private GridLayout                    m_gridLayout                    = null;
-	private EditText                      m_editText                      = null;
+//	private EditText                      m_editText                      = null;
 	private HandlerClickEventNursingOrder m_handlerClickEventNursingOrder = null;
 	private HandlerClickEventShopping m_handlerClickEventShopping = null;
 
