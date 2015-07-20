@@ -34,7 +34,7 @@
                     android:layout_marginLeft="10dip"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="服务地址  选择所在医院" />
+                    android:text="选择所在医院" />
 
                 <ImageView
                     android:layout_gravity="center_vertical"
@@ -60,7 +60,7 @@
                     android:layout_marginLeft="10dip"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="服务时间  选择服务时间" />
+                    android:text="选择服务时间" />
 
                 <ImageView
                     android:layout_gravity="center_vertical"
@@ -105,7 +105,7 @@
                             android:layout_marginLeft="10dip"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="筛选条件  选择筛选条件" />
+                            android:text="选择筛选条件" />
 
                         <ImageView
                             android:layout_gravity="center_vertical"
@@ -131,7 +131,7 @@
                             android:layout_marginLeft="10dip"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="排序条件  选择排序条件" />
+                            android:text="选择排序条件" />
 
                         <ImageView
                             android:layout_gravity="center_vertical"
