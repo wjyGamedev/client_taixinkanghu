@@ -44,9 +44,9 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
         view = inflater.inflate(R.layout.fragment_select_hospital, container, false);
         view.setOnClickListener(this);
 
-        btn1 = (Button) view.findViewById(R.id.item1);
-        btn2 = (Button) view.findViewById(R.id.item2);
-        btn3 = (Button) view.findViewById(R.id.item3);
+        btn1 = (Button) view.findViewById(R.id.all_item);
+        btn2 = (Button) view.findViewById(R.id.beijingtiantan_item);
+        btn3 = (Button) view.findViewById(R.id.beijingchaoyang_item);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -100,19 +100,19 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
                 case R.id.item1:
                     btn1.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.m_hospitalList.setText(btn1.getText());
+                    activity.m_hospitalListOld.setText(btn1.getText());
                     activity.selected_hospital = CHAOYANGYIYUAN;
                     break;
                 case R.id.item2:
                     btn2.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.m_hospitalList.setText(btn2.getText());
+                    activity.m_hospitalListOld.setText(btn2.getText());
                     activity.selected_hospital = TIANTANYIYUAN;
                     break;
                 case R.id.item3:
                     btn2.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.m_hospitalList.setText(btn3.getText());
+                    activity.m_hospitalListOld.setText(btn3.getText());
                     activity.selected_hospital = ZHONGLIUYIYUAN;
                     break;
                 default:
