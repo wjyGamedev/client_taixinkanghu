@@ -34,6 +34,10 @@ public class ChooseNurseActivity extends Activity
     public ListView lv_worker;
     private List<Map<String, Object>> mData;
 
+
+    private HandlerClickEventChooseNurse m_handlerClickEventChooseNurse = null;
+    private ChooseNurseAdapter           m_chooseNurseAdapter           = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +92,4 @@ public class ChooseNurseActivity extends Activity
         lv_worker.setAdapter(m_chooseNurseAdapter);
     }
 
-    private HandlerClickEventChooseNurse m_handlerClickEventChooseNurse = null;
-    private ChooseNurseAdapter           m_chooseNurseAdapter           = null;
 }
