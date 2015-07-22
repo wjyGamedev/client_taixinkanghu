@@ -65,7 +65,7 @@
             android:paddingRight="10.0dip">
 
             <Button
-                android:id="@id/item1"
+                android:id="@+id/all_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5.0dip"
@@ -81,7 +81,7 @@
                 android:visibility="visible" />
 
             <Button
-                android:id="@id/item2"
+                android:id="@+id/beijingtiantan_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5.0dip"
@@ -111,7 +111,7 @@
                 android:paddingRight="10.0dip">
 
                 <Button
-                    android:id="@id/item3"
+                    android:id="@+id/beijingchaoyang_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5.0dip"
@@ -127,7 +127,7 @@
                     android:visibility="visible" />
 
                 <Button
-                    android:id="@id/item4"
+                    android:id="@+id/yikeyuanzhongliu_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5.0dip"
@@ -149,7 +149,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="10dip"></LinearLayout>
+            android:layout_height="10dp"></LinearLayout>
 
     </LinearLayout>
 
