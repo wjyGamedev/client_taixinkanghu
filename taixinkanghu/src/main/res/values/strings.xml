@@ -18,44 +18,31 @@
     <string name="main_persional_popmenu_setting_name">我的设置</string>
 
 
+    //页面title
     <string name="owner_choose_nurse">我自己选护理员</string>
-
     <string name="about_us_title">泰心康护</string>
-
     <string name="service_title">泰心服务</string>
-
     <string name="faq_title">问题反馈</string>
-
     <string name="agreement_title">用户协议</string>
-
     <string name="worker_level_title">护理员级别</string>
-
     <string name="my_wealth_title">我的财富</string>
-
     <string name="my_setting_title">我的设置</string>
-
     <string name="my_sorce_title">我的积分</string>
-
     <string name="question_feed_back_title">问题反馈</string>
-
     <string name="login_title">用户注册</string>
-
     <string name="nurs_order_title">陪护订单</string>
-
     <string name="nurs_order_info_title">陪护订单</string>
-
     <string name="nurs_order_reviews_title">评价</string>
 
-    <string name="function_is_not_open">功能未开放</string>
 
+
+    <string name="function_is_not_open">功能未开放</string>
     <string name="nurse_junior">初级护理员</string>
 	<string name="intermediates_junior">中级护理员</string>
 	<string name="senior_junior">高级护理员</string>
 	<string name="super_junior">特级护理员</string>
-
 	<string name="no_nursing_exp">无护理经验</string>
 	<string name="year_nursing_exp">年护理经验</string>
-
 	<string name="nurse_status_free">空闲</string>
 	<string name="nurse_status_services">服务中</string>
 
@@ -110,4 +97,27 @@
     <string name="friday">五</string>
     <string name="saturday">六</string>
     <string name="display_complay_decription">company displays</string>
+
+    //康复辅助用品相关
+    <string name="search">搜索</string>
+    <string name="sales_volume">销量</string>
+    <string name="price">价格</string>
+    <string name="screening_conditions">筛选条件</string>
+    <string name="all">全部</string>
+    <string name="auxiliary_food_items">辅助进食用品</string>
+    <string name="relieve_symptoms_items">缓解症状用品</string>
+    <string name="prevention_of_infection_items">预防感染用品</string>
+    <string name="auxiliary_drainage_items">辅助排泄用品</string>
+    <string name="rehabilitation_exercise_equipment_items">康复训练用品</string>
+    <string name="life_support_items">生活辅助用品</string>
+    <string name="assistant_action_items">辅助行动用品</string>
+    <string name="other_items">其他用品</string>
+    <string name="item_name_title">思维 束腰带 X-002 透气护 腰肌劳损腰间盘突出辅助康复内赠磁垫</string>
+    <string name="currency_symbol">￥</string>
+    <string name="item_price">39.00</string>
+    <string name="item_evaluation">好评91%</string>
+    <string name="item_evaluation_times">11人</string>
+
+
+
 </resources>
