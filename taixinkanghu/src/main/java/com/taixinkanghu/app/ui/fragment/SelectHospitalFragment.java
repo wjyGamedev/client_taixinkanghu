@@ -1,7 +1,6 @@
 package com.taixinkanghu.app.ui.fragment;
 
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -15,7 +14,6 @@ import android.widget.LinearLayout;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
 import com.taixinkanghu.app.ui.activity.WorkerInfoMoreActivity;
-import com.taixinkanghu.app.ui.data.TempData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -102,19 +100,19 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
                 case R.id.item1:
                     btn1.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.tv_hospital.setText(btn1.getText());
+                    activity.m_hospitalList.setText(btn1.getText());
                     activity.selected_hospital = CHAOYANGYIYUAN;
                     break;
                 case R.id.item2:
                     btn2.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.tv_hospital.setText(btn2.getText());
+                    activity.m_hospitalList.setText(btn2.getText());
                     activity.selected_hospital = TIANTANYIYUAN;
                     break;
                 case R.id.item3:
                     btn2.setSelected(true);
                     getFragmentManager().popBackStack();
-                    activity.tv_hospital.setText(btn3.getText());
+                    activity.m_hospitalList.setText(btn3.getText());
                     activity.selected_hospital = ZHONGLIUYIYUAN;
                     break;
                 default:
