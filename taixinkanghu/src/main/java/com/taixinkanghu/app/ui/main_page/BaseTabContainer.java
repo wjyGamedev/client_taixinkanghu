@@ -21,7 +21,7 @@ import com.taixinkanghu.R;
 
 public class BaseTabContainer extends Fragment
 {
-	public void replaceFragment(Fragment fragment, boolean addToBackStack) {
+	public void setCurrentFragment(Fragment fragment, boolean addToBackStack) {
 		FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 		if (addToBackStack) {
 			transaction.addToBackStack(null);

@@ -15,6 +15,7 @@
 package com.taixinkanghu.app.ui.main_page;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,46 +23,59 @@ import android.view.ViewGroup;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.controller.CMainPage;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.UIRTException;
 
 public class PersonalTabContainer extends BaseTabContainer
 {
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	{
 		return inflater.inflate(R.layout.main_base_tab_framelayout, null);
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
+	public void onActivityCreated(Bundle savedInstanceState)
+	{
 		super.onActivityCreated(savedInstanceState);
-//		if (m_isHomeViewInited == false || m_isServiceViewInited == false || m_isCompanyViewInited == false) {
-			initView();
-//		}
+		initView();
 	}
 
-	private void initView() {
-        String lastTabTag = CMainPage.getInstance().getMainPage().getCurrentTabTag();
+	private void initView()
+	{
+		String lastTabTag = CMainPage.getInstance().getMainPage().getCurrentTabTag();
 		if (lastTabTag.equals(MainActivityConfig.MAIN_HOME_TAB_FLAG))
 		{
-			replaceFragment(new PersonalTabFragmentHome(), false);
-//			m_isHomeViewInited = true;
+			if (m_homeTabFragment == null)
+			{
+				m_homeTabFragment = new HomeTabFragment();
+			}
+			setCurrentFragment(m_homeTabFragment, false);
 		}
 		else if (lastTabTag.equals(MainActivityConfig.MAIN_SERVICE_TAB_FLAG))
 		{
-			replaceFragment(new PersonalTabFragmentService(), false);
-//			m_isServiceViewInited = true;
+			if (m_serviceTabFragment == null)
+			{
+				m_serviceTabFragment = new ServiceTabFragment();
+			}
+			setCurrentFragment(new PersonalTabFragmentService(), false);
 		}
 		else if (lastTabTag.equals(MainActivityConfig.MAIN_COMPANT_TAB_FLAG))
 		{
-			replaceFragment(new PersonalTabFragmentCompany(), false);
-//			m_isCompanyViewInited = true;
+			if (m_companyTabFragment == null)
+			{
+				m_companyTabFragment = new CompanyTabFragment();
+			}
+			setCurrentFragment(new PersonalTabFragmentCompany(), false);
 		}
 		else
 		{
-			//nothing
+			//TODO:error
+			throw new UIRTException("lastTabTag is invalid![lastTabTag:=" + lastTabTag + "]");
 		}
 	}
 
-//	private boolean m_isHomeViewInited;
-//	private boolean m_isServiceViewInited;
-//	private boolean m_isCompanyViewInited;
+	private Fragment m_homeTabFragment    = null;
+	private Fragment m_serviceTabFragment = null;
+	private Fragment m_companyTabFragment = null;
+
 }

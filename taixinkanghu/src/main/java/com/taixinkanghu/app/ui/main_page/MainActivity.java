@@ -1,33 +1,29 @@
 package com.taixinkanghu.app.ui.main_page;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TabHost;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.controller.CMainPage;
-import com.taixinkanghu.app.ui.activity.NursOrderActivity;
 import com.taixinkanghu.app.ui.activity.MySettingActivity;
 import com.taixinkanghu.app.ui.activity.MyWealthActivity;
+import com.taixinkanghu.app.ui.activity.NursOrderActivity;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnAfterTabChangeListener;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnBeforeTabChangeListener;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnTabClickListener;
+import com.taixinkanghu.widget.tab_item.TabItem;
 
 public class MainActivity extends FragmentActivity
 {
@@ -57,11 +53,11 @@ public class MainActivity extends FragmentActivity
 	@Override
 	protected void onStart()
 	{
+		super.onStart();
 		m_fragmentTabHost.setOnTabChangedListener(m_impTabChangeListener);
 		m_fragmentTabHost.setOnBeforeTabChangeListener(m_impBeforeTabChangeListener);
 		m_fragmentTabHost.setOnAfterTabChangeListener(m_impAfterTabChangeListener);
 		m_fragmentTabHost.setOnTabClickListener(m_impTabClickListener);
-		super.onStart();
 	}
 
 	private void initData()
@@ -80,31 +76,29 @@ public class MainActivity extends FragmentActivity
 		m_fragmentTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
 		TabHost.TabSpec tabSpec = null;
-		tabSpec = setIndicator(this,
-							  m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_HOME_TAB_FLAG),
-							   MainActivityConfig.MAIN_HOME_TAB_TEXT,
-							   R.drawable.main_tab_home_imgs
-							 );
+
+		tabSpec = initTabItem(	m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_HOME_TAB_FLAG),
+							   	MainActivityConfig.MAIN_HOME_TAB_TEXT,
+							   	R.drawable.main_tab_home_imgs
+							  );
 		m_fragmentTabHost.addTab(tabSpec, HomeTabContainer.class, null);
 
-		tabSpec = setIndicator(this,
-							   m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_PERSONAL_TAB_FLAG),
-							   MainActivityConfig.MAIN_PERSONAL_TAB_TEXT,
-							   R.drawable.main_tab_personal_imgs
-							  );
+		tabSpec = initTabItem(	m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_PERSONAL_TAB_FLAG),
+							  	MainActivityConfig.MAIN_PERSONAL_TAB_TEXT,
+							  	R.drawable.main_tab_personal_imgs
+							 );
 		m_fragmentTabHost.addTab(tabSpec, PersonalTabContainer.class, null);
 
-		tabSpec = setIndicator(MainActivity.this,
-							   m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_SERVICE_TAB_FLAG),
-							   MainActivityConfig.MAIN_SERVICE_TAB_TEXT,
-							   R.drawable.main_tab_service_imgs
-							  );
+		tabSpec = initTabItem(	m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_SERVICE_TAB_FLAG),
+							  	MainActivityConfig.MAIN_SERVICE_TAB_TEXT,
+							  R.drawable.main_tab_service_imgs
+							 );
 		m_fragmentTabHost.addTab(tabSpec, ServiceTabContainer.class, null
 					   );
 
-		tabSpec = setIndicator(MainActivity.this,
-							   m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_COMPANT_TAB_FLAG),
-							   MainActivityConfig.MAIN_COMPANT_TAB_TEXT, R.drawable.main_tab_company_imgs
+		tabSpec = initTabItem(m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_COMPANT_TAB_FLAG),
+							  MainActivityConfig.MAIN_COMPANT_TAB_TEXT,
+							  R.drawable.main_tab_company_imgs
 							  );
 		m_fragmentTabHost.addTab(tabSpec, CompanyTabContainer.class, null);
 
@@ -112,25 +106,12 @@ public class MainActivity extends FragmentActivity
 
 	}
 
-//	@Override
-//	public boolean onBeforeTabChanged(String tabId)
-//	{
-//		//弹出菜单
-//		if (tabId.equals(MainActivityConfig.MAIN_PERSONAL_TAB_FLAG))
-//		{
-//			if (m_popupMenu == null)
-//			{
-//				m_popupMenu = new PopupMenu(this, m_fragmentTabHost.getCurrentTabView());
-//				Menu menu = m_popupMenu.getMenu();
-//				MenuInflater menuInflater = getMenuInflater();
-//				menuInflater.inflate(R.menu.main_personal_popup_menu, menu);
-//				m_popupMenu.setOnMenuItemClickListener(m_impMenuItemClickListener);
-//			}
-//		}
-//		return true;
-//
-//	}
-
+	private TabHost.TabSpec initTabItem(TabHost.TabSpec spec, String strText, int iconID) {
+		TabItem tabItem = new TabItem(this);
+		tabItem.setText(strText);
+		tabItem.setImageResourceByID(iconID);
+		return spec.setIndicator(tabItem.getView());
+	}
 
 	@Override
 	public void onBackPressed() {
@@ -153,16 +134,6 @@ public class MainActivity extends FragmentActivity
 		if (!isPopFragment) {
 			finish();
 		}
-	}
-
-	private TabHost.TabSpec setIndicator(Context ctx, TabHost.TabSpec spec, String inString, int iIcon) {
-		View view = LayoutInflater.from(ctx).inflate(R.layout.main_tab_item, null);
-		TextView textView = (TextView)view.findViewById(R.id.main_tab_textview);
-		ImageView imageView = (ImageView)view.findViewById(R.id.main_tab_imgview);
-
-		textView.setText(inString);
-		imageView.setBackgroundResource(iIcon);
-		return spec.setIndicator(view);
 	}
 
 	private class ImpMenuItemClickListener implements OnMenuItemClickListener
@@ -229,14 +200,19 @@ public class MainActivity extends FragmentActivity
 		@Override
 		public void onTabClick(int index)
 		{
+			String currentTabTag = MainActivity.this.m_fragmentTabHost.getCurrentTabTag();
+
 			if (index == MainActivityConfig.MAIN_PERSONAL_TAB_INDEX)
 			{
 				if (m_popupMenu != null)
 				{
-					m_popupMenu.show();
+					if (CMainPage.getInstance().getMainPage().getCurrentTabTag() == currentTabTag)
+					{
+						m_popupMenu.show();
+					}
 				}
 			}
-			String currentTabTag = MainActivity.this.m_fragmentTabHost.getCurrentTabTag();
+
 			CMainPage.getInstance().getMainPage().setCurrentTabTag(currentTabTag);
 		}
 
@@ -291,4 +267,5 @@ public class MainActivity extends FragmentActivity
 	private ImpBeforeTabChangeListener 					 m_impBeforeTabChangeListener = null;
 	private ImpAfterTabChangeListener                    m_impAfterTabChangeListener  = null;
 	private ImpTabChangeListener		m_impTabChangeListener = null;
+
 }
