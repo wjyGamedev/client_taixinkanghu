@@ -57,7 +57,7 @@
 							android:layout_height="15dp"
 							android:layout_marginRight="10dip"
 							android:background="@mipmap/img_down"
-							android:id="@+id/dwon_hospital" />
+							android:id="@+id/dwon_hospital_img" />
 
 					</LinearLayout>
 
@@ -82,7 +82,8 @@
 							android:layout_width="15dp"
 							android:layout_height="15dp"
 							android:layout_marginRight="10dip"
-							android:background="@mipmap/img_down"/>
+							android:background="@mipmap/img_down"
+							android:id="@+id/down_date_img"/>
 
 					</LinearLayout>
 				</LinearLayout>
@@ -115,7 +116,8 @@
 							android:layout_width="15dp"
 							android:layout_height="15dp"
 							android:layout_marginRight="10dip"
-							android:background="@mipmap/img_down"/>
+							android:background="@mipmap/img_down"
+							android:id="@+id/down_screening_img"/>
 
 					</LinearLayout>
 
@@ -141,7 +143,8 @@
 							android:layout_width="15dp"
 							android:layout_height="15dp"
 							android:layout_marginRight="10dip"
-							android:background="@mipmap/img_down"/>
+							android:background="@mipmap/img_down"
+							android:id="@+id/down_sort_img"/>
 
 					</LinearLayout>
 				</LinearLayout>
@@ -152,10 +155,10 @@
 				android:layout_height="20dp"
 				android:background="@drawable/bg_bule_frame_bottom"
 				android:orientation="horizontal"
-                android:id="@+id/prompt_region">
+                android:id="@+id/tips_region">
 
 				<TextView
-					android:id="@+id/showDate"
+					android:id="@+id/data_tips"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:background="#fff"
@@ -174,7 +177,7 @@
                 android:layout_weight="0">
 
                 <ListView
-                    android:id="@+id/listView_workerinfo"
+                    android:id="@+id/nurse_display_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#ffffffff"
