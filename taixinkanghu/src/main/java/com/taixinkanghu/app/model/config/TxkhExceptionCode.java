@@ -29,6 +29,8 @@ public class TxkhExceptionCode
 
 	public static final Integer REX_WIDGET = 40000;
 
+	public static final Integer REX_UI = 50000;
+
 	/**
 	 * exception code
 	 */
