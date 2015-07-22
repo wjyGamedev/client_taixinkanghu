@@ -38,7 +38,7 @@ public class ServiceTabContainer extends BaseTabContainer
 	}
 
 	private void initView() {
-		replaceFragment(new ServiceTabFragment(), false);
+		setCurrentFragment(new ServiceTabFragment(), false);
 	}
 
 	private boolean m_isViewInited;

@@ -42,7 +42,7 @@ public class HomeTabContainer extends BaseTabContainer
 
 	private void initView()
 	{
-		replaceFragment(new HomeTabFragment(), false);
+		setCurrentFragment(new HomeTabFragment(), false);
 	}
 
 	private boolean m_isViewInited;

@@ -38,7 +38,7 @@ public class CompanyTabContainer extends BaseTabContainer
 	}
 
 	private void initView() {
-		replaceFragment(new CompanyTabFragment(), false);
+		setCurrentFragment(new CompanyTabFragment(), false);
 	}
 
 	private boolean m_isViewInited;
