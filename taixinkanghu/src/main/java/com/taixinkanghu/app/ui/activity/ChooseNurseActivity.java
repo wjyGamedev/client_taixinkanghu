@@ -34,7 +34,6 @@ public class ChooseNurseActivity extends Activity
 	public  int                       selected_hospital;
 	public  int                       selected_city;
 	public  ListView                  lv_worker;
-	private List<Map<String, Object>> mData;
 
 
 	private HandlerClickEventChooseNurse m_handlerClickEventChooseNurse = null;
