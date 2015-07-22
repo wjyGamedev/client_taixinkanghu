@@ -15,14 +15,15 @@
 package com.taixinkanghu.widget.drop_down_list;
 
 import android.app.Activity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DropDownList
+public abstract class DropDownList  implements View.OnClickListener
 {
-	private Activity  m_activity= null;
-	private TextView  m_textView  = null;    //显示文字
-	private ImageView m_imageView = null;//显示图片
+	protected Activity                 m_activity                 = null;
+	private   TextView                 m_textView                 = null;    //显示文字
+	private   ImageView                m_imageView                = null;//显示图片
 
 	public DropDownList(Activity activity)
 	{
@@ -43,5 +44,14 @@ public class DropDownList
 	public ImageView getImageView()
 	{
 		return m_imageView;
+	}
+
+	public void setSelectedStatus(int iID, Object params )
+	{
+		String strText = (String)params;
+		if (strText == null)
+			return;
+
+		m_textView.setText(strText);
 	}
 }
