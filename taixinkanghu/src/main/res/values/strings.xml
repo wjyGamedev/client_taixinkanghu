@@ -105,7 +105,11 @@
     <string name="sales_volume">销量</string>
     <string name="price">价格</string>
     <string name="screening_conditions">筛选条件</string>
-    <string name="all">全部</string>
+    <string name="all_hospital_list">全部</string>
+    <string name="select_date_default">选择服务时间</string>
+	<string name="select_sceening_default">选择筛选条件</string>
+	<string name="select_sort_default">选择排序条件</string>
+
     <string name="auxiliary_food_items">辅助进食用品</string>
     <string name="relieve_symptoms_items">缓解症状用品</string>
     <string name="prevention_of_infection_items">预防感染用品</string>
