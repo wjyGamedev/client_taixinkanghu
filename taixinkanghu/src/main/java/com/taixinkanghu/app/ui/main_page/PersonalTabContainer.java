@@ -57,7 +57,7 @@ public class PersonalTabContainer extends BaseTabContainer
 			{
 				m_serviceTabFragment = new ServiceTabFragment();
 			}
-			setCurrentFragment(new PersonalTabFragmentService(), false);
+			setCurrentFragment(m_serviceTabFragment, false);
 		}
 		else if (lastTabTag.equals(MainActivityConfig.MAIN_COMPANT_TAB_FLAG))
 		{
@@ -65,7 +65,7 @@ public class PersonalTabContainer extends BaseTabContainer
 			{
 				m_companyTabFragment = new CompanyTabFragment();
 			}
-			setCurrentFragment(new PersonalTabFragmentCompany(), false);
+			setCurrentFragment(m_companyTabFragment, false);
 		}
 		else
 		{
