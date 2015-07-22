@@ -30,6 +30,8 @@ import com.taixinkanghu.app.model.net.exception.BaseErrorListener;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseBasicListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
+import com.taixinkanghu.app.model.net.event.ReqShoppingBasicListEvent;
+import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
 import com.taixinkanghu.net.BaseHttp;
 
 import de.greenrobot.event.EventBus;
@@ -88,6 +90,7 @@ public class NetService extends Service
 		m_resHospitalListHandler = new ResHospitalListHandler();
 		m_resNurseBasicListHandler = new ResNurseBasicListHandler();
 		m_resNurseSeniorListHandler = new ResNurseSeniorListHandler();
+		m_resShoppingBasicListHandler = new ResShoppingBasicListHandler();
 		m_requestQueue = BaseHttp.getInstance().getRequestQueue();
 	}
 	private void initModule()
@@ -99,11 +102,13 @@ public class NetService extends Service
 		ReqHospitalListEvent hospitalListEvent = new ReqHospitalListEvent();
 		ReqNurseBasicListEvent nurseBasicList = new ReqNurseBasicListEvent();
 		ReqNurseSeniorListEvent nurseSeniorList = new ReqNurseSeniorListEvent();
+		ReqShoppingBasicListEvent shoppingBasicList = new ReqShoppingBasicListEvent();
 		try
 		{
 			m_eventBus.post(hospitalListEvent);
 			m_eventBus.post(nurseBasicList);
 			m_eventBus.post(nurseSeniorList);
+			m_eventBus.post(shoppingBasicList);
 		}
 		catch (EventBusException e)
 		{
@@ -151,14 +156,29 @@ public class NetService extends Service
 
 		m_requestQueue.add(myReq);
 	}
+
+
+	//康复用品
+	public void onEventAsync(ReqShoppingBasicListEvent event)
+	{
+		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
+														NetConfig.s_ShoppingBasicsListAddress,
+														null,
+														m_resShoppingBasicListHandler,
+														m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
+	}
+
 	/**
 	 * 数据区
 	 */
-	private EventBus                  m_eventBus                  = null;//EventBus.getDefault();
-	private BaseErrorListener         m_baseErrorListener         = null;
-	private ResHospitalListHandler    m_resHospitalListHandler    = null;
-	private ResNurseBasicListHandler  m_resNurseBasicListHandler  = null;
-	private ResNurseSeniorListHandler m_resNurseSeniorListHandler = null;
-	private RequestQueue m_requestQueue = null;
-	private JsonObjectRequest m_jsonObjectRequest = null;
+	private EventBus                    m_eventBus                    = null;//EventBus.getDefault();
+	private BaseErrorListener           m_baseErrorListener           = null;
+	private ResHospitalListHandler      m_resHospitalListHandler      = null;
+	private ResNurseBasicListHandler    m_resNurseBasicListHandler    = null;
+	private ResNurseSeniorListHandler   m_resNurseSeniorListHandler   = null;
+	private ResShoppingBasicListHandler m_resShoppingBasicListHandler = null;
+	private RequestQueue                m_requestQueue                = null;
+	private JsonObjectRequest           m_jsonObjectRequest           = null;
 }

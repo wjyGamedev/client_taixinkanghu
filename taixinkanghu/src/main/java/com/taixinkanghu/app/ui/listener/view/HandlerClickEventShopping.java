@@ -15,10 +15,10 @@
 package com.taixinkanghu.app.ui.listener.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
 
-import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.shopping_page.ShoppingActivity;
 
 public class HandlerClickEventShopping extends BaseHandleOnClickEvent
 {
@@ -30,6 +30,7 @@ public class HandlerClickEventShopping extends BaseHandleOnClickEvent
 	@Override
 	public void onClick(View v)
 	{
-		Toast.makeText(m_context, R.string.function_is_not_open, Toast.LENGTH_SHORT).show();
+//		Toast.makeText(m_context, R.string.function_is_not_open, Toast.LENGTH_SHORT).show();
+		m_context.startActivity(new Intent(m_context, ShoppingActivity.class));
 	}
 }
