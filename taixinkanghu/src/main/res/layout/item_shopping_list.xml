@@ -5,14 +5,14 @@
 			  android:orientation="horizontal">
 
 	<ImageView
-		android:layout_width="wrap_content"
-		android:layout_height="match_parent"
+		android:id="@+id/goods_img"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
 		android:layout_marginBottom="5dip"
 		android:layout_marginLeft="15dip"
 		android:layout_marginRight="5dip"
 		android:layout_marginTop="5dip"
-		android:src="@drawable/item_face_1"
-		android:id="@+id/goods_img"/>
+		android:src="@drawable/item_face_1"/>
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -63,11 +63,25 @@
 			android:orientation="horizontal">
 
 			<TextView
+				android:id="@+id/item_evaluation_prefix"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/item_evaluation_prefix"
+				android:textSize="12dip"/>
+
+			<TextView
 				android:id="@+id/goods_praise_rate"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginRight="25dip"
 				android:text="@string/item_evaluation"
+				android:textSize="12dip"/>
+
+			<TextView
+				android:id="@+id/item_evaluation_suffix"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="25dip"
+				android:text="@string/item_evaluation_suffix"
 				android:textSize="12dip"/>
 
 			<TextView
@@ -75,6 +89,13 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation_times"
+				android:textSize="12dip"/>
+
+			<TextView
+				android:id="@+id/item_evaluation_times_suffix"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/item_evaluation_times_suffix"
 				android:textSize="12dip"/>
 
 		</LinearLayout>
