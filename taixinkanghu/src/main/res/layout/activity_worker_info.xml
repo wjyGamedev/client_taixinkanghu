@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="10.0dip"
+                    android:paddingBottom="10dp"
                     android:weightSum="1">
 
                     <RelativeLayout
@@ -38,12 +38,12 @@
                         <LinearLayout
                             android:id="@+id/up"
                             android:layout_width="match_parent"
-                            android:layout_height="65.0dip"
+                            android:layout_height="65dp"
                             android:background="@color/main_color"
                             android:gravity="bottom"
                             android:orientation="vertical"
-                            android:paddingBottom="5.0dip"
-                            android:paddingLeft="130.0dip">
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="130dp">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                                     android:id="@id/name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="8.0dip"
+                                    android:layout_marginRight="8dp"
                                     android:text="王瑾瑜"
                                     android:textColor="#ffffffff"
                                     android:textSize="18.0sp" />
@@ -81,11 +81,11 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="65.0dip"
+                            android:layout_height="65dp"
                             android:layout_below="@+id/up"
                             android:orientation="vertical"
-                            android:paddingLeft="130.0dip"
-                            android:paddingTop="5.0dip">
+                            android:paddingLeft="130dp"
+                            android:paddingTop="5dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -102,10 +102,10 @@
                                     android:textSize="14.0sp" />
 
                                 <TextView
-                                    android:layout_width="0.5dip"
-                                    android:layout_height="13.0dip"
-                                    android:layout_marginLeft="3.0dip"
-                                    android:layout_marginRight="3.0dip"
+                                    android:layout_width="0.5dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
                                     android:background="@color/divider_color" />
 
                                 <TextView
@@ -117,10 +117,10 @@
                                     android:textSize="14.0sp" />
 
                                 <TextView
-                                    android:layout_width="0.5dip"
-                                    android:layout_height="13.0dip"
-                                    android:layout_marginLeft="3.0dip"
-                                    android:layout_marginRight="3.0dip"
+                                    android:layout_width="0.5dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
                                     android:background="@color/divider_color" />
 
                                 <TextView
@@ -135,7 +135,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="3.0dip"
+                                android:layout_marginTop="3dp"
                                 android:gravity="center_vertical"
                                 android:orientation="horizontal">
 
@@ -148,10 +148,10 @@
                                     android:textSize="14.0sp" />
 
                                 <TextView
-                                    android:layout_width="0.5dip"
-                                    android:layout_height="13.0dip"
-                                    android:layout_marginLeft="3.0dip"
-                                    android:layout_marginRight="3.0dip"
+                                    android:layout_width="0.5dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
                                     android:background="@color/divider_color" />
 
                                 <TextView
@@ -163,10 +163,10 @@
                                     android:textSize="14.0sp" />
 
                                 <TextView
-                                    android:layout_width="0.5dip"
-                                    android:layout_height="13.0dip"
-                                    android:layout_marginLeft="3.0dip"
-                                    android:layout_marginRight="3.0dip"
+                                    android:layout_width="0.5dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
                                     android:background="@color/divider_color" />
 
                                 <TextView
@@ -178,10 +178,10 @@
                                     android:textSize="14.0sp" />
 
                                 <TextView
-                                    android:layout_width="0.5dip"
-                                    android:layout_height="13.0dip"
-                                    android:layout_marginLeft="3.0dip"
-                                    android:layout_marginRight="3.0dip"
+                                    android:layout_width="0.5dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
                                     android:background="@color/divider_color" />
 
                                 <TextView
@@ -196,17 +196,17 @@
 
                         <com.taixinkanghu.widget.circleimageview.CircleImageView
                             android:id="@+id/pic"
-                            android:layout_width="100.0dip"
-                            android:layout_height="100.0dip"
-                            android:layout_margin="15.0dip"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="15dp"
                             android:src="@mipmap/face_img"
                             app:border_color="@color/main_color"
-                            app:border_width="1.0dip" />
+                            app:border_width="1dp" />
                     </RelativeLayout>
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="0.2dip"
+                        android:layout_height="0.2dp"
                         android:background="@color/divider_color" />
 
                     <ScrollView
@@ -219,8 +219,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_order_btn"
                         android:gravity="center_vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <TextView
                             android:id="@+id/selfIntro"
@@ -234,17 +234,17 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10.0dip"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/bg_order_btn"
                         android:gravity="center_vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:visibility="gone">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="10.0dip"
+                            android:layout_marginRight="10dp"
                             android:src="@mipmap/ic_worker_place" />
 
                         <TextView
@@ -261,8 +261,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_order_btn"
                         android:gravity="center_vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <TextView
                             android:id="@+id/textView"
@@ -286,8 +286,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_order_btn"
                         android:gravity="center_vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <TextView
                             android:id="@+id/textView2"
@@ -312,8 +312,8 @@
                         android:background="@drawable/bg_order_btn"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <TextView
                             android:id="@id/certificate"
@@ -331,8 +331,8 @@
                         android:background="@drawable/bg_bule_frame_bottom"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:weightSum="1">
 
                         <TextView
@@ -340,7 +340,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginLeft="15dip"
+                            android:layout_marginLeft="15dp"
                             android:text="服务价格："
                             android:textColor="@color/text_color_black"
                             android:textSize="14.0sp" />
@@ -363,8 +363,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="3.0dip"
-                            android:layout_marginRight="15dip"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="15dp"
                             android:layout_weight="1.0"
                             android:text="元/天"
                             android:textColor="@color/text_color_gray"
@@ -376,17 +376,17 @@
                         android:id="@id/worker_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10.0dip"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/bg_bule_frame_top"
                         android:gravity="center_vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <TextView
                             android:id="@id/level_des"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dip"
+                            android:layout_marginLeft="15dp"
                             android:layout_weight="1.0"
                             android:text="近日陪护时间安排"
                             android:textColor="@color/text_color_black"
@@ -395,8 +395,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10.0dip"
-                            android:layout_marginRight="15.0dip"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="15dp"
                             android:hint=">"
                             android:textColorHint="@color/text_color_gray"
                             android:textSize="14.0sp" />
@@ -410,8 +410,8 @@
                         android:background="@drawable/bg_order_btn"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:visibility="gone">
 
                         <TextView
@@ -435,7 +435,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10.0dip"
+                            android:layout_marginLeft="10dp"
                             android:hint=">"
                             android:textColorHint="@color/text_color_gray"
                             android:textSize="14.0sp" />
@@ -449,8 +449,8 @@
                         android:background="@drawable/bg_order_btn"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <TextView
                             android:id="@id/level_des"
@@ -473,7 +473,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10.0dip"
+                            android:layout_marginLeft="10dp"
                             android:hint=">"
                             android:textColorHint="@color/text_color_gray"
                             android:textSize="14.0sp" />
@@ -486,12 +486,12 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_order_btn"
                         android:orientation="vertical"
-                        android:paddingTop="10.0dip">
+                        android:paddingTop="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="10dip"
+                            android:layout_marginBottom="10dp"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -501,7 +501,7 @@
 
                                 <RatingBar
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15.0dip"
+                                    android:layout_height="15dp"
                                     android:isIndicator="true"
                                     android:numStars="5"
                                     android:progressDrawable="@drawable/rating_bar"
@@ -521,13 +521,13 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dip"
+                                android:layout_marginTop="5dp"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@id/mobile"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="18.0dip"
+                                    android:layout_height="18dp"
                                     android:text="非常满意"
                                     android:textColor="@color/text_color_black"
                                     android:textSize="16.0sp" />
@@ -552,12 +552,12 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_order_btn"
                         android:orientation="vertical"
-                        android:paddingTop="10.0dip">
+                        android:paddingTop="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="10dip"
+                            android:layout_marginBottom="10dp"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -567,7 +567,7 @@
 
                                 <RatingBar
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15.0dip"
+                                    android:layout_height="15dp"
                                     android:isIndicator="true"
                                     android:numStars="5"
                                     android:progressDrawable="@drawable/rating_bar"
@@ -587,13 +587,13 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dip"
+                                android:layout_marginTop="5dp"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@id/mobile"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="18.0dip"
+                                    android:layout_height="18dp"
                                     android:text="非常满意"
                                     android:textColor="@color/text_color_black"
                                     android:textSize="16.0sp" />
@@ -619,12 +619,12 @@
                         android:layout_weight="1.63"
                         android:background="@drawable/bg_order_btn"
                         android:orientation="vertical"
-                        android:paddingTop="10.0dip">
+                        android:paddingTop="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="10dip"
+                            android:layout_marginBottom="10dp"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -634,7 +634,7 @@
 
                                 <RatingBar
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15.0dip"
+                                    android:layout_height="15dp"
                                     android:isIndicator="true"
                                     android:numStars="5"
                                     android:progressDrawable="@drawable/rating_bar"
@@ -654,13 +654,13 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dip"
+                                android:layout_marginTop="5dp"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@id/mobile"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="18.0dip"
+                                    android:layout_height="18dp"
                                     android:text="非常满意"
                                     android:textColor="@color/text_color_black"
                                     android:textSize="16.0sp" />
@@ -681,18 +681,18 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="0.5dip"
+                        android:layout_height="0.5dp"
                         android:background="@color/main_color"/>
 
                     <LinearLayout
                         android:id="@id/order_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10.0dip"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/bg_order_btn"
                         android:gravity="center_vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:visibility="gone">
 
                         <TextView
@@ -710,8 +710,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_order_btn"
                         android:orientation="vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:visibility="gone">
 
                         <TextView
@@ -725,7 +725,7 @@
                             android:id="@id/des"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3.0dip"
+                            android:layout_marginTop="3dp"
                             android:textColor="@color/text_color_black"
                             android:textSize="14.0sp" />
                     </LinearLayout>
@@ -736,8 +736,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_order_btn"
                         android:orientation="vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:visibility="gone">
 
                         <TextView
@@ -751,7 +751,7 @@
                             android:id="@id/des"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3.0dip"
+                            android:layout_marginTop="3dp"
                             android:textColor="@color/text_color_black"
                             android:textSize="14.0sp" />
                     </LinearLayout>
@@ -762,8 +762,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_order_btn"
                         android:orientation="vertical"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:visibility="gone">
 
                         <TextView
@@ -777,7 +777,7 @@
                             android:id="@id/des"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3.0dip"
+                            android:layout_marginTop="3dp"
                             android:textColor="@color/text_color_black"
                             android:textSize="14.0sp" />
 
@@ -789,7 +789,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0.100000024dip"
+            android:layout_height="0.100000024dp"
             android:background="@color/divider_color" />
 
         <LinearLayout
@@ -802,7 +802,7 @@
             <Button
                 android:id="@id/btn_goto_main"
                 android:layout_width="match_parent"
-                android:layout_height="48.0dip"
+                android:layout_height="48dp"
                 android:layout_weight="2"
                 android:background="@drawable/bg_btn_main_color"
                 android:text="首页"
@@ -810,14 +810,14 @@
                 android:textSize="18.0sp" />
 
             <View
-                android:layout_width="0.5dip"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent" />
 
 
             <Button
                 android:id="@id/btn_select"
                 android:layout_width="match_parent"
-                android:layout_height="48.0dip"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_btn_main_color"
                 android:text="选择"

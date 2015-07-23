@@ -11,29 +11,29 @@
         android:descendantFocusability="blocksDescendants"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="10.0dip">
+        android:padding="10dp">
 
         <com.taixinkanghu.widget.circleimageview.CircleImageView
             android:id="@+id/pic"
             android:layout_width="116dp"
             android:layout_height="99dp"
-            android:layout_marginLeft="5.0dip"
-            android:layout_marginRight="10.0dip"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
             android:src="@mipmap/face_img"
             app:border_color="@color/main_color"
-            app:border_width="0.5dip" />
+            app:border_width="0.5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="40dip"
+            android:layout_marginRight="40dp"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2.0dip"
+                android:layout_marginBottom="2dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -41,7 +41,7 @@
                     android:id="@id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5.0dip"
+                    android:layout_marginRight="5dp"
                     android:text="王瑾瑜"
                     android:textColor="@color/text_color_black"
                     android:textSize="16.0sp" />
@@ -50,9 +50,9 @@
                     android:id="@id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="-5.0dip"
-                    android:layout_marginRight="3.0dip"
-                    android:layout_marginTop="-5.0dip"
+                    android:layout_marginBottom="-5dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="-5dp"
                     android:layout_weight="1.0"
                     android:gravity="right"
                     android:text="订单状态"
@@ -62,7 +62,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="20dip"
+                    android:layout_marginRight="20dp"
                     android:layout_weight="0.0"
                     android:text="已取消"
                     android:textColor="@color/text_color_black"
@@ -71,13 +71,13 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0.5dip"
+                android:layout_height="0.5dp"
                 android:background="@color/main_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="3.0dip"
+                android:layout_marginBottom="3dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -118,7 +118,7 @@
                     android:id="@+id/days"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="0.0"
                     android:singleLine="true"
                     android:text="陪护服务1天"
@@ -132,6 +132,6 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="1.0dip"
+        android:layout_height="1dp"
         android:background="@color/main_color" />
 </LinearLayout>

@@ -5,7 +5,7 @@
             <item>
                 <shape>
                     <solid android:color="@color/main_color" />
-                    <padding android:bottom="1.0dip" android:top="1.0dip" />
+                    <padding android:bottom="1dp" android:top="1dp" />
                 </shape>
             </item>
             <item>
@@ -20,7 +20,7 @@
             <item>
                 <shape>
                     <solid android:color="@color/main_color_focus" />
-                    <padding android:bottom="1.0dip" android:top="1.0dip" />
+                    <padding android:bottom="1dp" android:top="1dp" />
                 </shape>
             </item>
             <item>

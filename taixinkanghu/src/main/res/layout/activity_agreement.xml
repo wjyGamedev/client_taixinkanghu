@@ -14,20 +14,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dip"
+                android:layout_marginLeft="20dp"
                 android:text="尊敬的用户：" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dip"
-                android:layout_marginRight="20dip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:text="        您即将通过本页面确认使用有北京泰心康护有限公司（以下简称“本公司”）研发的泰心康护系统为您提供优质的病患陪护预约服务。为了。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。" />
 
         </LinearLayout>
@@ -35,7 +35,7 @@
         <Button
             android:id="@+id/btn_sure"
             android:layout_width="match_parent"
-            android:layout_height="48.0dip"
+            android:layout_height="48dp"
             android:layout_gravity="bottom"
             android:background="@drawable/btn_main"
             android:text="确定"

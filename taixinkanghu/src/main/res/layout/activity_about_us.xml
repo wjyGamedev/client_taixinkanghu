@@ -25,15 +25,15 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
-                    android:layout_marginTop="60.0dip"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="60dp"
                     android:src="@mipmap/logo_img" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="60.0dip"
-                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginTop="10dp"
                     android:text="v1.0 for Android"
                     android:textColor="@color/text_color_gray"
                     android:textSize="18.0sp" />
@@ -45,8 +45,8 @@
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="15.0dip"
-                    android:paddingTop="15.0dip">
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -71,8 +71,8 @@
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="15.0dip"
-                    android:paddingTop="15.0dip">
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -97,8 +97,8 @@
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="15.0dip"
-                    android:paddingTop="15.0dip">
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -123,8 +123,8 @@
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="15.0dip"
-                    android:paddingTop="15.0dip">
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"

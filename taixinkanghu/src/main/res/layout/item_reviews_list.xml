@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -24,14 +24,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="15********6"
-                android:textSize="14dip" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/reviewsDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="评价时间：2015-06-24 00:42"
-                android:textSize="14dip" />
+                android:textSize="14dp" />
 
 
         </LinearLayout>
@@ -39,41 +39,41 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0.5dip"
+            android:layout_height="0.5dp"
             android:background="#99000000"
-            android:textSize="14dip" />
+            android:textSize="14dp" />
 
 
         <TextView
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:text="相关评论000000000000000000000000000000000000000"
-            android:textSize="14dip" />
+            android:textSize="14dp" />
 
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0.5dip"
+            android:layout_height="0.5dp"
             android:background="#99000000"
-            android:textSize="14dip" />
+            android:textSize="14dp" />
 
 
         <TextView
             android:id="@+id/orderDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dip"
+            android:layout_marginBottom="10dp"
             android:text="下订单时间：2015-16-14 10:40"
-            android:textSize="14dip" />
+            android:textSize="14dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10.0dip"
+        android:layout_height="10dp"
         android:background="@color/date_select_gray"></LinearLayout>
 
 </LinearLayout>

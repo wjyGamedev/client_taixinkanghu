@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/title_linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="93dip"
+        android:layout_height="93dp"
         android:background="#70000000"
         android:orientation="vertical" />
 
@@ -30,7 +30,7 @@
                 android:background="#ffffffff"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="15.0dip">
+                android:padding="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -61,20 +61,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="10.0dip"
-            android:paddingRight="10.0dip">
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <Button
                 android:id="@+id/all_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginRight="5.0dip"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1.0"
                 android:background="@drawable/bg_btn_city_selector"
                 android:gravity="center"
-                android:paddingBottom="8.0dip"
-                android:paddingTop="8.0dip"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:text="全部"
                 android:textColor="@color/city_btn_color"
                 android:textSize="14.0sp"
@@ -84,13 +84,13 @@
                 android:id="@+id/beijingtiantan_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginRight="5.0dip"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1.0"
                 android:background="@drawable/bg_btn_city_selector"
                 android:gravity="center"
-                android:paddingBottom="8.0dip"
-                android:paddingTop="8.0dip"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:text="北京天坛医院"
                 android:textColor="@color/city_btn_color"
                 android:textSize="14.0sp"
@@ -107,20 +107,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="10.0dip"
-                android:paddingRight="10.0dip">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <Button
                     android:id="@+id/beijingchaoyang_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5.0dip"
-                    android:layout_marginRight="5.0dip"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1.0"
                     android:background="@drawable/bg_btn_city_selector"
                     android:gravity="center"
-                    android:paddingBottom="8.0dip"
-                    android:paddingTop="8.0dip"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
                     android:text="北京朝阳医院"
                     android:textColor="@color/city_btn_color"
                     android:textSize="14.0sp"
@@ -130,13 +130,13 @@
                     android:id="@+id/yikeyuanzhongliu_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5.0dip"
-                    android:layout_marginRight="5.0dip"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1.0"
                     android:background="@drawable/bg_btn_city_selector"
                     android:gravity="center"
-                    android:paddingBottom="8.0dip"
-                    android:paddingTop="8.0dip"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
                     android:text="医科院肿瘤医院"
                     android:textColor="@color/city_btn_color"
                     android:textSize="14.0sp"

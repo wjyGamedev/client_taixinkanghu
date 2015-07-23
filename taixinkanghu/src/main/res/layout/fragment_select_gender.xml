@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/btn_Male"
         android:layout_width="match_parent"
-        android:layout_height="48.0dip"
+        android:layout_height="48dp"
         android:background="@drawable/bg_order_btn"
         android:gravity="center"
         android:text="男"
@@ -24,8 +24,8 @@
     <TextView
         android:id="@+id/btn_Female"
         android:layout_width="match_parent"
-        android:layout_height="48.0dip"
-        android:layout_marginTop="-0.5dip"
+        android:layout_height="48dp"
+        android:layout_marginTop="-0.5dp"
         android:background="@drawable/bg_order_btn"
         android:gravity="center"
         android:text="女"

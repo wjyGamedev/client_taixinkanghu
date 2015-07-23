@@ -23,21 +23,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
+                android:layout_marginLeft="10dp"
                 android:orientation="horizontal">
 
                 <com.taixinkanghu.widget.circleimageview.CircleImageView
-                    android:layout_width="100.0dip"
-                    android:layout_height="100.0dip"
-                    android:layout_margin="15.0dip"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="15dp"
                     android:src="@mipmap/face_img"
                     app:border_color="@color/main_color"
-                    app:border_width="0.5dip" />
+                    app:border_width="0.5dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dip"
+                    android:layout_marginLeft="20dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -56,7 +56,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
-                            android:layout_marginLeft="30dip"
+                            android:layout_marginLeft="30dp"
                             android:text="中级护理员" />
 
 
@@ -81,27 +81,27 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1.0dip"
+                android:layout_height="1dp"
                 android:background="@color/divider_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="30dip"
-                    android:layout_marginLeft="30dip"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
                     android:gravity="center_vertical"
                     android:text="服务器时间：" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="30dip"
-                    android:layout_marginRight="30dip"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="30dp"
                     android:gravity="right"
                     android:text="6月17日 - 6月18日 共1天" />
 
@@ -109,27 +109,27 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dip"
+                android:layout_height="0.5dp"
                 android:background="@color/divider_color" />
 
             <!--<LinearLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="10dip"-->
-            <!--android:layout_marginTop="10dip"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginTop="10dp"-->
             <!--android:orientation="horizontal">-->
 
             <!--<TextView-->
             <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="30dip"-->
-            <!--android:layout_marginLeft="30dip"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginLeft="30dp"-->
             <!--android:gravity="center_vertical"-->
             <!--android:text="省市区县：" />-->
 
             <!--<TextView-->
             <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="30dip"-->
-            <!--android:layout_marginRight="30dip"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginRight="30dp"-->
             <!--android:gravity="right"-->
             <!--android:text="北京 北京市 西城区" />-->
 
@@ -137,7 +137,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dip"
+                android:layout_height="0.5dp"
                 android:background="@color/divider_color" />
 
             <FrameLayout
@@ -148,13 +148,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:layout_marginTop="10dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dip"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_bule_frame_top"
                         android:gravity="center_vertical"
@@ -162,8 +162,8 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
-                            android:layout_marginLeft="20dip"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
                             android:gravity="center_vertical"
                             android:text="姓名：" />
 
@@ -172,7 +172,7 @@
                             android:id="@id/name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="30dip"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="#00000000"
                             android:gravity="right"
@@ -188,7 +188,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dip"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_bule_frame_all"
                         android:gravity="center_vertical"
@@ -197,8 +197,8 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
-                            android:layout_marginLeft="20dip"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
                             android:gravity="center_vertical"
                             android:text="性别：" />
 
@@ -219,9 +219,9 @@
 
                         <ImageView
                             android:id="@+id/dwon_gender"
-                            android:layout_width="20dip"
-                            android:layout_height="20dip"
-                            android:layout_marginRight="30dip"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="30dp"
                             android:background="@mipmap/img_down" />
 
                     </LinearLayout>
@@ -229,7 +229,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dip"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_bule_frame_all"
                         android:gravity="center_vertical"
@@ -237,8 +237,8 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
-                            android:layout_marginLeft="20dip"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
                             android:gravity="center_vertical"
                             android:text="年龄：" />
 
@@ -246,7 +246,7 @@
                             android:id="@id/name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="30dip"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="#00000000"
                             android:gravity="right"
@@ -262,7 +262,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dip"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_bule_frame_all"
                         android:gravity="center_vertical"
@@ -270,8 +270,8 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
-                            android:layout_marginLeft="20dip"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
                             android:gravity="center_vertical"
                             android:text="体重（kg）：" />
 
@@ -280,7 +280,7 @@
                             android:id="@id/name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="30dip"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="#00000000"
                             android:gravity="right"
@@ -296,7 +296,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dip"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_bule_frame_all"
                         android:gravity="center_vertical"
@@ -304,8 +304,8 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
-                            android:layout_marginLeft="20dip"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
                             android:gravity="center_vertical"
                             android:text="所在科室：" />
 
@@ -314,7 +314,7 @@
                             android:id="@id/name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="30dip"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="#00000000"
                             android:gravity="right"
@@ -330,7 +330,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dip"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_bule_frame_all"
                         android:gravity="center_vertical"
@@ -338,8 +338,8 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
-                            android:layout_marginLeft="20dip"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
                             android:gravity="center_vertical"
                             android:text="病房号：" />
 
@@ -348,7 +348,7 @@
                             android:id="@id/name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="30dip"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="#00000000"
                             android:gravity="right"
@@ -364,7 +364,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dip"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_bule_frame_bottom"
                         android:gravity="center_vertical"
@@ -372,8 +372,8 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
-                            android:layout_marginLeft="20dip"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
                             android:gravity="center_vertical"
                             android:text="床位号：" />
 
@@ -382,7 +382,7 @@
                             android:id="@id/name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="30dip"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="#00000000"
                             android:gravity="right"
@@ -404,59 +404,59 @@
             <!--<LinearLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="10dip"-->
-            <!--android:layout_marginTop="10dip"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginTop="10dp"-->
             <!--android:gravity="center_vertical"-->
             <!--android:orientation="horizontal">-->
 
 
             <!--<TextView-->
             <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="30dip"-->
+            <!--android:layout_height="30dp"-->
             <!--android:layout_gravity="center_vertical"-->
-            <!--android:layout_marginLeft="20dip"-->
-            <!--android:layout_marginRight="10dip"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="10dp"-->
             <!--android:gravity="center_vertical"-->
             <!--android:text="自理程度："-->
-            <!--android:textSize="15dip" />-->
+            <!--android:textSize="15dp" />-->
 
             <!--<TextView-->
             <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="20.0dip"-->
+            <!--android:layout_height="20dp"-->
             <!--android:text="可自理" />-->
 
             <!--<ImageView-->
             <!--android:id="@id/history_img"-->
-            <!--android:layout_width="20.0dip"-->
-            <!--android:layout_height="20.0dip"-->
-            <!--android:layout_marginLeft="10.0dip"-->
-            <!--android:layout_marginRight="10.0dip"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
             <!--android:src="@drawable/btn_pay_select" />-->
 
             <!--<TextView-->
             <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="20.0dip"-->
+            <!--android:layout_height="20dp"-->
             <!--android:text="半自理" />-->
 
             <!--<ImageView-->
             <!--android:id="@id/history_img"-->
-            <!--android:layout_width="20.0dip"-->
-            <!--android:layout_height="20.0dip"-->
-            <!--android:layout_marginLeft="10.0dip"-->
-            <!--android:layout_marginRight="10.0dip"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
             <!--android:src="@drawable/btn_pay_select" />-->
 
             <!--<TextView-->
             <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="20.0dip"-->
+            <!--android:layout_height="20dp"-->
             <!--android:text="不能自理" />-->
 
             <!--<ImageView-->
             <!--android:id="@id/history_img"-->
-            <!--android:layout_width="20.0dip"-->
-            <!--android:layout_height="20.0dip"-->
-            <!--android:layout_marginLeft="10.0dip"-->
-            <!--android:layout_marginRight="10.0dip"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
             <!--android:src="@drawable/btn_pay_select" />-->
 
             <!--</LinearLayout>-->
@@ -465,48 +465,48 @@
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:layout_gravity="center_vertical"-->
-            <!--android:layout_marginLeft="10dip"-->
-            <!--android:layout_marginRight="10dip"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
             <!--android:gravity="center_vertical"-->
             <!--android:text="提示：被护理人在家，请详细到门牌号码；在医院，请详细到科室床号；以方便陪护员上门"-->
             <!--android:textColor="#55000000"-->
-            <!--android:textSize="12dip" />-->
+            <!--android:textSize="12dp" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:layout_marginLeft="15dip"
-                    android:layout_marginRight="15dip"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:hint="备注（选填）："
                     android:imeOptions="actionGo"
                     android:singleLine="true"
                     android:textColorHint="@color/text_color_gray"
-                    android:textSize="14dip" />
+                    android:textSize="14dp" />
 
                 <!--<TextView-->
                 <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="30dip"-->
+                <!--android:layout_height="30dp"-->
                 <!--android:layout_gravity="center_vertical"-->
-                <!--android:layout_marginLeft="5dip"-->
-                <!--android:layout_marginRight="10dip"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_marginRight="10dp"-->
                 <!--android:gravity="center_vertical"-->
-                <!--android:textSize="15dip" />-->
+                <!--android:textSize="15dp" />-->
 
 
                 <!--<EditText-->
                 <!--android:id="@id/name"-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="30dip"-->
-                <!--android:layout_marginRight="30dip"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:layout_marginRight="30dp"-->
                 <!--android:layout_weight="1"-->
                 <!--android:background="#00000000"-->
                 <!--android:hint="备注（选填）："-->
@@ -522,13 +522,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48.0dip"
+        android:layout_height="48dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@id/btn_goto_main"
             android:layout_width="match_parent"
-            android:layout_height="48.0dip"
+            android:layout_height="48dp"
             android:layout_weight="2"
             android:background="@drawable/bg_btn_main_color"
             android:text="首页"
@@ -536,13 +536,13 @@
             android:textSize="20.0sp" />
 
         <View
-            android:layout_width="0.5dip"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent" />
 
         <Button
             android:id="@id/btn_submit"
             android:layout_width="match_parent"
-            android:layout_height="48.0dip"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_main_color"
             android:text="确定预约"

@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="93dip"
+        android:layout_height="93dp"
         android:background="#00000000"
         android:orientation="vertical" />
 
@@ -29,7 +29,7 @@
                 android:background="#ffffffff"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="15.0dip">
+                android:padding="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -60,21 +60,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="15.0dip"
-            android:paddingLeft="10.0dip"
-            android:paddingRight="10.0dip">
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <Button
                 android:id="@id/item1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginRight="5.0dip"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1.0"
                 android:background="@drawable/bg_btn_city_selector"
                 android:gravity="center"
-                android:paddingBottom="8.0dip"
-                android:paddingTop="8.0dip"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:text="北京市"
                 android:textColor="@color/city_btn_color"
                 android:textSize="14.0sp"
@@ -84,13 +84,13 @@
                 android:id="@id/item2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginRight="5.0dip"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1.0"
                 android:background="@drawable/bg_btn_city_selector"
                 android:gravity="center"
-                android:paddingBottom="8.0dip"
-                android:paddingTop="8.0dip"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:text="天津市"
                 android:textColor="@color/city_btn_color"
                 android:textSize="14.0sp"
@@ -100,13 +100,13 @@
                 android:id="@id/item3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginRight="5.0dip"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1.0"
                 android:background="@drawable/bg_btn_city_selector"
                 android:gravity="center"
-                android:paddingBottom="8.0dip"
-                android:paddingTop="8.0dip"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/city_btn_color"
                 android:textSize="14.0sp"
                 android:visibility="invisible" />
@@ -115,13 +115,13 @@
                 android:id="@id/item4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginRight="5.0dip"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1.0"
                 android:background="@drawable/bg_btn_city_selector"
                 android:gravity="center"
-                android:paddingBottom="8.0dip"
-                android:paddingTop="8.0dip"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/city_btn_color"
                 android:textSize="14.0sp"
                 android:visibility="invisible" />
@@ -132,7 +132,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dip"
+        android:layout_height="0.5dp"
         android:background="@color/divider_color" />
 
     <View

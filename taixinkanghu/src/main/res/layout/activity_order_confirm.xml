@@ -17,21 +17,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="10.0dip">
+            android:paddingBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:paddingLeft="15.0dip"
-                android:paddingRight="15.0dip"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:text="订单内容"
                 android:textColor="@color/text_color_gray"
                 android:textSize="14.0sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_bule_frame_top"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -39,8 +39,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dip"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
                     android:text="联系电话:"
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
@@ -49,7 +49,7 @@
                     android:id="@+id/mobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15dip"
+                    android:layout_marginRight="15dp"
                     android:layout_weight="1.0"
                     android:gravity="right"
                     android:singleLine="true"
@@ -61,7 +61,7 @@
             <LinearLayout
                 android:id="@id/item_date"
                 android:layout_width="match_parent"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -69,7 +69,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginRight="10dp"
                     android:text="服务时间:"
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
@@ -78,7 +78,7 @@
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1.0"
                     android:gravity="right"
                     android:singleLine="true"
@@ -98,7 +98,7 @@
             <LinearLayout
                 android:id="@id/item_patient"
                 android:layout_width="match_parent"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -106,7 +106,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginRight="10dp"
                     android:text="被护理人:"
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
@@ -126,7 +126,7 @@
             <LinearLayout
                 android:id="@id/item_place"
                 android:layout_width="match_parent"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -134,7 +134,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginRight="10dp"
                     android:text="服务地点:"
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
@@ -154,7 +154,7 @@
             <LinearLayout
                 android:id="@id/item_remark"
                 android:layout_width="match_parent"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -163,7 +163,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginRight="10dp"
                     android:text="订单备注:"
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
@@ -186,14 +186,14 @@
                 android:background="@drawable/bg_bule_frame_bottom"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="10.0dip"
-                android:paddingTop="10.0dip">
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
-                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_weight="1.0"
                     android:singleLine="true"
                     android:text="护理员:"
@@ -202,20 +202,20 @@
 
                 <com.taixinkanghu.widget.circleimageview.CircleImageView
                     android:id="@+id/worker_pic"
-                    android:layout_width="55.0dip"
-                    android:layout_height="55.0dip"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_centerInParent="true"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginRight="10dp"
                     android:src="@mipmap/face_img"
                     app:border_color="@color/main_color"
-                    app:border_width="0.5dip" />
+                    app:border_width="0.5dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.0"
                     android:gravity="right|center"
-                    android:layout_marginRight="15dip"
+                    android:layout_marginRight="15dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -249,17 +249,17 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:paddingLeft="15.0dip"
-                android:paddingRight="15.0dip"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:text="订单金额"
                 android:textColor="@color/text_color_gray"
                 android:textSize="14.0sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_bule_frame_top"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -268,8 +268,8 @@
                     android:id="@+id/service_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dip"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
                     android:text="中级护理员服务1天："
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
@@ -280,7 +280,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:gravity="right"
-                    android:layout_marginRight="15dip"
+                    android:layout_marginRight="15dp"
                     android:singleLine="true"
                     android:text="200元 × 1"
                     android:textColor="@color/text_color_black"
@@ -294,14 +294,14 @@
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="5.0dip"
-                android:paddingTop="5.0dip"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
                 android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_marginRight="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -332,7 +332,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -357,7 +357,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40.0dip"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_bule_frame_bottom"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -365,7 +365,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dip"
+                    android:layout_marginLeft="15dp"
                     android:text="合计:"
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
@@ -374,7 +374,7 @@
                     android:id="@+id/total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15dip"
+                    android:layout_marginRight="15dp"
                     android:layout_weight="1.0"
                     android:gravity="right"
                     android:singleLine="true"
@@ -392,12 +392,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10.0dip"
+                    android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="5.0dip"
-                    android:paddingLeft="15.0dip"
-                    android:paddingRight="15.0dip">
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -437,16 +437,16 @@
                             android:background="@drawable/bg_bule_frame_top"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:paddingBottom="10.0dip"
-                            android:paddingTop="10.0dip">
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
 
                             <ImageView
-                                android:layout_width="40.0dip"
-                                android:layout_height="30.0dip"
-                                android:layout_marginRight="5.0dip"
+                                android:layout_width="40dp"
+                                android:layout_height="30dp"
+                                android:layout_marginRight="5dp"
                                 android:background="@drawable/bg_pay_icon"
-                                android:layout_marginLeft="15dip"
-                                android:padding="3.0dip"
+                                android:layout_marginLeft="15dp"
+                                android:padding="3dp"
                                 android:scaleType="centerInside"
                                 android:src="@mipmap/icon_pay_cash" />
 
@@ -473,9 +473,9 @@
 
                             <ImageView
                                 android:id="@id/item_cash_rbtn"
-                                android:layout_marginRight="15dip"
-                                android:layout_width="20.0dip"
-                                android:layout_height="20.0dip"
+                                android:layout_marginRight="15dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:src="@drawable/btn_pay_select" />
                         </LinearLayout>
 
@@ -486,15 +486,15 @@
                             android:background="@drawable/bg_order_btn"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:paddingBottom="10.0dip"
-                            android:paddingTop="10.0dip">
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
 
                             <ImageView
-                                android:layout_width="40.0dip"
-                                android:layout_height="30.0dip"
-                                android:layout_marginRight="5.0dip"
+                                android:layout_width="40dp"
+                                android:layout_height="30dp"
+                                android:layout_marginRight="5dp"
                                 android:background="@drawable/bg_pay_icon"
-                                android:padding="3.0dip"
+                                android:padding="3dp"
                                 android:scaleType="centerInside"
                                 android:src="@mipmap/icon_pay_alipay" />
 
@@ -521,8 +521,8 @@
 
                             <ImageView
                                 android:id="@id/item_alipay_rbtn"
-                                android:layout_width="20.0dip"
-                                android:layout_height="20.0dip"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:src="@drawable/btn_pay_select" />
                         </LinearLayout>
 
@@ -533,16 +533,16 @@
                             android:background="@drawable/bg_bule_frame_bottom"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:paddingBottom="10.0dip"
-                            android:paddingTop="10.0dip">
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
 
                             <ImageView
-                                android:layout_width="40.0dip"
-                                android:layout_height="30.0dip"
-                                android:layout_marginRight="5.0dip"
-                                android:layout_marginLeft="15dip"
+                                android:layout_width="40dp"
+                                android:layout_height="30dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginLeft="15dp"
                                 android:background="@drawable/bg_pay_icon"
-                                android:padding="3.0dip"
+                                android:padding="3dp"
                                 android:scaleType="centerInside"
                                 android:src="@mipmap/icon_pay_weixin" />
 
@@ -569,9 +569,9 @@
 
                             <ImageView
                                 android:id="@id/item_weixin_rbtn"
-                                android:layout_width="20.0dip"
-                                android:layout_height="20.0dip"
-                                android:layout_marginRight="15dip"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="15dp"
                                 android:src="@drawable/btn_pay_select" />
                         </LinearLayout>
 
@@ -587,12 +587,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10.0dip"
+                android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="5.0dip"
-                android:paddingLeft="15.0dip"
-                android:paddingRight="15.0dip">
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -619,13 +619,13 @@
                 android:background="@drawable/bg_bule_frame"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="10.0dip"
-                android:paddingTop="10.0dip">
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dip"
+                    android:layout_marginLeft="15dp"
                     android:text="点击确定表示已阅读并同意"
                     android:textColor="@color/text_color_black"
                     android:textSize="14.0sp" />
@@ -641,9 +641,9 @@
 
                 <ImageView
                     android:id="@id/item_cash_rbtn"
-                    android:layout_width="20.0dip"
-                    android:layout_height="20.0dip"
-                    android:layout_marginRight="15dip"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
                     android:src="@drawable/btn_pay_select" />
             </LinearLayout>
         </LinearLayout>
@@ -652,7 +652,7 @@
     <Button
         android:id="@id/btn_pay"
         android:layout_width="match_parent"
-        android:layout_height="48.0dip"
+        android:layout_height="48dp"
         android:background="@drawable/bg_btn_main_color"
         android:text="确认支付"
         android:textColor="#ffffffff"

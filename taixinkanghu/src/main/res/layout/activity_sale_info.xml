@@ -16,7 +16,7 @@
         <ImageView
             android:id="@id/img_info"
             android:layout_width="match_parent"
-            android:layout_height="240dip"
+            android:layout_height="240dp"
             android:background="@mipmap/img_company">
 
         </ImageView>
@@ -24,10 +24,10 @@
         <TextView
             android:id="@+id/info_title"
             android:layout_width="match_parent"
-            android:layout_height="35dip"
+            android:layout_height="35dp"
             android:gravity="center_vertical"
             android:text="  促销信息展示文字。"
-            android:textSize="20dip" />
+            android:textSize="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,9 +37,9 @@
             <TextView
                 android:id="@+id/info_text_red"
                 android:layout_width="match_parent"
-                android:layout_height="30dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:gravity="center_vertical"
                 android:text="促销信息展示文字。"
                 android:textColor="#cc0000" />
@@ -50,8 +50,8 @@
             android:id="@+id/info_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dip"
-            android:layout_marginTop="10dip"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:text="促销信息展示文字。" />
 
     </LinearLayout>

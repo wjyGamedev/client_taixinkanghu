@@ -17,11 +17,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="15.0dip">
+            android:padding="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="44.0dip"
+                android:layout_height="44dp"
                 android:orientation="horizontal">
 
                 <EditText
@@ -38,7 +38,7 @@
                     android:id="@id/btn_verification_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="3.0"
                     android:background="@drawable/btn_main_fillet"
                     android:text="获取验证码 "
@@ -49,8 +49,8 @@
             <EditText
                 android:id="@id/authCode"
                 android:layout_width="match_parent"
-                android:layout_height="44.0dip"
-                android:layout_marginTop="15.0dip"
+                android:layout_height="44dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/bg_main_input"
                 android:hint="验证码"
                 android:inputType="numberSigned"
@@ -58,7 +58,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="44.0dip"
+                android:layout_height="44dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -72,7 +72,7 @@
                 <TextView
                     android:id="@id/btn_protocol"
                     android:layout_width="wrap_content"
-                    android:layout_height="44.0dip"
+                    android:layout_height="44dp"
                     android:gravity="center"
                     android:textColor="@color/main_color"
                     android:textSize="14.0sp" />
@@ -81,8 +81,8 @@
             <Button
                 android:id="@id/btn_login"
                 android:layout_width="match_parent"
-                android:layout_height="44.0dip"
-                android:layout_marginTop="10.0dip"
+                android:layout_height="44dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/btn_main_fillet"
                 android:text="注册"
                 android:textColor="#ffffffff"
