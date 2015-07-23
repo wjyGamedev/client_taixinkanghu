@@ -15,6 +15,7 @@
 package com.taixinkanghu.app.ui.owner_choose_nurse;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.taixinkanghu.R;
@@ -23,6 +24,8 @@ import com.taixinkanghu.widget.drop_down_list.DropDownList;
 
 public class HospitalList extends DropDownList
 {
+	private SelectHospitalFragment m_selectHospitalFragment = null;
+
 	public HospitalList(Activity activity)
 	{
 		super(activity);
@@ -31,10 +34,16 @@ public class HospitalList extends DropDownList
 	@Override
 	public void onClick(View v)
 	{
-		SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-		selectHospitalFragment.way = 1;//way(调用途径)：1为从自选护工页面打开，2位从续订页面打开
-		m_activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
+		if (m_selectHospitalFragment == null)
+		{
+			m_selectHospitalFragment = new SelectHospitalFragment();
+		}
+		FragmentTransaction transaction = m_activity.getFragmentManager().beginTransaction();
+		transaction.replace(R.id.owner_select_page, m_selectHospitalFragment, m_selectHospitalFragment.getClass().getName());
+		transaction.addToBackStack(m_selectHospitalFragment.getClass().getName());
+		transaction.commit();
 	}
+
 
 }
 

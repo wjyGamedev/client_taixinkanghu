@@ -15,6 +15,7 @@
 package com.taixinkanghu.app.ui.owner_choose_nurse;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.taixinkanghu.R;
@@ -31,6 +32,10 @@ public class ScreeningList extends DropDownList
 	@Override
 	public void onClick(View v)
 	{
-		m_activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectScreeningFragment()).commit();
+		SelectScreeningFragment selectScreeningFragment = new SelectScreeningFragment();
+		FragmentTransaction        transaction = m_activity.getFragmentManager().beginTransaction();
+		transaction.replace(R.id.owner_select_page, selectScreeningFragment, selectScreeningFragment.getClass().getName());
+		transaction.addToBackStack(null);
+		transaction.commit();
 	}
 }

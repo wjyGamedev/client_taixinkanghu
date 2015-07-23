@@ -100,7 +100,7 @@ public class WorkerInfoMoreActivity extends Activity implements View.OnClickList
                 break;
             case R.id.btn_address:
                 SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-                selectHospitalFragment.way = 2;
+//                selectHospitalFragment.way = 2;
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
                 break;
         }
