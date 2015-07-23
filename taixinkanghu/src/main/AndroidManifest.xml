@@ -109,6 +109,9 @@
         <activity
             android:name=".app.ui.activity.WorkerInfoMoreActivity"
             android:label="@string/title_activity_worker_info_more" />
+        <activity
+            android:name=".app.ui.shopping_page.ShoppingActivity"
+            android:label="@string/title_activity_shopping_more" />
     </application>
 
 </manifest>

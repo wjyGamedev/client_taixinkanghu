@@ -1,43 +1,41 @@
 <resources>
-    <string name="app_name">泰心康护</string>
+	<string name="app_name">泰心康护</string>
 
-    <string name="welcome_activity_name">泰心康护</string>
+	<string name="welcome_activity_name">泰心康护</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="action_settings">Settings</string>
+	<string name="title_activity_main">MainActivity</string>
 
-    <string name="main_tab_name">首页</string>
-    <string name="mine_tab_name">我的</string>
-    <string name="service_tab_name">服务</string>
-    <string name="company_tab_name">泰心</string>
-    <string name="main_func_text">泰心康护是衣架专注于康复护理产业资源整合的服务性公司。泰心昂胡在大健康产品迅猛发展，医改大变革的背景下，对专家团队，培训机构，研发企业，生产企业，销售队伍，护理团队...</string>
-    <string name="main_persional_popmenu_nursing_order_name">陪护订单</string>
-    <string name="main_persional_popmenu_shopping_order_name">产品订单</string>
-    <string name="main_persional_popmenu_wealth_name">我的财富</string>
-    <string name="main_persional_popmenu_setting_name">我的设置</string>
+	<string name="main_tab_name">首页</string>
+	<string name="mine_tab_name">我的</string>
+	<string name="service_tab_name">服务</string>
+	<string name="company_tab_name">泰心</string>
+	<string name="main_func_text">泰心康护是衣架专注于康复护理产业资源整合的服务性公司。泰心昂胡在大健康产品迅猛发展，医改大变革的背景下，对专家团队，培训机构，研发企业，生产企业，销售队伍，护理团队...</string>
+	<string name="main_persional_popmenu_nursing_order_name">陪护订单</string>
+	<string name="main_persional_popmenu_shopping_order_name">产品订单</string>
+	<string name="main_persional_popmenu_wealth_name">我的财富</string>
+	<string name="main_persional_popmenu_setting_name">我的设置</string>
 
+	//页面title
+	<string name="owner_choose_nurse">我自己选护理员</string>
+	<string name="about_us_title">泰心康护</string>
+	<string name="service_title">泰心服务</string>
+	<string name="faq_title">问题反馈</string>
+	<string name="agreement_title">用户协议</string>
+	<string name="worker_level_title">护理员级别</string>
+	<string name="my_wealth_title">我的财富</string>
+	<string name="my_setting_title">我的设置</string>
+	<string name="my_sorce_title">我的积分</string>
+	<string name="question_feed_back_title">问题反馈</string>
+	<string name="login_title">用户注册</string>
+	<string name="nurs_order_title">陪护订单</string>
+	<string name="nurs_order_info_title">陪护订单</string>
+	<string name="nurs_order_reviews_title">评价</string>
+	<string name="shopping_title">康复辅助用品</string>
 
-    //页面title
-    <string name="owner_choose_nurse">我自己选护理员</string>
-    <string name="about_us_title">泰心康护</string>
-    <string name="service_title">泰心服务</string>
-    <string name="faq_title">问题反馈</string>
-    <string name="agreement_title">用户协议</string>
-    <string name="worker_level_title">护理员级别</string>
-    <string name="my_wealth_title">我的财富</string>
-    <string name="my_setting_title">我的设置</string>
-    <string name="my_sorce_title">我的积分</string>
-    <string name="question_feed_back_title">问题反馈</string>
-    <string name="login_title">用户注册</string>
-    <string name="nurs_order_title">陪护订单</string>
-    <string name="nurs_order_info_title">陪护订单</string>
-    <string name="nurs_order_reviews_title">评价</string>
-
-
-
-    <string name="function_is_not_open">功能未开放</string>
-    <string name="nurse_junior">初级护理员</string>
+	<string name="function_is_not_open">功能未开放</string>
+	<string name="nurse_junior">初级护理员</string>
 	<string name="intermediates_junior">中级护理员</string>
 	<string name="senior_junior">高级护理员</string>
 	<string name="super_junior">特级护理员</string>
@@ -61,68 +59,64 @@
 	<string name="nurse_certificate">持有证书:</string>
 	<string name="nurse_service_content">服务内容:</string>
 
-    <string name="error_disconnect">请保持网络通畅或在WIFI下使用。</string>
+	<string name="error_disconnect">请保持网络通畅或在WIFI下使用。</string>
 
-    <string name="default_text">默认文字</string>
+	<string name="default_text">默认文字</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_find_hugong">find_hugong</string>
-    <string name="title_activity_dingdan">dingdan</string>
-    <string name="title_activity_faxian">faxian</string>
-    <string name="title_activity_kefu">kefu</string>
-    <string name="title_activity_gg_01">GG_01</string>
-    <string name="title_activity_gg_02">GG_02</string>
-    <string name="title_activity_recommend_hugong">recommend_hugong</string>
-    <string name="title_activity_nurs_order">NursOrderActivity</string>
-    <string name="title_activity_worker_date">WorkerDateActivity</string>
-    <string name="title_activity_faq">FaqActivity</string>
-    <string name="title_activity_company_info">CompanyInfoActivity</string>
-    <string name="title_activity_service_introduction">ServiceIntroductionActivity</string>
-    <string name="title_activity_worker_level">WorkerLevelActivity</string>
-    <string name="title_activity_question_feed_back">QuestionFeedBackActivity</string>
-    <string name="title_activity_my_wealth">MyWealthActivity</string>
-    <string name="title_activity_my_set">MySetActivity</string>
-    <string name="title_activity_my_score">MyScoreActivity</string>
-    <string name="title_activity_agreement">AgreementActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_nurs_order_info">OrderInfoActivity</string>
-    <string name="title_activity_nurs_order_reviews">NursOrderReviewsActivity</string>
-    <string name="title_activity_worker_info_more">WorkerInfoMoreActivity</string>
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="title_activity_find_hugong">find_hugong</string>
+	<string name="title_activity_dingdan">dingdan</string>
+	<string name="title_activity_faxian">faxian</string>
+	<string name="title_activity_kefu">kefu</string>
+	<string name="title_activity_gg_01">GG_01</string>
+	<string name="title_activity_gg_02">GG_02</string>
+	<string name="title_activity_recommend_hugong">recommend_hugong</string>
+	<string name="title_activity_nurs_order">NursOrderActivity</string>
+	<string name="title_activity_worker_date">WorkerDateActivity</string>
+	<string name="title_activity_faq">FaqActivity</string>
+	<string name="title_activity_company_info">CompanyInfoActivity</string>
+	<string name="title_activity_service_introduction">ServiceIntroductionActivity</string>
+	<string name="title_activity_worker_level">WorkerLevelActivity</string>
+	<string name="title_activity_question_feed_back">QuestionFeedBackActivity</string>
+	<string name="title_activity_my_wealth">MyWealthActivity</string>
+	<string name="title_activity_my_set">MySetActivity</string>
+	<string name="title_activity_my_score">MyScoreActivity</string>
+	<string name="title_activity_agreement">AgreementActivity</string>
+	<string name="title_activity_login">LoginActivity</string>
+	<string name="title_activity_nurs_order_info">OrderInfoActivity</string>
+	<string name="title_activity_nurs_order_reviews">NursOrderReviewsActivity</string>
+	<string name="title_activity_worker_info_more">WorkerInfoMoreActivity</string>
+	<string name="title_activity_shopping_more">ShoppingActivity</string>
 
+	<string name="sunday">日</string>
+	<string name="monday">一</string>
+	<string name="thesday">二</string>
+	<string name="wednesday">三</string>
+	<string name="thursday">四</string>
+	<string name="friday">五</string>
+	<string name="saturday">六</string>
+	<string name="display_complay_decription">company displays</string>
 
-    <string name="sunday">日</string>
-    <string name="monday">一</string>
-    <string name="thesday">二</string>
-    <string name="wednesday">三</string>
-    <string name="thursday">四</string>
-    <string name="friday">五</string>
-    <string name="saturday">六</string>
-    <string name="display_complay_decription">company displays</string>
-
-    //康复辅助用品相关
-    <string name="search">搜索</string>
-    <string name="sales_volume">销量</string>
-    <string name="price">价格</string>
-    <string name="screening_conditions">筛选条件</string>
-    <string name="all_hospital_list">全部</string>
-    <string name="select_date_default">选择服务时间</string>
-	<string name="select_sceening_default">选择筛选条件</string>
-	<string name="select_sort_default">选择排序条件</string>
-
-    <string name="auxiliary_food_items">辅助进食用品</string>
-    <string name="relieve_symptoms_items">缓解症状用品</string>
-    <string name="prevention_of_infection_items">预防感染用品</string>
-    <string name="auxiliary_drainage_items">辅助排泄用品</string>
-    <string name="rehabilitation_exercise_equipment_items">康复训练用品</string>
-    <string name="life_support_items">生活辅助用品</string>
-    <string name="assistant_action_items">辅助行动用品</string>
-    <string name="other_items">其他用品</string>
-    <string name="item_name_title">思维 束腰带 X-002 透气护 腰肌劳损腰间盘突出辅助康复内赠磁垫</string>
-    <string name="currency_symbol">￥</string>
-    <string name="item_price">39.00</string>
-    <string name="item_evaluation">好评91%</string>
-    <string name="item_evaluation_times">11人</string>
+	//康复辅助用品相关
+	<string name="search">搜索</string>
+	<string name="sales_volume">销量</string>
+	<string name="price">价格</string>
+	<string name="screening_conditions">筛选条件</string>
+	<string name="all">全部</string>
+	<string name="auxiliary_food_items">辅助进食用品</string>
+	<string name="relieve_symptoms_items">缓解症状用品</string>
+	<string name="prevention_of_infection_items">预防感染用品</string>
+	<string name="auxiliary_drainage_items">辅助排泄用品</string>
+	<string name="rehabilitation_exercise_equipment_items">康复训练用品</string>
+	<string name="life_support_items">生活辅助用品</string>
+	<string name="assistant_action_items">辅助行动用品</string>
+	<string name="other_items">其他用品</string>
+	<string name="item_name_title">思维 束腰带 X-002 透气护 腰肌劳损腰间盘突出辅助康复内赠磁垫</string>
+	<string name="currency_symbol">￥</string>
+	<string name="item_price">39.00</string>
+	<string name="item_evaluation">好评91%</string>
+	<string name="item_evaluation_times">11人</string>
 
 	<!-- 颜色-->
 	<string name="color_all_null">#00000000</string>
