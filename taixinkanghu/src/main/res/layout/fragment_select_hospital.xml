@@ -6,7 +6,7 @@
     tools:context="com.taixinkanghu.app.ui.activity.SelectCity">
 
     <LinearLayout
-        android:id="@+id/titleLinearLayout"
+        android:id="@+id/title_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="93dip"
         android:background="#70000000"
