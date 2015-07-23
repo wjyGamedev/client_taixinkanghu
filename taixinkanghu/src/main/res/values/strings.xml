@@ -124,6 +124,7 @@
     <string name="item_evaluation">好评91%</string>
     <string name="item_evaluation_times">11人</string>
 
-
+	<!-- 颜色-->
+	<string name="color_all_null">#00000000</string>
 
 </resources>
