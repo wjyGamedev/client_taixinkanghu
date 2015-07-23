@@ -40,7 +40,7 @@ public class HandlerClickEventChooseNurse extends BaseHandleOnClickEvent
 			break;
 		case R.id.select_hospital:
 			SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-			selectHospitalFragment.way = 1;//way(调用途径)：1为从自选护工页面打开，2位从续订页面打开
+//			selectHospitalFragment.way = 1;//way(调用途径)：1为从自选护工页面打开，2位从续订页面打开
 			activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
 			break;
 		case R.id.select_sort:

@@ -103,7 +103,7 @@ public class SelectScreeningFragment extends Fragment implements View.OnClickLis
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 getFragmentManager().popBackStack();
                 ChooseNurseActivity activity = (ChooseNurseActivity) getActivity();
-                activity.m_screeningList.setText("筛选条件:" + subListView.getAdapter().getItem(position));
+                activity.m_screeningListOld.setText("筛选条件:" + subListView.getAdapter().getItem(position));
             }
         });
 

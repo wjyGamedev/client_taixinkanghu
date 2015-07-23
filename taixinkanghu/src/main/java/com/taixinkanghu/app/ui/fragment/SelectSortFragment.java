@@ -50,7 +50,7 @@ public class SelectSortFragment extends Fragment implements View.OnClickListener
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 getFragmentManager().popBackStack();
                 ChooseNurseActivity activity = (ChooseNurseActivity) getActivity();
-                activity.m_sortList.setText("排序条件:" + sortListView.getAdapter().getItem(position));
+                activity.m_sortListOld.setText("排序条件:" + sortListView.getAdapter().getItem(position));
             }
         });
 

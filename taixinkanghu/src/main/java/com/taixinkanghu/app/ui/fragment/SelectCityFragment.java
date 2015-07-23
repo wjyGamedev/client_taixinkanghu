@@ -60,14 +60,14 @@ public class SelectCityFragment extends Fragment implements View.OnClickListener
             case R.id.item1:
                 btn1.setSelected(true);
                 getFragmentManager().popBackStack();
-                activity.m_hospitalList.setText("服务地址              " + btn1.getText() + "  ∨");
-                activity.selected_city = BEIJING;
+//                activity.m_hospitalListOld.setText("服务地址              " + btn1.getText() + "  ∨");
+//                activity.selected_city = BEIJING;
                 break;
             case R.id.item2:
                 btn2.setSelected(true);
                 getFragmentManager().popBackStack();
-                activity.m_hospitalList.setText("服务地址              " + btn2.getText() + "  ∨");
-                activity.selected_city = TIANJIN;
+//                activity.m_hospitalListOld.setText("服务地址              " + btn2.getText() + "  ∨");
+//                activity.selected_city = TIANJIN;
                 break;
             default:
                 //蒙版点击一下之后消失的处理
