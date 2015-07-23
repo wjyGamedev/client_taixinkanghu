@@ -15,15 +15,15 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10.0dip"
-            android:layout_marginTop="60.0dip"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="60dp"
             android:background="@mipmap/logo_img" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60.0dip"
-            android:layout_marginTop="10.0dip"
+            android:layout_marginBottom="60dp"
+            android:layout_marginTop="10dp"
             android:text="v1.1 for Android"
             android:textColor="@color/text_color_gray"
             android:textSize="18.0sp" />
@@ -34,14 +34,14 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="15.0dip"
-            android:paddingTop="15.0dip">
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30.0dip"
-                android:layout_marginRight="30.0dip"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_weight="1.0"
                 android:text="泰心康护是一家专注于康复护理产业资源整合的服务性公司......"
                 android:textColor="@color/text_color_black"

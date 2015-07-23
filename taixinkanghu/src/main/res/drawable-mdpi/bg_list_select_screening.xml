@@ -6,7 +6,7 @@
             <item>
                 <shape>
                     <solid android:color="@android:color/white" />
-                    <padding android:left="15.0dip" android:right="15.0dip" />
+                    <padding android:left="15dp" android:right="15dp" />
                 </shape>
             </item>
         </layer-list>
@@ -16,7 +16,7 @@
             <item>
                 <shape>
                     <solid android:color="#ffeeeeee" />
-                    <padding android:left="15.0dip" android:right="15.0dip" />
+                    <padding android:left="15dp" android:right="15dp" />
                 </shape>
             </item>
         </layer-list>

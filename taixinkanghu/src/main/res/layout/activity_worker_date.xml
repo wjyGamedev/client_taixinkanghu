@@ -57,7 +57,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0.5dip"
+        android:layout_height="0.5dp"
         android:background="#CCCCCC"/>
 
     <!--<Button-->

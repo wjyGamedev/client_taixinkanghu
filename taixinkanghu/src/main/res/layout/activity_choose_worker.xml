@@ -47,7 +47,7 @@
 							android:id="@+id/select_hospital"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
-							android:layout_marginLeft="10dip"
+							android:layout_marginLeft="10dp"
 							android:layout_weight="1"
 							android:gravity="center"
 							android:text="选择所在医院" />
@@ -56,7 +56,7 @@
 							android:layout_gravity="center_vertical"
 							android:layout_width="15dp"
 							android:layout_height="15dp"
-							android:layout_marginRight="10dip"
+							android:layout_marginRight="10dp"
 							android:background="@mipmap/img_down"
 							android:id="@+id/dwon_hospital_img" />
 
@@ -74,7 +74,7 @@
 							android:id="@+id/select_date"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
-							android:layout_marginLeft="10dip"
+							android:layout_marginLeft="10dp"
 							android:layout_weight="1"
 							android:gravity="center"
 							android:text="选择服务时间" />
@@ -83,7 +83,7 @@
 							android:layout_gravity="center_vertical"
 							android:layout_width="15dp"
 							android:layout_height="15dp"
-							android:layout_marginRight="10dip"
+							android:layout_marginRight="10dp"
 							android:background="@mipmap/img_down"
 							android:id="@+id/down_date_img"/>
 
@@ -109,7 +109,7 @@
 							android:id="@+id/select_screening"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
-							android:layout_marginLeft="10dip"
+							android:layout_marginLeft="10dp"
 							android:layout_weight="1"
 							android:gravity="center"
 							android:text="选择筛选条件" />
@@ -118,7 +118,7 @@
 							android:layout_gravity="center_vertical"
 							android:layout_width="15dp"
 							android:layout_height="15dp"
-							android:layout_marginRight="10dip"
+							android:layout_marginRight="10dp"
 							android:background="@mipmap/img_down"
 							android:id="@+id/down_screening_img"/>
 
@@ -137,7 +137,7 @@
 							android:id="@+id/select_sort"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
-							android:layout_marginLeft="10dip"
+							android:layout_marginLeft="10dp"
 							android:layout_weight="1"
 							android:gravity="center"
 							android:text="选择排序条件" />
@@ -146,7 +146,7 @@
 							android:layout_gravity="center_vertical"
 							android:layout_width="15dp"
 							android:layout_height="15dp"
-							android:layout_marginRight="10dip"
+							android:layout_marginRight="10dp"
 							android:background="@mipmap/img_down"
 							android:id="@+id/down_sort_img"/>
 
@@ -187,7 +187,7 @@
                     android:background="#ffffffff"
                     android:choiceMode="singleChoice"
                     android:divider="@color/divider_color"
-                    android:dividerHeight="0.100000024dip"
+                    android:dividerHeight="0.100000024dp"
                     android:listSelector="@drawable/bg_btn_translucent"
                     android:scrollbars="none" />
 

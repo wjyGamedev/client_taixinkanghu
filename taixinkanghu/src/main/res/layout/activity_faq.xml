@@ -25,16 +25,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_order_rb">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dip"
-                android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:text="Q：你们平台上的护理员具备专业的护理资质吗？"
                 android:textColor="@color/main_color"
                 android:textStyle="bold" />
@@ -45,16 +45,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_bule_frame_all">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dip"
-                android:layout_marginLeft="30dip"
-                android:layout_marginRight="15dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:text="A：我们平台上所有陪护人员均经过岗前培训并通过严格的考试获得护理员资格方可上岗。" />
 
         </LinearLayout>
@@ -63,16 +63,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_bule_frame_all">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dip"
-                android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:text="Q：你们平台上的护理员具备专业的护理资质吗？"
                 android:textColor="@color/main_color"
                 android:textStyle="bold" />
@@ -83,16 +83,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_bule_frame_all">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dip"
-                android:layout_marginLeft="30dip"
-                android:layout_marginRight="15dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:text="A：我们平台上所有陪护人员均经过岗前培训并通过严格的考试获得护理员资格方可上岗。" />
 
         </LinearLayout>
@@ -101,16 +101,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_bule_frame_all">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dip"
-                android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:text="Q：你们平台上的护理员具备专业的护理资质吗？"
                 android:textColor="@color/main_color"
                 android:textStyle="bold" />
@@ -121,16 +121,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_bule_frame_all">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dip"
-                android:layout_marginLeft="30dip"
-                android:layout_marginRight="15dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:text="A：我们平台上所有陪护人员均经过岗前培训并通过严格的考试获得护理员资格方可上岗。" />
 
         </LinearLayout>

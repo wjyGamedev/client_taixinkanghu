@@ -22,16 +22,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="10.0dip"
-                android:paddingTop="10.0dip">
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="15.0dip"
-                    android:paddingRight="15.0dip">
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginLeft="10dp"
                         android:text="已取消"
                         android:textColor="#fff04847"
                         android:textSize="18.0sp" />
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_bule_frame"
                     android:gravity="center"
-                    android:padding="10.0dip"
+                    android:padding="10dp"
                     android:text="该订单已取消"
                     android:textColor="@color/text_color_black"
                     android:textSize="16.0sp" />
@@ -66,12 +66,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
-                    android:layout_marginTop="15.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingLeft="15.0dip"
-                    android:paddingRight="15.0dip">
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -92,17 +92,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50.0dip"
+                    android:layout_height="50dp"
                     android:background="@drawable/bg_bule_frame_top"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-                    <!--android:layout_marginTop="-0.5dip"-->
+                    <!--android:layout_marginTop="-0.5dp"-->
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:layout_marginLeft="15dip"
+                        android:layout_marginLeft="15dp"
                         android:text="服务时间:"
                         android:textColor="@color/text_color_black"
                         android:textSize="16.0sp" />
@@ -111,7 +111,7 @@
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10.0dip"
+                        android:layout_marginRight="10dp"
                         android:text="6月17日-6月18日"
                         android:textColor="@android:color/black"
                         android:textSize="18.0sp" />
@@ -129,9 +129,9 @@
                         android:layout_height="wrap_content"
                         android:background="@color/date_select_orange"
                         android:gravity="center"
-                        android:minWidth="24.0dip"
-                        android:paddingLeft="3.0dip"
-                        android:paddingRight="3.0dip"
+                        android:minWidth="24dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
                         android:text="1"
                         android:textColor="@android:color/white"
                         android:textSize="18.0sp" />
@@ -139,7 +139,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="15dip"
+                        android:layout_marginRight="15dp"
                         android:text="天"
                         android:textColor="@android:color/black"
                         android:textSize="18.0sp" />
@@ -147,11 +147,11 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50.0dip"
+                    android:layout_height="50dp"
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-                    <!--android:layout_marginTop="-0.5dip"-->
+                    <!--android:layout_marginTop="-0.5dp"-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -173,7 +173,7 @@
                 <LinearLayout
                     android:id="@id/item_worker"
                     android:layout_width="match_parent"
-                    android:layout_height="80.0dip"
+                    android:layout_height="80dp"
                     android:background="@drawable/bg_bule_frame_bottom"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -182,26 +182,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:layout_marginLeft="15dip"
+                        android:layout_marginLeft="15dp"
                         android:text="护理师:"
                         android:textColor="#ff494949"
                         android:textSize="16.0sp" />
 
                     <com.taixinkanghu.widget.circleimageview.CircleImageView
-                        android:layout_width="65.0dip"
-                        android:layout_height="65.0dip"
-                        android:layout_marginLeft="15.0dip"
-                        android:layout_marginRight="15.0dip"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:src="@mipmap/face_img"
                         app:border_color="@color/main_color"
-                        app:border_width="0.5dip" />
+                        app:border_width="0.5dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="right"
-                        android:minWidth="100.0dip"
-                        android:layout_marginRight="15dip"
+                        android:minWidth="100dp"
+                        android:layout_marginRight="15dp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -212,9 +212,9 @@
 
                             <ImageView
                                 android:id="@id/worker_level_icon"
-                                android:layout_width="18.0dip"
-                                android:layout_height="18.0dip"
-                                android:layout_marginRight="5.0dip" />
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_marginRight="5dp" />
 
                             <TextView
                                 android:id="@+id/worker_level"
@@ -274,12 +274,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
-                    android:layout_marginTop="15.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingLeft="15.0dip"
-                    android:paddingRight="15.0dip">
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -292,7 +292,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50.0dip"
+                    android:layout_height="50dp"
                     android:background="@drawable/bg_bule_frame_top"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -301,7 +301,7 @@
                         android:id="@id/service_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip"
+                        android:layout_marginLeft="15dp"
                         android:layout_weight="1.0"
                         android:text="高级护理服务"
                         android:textColor="#ff494949"
@@ -311,7 +311,7 @@
                         android:id="@+id/service_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="15dip"
+                        android:layout_marginRight="15dp"
                         android:text="250*1"
                         android:textColor="@android:color/black"
                         android:textSize="18.0sp" />
@@ -320,12 +320,12 @@
                 <LinearLayout
                     android:id="@id/item_holiday_add"
                     android:layout_width="match_parent"
-                    android:layout_height="50.0dip"
+                    android:layout_height="50dp"
                     android:background="@drawable/bg_order_btn"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:visibility="gone">
-                    <!--android:layout_marginTop="-0.5dip"-->
+                    <!--android:layout_marginTop="-0.5dp"-->
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -360,17 +360,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50.0dip"
+                    android:layout_height="50dp"
                     android:background="@drawable/bg_bule_frame_bottom"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-                    <!--android:layout_marginTop="-0.5dip"-->
+                    <!--android:layout_marginTop="-0.5dp"-->
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:layout_marginLeft="15dip"
+                        android:layout_marginLeft="15dp"
                         android:text="总金额:"
                         android:textColor="#ff494949"
                         android:textSize="16.0sp" />
@@ -379,7 +379,7 @@
                         android:id="@+id/total_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="15dip"
+                        android:layout_marginRight="15dp"
                         android:text="￥180"
                         android:textColor="@color/date_select_orange"
                         android:textSize="18.0sp" />
@@ -388,12 +388,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
-                    android:layout_marginTop="15.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingLeft="15.0dip"
-                    android:paddingRight="15.0dip">
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -409,24 +409,24 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_bule_frame"
                     android:orientation="vertical"
-                    android:paddingBottom="5.0dip"
-                    android:paddingTop="5.0dip">
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
 
                     <LinearLayout
                         android:id="@id/history5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip"
-                        android:layout_marginRight="15dip"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <ImageView
                             android:id="@id/history_img"
-                            android:layout_width="20.0dip"
-                            android:layout_height="20.0dip"
-                            android:layout_marginRight="10.0dip"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="10dp"
                             android:src="@drawable/btn_pay_select" />
 
                         <TextView
@@ -451,17 +451,17 @@
                         android:id="@id/history4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip"
-                        android:layout_marginRight="15dip"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <ImageView
                             android:id="@id/history_img"
-                            android:layout_width="20.0dip"
-                            android:layout_height="20.0dip"
-                            android:layout_marginRight="10.0dip"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="10dp"
                             android:src="@drawable/btn_pay_select" />
 
                         <TextView
@@ -484,17 +484,17 @@
                         android:id="@id/history3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip"
-                        android:layout_marginRight="15dip"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip">
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
 
                         <ImageView
                             android:id="@id/history_img"
-                            android:layout_width="20.0dip"
-                            android:layout_height="20.0dip"
-                            android:layout_marginRight="10.0dip"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="10dp"
                             android:src="@drawable/btn_pay_select" />
 
                         <TextView
@@ -518,15 +518,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:visibility="gone">
 
                         <ImageView
                             android:id="@id/history_img"
-                            android:layout_width="20.0dip"
-                            android:layout_height="20.0dip"
-                            android:layout_marginRight="10.0dip"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="10dp"
                             android:src="@drawable/btn_pay_select" />
 
                         <TextView
@@ -550,15 +550,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingBottom="10.0dip"
-                        android:paddingTop="10.0dip"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:visibility="gone">
 
                         <ImageView
                             android:id="@id/history_img"
-                            android:layout_width="20.0dip"
-                            android:layout_height="20.0dip"
-                            android:layout_marginRight="10.0dip"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="10dp"
                             android:src="@drawable/btn_pay_select" />
 
                         <TextView
@@ -592,7 +592,7 @@
         <Button
             android:id="@id/btn_goto_main"
             android:layout_width="match_parent"
-            android:layout_height="48.0dip"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_main_color"
             android:text="首页"
@@ -600,13 +600,13 @@
             android:textSize="18.0sp" />
 
         <TextView
-            android:layout_width="0.5dip"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent" />
 
         <Button
             android:id="@id/btn_goto_reviews"
             android:layout_width="match_parent"
-            android:layout_height="48.0dip"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_main_color"
             android:text="评价"
@@ -614,13 +614,13 @@
             android:textSize="18.0sp" />
 
         <TextView
-            android:layout_width="0.5dip"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent" />
 
         <Button
             android:id="@id/btn_continue"
             android:layout_width="match_parent"
-            android:layout_height="48.0dip"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_main_color"
             android:text="续订"

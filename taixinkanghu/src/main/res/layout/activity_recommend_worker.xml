@@ -20,8 +20,8 @@
                 android:id="@id/item_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginTop="10.0dip"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -29,8 +29,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
-                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1.0"
                     android:text="联系方式:"
                     android:textColor="@color/text_color_black"
@@ -40,8 +40,8 @@
                     android:id="@id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
-                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="right"
                     android:hint="验证手机"
                     android:textColor="@android:color/black"
@@ -51,7 +51,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginLeft="10dp"
                     android:hint=">"
                     android:textColorHint="@color/text_color_gray"
                     android:textSize="18.0sp"
@@ -63,7 +63,7 @@
                 android:id="@id/item_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10.0dip"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -71,8 +71,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
-                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1.0"
                     android:text="服务时间:"
                     android:textColor="@color/text_color_black"
@@ -91,7 +91,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginLeft="10dp"
                     android:hint=">"
                     android:textColorHint="@color/text_color_gray"
                     android:textSize="18.0sp" />
@@ -122,8 +122,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
-                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <Spinner
@@ -165,8 +165,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10.0dip"
-                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
                     android:hint="提示：被护理人在家，请详细到门牌号；在医院，请详细到科室床号；以方便陪护员上门。"
                     android:textColorHint="@color/text_color_gray" />
 
@@ -182,7 +182,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
+                    android:layout_marginTop="10dp"
                     android:text="被护理人信息"
                     android:textColor="@color/text_color_black"
                     android:textSize="16.0sp" />
@@ -219,8 +219,8 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="0.5dip"
-                            android:layout_marginRight="10dip"
+                            android:layout_height="0.5dp"
+                            android:layout_marginRight="10dp"
                             android:background="#99000000" />
 
                     </LinearLayout>
@@ -257,8 +257,8 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="0.5dip"
-                            android:layout_marginRight="10dip"
+                            android:layout_height="0.5dp"
+                            android:layout_marginRight="10dp"
                             android:background="#99000000" />
 
                     </LinearLayout>
@@ -290,8 +290,8 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="0.5dip"
-                            android:layout_marginRight="10dip"
+                            android:layout_height="0.5dp"
+                            android:layout_marginRight="10dp"
                             android:background="#99000000" />
 
                     </LinearLayout>
@@ -323,8 +323,8 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="0.5dip"
-                            android:layout_marginRight="10dip"
+                            android:layout_height="0.5dp"
+                            android:layout_marginRight="10dp"
                             android:background="#99000000" />
 
                     </LinearLayout>
@@ -333,58 +333,58 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:layout_marginTop="10dip"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="30dip"
+                        android:layout_height="30dp"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginRight="10dip"
+                        android:layout_marginRight="10dp"
                         android:gravity="center_vertical"
                         android:text="自理程度："
-                        android:textSize="15dip" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="20.0dip"
+                        android:layout_height="20dp"
                         android:text="可自理" />
 
                     <ImageView
                         android:id="@id/history_img"
-                        android:layout_width="20.0dip"
-                        android:layout_height="20.0dip"
-                        android:layout_marginLeft="10.0dip"
-                        android:layout_marginRight="10.0dip"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:src="@drawable/btn_pay_select" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="20.0dip"
+                        android:layout_height="20dp"
                         android:text="半自理" />
 
                     <ImageView
                         android:id="@id/history_img"
-                        android:layout_width="20.0dip"
-                        android:layout_height="20.0dip"
-                        android:layout_marginLeft="10.0dip"
-                        android:layout_marginRight="10.0dip"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:src="@drawable/btn_pay_select" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="20.0dip"
+                        android:layout_height="20dp"
                         android:text="不能自理" />
 
                     <ImageView
                         android:id="@id/history_img"
-                        android:layout_width="20.0dip"
-                        android:layout_height="20.0dip"
-                        android:layout_marginLeft="10.0dip"
-                        android:layout_marginRight="10.0dip"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:src="@drawable/btn_pay_select" />
 
                 </LinearLayout>
@@ -396,20 +396,20 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="30dip"
+                        android:layout_height="30dp"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="5dip"
-                        android:layout_marginRight="10dip"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
                         android:gravity="center_vertical"
                         android:text="备注（选填）："
-                        android:textSize="15dip" />
+                        android:textSize="15dp" />
 
                     <EditText
                         android:id="@+id/editText"
                         android:layout_width="match_parent"
                         android:layout_height="59dp"
                         android:text="描述所获疾病及特殊要求"
-                        android:textSize="14dip" />
+                        android:textSize="14dp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -417,13 +417,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dip"
-                android:layout_marginTop="10.0dip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
                 android:text="用户协议" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dip"
+                android:layout_height="30dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -434,10 +434,10 @@
 
                 <ImageView
                     android:id="@id/history_img"
-                    android:layout_width="20.0dip"
-                    android:layout_height="20.0dip"
-                    android:layout_marginLeft="30.0dip"
-                    android:layout_marginRight="10.0dip"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
                     android:src="@drawable/btn_pay_select" />
 
             </LinearLayout>
@@ -446,24 +446,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dip"
+        android:layout_height="48dp"
         android:orientation="horizontal">
 
         <Button
-            android:layout_width="100dip"
-            android:layout_height="48.0dip"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
             android:background="@drawable/btn_main"
             android:text="首页"
             android:textColor="#ffffffff"
             android:textSize="20.0sp" />
 
         <TextView
-            android:layout_width="0.5dip"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="48.0dip"
+            android:layout_height="48dp"
             android:background="@drawable/btn_main"
             android:text="确定"
             android:textColor="#ffffffff"

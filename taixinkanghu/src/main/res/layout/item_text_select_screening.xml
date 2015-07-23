@@ -4,6 +4,6 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
     android:layout_width="match_parent"
-    android:layout_height="20dip"
+    android:layout_height="20dp"
     android:background="@drawable/bg_list_select_screening"
     android:gravity="center_vertical|center_horizontal" />

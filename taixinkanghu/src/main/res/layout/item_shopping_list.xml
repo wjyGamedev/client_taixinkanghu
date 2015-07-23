@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="match_parent"
-			  android:layout_height="100dip"
+			  android:layout_height="100dp"
 			  android:orientation="horizontal">
 
 	<ImageView
 		android:id="@+id/goods_img"
 		android:layout_width="100dp"
 		android:layout_height="100dp"
-		android:layout_marginBottom="5dip"
-		android:layout_marginLeft="15dip"
-		android:layout_marginRight="5dip"
-		android:layout_marginTop="5dip"
+		android:layout_marginBottom="5dp"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="5dp"
+		android:layout_marginTop="5dp"
 		android:src="@drawable/item_face_1"/>
 
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_marginBottom="5dip"
-		android:layout_marginLeft="5dip"
-		android:layout_marginRight="15dip"
-		android:layout_marginTop="5dip"
+		android:layout_marginBottom="5dp"
+		android:layout_marginLeft="5dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginTop="5dp"
 		android:layout_weight="1"
 		android:orientation="vertical"
 		android:weightSum="1">
@@ -44,7 +44,7 @@
 				android:layout_height="wrap_content"
 				android:text="@string/currency_symbol"
 				android:textColor="@color/text_color_orange"
-				android:textSize="18dip"/>
+				android:textSize="18dp"/>
 
 			<TextView
 				android:id="@+id/goods_price"
@@ -52,14 +52,14 @@
 				android:layout_height="wrap_content"
 				android:text="@string/item_price"
 				android:textColor="@color/text_color_orange"
-				android:textSize="18dip"/>
+				android:textSize="18dp"/>
 
 		</LinearLayout>
 
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="5dip"
+			android:layout_marginTop="5dp"
 			android:orientation="horizontal">
 
 			<TextView
@@ -67,36 +67,36 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation_prefix"
-				android:textSize="12dip"/>
+				android:textSize="12dp"/>
 
 			<TextView
 				android:id="@+id/goods_praise_rate"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation"
-				android:textSize="12dip"/>
+				android:textSize="12dp"/>
 
 			<TextView
 				android:id="@+id/item_evaluation_suffix"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginRight="25dip"
+				android:layout_marginRight="25dp"
 				android:text="@string/item_evaluation_suffix"
-				android:textSize="12dip"/>
+				android:textSize="12dp"/>
 
 			<TextView
 				android:id="@+id/goods_evaluation_times"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation_times"
-				android:textSize="12dip"/>
+				android:textSize="12dp"/>
 
 			<TextView
 				android:id="@+id/item_evaluation_times_suffix"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation_times_suffix"
-				android:textSize="12dip"/>
+				android:textSize="12dp"/>
 
 		</LinearLayout>
 	</LinearLayout>

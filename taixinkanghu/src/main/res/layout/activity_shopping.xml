@@ -22,9 +22,9 @@
 			<EditText
 				android:layout_width="match_parent"
 				android:layout_height="28dp"
-				android:layout_marginBottom="5dip"
-				android:layout_marginLeft="15dip"
-				android:layout_marginTop="10dip"
+				android:layout_marginBottom="5dp"
+				android:layout_marginLeft="15dp"
+				android:layout_marginTop="10dp"
 				android:layout_weight="1"
 				android:id="@+id/search_bar"/>
 
@@ -32,8 +32,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_vertical"
-				android:layout_marginLeft="15dip"
-				android:layout_marginRight="15dip"
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
 				android:text="@string/search"
 				android:id="@+id/search_btn"/>
 
@@ -41,7 +41,7 @@
 
 		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="30dip"
+			android:layout_height="30dp"
 			android:background="@drawable/bg_bule_frame"
 			android:orientation="horizontal"
 			android:id="@+id/button_group_region">
@@ -57,24 +57,24 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center_vertical"
-					android:layout_marginLeft="15dip"
+					android:layout_marginLeft="15dp"
 					android:layout_weight="1"
 					android:gravity="center_horizontal"
 					android:text="@string/sales_volume"
 					android:id="@+id/sales_volume_sort_btn_text"/>
 
 				<ImageView
-					android:layout_width="10dip"
-					android:layout_height="10dip"
+					android:layout_width="10dp"
+					android:layout_height="10dp"
 					android:layout_gravity="center_vertical"
-					android:layout_marginRight="15dip"
+					android:layout_marginRight="15dp"
 					android:background="@mipmap/img_shopping_down"
 					android:id="@+id/sales_volume_sort_order_img"/>
 
 			</LinearLayout>
 
 			<TextView
-				android:layout_width="1.0dip"
+				android:layout_width="1dp"
 				android:layout_height="match_parent"
 				android:background="@color/main_color"
 				android:id="@+id/dividing_line"/>
@@ -90,24 +90,24 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center_vertical"
-					android:layout_marginLeft="15dip"
+					android:layout_marginLeft="15dp"
 					android:layout_weight="1"
 					android:gravity="center_horizontal"
 					android:text="@string/price"
 					android:id="@+id/price_sort_btn_text"/>
 
 				<ImageView
-					android:layout_width="10dip"
-					android:layout_height="10dip"
+					android:layout_width="10dp"
+					android:layout_height="10dp"
 					android:layout_gravity="center_vertical"
-					android:layout_marginRight="15dip"
+					android:layout_marginRight="15dp"
 					android:background="@mipmap/img_shopping_down"
 					android:id="@+id/price_sort_order_img"/>
 
 			</LinearLayout>
 
 			<TextView
-				android:layout_width="1.0dip"
+				android:layout_width="1dp"
 				android:layout_height="match_parent"
 				android:background="@color/main_color"
 				android:id="@+id/dividing_line"/>
@@ -123,17 +123,17 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center_vertical"
-					android:layout_marginLeft="15dip"
+					android:layout_marginLeft="15dp"
 					android:layout_weight="1"
 					android:gravity="center_horizontal"
 					android:text="@string/screening_conditions"
 					android:id="@+id/screening_condition_text"/>
 
 				<ImageView
-					android:layout_width="10dip"
-					android:layout_height="10dip"
+					android:layout_width="10dp"
+					android:layout_height="10dp"
 					android:layout_gravity="center_vertical"
-					android:layout_marginRight="15dip"
+					android:layout_marginRight="15dp"
 					android:background="@mipmap/img_shopping_down"
 					android:id="@+id/drop_down_arrow"/>
 

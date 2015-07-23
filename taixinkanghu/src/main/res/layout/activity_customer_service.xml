@@ -20,15 +20,15 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="240dip"
+                android:layout_height="240dp"
                 android:background="@drawable/img_company" />
 
             <LinearLayout
                 android:id="@+id/call"
                 android:layout_width="match_parent"
-                android:layout_height="54.0dip"
+                android:layout_height="54dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="10.0dip"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_bule_frame_top"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
@@ -36,8 +36,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dip"
-                    android:layout_marginRight="15dip"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -50,7 +50,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="20dip"
+                        android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:gravity="right"
                         android:text="4008-517-517"
@@ -63,7 +63,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="54.0dip"
+                android:layout_height="54dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/bg_order_btn"
                 android:gravity="center_vertical"
@@ -84,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="20dip"
+                        android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:gravity="right"
                         android:text="泰心康护"
@@ -98,7 +98,7 @@
             <LinearLayout
                 android:id="@+id/question_feedback"
                 android:layout_width="match_parent"
-                android:layout_height="54.0dip"
+                android:layout_height="54dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/bg_bule_frame_bottom"
                 android:gravity="center_vertical"
@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip"
+                        android:layout_marginLeft="15dp"
                         android:text="问题反馈"
                         android:textColor="@color/text_color_black"
                         android:textSize="16.0sp" />
@@ -120,7 +120,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="35dip"
+                        android:layout_marginRight="35dp"
                         android:layout_weight="1"
                         android:gravity="right"
                         android:text=">"

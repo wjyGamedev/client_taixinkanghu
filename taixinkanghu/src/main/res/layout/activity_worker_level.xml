@@ -10,10 +10,10 @@
     <RadioGroup
         android:id="@+id/rg_worker_level"
         android:layout_width="match_parent"
-        android:layout_height="50.0dip"
-        android:layout_marginTop="10dip"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:paddingTop="5.0dip">
+        android:paddingTop="5dp">
 
         <RadioButton
             style="@style/home_radio_button_style"
