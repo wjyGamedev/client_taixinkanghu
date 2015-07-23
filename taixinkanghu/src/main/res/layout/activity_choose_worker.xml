@@ -40,7 +40,8 @@
 						android:layout_height="45dp"
 						android:layout_weight="1"
 						android:background="@drawable/bg_order_rb"
-						android:orientation="horizontal">
+						android:orientation="horizontal"
+						android:id="@+id/hospital_region">
 
 						<TextView
 							android:id="@+id/select_hospital"
@@ -66,7 +67,8 @@
 						android:layout_height="45dp"
 						android:layout_weight="1"
 						android:background="@drawable/bg_order_rb"
-						android:orientation="horizontal">
+						android:orientation="horizontal"
+						android:id="@+id/date_region">
 
 						<TextView
 							android:id="@+id/select_date"
@@ -100,7 +102,8 @@
 						android:layout_height="45dp"
 						android:layout_weight="1"
 						android:background="@drawable/bg_order_rb"
-						android:orientation="horizontal">
+						android:orientation="horizontal"
+						android:id="@+id/screening_region">
 
 						<TextView
 							android:id="@+id/select_screening"
@@ -127,7 +130,8 @@
 						android:layout_height="45dp"
 						android:layout_weight="1"
 						android:background="@drawable/bg_order_rb"
-						android:orientation="horizontal">
+						android:orientation="horizontal"
+						android:id="@+id/sort_region">
 
 						<TextView
 							android:id="@+id/select_sort"
