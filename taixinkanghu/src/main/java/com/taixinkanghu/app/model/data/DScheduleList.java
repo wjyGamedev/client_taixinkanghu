@@ -14,6 +14,12 @@
 
 package com.taixinkanghu.app.model.data;
 
+import android.util.Log;
+
+import com.taixinkanghu.app.model.config.DataConfig;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -23,7 +29,27 @@ public class DScheduleList
 {
 	public boolean serialization(JSONObject response)
 	{
+		JSONArray jsonArray = null;
+		try
+		{
+			jsonArray = response.getJSONArray(DataConfig.NURSE_SHEDULE_LIST);
 
+			if (jsonArray == null)
+				return false;
+
+			JSONObject jsonObject = null;
+			DNurseBasics dNurseBasics = null;
+			for (int index = 0; index < jsonArray.length(); index++)
+			{
+			}
+
+		}
+		catch (JSONException e)
+		{
+			e.printStackTrace();
+			Log.e("error", e.getMessage().toString());
+			return false;
+		}
 		return true;
 	}
 
