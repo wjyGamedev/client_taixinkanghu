@@ -35,9 +35,13 @@
 	<string name="nurs_order_reviews_title">评价</string>
 	<string name="shopping_title">康复辅助用品</string>
 	<string name="goods_info_title">商品详细信息</string>
+	<string name="company_show_title">优惠信息</string>
 
 	//预约陪护
 	<string name="protocol_text">点击注册表示已阅读并同意</string>
+	<string name="company_show_red_text">红色标题信息</string>
+	<string name="company_black_text">黑色标题信息</string>
+	<string name="company_show_content_text">内容信息</string>
 
 	<string name="function_is_not_open">功能未开放</string>
 	<string name="nurse_junior">初级护理员</string>

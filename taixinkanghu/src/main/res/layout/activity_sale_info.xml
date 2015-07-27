@@ -1,62 +1,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.taixinkanghu.app.ui.activity.SaleInfoActivity">
+			  xmlns:tools="http://schemas.android.com/tools"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:orientation="vertical"
+			  tools:context="com.taixinkanghu.app.ui.activity.SaleInfoActivity">
 
-    <include layout="@layout/include_header"/>
+	<include layout="@layout/include_header"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:orientation="vertical">
 
-        <ImageView
-            android:id="@id/img_info"
-            android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:background="@mipmap/img_company">
+		<ImageView
+			android:id="@id/img_info"
+			android:layout_width="match_parent"
+			android:layout_height="240dp">
 
-        </ImageView>
+		</ImageView>
 
-        <TextView
-            android:id="@+id/info_title"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:gravity="center_vertical"
-            android:text="  促销信息展示文字。"
-            android:textSize="20dp" />
+		<TextView
+			android:id="@+id/info_title"
+			android:layout_width="match_parent"
+			android:layout_height="35dp"
+			android:layout_marginLeft="15dip"
+			android:gravity="center_vertical"
+			android:text="促销信息展示文字。"
+			android:textSize="20dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_order_rb">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/bg_bule_frame">
 
-            <TextView
-                android:id="@+id/info_text_red"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center_vertical"
-                android:text="促销信息展示文字。"
-                android:textColor="#cc0000" />
+			<TextView
+				android:id="@+id/info_text_red"
+				android:layout_width="match_parent"
+				android:layout_height="30dp"
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
+				android:gravity="center_vertical"
+				android:text="促销信息展示文字。"
+				android:textColor="#cc0000"/>
 
-        </LinearLayout>
+		</LinearLayout>
 
-        <TextView
-            android:id="@+id/info_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="促销信息展示文字。" />
+		<TextView
+			android:id="@+id/info_content"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="15dp"
+			android:layout_marginTop="15dp"
+			android:text="促销信息展示文字。"/>
 
-    </LinearLayout>
+	</LinearLayout>
 
-    <include layout="@layout/include_main_button" />
+	<include layout="@layout/include_main_button"/>
 
 
 </LinearLayout>
