@@ -46,8 +46,8 @@ public class DataConfig
 	public final static String NURSE_COMMENT_NUM     = "comment_num";
 
 	public final static String NURSE_SHEDULE_LIST        = "nurse_shedule_list";
-	public final static String NURSE_SHEDULE_MONTH       = "nurse_shedule_month";
-	public final static String NURSE_SHEDULE_DAY_SERVICE = "NURSE_SHEDULE_DAY_SERVICE";
+	public final static String NURSE_SHEDULE_MONTH       = "month";
+	public final static String NURSE_SHEDULE_DAY_SERVICE = "days";
 
 	public final static String NURSE_COMMENT_LIST = "nurse_comment_list";
 
