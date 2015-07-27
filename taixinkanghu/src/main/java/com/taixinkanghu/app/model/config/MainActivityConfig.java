@@ -20,13 +20,9 @@ public class MainActivityConfig
 	public final static int DELTA_MOTION_EVENT = 120;
 
 	public final static String MAIN_HOME_TAB_FLAG = "MAIN_HOME_TAB_FLAG";
-	public final static String MAIN_HOME_TAB_TEXT = "首页";
 	public final static String MAIN_PERSONAL_TAB_FLAG = "MAIN_MINE_TAB_FLAG";
-	public final static String MAIN_PERSONAL_TAB_TEXT = "我的";
 	public final static String MAIN_SERVICE_TAB_FLAG = "MAIN_SERVICE_TAB_FLAG";
-	public final static String MAIN_SERVICE_TAB_TEXT = "服务";
 	public final static String MAIN_COMPANT_TAB_FLAG = "MAIN_COMPANT_TAB_FLAG";
-	public final static String MAIN_COMPANT_TAB_TEXT = "公司";
 
 	public final static int MAIN_FUNCTION_NUM = 2;
 	public final static int MAIN_FUNCTION_GROUP_FLAG = 0;
