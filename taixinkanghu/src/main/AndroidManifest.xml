@@ -50,6 +50,9 @@
             android:name=".app.ui.activity.CustomerServiceActivity"
             android:label="CustomerServiceActivity" />
         <activity
+            android:name=".app.ui.company_show.CompanyShowActivity"
+            android:label="CompanyShowActivity" />
+        <activity
             android:name=".app.ui.activity.SaleInfoActivity"
             android:label="SaleInfoActivity" />
         <activity
