@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/bg_btn_main_color"
-        android:text="首页"
-        android:textColor="#ffffffff"
+        android:text="@string/goto_mian_btn_text"
+        android:textColor="@color/white"
         android:textSize="18.0sp" />
 
 </LinearLayout>

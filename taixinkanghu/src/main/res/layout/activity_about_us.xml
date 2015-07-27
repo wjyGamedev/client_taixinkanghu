@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/title"
+    android:id="@+id/about_us_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,25 +9,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/include_header" />
+        <include layout="@layout/include_header"
+                 android:id="@+id/title"/>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/show_region">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/func_region">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="60dp"
-                    android:src="@mipmap/logo_img" />
+                    android:src="@mipmap/logo_img"
+                    android:id="@+id/company_logo"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -36,7 +40,8 @@
                     android:layout_marginTop="10dp"
                     android:text="v1.0 for Android"
                     android:textColor="@color/text_color_gray"
-                    android:textSize="18.0sp" />
+                    android:textSize="18.0sp"
+                    android:id="@+id/edition_number"/>
 
                 <LinearLayout
                     android:id="@id/company_info"

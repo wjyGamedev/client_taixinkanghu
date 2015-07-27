@@ -23,13 +23,15 @@ public class HandlerClickEventShopping extends BaseHandleOnClickEvent
 		switch (v.getId())
 		{
 		case R.id.btn_back:
-			activity.finish();
-			break;
-		case R.id.btn_goto_main:
+		{
 			activity.finish();
 			break;
 		}
-
-
+		case R.id.btn_goto_main:
+		{
+			activity.finish();
+			break;
+		}
+		}
 	}
 }
