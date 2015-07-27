@@ -33,6 +33,7 @@
 	<string name="nurs_order_info_title">陪护订单</string>
 	<string name="nurs_order_reviews_title">评价</string>
 	<string name="shopping_title">康复辅助用品</string>
+	<string name="goods_info_title">商品详细信息</string>
 
 	<string name="function_is_not_open">功能未开放</string>
 	<string name="nurse_junior">初级护理员</string>
@@ -87,7 +88,8 @@
 	<string name="title_activity_nurs_order_info">OrderInfoActivity</string>
 	<string name="title_activity_nurs_order_reviews">NursOrderReviewsActivity</string>
 	<string name="title_activity_worker_info_more">WorkerInfoMoreActivity</string>
-	<string name="title_activity_shopping_more">ShoppingActivity</string>
+	<string name="title_activity_shopping">ShoppingActivity</string>
+	<string name="title_activity_goods_info">GoodsInfoActivity</string>
 
 	<string name="sunday">日</string>
 	<string name="monday">一</string>
@@ -123,6 +125,20 @@
 	<string name="item_evaluation_suffix">%</string>
 	<string name="item_evaluation_times">11</string>
 	<string name="item_evaluation_times_suffix">人</string>
+	<string name="receive_volume_text">领卷</string>
+	<string name="receive_volume_info">满100减10</string>
+	<string name="postage_text">运费</string>
+	<string name="postage_price">免运费</string>
+	<string name="hint_text">提示</string>
+	<string name="hint_content">72小时闪电发货	七天无理由退换货物</string>
+	<string name="comment_text">评论</string>
+	<string name="goto_mian_btn_text">首页</string>
+	<string name="shopping_cart_text">购物车</string>
+	<string name="join_shopping_cart_text">加入购物车</string>
+	<string name="up_pull_btn_text">上拉查看图文详情</string>
+	<string name="goods_introduction_btn_text">商品介绍</string>
+	<string name="parameter_btn_text">规格参数</string>
+	<string name="customer_service_btn_text">包装售后</string>
 
 	<!-- 颜色-->
 	<string name="color_all_null">#00000000</string>
