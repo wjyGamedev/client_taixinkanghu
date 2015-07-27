@@ -164,6 +164,7 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
         //功能事件监听
 		m_handlerClickEventNursingOrder = new HandlerClickEventNursingOrder(this.getActivity());
 		m_handlerClickEventShopping = new HandlerClickEventShopping(this.getActivity());
+        m_handlerClickEventHomeTabFragment = new HandlerClickEventHomeTabFragment(getActivity());
     }
 
 
@@ -178,6 +179,8 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
             imageView = new ImageView(this.getActivity());
             imageView.setImageResource(imageIDList.get(index));
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setOnClickListener(m_handlerClickEventHomeTabFragment);
+            imageView.setTag(index);
             m_viewFlipper.addView(imageView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.MATCH_PARENT
                     )
@@ -237,5 +240,5 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 //	private EditText                      m_editText                      = null;
 	private HandlerClickEventNursingOrder m_handlerClickEventNursingOrder = null;
 	private HandlerClickEventShopping m_handlerClickEventShopping = null;
-
+    private HandlerClickEventHomeTabFragment m_handlerClickEventHomeTabFragment = null;
 }
