@@ -20,7 +20,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.taixinkanghu.app.ui.activity.WorkerInfoActivity;
+import com.taixinkanghu.app.ui.nurse_info.NurseInfoActivity;
 
 public class HandlerItemClickEventListView implements AdapterView.OnItemClickListener
 {
@@ -30,7 +30,7 @@ public class HandlerItemClickEventListView implements AdapterView.OnItemClickLis
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
 		Activity activity = (Activity)m_context;
-		Intent intent = new Intent(activity, WorkerInfoActivity.class);
+		Intent intent = new Intent(activity, NurseInfoActivity.class);
 		activity.startActivity(intent);
 	}
 
