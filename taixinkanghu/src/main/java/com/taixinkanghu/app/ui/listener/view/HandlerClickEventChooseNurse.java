@@ -19,7 +19,7 @@ import android.view.View;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.fragment.SelectDateFragment;
-import com.taixinkanghu.app.ui.fragment.SelectHospitalFragment;
+import com.taixinkanghu.app.ui.fragment.SelectHospitalOldFragment;
 import com.taixinkanghu.app.ui.fragment.SelectScreeningFragment;
 import com.taixinkanghu.app.ui.fragment.SelectSortFragment;
 
@@ -39,9 +39,9 @@ public class HandlerClickEventChooseNurse extends BaseHandleOnClickEvent
 			activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectDateFragment()).commit();
 			break;
 		case R.id.select_hospital:
-			SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-//			selectHospitalFragment.way = 1;//way(调用途径)：1为从自选护工页面打开，2位从续订页面打开
-			activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
+			SelectHospitalOldFragment selectHospitalOldFragment = new SelectHospitalOldFragment();
+			selectHospitalOldFragment.setIntoWay(1);//way(调用途径)：1为从自选护工页面打开，2位从续订页面打开
+			activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalOldFragment).commit();
 			break;
 		case R.id.select_sort:
 			activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, new SelectSortFragment()).commit();

@@ -33,13 +33,15 @@ public class ChooseNurseActivity extends Activity
 
 	public TextView tv;
 
+	private TextView m_hospitalTv;
 
 	public  TextView    page_title;
 	public  ImageButton btn_back;
 	private Button      btn_goto_main;
-	public  int         selected_hospital;
-	public  int         selected_city;
-	public  ListView    lv_worker;
+
+	private int      selected_hospital;
+	public  int      selected_city;
+	public  ListView lv_worker;
 
 
 	private HandlerClickEventChooseNurse m_handlerClickEventChooseNurse = null;
@@ -87,6 +89,7 @@ public class ChooseNurseActivity extends Activity
 		m_sortList = new SortList(this);
 		m_sortList.init(R.id.sort_region, R.id.select_sort, R.id.down_sort_img);
 
+		m_hospitalTv = (TextView)findViewById(R.id.select_hospital);
 
 		m_chooseNurseAdapter = new ChooseNurseAdapter(this);
 
@@ -156,5 +159,20 @@ public class ChooseNurseActivity extends Activity
 	public SortList getSortList()
 	{
 		return m_sortList;
+	}
+
+	public void setSelected_hospital(int selected_hospital)
+	{
+		this.selected_hospital = selected_hospital;
+	}
+
+	public int getSelected_hospital()
+	{
+		return selected_hospital;
+	}
+
+	public TextView getHospitalTv()
+	{
+		return m_hospitalTv;
 	}
 }

@@ -19,12 +19,12 @@ import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.fragment.SelectHospitalFragment;
+import com.taixinkanghu.app.ui.fragment.SelectHospitalOldFragment;
 import com.taixinkanghu.widget.drop_down_list.DropDownList;
 
 public class HospitalList extends DropDownList
 {
-	private SelectHospitalFragment m_selectHospitalFragment = null;
+	private SelectHospitalOldFragment m_selectHospitalOldFragment = null;
 
 	public HospitalList(Activity activity)
 	{
@@ -34,13 +34,18 @@ public class HospitalList extends DropDownList
 	@Override
 	public void onClick(View v)
 	{
-		if (m_selectHospitalFragment == null)
+		if (m_selectHospitalOldFragment == null)
 		{
-			m_selectHospitalFragment = new SelectHospitalFragment();
+			m_selectHospitalOldFragment = new SelectHospitalOldFragment();
 		}
+
+//		m_activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.owner_select_page, new SelectHospitalOldFragment()
+//																					 ).commit();
+		m_selectHospitalOldFragment.setIntoWay(1);
+
 		FragmentTransaction transaction = m_activity.getFragmentManager().beginTransaction();
-		transaction.replace(R.id.owner_select_page, m_selectHospitalFragment, m_selectHospitalFragment.getClass().getName());
-		transaction.addToBackStack(m_selectHospitalFragment.getClass().getName());
+		transaction.replace(R.id.owner_select_page, m_selectHospitalOldFragment, m_selectHospitalOldFragment.getClass().getName());
+		transaction.addToBackStack(m_selectHospitalOldFragment.getClass().getName());
 		transaction.commit();
 	}
 
