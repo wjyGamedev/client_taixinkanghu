@@ -57,7 +57,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
                             android:layout_marginLeft="30dp"
-                            android:text="中级护理员" />
+                            android:text="@string/intermediates_junior" />
 
 
                     </LinearLayout>

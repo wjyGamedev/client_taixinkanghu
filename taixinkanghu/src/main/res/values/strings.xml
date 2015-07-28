@@ -7,10 +7,11 @@
 	<string name="action_settings">Settings</string>
 	<string name="title_activity_main">MainActivity</string>
 
-	<string name="main_tab_name">首页</string>
-	<string name="mine_tab_name">我的</string>
-	<string name="service_tab_name">服务</string>
-	<string name="company_tab_name">泰心</string>
+	<string name="main_home_tab_text">首页</string>
+	<string name="main_personal_tab_text">我的</string>
+	<string name="main_service_tab_text">服务</string>
+	<string name="main_compant_tab_text">泰心</string>
+
 	<string name="main_func_text">泰心康护是衣架专注于康复护理产业资源整合的服务性公司。泰心昂胡在大健康产品迅猛发展，医改大变革的背景下，对专家团队，培训机构，研发企业，生产企业，销售队伍，护理团队...</string>
 	<string name="main_persional_popmenu_nursing_order_name">陪护订单</string>
 	<string name="main_persional_popmenu_shopping_order_name">产品订单</string>
@@ -18,10 +19,10 @@
 	<string name="main_persional_popmenu_setting_name">我的设置</string>
 
 	//页面title
-	<string name="owner_choose_nurse">我自己选护理员</string>
+	<string name="owner_choose_nurse">预约陪护</string>
 	<string name="about_us_title">泰心康护</string>
 	<string name="service_title">泰心服务</string>
-	<string name="faq_title">问题反馈</string>
+	<string name="faq_title">常见问题</string>
 	<string name="agreement_title">用户协议</string>
 	<string name="worker_level_title">护理员级别</string>
 	<string name="my_wealth_title">我的财富</string>
@@ -34,12 +35,27 @@
 	<string name="nurs_order_reviews_title">评价</string>
 	<string name="shopping_title">康复辅助用品</string>
 	<string name="goods_info_title">商品详细信息</string>
+	<string name="company_show_title">优惠信息</string>
+
+	//预约陪护
+	<string name="protocol_text">点击注册表示已阅读并同意</string>
+	<string name="company_show_red_text">红色标题信息</string>
+	<string name="company_black_text">黑色标题信息</string>
+	<string name="company_show_content_text">内容信息</string>
+	<string name="service_phone_number">4009696218</string>
+	<string name="call">拨打</string>
+	<string name="call_phone">拨打电话</string>
+	<string name="cancel">取消</string>
+	<string name="three_star_worker_explain">由具有0~6个月护理员工作经验，通过专业考核并取得初级护理员证书的初级护理员提供的陪护服务。\n服务内容\n负责患者基本的日常的生活的护理：协助患者进食、进水、进药、入厕、入睡；\n保持患者床单位干燥整洁无杂物；\n定时开窗通风；\n保持患者身体清洁卫生（剪指甲、剃胡须、洗头）；\n帮助患者打饭及陪患者散步；\n协助患者购物；\n看护患者输液；\n陪同患者做检查；\n熟练使用轮椅、平车</string>
+	<string name="four_star_worker_explain">由具有6个月以上护理员工作经验，通过专业考核并取得中级护理员证书且好评率在95%以上的中级护理员提供的陪护服务。\n服务内容\n包括初级护理的所有服务内容；\n帮助患者翻身、扣背，防止患者身体长褥疮；\n观察患者病情变化（观察监护仪变化）；\n记录患者的出入量（入食和排便）；\n保持各种医疗管路畅通；\n在医护人员的指导下熟练掌握各种医疗辅具；</string>
+	<string name="five_star_worker_explain">由具有4年以上护理员工作经验，年龄在30~50岁之间，中学以上文化程度，通过专业考核并取得高级护理员证书，沟通能力良好且好评率在98%以上的高级护理员提供的陪护服务。\n服务内容\n包括中级护理的所有服务内容；\n懂得ICU及危重、特殊病人的看护；\n协助患者进行简单康复锻炼；\n陪同患者读书、聊天或进行一些娱乐活动；</string>
+	<string name="six_star_worker_explain">由具有6年以上护理员工作经验，年龄在30~50岁之间，中学以上文化程度，通过专业考核并取得特级护理员证书，沟通能力强且好评率100%的特级护理员提供的陪护服务。\n服务内容\n包括高级护理的所有服务内容；\n安抚病人情绪、为病人做心理辅导；</string>
 
 	<string name="function_is_not_open">功能未开放</string>
-	<string name="nurse_junior">初级护理员</string>
-	<string name="intermediates_junior">中级护理员</string>
-	<string name="senior_junior">高级护理员</string>
-	<string name="super_junior">特级护理员</string>
+	<string name="nurse_junior">三星护理员</string>
+	<string name="intermediates_junior">四星护理员</string>
+	<string name="senior_junior">五星护理员</string>
+	<string name="super_junior">六星护理员</string>
 	<string name="no_nursing_exp">无护理经验</string>
 	<string name="year_nursing_exp">年护理经验</string>
 	<string name="nurse_status_free">空闲</string>
@@ -142,5 +158,9 @@
 
 	<!-- 颜色-->
 	<string name="color_all_null">#00000000</string>
+
+
+
+
 
 </resources>

@@ -37,7 +37,7 @@ public class ServiceTabFragment extends Fragment {
     private LinearLayout call;
     private LinearLayout question_feedback;
 
-    private static final String PHONE_NUMBER = "4008517517";
+    private String m_phoneNumber;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,19 +54,26 @@ public class ServiceTabFragment extends Fragment {
 
         btn_back.setVisibility(View.GONE);
 
+        m_phoneNumber = getResources().getString(R.string.service_phone_number);
+
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getActivity()).setTitle("").setMessage(PHONE_NUMBER)
-                        .setNegativeButton("拨打", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                //拨打电话
-                                Toast.makeText(getActivity(), "拨打电话", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent("android.intent.action.CALL", Uri.parse("tel:4008517517"));
-                                getActivity().startActivity(intent);
-                            }
-                        })
-                        .setPositiveButton("取消", null)
+                new AlertDialog.Builder(getActivity()).setTitle("").setMessage(m_phoneNumber)
+                        .setNegativeButton(getResources().getString(R.string.call), new DialogInterface.OnClickListener()
+                                           {
+                                               public void onClick(DialogInterface dialog, int which)
+                                               {
+                                                   //拨打电话
+                                                   Toast.makeText(getActivity(), getResources().getString(R.string.call_phone), Toast.LENGTH_SHORT).show();
+                                                   Intent intent = new Intent("android.intent.action.CALL",
+                                                                              Uri.parse("tel:" + m_phoneNumber)
+                                                   );
+                                                   getActivity().startActivity(intent);
+                                               }
+                                           }
+                                          )
+                        .setPositiveButton(getResources().getString(R.string.cancel), null)
                         .show();
             }
         });

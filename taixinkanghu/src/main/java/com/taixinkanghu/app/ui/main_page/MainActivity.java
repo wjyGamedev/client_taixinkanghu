@@ -78,31 +78,29 @@ public class MainActivity extends FragmentActivity
 		TabHost.TabSpec tabSpec = null;
 
 		tabSpec = initTabItem(	m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_HOME_TAB_FLAG),
-							   	MainActivityConfig.MAIN_HOME_TAB_TEXT,
+								  getResources().getString(R.string.main_home_tab_text),
 							   	R.drawable.main_tab_home_imgs
 							  );
 		m_fragmentTabHost.addTab(tabSpec, HomeTabContainer.class, null);
 
 		tabSpec = initTabItem(	m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_PERSONAL_TAB_FLAG),
-							  	MainActivityConfig.MAIN_PERSONAL_TAB_TEXT,
+								  getResources().getString(R.string.main_personal_tab_text),
 							  	R.drawable.main_tab_personal_imgs
 							 );
 		m_fragmentTabHost.addTab(tabSpec, PersonalTabContainer.class, null);
 
 		tabSpec = initTabItem(	m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_SERVICE_TAB_FLAG),
-							  	MainActivityConfig.MAIN_SERVICE_TAB_TEXT,
+								  getResources().getString(R.string.main_service_tab_text),
 							  R.drawable.main_tab_service_imgs
 							 );
 		m_fragmentTabHost.addTab(tabSpec, ServiceTabContainer.class, null
 					   );
 
 		tabSpec = initTabItem(m_fragmentTabHost.newTabSpec(MainActivityConfig.MAIN_COMPANT_TAB_FLAG),
-							  MainActivityConfig.MAIN_COMPANT_TAB_TEXT,
+							  getResources().getString(R.string.main_compant_tab_text),
 							  R.drawable.main_tab_company_imgs
 							  );
 		m_fragmentTabHost.addTab(tabSpec, CompanyTabContainer.class, null);
-
-
 
 	}
 

@@ -65,7 +65,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="点击登录表示已阅读并同意 "
+                    android:text="@string/protocol_text"
                     android:textColor="@color/text_color_gray"
                     android:textSize="14.0sp" />
 
