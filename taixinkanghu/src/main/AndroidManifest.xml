@@ -65,8 +65,9 @@
         <activity
             android:name=".app.ui.select_nurse.SelectNurseActivity"
             android:label="SelectNurseActivity" />
-
-
+        <activity
+            android:name=".app.ui.nurse_info.NurseInfoActivity"
+            android:label="NurseInfoActivity" />
 
         <activity
             android:name=".app.ui.activity.OrderConfirmActivity"
