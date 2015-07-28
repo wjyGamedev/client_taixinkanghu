@@ -147,7 +147,8 @@
                     android:gravity="right"
                     android:singleLine="true"
                     android:text="服务中"
-                    android:textSize="13.0sp" />
+                    android:textSize="13.0sp"
+                    android:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
