@@ -42,6 +42,10 @@
 	<string name="company_show_red_text">红色标题信息</string>
 	<string name="company_black_text">黑色标题信息</string>
 	<string name="company_show_content_text">内容信息</string>
+	<string name="service_phone_number">4009696218</string>
+	<string name="call">拨打</string>
+	<string name="call_phone">拨打电话</string>
+	<string name="cancel">取消</string>
 
 	<string name="function_is_not_open">功能未开放</string>
 	<string name="nurse_junior">初级护理员</string>
