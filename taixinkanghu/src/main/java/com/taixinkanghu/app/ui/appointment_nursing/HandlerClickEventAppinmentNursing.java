@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.fragment.SelectGenderFragment;
-import com.taixinkanghu.app.ui.fragment.SelectHospitalFragment;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 
@@ -61,8 +59,7 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			{
 				SelectHospitalFragment fragment = new SelectHospitalFragment();
 				fragment.setIntoWay(1);
-				activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.appointment_nursing_page,
-																							  fragment
+				activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.appointment_nursing_page, fragment
 																							 ).commit();
 				break;
 			}

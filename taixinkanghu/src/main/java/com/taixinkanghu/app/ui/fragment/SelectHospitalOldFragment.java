@@ -12,13 +12,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
 import com.taixinkanghu.app.ui.activity.WorkerInfoMoreActivity;
-import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SelectHospitalFragment extends Fragment implements View.OnClickListener
+public class SelectHospitalOldFragment extends Fragment implements View.OnClickListener
 {
 
 	@Override
@@ -67,8 +67,6 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 
 		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)titleLinearLayout.getLayoutParams(); // 取控件mGrid当前的布局参数
 		final float               scale        = getActivity().getResources().getDisplayMetrics().density;
-		linearParams.height = (int)(277 * scale + 0.5f);// 当控件的高强制设成50象素
-		titleLinearLayout.setLayoutParams(linearParams); // 使设置好的布局参数应用到控件myGrid
 
 
 		//        Activity activity = getActivity();
@@ -78,7 +76,11 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 
 		if (m_intoWay == 1)
 		{
-			ApoitNursingActivity activity = (ApoitNursingActivity)getActivity();
+			ChooseNurseActivity activity = (ChooseNurseActivity)getActivity();
+
+			linearParams.height = (int)(93 * scale + 0.5f);// 当控件的高强制设成50象素
+			titleLinearLayout.setLayoutParams(linearParams); // 使设置好的布局参数应用到控件
+
 			switch (activity.getSelected_hospital())
 			{
 				case All_YIYUAN:
@@ -98,6 +100,10 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 		else if (m_intoWay == 2)
 		{
 			WorkerInfoMoreActivity activity = (WorkerInfoMoreActivity)getActivity();
+
+			linearParams.height = (int)(93 * scale + 0.5f);// 当控件的高强制设成50象素
+			titleLinearLayout.setLayoutParams(linearParams); // 使设置好的布局参数应用到控件
+
 			switch (activity.selected_hospital)
 			{
 				case All_YIYUAN:
@@ -123,7 +129,7 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 	{
 		if (m_intoWay == 1)
 		{
-			ApoitNursingActivity activity = (ApoitNursingActivity)getActivity();
+			ChooseNurseActivity activity = (ChooseNurseActivity)getActivity();
 			switch (v.getId())
 			{
 				case R.id.all_item:
@@ -131,33 +137,29 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn1.getText());
 					activity.setSelected_hospital(All_YIYUAN);
-					activity.getDwonHospital().setVisibility(View.INVISIBLE);
 					break;
 				case R.id.beijingtiantan_item:
 					btn2.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn2.getText());
 					activity.setSelected_hospital(TIANTANYIYUAN);
-					activity.getDwonHospital().setVisibility(View.INVISIBLE);
 					break;
 				case R.id.beijingchaoyang_item:
 					btn3.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn3.getText());
 					activity.setSelected_hospital(ZHONGLIUYIYUAN);
-					activity.getDwonHospital().setVisibility(View.INVISIBLE);
 					break;
 				case R.id.yikeyuanzhongliu_item:
 					btn4.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn4.getText());
 					activity.setSelected_hospital(ZHONGLIUYIYUAN);
-					activity.getDwonHospital().setVisibility(View.INVISIBLE);
 					break;
 				default:
 					//蒙版点击一下之后消失的处理
 					FragmentManager fgManager = getFragmentManager();
-					Fragment fragment = fgManager.findFragmentById(R.id.appointment_nursing_page);
+					Fragment fragment = fgManager.findFragmentById(R.id.owner_select_page);
 					FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
 					fragmentTransaction.remove(fragment);
 					String tag = null;
@@ -165,7 +167,6 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 					fragmentTransaction.commit();
 					break;
 			}
-
 		}
 		else if (m_intoWay == 2)
 		{

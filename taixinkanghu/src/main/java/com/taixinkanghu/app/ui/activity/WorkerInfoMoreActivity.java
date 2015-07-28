@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.fragment.SelectHospitalFragment;
+import com.taixinkanghu.app.ui.fragment.SelectHospitalOldFragment;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
@@ -99,9 +99,9 @@ public class WorkerInfoMoreActivity extends Activity implements View.OnClickList
                 startActivity(new Intent(this, WorkerDateActivity.class));
                 break;
             case R.id.btn_address:
-                SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-                selectHospitalFragment.setIntoWay(2);
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalFragment).commit();
+                SelectHospitalOldFragment selectHospitalOldFragment = new SelectHospitalOldFragment();
+                selectHospitalOldFragment.setIntoWay(2);
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalOldFragment).commit();
                 break;
         }
     }
