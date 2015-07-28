@@ -1,0 +1,74 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			 xmlns:tools="http://schemas.android.com/tools"
+			 android:id="@+id/owner_select_page"
+			 android:layout_width="match_parent"
+			 android:layout_height="match_parent"
+			 tools:context="com.taixinkanghu.app.ui.activity.ChooseNurseActivity">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:weightSum="1">
+
+		<!--logo+名称-->
+		<include layout="@layout/include_header"
+				 android:id="@+id/title"/>
+
+		<!--筛选功能按键-->
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="425dp"
+			android:id="@+id/func_region"
+			android:layout_weight="1.16">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="20dp"
+				android:background="@drawable/bg_bule_frame_bottom"
+				android:orientation="horizontal"
+				android:id="@+id/tips_region">
+
+				<TextView
+					android:id="@+id/data_tips"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:background="#fff"
+					android:gravity="center"
+					android:text="请先设置服务开始时间和结束时间"
+					android:textColor="#cc0000" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/display_region"
+				android:background="#fff"
+				android:layout_weight="0">
+
+				<ListView
+					android:id="@+id/nurse_display_list"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="#ffffffff"
+					android:choiceMode="singleChoice"
+					android:divider="@color/divider_color"
+					android:dividerHeight="0.100000024dp"
+					android:listSelector="@drawable/bg_btn_translucent"
+					android:scrollbars="none" />
+
+			</LinearLayout>
+		</LinearLayout>
+
+		<!--底部功能菜单-->
+		<include layout="@layout/include_main_button"
+				 android:id="@+id/bottom"
+				 android:layout_height="wrap_content"
+				 android:layout_width="match_parent"
+			/>
+	</LinearLayout>
+
+</FrameLayout>
