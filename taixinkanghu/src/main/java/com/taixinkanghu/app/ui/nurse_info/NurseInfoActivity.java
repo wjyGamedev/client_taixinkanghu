@@ -40,14 +40,14 @@ public class NurseInfoActivity extends Activity
 	{
 		//title
 		m_headerCommon = new HeaderCommon(this);
-
+		m_headerCommon.init();
 
 	}
 
 	private void initModule()
 	{
 		//title
-		m_headerCommon.setTitle(R.string.owner_choose_nurse);
+		m_headerCommon.setTitle(R.string.nurse_info);
 
 	}
 }
