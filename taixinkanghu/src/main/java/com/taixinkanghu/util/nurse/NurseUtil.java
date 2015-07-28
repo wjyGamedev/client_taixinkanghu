@@ -34,21 +34,21 @@ public class NurseUtil
 		if (iLevel < s_iJuniorHighSchoolLevelAndBelow || iLevel > s_iEndLevel)
 		{
 			//TODO:error
-			return AppUtil.getResources().getText(R.string.junior_high_school_level_and_below).toString();
+			return AppUtil.GetResources().getText(R.string.junior_high_school_level_and_below).toString();
 		}
 
 		if (iLevel == s_iJuniorHighSchoolLevelAndBelow)
 		{
-			return AppUtil.getResources().getText(R.string.junior_high_school_level_and_below).toString();
+			return AppUtil.GetResources().getText(R.string.junior_high_school_level_and_below).toString();
 		}
 		else if (iLevel == s_iSeniorMiddleSchoole)
 		{
-			return AppUtil.getResources().getText(R.string.senior_middle_schoole).toString();
+			return AppUtil.GetResources().getText(R.string.senior_middle_schoole).toString();
 		}
 		else
 		{
 			//TODO:error
-			return AppUtil.getResources().getText(R.string.junior_high_school_level_and_below).toString();
+			return AppUtil.GetResources().getText(R.string.junior_high_school_level_and_below).toString();
 		}
 	}
 
@@ -78,20 +78,20 @@ public class NurseUtil
 		String strBits = null;
 		if (iBits == s_iGeneral)
 		{
-			strBits = AppUtil.getResources().getText(R.string.language_level_general).toString();
+			strBits = AppUtil.GetResources().getText(R.string.language_level_general).toString();
 		}
 		else if (iBits == s_iGood)
 		{
-			strBits = AppUtil.getResources().getText(R.string.language_level_good).toString();
+			strBits = AppUtil.GetResources().getText(R.string.language_level_good).toString();
 		}
 		else if (iBits == s_iSkilled)
 		{
-			strBits = AppUtil.getResources().getText(R.string.language_level_skilled).toString();
+			strBits = AppUtil.GetResources().getText(R.string.language_level_skilled).toString();
 		}
 		else
 		{
 			//TODO:ERROR
-			strBits = AppUtil.getResources().getText(R.string.language_level_general).toString();
+			strBits = AppUtil.GetResources().getText(R.string.language_level_general).toString();
 		}
 
 		//语种
@@ -99,16 +99,16 @@ public class NurseUtil
 		String  strType       = null;
 		if (iLanguageType == s_iCN)
 		{
-			strType = AppUtil.getResources().getText(R.string.language_type_cn).toString();
+			strType = AppUtil.GetResources().getText(R.string.language_type_cn).toString();
 		}
 		else if (iLanguageType == s_iEN)
 		{
-			strType = AppUtil.getResources().getText(R.string.language_type_en).toString();
+			strType = AppUtil.GetResources().getText(R.string.language_type_en).toString();
 		}
 		else
 		{
 			//TODO:ERROR
-			strType = AppUtil.getResources().getText(R.string.language_type_cn).toString();
+			strType = AppUtil.GetResources().getText(R.string.language_type_cn).toString();
 		}
 
 		return (strBits + strType);
@@ -134,21 +134,21 @@ public class NurseUtil
 		if (iStatus < s_iFree || iStatus > s_iServices)
 		{
 			//TODO:Log
-			return AppUtil.getResources().getText(R.string.nurse_status_free).toString();
+			return AppUtil.GetResources().getText(R.string.nurse_status_free).toString();
 		}
 
 		if (iStatus == s_iFree)
 		{
-			return AppUtil.getResources().getText(R.string.nurse_status_free).toString();
+			return AppUtil.GetResources().getText(R.string.nurse_status_free).toString();
 		}
 		else if (iStatus == s_iServices)
 		{
-			return AppUtil.getResources().getText(R.string.nurse_status_services).toString();
+			return AppUtil.GetResources().getText(R.string.nurse_status_services).toString();
 		}
 		else
 		{
 			//TODO:ERROR
-			return AppUtil.getResources().getText(R.string.nurse_status_free).toString();
+			return AppUtil.GetResources().getText(R.string.nurse_status_free).toString();
 		}
 	}
 
@@ -187,15 +187,15 @@ public class NurseUtil
 		if (iExp < 0 )
 		{
 			//TODO:Log error
-			return AppUtil.getResources().getText(R.string.no_nursing_exp).toString();
+			return AppUtil.GetResources().getText(R.string.no_nursing_exp).toString();
 		}
 		else if (iExp == 0)
 		{
-			return AppUtil.getResources().getText(R.string.no_nursing_exp).toString();
+			return AppUtil.GetResources().getText(R.string.no_nursing_exp).toString();
 		}
 		else
 		{
-			return (iExp.toString() + AppUtil.getResources().getText(R.string.year_nursing_exp).toString());
+			return (iExp.toString() + AppUtil.GetResources().getText(R.string.year_nursing_exp).toString());
 		}
 
 	}
@@ -221,7 +221,7 @@ public class NurseUtil
 			return s_strJunior;
 		}
 
-		s_strJunior = AppUtil.getResources().getText(R.string.nurse_junior).toString();
+		s_strJunior = AppUtil.GetResources().getText(R.string.nurse_junior).toString();
 		return s_strJunior;
 	}
 
@@ -232,7 +232,7 @@ public class NurseUtil
 			return s_strIntermediates;
 		}
 
-		s_strIntermediates = AppUtil.getResources().getText(R.string.nurse_junior).toString();
+		s_strIntermediates = AppUtil.GetResources().getText(R.string.nurse_junior).toString();
 		return s_strIntermediates;
 	}
 
@@ -243,7 +243,7 @@ public class NurseUtil
 			return s_strSenior;
 		}
 
-		s_strSenior = AppUtil.getResources().getText(R.string.nurse_junior).toString();
+		s_strSenior = AppUtil.GetResources().getText(R.string.nurse_junior).toString();
 		return s_strSenior;
 	}
 
@@ -254,7 +254,7 @@ public class NurseUtil
 			return s_strSuper;
 		}
 
-		s_strSuper = AppUtil.getResources().getText(R.string.nurse_junior).toString();
+		s_strSuper = AppUtil.GetResources().getText(R.string.nurse_junior).toString();
 		return s_strSuper;
 	}
 
@@ -290,7 +290,7 @@ public class NurseUtil
 	 */
 	public static String GetIntroByString(String strIntro)
 	{
-		return  (strIntro + AppUtil.getResources().getText(R.string.nurse_intro).toString());
+		return  (strIntro + AppUtil.GetResources().getText(R.string.nurse_intro).toString());
 	}
 
 	/**
@@ -298,7 +298,7 @@ public class NurseUtil
 	 */
 	public static String GetDepartmentsByString(String strDepartments)
 	{
-		return  (strDepartments + AppUtil.getResources().getText(R.string.nurse_departments).toString());
+		return  (strDepartments + AppUtil.GetResources().getText(R.string.nurse_departments).toString());
 	}
 
 	/**
@@ -306,7 +306,7 @@ public class NurseUtil
 	 */
 	public static String GetCertificateByString(String strCertificate)
 	{
-		return  (strCertificate + AppUtil.getResources().getText(R.string.nurse_certificate).toString());
+		return  (strCertificate + AppUtil.GetResources().getText(R.string.nurse_certificate).toString());
 	}
 
 	/**
@@ -314,7 +314,7 @@ public class NurseUtil
 	 */
 	public static String GetServiceContentByString(String strServiceContent)
 	{
-		return  (strServiceContent + AppUtil.getResources().getText(R.string.nurse_service_content).toString());
+		return  (strServiceContent + AppUtil.GetResources().getText(R.string.nurse_service_content).toString());
 	}
 
 }
