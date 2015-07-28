@@ -18,7 +18,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.taixinkanghu.app.ui.shopping_page.ShoppingActivity;
+import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 
 public class HandlerClickEventShopping extends BaseHandleOnClickEvent
 {
@@ -31,6 +31,7 @@ public class HandlerClickEventShopping extends BaseHandleOnClickEvent
 	public void onClick(View v)
 	{
 //		Toast.makeText(m_context, R.string.function_is_not_open, Toast.LENGTH_SHORT).show();
-		m_context.startActivity(new Intent(m_context, ShoppingActivity.class));
+//		m_context.startActivity(new Intent(m_context, ShoppingActivity.class));
+		m_context.startActivity(new Intent(m_context, ApoitNursingActivity.class));
 	}
 }
