@@ -14,5 +14,140 @@
 
 package com.taixinkanghu.app.ui.appointment_nursing;
 
-public class ApoitNursingActivity
-{ }
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.taixinkanghu.R;
+
+public class ApoitNursingActivity extends Activity
+{
+	private TextView    m_pageTitleTv;
+	private ImageButton m_backBtn;
+	private Button      m_bottomBtn;
+
+	private LinearLayout m_genderBtn;
+	private LinearLayout m_ageBtn;
+	private LinearLayout m_weightBtn;
+	private LinearLayout m_hospitaltBtn;
+
+	private TextView  m_hospitalTv;
+	private ImageView m_dwonHospital;
+
+	private TextView  m_weightTv;
+	private ImageView m_dwonWeight;
+
+	private TextView  m_ageTv;
+	private ImageView m_dwonAge;
+
+	private TextView  m_genderTv;
+	private ImageView m_dwonGender;
+
+	private int selected_hospital;
+
+	private HandlerClickEventAppinmentNursing m_handlerClickEventAppointmentNursing = null;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_appointment_nursing);
+
+		init();
+		initListener();
+		initModule();
+
+	}
+
+	private void init()
+	{
+		m_pageTitleTv = (TextView)findViewById(R.id.page_title);
+		m_backBtn = (ImageButton)findViewById(R.id.btn_back);
+		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
+		m_genderTv = (TextView)findViewById(R.id.gender);
+		m_ageTv = (TextView)findViewById(R.id.age);
+		m_weightTv = (TextView)findViewById(R.id.weight);
+		m_hospitalTv = (TextView)findViewById(R.id.hospital);
+		m_dwonGender = (ImageView)findViewById(R.id.dwon_gender);
+		m_dwonAge = (ImageView)findViewById(R.id.dwon_age);
+		m_dwonWeight = (ImageView)findViewById(R.id.dwon_weight);
+		m_dwonHospital = (ImageView)findViewById(R.id.dwon_hospital);
+		m_genderBtn = (LinearLayout)findViewById(R.id.btn_gender);
+		m_ageBtn = (LinearLayout)findViewById(R.id.btn_age);
+		m_weightBtn = (LinearLayout)findViewById(R.id.btn_weight);
+		m_hospitaltBtn = (LinearLayout)findViewById(R.id.btn_hospital);
+
+		m_handlerClickEventAppointmentNursing = new HandlerClickEventAppinmentNursing(this);
+	}
+
+	private void initListener()
+	{
+		m_backBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_bottomBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_genderBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_ageBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_weightBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_hospitaltBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+	}
+
+	private void initModule()
+	{
+		m_pageTitleTv.setText(R.string.appointment_nursing_title);
+		m_bottomBtn.setText(R.string.confirm_btn_text);
+	}
+
+
+	public TextView getGenderTv()
+	{
+		return m_genderTv;
+	}
+
+	public ImageView getDwonGender()
+	{
+		return m_dwonGender;
+	}
+
+	public TextView getAgeTv()
+	{
+		return m_ageTv;
+	}
+
+	public ImageView getDwonAge()
+	{
+		return m_dwonAge;
+	}
+
+	public TextView getWeightTv()
+	{
+		return m_weightTv;
+	}
+
+	public ImageView getDwonWeight()
+	{
+		return m_dwonWeight;
+	}
+
+	public TextView getHospitalTv()
+	{
+		return m_hospitalTv;
+	}
+
+	public ImageView getDwonHospital()
+	{
+		return m_dwonHospital;
+	}
+
+	public void setSelected_hospital(int selected_hospital)
+	{
+		this.selected_hospital = selected_hospital;
+	}
+
+	public int getSelected_hospital()
+	{
+		return selected_hospital;
+	}
+}

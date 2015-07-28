@@ -18,7 +18,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
+import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 
 public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
 {
@@ -30,7 +30,7 @@ public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
 	@Override
 	public void onClick(View v)
 	{
-		m_context.startActivity(new Intent(m_context, ChooseNurseActivity.class));
+		m_context.startActivity(new Intent(m_context, ApoitNursingActivity.class));
 	}
 
 }

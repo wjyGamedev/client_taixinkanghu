@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="237dp"
+		android:background="@color/all_null">
+
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/btn_weight_section_0_35"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@drawable/bg_order_btn"
+		android:gravity="center"
+		android:text="@string/btn_age_section_0_15_text"
+		android:textColor="#ff666666"
+		android:textSize="14.0sp"/>
+
+	<TextView
+		android:id="@+id/btn_age_section_35_50"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@drawable/bg_order_btn"
+		android:gravity="center"
+		android:text="@string/btn_age_section_16_35_text"
+		android:textColor="#ff666666"
+		android:textSize="14.0sp"/>
+
+	<TextView
+		android:id="@+id/btn_age_section_50_80"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@drawable/bg_order_btn"
+		android:gravity="center"
+		android:text="@string/btn_age_section_36_55_text"
+		android:textColor="#ff666666"
+		android:textSize="14.0sp"/>
+
+	<TextView
+		android:id="@+id/btn_age_section_80_120"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@drawable/bg_order_btn"
+		android:gravity="center"
+		android:text="@string/btn_age_section_56_75_text"
+		android:textColor="#ff666666"
+		android:textSize="14.0sp"/>
+
+	<TextView
+		android:id="@+id/btn_age_section_above_120"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@drawable/bg_order_btn"
+		android:gravity="center"
+		android:text="@string/btn_age_section_above_75_text"
+		android:textColor="#ff666666"
+		android:textSize="14.0sp"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/mask">
+
+	</LinearLayout>
+</LinearLayout>

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.activity.AppointmentActivity;
+import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 
 /**
  * Created by Administrator on 2015/7/20.
@@ -38,20 +38,20 @@ public class SelectGenderFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        AppointmentActivity activity = (AppointmentActivity) getActivity();
+        ApoitNursingActivity activity = (ApoitNursingActivity) getActivity();
         switch (v.getId()) {
             case R.id.btn_Male:
-                activity.gender.setText("男");
-                activity.dwon_gender.setVisibility(View.INVISIBLE);
+                activity.getGenderTv().setText("男");
+                activity.getDwonGender().setVisibility(View.INVISIBLE);
                 break;
             case R.id.btn_Female:
-                activity.gender.setText("女");
-                activity.dwon_gender.setVisibility(View.INVISIBLE);
+                activity.getGenderTv().setText("女");
+                activity.getDwonGender().setVisibility(View.INVISIBLE);
                 break;
         }
         //蒙版点击一下之后消失的处理
         FragmentManager fgManager = getFragmentManager();
-        Fragment fragment = fgManager.findFragmentById(R.id.title);
+        Fragment fragment = fgManager.findFragmentById(R.id.appointment_nursing_page);
         FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
         fragmentTransaction.remove(fragment);
         String tag = null;
