@@ -231,7 +231,6 @@
 					android:text="所在科室："/>
 
 				<EditText
-					android:id="@id/name"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="30dp"
@@ -242,7 +241,8 @@
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
-					android:textSize="14.0sp"/>
+					android:textSize="14.0sp"
+					android:id="@+id/department_tv"/>
 
 			</LinearLayout>
 
@@ -261,7 +261,7 @@
 					android:text="病房号："/>
 
 				<EditText
-					android:id="@id/name"
+					android:id="@+id/room_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="30dp"
@@ -293,7 +293,7 @@
 
 
 				<EditText
-					android:id="@id/name"
+					android:id="@+id/bed_id_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="30dp"
@@ -362,7 +362,7 @@
 					android:text="陪护时间："/>
 
 				<EditText
-					android:id="@id/name"
+					android:id="@+id/time_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="30dp"
