@@ -21,13 +21,14 @@ import com.taixinkanghu.app.model.exception.RuntimeExceptions.UtilRTException;
 
 public class AppUtil
 {
+	private static Context m_context = null;
 
 	public static void init(Context context)
 	{
 		m_context = context;
 	}
 
-	public static Resources getResources()
+	public static Resources GetResources()
 	{
 		if (m_context == null)
 		{
@@ -36,5 +37,14 @@ public class AppUtil
 		return  m_context.getResources();
 	}
 
-	private static Context m_context = null;
+	public static int Dp2px(float dpValue) {
+		final float scale = GetResources().getDisplayMetrics().density;
+		return (int) (dpValue * scale + 0.5f);
+	}
+
+	public static int Px2dp(float pxValue) {
+		final float scale = GetResources().getDisplayMetrics().density;
+		return (int) (pxValue / scale + 0.5f);
+	}
+
 }
