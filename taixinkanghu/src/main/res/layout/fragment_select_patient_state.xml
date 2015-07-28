@@ -6,35 +6,45 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="157dp"
-        android:background="@color/all_null">
+        android:layout_height="254dp"
+        android:background="@color/mask">
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/btn_Male"
+        android:id="@+id/btn_state_care_myself"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/bg_order_btn"
         android:gravity="center"
-        android:text="男"
+        android:text="@string/btn_state_care_myself_text"
         android:textColor="#ff666666"
         android:textSize="14.0sp" />
 
     <TextView
-        android:id="@+id/btn_Female"
+        android:id="@+id/btn_state_half_care_myself"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/bg_order_btn"
         android:gravity="center"
-        android:text="女"
+        android:text="@string/btn_state_half_care_myself_text"
+        android:textColor="#ff666666"
+        android:textSize="14.0sp" />
+
+    <TextView
+        android:id="@+id/btn_state_not_care_myself"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_order_btn"
+        android:gravity="center"
+        android:text="@string/btn_state_not_care_myself_text"
         android:textColor="#ff666666"
         android:textSize="14.0sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mask">
+        android:background="@color/all_null">
 
     </LinearLayout>
 </LinearLayout>
