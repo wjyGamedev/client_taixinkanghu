@@ -10,7 +10,7 @@
     <!--<color name="divider_color">#ffd2d2d2</color>-->
     <color name="divider_color">#ff028df2</color>
     <color name="main_bg_color">#fff7f7f7</color>
-    <color name="main_color">#ff028df2</color>
+
     <color name="main_color_mask">#88028df2</color>
     <color name="main_color_disable">#ffcccccc</color>
     <color name="main_color_focus">#ff0383e1</color>
@@ -32,5 +32,7 @@
     <color name="white">#ffffffff</color>
     <color name="mask">#55000000</color>
     <color name="all_null">#00000000</color>
+	//泰心康护
+	<color name="main_color">#ff028df2</color>
 
 </resources>
