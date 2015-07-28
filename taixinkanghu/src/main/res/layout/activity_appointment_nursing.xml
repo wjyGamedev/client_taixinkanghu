@@ -310,6 +310,7 @@
 			</LinearLayout>
 
 			<LinearLayout
+				android:id="@+id/btn_patient_state"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -323,20 +324,26 @@
 					android:gravity="center_vertical"
 					android:text="病人状态："/>
 
-				<EditText
-					android:id="@id/name"
+				<TextView
+					android:id="@+id/patient_state"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginRight="30dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
-					android:hint="点击选择"
+					android:hint=""
 					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
 					android:textSize="14.0sp"/>
+
+				<ImageView
+					android:id="@+id/dwon_patient_state"
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_marginRight="30dp"
+					android:background="@mipmap/img_down"/>
 
 			</LinearLayout>
 
@@ -352,7 +359,7 @@
 					android:layout_height="30dp"
 					android:layout_marginLeft="20dp"
 					android:gravity="center_vertical"
-					android:text="病人状态："/>
+					android:text="陪护时间："/>
 
 				<EditText
 					android:id="@id/name"

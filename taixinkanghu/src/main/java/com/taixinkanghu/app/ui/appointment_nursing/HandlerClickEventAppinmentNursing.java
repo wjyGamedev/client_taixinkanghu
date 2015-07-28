@@ -1,12 +1,14 @@
 package com.taixinkanghu.app.ui.appointment_nursing;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.fragment.SelectGenderFragment;
 import com.taixinkanghu.app.ui.fragment.SelectHospitalFragment;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
+import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 
 /**
  * Created by Administrator on 2015/7/28.
@@ -31,7 +33,7 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			}
 			case R.id.btn_bottom:
 			{
-				activity.finish();
+				m_context.startActivity(new Intent(m_context, SelectNurseActivity.class));
 				break;
 			}
 			case R.id.btn_gender:
@@ -61,6 +63,13 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				fragment.setIntoWay(1);
 				activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.appointment_nursing_page,
 																							  fragment
+																							 ).commit();
+				break;
+			}
+			case R.id.btn_patient_state:
+			{
+				activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.appointment_nursing_page,
+																							  new SelectPatientStateFragment()
 																							 ).commit();
 				break;
 			}

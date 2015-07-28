@@ -15,7 +15,10 @@
 package com.taixinkanghu.app.ui.appointment_nursing;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.activity.AgreementActivity;
 
 public class ApoitNursingActivity extends Activity
 {
@@ -34,6 +38,10 @@ public class ApoitNursingActivity extends Activity
 	private LinearLayout m_ageBtn;
 	private LinearLayout m_weightBtn;
 	private LinearLayout m_hospitaltBtn;
+	private LinearLayout m_patientStateBtn;
+
+	private TextView  m_patientStateTv;
+	private ImageView m_dwonPatientState;
 
 	private TextView  m_hospitalTv;
 	private ImageView m_dwonHospital;
@@ -48,6 +56,8 @@ public class ApoitNursingActivity extends Activity
 	private ImageView m_dwonGender;
 
 	private int selected_hospital;
+
+	private TextView  m_protocolTv;
 
 	private HandlerClickEventAppinmentNursing m_handlerClickEventAppointmentNursing = null;
 
@@ -68,18 +78,26 @@ public class ApoitNursingActivity extends Activity
 		m_pageTitleTv = (TextView)findViewById(R.id.page_title);
 		m_backBtn = (ImageButton)findViewById(R.id.btn_back);
 		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
+
+		m_protocolTv = (TextView)findViewById(R.id.btn_protocol);
+
 		m_genderTv = (TextView)findViewById(R.id.gender);
 		m_ageTv = (TextView)findViewById(R.id.age);
 		m_weightTv = (TextView)findViewById(R.id.weight);
 		m_hospitalTv = (TextView)findViewById(R.id.hospital);
+		m_patientStateTv = (TextView)findViewById(R.id.patient_state);
+
 		m_dwonGender = (ImageView)findViewById(R.id.dwon_gender);
 		m_dwonAge = (ImageView)findViewById(R.id.dwon_age);
 		m_dwonWeight = (ImageView)findViewById(R.id.dwon_weight);
 		m_dwonHospital = (ImageView)findViewById(R.id.dwon_hospital);
+		m_dwonPatientState = (ImageView)findViewById(R.id.dwon_patient_state);
+
 		m_genderBtn = (LinearLayout)findViewById(R.id.btn_gender);
 		m_ageBtn = (LinearLayout)findViewById(R.id.btn_age);
 		m_weightBtn = (LinearLayout)findViewById(R.id.btn_weight);
 		m_hospitaltBtn = (LinearLayout)findViewById(R.id.btn_hospital);
+		m_patientStateBtn = (LinearLayout)findViewById(R.id.btn_patient_state);
 
 		m_handlerClickEventAppointmentNursing = new HandlerClickEventAppinmentNursing(this);
 	}
@@ -92,12 +110,23 @@ public class ApoitNursingActivity extends Activity
 		m_ageBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_weightBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_hospitaltBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_patientStateBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 	}
 
 	private void initModule()
 	{
 		m_pageTitleTv.setText(R.string.appointment_nursing_title);
 		m_bottomBtn.setText(R.string.confirm_btn_text);
+		m_protocolTv.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
+		m_protocolTv.setOnClickListener(new View.OnClickListener()
+										{
+											@Override
+											public void onClick(View v)
+											{
+												startActivity(new Intent(ApoitNursingActivity.this, AgreementActivity.class));
+											}
+										}
+									   );
 	}
 
 
@@ -149,5 +178,15 @@ public class ApoitNursingActivity extends Activity
 	public int getSelected_hospital()
 	{
 		return selected_hospital;
+	}
+
+	public TextView getPatientStateTv()
+	{
+		return m_patientStateTv;
+	}
+
+	public ImageView getDwonPatientState()
+	{
+		return m_dwonPatientState;
 	}
 }

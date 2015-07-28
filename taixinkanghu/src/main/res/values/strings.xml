@@ -66,6 +66,9 @@
 	<string name="btn_weight_section_50_80_text">50kg至80kg</string>
 	<string name="btn_weight_section_80_120_text">80kg至120kg</string>
 	<string name="btn_weight_section_above_120_text">120kg以上</string>
+	<string name="btn_state_care_myself_text">可自理</string>
+	<string name="btn_state_half_care_myself_text">半自理</string>
+	<string name="btn_state_not_care_myself_text">不能自理</string>
 
 	<string name="function_is_not_open">功能未开放</string>
 	<string name="nurse_junior">三星护理员</string>
