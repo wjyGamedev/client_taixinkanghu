@@ -1,87 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:background="@color/white"
+			  android:orientation="vertical">
 
-    <include layout="@layout/include_header" />
+	<include layout="@layout/include_header"/>
 
-    <RadioGroup
-        android:id="@+id/rg_worker_level"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:paddingTop="5dp">
+	<RadioGroup
+		android:id="@+id/rg_worker_level"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:orientation="horizontal"
+		android:paddingTop="5dp">
 
-        <RadioButton
-            style="@style/home_radio_button_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="@drawable/text_color_page_tab"
-            android:text="初级护理员" />
+		<RadioButton
+			android:id="@+id/three_star_btn"
+			style="@style/home_radio_button_style"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:text="@string/nurse_junior"
+			android:textColor="@drawable/text_color_page_tab"/>
 
-        <RadioButton
-            style="@style/home_radio_button_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="@drawable/text_color_page_tab"
-            android:text="中级护理员" />
+		<RadioButton
+			android:id="@+id/four_star_btn"
+			style="@style/home_radio_button_style"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:text="@string/intermediates_junior"
+			android:textColor="@drawable/text_color_page_tab"/>
 
 
-        <RadioButton
-            style="@style/home_radio_button_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="@drawable/text_color_page_tab"
-            android:text="高级护理员" />
+		<RadioButton
+			android:id="@+id/five_star_btn"
+			style="@style/home_radio_button_style"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:text="@string/senior_junior"
+			android:textColor="@drawable/text_color_page_tab"/>
 
-        <RadioButton
-            style="@style/home_radio_button_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="@drawable/text_color_page_tab"
-            android:text="特级护理员" />
+		<RadioButton
+			android:id="@+id/six_star_btn"
+			style="@style/home_radio_button_style"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:text="@string/super_junior"
+			android:textColor="@drawable/text_color_page_tab"/>
 
-    </RadioGroup>
+	</RadioGroup>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical">
+	<include
+		android:id="@+id/dividing_line"
+		layout="@layout/item_dividing_line_horizontal"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="中级护理" />
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginBottom="20dp"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"
+		android:layout_marginTop="20dp"
+		android:layout_weight="1"
+		android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="有具体6个月以上护理院工作经验。。。。。。。。。。。。。。。" />
+		<TextView
+			android:id="@+id/worker_level_explain_tv"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/three_star_worker_explain"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="服务内容" />
+	</LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="包括初级护理的所有的服务内容。。。。。。。。。。。。。。。。" />
-
-    </LinearLayout>
-
-    <include layout="@layout/include_main_button"/>
+	<include layout="@layout/include_main_button"/>
 
 </LinearLayout>

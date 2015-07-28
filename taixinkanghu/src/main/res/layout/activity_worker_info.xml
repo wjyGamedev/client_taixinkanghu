@@ -65,7 +65,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:singleLine="true"
-                                    android:text="中级护理员"
+                                    android:text="@string/intermediates_junior"
                                     android:textColor="#ddffffff"
                                     android:textSize="14.0sp" />
                             </LinearLayout>
