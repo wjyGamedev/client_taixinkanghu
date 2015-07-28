@@ -66,7 +66,7 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 
 		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)titleLinearLayout.getLayoutParams(); // 取控件mGrid当前的布局参数
 		final float               scale        = getActivity().getResources().getDisplayMetrics().density;
-		linearParams.height = (int)(277 * scale + 0.5f);// 当控件的高强制设成50象素
+		linearParams.height = (int)(317 * scale + 0.5f);// 当控件的高强制设成50象素
 		titleLinearLayout.setLayoutParams(linearParams); // 使设置好的布局参数应用到控件myGrid
 
 

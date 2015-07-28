@@ -64,6 +64,37 @@
 			</LinearLayout>
 
 			<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:background="@drawable/bg_bule_frame_all"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="30dp"
+				android:layout_marginLeft="20dp"
+				android:gravity="center_vertical"
+				android:text="手机号码："/>
+
+			<EditText
+				android:id="@+id/bed_id_tv"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="30dp"
+				android:layout_weight="1"
+				android:background="#00000000"
+				android:gravity="right"
+				android:hint="点击填写"
+				android:imeOptions="actionNext"
+				android:singleLine="true"
+				android:textColor="@android:color/black"
+				android:textColorHint="@color/text_color_gray"
+				android:textSize="14.0sp"/>
+
+		</LinearLayout>
+
+			<LinearLayout
 				android:id="@+id/btn_gender"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
@@ -189,7 +220,15 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="10dp"
+					android:gravity="center_vertical"
+					android:textColor="@color/text_color_red"
+					android:text="*"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="30dp"
+					android:layout_marginLeft="3dp"
 					android:gravity="center_vertical"
 					android:text="所在医院："/>
 
@@ -226,7 +265,15 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="10dp"
+					android:gravity="center_vertical"
+					android:textColor="@color/text_color_red"
+					android:text="*"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="30dp"
+					android:layout_marginLeft="3dp"
 					android:gravity="center_vertical"
 					android:text="所在科室："/>
 
@@ -251,6 +298,7 @@
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
 				android:gravity="center_vertical"
+				android:visibility="gone"
 				android:orientation="horizontal">
 
 				<TextView
@@ -282,6 +330,7 @@
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
 				android:gravity="center_vertical"
+				android:visibility="gone"
 				android:orientation="horizontal">
 
 				<TextView
@@ -320,7 +369,15 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="10dp"
+					android:gravity="center_vertical"
+					android:textColor="@color/text_color_red"
+					android:text="*"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="30dp"
+					android:layout_marginLeft="3dp"
 					android:gravity="center_vertical"
 					android:text="病人状态："/>
 
@@ -357,7 +414,15 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="10dp"
+					android:gravity="center_vertical"
+					android:textColor="@color/text_color_red"
+					android:text="*"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="30dp"
+					android:layout_marginLeft="3dp"
 					android:gravity="center_vertical"
 					android:text="陪护时间："/>
 
