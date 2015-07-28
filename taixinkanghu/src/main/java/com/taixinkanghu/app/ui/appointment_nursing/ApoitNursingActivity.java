@@ -30,15 +30,25 @@ import com.taixinkanghu.app.ui.activity.AgreementActivity;
 
 public class ApoitNursingActivity extends Activity
 {
+	//title
 	private TextView    m_pageTitleTv;
 	private ImageButton m_backBtn;
 	private Button      m_bottomBtn;
+
+	//name
+	private TextView m_nameTV = null;
+	private TextView m_departmentTV = null;
+	private TextView m_roomTV = null;
+	private TextView m_bedTV = null;
+	private HandlerEditorActionEvent m_handlerEditorActionEvent = null;
 
 	private LinearLayout m_genderBtn;
 	private LinearLayout m_ageBtn;
 	private LinearLayout m_weightBtn;
 	private LinearLayout m_hospitaltBtn;
 	private LinearLayout m_patientStateBtn;
+
+
 
 	private TextView  m_patientStateTv;
 	private ImageView m_dwonPatientState;
@@ -75,9 +85,18 @@ public class ApoitNursingActivity extends Activity
 
 	private void init()
 	{
+		//title
 		m_pageTitleTv = (TextView)findViewById(R.id.page_title);
 		m_backBtn = (ImageButton)findViewById(R.id.btn_back);
 		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
+
+		//name
+		m_nameTV = (TextView)findViewById(R.id.name);
+		m_departmentTV = (TextView)findViewById(R.id.department_tv);
+		m_roomTV = (TextView)findViewById(R.id.room_tv);
+		m_bedTV = (TextView)findViewById(R.id.bed_id_tv);
+
+		m_handlerEditorActionEvent = new HandlerEditorActionEvent(this);
 
 		m_protocolTv = (TextView)findViewById(R.id.btn_protocol);
 
@@ -104,7 +123,16 @@ public class ApoitNursingActivity extends Activity
 
 	private void initListener()
 	{
+		//title
 		m_backBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+
+		//name
+//		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_nameTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+		m_departmentTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+		m_roomTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+		m_bedTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+
 		m_bottomBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_genderBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_ageBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
