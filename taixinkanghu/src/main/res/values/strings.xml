@@ -38,6 +38,12 @@
 	<string name="company_show_title">优惠信息</string>
 
 	//预约陪护
+
+	//选择护理员
+	<string name="select_nurse_title">选择护理员</string>
+	<string name="select_nurse_tips">以下护理员均为根据您的信息精细化匹配生成</string>
+
+
 	<string name="protocol_text">点击注册表示已阅读并同意</string>
 	<string name="company_show_red_text">红色标题信息</string>
 	<string name="company_black_text">黑色标题信息</string>
