@@ -43,7 +43,8 @@
 	//选择护理员
 	<string name="select_nurse_title">选择护理员</string>
 	<string name="select_nurse_tips">以下护理员均为根据您的信息精细化匹配生成</string>
-
+	//护理员信息
+	<string name="nurse_info">护理员信息</string>
 
 	<string name="protocol_text">点击注册表示已阅读并同意</string>
 	<string name="company_show_red_text">红色标题信息</string>
