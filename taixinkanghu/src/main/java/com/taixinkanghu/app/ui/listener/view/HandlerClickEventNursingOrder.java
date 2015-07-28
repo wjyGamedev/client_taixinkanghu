@@ -14,23 +14,24 @@
 
 package com.taixinkanghu.app.ui.listener.view;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
-import com.taixinkanghu.app.ui.activity.ChooseNurseActivity;
+import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 
 public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
 {
-	public HandlerClickEventNursingOrder(Context context)
+	public HandlerClickEventNursingOrder(Activity activity)
 	{
-		super(context);
+		super(activity);
 	}
 
 	@Override
 	public void onClick(View v)
 	{
-		m_context.startActivity(new Intent(m_context, ChooseNurseActivity.class));
+		Activity activity = (Activity)m_context;
+		m_context.startActivity(new Intent(activity, SelectNurseActivity.class));
 	}
 
 }
