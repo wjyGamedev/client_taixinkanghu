@@ -775,7 +775,7 @@
 
 
 			<Button
-				android:id="@id/btn_goto_main"
+				android:id="@+id/btn_goto_main"
 				android:layout_width="match_parent"
 				android:layout_height="48dp"
 				android:layout_weight="2"
@@ -790,7 +790,7 @@
 
 
 			<Button
-				android:id="@id/btn_select"
+				android:id="@+id/btn_select"
 				android:layout_width="match_parent"
 				android:layout_height="48dp"
 				android:layout_weight="1"
