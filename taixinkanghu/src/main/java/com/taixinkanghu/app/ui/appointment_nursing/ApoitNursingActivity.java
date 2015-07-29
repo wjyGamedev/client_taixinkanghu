@@ -20,27 +20,29 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
+import com.taixinkanghu.app.ui.header.HeaderCommon;
 
 public class ApoitNursingActivity extends Activity
 {
 	//title
-	private TextView    m_pageTitleTv;
-	private ImageButton m_backBtn;
+	private HeaderCommon m_headerCommon = null;
+
+
+	//bottom
 	private Button      m_bottomBtn;
 
 	//name
-	private TextView m_nameTV = null;
-	private TextView m_phoneNumTV = null;
-	private TextView m_departmentTV = null;
-	private TextView m_roomTV = null;
-	private TextView m_bedTV = null;
+	private TextView                 m_nameTV                   = null;
+	private TextView                 m_phoneNumTV               = null;
+	private TextView                 m_departmentTV             = null;
+	private TextView                 m_roomTV                   = null;
+	private TextView                 m_bedTV                    = null;
 	private HandlerEditorActionEvent m_handlerEditorActionEvent = null;
 
 	private LinearLayout m_genderBtn;
@@ -48,7 +50,6 @@ public class ApoitNursingActivity extends Activity
 	private LinearLayout m_weightBtn;
 	private LinearLayout m_hospitaltBtn;
 	private LinearLayout m_patientStateBtn;
-
 
 
 	private TextView  m_patientStateTv;
@@ -68,7 +69,7 @@ public class ApoitNursingActivity extends Activity
 
 	private int selected_hospital;
 
-	private TextView  m_protocolTv;
+	private TextView m_protocolTv;
 
 	private HandlerClickEventAppinmentNursing m_handlerClickEventAppointmentNursing = null;
 
@@ -87,8 +88,9 @@ public class ApoitNursingActivity extends Activity
 	private void init()
 	{
 		//title
-		m_pageTitleTv = (TextView)findViewById(R.id.page_title);
-		m_backBtn = (ImageButton)findViewById(R.id.btn_back);
+		m_headerCommon = new HeaderCommon(this);
+		m_headerCommon.init();
+
 		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
 
 		//name
@@ -126,7 +128,6 @@ public class ApoitNursingActivity extends Activity
 	private void initListener()
 	{
 		//title
-		m_backBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 
 		//name
 //		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
@@ -147,7 +148,7 @@ public class ApoitNursingActivity extends Activity
 
 	private void initModule()
 	{
-		m_pageTitleTv.setText(R.string.appointment_nursing_title);
+		m_headerCommon.setTitle(R.string.appointment_nursing_title);
 		m_bottomBtn.setText(R.string.confirm_btn_text);
 		m_protocolTv.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
 		m_protocolTv.setOnClickListener(new View.OnClickListener()
