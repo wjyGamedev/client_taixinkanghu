@@ -37,6 +37,7 @@ public class ApoitNursingActivity extends Activity
 
 	//name
 	private TextView m_nameTV = null;
+	private TextView m_phoneNumTV = null;
 	private TextView m_departmentTV = null;
 	private TextView m_roomTV = null;
 	private TextView m_bedTV = null;
@@ -92,6 +93,7 @@ public class ApoitNursingActivity extends Activity
 
 		//name
 		m_nameTV = (TextView)findViewById(R.id.name);
+		m_phoneNumTV = (TextView)findViewById(R.id.phone_number_tv);
 		m_departmentTV = (TextView)findViewById(R.id.department_tv);
 		m_roomTV = (TextView)findViewById(R.id.room_tv);
 		m_bedTV = (TextView)findViewById(R.id.bed_id_tv);
@@ -129,6 +131,8 @@ public class ApoitNursingActivity extends Activity
 		//name
 //		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_nameTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+		m_phoneNumTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+
 		m_departmentTV.setOnEditorActionListener(m_handlerEditorActionEvent);
 		m_roomTV.setOnEditorActionListener(m_handlerEditorActionEvent);
 		m_bedTV.setOnEditorActionListener(m_handlerEditorActionEvent);
