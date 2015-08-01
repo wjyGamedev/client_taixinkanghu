@@ -26,4 +26,9 @@ public class NetConfig
 
 
 	public final static String s_ShoppingBasicsListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/goods_basics_list/";
+
+
+	//注册
+	public final static String s_registerAddress = "http://"+IP_ADDREDD_TEST+"/";
+
 }
