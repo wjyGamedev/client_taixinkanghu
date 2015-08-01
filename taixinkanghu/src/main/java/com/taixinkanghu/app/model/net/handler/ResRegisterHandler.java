@@ -14,6 +14,7 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
+import com.taixinkanghu.app.model.data.DAccount;
 import com.taixinkanghu.app.model.net.IResponseListener;
 
 import org.json.JSONObject;
@@ -23,7 +24,7 @@ public class ResRegisterHandler extends IResponseListener
 	@Override
 	public void onResponse(JSONObject response)
 	{
-		//DAccount
+		boolean bReturnFlag = DAccount.GetInstance().serialization(response);
 		//TODO:注册返回信息
 	}
 }
