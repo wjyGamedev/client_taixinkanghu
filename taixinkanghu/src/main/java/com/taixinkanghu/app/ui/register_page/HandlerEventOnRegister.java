@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.net.event.ReqRegisterEvent;
 import com.taixinkanghu.third.party.sms.DSmsAutho;
 import com.taixinkanghu.third.party.sms.SmsAutho;
 import com.taixinkanghu.third.party.sms.SmsConfig;
@@ -31,15 +32,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.smssdk.SMSSDK;
+import de.greenrobot.event.EventBus;
 
 public class HandlerEventOnRegister implements View.OnClickListener
 {
+	private EventBus m_eventBus = EventBus.getDefault();
 	private RegisterActivity  m_registerActivity             = null;
 	private String m_CountryZipCode = null;
 	private String m_phoneNum = null;
 	public HandlerEventOnRegister(RegisterActivity registerActivity)
 	{
 		m_registerActivity = registerActivity;
+	}
+
+
+	public void init()
+	{
+		m_eventBus.register(this);
+	}
+
+	public void clearup()
+	{
+		m_eventBus.unregister(this);
 	}
 
 	@Override
@@ -73,15 +87,18 @@ public class HandlerEventOnRegister implements View.OnClickListener
 		//01. 获取手机号码，并判断有效性
 		if (LogicalUtil.isMobileNumValid(m_phoneNum) == false)
 		{
-			RegisterDialog.GetInstance().setMsg(m_registerActivity.getResources().getString(R.string.err_info_invalid_phone), m_registerActivity);
+			RegisterDialog.GetInstance().setMsg(m_registerActivity.getResources().getString(R.string.err_info_invalid_phone),
+												m_registerActivity
+											   );
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 
 		//02. 获取当前国家,并查看是否支持
-		String strMcc = AppUtil.GetMCC();
+		String strMcc       = AppUtil.GetMCC();
 		String strCountry[] = null;
-		if (!TextUtils.isEmpty(strMcc)) {
+		if (!TextUtils.isEmpty(strMcc))
+		{
 			strCountry = SMSSDK.getCountryByMCC(strMcc);
 		}
 		else
@@ -126,7 +143,11 @@ public class HandlerEventOnRegister implements View.OnClickListener
 		//01. 提交验证码
 		TextView authTV =  m_registerActivity.getAuthTV();
 		String authCode = authTV.getText().toString().trim();
-		SmsAutho.GetInstance().submitVerificationCode(m_CountryZipCode, m_phoneNum, authCode);
+		//更改提交方式，由提交到第三方，更改为提交到本地服务器。
+//		SmsAutho.GetInstance().submitVerificationCode(m_CountryZipCode, m_phoneNum, authCode);
+		ReqRegisterEvent reqRegisterEvent = new ReqRegisterEvent();
+		reqRegisterEvent.init(m_CountryZipCode, m_phoneNum, authCode);
+		m_eventBus.post(reqRegisterEvent);
 	}
 
 }
