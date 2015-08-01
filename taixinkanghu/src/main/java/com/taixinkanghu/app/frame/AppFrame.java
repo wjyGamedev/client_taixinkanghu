@@ -24,12 +24,16 @@ import android.util.Log;
 
 import com.taixinkanghu.app.model.net.NetService;
 import com.taixinkanghu.net.BaseHttp;
+import com.taixinkanghu.third.party.sms.SmsAutho;
 import com.taixinkanghu.util.android.AppUtil;
 
 import de.greenrobot.event.EventBus;
 
 public class AppFrame extends Application
 {
+	private EventBus          m_eventBus          = null;
+	private ServiceConnection m_serviceConnection = null;
+
 	@Override
 	public void onCreate()
 	{
@@ -112,7 +116,6 @@ public class AppFrame extends Application
 
 
 
-	private EventBus m_eventBus = null;
-	private ServiceConnection m_serviceConnection = null;
+
 
 }
