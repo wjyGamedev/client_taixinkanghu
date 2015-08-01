@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 
@@ -35,15 +36,15 @@ public class ApoitNursingActivity extends Activity
 
 
 	//bottom
-	private Button      m_bottomBtn;
+	private Button m_bottomBtn;
 
 	//name
-	private TextView                 m_nameTV                   = null;
-	private TextView                 m_phoneNumTV               = null;
-	private TextView                 m_departmentTV             = null;
-	private TextView                 m_roomTV                   = null;
-	private TextView                 m_bedTV                    = null;
-	private HandlerEditorActionEvent m_handlerEditorActionEvent = null;
+	private TextView              m_nameTV                = null;
+	private TextView              m_phoneNumTV            = null;
+	private TextView              m_departmentTV          = null;
+	private TextView              m_roomTV                = null;
+	private TextView              m_bedTV                 = null;
+	private HandleEditActionEvent m_handleEditActionEvent = null;
 
 	private LinearLayout m_genderBtn;
 	private LinearLayout m_ageBtn;
@@ -100,7 +101,7 @@ public class ApoitNursingActivity extends Activity
 		m_roomTV = (TextView)findViewById(R.id.room_tv);
 		m_bedTV = (TextView)findViewById(R.id.bed_id_tv);
 
-		m_handlerEditorActionEvent = new HandlerEditorActionEvent(this);
+		m_handleEditActionEvent = new HandleEditActionEvent(this);
 
 		m_protocolTv = (TextView)findViewById(R.id.btn_protocol);
 
@@ -131,12 +132,12 @@ public class ApoitNursingActivity extends Activity
 
 		//name
 //		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_nameTV.setOnEditorActionListener(m_handlerEditorActionEvent);
-		m_phoneNumTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+		m_nameTV.setOnEditorActionListener(m_handleEditActionEvent);
+		m_phoneNumTV.setOnEditorActionListener(m_handleEditActionEvent);
 
-		m_departmentTV.setOnEditorActionListener(m_handlerEditorActionEvent);
-		m_roomTV.setOnEditorActionListener(m_handlerEditorActionEvent);
-		m_bedTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+		m_departmentTV.setOnEditorActionListener(m_handleEditActionEvent);
+		m_roomTV.setOnEditorActionListener(m_handleEditActionEvent);
+		m_bedTV.setOnEditorActionListener(m_handleEditActionEvent);
 
 		m_bottomBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_genderBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
