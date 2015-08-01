@@ -60,6 +60,8 @@ public class DataConfig
 	public final static String PRAISE_RATE       = "praise_rate";
 	public final static String EVALUATION_TIMES  = "evaluation_times";
 
+	//注册
+	public final static String REGISTER_TOKEN = "register_token";
 
 }
 
