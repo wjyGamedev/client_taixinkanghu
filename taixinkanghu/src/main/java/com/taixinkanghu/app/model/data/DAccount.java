@@ -26,7 +26,7 @@ public class DAccount
 {
 	private static DAccount s_dAccount = new DAccount();
 
-	private static String m_loginToken = null;
+	private String m_loginToken = null;
 
 	private DAccount()
 	{
@@ -56,7 +56,7 @@ public class DAccount
 
 	}
 
-	public static String getM_loginToken()
+	public String getLoginToken()
 	{
 		return m_loginToken;
 	}
