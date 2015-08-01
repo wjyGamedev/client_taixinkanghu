@@ -27,6 +27,9 @@ public class EventID
 	//康复用品
 	public final static int QUEST_SHOPPING_BASIC_LIST = 104;
 
+	//sms event
+	public final static int SMS_EVENT_DEFAULT = 200;
+
 	/**
 	 * UI event
 	 */
