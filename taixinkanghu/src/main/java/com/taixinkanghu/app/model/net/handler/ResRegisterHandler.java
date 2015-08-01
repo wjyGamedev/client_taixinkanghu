@@ -23,6 +23,7 @@ public class ResRegisterHandler extends IResponseListener
 	@Override
 	public void onResponse(JSONObject response)
 	{
+		//DAccount
 		//TODO:注册返回信息
 	}
 }
