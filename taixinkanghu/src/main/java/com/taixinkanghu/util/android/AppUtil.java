@@ -16,6 +16,8 @@ package com.taixinkanghu.util.android;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.UtilRTException;
 
@@ -47,4 +49,16 @@ public class AppUtil
 		return (int) (pxValue / scale + 0.5f);
 	}
 
+	public static String GetMCC()
+	{
+		TelephonyManager tm = (TelephonyManager) m_context.getSystemService(Context.TELEPHONY_SERVICE);
+		// 返回当前手机注册的网络运营商所在国家的MCC+MNC. 如果没注册到网络就为空.
+		String networkOperator = tm.getNetworkOperator();
+		if (!TextUtils.isEmpty(networkOperator)) {
+			return networkOperator;
+		}
+
+		// 返回SIM卡运营商所在国家的MCC+MNC. 5位或6位. 如果没有SIM卡返回空
+		return tm.getSimOperator();
+	}
 }
