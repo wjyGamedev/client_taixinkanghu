@@ -65,10 +65,11 @@ public class RegisterActivity extends Activity
 		m_verificationBtn = (Button)findViewById(R.id.verification_id_btn);
 		m_registerBtn = (Button)findViewById(R.id.register_id_btn);
 
-		m_handlerEventOnRegister = new HandlerEventOnRegister(this);
+		m_handlerEventOnRegister = new HandlerEventOnRegister();
 		m_handleEditActionEvent = new HandleEditActionEvent(this);
 
 		SmsAutho.GetInstance().init(this);
+		m_handlerEventOnRegister.init(this);
 	}
 
 	private void initContent()
@@ -82,11 +83,6 @@ public class RegisterActivity extends Activity
 		m_phoneNumTV.setOnEditorActionListener(m_handleEditActionEvent);
 		m_verificationBtn.setOnClickListener(m_handlerEventOnRegister);
 		m_registerBtn.setOnClickListener(m_handlerEventOnRegister);
-	}
-
-	public TextView getPhoneNumTV()
-	{
-		return m_phoneNumTV;
 	}
 
 	public TextView getAuthTV()
