@@ -22,6 +22,7 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.NetConfig;
 import com.taixinkanghu.app.model.net.event.ReqHospitalListEvent;
 import com.taixinkanghu.app.model.net.event.ReqNurseBasicListEvent;
@@ -36,8 +37,6 @@ import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
 import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
 import com.taixinkanghu.net.BaseHttp;
 import com.taixinkanghu.third.party.sms.SmsConfig;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -199,16 +198,15 @@ public class NetService extends Service
 		String authCode = event.getAuthCode();
 
 		HashMap<String, String> registerData = new HashMap<String, String>();
-		registerData.put(SmsConfig.PHONE_KEY, countryZipCode);
-		registerData.put(SmsConfig.ZONE_KEY, phoneNum);
+		registerData.put(SmsConfig.ZONE_KEY, countryZipCode);
+		registerData.put(SmsConfig.PHONE_KEY, phoneNum);
 		registerData.put(SmsConfig.CODE_KEY, authCode);
 
-		JSONObject jsonRequest = new JSONObject(registerData);
-		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.POST,
-														NetConfig.s_registerAddress,
-														jsonRequest,
-														m_resRegisterHandler,
-														m_baseErrorListener);
+		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
+													NetConfig.s_registerAddress,
+													registerData,
+													m_resRegisterHandler,
+													m_baseErrorListener);
 
 		m_requestQueue.add(myReq);
 	}
