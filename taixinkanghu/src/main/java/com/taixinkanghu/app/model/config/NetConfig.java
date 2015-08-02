@@ -29,6 +29,6 @@ public class NetConfig
 
 
 	//注册
-	public final static String s_registerAddress = "http://"+IP_ADDREDD_TEST+"/";
+	public final static String s_registerAddress = "http://"+IP_ADDREDD_INNER+"/user/loginAction/";
 
 }

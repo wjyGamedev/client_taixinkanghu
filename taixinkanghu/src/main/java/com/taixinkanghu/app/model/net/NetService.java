@@ -27,14 +27,19 @@ import com.taixinkanghu.app.model.net.event.ReqHospitalListEvent;
 import com.taixinkanghu.app.model.net.event.ReqNurseBasicListEvent;
 import com.taixinkanghu.app.model.net.event.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.model.net.event.ReqRegisterEvent;
+import com.taixinkanghu.app.model.net.event.ReqShoppingBasicListEvent;
 import com.taixinkanghu.app.model.net.exception.BaseErrorListener;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseBasicListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
-import com.taixinkanghu.app.model.net.event.ReqShoppingBasicListEvent;
 import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
 import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
 import com.taixinkanghu.net.BaseHttp;
+import com.taixinkanghu.third.party.sms.SmsConfig;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.EventBusException;
@@ -192,9 +197,16 @@ public class NetService extends Service
 		String countryZipCode = event.getCountryZipCode();
 		String phoneNum = event.getPhoneNum();
 		String authCode = event.getAuthCode();
+
+		HashMap<String, String> registerData = new HashMap<String, String>();
+		registerData.put(SmsConfig.PHONE_KEY, countryZipCode);
+		registerData.put(SmsConfig.ZONE_KEY, phoneNum);
+		registerData.put(SmsConfig.CODE_KEY, authCode);
+
+		JSONObject jsonRequest = new JSONObject(registerData);
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.POST,
 														NetConfig.s_registerAddress,
-														null,
+														jsonRequest,
 														m_resRegisterHandler,
 														m_baseErrorListener);
 
