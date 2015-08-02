@@ -43,7 +43,7 @@ public class DAccount
 		JSONArray jsonArray = null;
 		try
 		{
-			m_loginToken = response.getString(DataConfig.REGISTER_TOKEN);
+			m_loginToken = response.getString(DataConfig.REGISTER_KEY);
 		}
 		catch (JSONException e)
 		{

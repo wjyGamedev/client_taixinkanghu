@@ -61,7 +61,7 @@ public class DataConfig
 	public final static String EVALUATION_TIMES  = "evaluation_times";
 
 	//注册
-	public final static String REGISTER_TOKEN = "register_token";
+	public final static String REGISTER_KEY = "register_token";
 
 }
 
