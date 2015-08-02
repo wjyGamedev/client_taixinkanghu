@@ -36,24 +36,24 @@ import de.greenrobot.event.EventBus;
 
 public class HandlerEventOnRegister implements View.OnClickListener
 {
-	private EventBus m_eventBus = EventBus.getDefault();
 	private RegisterActivity  m_registerActivity             = null;
 	private String m_CountryZipCode = null;
 	private String m_phoneNum = null;
-	public HandlerEventOnRegister(RegisterActivity registerActivity)
+	private TextView m_phoneNumTV = null;
+
+	public HandlerEventOnRegister()
 	{
-		m_registerActivity = registerActivity;
 	}
 
 
-	public void init()
+	public void init(RegisterActivity registerActivity)
 	{
-		m_eventBus.register(this);
+		m_registerActivity = registerActivity;
+		m_phoneNumTV = (TextView)m_registerActivity.findViewById(R.id.phone_num_tv);
 	}
 
 	public void clearup()
 	{
-		m_eventBus.unregister(this);
 	}
 
 	@Override
@@ -82,8 +82,7 @@ public class HandlerEventOnRegister implements View.OnClickListener
 		if (m_registerActivity == null)
 			return;
 
-		TextView phoneNumTV = m_registerActivity.getPhoneNumTV();
-		m_phoneNum = phoneNumTV.getText().toString().trim();
+		initPhoneNum();
 		//01. 获取手机号码，并判断有效性
 		if (LogicalUtil.isMobileNumValid(m_phoneNum) == false)
 		{
@@ -95,6 +94,29 @@ public class HandlerEventOnRegister implements View.OnClickListener
 		}
 
 		//02. 获取当前国家,并查看是否支持
+		if (!initCountryZipCode())
+			return;
+
+		//03. 发送手机验证
+		SmsAutho.GetInstance().getVerificationCode(m_CountryZipCode, m_phoneNum);
+
+	}
+
+	private void initPhoneNum()
+	{
+		String phoneNum = m_phoneNumTV.getText().toString().trim();
+		if (TextUtils.isEmpty(m_phoneNum) == true ||
+				m_phoneNum.equals(phoneNum) == false)
+		{
+			m_phoneNum = phoneNum;
+		}
+	}
+
+	private boolean initCountryZipCode()
+	{
+		if (TextUtils.isEmpty(m_CountryZipCode) == false)
+			return true;
+
 		String strMcc       = AppUtil.GetMCC();
 		String strCountry[] = null;
 		if (!TextUtils.isEmpty(strMcc))
@@ -108,20 +130,20 @@ public class HandlerEventOnRegister implements View.OnClickListener
 
 		if (strCountry == null)
 		{
-			return;
+			return false;
 		}
 
 		m_CountryZipCode = strCountry[1];
 		HashMap<String, String> coutryCodeRuleMaps = DSmsAutho.GetInstance().getCountryCodeMaps();
 		if (coutryCodeRuleMaps == null)
 		{
-			return;
+			return false;
 		}
 
 		String strPhoneRule = coutryCodeRuleMaps.get(m_CountryZipCode);
 		if (strPhoneRule == null)
 		{
-			return;
+			return false;
 		}
 
 		Pattern pattern = Pattern.compile(strPhoneRule);
@@ -130,12 +152,9 @@ public class HandlerEventOnRegister implements View.OnClickListener
 		{
 			RegisterDialog.GetInstance().setMsg(m_registerActivity.getResources().getString(R.string.err_info_invalid_country_zip_code), m_registerActivity);
 			RegisterDialog.GetInstance().show();
-			return;
+			return false;
 		}
-
-		//03. 发送手机验证
-		SmsAutho.GetInstance().getVerificationCode(m_CountryZipCode, m_phoneNum);
-
+		return true;
 	}
 
 	private void handleRegisterEvent()
@@ -145,9 +164,13 @@ public class HandlerEventOnRegister implements View.OnClickListener
 		String authCode = authTV.getText().toString().trim();
 		//更改提交方式，由提交到第三方，更改为提交到本地服务器。
 //		SmsAutho.GetInstance().submitVerificationCode(m_CountryZipCode, m_phoneNum, authCode);
+		initPhoneNum();
+		if (!initCountryZipCode())
+			return;
+
 		ReqRegisterEvent reqRegisterEvent = new ReqRegisterEvent();
 		reqRegisterEvent.init(m_CountryZipCode, m_phoneNum, authCode);
-		m_eventBus.post(reqRegisterEvent);
+		EventBus.getDefault().post(reqRegisterEvent);
 	}
 
 }
