@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.fragment.SelectDateFragment;
 import com.taixinkanghu.app.ui.fragment.SelectGenderFragment;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
+import com.taixinkanghu.app.ui.nurs_order_confirm_page.OrderConfirmActivity;
 
 /**
  * Created by Administrator on 2015/7/11.
@@ -27,8 +27,6 @@ public class AppointmentActivity extends Activity implements View.OnClickListene
     private Button btn_goto_main;
     private Button btn_submit;
     private LinearLayout btn_gender;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,5 +67,4 @@ public class AppointmentActivity extends Activity implements View.OnClickListene
                 break;
         }
     }
-
 }
