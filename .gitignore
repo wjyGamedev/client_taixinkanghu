@@ -13,7 +13,6 @@
 /viewflow/build
 /import-summary.txt
 /viewflow/build.gradle
-/viewflow/src
 /EventBus/EventBus.iml
 /.idea/modules.xml
 generated
