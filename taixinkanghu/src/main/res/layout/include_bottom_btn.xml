@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@id/btn_bottom"
+        android:id="@+id/btn_bottom"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/bg_btn_main_color"
