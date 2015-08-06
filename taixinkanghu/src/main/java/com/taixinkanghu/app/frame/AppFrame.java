@@ -23,15 +23,12 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.taixinkanghu.app.model.net.NetService;
+import com.taixinkanghu.app.model.storage.StorageWrapper;
 import com.taixinkanghu.net.BaseHttp;
-import com.taixinkanghu.third.party.sms.SmsAutho;
 import com.taixinkanghu.util.android.AppUtil;
-
-import de.greenrobot.event.EventBus;
 
 public class AppFrame extends Application
 {
-	private EventBus          m_eventBus          = null;
 	private ServiceConnection m_serviceConnection = null;
 
 	@Override
@@ -60,7 +57,6 @@ public class AppFrame extends Application
 
 	private void onDataInit()
 	{
-		m_eventBus = EventBus.getDefault();
 		m_serviceConnection = new ServiceConnection()
 		{
 			@Override
@@ -87,6 +83,7 @@ public class AppFrame extends Application
 	{
 		BaseHttp.getInstance().init(this);
 		AppUtil.init(this);
+		StorageWrapper.GetInstance().init(this);
 	}
 
 	private void onServiceInit()
