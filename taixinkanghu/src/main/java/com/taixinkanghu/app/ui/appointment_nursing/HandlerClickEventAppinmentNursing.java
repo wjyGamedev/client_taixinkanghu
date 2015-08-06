@@ -70,6 +70,11 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 																							 ).commit();
 				break;
 			}
+			case R.id.btn_date:
+			{
+				m_context.startActivity(new Intent(m_context, SelectDateActivity.class));
+				break;
+			}
 		}
 	}
 }

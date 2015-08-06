@@ -39,19 +39,24 @@ public class ApoitNursingActivity extends Activity
 	private Button m_bottomBtn;
 
 	//name
-	private TextView              m_nameTV                = null;
-	private TextView              m_phoneNumTV            = null;
-	private TextView              m_departmentTV          = null;
-	private TextView              m_roomTV                = null;
-	private TextView              m_bedTV                 = null;
-	private HandleEditActionEvent m_handleEditActionEvent = null;
+	private TextView m_nameTV       = null;
+	private TextView m_departmentTV = null;
+	private TextView m_roomTV       = null;
+	private TextView m_bedTV        = null;
 
+	//事件
+	private HandlerEditorActionEvent m_handlerEditorActionEvent = null;
+
+	//按钮
 	private LinearLayout m_genderBtn;
 	private LinearLayout m_ageBtn;
 	private LinearLayout m_weightBtn;
 	private LinearLayout m_hospitaltBtn;
 	private LinearLayout m_patientStateBtn;
+	private LinearLayout m_dateBtn;
 
+	private TextView  m_dateTv;
+	private ImageView m_rightDate;
 
 	private TextView  m_patientStateTv;
 	private ImageView m_dwonPatientState;
@@ -110,18 +115,21 @@ public class ApoitNursingActivity extends Activity
 		m_weightTv = (TextView)findViewById(R.id.weight);
 		m_hospitalTv = (TextView)findViewById(R.id.hospital);
 		m_patientStateTv = (TextView)findViewById(R.id.patient_state);
+		m_dateTv = (TextView)findViewById(R.id.date);
 
 		m_dwonGender = (ImageView)findViewById(R.id.dwon_gender);
 		m_dwonAge = (ImageView)findViewById(R.id.dwon_age);
 		m_dwonWeight = (ImageView)findViewById(R.id.dwon_weight);
 		m_dwonHospital = (ImageView)findViewById(R.id.dwon_hospital);
 		m_dwonPatientState = (ImageView)findViewById(R.id.dwon_patient_state);
+		m_rightDate = (ImageView)findViewById(R.id.right_date);
 
 		m_genderBtn = (LinearLayout)findViewById(R.id.btn_gender);
 		m_ageBtn = (LinearLayout)findViewById(R.id.btn_age);
 		m_weightBtn = (LinearLayout)findViewById(R.id.btn_weight);
 		m_hospitaltBtn = (LinearLayout)findViewById(R.id.btn_hospital);
 		m_patientStateBtn = (LinearLayout)findViewById(R.id.btn_patient_state);
+		m_dateBtn = (LinearLayout)findViewById(R.id.btn_date);
 
 		m_handlerClickEventAppointmentNursing = new HandlerClickEventAppinmentNursing(this);
 	}
@@ -131,7 +139,7 @@ public class ApoitNursingActivity extends Activity
 		//title
 
 		//name
-//		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		//		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_nameTV.setOnEditorActionListener(m_handleEditActionEvent);
 		m_phoneNumTV.setOnEditorActionListener(m_handleEditActionEvent);
 
@@ -145,6 +153,7 @@ public class ApoitNursingActivity extends Activity
 		m_weightBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_hospitaltBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_patientStateBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_dateBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 	}
 
 	private void initModule()

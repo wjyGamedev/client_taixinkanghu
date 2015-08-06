@@ -37,15 +37,9 @@
 	<string name="goods_info_title">商品详细信息</string>
 	<string name="company_show_title">优惠信息</string>
 	<string name="appointment_nursing_title">预约陪护</string>
+	<string name="nursing_order_pay_title">订单支付</string>
 
 	//预约陪护
-
-	//选择护理员
-	<string name="select_nurse_title">选择护理员</string>
-	<string name="select_nurse_tips">以下护理员均为根据您的信息精细化匹配生成</string>
-	//护理员信息
-	<string name="nurse_info">护理员信息</string>
-
 	//注册信息
 	<string name="title_register">注册页面</string>
 
@@ -112,6 +106,75 @@
 	<string name="btn_state_half_care_myself_text">半自理</string>
 	<string name="btn_state_not_care_myself_text">不能自理</string>
 
+	//陪护订单
+	<string name="evaluation_text">评价</string>
+	<string name="continue_text">续订</string>
+	<string name="replacement_text">更换</string>
+	<string name="unsubscribe_text">退订</string>
+	<string name="fill_post_text">补差价</string>
+
+	<string name="order_status_text">订单状态：</string>
+	<string name="cancelled_text">已取消</string>
+	<string name="unpaid_text">未付款</string>
+	<string name="services_text">服务中</string>
+	<string name="completed_text">已完成</string>
+	<string name="start_date_text">开始日期</string>
+	<string name="to_text">至</string>
+	<string name="end_date_text">结束日期</string>
+
+	<string name="nursing_service_text">陪护服务</string>
+	<string name="day_text">天</string>
+	<string name="number_of_days_text">天数</string>
+
+	<string name="unit_price_text">单价</string>
+	<string name="yuan_text">元</string>
+	<string name="multiplication_sign_text">x</string>
+	<string name="total_text">合计：</string>
+
+	<string name="order_content_text">订单内容</string>
+	<string name="nursing_worker_text">护理员:</string>
+	<string name="job_number_text">工号：</string>
+	<string name="job_id_text">job_number</string>
+	<string name="service_time_text">服务时间:</string>
+	<string name="service_time_datda_text">6月24日 - 6月25日 共1天</string>
+	<string name="service_location_text">服务地点:</string>
+	<string name="service_location_data_text">北京朝阳医院心血管内科</string>
+	<string name="patient_text">被护理人:</string>
+	<string name="patient_data_text">王某人</string>
+	<string name="patient_state_text">被护理人状态：</string>
+	<string name="order_amount_text">订单金额</string>
+	<string name="service_type_all_text">全天24小时陪护服务1天：</string>
+	<string name="service_type_day_text">白天12小时陪护服务1天：</string>
+	<string name="service_type_night_text">夜间12小时陪护服务1天：</string>
+	<string name="service_type_price_text">200元 × 1</string>
+	<string name="insurance_text">保险(暂无)</string>
+	<string name="insurance_price_text">+0元</string>
+	<string name="total_price_text">200元</string>
+	<string name="user_protocol_text">用户协议</string>
+	<string name="click_ok_text">点击确定预约表示已阅读并同意</string>
+	<string name="determine_appointment_text">确定预约</string>
+	<string name="determine_pay_title">确认支付</string>
+	<string name="determine_order_title">确认订单</string>
+
+	<string name="pay_the_way_text">支付方式</string>
+	<string name="need_pay_text">需支付</string>
+	<string name="cash_pay_text">现金支付</string>
+	<string name="cash_pay_hint_text">提交成功后，工作人员会上门收取现金</string>
+	<string name="ali_pay_text">支付宝支付</string>
+	<string name="ali_pay_hint_text">推荐有支付宝账号的用户使用</string>
+	<string name="weixin_pay_text">微信支付</string>
+	<string name="weixin_pay_hint_text">推荐安装微信5.0版本以上的用户使用</string>
+
+
+
+	//选择护理员
+	<string name="select_nurse_title">选择护理员</string>
+	<string name="select_nurse_tips">以下护理员均为根据您的信息精细化匹配生成</string>
+
+	//护理员信息
+	<string name="nurse_info">护理员信息</string>
+
+
 	<string name="function_is_not_open">功能未开放</string>
 	<string name="nurse_junior">三星护理员</string>
 	<string name="intermediates_junior">四星护理员</string>
@@ -168,6 +231,8 @@
 	<string name="title_activity_shopping">ShoppingActivity</string>
 	<string name="title_activity_goods_info">GoodsInfoActivity</string>
 	<string name="title_appoitment_nursing">ApoitNursingActivity</string>
+	<string name="title_select_date">SelectDateActivity</string>
+	<string name="title_nurs_order_pay">NursOrderPayActivity</string>
 
 	<string name="sunday">日</string>
 	<string name="monday">一</string>
@@ -220,9 +285,6 @@
 
 	<!-- 颜色-->
 	<string name="color_all_null">#00000000</string>
-
-
-
 
 
 </resources>

@@ -1,137 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+			  xmlns:app="http://schemas.android.com/apk/res-auto"
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:descendantFocusability="blocksDescendants"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:descendantFocusability="blocksDescendants"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		android:padding="10dp">
 
-        <com.taixinkanghu.widget.circleimageview.CircleImageView
-            android:id="@+id/pic"
-            android:layout_width="116dp"
-            android:layout_height="99dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/face_img"
-            app:border_color="@color/main_color"
-            app:border_width="0.5dp" />
+		<com.taixinkanghu.widget.circleimageview.CircleImageView
+			android:id="@+id/pic"
+			android:layout_width="116dp"
+			android:layout_height="99dp"
+			android:layout_marginLeft="5dp"
+			android:layout_marginRight="10dp"
+			android:src="@mipmap/face_img"
+			app:border_color="@color/main_color"
+			app:border_width="0.5dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="40dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="15dp"
+			android:gravity="center_vertical"
+			android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="2dp"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
 
-                <TextView
-                    android:id="@id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="王瑾瑜"
-                    android:textColor="@color/text_color_black"
-                    android:textSize="16.0sp" />
+				<TextView
+					android:id="@id/name"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:text="@string/name_text"
+					android:textColor="@color/text_color_black"
+					android:textSize="16.0sp"/>
 
-                <TextView
-                    android:id="@id/price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="-5dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_marginTop="-5dp"
-                    android:layout_weight="1.0"
-                    android:gravity="right"
-                    android:text="订单状态"
-                    android:textColor="@color/text_color_black"
-                    android:textSize="14.0sp" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="-5dp"
+					android:layout_marginRight="3dp"
+					android:layout_marginTop="-5dp"
+					android:layout_weight="1.0"
+					android:gravity="right"
+					android:text="@string/order_status_text"
+					android:textColor="@color/text_color_black"
+					android:textSize="14.0sp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="0.0"
-                    android:text="已取消"
-                    android:textColor="@color/text_color_black"
-                    android:textSize="14.0sp" />
-            </LinearLayout>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="20dp"
+					android:layout_weight="0.0"
+					android:text="@string/cancelled_text"
+					android:textColor="@color/text_color_black"
+					android:textSize="14.0sp"
+					android:id="@+id/order_state"/>
+			</LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/main_color" />
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="0.5dp"
+				android:background="@color/main_color"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="3dp"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/startdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="2015-06-17"
-                    android:textColor="@color/text_color_gray"
-                    android:textSize="13.0sp" />
+				<TextView
+					android:id="@+id/startdate"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="right"
+					android:text="@string/start_date_text"
+					android:textColor="@color/text_color_gray"
+					android:textSize="13.0sp"/>
 
-                <TextView
-                    android:id="@+id/province"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="至"
-                    android:textColor="@color/text_color_gray"
-                    android:textSize="13.0sp" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/to_text"
+					android:textColor="@color/text_color_gray"
+					android:textSize="13.0sp"/>
 
-                <TextView
-                    android:id="@+id/enddate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2015-06-18"
-                    android:textColor="@color/text_color_gray"
-                    android:textSize="13.0sp" />
-            </LinearLayout>
+				<TextView
+					android:id="@+id/enddate"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/end_date_text"
+					android:textColor="@color/text_color_gray"
+					android:textSize="13.0sp"/>
+			</LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/days"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="0.0"
-                    android:singleLine="true"
-                    android:text="陪护服务1天"
-                    android:textColor="@color/text_color_black"
-                    android:textSize="14.0sp" />
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
 
-            </LinearLayout>
-        </LinearLayout>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:singleLine="true"
+						android:text="@string/nursing_service_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
 
-    </LinearLayout>
+					<TextView
+						android:id="@+id/days"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:singleLine="true"
+						android:text="@string/number_of_days_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/main_color" />
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:singleLine="true"
+						android:text="@string/day_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+				</LinearLayout>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
+				android:orientation="vertical">
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
+
+					<TextView
+						android:id="@+id/unit_price"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/unit_price_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/yuan_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/multiplication_sign_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:id="@+id/days_orange"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/number_of_days_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/day_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:gravity="right"
+						android:layout_weight="1"
+						android:singleLine="true"
+						android:text="@string/total_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:id="@+id/total_price"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/unit_price_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/yuan_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"
+		android:background="@color/main_color"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="36dp"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		android:orientation="horizontal">
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="2.5dp"
+			android:layout_marginRight="2.5dp"
+			android:layout_marginTop="5dp"
+			android:layout_weight="1"
+			android:background="@drawable/bg_btn_item_nurs_order"
+			android:text="@string/evaluation_text"
+			android:id="@+id/item_btn_1"/>
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="2.5dp"
+			android:layout_marginRight="2.5dp"
+			android:layout_marginTop="5dp"
+			android:layout_weight="1"
+			android:background="@drawable/bg_btn_item_nurs_order"
+			android:text="@string/continue_text"
+			android:id="@+id/item_btn_2"/>
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="2.5dp"
+			android:layout_marginRight="2.5dp"
+			android:layout_marginTop="5dp"
+			android:layout_weight="1"
+			android:background="@drawable/bg_btn_item_nurs_order"
+			android:text="@string/replacement_text"
+			android:id="@+id/item_btn_3"/>
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="2.5dp"
+			android:layout_marginRight="2.5dp"
+			android:layout_marginTop="5dp"
+			android:layout_weight="1"
+			android:background="@drawable/bg_btn_item_nurs_order"
+			android:text="@string/unsubscribe_text"
+			android:id="@+id/item_btn_4"/>
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="2.5dp"
+			android:layout_marginRight="2.5dp"
+			android:layout_marginTop="5dp"
+			android:layout_weight="1"
+			android:background="@drawable/bg_btn_item_nurs_order"
+			android:text="@string/fill_post_text"
+			android:id="@+id/item_btn_5"/>
+
+	</LinearLayout>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="@color/main_color"/>
+
 </LinearLayout>

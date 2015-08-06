@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	android:id="@+id/order_confirm_page"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/main_bg_color"
+		android:orientation="vertical">
+
+		<include layout="@layout/include_header"/>
+
+		<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1.0">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingBottom="10dp">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="40dp"
+					android:gravity="center_vertical"
+					android:paddingLeft="15dp"
+					android:paddingRight="15dp"
+					android:text="@string/order_content_text"
+					android:textColor="@color/text_color_gray"
+					android:textSize="14.0sp"/>
+
+				<LinearLayout
+					android:id="@id/item_date"
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+
+					<RadioGroup
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:orientation="horizontal">
+
+						<RadioButton
+							style="@style/home_radio_button_style"
+							android:layout_width="20dp"
+							android:layout_height="match_parent"
+							android:background="@drawable/bg_top_tab"
+							android:text="更换后"/>
+
+						<RadioButton
+							style="@style/home_radio_button_style"
+							android:layout_width="20dp"
+							android:layout_height="match_parent"
+							android:background="@drawable/bg_top_tab"
+							android:text="更换前"/>
+
+					</RadioGroup>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@id/item_worker"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@color/white"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="10dp"
+					android:paddingTop="10dp">
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="15dp"
+						android:layout_marginRight="10dp"
+						android:layout_weight="1.0"
+						android:singleLine="true"
+						android:text="@string/nursing_worker_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<com.taixinkanghu.widget.circleimageview.CircleImageView
+						android:id="@+id/worker_pic"
+						android:layout_width="55dp"
+						android:layout_height="55dp"
+						android:layout_centerInParent="true"
+						android:layout_marginRight="10dp"
+						android:src="@mipmap/face_img"
+						app:border_color="@color/main_color"
+						app:border_width="0.5dp"/>
+
+					<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_marginRight="15dp"
+						android:layout_weight="0.0"
+						android:gravity="right|center"
+						android:orientation="vertical">
+
+						<TextView
+							android:id="@+id/worker_name"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:singleLine="true"
+							android:text="@string/name_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+						<TextView
+							android:id="@+id/worker_level_name"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:singleLine="true"
+							android:text="@string/intermediates_junior"
+							android:textColor="@color/text_color_gray"
+							android:textSize="12.0sp"/>
+
+						<LinearLayout
+							android:layout_width="wrap_content"
+							android:layout_height="match_parent"
+							android:orientation="horizontal">
+
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:singleLine="true"
+								android:text="@string/job_number_text"
+								android:textColor="@color/text_color_gray"
+								android:textSize="12.0sp"/>
+
+							<TextView
+								android:id="@+id/worker_id"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:singleLine="true"
+								android:text="@string/job_id_text"
+								android:textColor="@color/text_color_gray"
+								android:textSize="12.0sp"/>
+
+
+						</LinearLayout>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+
+				<LinearLayout
+					android:id="@id/item_date"
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@drawable/bg_order_btn"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:text="@string/service_time_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:id="@+id/date"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/service_time_datda_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@id/item_place"
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@drawable/bg_order_btn"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:text="@string/service_location_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:id="@+id/place"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/service_location_data_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/patient_region"
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@drawable/bg_bule_frame_all"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="15dp"
+						android:layout_marginRight="10dp"
+						android:text="@string/patient_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:id="@+id/patient_mame"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/patient_data_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<ImageView
+						android:id="@+id/right_date"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="15dp"
+						android:background="@mipmap/img_right"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/patient_state_region"
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@drawable/bg_bule_frame_all"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="30dp"
+						android:layout_marginLeft="15dp"
+						android:gravity="center_vertical"
+						android:text="@string/patient_state_text"/>
+
+					<TextView
+						android:id="@+id/patient_state"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:background="#00000000"
+						android:gravity="right"
+						android:hint=""
+						android:imeOptions="actionNext"
+						android:singleLine="true"
+						android:textColor="@android:color/black"
+						android:textColorHint="@color/text_color_gray"
+						android:textSize="14.0sp"/>
+
+					<ImageView
+						android:id="@+id/dwon_patient_state"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="15dp"
+						android:background="@mipmap/img_down"/>
+
+				</LinearLayout>
+
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="40dp"
+					android:gravity="center_vertical"
+					android:paddingLeft="15dp"
+					android:paddingRight="15dp"
+					android:text="@string/order_amount_text"
+					android:textColor="@color/text_color_gray"
+					android:textSize="14.0sp"/>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/bg_bule_frame_top"
+					android:gravity="center_vertical"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="10dp"></TextView>
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_marginBottom="2.5dp"
+						android:layout_marginTop="2.5dp"
+						android:orientation="horizontal">
+
+						<TextView
+							android:id="@+id/service_name"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="15dp"
+							android:layout_marginRight="10dp"
+							android:text="@string/service_type_all_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+						<TextView
+							android:id="@+id/service_price"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginRight="11.0dp"
+							android:layout_weight="1"
+							android:gravity="right"
+							android:singleLine="true"
+							android:text="@string/service_type_price_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_marginBottom="2.5dp"
+						android:layout_marginTop="2.5dp"
+						android:orientation="horizontal">
+
+						<TextView
+							android:id="@+id/service_name"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="15dp"
+							android:layout_marginRight="10dp"
+							android:text="@string/service_type_day_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+						<TextView
+							android:id="@+id/service_price"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginRight="11.0dp"
+							android:layout_weight="1"
+							android:gravity="right"
+							android:singleLine="true"
+							android:text="@string/service_type_price_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_marginBottom="2.5dp"
+						android:layout_marginTop="2.5dp"
+						android:orientation="horizontal">
+
+						<TextView
+							android:id="@+id/service_name"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="15dp"
+							android:layout_marginRight="10dp"
+							android:text="@string/service_type_night_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+						<TextView
+							android:id="@+id/service_price"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginRight="11.0dp"
+							android:layout_weight="1"
+							android:gravity="right"
+							android:singleLine="true"
+							android:text="@string/service_type_price_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+					</LinearLayout>
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="10dp"></TextView>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@drawable/bg_order_btn"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/insurance_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/insurance_price_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@drawable/bg_bule_frame_bottom"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="15dp"
+						android:text="@string/total_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:id="@+id/total_price"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="15dp"
+						android:layout_weight="1.0"
+						android:gravity="right"
+						android:singleLine="true"
+						android:text="@string/total_price_text"
+						android:textColor="@color/text_color_orange"
+						android:textSize="14.0sp"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10dp"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="5dp"
+					android:paddingLeft="15dp"
+					android:paddingRight="15dp">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/user_protocol_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:id="@id/pay_money"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:gravity="right"
+						android:singleLine="true"
+						android:textColor="@color/date_select_orange"
+						android:textSize="16.0sp"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@id/item_cash"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/bg_bule_frame"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="10dp"
+					android:paddingTop="10dp">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="15dp"
+						android:text="@string/click_ok_text"
+						android:textColor="@color/text_color_black"
+						android:textSize="14.0sp"/>
+
+					<TextView
+						android:id="@+id/user_protocol"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:autoLink="none"
+						android:textColor="@color/main_color"
+						android:textSize="14.0sp"/>
+
+					<ImageView
+						android:id="@id/item_cash_rbtn"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="15dp"
+						android:src="@drawable/btn_pay_select"/>
+				</LinearLayout>
+			</LinearLayout>
+		</ScrollView>
+
+		<Button
+			android:id="@id/btn_pay"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:background="@drawable/bg_btn_main_color"
+			android:text="@string/determine_appointment_text"
+			android:textColor="#ffffffff"
+			android:textSize="18.0sp"/>
+
+	</LinearLayout>
+
+</FrameLayout>
