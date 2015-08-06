@@ -20,15 +20,20 @@ public class NetConfig
 	private final static String IP_ADDREDD_OFFICAL = "54.223.209.101:8888";	//泰心康护正式服务器
 	private final static String IP_ADDREDD_TEST = "54.223.217.123:8888";		//协同开发服务器
 
+	//测试地址
 	public final static String s_hospitalListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/hospital_list/";
 	public final static String s_nurseBasicsListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/nurse_basics_list/";
 	public final static String s_nurseSeniorListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/nurse_senior_list/";
-
-
 	public final static String s_ShoppingBasicsListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/goods_basics_list/";
-
+	//协同地址
+	public final static String S_NORMAL_HOSPITALLIST_ADDRESS = "http://"+IP_ADDREDD_TEST+"/hospital/gethospitallist/";
 
 	//注册
-	public final static String s_registerAddress = "http://"+IP_ADDREDD_INNER+"/user/loginAction/";
+	public final static String s_registerAddress = "http://"+IP_ADDREDD_TEST+"/user/loginAction/";
+
+
+
+
+
 
 }
