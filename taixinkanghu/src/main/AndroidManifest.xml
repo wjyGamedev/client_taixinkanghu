@@ -122,10 +122,14 @@
             android:label="@string/title_activity_worker_info_more" />
         <activity
             android:name=".app.ui.shopping_page.ShoppingActivity"
-            android:label="@string/title_activity_goods_info" />
+            android:label="@string/title_activity_shopping" />
+            />
         <activity
             android:name=".app.ui.appointment_nursing.ApoitNursingActivity"
             android:label="@string/title_appoitment_nursing" />
+        <activity
+            android:name=".app.ui.goods_info_page.GoodsInfoActivity"
+            android:label="@string/title_activity_goods_info" />
         <activity
             android:name=".app.ui.appointment_nursing.SelectDateActivity"
             android:label="@string/title_select_date" />
