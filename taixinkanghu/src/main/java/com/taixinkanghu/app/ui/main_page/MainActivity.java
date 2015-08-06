@@ -16,9 +16,11 @@ import android.widget.Toast;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.controller.CMainPage;
-import com.taixinkanghu.app.ui.activity.MySettingActivity;
+import com.taixinkanghu.app.model.data.DAccount;
 import com.taixinkanghu.app.ui.activity.MyWealthActivity;
 import com.taixinkanghu.app.ui.activity.NursOrderActivity;
+import com.taixinkanghu.app.ui.register_page.RegisterActivity;
+import com.taixinkanghu.app.ui.setting.SettingActivity;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnAfterTabChangeListener;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnBeforeTabChangeListener;
@@ -27,6 +29,13 @@ import com.taixinkanghu.widget.tab_item.TabItem;
 
 public class MainActivity extends FragmentActivity
 {
+	private FragmentTabHostEx                           m_fragmentTabHost           = null;
+	private PopupMenu                                   m_popupMenu                 = null;
+	private ImpMenuItemClickListener                    m_impMenuItemClickListener  = null;
+	private ImpTabClickListener                         m_impTabClickListener       = null;
+	private ImpBeforeTabChangeListener 					 m_impBeforeTabChangeListener = null;
+	private ImpAfterTabChangeListener                    m_impAfterTabChangeListener  = null;
+	private ImpTabChangeListener		m_impTabChangeListener = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,24 +153,24 @@ public class MainActivity extends FragmentActivity
 			{
 			case R.id.nursing_order:
 			{
-				MainActivity.this.OpenNursingOrder();
+				OpenNursingOrder();
 			}
-				return true;
+			return true;
 			case R.id.shopping_order:
 			{
-				MainActivity.this.OpenProductOrder();
+				OpenProductOrder();
 			}
-				return true;
+			return true;
 			case R.id.personal_wealth:
 			{
-				MainActivity.this.OpenMyWealth();
+				OpenMyWealth();
 			}
-				return true;
+			return true;
 			case R.id.personal_setting:
 			{
-				MainActivity.this.OpenMySet();
+				OpenMySetting();
 			}
-				return true;
+			return true;
 			default:
 				break;
 			}
@@ -172,7 +181,14 @@ public class MainActivity extends FragmentActivity
 	//陪护订单
 	private void OpenNursingOrder()
 	{
-		startActivity(new Intent(MainActivity.this, NursOrderActivity.class));
+		if (DAccount.GetInstance().isRegisterSuccess())
+		{
+			startActivity(new Intent(MainActivity.this, NursOrderActivity.class));
+		}
+		else
+		{
+			startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+		}
 	}
 
 	//产品订单
@@ -188,9 +204,9 @@ public class MainActivity extends FragmentActivity
 	}
 
 	//我的设置
-	private void OpenMySet()
+	private void OpenMySetting()
 	{
-		startActivity(new Intent(MainActivity.this, MySettingActivity.class));
+		startActivity(new Intent(MainActivity.this, SettingActivity.class));
 	}
 
 	private class ImpTabClickListener implements OnTabClickListener
@@ -257,13 +273,5 @@ public class MainActivity extends FragmentActivity
 			Log.w("onTabChanged", "test");
 		}
 	}
-
-	private FragmentTabHostEx                           m_fragmentTabHost           = null;
-	private PopupMenu                                   m_popupMenu                 = null;
-	private ImpMenuItemClickListener                    m_impMenuItemClickListener  = null;
-	private ImpTabClickListener                         m_impTabClickListener       = null;
-	private ImpBeforeTabChangeListener 					 m_impBeforeTabChangeListener = null;
-	private ImpAfterTabChangeListener                    m_impAfterTabChangeListener  = null;
-	private ImpTabChangeListener		m_impTabChangeListener = null;
 
 }
