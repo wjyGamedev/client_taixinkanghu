@@ -200,7 +200,14 @@ public class MainActivity extends FragmentActivity
 	//我的财富
 	private void OpenMyWealth()
 	{
-		startActivity(new Intent(MainActivity.this, MyWealthActivity.class));
+		if (DAccount.GetInstance().isRegisterSuccess())
+		{
+			startActivity(new Intent(MainActivity.this, MyWealthActivity.class));
+		}
+		else
+		{
+			startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+		}
 	}
 
 	//我的设置
