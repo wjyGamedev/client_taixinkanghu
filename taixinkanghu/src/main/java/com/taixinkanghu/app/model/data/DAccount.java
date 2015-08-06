@@ -14,9 +14,14 @@
 
 package com.taixinkanghu.app.model.data;
 
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.storage.OwnerPreferences;
+import com.taixinkanghu.app.model.storage.StorageWrapper;
+import com.taixinkanghu.util.android.AppUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +31,16 @@ public class DAccount
 {
 	private static DAccount s_dAccount = new DAccount();
 
-	private String m_loginToken = null;
+	//http into
+	private int    m_Status  = DataConfig.S_HTTP_OK;
+	private String m_errorMsg = null;
+
+	//data
+	private String m_From = null;
+	private String m_id = null;
+	private String m_code = null;
+	private String m_mobile = null;
+	private String m_nick = null;
 
 	private DAccount()
 	{
@@ -38,12 +52,66 @@ public class DAccount
 		return s_dAccount;
 	}
 
-	public boolean serialization(JSONObject response)
+	public boolean serialFromHttp(JSONObject response)
 	{
+//		//测试代码
+//		String testData = "{\"status\":200,\"user\":[{\"id\":\"3\",\"mobile\":\"15010522656\",\"nick\":\"\",\"code\":\"8ea9fd32b4\"}]}";
+//		JSONObject testJsonObject = null;
+//		try
+//		{
+//			testJsonObject = new JSONObject(testData);
+//		}
+//		catch (JSONException e)
+//		{
+//			e.printStackTrace();
+//			return false;
+//		}
+
+
 		JSONArray jsonArray = null;
 		try
 		{
-			m_loginToken = response.getString(DataConfig.REGISTER_KEY);
+			m_From = DataConfig.REGISTER_FROM_HTTP;
+
+			//http info
+			m_Status = response.getInt(DataConfig.STATUS_KEY);
+			//错误
+			if (m_Status != DataConfig.S_HTTP_OK)
+			{
+				m_errorMsg = response.getString(DataConfig.ERROR_MSG);
+			}
+			//正常
+			else
+			{
+				m_errorMsg = AppUtil.GetResources().getString(R.string.info_register_success);
+
+//				jsonArray = response.getJSONArray(DataConfig.USER_KEY);
+				JSONObject jsonObject = response.getJSONObject(DataConfig.USER_KEY);
+				if (jsonObject == null)
+					return false;
+
+//				JSONObject jsonObject = null;
+//				if (jsonArray.length() != 1)
+//				{
+//					return false;
+//				}
+//
+//				for (int index = 0; index < jsonArray.length(); index++)
+//				{
+//					jsonObject=(JSONObject)jsonArray.get(index);
+					if (serializationData(jsonObject) == false)
+					{
+						return false;
+					}
+
+					//序列化到本地存储
+					OwnerPreferences setting = StorageWrapper.GetInstance().getOwnerPreferences();
+					if (setting.serialization(jsonObject) == false)
+					{
+						return false;
+					}
+//				}
+			}
 		}
 		catch (JSONException e)
 		{
@@ -52,12 +120,74 @@ public class DAccount
 			return false;
 		}
 
-		return  true;
+		return true;
 
 	}
 
-	public String getLoginToken()
+	public boolean serialFromStorage(JSONObject response)
 	{
-		return m_loginToken;
+		m_From = DataConfig.REGISTER_FROM_STORATE;
+		return serializationData(response);
+	}
+
+	private boolean serializationData(JSONObject jsonObject)
+	{
+		try
+		{
+			m_id = jsonObject.getString(DataConfig.ID_KEY);
+			m_code = jsonObject.getString(DataConfig.CODE_KEY);
+			m_mobile = jsonObject.getString(DataConfig.MOBILE_KEY);
+			m_nick = jsonObject.getString(DataConfig.NICK_KEY);
+		}
+		catch (JSONException e)
+		{
+			e.printStackTrace();
+			Log.e("error", e.getMessage().toString());
+			return false;
+		}
+
+		return true;
+	}
+
+
+
+	public int getStatus()
+	{
+		return m_Status;
+	}
+
+	public boolean isHttpSuccess()
+	{
+		return (m_Status == DataConfig.S_HTTP_OK);
+	}
+
+	public boolean isRegisterSuccess()
+	{
+		return (TextUtils.isEmpty(m_code) == false);
+	}
+
+	public String getErrorMsg()
+	{
+		return m_errorMsg;
+	}
+
+	public String getId()
+	{
+		return m_id;
+	}
+
+	public String getCode()
+	{
+		return m_code;
+	}
+
+	public String getMobile()
+	{
+		return m_mobile;
+	}
+
+	public String getNick()
+	{
+		return m_nick;
 	}
 }
