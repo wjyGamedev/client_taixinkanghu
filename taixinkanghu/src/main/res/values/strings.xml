@@ -49,12 +49,37 @@
 	//注册信息
 	<string name="title_register">注册页面</string>
 
-	//提示信息
+	//我的设置
+	<string name="title_setting">我的设置</string>
+	<string name="tips_logout">您还未登录哦~</string>
+	<string name="login">登录</string>
+	<string name="logout">退出登录</string>
+	<string name="tips_loginout">是否确定退出登录?</string>
+
+	<!-- 提示信息-->
+	<string name="info_i_known">知道了</string>
+	<string name="info_register_success">成功</string>
+	<string name="info_determine">确定</string>
+	<string name="info_cancel">取消</string>
+	<!-- 错误信息-->
 	<string name="err_info_invalid_phone">请输入有效的手机号码</string>
 	<string name="err_info_no_init_sms">SmsAutho未初始化</string>
-
-	<string name="info_i_known">知道了</string>
 	<string name="err_info_invalid_country_zip_code">当前国家不支持手机验证服务</string>
+	<!-- net 错误信息-->
+	<string name="err_info_deserialization_failed">反序列化失败</string>
+	<string name="err_info_http_status">http status:</string>
+	<string name="err_info_sms_status">http sms:</string>
+	<!-- sms 错误信息-->
+	<string name="err_info_sms_access_permission_refuse">服务器拒绝访问，或者拒绝操作</string>
+	<string name="err_info_sms_appkey_invalid">求Appkey不存在或被禁用。</string>
+	<string name="err_info_sms_permission_invalid">权限不足</string>
+	<string name="err_info_sms_server_error">服务器内部错误</string>
+	<string name="err_info_sms_param_invalid">缺少必要的请求参数</string>
+	<string name="err_info_sms_phone_format_invalid">请求中用户的手机号格式不正确（包括手机的区号）</string>
+	<string name="err_info_sms_auth_code_num_max">请求发送验证码次数超出限制</string>
+	<string name="err_info_sms_auth_code_invalid">无效验证码。</string>
+	<string name="err_info_sms_credit_low">余额不足</string>
+
 
 	<string name="protocol_text">点击注册表示已阅读并同意</string>
 	<string name="company_show_red_text">红色标题信息</string>
