@@ -147,9 +147,9 @@ public class NetService extends Service
 	public void onEventAsync(ReqHospitalListEvent event)
 	{
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
-														NetConfig.s_nurseSeniorListAddress,
+														NetConfig.S_NORMAL_HOSPITALLIST_ADDRESS,
 														null,
-														m_resNurseSeniorListHandler,
+														m_resHospitalListHandler,
 														m_baseErrorListener);
 
 		m_requestQueue.add(myReq);
@@ -160,7 +160,7 @@ public class NetService extends Service
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
 														NetConfig.s_hospitalListAddress,
 														null,
-														m_resHospitalListHandler,
+														m_resNurseBasicListHandler,
 														m_baseErrorListener);
 
 		m_requestQueue.add(myReq);
@@ -171,7 +171,7 @@ public class NetService extends Service
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
 														NetConfig.s_nurseBasicsListAddress,
 														null,
-														m_resNurseBasicListHandler,
+														m_resNurseSeniorListHandler,
 														m_baseErrorListener);
 
 		m_requestQueue.add(myReq);
