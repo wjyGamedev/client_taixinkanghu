@@ -87,7 +87,8 @@ final class ViewHolder
 	private TextView  m_evaluationTimesText;	//评论次数
 
 	private HashMap<Integer, DShoppingBasics> m_dShoppingBasicsHashMap   = null;
-	private ArrayList<DShoppingBasics>        m_dShoppingBasicsArrayList = new ArrayList<DShoppingBasics>();
+
+	private ArrayList<DShoppingBasics> m_dShoppingBasicsArrayList = new ArrayList<DShoppingBasics>();
 
 	public void initListViewItem(View view)
 	{
