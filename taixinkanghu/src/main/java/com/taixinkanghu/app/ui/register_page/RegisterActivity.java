@@ -118,6 +118,7 @@ public class RegisterActivity extends Activity
 		{
 			RegisterDialog.GetInstance().setMsg(getResources().getString(R.string.err_info_deserialization_failed), this);
 			RegisterDialog.GetInstance().show();
+			return;
 		}
 
 		//status:失败
@@ -125,8 +126,11 @@ public class RegisterActivity extends Activity
 		{
 			RegisterDialog.GetInstance().setMsg(DAccount.GetInstance().getErrorMsg(), this);
 			RegisterDialog.GetInstance().show();
+			return;
 		}
 
+		//注册成功，关闭当前页面
+		finish();
 		return;
 
 	}
