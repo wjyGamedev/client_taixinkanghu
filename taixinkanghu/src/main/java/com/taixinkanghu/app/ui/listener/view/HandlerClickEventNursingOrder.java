@@ -18,6 +18,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 import com.taixinkanghu.app.ui.register_page.RegisterActivity;
 
 public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
@@ -30,7 +32,15 @@ public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
 	@Override
 	public void onClick(View v)
 	{
-		m_context.startActivity(new Intent(m_context, RegisterActivity.class));
+		if (DAccount.GetInstance().isRegisterSuccess() == false)
+		{
+			m_context.startActivity(new Intent(m_context, RegisterActivity.class));
+		}
+		else
+		{
+			m_context.startActivity(new Intent(m_context, ApoitNursingActivity.class));
+		}
+
 	}
 
 }
