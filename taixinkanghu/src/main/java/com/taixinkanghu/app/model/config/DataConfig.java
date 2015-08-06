@@ -61,7 +61,32 @@ public class DataConfig
 	public final static String EVALUATION_TIMES  = "evaluation_times";
 
 	//注册
-	public final static String REGISTER_KEY = "register_token";
+	public final static String HTTP_STATUS_CODE = "register_token";
+	public final static String JSON_DATA_KEY = "json_data";
+	public final static String STATUS_KEY = "status";
+	public final static String ERROR_MSG = "msg";
+
+
+	public final static int S_HTTP_OK = 200;
+	public final static int S_SMS_OK = 200;	//注册，服务器返回成功标志
+	public final static int S_SMS_ACCESS_PERMISSION_REFUSE = 512;
+	public final static int S_SMS_APPKEY_INVALID = 513;
+	public final static int S_SMS_PERMISSION_INVALID = 514;
+	public final static int S_SMS_SERVER_ERROR = 515;
+	public final static int S_SMS_PARAM_INVALID = 517;
+	public final static int S_SMS_PHONE_FORMAT_INVALID = 518;
+	public final static int S_SMS_AUTH_CODE_NUM_MAX = 519;
+	public final static int S_SMS_AUTH_CODE_INVALID = 520;
+	public final static int S_SMS_CREDIT_LOW = 526;
+
+	public final static String USER_KEY = "user";
+	public final static String ID_KEY = "id";
+	public final static String CODE_KEY = "code";
+	public final static String MOBILE_KEY = "mobile";
+	public final static String NICK_KEY = "nick";
+
+	public final static String REGISTER_FROM_HTTP = "http";
+	public final static String REGISTER_FROM_STORATE = "storage";
 
 }
 
