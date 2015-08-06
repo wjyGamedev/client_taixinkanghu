@@ -39,6 +39,7 @@
         </activity>
         <activity
             android:name=".app.ui.main_page.MainActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -56,6 +57,13 @@
         <activity
             android:name=".app.ui.register_page.RegisterActivity"
             android:label="RegisterActivity" />
+
+        <!-- 我的设置-->
+        <activity
+            android:name=".app.ui.setting.SettingActivity"
+            android:label="SettingActivity" />
+
+
 
 
         <activity
