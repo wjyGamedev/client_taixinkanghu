@@ -20,9 +20,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.data.DAccount;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.third.party.sms.SmsAutho;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
+
+import de.greenrobot.event.EventBus;
 
 public class RegisterActivity extends Activity
 {
@@ -38,6 +42,9 @@ public class RegisterActivity extends Activity
 	private HandleEditActionEvent  m_handleEditActionEvent  = null;
 	private HandlerEventOnRegister m_handlerEventOnRegister = null;
 
+	//eventbus
+	EventBus m_eventBus = EventBus.getDefault();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -48,6 +55,13 @@ public class RegisterActivity extends Activity
 		initContent();
 		initListener();
 		initEvent();
+	}
+
+	@Override
+	protected void onDestroy()
+	{
+		m_eventBus.unregister(this);
+		super.onDestroy();
 	}
 
 	private void initEvent()
@@ -70,6 +84,8 @@ public class RegisterActivity extends Activity
 
 		SmsAutho.GetInstance().init(this);
 		m_handlerEventOnRegister.init(this);
+
+		m_eventBus.register(this);
 	}
 
 	private void initContent()
@@ -89,4 +105,32 @@ public class RegisterActivity extends Activity
 	{
 		return m_authTV;
 	}
+
+	/**
+	 * event handle
+	 */
+	public void onEventMainThread(DeserialFinishedEvent event)
+	{
+		boolean serialFlag = event.isSerialFlag();
+
+		//反序列化失败
+		if (serialFlag == false)
+		{
+			RegisterDialog.GetInstance().setMsg(getResources().getString(R.string.err_info_deserialization_failed), this);
+			RegisterDialog.GetInstance().show();
+		}
+
+		//status:失败
+		if (DAccount.GetInstance().isHttpSuccess() == false)
+		{
+			RegisterDialog.GetInstance().setMsg(DAccount.GetInstance().getErrorMsg(), this);
+			RegisterDialog.GetInstance().show();
+		}
+
+		return;
+
+	}
+
+
+
 }
