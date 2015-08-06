@@ -38,4 +38,14 @@ public class EventID
 	 */
 	public final static int UI_DEFAULT = 1000;
 	public final static int UI_SWITCH_IMAGE= 1001;
+	public final static int UI_SMS_DESERIALIZATION_FINISHED= 1002;
+//	public final static int UI_LOGOUT= 1003;
+
+	/**
+	 * logical event
+	 */
+	public final static int LOGICAL_DEFAULT = 2000;
+	public final static int LOGICAL_LOGOUT = 2001;
+
+
 }
