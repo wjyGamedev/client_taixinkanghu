@@ -48,7 +48,7 @@ public class NetService extends Service
 	/**
 	 * 数据区
 	 */
-	private EventBus                    m_eventBus                    = null;//EventBus.getDefault();
+	private EventBus                    m_eventBus                    = EventBus.getDefault();
 	private BaseErrorListener           m_baseErrorListener           = null;
 	private ResHospitalListHandler      m_resHospitalListHandler      = null;
 	private ResNurseBasicListHandler    m_resNurseBasicListHandler    = null;
@@ -126,9 +126,9 @@ public class NetService extends Service
 		try
 		{
 			m_eventBus.post(hospitalListEvent);
-			m_eventBus.post(nurseBasicList);
-			m_eventBus.post(nurseSeniorList);
-			m_eventBus.post(shoppingBasicList);
+//			m_eventBus.post(nurseBasicList);
+//			m_eventBus.post(nurseSeniorList);
+//			m_eventBus.post(shoppingBasicList);
 		}
 		catch (EventBusException e)
 		{
@@ -144,6 +144,17 @@ public class NetService extends Service
 	/**
 	 * event handler
 	 */
+	public void onEventAsync(ReqHospitalListEvent event)
+	{
+		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
+														NetConfig.s_nurseSeniorListAddress,
+														null,
+														m_resNurseSeniorListHandler,
+														m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
+	}
+
 	public void onEventAsync(ReqNurseBasicListEvent event)
 	{
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
@@ -166,16 +177,7 @@ public class NetService extends Service
 		m_requestQueue.add(myReq);
 	}
 
-	public void onEventAsync(ReqHospitalListEvent event)
-	{
-		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
-														NetConfig.s_nurseSeniorListAddress,
-														null,
-														m_resNurseSeniorListHandler,
-														m_baseErrorListener);
 
-		m_requestQueue.add(myReq);
-	}
 
 
 	//康复用品
