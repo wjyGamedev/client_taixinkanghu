@@ -24,8 +24,14 @@ public class EventID
 	public final static int QUEST_NURSE_BASIC_LIST = 102;
 	public final static int QUEST_NURSE_SENIOR_LIST = 103;
 
+	public final static int QUEST_REGISTER = 110;
+
+
 	//康复用品
 	public final static int QUEST_SHOPPING_BASIC_LIST = 104;
+
+	//sms event
+	public final static int SMS_EVENT_DEFAULT = 200;
 
 	/**
 	 * UI event

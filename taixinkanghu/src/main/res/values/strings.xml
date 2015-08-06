@@ -40,6 +40,16 @@
 	<string name="nursing_order_pay_title">订单支付</string>
 
 	//预约陪护
+	//注册信息
+	<string name="title_register">注册页面</string>
+
+	//提示信息
+	<string name="err_info_invalid_phone">请输入有效的手机号码</string>
+	<string name="err_info_no_init_sms">SmsAutho未初始化</string>
+
+	<string name="info_i_known">知道了</string>
+	<string name="err_info_invalid_country_zip_code">当前国家不支持手机验证服务</string>
+
 	<string name="protocol_text">点击注册表示已阅读并同意</string>
 	<string name="company_show_red_text">红色标题信息</string>
 	<string name="company_black_text">黑色标题信息</string>

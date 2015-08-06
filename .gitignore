@@ -16,3 +16,8 @@
 /viewflow/src
 /EventBus/EventBus.iml
 /.idea/modules.xml
+generated
+intermediates
+outputs
+tmp
+*

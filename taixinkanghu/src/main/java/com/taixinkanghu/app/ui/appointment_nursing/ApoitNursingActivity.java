@@ -20,20 +20,23 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
+import com.taixinkanghu.app.ui.header.HeaderCommon;
 
 public class ApoitNursingActivity extends Activity
 {
 	//title
-	private TextView    m_pageTitleTv;
-	private ImageButton m_backBtn;
-	private Button      m_bottomBtn;
+	private HeaderCommon m_headerCommon = null;
+
+
+	//bottom
+	private Button m_bottomBtn;
 
 	//name
 	private TextView m_nameTV       = null;
@@ -91,17 +94,19 @@ public class ApoitNursingActivity extends Activity
 	private void init()
 	{
 		//title
-		m_pageTitleTv = (TextView)findViewById(R.id.page_title);
-		m_backBtn = (ImageButton)findViewById(R.id.btn_back);
+		m_headerCommon = new HeaderCommon(this);
+		m_headerCommon.init();
+
 		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
 
 		//name
 		m_nameTV = (TextView)findViewById(R.id.name);
+		m_phoneNumTV = (TextView)findViewById(R.id.phone_number_tv);
 		m_departmentTV = (TextView)findViewById(R.id.department_tv);
 		m_roomTV = (TextView)findViewById(R.id.room_tv);
 		m_bedTV = (TextView)findViewById(R.id.bed_id_tv);
 
-		m_handlerEditorActionEvent = new HandlerEditorActionEvent(this);
+		m_handleEditActionEvent = new HandleEditActionEvent(this);
 
 		m_protocolTv = (TextView)findViewById(R.id.btn_protocol);
 
@@ -132,14 +137,15 @@ public class ApoitNursingActivity extends Activity
 	private void initListener()
 	{
 		//title
-		m_backBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 
 		//name
 		//		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_nameTV.setOnEditorActionListener(m_handlerEditorActionEvent);
-		m_departmentTV.setOnEditorActionListener(m_handlerEditorActionEvent);
-		m_roomTV.setOnEditorActionListener(m_handlerEditorActionEvent);
-		m_bedTV.setOnEditorActionListener(m_handlerEditorActionEvent);
+		m_nameTV.setOnEditorActionListener(m_handleEditActionEvent);
+		m_phoneNumTV.setOnEditorActionListener(m_handleEditActionEvent);
+
+		m_departmentTV.setOnEditorActionListener(m_handleEditActionEvent);
+		m_roomTV.setOnEditorActionListener(m_handleEditActionEvent);
+		m_bedTV.setOnEditorActionListener(m_handleEditActionEvent);
 
 		m_bottomBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_genderBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
@@ -152,7 +158,7 @@ public class ApoitNursingActivity extends Activity
 
 	private void initModule()
 	{
-		m_pageTitleTv.setText(R.string.appointment_nursing_title);
+		m_headerCommon.setTitle(R.string.appointment_nursing_title);
 		m_bottomBtn.setText(R.string.confirm_btn_text);
 		m_protocolTv.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
 		m_protocolTv.setOnClickListener(new View.OnClickListener()
