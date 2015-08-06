@@ -40,12 +40,13 @@ public class ApoitNursingActivity extends Activity
 
 	//name
 	private TextView m_nameTV       = null;
+	private TextView              m_phoneNumTV            = null;
 	private TextView m_departmentTV = null;
 	private TextView m_roomTV       = null;
 	private TextView m_bedTV        = null;
 
 	//事件
-	private HandlerEditorActionEvent m_handlerEditorActionEvent = null;
+	private HandleEditActionEvent m_handleEditActionEvent = null;
 
 	//按钮
 	private LinearLayout m_genderBtn;
