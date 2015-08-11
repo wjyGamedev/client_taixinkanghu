@@ -128,7 +128,7 @@ public class NetService extends Service
 			m_eventBus.post(hospitalListEvent);
 //			m_eventBus.post(nurseBasicList);
 //			m_eventBus.post(nurseSeniorList);
-//			m_eventBus.post(shoppingBasicList);
+			m_eventBus.post(shoppingBasicList);
 		}
 		catch (EventBusException e)
 		{
