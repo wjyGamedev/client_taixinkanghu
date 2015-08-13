@@ -63,8 +63,10 @@
             android:name=".app.ui.setting.SettingActivity"
             android:label="SettingActivity" />
 
-
-
+        <!-- 选择日期-->
+        <activity
+            android:name=".app.ui.select_date.SelectDateActivity"
+            android:label="SelectDateActivity" />
 
         <activity
             android:name=".app.ui.activity.AboutUsActivity"
@@ -158,7 +160,7 @@
             android:label="@string/title_activity_goods_info" />
         <activity
             android:name=".app.ui.appointment_nursing.SelectDateActivity"
-            android:label="@string/title_select_date" />
+            android:label="SelectDateActivity" />
         <activity
             android:name=".app.ui.nurs_order_pay_page.NursOrderPayActivity"
             android:label="@string/title_nurs_order_pay" />
