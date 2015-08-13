@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- 基本样式-->
+	<style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance">
+		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="android:textColorHint">?android:textColorHint</item>
+		<item name="android:textColorHighlight">?android:textColorHighlight</item>
+		<item name="android:textColorLink">?android:textColorLink</item>
+		<item name="android:textSize">@dimen/abc_text_size_body_1_material</item>
+	</style>
+	<style name="Base.TextAppearance.AppCompat.Large">
+		<item name="android:textSize">@dimen/abc_text_size_large_material</item>
+		<item name="android:textColor">?android:attr/textColorPrimary</item>
+	</style>
+	<style name="Base.TextAppearance.AppCompat.Medium">
+		<item name="android:textSize">@dimen/abc_text_size_medium_material</item>
+		<item name="android:textColor">?android:attr/textColorSecondary</item>
+	</style>
+
+	<!-- 使用样式-->
+	<style name="TextAppearance.AppCompat.Medium" parent="Base.TextAppearance.AppCompat.Medium"/>
+	<style name="TextAppearance.AppCompat.Large" parent="Base.TextAppearance.AppCompat.Large"/>
+
+</resources>
