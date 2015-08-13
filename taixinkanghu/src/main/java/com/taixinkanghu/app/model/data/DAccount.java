@@ -54,8 +54,8 @@ public class DAccount
 
 	public boolean serialFromHttp(JSONObject response)
 	{
-//		//测试代码
-//		String testData = "{\"status\":200,\"user\":[{\"id\":\"3\",\"mobile\":\"15010522656\",\"nick\":\"\",\"code\":\"8ea9fd32b4\"}]}";
+		//测试代码
+//		String testData = "{\"status\":200,\"user\":{\"id\":\"3\",\"mobile\":\"15010522656\",\"nick\":\"\",\"code\":\"8ea9fd32b4\"}}";
 //		JSONObject testJsonObject = null;
 //		try
 //		{
@@ -75,43 +75,33 @@ public class DAccount
 
 			//http info
 			m_Status = response.getInt(DataConfig.STATUS_KEY);
-			//错误
+			//http error
 			if (m_Status != DataConfig.S_HTTP_OK)
 			{
 				m_errorMsg = response.getString(DataConfig.ERROR_MSG);
+				return false;
 			}
+
 			//正常
-			else
+			m_errorMsg = AppUtil.GetResources().getString(R.string.info_register_success);
+
+			JSONObject jsonObject = response.getJSONObject(DataConfig.USER_KEY);
+			if (jsonObject == null)
+				return false;
+
+			if (serializationData(jsonObject) == false)
 			{
-				m_errorMsg = AppUtil.GetResources().getString(R.string.info_register_success);
-
-//				jsonArray = response.getJSONArray(DataConfig.USER_KEY);
-				JSONObject jsonObject = response.getJSONObject(DataConfig.USER_KEY);
-				if (jsonObject == null)
-					return false;
-
-//				JSONObject jsonObject = null;
-//				if (jsonArray.length() != 1)
-//				{
-//					return false;
-//				}
-//
-//				for (int index = 0; index < jsonArray.length(); index++)
-//				{
-//					jsonObject=(JSONObject)jsonArray.get(index);
-					if (serializationData(jsonObject) == false)
-					{
-						return false;
-					}
-
-					//序列化到本地存储
-					OwnerPreferences setting = StorageWrapper.GetInstance().getOwnerPreferences();
-					if (setting.serialization(jsonObject) == false)
-					{
-						return false;
-					}
-//				}
+				return false;
 			}
+
+			//序列化到本地存储
+			OwnerPreferences setting = StorageWrapper.GetInstance().getOwnerPreferences();
+			if (setting.serialization(jsonObject) == false)
+			{
+				return false;
+			}
+
+
 		}
 		catch (JSONException e)
 		{
