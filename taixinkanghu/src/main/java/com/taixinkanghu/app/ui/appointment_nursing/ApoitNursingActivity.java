@@ -88,7 +88,7 @@ public class ApoitNursingActivity extends Activity
 
 		init();
 		initListener();
-		initModule();
+		initContent();
 
 	}
 
@@ -157,7 +157,7 @@ public class ApoitNursingActivity extends Activity
 		m_dateBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 	}
 
-	private void initModule()
+	private void initContent()
 	{
 		m_headerCommon.setTitle(R.string.appointment_nursing_title);
 		m_bottomBtn.setText(R.string.confirm_btn_text);
