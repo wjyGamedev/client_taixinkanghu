@@ -36,7 +36,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * <p>
@@ -71,6 +70,9 @@ public class MaterialCalendarView extends FrameLayout {
     private final MonthPagerAdapter adapter;
     private CalendarDay currentMonth;
     private LinearLayout topbar;
+
+    //要显示的日期
+    private ArrayList<ArrayList<CalendarDay> > m_selectedDateList = new ArrayList<>();
 
     private final ArrayList<DayViewDecorator> dayViewDecorators = new ArrayList<>();
 
@@ -152,13 +154,16 @@ public class MaterialCalendarView extends FrameLayout {
         adapter = new MonthPagerAdapter(this);
         pager.setAdapter(adapter);
         pager.setOnPageChangeListener(pageChangeListener);
-        pager.setPageTransformer(false, new ViewPager.PageTransformer() {
-            @Override
-            public void transformPage(View page, float position) {
-                position = (float) Math.sqrt(1 - Math.abs(position));
-                page.setAlpha(position);
-            }
-        });
+        pager.setPageTransformer(false, new ViewPager.PageTransformer()
+                                 {
+                                     @Override
+                                     public void transformPage(View page, float position)
+                                     {
+                                         position = (float)Math.sqrt(1 - Math.abs(position));
+                                         page.setAlpha(position);
+                                     }
+                                 }
+                                );
 
         adapter.setCallbacks(monthViewCallbacks);
 
@@ -273,9 +278,9 @@ public class MaterialCalendarView extends FrameLayout {
         topbar.addView(buttonPast, new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1));
 
         title.setGravity(Gravity.CENTER);
-        topbar.addView(title, new LinearLayout.LayoutParams(
-                0, LayoutParams.MATCH_PARENT, MonthView.DEFAULT_DAYS_IN_WEEK - 2
-        ));
+        topbar.addView(title, new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, MonthView.DEFAULT_DAYS_IN_WEEK - 2
+                       )
+                      );
 
         buttonFuture.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         buttonFuture.setImageResource(R.drawable.mcv_action_next);
@@ -283,9 +288,9 @@ public class MaterialCalendarView extends FrameLayout {
 
         pager.setId(R.id.mcv_pager);
         pager.setOffscreenPageLimit(1);
-        root.addView(pager, new LinearLayout.LayoutParams(
-                LayoutParams.MATCH_PARENT, 0, MonthView.DEFAULT_MONTH_TILE_HEIGHT
-        ));
+        root.addView(pager, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0, MonthView.DEFAULT_MONTH_TILE_HEIGHT
+                     )
+                    );
     }
 
     /**
@@ -349,9 +354,9 @@ public class MaterialCalendarView extends FrameLayout {
      * @param tileSizeDp the new size for each tile in dips
      */
     public void setTileSizeDp(int tileSizeDp) {
-        setTileSize((int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, tileSizeDp, getResources().getDisplayMetrics()
-        ));
+        setTileSize((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tileSizeDp, getResources().getDisplayMetrics()
+                                                  )
+                   );
     }
 
     /**
@@ -473,7 +478,7 @@ public class MaterialCalendarView extends FrameLayout {
      * Clear the current selection
      */
     public void clearSelection() {
-        setSelectedDate((CalendarDay) null);
+        setSelectedDate((CalendarDay)null);
     }
 
     /**
@@ -488,6 +493,156 @@ public class MaterialCalendarView extends FrameLayout {
      */
     public void setSelectedDate(@Nullable Date date) {
         setSelectedDate(CalendarDay.from(date));
+    }
+
+    private void setSelectedDateList(
+            @Nullable
+            ArrayList<Date> dateList) {
+
+        m_selectedDateList.clear();
+
+        if (dateList.size() <= 0)
+            return;
+
+        int iLastMonth = -1;
+        int iCurMonth = -1;
+        ArrayList<CalendarDay> curMonth = new ArrayList<>();
+        curMonth.clear();
+        for (Date dateEle : dateList)
+        {
+            CalendarDay tmpCalendarDay = CalendarDay.from(dateEle);
+            iCurMonth = tmpCalendarDay.getMonth();
+
+            //初始化的时候填充空的month
+            if (iLastMonth == -1)
+            {
+                iLastMonth = iCurMonth;
+            }
+
+            //异常
+            if (iLastMonth > iCurMonth)
+            {
+                return;
+            }
+
+            if (iLastMonth < iCurMonth)
+            {
+                iLastMonth++;
+                if (iLastMonth != iCurMonth)
+                    return;
+
+                ArrayList<CalendarDay> tmpAddMonth = new ArrayList<>();
+                tmpAddMonth.addAll(curMonth);
+                m_selectedDateList.add(tmpAddMonth);
+                curMonth.clear();
+            }
+            //处理当前月份的day
+            if (iLastMonth == iCurMonth)
+            {
+                curMonth.add(tmpCalendarDay);
+            }
+        }
+
+        if (curMonth.isEmpty() == false)
+        {
+            ArrayList<CalendarDay> tmpAddMonth = new ArrayList<>();
+            tmpAddMonth.addAll(curMonth);
+            m_selectedDateList.add(tmpAddMonth);
+            curMonth.clear();
+        }
+
+    }
+
+    public LinkedList<MonthView> getMonthViewList()
+    {
+        return adapter.getCurrentViews();
+    }
+
+    public ArrayList<CalendarDay> getCalendarListByMonth(int month)
+    {
+        for (ArrayList<CalendarDay> calendarDayArrayList : m_selectedDateList)
+        {
+            if (calendarDayArrayList.size() <= 0)
+                continue;
+
+            CalendarDay calendarDay = calendarDayArrayList.get(0);
+            if (calendarDay == null)
+                continue;
+
+            if (calendarDay.getMonth() != month)
+                continue;
+
+            return calendarDayArrayList;
+        }
+        return null;
+    }
+
+    //入口：加载要显示的开始日期到结束日期
+    public void loadDateList(
+            @Nullable
+            ArrayList<Date> dateList) {
+
+        //01. 清楚之前的UI数据
+        if (m_selectedDateList.isEmpty() == false)
+        {
+            for (ArrayList<CalendarDay> calendarDayArrayList : m_selectedDateList)
+            {
+                if (calendarDayArrayList == null)
+                    continue;;
+
+                if (calendarDayArrayList.isEmpty())
+                    continue;
+
+                CalendarDay calendarDay = calendarDayArrayList.get(0);
+                if (calendarDay == null)
+                    continue;
+
+                int month = calendarDay.getMonth();
+                LinkedList<MonthView> currentViews = adapter.getCurrentViews();
+                for (MonthView monthView : currentViews)
+                {
+                    if (monthView == null)
+                        continue;
+
+                    if (monthView.getMonth().getMonth() == month)
+                    {
+                        monthView.clearDateList();
+                    }
+                }
+            }
+        }
+
+        //02. 设置本地数据
+        setSelectedDateList(dateList);
+
+        //03. 将当前显示月份更换到我们预约的首月份。
+        if (m_selectedDateList.size() <= 0)
+            return;
+
+        ArrayList<CalendarDay> calendarDayArrayList = new ArrayList<CalendarDay>();
+        calendarDayArrayList = m_selectedDateList.get(0);
+        if (calendarDayArrayList.size() <= 0)
+            return;
+
+        CalendarDay calendarDay = calendarDayArrayList.get(0);
+        if (calendarDay == null)
+            return;
+
+        int delta = calendarDay.getMonth() - currentMonth.getMonth();
+
+        if (delta != 0)
+        {
+            pager.setCurrentItem(pager.getCurrentItem() + delta, true);
+        }
+        else
+        {
+            if(monthListener != null) {
+                monthListener.onMonthChanged(MaterialCalendarView.this, currentMonth);
+            }
+        }
+        //03. 将当前要显示的月份的数据进行填充
+//        adapter.setSelectedDateList(dateList);
+//        setCurrentDate(dateList.get(0));
     }
 
     /**
@@ -927,26 +1082,31 @@ public class MaterialCalendarView extends FrameLayout {
 
     private static class MonthPagerAdapter extends PagerAdapter {
 
-        private final MaterialCalendarView view;
-        private final LinkedList<MonthView> currentViews;
+        private final MaterialCalendarView   view;
+        private final LinkedList<MonthView>  currentViews;
         private final ArrayList<CalendarDay> months;
 
-        private MonthView.Callbacks callbacks = null;
-        private Integer color = null;
-        private Integer dateTextAppearance = null;
-        private Integer weekDayTextAppearance = null;
-        private Boolean showOtherDates = null;
-        private CalendarDay minDate = null;
-        private CalendarDay maxDate = null;
-        private CalendarDay selectedDate = null;
-        private WeekDayFormatter weekDayFormatter = WeekDayFormatter.DEFAULT;
-        private DayFormatter dayFormatter = DayFormatter.DEFAULT;
-        private List<DayViewDecorator> decorators = new ArrayList<>();
-        private List<DecoratorResult> decoratorResults = null;
-        private int firstDayOfTheWeek = Calendar.SUNDAY;
+        private MonthView.Callbacks callbacks             = null;
+        private Integer             color                 = null;
+        private Integer             dateTextAppearance    = null;
+        private Integer             weekDayTextAppearance = null;
+        private Boolean             showOtherDates        = null;
+        private CalendarDay         minDate               = null;
+        private CalendarDay         maxDate               = null;
+        private CalendarDay         selectedDate          = null;
 
 
-        private MonthPagerAdapter(MaterialCalendarView view) {
+        private ArrayList<ArrayList<CalendarDay> > m_selectedDateList = new ArrayList<>();
+
+        private WeekDayFormatter       weekDayFormatter  = WeekDayFormatter.DEFAULT;
+        private DayFormatter           dayFormatter      = DayFormatter.DEFAULT;
+        private List<DayViewDecorator> decorators        = new ArrayList<>();
+        private List<DecoratorResult>  decoratorResults  = null;
+        private int                    firstDayOfTheWeek = Calendar.SUNDAY;
+
+
+        private MonthPagerAdapter(MaterialCalendarView view)
+        {
             this.view = view;
             currentViews = new LinkedList<>();
             months = new ArrayList<>();
@@ -954,43 +1114,55 @@ public class MaterialCalendarView extends FrameLayout {
         }
 
 
-        public void setDecorators(List<DayViewDecorator> decorators){
+        public void setDecorators(List<DayViewDecorator> decorators)
+        {
             this.decorators = decorators;
             invalidateDecorators();
         }
 
-        public void invalidateDecorators() {
+        public void invalidateDecorators()
+        {
             decoratorResults = new ArrayList<>();
-            for(DayViewDecorator decorator : decorators) {
+            for (DayViewDecorator decorator : decorators)
+            {
                 DayViewFacade facade = new DayViewFacade();
                 decorator.decorate(facade);
-                if(facade.isDecorated()) {
+                if (facade.isDecorated())
+                {
                     decoratorResults.add(new DecoratorResult(decorator, facade));
                 }
             }
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setDayViewDecorators(decoratorResults);
             }
         }
 
         @Override
-        public int getCount() {
+        public int getCount()
+        {
             return months.size();
         }
 
-        public int getIndexForDay(CalendarDay day) {
-            if(day == null) {
+        public int getIndexForDay(CalendarDay day)
+        {
+            if (day == null)
+            {
                 return getCount() / 2;
             }
-            if(minDate != null && day.isBefore(minDate)) {
+            if (minDate != null && day.isBefore(minDate))
+            {
                 return 0;
             }
-            if(maxDate != null && day.isAfter(maxDate)) {
+            if (maxDate != null && day.isAfter(maxDate))
+            {
                 return getCount() - 1;
             }
-            for (int i = 0; i < months.size(); i++) {
+            for (int i = 0; i < months.size(); i++)
+            {
                 CalendarDay month = months.get(i);
-                if (day.getYear() == month.getYear() && day.getMonth() == month.getMonth()) {
+                if (day.getYear() == month.getYear() && day.getMonth() == month.getMonth())
+                {
                     return i;
                 }
             }
@@ -998,40 +1170,49 @@ public class MaterialCalendarView extends FrameLayout {
         }
 
         @Override
-        public int getItemPosition(Object object) {
-            if(!(object instanceof MonthView)) {
+        public int getItemPosition(Object object)
+        {
+            if (!(object instanceof MonthView))
+            {
                 return POSITION_NONE;
             }
-            MonthView monthView = (MonthView) object;
-            CalendarDay month = monthView.getMonth();
-            if(month == null) {
+            MonthView   monthView = (MonthView)object;
+            CalendarDay month     = monthView.getMonth();
+            if (month == null)
+            {
                 return POSITION_NONE;
             }
             int index = months.indexOf(month);
-            if(index < 0) {
+            if (index < 0)
+            {
                 return POSITION_NONE;
             }
             return index;
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            CalendarDay month = months.get(position);
-            MonthView monthView = new MonthView(container.getContext(), month, firstDayOfTheWeek);
+        public Object instantiateItem(ViewGroup container, int position)
+        {
+            CalendarDay month     = months.get(position);
+            MonthView   monthView = new MonthView(container.getContext(), month, firstDayOfTheWeek);
 
             monthView.setWeekDayFormatter(weekDayFormatter);
             monthView.setDayFormatter(dayFormatter);
             monthView.setCallbacks(callbacks);
-            if(color != null) {
+            if (color != null)
+            {
                 monthView.setSelectionColor(color);
             }
-            if(dateTextAppearance != null) {
+            if (dateTextAppearance != null)
+            {
                 monthView.setDateTextAppearance(dateTextAppearance);
             }
-            if(weekDayTextAppearance != null) {
+            if (weekDayTextAppearance != null)
+            {
                 monthView.setWeekDayTextAppearance(weekDayTextAppearance);
             }
-            if(showOtherDates != null) {
+            if (showOtherDates != null)
+            {
                 monthView.setShowOtherDates(showOtherDates);
             }
             monthView.setMinimumDate(minDate);
@@ -1046,99 +1227,124 @@ public class MaterialCalendarView extends FrameLayout {
             return monthView;
         }
 
-        public void setFirstDayOfWeek(int day) {
+        public void setFirstDayOfWeek(int day)
+        {
             firstDayOfTheWeek = day;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setFirstDayOfWeek(firstDayOfTheWeek);
             }
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            MonthView monthView = (MonthView) object;
+        public void destroyItem(ViewGroup container, int position, Object object)
+        {
+            MonthView monthView = (MonthView)object;
             currentViews.remove(monthView);
             container.removeView(monthView);
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(View view, Object object)
+        {
             return view == object;
         }
 
-        public void setCallbacks(MonthView.Callbacks callbacks) {
+        public void setCallbacks(MonthView.Callbacks callbacks)
+        {
             this.callbacks = callbacks;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setCallbacks(callbacks);
             }
         }
 
-        public void setSelectionColor(int color) {
+        public void setSelectionColor(int color)
+        {
             this.color = color;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setSelectionColor(color);
             }
         }
 
-        public void setDateTextAppearance(int taId) {
-            if(taId == 0) {
+        public void setDateTextAppearance(int taId)
+        {
+            if (taId == 0)
+            {
                 return;
             }
             this.dateTextAppearance = taId;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setDateTextAppearance(taId);
             }
         }
 
-        public void setShowOtherDates(boolean show) {
+        public void setShowOtherDates(boolean show)
+        {
             this.showOtherDates = show;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setShowOtherDates(show);
             }
         }
 
-        public void setWeekDayFormatter(WeekDayFormatter formatter) {
+        public void setWeekDayFormatter(WeekDayFormatter formatter)
+        {
             this.weekDayFormatter = formatter;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setWeekDayFormatter(formatter);
             }
         }
 
-        public void setDayFormatter(DayFormatter formatter) {
+        public void setDayFormatter(DayFormatter formatter)
+        {
             this.dayFormatter = formatter;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setDayFormatter(formatter);
             }
         }
 
-        public boolean getShowOtherDates() {
+        public boolean getShowOtherDates()
+        {
             return showOtherDates;
         }
 
-        public void setWeekDayTextAppearance(int taId) {
-            if(taId == 0) {
+        public void setWeekDayTextAppearance(int taId)
+        {
+            if (taId == 0)
+            {
                 return;
             }
             this.weekDayTextAppearance = taId;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setWeekDayTextAppearance(taId);
             }
         }
 
-        public void setRangeDates(CalendarDay min, CalendarDay max) {
+        public void setRangeDates(CalendarDay min, CalendarDay max)
+        {
             this.minDate = min;
             this.maxDate = max;
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setMinimumDate(min);
                 monthView.setMaximumDate(max);
             }
 
-            if(min == null) {
+            if (min == null)
+            {
                 Calendar worker = CalendarUtils.getInstance();
                 worker.add(Calendar.YEAR, -200);
                 min = CalendarDay.from(worker);
             }
 
-            if(max == null) {
+            if (max == null)
+            {
                 Calendar worker = CalendarUtils.getInstance();
                 worker.add(Calendar.YEAR, 200);
                 max = CalendarDay.from(worker);
@@ -1149,7 +1355,8 @@ public class MaterialCalendarView extends FrameLayout {
             Calendar worker = CalendarUtils.getInstance();
             min.copyToMonthOnly(worker);
             CalendarDay workingMonth = CalendarDay.from(worker);
-            while (!max.isBefore(workingMonth)) {
+            while (!max.isBefore(workingMonth))
+            {
                 months.add(CalendarDay.from(worker));
                 worker.add(Calendar.MONTH, 1);
                 worker.set(Calendar.DAY_OF_MONTH, 1);
@@ -1159,56 +1366,146 @@ public class MaterialCalendarView extends FrameLayout {
             CalendarDay prevDate = selectedDate;
             notifyDataSetChanged();
             setSelectedDate(prevDate);
-            if(prevDate != null) {
-                if(!prevDate.equals(selectedDate)) {
+            if (prevDate != null)
+            {
+                if (!prevDate.equals(selectedDate))
+                {
                     callbacks.onDateChanged(selectedDate);
                 }
             }
         }
 
-        public void setSelectedDate(@Nullable CalendarDay date) {
+        public void setSelectedDate(
+                @Nullable
+                CalendarDay date)
+        {
             CalendarDay prevDate = selectedDate;
             this.selectedDate = getValidSelectedDate(date);
-            for(MonthView monthView : currentViews) {
+            for (MonthView monthView : currentViews)
+            {
                 monthView.setSelectedDate(selectedDate);
             }
 
-            if(date == null && prevDate != null) {
+            if (date == null && prevDate != null)
+            {
                 callbacks.onDateChanged(null);
             }
         }
 
-        private CalendarDay getValidSelectedDate(CalendarDay date) {
-            if(date == null) {
+        public void setSelectedDateList(ArrayList<Date> dateList)
+        {
+            m_selectedDateList.clear();
+
+            int iLastMonth = -1;
+            int iCurMonth = -1;
+            ArrayList<CalendarDay> curMonth = new ArrayList<>();
+            curMonth.clear();
+            for (Date dateEle : dateList)
+            {
+                CalendarDay tmpCalendarDay = CalendarDay.from(dateEle);
+                iCurMonth = tmpCalendarDay.getMonth();
+
+                //初始化的时候填充空的month
+                if (iLastMonth == -1)
+                {
+                    iLastMonth = iCurMonth;
+                }
+
+                //异常
+                if (iLastMonth > iCurMonth)
+                {
+                    return;
+                }
+
+                if (iLastMonth < iCurMonth)
+                {
+                    iLastMonth++;
+                    if (iLastMonth != iCurMonth)
+                        return;
+
+                    ArrayList<CalendarDay> tmpAddMonth = new ArrayList<>();
+                    tmpAddMonth.addAll(curMonth);
+                    m_selectedDateList.add(tmpAddMonth);
+                    curMonth.clear();
+                }
+                //处理当前月份的day
+                if (iLastMonth == iCurMonth)
+                {
+                    curMonth.add(tmpCalendarDay);
+                }
+            }
+
+            if (curMonth.isEmpty() == false)
+            {
+                ArrayList<CalendarDay> tmpAddMonth = new ArrayList<>();
+                tmpAddMonth.addAll(curMonth);
+                m_selectedDateList.add(tmpAddMonth);
+                curMonth.clear();
+            }
+
+            //保证传入的数据在一个月之内
+            ArrayList<CalendarDay> tmpCalendarDayList = new ArrayList<>();
+            for (ArrayList<CalendarDay> calendarDayList : m_selectedDateList)
+            {
+                if (calendarDayList != null && calendarDayList.isEmpty() == false)
+                {
+                    for (MonthView monthView : currentViews)
+                    {
+                        if (monthView.getMonth().getMonth() == calendarDayList.get(0).getMonth())
+                        {
+                            monthView.setSelectedDateList(calendarDayList);
+                        }
+                    }
+                }
+            }
+        }
+
+        private CalendarDay getValidSelectedDate(CalendarDay date)
+        {
+            if (date == null)
+            {
                 return null;
             }
-            if(minDate != null && minDate.isAfter(date)) {
+            if (minDate != null && minDate.isAfter(date))
+            {
                 return minDate;
             }
-            if(maxDate != null && maxDate.isBefore(date)) {
+            if (maxDate != null && maxDate.isBefore(date))
+            {
                 return maxDate;
             }
             return date;
         }
 
-        public CalendarDay getItem(int position) {
+        public CalendarDay getItem(int position)
+        {
             return months.get(position);
         }
 
-        public CalendarDay getSelectedDate() {
+        public CalendarDay getSelectedDate()
+        {
             return selectedDate;
         }
 
-        protected int getDateTextAppearance() {
+        protected int getDateTextAppearance()
+        {
             return dateTextAppearance == null ? 0 : dateTextAppearance;
         }
 
-        protected int getWeekDayTextAppearance() {
+        protected int getWeekDayTextAppearance()
+        {
             return weekDayTextAppearance == null ? 0 : weekDayTextAppearance;
         }
 
-        public int getFirstDayOfWeek() {
+        public int getFirstDayOfWeek()
+        {
             return firstDayOfTheWeek;
+        }
+
+        public LinkedList<MonthView> getCurrentViews()
+        {
+            return currentViews;
         }
     }
 }
+

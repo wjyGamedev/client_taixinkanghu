@@ -20,7 +20,7 @@ import static java.util.Calendar.DAY_OF_WEEK;
  * seven {@linkplain WeekDayView}s.
  */
 @SuppressLint("ViewConstructor")
-class MonthView extends LinearLayout implements View.OnClickListener {
+public class MonthView extends LinearLayout implements View.OnClickListener {
 
     protected static final int DEFAULT_DAYS_IN_WEEK = 7;
     protected static final int DEFAULT_MAX_WEEKS = 6;
@@ -201,6 +201,74 @@ class MonthView extends LinearLayout implements View.OnClickListener {
     public void setSelectedDate(CalendarDay cal) {
         selection = cal;
         updateUi();
+    }
+
+    public void clearDateList()
+    {
+        m_calendarDays.clear();
+        for(DayView other : monthDayViews) {
+            other.setChecked(false);
+        }
+    }
+
+    public void loadDateList(ArrayList<CalendarDay> selectedDateList)
+    {
+        //01. 设置本月数据
+        if (m_calendarDays == selectedDateList)
+            return;
+
+        m_calendarDays = selectedDateList;
+
+        //02. 清楚之前UI数据
+        for(DayView other : monthDayViews) {
+            other.setChecked(false);
+        }
+
+        //03. 画本月数据UI
+        int ourMonth = month.getMonth();
+        for(DayView dayView : monthDayViews) {
+            CalendarDay day = dayView.getDate();
+            dayView.setupSelection(showOtherDates, day.isInRange(minDate, maxDate), day.getMonth() == ourMonth);
+
+            boolean isChecked = false;
+            for (CalendarDay calendarDay : m_calendarDays)
+            {
+                if (day.equals(calendarDay))
+                {
+                    isChecked = true;
+                    break;
+                }
+            }
+            dayView.setChecked(isChecked);
+        }
+
+        return;
+    }
+
+    public void setSelectedDateList(ArrayList<CalendarDay> selectedDateList)
+    {
+        m_calendarDays = selectedDateList;
+        updateUiList();
+    }
+
+    private void updateUiList() {
+        int ourMonth = month.getMonth();
+        for(DayView dayView : monthDayViews) {
+            CalendarDay day = dayView.getDate();
+            dayView.setupSelection(showOtherDates, false, day.getMonth() == ourMonth);
+
+            boolean isChecked = false;
+            for (CalendarDay calendarDay : m_calendarDays)
+            {
+                if (day.equals(calendarDay))
+                {
+                    isChecked = true;
+                    break;
+                }
+            }
+            dayView.setChecked(isChecked);
+        }
+        postInvalidate();
     }
 
     private void updateUi() {
