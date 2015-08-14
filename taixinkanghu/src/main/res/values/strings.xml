@@ -40,6 +40,7 @@
 	<string name="nursing_order_pay_title">订单支付</string>
 	<string name="shopping_car_title">购物车</string>
 	<string name="shopping_order_confirm_title">确认订单</string>
+	<string name="nurs_order_change_title">订单变更</string>
 
 	//预约陪护
 	//注册信息
@@ -167,6 +168,12 @@
 	<string name="determine_appointment_text">确定预约</string>
 	<string name="determine_pay_title">确认支付</string>
 	<string name="determine_order_title">确认订单</string>
+	<string name="change_content_text">变更内容</string>
+	<string name="change_item_text">变更项</string>
+	<string name="change_amount_text">变更金额</string>
+	<string name="change_money_text">差价金额：</string>
+	<string name="write_change_amount_text">请输入差价金额</string>
+	<string name="patient_status_change_text">患者状态变更</string>
 
 	<string name="pay_the_way_text">支付方式</string>
 	<string name="need_pay_text">需支付</string>
@@ -243,6 +250,7 @@
 	<string name="title_nurs_order_pay">NursOrderPayActivity</string>
 	<string name="title_shopping_car">ShoppingCarActivity</string>
 	<string name="title_shopping_order_confirm">ShoppingOrderConfirmActivity</string>
+	<string name="title_nurs_order_change">NursOrderChangeActivity</string>
 
 	<string name="sunday">日</string>
 	<string name="monday">一</string>

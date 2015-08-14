@@ -1,175 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.taixinkanghu">
+<manifest package="com.taixinkanghu"
+		  xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- 用户权限 -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+	<!-- 用户权限 -->
+	<uses-permission android:name="android.permission.CALL_PHONE"/>
 
 
-    <!-- 下载列表 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- smsSDK权限-->
+	<!-- 下载列表 -->
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<!-- smsSDK权限-->
 
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.READ_CONTACTS"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
 	<!-- 屏幕适配 -->
-    <!-- 程序入口 -->
-    <application
-        android:name=".app.frame.AppFrame"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".app.ui.activity.WelcomeActivity"
-            android:label="@string/welcome_activity_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+	<!-- 程序入口 -->
+	<application
+		android:name=".app.frame.AppFrame"
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name=".app.ui.activity.WelcomeActivity"
+			android:label="@string/welcome_activity_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".app.ui.main_page.MainActivity"
-            android:launchMode="singleTask"
-            android:label="@string/title_activity_main">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
-        </activity>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".app.ui.main_page.MainActivity"
+			android:label="@string/title_activity_main"
+			android:launchMode="singleTask">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+			</intent-filter>
+		</activity>
 
-        <!-- 网络消息处理-->
-        <service
-            android:name=".app.model.net.NetService"
-            android:enabled="true"
-            android:exported="true" />
+		<!-- 网络消息处理-->
+		<service
+			android:name=".app.model.net.NetService"
+			android:enabled="true"
+			android:exported="true"/>
 
 
-        <!-- 注册页面-->
-        <activity
-            android:name=".app.ui.register_page.RegisterActivity"
-            android:label="RegisterActivity" />
+		<!-- 注册页面-->
+		<activity
+			android:name=".app.ui.register_page.RegisterActivity"
+			android:label="RegisterActivity"/>
 
-        <!-- 我的设置-->
-        <activity
-            android:name=".app.ui.setting.SettingActivity"
-            android:label="SettingActivity" />
+		<!-- 我的设置-->
+		<activity
+			android:name=".app.ui.setting.SettingActivity"
+			android:label="SettingActivity"/>
 
-        <!-- 选择日期-->
-        <activity
-            android:name=".app.ui.select_date.SelectDateActivity"
-            android:label="SelectDateActivity" />
+		<!-- 选择日期-->
+		<activity
+			android:name=".app.ui.select_date.SelectDateActivity"
+			android:label="SelectDateActivity"/>
 
-        <activity
-            android:name=".app.ui.activity.AboutUsActivity"
-            android:label="AboutUsActivity" />
-        <activity
-            android:name=".app.ui.activity.ChooseNurseActivity"
-            android:label="ChooseWorkerActivity" />
-        <activity
-            android:name=".app.ui.activity.CustomerServiceActivity"
-            android:label="CustomerServiceActivity" />
-        <activity
-            android:name=".app.ui.company_show.CompanyShowActivity"
-            android:label="CompanyShowActivity" />
-        <activity
-            android:name=".app.ui.activity.SaleInfoActivity"
-            android:label="SaleInfoActivity" />
-        <activity
-            android:name=".app.ui.activity.WorkerInfoActivity"
-            android:label="WorkerInfoActivity" />
-        <activity
-            android:name=".app.ui.activity.AppointmentActivity"
-            android:label="AppointmentActivity" />
+		<activity
+			android:name=".app.ui.activity.AboutUsActivity"
+			android:label="AboutUsActivity"/>
+		<activity
+			android:name=".app.ui.activity.ChooseNurseActivity"
+			android:label="ChooseWorkerActivity"/>
+		<activity
+			android:name=".app.ui.activity.CustomerServiceActivity"
+			android:label="CustomerServiceActivity"/>
+		<activity
+			android:name=".app.ui.company_show.CompanyShowActivity"
+			android:label="CompanyShowActivity"/>
+		<activity
+			android:name=".app.ui.activity.SaleInfoActivity"
+			android:label="SaleInfoActivity"/>
+		<activity
+			android:name=".app.ui.activity.WorkerInfoActivity"
+			android:label="WorkerInfoActivity"/>
+		<activity
+			android:name=".app.ui.activity.AppointmentActivity"
+			android:label="AppointmentActivity"/>
 
-        <activity
-            android:name=".app.ui.select_nurse.SelectNurseActivity"
-            android:label="SelectNurseActivity" />
-        <activity
-            android:name=".app.ui.nurse_info.NurseInfoActivity"
-            android:label="NurseInfoActivity" />
+		<activity
+			android:name=".app.ui.select_nurse.SelectNurseActivity"
+			android:label="SelectNurseActivity"/>
+		<activity
+			android:name=".app.ui.nurse_info.NurseInfoActivity"
+			android:label="NurseInfoActivity"/>
 
-        <activity
-            android:name=".app.ui.nurs_order_confirm_page.OrderConfirmActivity"
-            android:label="OrderConfirmActivity" />
-        <activity
-            android:name=".app.ui.activity.ReviewsActivity"
-            android:label="ReviewsActivity" />
-        <activity
-            android:name=".app.ui.activity.NursOrderActivity"
-            android:label="@string/title_activity_nurs_order" />
-        <activity
-            android:name=".app.ui.activity.WorkerDateActivity"
-            android:label="@string/title_activity_worker_date"></activity>
-        <activity
-            android:name=".app.ui.activity.FaqActivity"
-            android:label="@string/title_activity_faq"></activity>
-        <activity
-            android:name=".app.ui.activity.CompanyInfoActivity"
-            android:label="@string/title_activity_company_info"></activity>
-        <activity
-            android:name=".app.ui.activity.ServiceIntroductionActivity"
-            android:label="@string/title_activity_service_introduction"></activity>
-        <activity
-            android:name=".app.ui.activity.WorkerLevelActivity"
-            android:label="@string/title_activity_worker_level"></activity>
-        <activity
-            android:name=".app.ui.activity.QuestionFeedBackActivity"
-            android:label="@string/title_activity_question_feed_back"></activity>
-        <activity
-            android:name=".app.ui.activity.MyWealthActivity"
-            android:label="@string/title_activity_my_wealth"></activity>
-        <activity
-            android:name=".app.ui.activity.MySettingActivity"
-            android:label="@string/title_activity_my_set"></activity>
-        <activity
-            android:name=".app.ui.activity.MyScoreActivity"
-            android:label="@string/title_activity_my_score"></activity>
-        <activity
-            android:name=".app.ui.activity.AgreementActivity"
-            android:label="@string/title_activity_agreement"></activity>
-        <activity
-            android:name=".app.ui.activity.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
-        <activity
-            android:name=".app.ui.activity.NursOrderInfoActivity"
-            android:label="@string/title_activity_nurs_order_info"></activity>
-        <activity
-            android:name=".app.ui.activity.NursOrderReviewsActivity"
-            android:label="@string/title_activity_nurs_order_reviews"></activity>
-        <activity
-            android:name=".app.ui.activity.WorkerInfoMoreActivity"
-            android:label="@string/title_activity_worker_info_more" />
-        <activity
-            android:name=".app.ui.shopping_page.ShoppingActivity"
-            android:label="@string/title_activity_shopping" />
-            />
-        <activity
-            android:name=".app.ui.appointment_nursing.ApoitNursingActivity"
-            android:label="@string/title_appoitment_nursing" />
-        <activity
-            android:name=".app.ui.goods_info_page.GoodsInfoActivity"
-            android:label="@string/title_activity_goods_info" />
-        <activity
-            android:name=".app.ui.appointment_nursing.SelectDateActivity"
-            android:label="SelectDateActivity" />
-        <activity
-            android:name=".app.ui.nurs_order_pay_page.NursOrderPayActivity"
-            android:label="@string/title_nurs_order_pay" />
-        <activity
-            android:name=".app.ui.shopping_car_page.ShoppingCarActivity"
-            android:label="@string/title_shopping_car" />
-        <activity
-            android:name=".app.ui.shopping_order_confirm_page.ShoppingOrderConfirmActivity"
-            android:label="@string/title_shopping_order_confirm" />
-    </application>
+		<activity
+			android:name=".app.ui.nurs_order_confirm_page.OrderConfirmActivity"
+			android:label="OrderConfirmActivity"/>
+		<activity
+			android:name=".app.ui.activity.ReviewsActivity"
+			android:label="ReviewsActivity"/>
+		<activity
+			android:name=".app.ui.activity.NursOrderActivity"
+			android:label="@string/title_activity_nurs_order"/>
+		<activity
+			android:name=".app.ui.activity.WorkerDateActivity"
+			android:label="@string/title_activity_worker_date"></activity>
+		<activity
+			android:name=".app.ui.activity.FaqActivity"
+			android:label="@string/title_activity_faq"></activity>
+		<activity
+			android:name=".app.ui.activity.CompanyInfoActivity"
+			android:label="@string/title_activity_company_info"></activity>
+		<activity
+			android:name=".app.ui.activity.ServiceIntroductionActivity"
+			android:label="@string/title_activity_service_introduction"></activity>
+		<activity
+			android:name=".app.ui.activity.WorkerLevelActivity"
+			android:label="@string/title_activity_worker_level"></activity>
+		<activity
+			android:name=".app.ui.activity.QuestionFeedBackActivity"
+			android:label="@string/title_activity_question_feed_back"></activity>
+		<activity
+			android:name=".app.ui.activity.MyWealthActivity"
+			android:label="@string/title_activity_my_wealth"></activity>
+		<activity
+			android:name=".app.ui.activity.MySettingActivity"
+			android:label="@string/title_activity_my_set"></activity>
+		<activity
+			android:name=".app.ui.activity.MyScoreActivity"
+			android:label="@string/title_activity_my_score"></activity>
+		<activity
+			android:name=".app.ui.activity.AgreementActivity"
+			android:label="@string/title_activity_agreement"></activity>
+		<activity
+			android:name=".app.ui.activity.LoginActivity"
+			android:label="@string/title_activity_login"></activity>
+		<activity
+			android:name=".app.ui.activity.NursOrderInfoActivity"
+			android:label="@string/title_activity_nurs_order_info"></activity>
+		<activity
+			android:name=".app.ui.activity.NursOrderReviewsActivity"
+			android:label="@string/title_activity_nurs_order_reviews"></activity>
+		<activity
+			android:name=".app.ui.activity.WorkerInfoMoreActivity"
+			android:label="@string/title_activity_worker_info_more"/>
+		<activity
+			android:name=".app.ui.shopping_page.ShoppingActivity"
+			android:label="@string/title_activity_shopping"/>
+		/>
+		<activity
+			android:name=".app.ui.appointment_nursing.ApoitNursingActivity"
+			android:label="@string/title_appoitment_nursing"/>
+		<activity
+			android:name=".app.ui.goods_info_page.GoodsInfoActivity"
+			android:label="@string/title_activity_goods_info"/>
+		<activity
+			android:name=".app.ui.appointment_nursing.SelectDateActivity"
+			android:label="SelectDateActivity"/>
+		<activity
+			android:name=".app.ui.nurs_order_pay_page.NursOrderPayActivity"
+			android:label="@string/title_nurs_order_pay"/>
+		<activity
+			android:name=".app.ui.shopping_car_page.ShoppingCarActivity"
+			android:label="@string/title_shopping_car"/>
+		<activity
+			android:name=".app.ui.shopping_order_confirm_page.ShoppingOrderConfirmActivity"
+			android:label="@string/title_shopping_order_confirm"/>
+		<activity
+			android:name=".app.ui.nurs_order_change_page.NursOrderChangeActivity"
+			android:label="@string/title_nurs_order_change"/>
+	</application>
 
 </manifest>
