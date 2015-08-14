@@ -530,7 +530,7 @@ public class MaterialCalendarView extends FrameLayout {
             }
             m_dateMonthList.add(calendarDayArrayList);
         }
-        m_typeMonthList = typeMonthList;
+        m_typeMonthList.addAll(typeMonthList);
 
     }
 

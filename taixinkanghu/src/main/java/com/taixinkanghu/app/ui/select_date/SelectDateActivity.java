@@ -147,6 +147,7 @@ public class SelectDateActivity extends Activity
 
 		//02. schedular_all
 		m_schedularDateListAll.clear();
+		m_schedularTypeListAll.clear();
 
 		int beginMonth = m_beginDateCalendar.get(Calendar.MONTH);
 		int endMonth = m_endDateCalendar.get(Calendar.MONTH);
@@ -188,6 +189,16 @@ public class SelectDateActivity extends Activity
 		}
 
 		m_calendarView.loadDateList(m_schedularDateListAll, m_schedularTypeListAll);
+	}
+
+	public ArrayList<ArrayList<Date>> getSchedularDateListAll()
+	{
+		return m_schedularDateListAll;
+	}
+
+	public ArrayList<ArrayList<Integer>> getSchedularTypeListAll()
+	{
+		return m_schedularTypeListAll;
 	}
 
 	protected class HandleOnMonthChangedEvent implements OnMonthChangedListener
