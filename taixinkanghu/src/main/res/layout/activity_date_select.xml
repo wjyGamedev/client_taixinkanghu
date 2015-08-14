@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			xmlns:tools="http://schemas.android.com/tools"
-			android:id="@+id/select_date_activity"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:orientation="vertical"
-			android:visibility="visible">
+<FrameLayout
+	android:id="@+id/select_date_activity"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:visibility="visible">
+
 	<LinearLayout
-		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:orientation="vertical"
 		>
-		<include layout="@layout/include_header"
-				 android:layout_width="match_parent"
-				 android:layout_height="wrap_content"/>
 
-		<ScrollView android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+		<include
+			layout="@layout/include_header"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
+
+		<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
 			>
+
 			<LinearLayout
-				android:orientation="vertical"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
+				android:orientation="vertical"
 				>
 
 
@@ -31,22 +37,101 @@
 					android:layout_height="match_parent"
 					/>
 
-
-				<FrameLayout
-					android:layout_width="match_parent"
-					android:layout_height="60dp">
-
-					<TextView
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:background="#CCCCCC"/>
-				</FrameLayout>
+				<include
+					android:id="@id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
 
 				<LinearLayout
-					android:orientation="horizontal"
 					android:layout_width="match_parent"
-					android:layout_height="60dp"
-					android:id="@+id/date_select_region">
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="5dp"
+					android:layout_marginLeft="50dp"
+					android:layout_marginRight="15dp"
+					android:layout_marginTop="5dp"
+					android:orientation="horizontal">
+
+					<ImageView
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="5dp"
+						android:src="@drawable/dayall"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:layout_weight="1"
+						android:text="全天24小时陪护,从9点至次日9点。"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="5dp"
+					android:layout_marginLeft="50dp"
+					android:layout_marginRight="15dp"
+					android:orientation="horizontal">
+
+					<ImageView
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="5dp"
+						android:src="@drawable/day"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:layout_weight="1"
+						android:text="白天12小时陪护，从9点至21点。"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="5dp"
+					android:layout_marginLeft="50dp"
+					android:layout_marginRight="15dp"
+					android:orientation="horizontal">
+
+					<ImageView
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="5dp"
+						android:src="@drawable/night"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:layout_weight="1"
+						android:text="夜晚12小时陪护，从21点至次日9点。"/>
+
+				</LinearLayout>
+
+				<include
+					android:id="@id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
+
+				<LinearLayout
+					android:id="@+id/date_select_region"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
+					android:layout_marginBottom="10dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_marginLeft="10dp"
+						android:gravity="center"
+						android:textSize="16sp"
+						android:text="服务时间:"/>
 
 					<TextView
 						android:id="@+id/select_date_id"
@@ -55,28 +140,30 @@
 						android:layout_marginLeft="10dp"
 						android:layout_weight="1"
 						android:gravity="center"
-						android:text="选择服务时间" />
+						android:textSize="16sp"
+						android:text="选择服务时间"/>
 
 					<ImageView
-						android:layout_gravity="center_vertical"
+						android:id="@+id/down_date_img"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
-						android:layout_marginRight="10dp"
-						android:background="@mipmap/img_down"
-						android:id="@+id/down_date_img"/>
+						android:layout_gravity="center_vertical"
+						android:background="@mipmap/img_down"/>
 
 				</LinearLayout>
+
+				<include
+					android:id="@id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
 
 			</LinearLayout>
 		</ScrollView>
 
 		<include
 			layout="@layout/include_bottom_btn"
-			android:layout_width="match_parent" android:layout_height="wrap_content"/>
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
 
-	</LinearLayout>>
-
-
-
+	</LinearLayout>
 
 </FrameLayout>
