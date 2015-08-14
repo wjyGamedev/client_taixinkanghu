@@ -98,10 +98,10 @@ public class DataConfig
 	public final static String PATTERN_DATE_MONTH_DAY = "MM月dd日";    //MM月dd日
 	public final static int    MAX_SELECT_MONTH            = 3;
 
-	public final static int MAX_SELECT_DAY_TYEP = 4;
-	public final static int SELECT_DAY_TYEP_ALL = 1;
-	public final static int SELECT_DAY_TYEP_DAY = 2;
-	public final static int SELECT_DAY_TYEP_NIGHT = 3;
+	public final static int MAX_SELECT_DAY_TYEP = 3;
+	public final static int SELECT_DAY_TYEP_ALL = 0;
+	public final static int SELECT_DAY_TYEP_DAY = 1;
+	public final static int SELECT_DAY_TYEP_NIGHT = 2;
 
 }
 
