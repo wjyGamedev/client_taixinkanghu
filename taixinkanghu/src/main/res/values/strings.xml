@@ -38,6 +38,8 @@
 	<string name="company_show_title">优惠信息</string>
 	<string name="appointment_nursing_title">预约陪护</string>
 	<string name="nursing_order_pay_title">订单支付</string>
+	<string name="shopping_car_title">购物车</string>
+	<string name="shopping_order_confirm_title">确认订单</string>
 
 	//预约陪护
 	//注册信息
@@ -114,6 +116,8 @@
 	<string name="fill_post_text">补差价</string>
 
 	<string name="order_status_text">订单状态：</string>
+	<string name="order_id_text">订单编号：</string>
+	<string name="order_id_data_text">201506172716104</string>
 	<string name="cancelled_text">已取消</string>
 	<string name="unpaid_text">未付款</string>
 	<string name="services_text">服务中</string>
@@ -165,15 +169,12 @@
 	<string name="weixin_pay_text">微信支付</string>
 	<string name="weixin_pay_hint_text">推荐安装微信5.0版本以上的用户使用</string>
 
-
-
 	//选择护理员
 	<string name="select_nurse_title">选择护理员</string>
 	<string name="select_nurse_tips">以下护理员均为根据您的信息精细化匹配生成</string>
 
 	//护理员信息
 	<string name="nurse_info">护理员信息</string>
-
 
 	<string name="function_is_not_open">功能未开放</string>
 	<string name="nurse_junior">三星护理员</string>
@@ -233,6 +234,8 @@
 	<string name="title_appoitment_nursing">ApoitNursingActivity</string>
 	<string name="title_select_date">SelectDateActivity</string>
 	<string name="title_nurs_order_pay">NursOrderPayActivity</string>
+	<string name="title_shopping_car">ShoppingCarActivity</string>
+	<string name="title_shopping_order_confirm">ShoppingOrderConfirmActivity</string>
 
 	<string name="sunday">日</string>
 	<string name="monday">一</string>
@@ -282,9 +285,25 @@
 	<string name="goods_introduction_btn_text">商品介绍</string>
 	<string name="parameter_btn_text">规格参数</string>
 	<string name="customer_service_btn_text">包装售后</string>
+	<string name="check_all_btn_text">全选</string>
+	<string name="settlement_btn_text">结算</string>
+	<string name="left_bracket_text">(</string>
+	<string name="settlement_data_text">2</string>
+	<string name="right_bracket_text">)</string>
+	<string name="postage_colon_text">运费：</string>
+	<string name="subtotal_colon_text">小计：</string>
+	<string name="please_fill_in_address_text">请填写收货地址</string>
+	<string name="seven_days_no_reason_to_return_text">支持7天无理由退货</string>
+	<string name="payment_btn_text">付款</string>
+	<string name="phone_number_data_text">15********6</string>
+	<string name="address_data_text">北京市西城区牛街西里二区11号楼1506</string>
+	<string name="total_commodity_text">商品总额</string>
+	<string name="real_payment_text">实付款：</string>
+	<string name="single_time_text">下单时间：</string>
+	<string name="single_time_date_data_text">2015-06-29</string>
+	<string name="single_time_time_data_text">08:59:41</string>
 
 	<!-- 颜色-->
 	<string name="color_all_null">#00000000</string>
-
 
 </resources>
