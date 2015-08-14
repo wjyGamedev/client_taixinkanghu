@@ -162,6 +162,12 @@
         <activity
             android:name=".app.ui.nurs_order_pay_page.NursOrderPayActivity"
             android:label="@string/title_nurs_order_pay" />
+        <activity
+            android:name=".app.ui.shopping_car_page.ShoppingCarActivity"
+            android:label="@string/title_shopping_car" />
+        <activity
+            android:name=".app.ui.shopping_order_confirm_page.ShoppingOrderConfirmActivity"
+            android:label="@string/title_shopping_order_confirm" />
     </application>
 
 </manifest>
