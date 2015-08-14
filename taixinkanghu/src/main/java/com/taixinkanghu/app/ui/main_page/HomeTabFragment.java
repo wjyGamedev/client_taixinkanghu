@@ -44,6 +44,19 @@ import java.util.ArrayList;
 
 public class HomeTabFragment extends Fragment implements GestureDetector.OnGestureListener
 {
+	/**
+	 * 数据区
+	 */
+	private GestureDetectorCompat            m_gestureDetectorCompat            = null;
+	private ViewFlipper                      m_viewFlipper                      = null;
+	private GridLayout                       m_gridLayout                       = null;
+	//	private EditText                      m_editText                      = null;
+	private HandlerClickEventNursingOrder    m_handlerClickEventNursingOrder    = null;
+	private HandlerClickEventShopping        m_handlerClickEventShopping        = null;
+	private HandlerClickEventHomeTabFragment m_handlerClickEventHomeTabFragment = null;
+
+	private TextView m_pageTitleTv = null;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -246,16 +259,4 @@ public class HomeTabFragment extends Fragment implements GestureDetector.OnGestu
 		return view;
 	}
 
-	/**
-	 * 数据区
-	 */
-	private GestureDetectorCompat            m_gestureDetectorCompat            = null;
-	private ViewFlipper                      m_viewFlipper                      = null;
-	private GridLayout                       m_gridLayout                       = null;
-	//	private EditText                      m_editText                      = null;
-	private HandlerClickEventNursingOrder    m_handlerClickEventNursingOrder    = null;
-	private HandlerClickEventShopping        m_handlerClickEventShopping        = null;
-	private HandlerClickEventHomeTabFragment m_handlerClickEventHomeTabFragment = null;
-
-	private TextView m_pageTitleTv;
 }

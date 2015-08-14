@@ -23,6 +23,7 @@ import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.data.DAccount;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
+import com.taixinkanghu.app.ui.select_date.SureSelectDateEvent;
 import com.taixinkanghu.third.party.sms.SmsAutho;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
@@ -118,6 +119,7 @@ public class RegisterActivity extends Activity
 		{
 			RegisterDialog.GetInstance().setMsg(getResources().getString(R.string.err_info_deserialization_failed), this);
 			RegisterDialog.GetInstance().show();
+			return;
 		}
 
 		//status:失败
@@ -125,9 +127,17 @@ public class RegisterActivity extends Activity
 		{
 			RegisterDialog.GetInstance().setMsg(DAccount.GetInstance().getErrorMsg(), this);
 			RegisterDialog.GetInstance().show();
+			return;
 		}
 
+		//注册成功，关闭当前页面
+		finish();
 		return;
+
+	}
+
+	public void onEventMainThread(SureSelectDateEvent event)
+	{
 
 	}
 

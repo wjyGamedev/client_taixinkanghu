@@ -53,9 +53,9 @@ public class SelectHospitalOldFragment extends Fragment implements View.OnClickL
 		view.setOnClickListener(this);
 
 		btn1 = (Button)view.findViewById(R.id.all_item);
-		btn2 = (Button)view.findViewById(R.id.beijingtiantan_item);
-		btn3 = (Button)view.findViewById(R.id.beijingchaoyang_item);
-		btn4 = (Button)view.findViewById(R.id.yikeyuanzhongliu_item);
+		btn2 = (Button)view.findViewById(R.id.item_1);
+		btn3 = (Button)view.findViewById(R.id.item_2);
+		btn4 = (Button)view.findViewById(R.id.item_3);
 
 		btn1.setOnClickListener(this);
 		btn2.setOnClickListener(this);
@@ -138,19 +138,19 @@ public class SelectHospitalOldFragment extends Fragment implements View.OnClickL
 					activity.getHospitalTv().setText(btn1.getText());
 					activity.setSelected_hospital(All_YIYUAN);
 					break;
-				case R.id.beijingtiantan_item:
+				case R.id.item_1:
 					btn2.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn2.getText());
 					activity.setSelected_hospital(TIANTANYIYUAN);
 					break;
-				case R.id.beijingchaoyang_item:
+				case R.id.item_2:
 					btn3.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn3.getText());
 					activity.setSelected_hospital(ZHONGLIUYIYUAN);
 					break;
-				case R.id.yikeyuanzhongliu_item:
+				case R.id.item_3:
 					btn4.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn4.getText());
@@ -179,19 +179,19 @@ public class SelectHospitalOldFragment extends Fragment implements View.OnClickL
 					activity.add_info.setText(btn1.getText());
 					activity.selected_hospital = All_YIYUAN;
 					break;
-				case R.id.beijingtiantan_item:
+				case R.id.item_1:
 					btn2.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.add_info.setText(btn2.getText());
 					activity.selected_hospital = CHAOYANGYIYUAN;
 					break;
-				case R.id.beijingchaoyang_item:
+				case R.id.item_2:
 					btn2.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.add_info.setText(btn3.getText());
 					activity.selected_hospital = TIANTANYIYUAN;
 					break;
-				case R.id.yikeyuanzhongliu_item:
+				case R.id.item_3:
 					btn2.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.add_info.setText(btn3.getText());

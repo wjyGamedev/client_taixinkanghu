@@ -106,7 +106,7 @@ public class WorkerDateActivity extends Activity {
         int year = 2015 - 1900;
         datedata = new Date[]{new Date(year, 6, 1),new Date(year, 6, 5),new Date(year, 6, 9),new Date(year, 6, 12),new Date(year, 6, 20),new Date(year, 6, 21),new Date(year, 7, 20),new Date(year, 7, 21)};
         calendar.isDraw = true;
-        calendar.drawDownOrSelectedBg(datedata);
+        //calendar.drawDownOrSelectedBg(datedata);
 
     }
 }

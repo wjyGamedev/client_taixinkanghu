@@ -14,6 +14,8 @@
 
 package com.taixinkanghu.util.logcal;
 
+import java.util.Date;
+
 public class LogicalUtil
 {
 	private final static int LENGTH_PHONE_NUM = 11;
@@ -40,4 +42,12 @@ public class LogicalUtil
 			return mobiles.matches(telRegex);
 		}
 	}
+
+	public static int GetDayNums(Date begin, Date end)
+	{
+		long beginTime = begin.getTime();
+		long endTime = end.getTime();
+		return Math.abs((int) (beginTime - endTime)/(24 * 60 * 60 * 1000));
+	}
+
 }
