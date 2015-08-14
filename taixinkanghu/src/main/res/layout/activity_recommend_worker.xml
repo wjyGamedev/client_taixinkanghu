@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -346,7 +346,7 @@
                         android:layout_marginRight="10dp"
                         android:gravity="center_vertical"
                         android:text="自理程度："
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -402,14 +402,14 @@
                         android:layout_marginRight="10dp"
                         android:gravity="center_vertical"
                         android:text="备注（选填）："
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/editText"
                         android:layout_width="match_parent"
                         android:layout_height="59dp"
                         android:text="描述所获疾病及特殊要求"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
             </LinearLayout>

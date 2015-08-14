@@ -24,14 +24,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="15********6"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/reviewsDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="评价时间：2015-06-24 00:42"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
 
         </LinearLayout>
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="#99000000"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
 
         <TextView
@@ -51,14 +51,14 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:text="相关评论000000000000000000000000000000000000000"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="#99000000"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
 
         <TextView
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="下订单时间：2015-16-14 10:40"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 
