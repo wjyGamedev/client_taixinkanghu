@@ -41,11 +41,12 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
 
     private final Calendar tempWorkingCalendar = CalendarUtils.getInstance();
 
-    private CalendarDay            selection      = null;
-    private CalendarDay            minDate        = null;
-    private CalendarDay            maxDate        = null;
+    private CalendarDay            selection       = null;
+    private CalendarDay            minDate         = null;
+    private CalendarDay            maxDate         = null;
     //add by wangjinyu 2015-8-12
-    private ArrayList<CalendarDay> m_calendarDays = new ArrayList<>();
+    private ArrayList<CalendarDay> m_calendarDays  = new ArrayList<>();
+    private ArrayList<Integer>     m_typeArrayList = new ArrayList<>();
 
 
     private boolean showOtherDates = false;
@@ -211,13 +212,11 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
         }
     }
 
-    public void loadDateList(ArrayList<CalendarDay> selectedDateList)
+    public void loadDateList(ArrayList<CalendarDay> selectedDateList, ArrayList<Integer> typeArrayList)
     {
         //01. 设置本月数据
-        if (m_calendarDays == selectedDateList)
-            return;
-
         m_calendarDays = selectedDateList;
+        m_typeArrayList = typeArrayList;
 
         //02. 清楚之前UI数据
         for(DayView other : monthDayViews) {

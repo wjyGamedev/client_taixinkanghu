@@ -63,76 +63,93 @@ public class MaterialCalendarView extends FrameLayout {
     private static final TitleFormatter DEFAULT_TITLE_FORMATTER = new DateFormatTitleFormatter();
     private final TitleChanger titleChanger;
 
-    private final TextView title;
-    private final DirectionButton buttonPast;
-    private final DirectionButton buttonFuture;
-    private final ViewPager pager;
+    private final TextView          title;
+    private final DirectionButton   buttonPast;
+    private final DirectionButton   buttonFuture;
+    private final ViewPager         pager;
     private final MonthPagerAdapter adapter;
-    private CalendarDay currentMonth;
-    private LinearLayout topbar;
+    private       CalendarDay       currentMonth;
+    private       LinearLayout      topbar;
 
     //要显示的日期
-    private ArrayList<ArrayList<CalendarDay> > m_selectedDateList = new ArrayList<>();
+    private ArrayList<ArrayList<CalendarDay>> m_dateMonthList = new ArrayList<>();
+    //日期的类型，24,12白，12黑
+    private ArrayList<ArrayList<Integer>>     m_typeMonthList = new ArrayList<>();
 
     private final ArrayList<DayViewDecorator> dayViewDecorators = new ArrayList<>();
 
-    private final MonthView.Callbacks monthViewCallbacks = new MonthView.Callbacks() {
+    private final MonthView.Callbacks monthViewCallbacks = new MonthView.Callbacks()
+    {
         @Override
-        public void onDateChanged(CalendarDay date) {
+        public void onDateChanged(CalendarDay date)
+        {
             setSelectedDate(date);
 
-            if(listener != null) {
+            if (listener != null)
+            {
                 listener.onDateChanged(MaterialCalendarView.this, date);
             }
         }
     };
 
-    private final OnClickListener onClickListener = new OnClickListener() {
+    private final OnClickListener onClickListener = new OnClickListener()
+    {
         @Override
-        public void onClick(View v) {
-            if(v == buttonFuture) {
+        public void onClick(View v)
+        {
+            if (v == buttonFuture)
+            {
                 pager.setCurrentItem(pager.getCurrentItem() + 1, true);
-            } else if(v == buttonPast) {
+            }
+            else if (v == buttonPast)
+            {
                 pager.setCurrentItem(pager.getCurrentItem() - 1, true);
             }
         }
     };
 
-    private final ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
+    private final ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener()
+    {
         @Override
-        public void onPageSelected(int position) {
+        public void onPageSelected(int position)
+        {
             titleChanger.setPreviousMonth(currentMonth);
             currentMonth = adapter.getItem(position);
             updateUi();
 
-            if(monthListener != null) {
+            if (monthListener != null)
+            {
                 monthListener.onMonthChanged(MaterialCalendarView.this, currentMonth);
             }
         }
 
-        @Override public void onPageScrollStateChanged(int state) {}
+        @Override
+        public void onPageScrollStateChanged(int state) {}
 
-        @Override public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
     };
 
     private CalendarDay minDate = null;
     private CalendarDay maxDate = null;
 
-    private OnDateChangedListener listener;
+    private OnDateChangedListener  listener;
     private OnMonthChangedListener monthListener;
 
     private int accentColor = 0;
-    private int arrowColor = Color.BLACK;
+    private int arrowColor  = Color.BLACK;
     private Drawable leftArrowMask;
     private Drawable rightArrowMask;
 
     private LinearLayout root;
 
-    public MaterialCalendarView(Context context) {
+    public MaterialCalendarView(Context context)
+    {
         this(context, null);
     }
 
-    public MaterialCalendarView(Context context, AttributeSet attrs) {
+    public MaterialCalendarView(Context context, AttributeSet attrs)
+    {
         super(context, attrs);
 
         setClipChildren(false);
@@ -167,23 +184,23 @@ public class MaterialCalendarView extends FrameLayout {
 
         adapter.setCallbacks(monthViewCallbacks);
 
-        TypedArray a = context.getTheme()
-                .obtainStyledAttributes(attrs, R.styleable.MaterialCalendarView, 0, 0);
-        try {
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.MaterialCalendarView, 0, 0);
+        try
+        {
 
             int tileSize = a.getDimensionPixelSize(R.styleable.MaterialCalendarView_mcv_tileSize, -1);
-            if(tileSize > 0) {
+            if (tileSize > 0)
+            {
                 setTileSize(tileSize);
             }
 
-            setArrowColor(a.getColor(
-                R.styleable.MaterialCalendarView_mcv_arrowColor,
-                Color.BLACK
-            ));
-            Drawable leftMask = a.getDrawable(
-                R.styleable.MaterialCalendarView_mcv_leftArrowMask
-            );
-            if (leftMask == null) {
+            setArrowColor(a.getColor(R.styleable.MaterialCalendarView_mcv_arrowColor, Color.BLACK
+                                    )
+                         );
+            Drawable leftMask = a.getDrawable(R.styleable.MaterialCalendarView_mcv_leftArrowMask
+                                             );
+            if (leftMask == null)
+            {
                 leftMask = getResources().getDrawable(R.drawable.mcv_action_previous);
             }
             setLeftArrowMask(leftMask);
@@ -497,59 +514,23 @@ public class MaterialCalendarView extends FrameLayout {
 
     private void setSelectedDateList(
             @Nullable
-            ArrayList<Date> dateList) {
+            ArrayList<ArrayList<Date>> dateMonthList,
+            ArrayList<ArrayList<Integer>> typeMonthList) {
 
-        m_selectedDateList.clear();
+        //01. 设置日期数据
+        m_dateMonthList.clear();
+        m_typeMonthList.clear();
 
-        if (dateList.size() <= 0)
-            return;
-
-        int iLastMonth = -1;
-        int iCurMonth = -1;
-        ArrayList<CalendarDay> curMonth = new ArrayList<>();
-        curMonth.clear();
-        for (Date dateEle : dateList)
+        for (ArrayList<Date> dateArrayList : dateMonthList)
         {
-            CalendarDay tmpCalendarDay = CalendarDay.from(dateEle);
-            iCurMonth = tmpCalendarDay.getMonth();
-
-            //初始化的时候填充空的month
-            if (iLastMonth == -1)
+            ArrayList<CalendarDay> calendarDayArrayList = new ArrayList<>();
+            for (Date date : dateArrayList)
             {
-                iLastMonth = iCurMonth;
+                calendarDayArrayList.add(CalendarDay.from(date));
             }
-
-            //异常
-            if (iLastMonth > iCurMonth)
-            {
-                return;
-            }
-
-            if (iLastMonth < iCurMonth)
-            {
-                iLastMonth++;
-                if (iLastMonth != iCurMonth)
-                    return;
-
-                ArrayList<CalendarDay> tmpAddMonth = new ArrayList<>();
-                tmpAddMonth.addAll(curMonth);
-                m_selectedDateList.add(tmpAddMonth);
-                curMonth.clear();
-            }
-            //处理当前月份的day
-            if (iLastMonth == iCurMonth)
-            {
-                curMonth.add(tmpCalendarDay);
-            }
+            m_dateMonthList.add(calendarDayArrayList);
         }
-
-        if (curMonth.isEmpty() == false)
-        {
-            ArrayList<CalendarDay> tmpAddMonth = new ArrayList<>();
-            tmpAddMonth.addAll(curMonth);
-            m_selectedDateList.add(tmpAddMonth);
-            curMonth.clear();
-        }
+        m_typeMonthList = typeMonthList;
 
     }
 
@@ -560,7 +541,7 @@ public class MaterialCalendarView extends FrameLayout {
 
     public ArrayList<CalendarDay> getCalendarListByMonth(int month)
     {
-        for (ArrayList<CalendarDay> calendarDayArrayList : m_selectedDateList)
+        for (ArrayList<CalendarDay> calendarDayArrayList : m_dateMonthList)
         {
             if (calendarDayArrayList.size() <= 0)
                 continue;
@@ -577,15 +558,27 @@ public class MaterialCalendarView extends FrameLayout {
         return null;
     }
 
+
+    public ArrayList<ArrayList<CalendarDay>> getDateMonthList()
+    {
+        return m_dateMonthList;
+    }
+
+    public ArrayList<ArrayList<Integer>> getTypeMonthList()
+    {
+        return m_typeMonthList;
+    }
+
     //入口：加载要显示的开始日期到结束日期
     public void loadDateList(
             @Nullable
-            ArrayList<Date> dateList) {
+            ArrayList<ArrayList<Date>> dateMonthList,
+            ArrayList<ArrayList<Integer>> typeMonthList) {
 
         //01. 清楚之前的UI数据
-        if (m_selectedDateList.isEmpty() == false)
+        if (m_dateMonthList.isEmpty() == false)
         {
-            for (ArrayList<CalendarDay> calendarDayArrayList : m_selectedDateList)
+            for (ArrayList<CalendarDay> calendarDayArrayList : m_dateMonthList)
             {
                 if (calendarDayArrayList == null)
                     continue;;
@@ -612,15 +605,15 @@ public class MaterialCalendarView extends FrameLayout {
             }
         }
 
-        //02. 设置本地数据
-        setSelectedDateList(dateList);
+        //02. 设置本地数据和数据类型
+        setSelectedDateList(dateMonthList, typeMonthList);
 
         //03. 将当前显示月份更换到我们预约的首月份。
-        if (m_selectedDateList.size() <= 0)
+        if (m_dateMonthList.size() <= 0)
             return;
 
         ArrayList<CalendarDay> calendarDayArrayList = new ArrayList<CalendarDay>();
-        calendarDayArrayList = m_selectedDateList.get(0);
+        calendarDayArrayList = m_dateMonthList.get(0);
         if (calendarDayArrayList.size() <= 0)
             return;
 

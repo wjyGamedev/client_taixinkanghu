@@ -45,17 +45,21 @@ public class SelectDateActivity extends Activity
 	private Button               m_bottomBtn        = null;    //bottom
 
 	//logicaldata
-	private HandleClickEventOnActivity m_handleClickEventOnActivity = null;
-	private Calendar                   m_beginDateCalendar          = Calendar.getInstance();
-	private Calendar                   m_endDateCalendar            = Calendar.getInstance();
-	private Date                       m_beginDate                  = null;
-	private Date                       m_endDate                    = null;
-	private ArrayList<Date>            m_schedularAll               = new ArrayList<>();
-	private ArrayList<Date>            m_schedularBoth              = new ArrayList<>();
-	private ArrayList<Date>            m_schedularDay               = new ArrayList<>();
-	private ArrayList<Date>            m_schedularNight             = new ArrayList<>();
-	private SimpleDateFormat           m_simpleDateFormat           = new SimpleDateFormat(DataConfig.PATTERN_DATE_MONTH_DAY);
-	private HandleOnMonthChangedEvent  m_handleOnMonthChangedEvent  = new HandleOnMonthChangedEvent();
+	private HandleClickEventOnActivity    m_handleClickEventOnActivity  = null;
+	private Calendar                      m_beginDateCalendar           = Calendar.getInstance();
+	private Calendar                      m_endDateCalendar             = Calendar.getInstance();
+	private Date                          m_beginDate                   = null;
+	private Date                          m_endDate                     = null;
+	private ArrayList<ArrayList<Date>>    m_schedularDateListAll        = new ArrayList<>();
+	private ArrayList<ArrayList<Integer>> m_schedularTypeListAll        = new ArrayList<>();
+	private SimpleDateFormat              m_simpleDateFormat            = new SimpleDateFormat(DataConfig.PATTERN_DATE_MONTH_DAY);
+	private HandleOnMonthChangedEvent     m_handleOnMonthChangedEvent   = new HandleOnMonthChangedEvent();
+	private SelectorBothDecorator         m_selectorBothDecorator       = new SelectorBothDecorator();
+	private SelectorDayDecorator          m_selectorDayDecorator        = new SelectorDayDecorator();
+	private SelectorNightDecorator        m_selectorNightDecorator      = new SelectorNightDecorator();
+	private HandleBothDecorateListener    m_handleBothDecorateListener  = new HandleBothDecorateListener();
+	private HandleDayDecorateListener     m_handleDayDecorateListener   = new HandleDayDecorateListener();
+	private HandleNightDecorateListener   m_handleNightDecorateListener = new HandleNightDecorateListener();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -92,6 +96,7 @@ public class SelectDateActivity extends Activity
 		m_calendarView.setHeaderTextAppearance(R.style.TextAppearance_AppCompat_Large);
 		m_calendarView.setDateTextAppearance(R.style.TextAppearance_AppCompat_Medium);
 		m_calendarView.setWeekDayTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+
 	}
 
 	private void initListener()
@@ -99,6 +104,11 @@ public class SelectDateActivity extends Activity
 		m_selectDataLayout.setOnClickListener(m_handleClickEventOnActivity);
 		m_bottomBtn.setOnClickListener(m_handleClickEventOnActivity);
 		m_calendarView.setOnMonthChangedListener(m_handleOnMonthChangedEvent);
+
+		m_selectorBothDecorator.setOnShouldDecorateListener(m_handleBothDecorateListener);
+		m_selectorDayDecorator.setOnShouldDecorateListener(m_handleDayDecorateListener);
+		m_selectorNightDecorator.setOnShouldDecorateListener(m_handleNightDecorateListener);
+		m_calendarView.addDecorators(m_selectorBothDecorator, m_selectorDayDecorator, m_selectorNightDecorator);
 	}
 
 	private void initEvent()
@@ -130,7 +140,8 @@ public class SelectDateActivity extends Activity
 		m_selectDateTV.setText(display);
 
 		//02. schedular_all
-		m_schedularAll.clear();
+		m_schedularDateListAll.clear();
+
 		int beginMonth = m_beginDateCalendar.get(Calendar.MONTH);
 		int endMonth = m_endDateCalendar.get(Calendar.MONTH);
 		int beginDay = m_beginDateCalendar.get(Calendar.DAY_OF_MONTH);
@@ -158,23 +169,19 @@ public class SelectDateActivity extends Activity
 			}
 			tmpCalendar.set(Calendar.DAY_OF_MONTH, iDay);
 
+			ArrayList<Date> dateMonthListAll = new ArrayList<>();
+			ArrayList<Integer> typeMonthListAll = new ArrayList<>();
 			for(int index = 0; iDay <= iMaxDay; ++iDay, tmpCalendar.roll(Calendar.DAY_OF_MONTH, true), ++index)
 			{
 				Date tmpDate = tmpCalendar.getTime();
-				m_schedularAll.add(tmpDate);
+				dateMonthListAll.add(tmpDate);
+				typeMonthListAll.add(DataConfig.SELECT_DAY_TYEP_ALL);
 			}
+			m_schedularDateListAll.add(dateMonthListAll);
+			m_schedularTypeListAll.add(typeMonthListAll);
 		}
 
-		//默认都是24小时
-		m_schedularBoth = m_schedularAll;
-
-		// calendar view
-//		for (int indexDay = 0; indexDay < m_schedularBoth.size(); ++indexDay)
-//		{
-//			m_calendarView.setSelectedDate(m_schedularBoth.get(indexDay));
-//		}
-//		m_calendarView.setSelectedDateList(m_schedularBoth);
-		m_calendarView.loadDateList(m_schedularBoth);
+		m_calendarView.loadDateList(m_schedularDateListAll, m_schedularTypeListAll);
 	}
 
 	protected class HandleOnMonthChangedEvent implements OnMonthChangedListener
@@ -185,19 +192,69 @@ public class SelectDateActivity extends Activity
 		{
 			LinkedList<MonthView> monthViewLinkedList = widget.getMonthViewList();
 			int iMonth = date.getMonth();
-			ArrayList<CalendarDay> calendarDayArrayList = widget.getCalendarListByMonth(iMonth);
-			if (calendarDayArrayList == null)
+
+			ArrayList<ArrayList<CalendarDay>> dateMonthlist = widget.getDateMonthList();
+			ArrayList<ArrayList<Integer>> typeMonthList = widget.getTypeMonthList();
+			if (dateMonthlist == null || typeMonthList == null)
 				return;
+
+			if (dateMonthlist.size() != typeMonthList.size())
+				return;
+
+			ArrayList<CalendarDay> calendarDayArrayList = new ArrayList<>();
+			ArrayList<Integer> typeArrayList = new ArrayList<>();
+			for (int index = 0; index < dateMonthlist.size(); ++index)
+			{
+				calendarDayArrayList = dateMonthlist.get(index);
+				if (calendarDayArrayList == null)
+					continue;
+
+				if (calendarDayArrayList.isEmpty())
+					continue;
+
+				if (calendarDayArrayList.get(0).getMonth() == iMonth)
+				{
+					typeArrayList = typeMonthList.get(index);
+					break;
+				}
+			}
 
 			for (MonthView monthView : monthViewLinkedList)
 			{
 				if (monthView.getMonth().getMonth() == iMonth)
 				{
-					monthView.loadDateList(calendarDayArrayList);
+					monthView.loadDateList(calendarDayArrayList, typeArrayList);
 				}
-
 			}
 		}
 	}
 
+	class HandleBothDecorateListener implements BaseSelectorDecorator.OnShouldDecorateListener
+	{
+		@Override
+		public boolean shouldDecorate(CalendarDay day)
+		{
+			return false;
+		}
+	}
+
+	class HandleDayDecorateListener implements BaseSelectorDecorator.OnShouldDecorateListener
+	{
+
+		@Override
+		public boolean shouldDecorate(CalendarDay day)
+		{
+			return false;
+		}
+	}
+
+	class HandleNightDecorateListener implements BaseSelectorDecorator.OnShouldDecorateListener
+	{
+
+		@Override
+		public boolean shouldDecorate(CalendarDay day)
+		{
+			return false;
+		}
+	}
 }
