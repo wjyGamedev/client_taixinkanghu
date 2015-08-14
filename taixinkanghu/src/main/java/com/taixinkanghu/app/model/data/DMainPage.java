@@ -34,9 +34,22 @@ public class DMainPage
 			m_strLastTabTag = m_strCurrTabTag;
 		}
 	}
+
+	public Integer getAppRegionHeight()
+	{
+		return m_appRegionHeight;
+	}
+
+	public void setAppRegionHeight(Integer appRegionHeight)
+	{
+		m_appRegionHeight = appRegionHeight;
+	}
+
 	/**
 	 * 数据区
 	 */
 	private String m_strCurrTabTag = null;
 	private String m_strLastTabTag = null;
+
+	private Integer m_appRegionHeight = -1;//应用区域高度
 }
