@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_marginTop="10dp"
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical">
+
+	<include
+		android:id="@id/dividing_line"
+		layout="@layout/item_dividing_line_horizontal"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="200dp"
+		android:orientation="horizontal">
+
+		<CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:gravity="center"/>
+
+		<include
+			android:id="@id/dividing_line"
+			layout="@layout/item_dividing_line_vertical"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="140dp"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_width="120dp"
+					android:layout_height="120dp"
+					android:layout_gravity="center_vertical"
+					android:layout_marginBottom="10dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:layout_marginTop="10dp"
+					android:background="@color/main_color"
+					android:padding="1dp"
+					android:src="@drawable/goods_face_big"/>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/item_name_title"
+						android:textSize="17sp"/>
+
+					<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/currency_symbol"
+							android:textSize="20sp"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/item_price"
+							android:textSize="20sp"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_width="120dp"
+						android:layout_height="30dp"
+						android:background="@color/main_color"
+						android:orientation="horizontal"
+						android:padding="1dp">
+
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1.5"
+							android:background="@color/white"
+							android:gravity="center"
+							android:text="-"/>
+
+						<include
+							android:id="@+id/dividing_line"
+							layout="@layout/item_dividing_line_vertical"/>
+
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:background="@color/white"
+							android:gravity="center"
+							android:text="0"/>
+
+						<include
+							android:id="@+id/dividing_line"
+							layout="@layout/item_dividing_line_vertical"/>
+
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1.5"
+							android:background="@color/white"
+							android:gravity="center"
+							android:text="+"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<include
+				android:id="@id/dividing_line"
+				layout="@layout/item_dividing_line_horizontal"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginLeft="15dp"
+					android:text="@string/postage_colon_text"
+					android:textColor="@color/text_color_orange"
+					android:textSize="18sp"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:text="@string/currency_symbol"
+					android:textColor="@color/text_color_orange"
+					android:textSize="18sp"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:text="@string/item_price"
+					android:textColor="@color/text_color_orange"
+					android:textSize="18sp"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginLeft="15dp"
+					android:layout_weight="1"
+					android:gravity="right"
+					android:text="@string/subtotal_colon_text"
+					android:textColor="@color/text_color_orange"
+					android:textSize="18sp"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:text="@string/currency_symbol"
+					android:textColor="@color/text_color_orange"
+					android:textSize="18sp"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginRight="15dp"
+					android:text="@string/item_price"
+					android:textColor="@color/text_color_orange"
+					android:textSize="18sp"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<include
+		android:id="@id/dividing_line"
+		layout="@layout/item_dividing_line_horizontal"/>
+
+</LinearLayout>
