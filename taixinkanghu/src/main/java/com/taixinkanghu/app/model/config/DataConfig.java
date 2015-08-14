@@ -97,5 +97,11 @@ public class DataConfig
 	public final static String PATTERN_DATE_MONTH_DAY_WEEK = "MM月dd日(E)";    //MM月dd日(星期E)
 	public final static String PATTERN_DATE_MONTH_DAY = "MM月dd日";    //MM月dd日
 	public final static int    MAX_SELECT_MONTH            = 3;
+
+	public final static int MAX_SELECT_DAY_TYEP = 4;
+	public final static int SELECT_DAY_TYEP_ALL = 1;
+	public final static int SELECT_DAY_TYEP_DAY = 2;
+	public final static int SELECT_DAY_TYEP_NIGHT = 3;
+
 }
 
