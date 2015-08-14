@@ -49,7 +49,13 @@ public class HandleClickEventOnActivity extends BaseHandleOnClickEvent
 			case R.id.btn_bottom:
 			{
 				activity.finish();
+				SelectDateActivity selectDateActivity = (SelectDateActivity)activity;
+				if (selectDateActivity == null)
+					return;
+
 				SureSelectDateEvent sureSelectDateEvent = new SureSelectDateEvent();
+
+
 				m_eventBus.post(sureSelectDateEvent);
 				break;
 			}

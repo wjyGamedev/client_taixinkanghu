@@ -638,8 +638,9 @@ public class MaterialCalendarView extends FrameLayout {
                 monthListener.onMonthChanged(MaterialCalendarView.this, currentMonth);
             }
         }
-        //03. 将当前要显示的月份的数据进行填充
-//        adapter.setSelectedDateList(dateList);
+        //03. 设置可点击的边界
+        
+        //        adapter.setSelectedDateList(dateList);
 //        setCurrentDate(dateList.get(0));
     }
 

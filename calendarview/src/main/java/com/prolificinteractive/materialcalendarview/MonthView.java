@@ -217,7 +217,7 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
 		m_typeArrayList = typeArrayList;
 	}
 
-    public void loadDateList(ArrayList<CalendarDay> selectedDateList, ArrayList<Integer> typeArrayList)
+    public void loadDateList(ArrayList<CalendarDay> selectedDateList, ArrayList<Integer> typeArrayList, ArrayList<ArrayList<CalendarDay>> dateMonthList)
     {
         //01. 设置本月数据
         m_calendarDays = selectedDateList;
@@ -230,10 +230,31 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
 
         //03. 画本月数据UI
         int ourMonth = month.getMonth();
+		boolean bClickFlag = false;
         for(DayView dayView : monthDayViews) {
             CalendarDay day = dayView.getDate();
-            dayView.setupSelection(showOtherDates, day.isInRange(minDate, maxDate), day.getMonth() == ourMonth);
 
+			for (ArrayList<CalendarDay> calendarDayArrayList : dateMonthList)
+			{
+				for (CalendarDay calendarDay : calendarDayArrayList)
+				{
+					if (calendarDay == null)
+						continue;
+
+					if (calendarDay.getDay() != day.getDay())
+						continue;
+
+					if (calendarDay.getMonth() != day.getMonth())
+						continue;
+
+					bClickFlag = true;
+					break;
+				}
+			}
+
+            dayView.setupSelection(showOtherDates, day.isInRange(minDate, maxDate), day.getMonth() == ourMonth);
+			dayView.setClickable(bClickFlag);
+			dayView.setEnabled(bClickFlag);
             boolean isChecked = false;
             for (CalendarDay calendarDay : m_calendarDays)
             {
@@ -243,7 +264,7 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
                     break;
                 }
             }
-            dayView.setChecked(isChecked);
+			dayView.setChecked(isChecked);
         }
 
         return;

@@ -240,7 +240,7 @@ public class SelectDateActivity extends Activity
 			{
 				if (monthView.getMonth().getMonth() == iMonth)
 				{
-					monthView.loadDateList(calendarDayArrayList, typeArrayList);
+					monthView.loadDateList(calendarDayArrayList, typeArrayList, dateMonthlist);
 					monthView.invalidateDecorators();
 				}
 			}
@@ -375,6 +375,7 @@ public class SelectDateActivity extends Activity
 			ArrayList<Integer> typeArrayList = new ArrayList<>();
 			Date tmpDate = new Date();
 			LinkedList<MonthView> monthViewLinkedList = widget.getMonthViewList();
+			boolean bFindFlag = false;
 			for (int index = 0; index < m_schedularDateListAll.size(); ++index)
 			{
 				dateArrayList = m_schedularDateListAll.get(index);
@@ -401,14 +402,27 @@ public class SelectDateActivity extends Activity
 						if (monthView.getMonth().getMonth() == month)
 						{
 							monthView.setTypeList(typeArrayList);
-							monthView.invalidateDecorators();
-							return;
+							bFindFlag = true;
+							break;
 						}
 					}
 
+					if (bFindFlag)
+					{
+						break;
+					}
+				}
+
+				if (bFindFlag)
+				{
+					break;
 				}
 			}
 
+			for (MonthView monthView : monthViewLinkedList)
+			{
+				monthView.invalidateDecorators();
+			}
 			return;
 		}
 	}
