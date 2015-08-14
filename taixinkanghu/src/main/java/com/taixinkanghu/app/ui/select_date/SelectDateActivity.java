@@ -16,6 +16,8 @@ package com.taixinkanghu.app.ui.select_date;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.MonthView;
+import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
@@ -60,6 +63,7 @@ public class SelectDateActivity extends Activity
 	private HandleBothDecorateListener    m_handleBothDecorateListener  = new HandleBothDecorateListener();
 	private HandleDayDecorateListener     m_handleDayDecorateListener   = new HandleDayDecorateListener();
 	private HandleNightDecorateListener   m_handleNightDecorateListener = new HandleNightDecorateListener();
+	private HandleDayClickEvent           m_handleDayClickEvent         = new HandleDayClickEvent();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -109,6 +113,8 @@ public class SelectDateActivity extends Activity
 		m_selectorDayDecorator.setOnShouldDecorateListener(m_handleDayDecorateListener);
 		m_selectorNightDecorator.setOnShouldDecorateListener(m_handleNightDecorateListener);
 		m_calendarView.addDecorators(m_selectorBothDecorator, m_selectorDayDecorator, m_selectorNightDecorator);
+		m_calendarView.setOnDateChangedListener(m_handleDayClickEvent);
+
 	}
 
 	private void initEvent()
@@ -224,6 +230,7 @@ public class SelectDateActivity extends Activity
 				if (monthView.getMonth().getMonth() == iMonth)
 				{
 					monthView.loadDateList(calendarDayArrayList, typeArrayList);
+					monthView.invalidateDecorators();
 				}
 			}
 		}
@@ -234,6 +241,34 @@ public class SelectDateActivity extends Activity
 		@Override
 		public boolean shouldDecorate(CalendarDay day)
 		{
+			if (m_schedularDateListAll.size() != m_schedularTypeListAll.size())
+				return false;
+
+			ArrayList<Date> dateArrayList = new ArrayList<>();
+			ArrayList<Integer> typeArrayList = new ArrayList<>();
+			Date date = new Date();
+			for (int index = 0; index < m_schedularDateListAll.size(); ++index)
+			{
+				dateArrayList = m_schedularDateListAll.get(index);
+				typeArrayList = m_schedularTypeListAll.get(index);
+				if (dateArrayList.size() != typeArrayList.size())
+					return false;
+
+				for (int indexDay = 0; indexDay < dateArrayList.size(); indexDay++)
+				{
+					date = dateArrayList.get(indexDay);
+					CalendarDay calendarDay = CalendarDay.from(date);
+					if (calendarDay.getMonth() != day.getMonth())
+						break;
+
+					if (calendarDay.getDay() != day.getDay())
+						continue;
+
+					Integer type = typeArrayList.get(indexDay);
+					return (type == DataConfig.SELECT_DAY_TYEP_ALL);
+				}
+			}
+
 			return false;
 		}
 	}
@@ -244,6 +279,34 @@ public class SelectDateActivity extends Activity
 		@Override
 		public boolean shouldDecorate(CalendarDay day)
 		{
+			if (m_schedularDateListAll.size() != m_schedularTypeListAll.size())
+				return false;
+
+			ArrayList<Date> dateArrayList = new ArrayList<>();
+			ArrayList<Integer> typeArrayList = new ArrayList<>();
+			Date date = new Date();
+			for (int index = 0; index < m_schedularDateListAll.size(); ++index)
+			{
+				dateArrayList = m_schedularDateListAll.get(index);
+				typeArrayList = m_schedularTypeListAll.get(index);
+				if (dateArrayList.size() != typeArrayList.size())
+					return false;
+
+				for (int indexDay = 0; indexDay < dateArrayList.size(); indexDay++)
+				{
+					date = dateArrayList.get(indexDay);
+					CalendarDay calendarDay = CalendarDay.from(date);
+					if (calendarDay.getMonth() != day.getMonth())
+						break;
+
+					if (calendarDay.getDay() != day.getDay())
+						continue;
+
+					Integer type = typeArrayList.get(indexDay);
+					return (type == DataConfig.SELECT_DAY_TYEP_DAY);
+				}
+			}
+
 			return false;
 		}
 	}
@@ -254,7 +317,88 @@ public class SelectDateActivity extends Activity
 		@Override
 		public boolean shouldDecorate(CalendarDay day)
 		{
+			if (m_schedularDateListAll.size() != m_schedularTypeListAll.size())
+				return false;
+
+			ArrayList<Date> dateArrayList = new ArrayList<>();
+			ArrayList<Integer> typeArrayList = new ArrayList<>();
+			Date date = new Date();
+			for (int index = 0; index < m_schedularDateListAll.size(); ++index)
+			{
+				dateArrayList = m_schedularDateListAll.get(index);
+				typeArrayList = m_schedularTypeListAll.get(index);
+				if (dateArrayList.size() != typeArrayList.size())
+					return false;
+
+				for (int indexDay = 0; indexDay < dateArrayList.size(); indexDay++)
+				{
+					date = dateArrayList.get(indexDay);
+					CalendarDay calendarDay = CalendarDay.from(date);
+					if (calendarDay.getMonth() != day.getMonth())
+						break;
+
+					if (calendarDay.getDay() != day.getDay())
+						continue;
+
+					Integer type = typeArrayList.get(indexDay);
+					return (type == DataConfig.SELECT_DAY_TYEP_NIGHT);
+				}
+			}
+
 			return false;
+		}
+	}
+
+	class HandleDayClickEvent implements OnDateChangedListener
+	{
+		@Override
+		public void onDateChanged(
+				@NonNull
+				MaterialCalendarView widget,
+				@Nullable
+				CalendarDay date)
+		{
+			//01. 判断是否可点击,在可选日期列表中
+			int month = date.getMonth();
+			ArrayList<Date> dateArrayList = new ArrayList<>();
+			ArrayList<Integer> typeArrayList = new ArrayList<>();
+			Date tmpDate = new Date();
+			LinkedList<MonthView> monthViewLinkedList = widget.getMonthViewList();
+			for (int index = 0; index < m_schedularDateListAll.size(); ++index)
+			{
+				dateArrayList = m_schedularDateListAll.get(index);
+				typeArrayList = m_schedularTypeListAll.get(index);
+				if (dateArrayList.size() != typeArrayList.size())
+					return;
+
+				for (int indexDay = 0; indexDay < dateArrayList.size(); indexDay++)
+				{
+					tmpDate = dateArrayList.get(indexDay);
+					CalendarDay calendarDay = CalendarDay.from(tmpDate);
+					if (calendarDay.getMonth() != date.getMonth())
+						break;
+
+					if (calendarDay.getDay() != date.getDay())
+						continue;
+
+					Integer type = typeArrayList.get(indexDay);
+					int iNext = (++type) % DataConfig.MAX_SELECT_DAY_TYEP;
+					typeArrayList.set(indexDay, iNext);
+
+					for (MonthView monthView : monthViewLinkedList)
+					{
+						if (monthView.getMonth().getMonth() == month)
+						{
+							monthView.setTypeList(typeArrayList);
+							monthView.invalidateDecorators();
+							return;
+						}
+					}
+
+				}
+			}
+
+			return;
 		}
 	}
 }

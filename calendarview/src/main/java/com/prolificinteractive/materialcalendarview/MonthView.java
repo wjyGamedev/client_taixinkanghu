@@ -212,6 +212,11 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
         }
     }
 
+	public void setTypeList(ArrayList<Integer> typeArrayList)
+	{
+		m_typeArrayList = typeArrayList;
+	}
+
     public void loadDateList(ArrayList<CalendarDay> selectedDateList, ArrayList<Integer> typeArrayList)
     {
         //01. 设置本月数据
@@ -280,7 +285,7 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
         postInvalidate();
     }
 
-    private void invalidateDecorators() {
+    public void invalidateDecorators() {
         final DayViewFacade facadeAccumulator = new DayViewFacade();
         for(DayView dayView : monthDayViews) {
             facadeAccumulator.reset();
@@ -297,24 +302,34 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
         this.callbacks = callbacks;
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v instanceof DayView) {
-            for(DayView other : monthDayViews) {
-                other.setChecked(false);
-            }
-            DayView dayView = (DayView) v;
-            dayView.setChecked(true);
+//    @Override
+//    public void onClick(View v) {
+//        if(v instanceof DayView) {
+//            for(DayView other : monthDayViews) {
+//                other.setChecked(false);
+//            }
+//            DayView dayView = (DayView) v;
+//            dayView.setChecked(true);
+//
+//            CalendarDay date = dayView.getDate();
+//            if(date.equals(selection)) {
+//                return;
+//            }
+//            selection = date;
+//
+//            if(callbacks != null) {
+//                callbacks.onDateChanged(dayView.getDate());
+//            }
+//        }
+//    }
 
-            CalendarDay date = dayView.getDate();
-            if(date.equals(selection)) {
-                return;
-            }
-            selection = date;
-
-            if(callbacks != null) {
-                callbacks.onDateChanged(dayView.getDate());
-            }
-        }
-    }
+	@Override
+	public void onClick(View v) {
+		if(v instanceof DayView) {
+			DayView dayView = (DayView) v;
+			if(callbacks != null) {
+				callbacks.onDateChanged(dayView.getDate());
+			}
+		}
+	}
 }

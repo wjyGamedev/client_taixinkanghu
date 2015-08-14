@@ -83,7 +83,7 @@ public class MaterialCalendarView extends FrameLayout {
         @Override
         public void onDateChanged(CalendarDay date)
         {
-            setSelectedDate(date);
+//            setSelectedDate(date);
 
             if (listener != null)
             {
@@ -532,6 +532,11 @@ public class MaterialCalendarView extends FrameLayout {
         }
         m_typeMonthList = typeMonthList;
 
+    }
+
+    public CalendarDay getCurrentMonth()
+    {
+        return currentMonth;
     }
 
     public LinkedList<MonthView> getMonthViewList()
