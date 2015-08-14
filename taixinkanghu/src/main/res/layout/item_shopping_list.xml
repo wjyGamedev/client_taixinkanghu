@@ -44,7 +44,7 @@
 				android:layout_height="wrap_content"
 				android:text="@string/currency_symbol"
 				android:textColor="@color/text_color_orange"
-				android:textSize="18dp"/>
+				android:textSize="18sp"/>
 
 			<TextView
 				android:id="@+id/goods_price"
@@ -52,7 +52,7 @@
 				android:layout_height="wrap_content"
 				android:text="@string/item_price"
 				android:textColor="@color/text_color_orange"
-				android:textSize="18dp"/>
+				android:textSize="18sp"/>
 
 		</LinearLayout>
 
@@ -67,14 +67,14 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation_prefix"
-				android:textSize="12dp"/>
+				android:textSize="12sp"/>
 
 			<TextView
 				android:id="@+id/goods_praise_rate"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation"
-				android:textSize="12dp"/>
+				android:textSize="12sp"/>
 
 			<TextView
 				android:id="@+id/item_evaluation_suffix"
@@ -82,21 +82,21 @@
 				android:layout_height="wrap_content"
 				android:layout_marginRight="25dp"
 				android:text="@string/item_evaluation_suffix"
-				android:textSize="12dp"/>
+				android:textSize="12sp"/>
 
 			<TextView
 				android:id="@+id/goods_evaluation_times"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation_times"
-				android:textSize="12dp"/>
+				android:textSize="12sp"/>
 
 			<TextView
 				android:id="@+id/item_evaluation_times_suffix"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_evaluation_times_suffix"
-				android:textSize="12dp"/>
+				android:textSize="12sp"/>
 
 		</LinearLayout>
 	</LinearLayout>

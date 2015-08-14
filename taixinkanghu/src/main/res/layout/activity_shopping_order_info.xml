@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:orientation="vertical">
+
+	<include
+		android:id="@+id/title"
+		layout="@layout/include_header"/>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="1">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:orientation="vertical">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:orientation="vertical">
+
+				<include
+					android:id="@+id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="10dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/order_status_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/completed_text"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="10dp"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="5dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/order_id_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/order_id_data_text"/>
+
+				</LinearLayout>
+
+				<include
+					android:id="@+id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:orientation="vertical">
+
+				<include
+					android:id="@+id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="10dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/patient_data_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="15dp"
+						android:text="@string/phone_number_data_text"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="10dp"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="5dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/address_data_text"/>
+
+				</LinearLayout>
+
+				<include
+					android:id="@+id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
+
+			</LinearLayout>
+
+			<include layout="@layout/item_shopping_orders"/>
+
+			<include layout="@layout/item_shopping_orders"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:orientation="vertical">
+
+				<include
+					android:id="@+id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="10dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/pay_the_way_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="15dp"
+						android:layout_marginRight="15dp"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:text="@string/weixin_pay_text"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="0.5dp"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp"
+					android:background="@color/main_color"/>
+
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="5dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/total_commodity_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:text="@string/currency_symbol"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="15dp"
+						android:gravity="right"
+						android:text="@string/item_price"/>
+
+				</LinearLayout>
+
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="5dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/postage_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:text="@string/currency_symbol"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="15dp"
+						android:gravity="right"
+						android:text="@string/item_price"/>
+
+				</LinearLayout>
+
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="5dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:text="@string/real_payment_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:gravity="right"
+						android:text="@string/currency_symbol"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="15dp"
+						android:gravity="right"
+						android:text="@string/item_price"/>
+
+				</LinearLayout>
+
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="10dp"
+					android:layout_marginLeft="30dp"
+					android:layout_marginTop="5dp"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:text="@string/single_time_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:gravity="right"
+						android:text="@string/single_time_date_data_text"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="15dp"
+						android:gravity="right"
+						android:text="@string/single_time_time_data_text"/>
+
+				</LinearLayout>
+
+				<include
+					android:id="@+id/dividing_line"
+					layout="@layout/item_dividing_line_horizontal"/>
+
+			</LinearLayout>
+
+
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:orientation="horizontal">
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1.5"
+			android:background="@color/main_color"
+			android:text="@string/goto_mian_btn_text"
+			android:textColor="@color/white"
+			android:textSize="16.0sp"/>
+
+		<include
+			android:id="@+id/dividing_line"
+			layout="@layout/item_dividing_line_vertical_white"/>
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1.5"
+			android:background="@color/main_color"
+			android:text="@string/nurs_order_reviews_title"
+			android:textColor="@color/white"
+			android:textSize="16.0sp"/>
+
+	</LinearLayout>
+
+</LinearLayout>

@@ -1,8 +1,8 @@
 package com.taixinkanghu.app.ui.goods_info_page;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
@@ -31,29 +31,29 @@ public class HandlerClickEventGoodsInfo extends BaseHandleOnClickEvent
 			}
 			case R.id.btn_goto_main:				//点击首页按钮
 			{
-				activity.startActivity(new Intent(activity.getToMainIntent()));
+				activity.startActivity(activity.getToMainIntent());
 				break;
 			}
 			case R.id.btn_shopping_cart:			//点击购物车按钮
 			{
-//				activity.startActivity(new Intent(activity.getToMainIntent()));
+				activity.startActivity(activity.getToShoppingCarIntent());
 				break;
 			}
 			case R.id.btn_join_shopping_cart:		//点击加入购物车按钮
 			{
-//				activity.startActivity(new Intent(activity.getToMainIntent()));
+				Toast.makeText(activity,"已加入购物车",Toast.LENGTH_SHORT).show();
 				break;
 			}
-			case R.id.receive_volume_region:		//点击领卷按钮
-			{
+//			case R.id.receive_volume_region:		//点击领卷按钮
+//			{
 //				activity.startActivity(new Intent(activity.getToMainIntent()));
-				break;
-			}
-			case R.id.comment_region:				//点击评价按钮
-			{
+//				break;
+//			}
+//			case R.id.comment_region:				//点击评价按钮
+//			{
 //				activity.startActivity(new Intent(activity.getToMainIntent()));
-				break;
-			}
+//				break;
+//			}
 		}
 	}
 }

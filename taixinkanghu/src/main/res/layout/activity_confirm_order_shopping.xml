@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/main_bg_color"
+	android:orientation="vertical">
+
+	<include layout="@layout/include_header"/>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="1.0">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:orientation="vertical"
+			android:paddingBottom="10dp">
+
+			<include
+				android:id="@+id/dividing_line"
+				layout="@layout/item_dividing_line_horizontal"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="50dp"
+					android:layout_marginRight="10dp"
+					android:layout_weight="1"
+					android:gravity="center|right"
+					android:text="@string/please_fill_in_address_text"/>
+
+				<ImageView
+					android:id="@+id/right_date"
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_gravity="center"
+					android:layout_marginRight="15dp"
+					android:background="@mipmap/img_right"/>
+
+			</LinearLayout>
+
+			<include
+				android:id="@+id/dividing_line"
+				layout="@layout/item_dividing_line_horizontal"/>
+
+			<include layout="@layout/item_shopping_confirmation_order_goods"/>
+
+			<include layout="@layout/item_shopping_confirmation_order_goods"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical">
+
+				<LinearLayout
+					android:id="@id/item_cash"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/bg_bule_frame_top"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="10dp"
+					android:paddingTop="10dp">
+
+					<ImageView
+						android:layout_width="40dp"
+						android:layout_height="30dp"
+						android:layout_marginLeft="15dp"
+						android:layout_marginRight="5dp"
+						android:background="@drawable/bg_pay_icon"
+						android:padding="3dp"
+						android:scaleType="centerInside"
+						android:src="@mipmap/icon_pay_cash"/>
+
+					<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:orientation="vertical">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/cash_pay_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/cash_pay_hint_text"
+							android:textColor="@color/text_color_gray"
+							android:textSize="12.0sp"/>
+					</LinearLayout>
+
+					<ImageView
+						android:id="@id/item_cash_rbtn"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="15dp"
+						android:src="@drawable/btn_pay_select"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@id/item_alipay"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/bg_order_btn"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="10dp"
+					android:paddingTop="10dp">
+
+					<ImageView
+						android:layout_width="40dp"
+						android:layout_height="30dp"
+						android:layout_marginRight="5dp"
+						android:background="@drawable/bg_pay_icon"
+						android:padding="3dp"
+						android:scaleType="centerInside"
+						android:src="@mipmap/icon_pay_alipay"/>
+
+					<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:orientation="vertical">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/ali_pay_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/ali_pay_hint_text"
+							android:textColor="@color/text_color_gray"
+							android:textSize="12.0sp"/>
+					</LinearLayout>
+
+					<ImageView
+						android:id="@id/item_alipay_rbtn"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:src="@drawable/btn_pay_select"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@id/item_weixin"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/bg_bule_frame_bottom"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="10dp"
+					android:paddingTop="10dp">
+
+					<ImageView
+						android:layout_width="40dp"
+						android:layout_height="30dp"
+						android:layout_marginLeft="15dp"
+						android:layout_marginRight="5dp"
+						android:background="@drawable/bg_pay_icon"
+						android:padding="3dp"
+						android:scaleType="centerInside"
+						android:src="@mipmap/icon_pay_weixin"/>
+
+					<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:orientation="vertical">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/weixin_pay_text"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/weixin_pay_hint_text"
+							android:textColor="@color/text_color_gray"
+							android:textSize="12.0sp"/>
+					</LinearLayout>
+
+					<ImageView
+						android:id="@id/item_weixin_rbtn"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="15dp"
+						android:src="@drawable/btn_pay_select"/>
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+
+	</ScrollView>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:orientation="horizontal">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:layout_weight="1"
+			android:orientation="horizontal">
+
+			<Button
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1.5"
+				android:background="@color/main_color"
+				android:text="@string/goto_mian_btn_text"
+				android:textColor="@color/white"
+				android:textSize="16.0sp"/>
+
+			<include
+				android:id="@+id/dividing_line"
+				layout="@layout/item_dividing_line_vertical_white"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_weight="1.5"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:background="@color/main_color"
+					android:gravity="right|center_vertical"
+					android:text="@string/total_text"
+					android:textColor="@color/white"
+					android:textSize="16.0sp"/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:background="@color/main_color"
+					android:gravity="left|center_vertical"
+					android:text="@string/total_price_text"
+					android:textColor="@color/white"
+					android:textSize="16.0sp"/>
+
+			</LinearLayout>
+		</LinearLayout>
+
+		<include
+			android:id="@+id/dividing_line"
+			layout="@layout/item_dividing_line_vertical_white"/>
+
+		<LinearLayout
+			android:id="@+id/btn_payment"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:layout_weight="1.8"
+			android:background="@color/main_color"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:background="@color/main_color"
+				android:gravity="center"
+				android:text="@string/payment_btn_text"
+				android:textColor="@color/white"
+				android:textSize="16.0sp"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>

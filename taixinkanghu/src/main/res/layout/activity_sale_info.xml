@@ -27,7 +27,7 @@
 			android:layout_marginLeft="15dip"
 			android:gravity="center_vertical"
 			android:text="促销信息展示文字。"
-			android:textSize="20dp"/>
+			android:textSize="20sp"/>
 
 		<LinearLayout
 			android:layout_width="match_parent"

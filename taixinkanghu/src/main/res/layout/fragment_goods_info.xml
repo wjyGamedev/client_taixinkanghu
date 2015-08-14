@@ -57,4 +57,22 @@
 
 	</ListView>
 
+	<ImageView
+		android:id="@+id/goods_face_big"
+		android:layout_width="match_parent"
+		android:layout_height="300dp"
+		android:src="@drawable/goods_face_big"/>
+
+	<ImageView
+		android:id="@+id/goods_face_big"
+		android:layout_width="match_parent"
+		android:layout_height="300dp"
+		android:src="@drawable/goods_face_big"/>
+
+	<ImageView
+		android:id="@+id/goods_face_big"
+		android:layout_width="match_parent"
+		android:layout_height="300dp"
+		android:src="@drawable/goods_face_big"/>
+
 </LinearLayout>
