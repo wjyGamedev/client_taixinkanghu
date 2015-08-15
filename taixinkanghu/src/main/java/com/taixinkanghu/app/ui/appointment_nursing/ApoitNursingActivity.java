@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,9 +26,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
+import com.taixinkanghu.app.ui.select_date.ConfirmSelectDateEvent;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import de.greenrobot.event.EventBus;
 
 public class ApoitNursingActivity extends Activity
 {
@@ -40,7 +48,7 @@ public class ApoitNursingActivity extends Activity
 
 	//name
 	private TextView m_nameTV       = null;
-	private TextView              m_phoneNumTV            = null;
+	private TextView m_phoneNumTV   = null;
 	private TextView m_departmentTV = null;
 	private TextView m_roomTV       = null;
 	private TextView m_bedTV        = null;
@@ -78,7 +86,13 @@ public class ApoitNursingActivity extends Activity
 
 	private TextView m_protocolTv;
 
+	//logical
 	private HandlerClickEventAppinmentNursing m_handlerClickEventAppointmentNursing = null;
+	private EventBus                          m_eventBus                            = EventBus.getDefault();
+
+	private ArrayList<ArrayList<Date>>    m_dateListAll     = new ArrayList<>();
+	private ArrayList<ArrayList<Integer>> m_typeListAll     = new ArrayList<>();
+	private String                        m_dateDescription = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -89,7 +103,77 @@ public class ApoitNursingActivity extends Activity
 		init();
 		initListener();
 		initContent();
+		initDate();
+	}
 
+	private void initDate()
+	{
+		//姓名
+		String name = DApoitNursing.GetInstance().getName();
+		if (TextUtils.isEmpty(name) == false)
+		{
+			m_nameTV.setText(name);
+		}
+
+		//手机号
+		String phone = DApoitNursing.GetInstance().getPhone();
+		if (TextUtils.isEmpty(phone) == false)
+		{
+			m_phoneNumTV.setText(phone);
+		}
+
+		//性别
+		EnumConfig.SexType sexType = DApoitNursing.GetInstance().getSexType();
+		if (sexType != null)
+		{
+			m_genderTv.setText(sexType.getName());
+		}
+
+		//年龄
+		EnumConfig.AgeRage ageRage = DApoitNursing.GetInstance().getAgeRage();
+		if (ageRage != null)
+		{
+			m_ageTv.setText(ageRage.getName());
+		}
+
+		//体重
+		EnumConfig.WeightRage weightRage = DApoitNursing.GetInstance().getWeightRage();
+		if (weightRage != null)
+		{
+			m_weightTv.setText(weightRage.getName());
+		}
+
+		//所在医院
+
+		//所在科室
+		String deparmentName = DApoitNursing.GetInstance().getDepartmenetName();
+		if (deparmentName != null)
+		{
+			m_departmentTV.setText(deparmentName);
+		}
+
+		//病人状态
+		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
+		if (patientState != null)
+		{
+			m_patientStateTv.setText(patientState.getName());
+		}
+
+		//护理时间
+		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getdNursingDate();
+		if (dNursingDate != null)
+		{
+			String dateDescription = dNursingDate.getDateDescription();
+			m_dateTv.setText(dateDescription);
+		}
+
+	}
+
+	@Override
+	protected void onDestroy()
+	{
+		m_eventBus.unregister(this);
+		super.onDestroy();
 	}
 
 	private void init()
@@ -133,6 +217,7 @@ public class ApoitNursingActivity extends Activity
 		m_dateBtn = (LinearLayout)findViewById(R.id.btn_date);
 
 		m_handlerClickEventAppointmentNursing = new HandlerClickEventAppinmentNursing(this);
+		m_eventBus.register(this);
 	}
 
 	private void initListener()
@@ -171,6 +256,8 @@ public class ApoitNursingActivity extends Activity
 											}
 										}
 									   );
+
+
 	}
 
 
@@ -224,6 +311,21 @@ public class ApoitNursingActivity extends Activity
 		return selected_hospital;
 	}
 
+	public String getHospitalName()
+	{
+		return m_hospitalTv.getText().toString();
+	}
+
+	public String getDepartmentName()
+	{
+		return m_departmentTV.getText().toString();
+	}
+
+	public String getPatientState()
+	{
+		return m_patientStateTv.getText().toString();
+	}
+
 	public TextView getPatientStateTv()
 	{
 		return m_patientStateTv;
@@ -232,5 +334,105 @@ public class ApoitNursingActivity extends Activity
 	public ImageView getDwonPatientState()
 	{
 		return m_dwonPatientState;
+	}
+
+	public String getDateDescription()
+	{
+		return m_dateDescription;
+	}
+
+	public void setDateDescription(String dateDescription)
+	{
+		m_dateDescription = dateDescription;
+		if (m_dateTv == null)
+			return;
+		m_dateTv.setText(m_dateDescription);
+	}
+
+	public ArrayList<ArrayList<Integer>> getTypeListAll()
+	{
+		return m_typeListAll;
+	}
+
+	public void setTypeListAll(ArrayList<ArrayList<Integer>> typeListAll)
+	{
+		m_typeListAll = typeListAll;
+	}
+
+	public ArrayList<ArrayList<Date>> getDateListAll()
+	{
+		return m_dateListAll;
+	}
+
+	public void setDateListAll(ArrayList<ArrayList<Date>> dateListAll)
+	{
+		m_dateListAll = dateListAll;
+	}
+
+	//数据设置
+	public void setSexType(EnumConfig.SexType sexType)
+	{
+		m_genderTv.setText(sexType.getName());
+		DApoitNursing.GetInstance().setSexType(sexType);
+	}
+
+	public void setAgeRage(EnumConfig.AgeRage ageRage)
+	{
+		m_ageTv.setText(ageRage.getName());
+		DApoitNursing.GetInstance().setAgeRage(ageRage);
+	}
+
+	public void setWeightRage(EnumConfig.WeightRage weightRage)
+	{
+		m_weightTv.setText(weightRage.getName());
+		DApoitNursing.GetInstance().setWeightRage(weightRage);
+	}
+
+	public void setHospitalID(int hospitalID)
+	{
+		DApoitNursing.GetInstance().setHospitalID(hospitalID);
+	}
+
+	public void setPatientState(EnumConfig.PatientState patientState)
+	{
+		m_patientStateTv.setText(patientState.getName());
+		DApoitNursing.GetInstance().setPatientState(patientState);
+	}
+
+	public void onEventMainThread(ConfirmSelectDateEvent event)
+	{
+		if (event == null)
+			return;
+
+		if (event.getdNursingDate() == null)
+			return;
+
+		m_dateTv.setText(event.getdNursingDate().getDateDescription());
+		DApoitNursing.GetInstance().setdNursingDate(event.getdNursingDate());
+	}
+
+	public void confirmAction()
+	{
+		//姓名
+		String name = m_nameTV.getText().toString();
+		if (!TextUtils.isEmpty(name))
+		{
+			DApoitNursing.GetInstance().setName(name);
+		}
+
+		//手机号码
+		String phone = m_phoneNumTV.getText().toString();
+		if (!TextUtils.isEmpty(phone))
+		{
+			DApoitNursing.GetInstance().setPhone(phone);
+		}
+
+		//科室
+		String department = m_departmentTV.getText().toString();
+		if (!TextUtils.isEmpty(department))
+		{
+			DApoitNursing.GetInstance().setDepartmenetName(department);
+		}
+
 	}
 }
