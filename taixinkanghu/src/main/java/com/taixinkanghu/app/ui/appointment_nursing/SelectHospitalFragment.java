@@ -130,28 +130,28 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn1.getText());
 					activity.setSelected_hospital(All_YIYUAN);
-					activity.getDwonHospital().setVisibility(View.INVISIBLE);
+//					activity.getDwonHospital().setVisibility(View.INVISIBLE);
 					break;
 				case R.id.item_1:
 					btn2.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn2.getText());
 					activity.setSelected_hospital(TIANTANYIYUAN);
-					activity.getDwonHospital().setVisibility(View.INVISIBLE);
+//					activity.getDwonHospital().setVisibility(View.INVISIBLE);
 					break;
 				case R.id.item_2:
 					btn3.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn3.getText());
 					activity.setSelected_hospital(ZHONGLIUYIYUAN);
-					activity.getDwonHospital().setVisibility(View.INVISIBLE);
+//					activity.getDwonHospital().setVisibility(View.INVISIBLE);
 					break;
 				case R.id.item_3:
 					btn4.setSelected(true);
 					getFragmentManager().popBackStack();
 					activity.getHospitalTv().setText(btn4.getText());
 					activity.setSelected_hospital(ZHONGLIUYIYUAN);
-					activity.getDwonHospital().setVisibility(View.INVISIBLE);
+//					activity.getDwonHospital().setVisibility(View.INVISIBLE);
 					break;
 				default:
 					//蒙版点击一下之后消失的处理

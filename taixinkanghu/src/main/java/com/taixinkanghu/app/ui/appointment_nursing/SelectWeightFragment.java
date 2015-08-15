@@ -52,23 +52,23 @@ public class SelectWeightFragment extends Fragment implements View.OnClickListen
 		{
 			case R.id.btn_weight_section_0_35:
 				activity.getWeightTv().setText(getString(R.string.btn_weight_section_0_35_text));
-				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_age_section_35_50:
 				activity.getWeightTv().setText(getString(R.string.btn_weight_section_35_50_text));
-				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_age_section_50_80:
 				activity.getWeightTv().setText(getString(R.string.btn_weight_section_50_80_text));
-				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_age_section_80_120:
 				activity.getWeightTv().setText(getString(R.string.btn_weight_section_80_120_text));
-				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_age_section_above_120:
 				activity.getWeightTv().setText(getString(R.string.btn_weight_section_above_120_text));
-				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
 				break;
 		}
 

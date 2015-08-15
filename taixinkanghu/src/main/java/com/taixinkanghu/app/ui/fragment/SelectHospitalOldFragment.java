@@ -63,7 +63,7 @@ public class SelectHospitalOldFragment extends Fragment implements View.OnClickL
 		btn4.setOnClickListener(this);
 
 		titleLinearLayout = (LinearLayout)view.findViewById(R.id.title_linear_layout);
-		titleLinearLayout.setBackgroundResource(getResources().getColor(R.color.all_null));
+		titleLinearLayout.setBackgroundColor(getResources().getColor(R.color.all_null));
 
 		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)titleLinearLayout.getLayoutParams(); // 取控件mGrid当前的布局参数
 		final float               scale        = getActivity().getResources().getDisplayMetrics().density;

@@ -46,15 +46,15 @@ public class SelectPatientStateFragment extends Fragment implements View.OnClick
 		{
 			case R.id.btn_state_care_myself:
 				activity.getPatientStateTv().setText(getString(R.string.btn_state_care_myself_text));
-				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
+//				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_state_half_care_myself:
 				activity.getPatientStateTv().setText(getString(R.string.btn_state_half_care_myself_text));
-				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
+//				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_state_not_care_myself:
 				activity.getPatientStateTv().setText(getString(R.string.btn_state_not_care_myself_text));
-				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
+//				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
 				break;
 		}
 

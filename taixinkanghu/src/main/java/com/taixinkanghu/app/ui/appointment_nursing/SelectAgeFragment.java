@@ -52,23 +52,23 @@ public class SelectAgeFragment extends Fragment implements View.OnClickListener
 		{
 			case R.id.btn_age_section_0_15:
 				activity.getAgeTv().setText(getString(R.string.btn_age_section_0_15_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+//				activity.getDwonAge().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_age_section_16_35:
 				activity.getAgeTv().setText(getString(R.string.btn_age_section_16_35_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+//				activity.getDwonAge().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_age_section_36_55:
 				activity.getAgeTv().setText(getString(R.string.btn_age_section_36_55_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+//				activity.getDwonAge().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_age_section_56_75:
 				activity.getAgeTv().setText(getString(R.string.btn_age_section_56_75_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+//				activity.getDwonAge().setVisibility(View.INVISIBLE);
 				break;
 			case R.id.btn_age_section_above_75:
 				activity.getAgeTv().setText(getString(R.string.btn_age_section_above_75_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+//				activity.getDwonAge().setVisibility(View.INVISIBLE);
 				break;
 		}
 		//蒙版点击一下之后消失的处理
