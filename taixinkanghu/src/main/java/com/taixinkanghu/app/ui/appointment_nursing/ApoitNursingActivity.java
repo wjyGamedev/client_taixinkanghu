@@ -21,6 +21,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,9 +48,9 @@ public class ApoitNursingActivity extends Activity
 	private Button m_bottomBtn;
 
 	//name
-	private TextView m_nameTV       = null;
-	private TextView m_phoneNumTV   = null;
-	private TextView m_departmentTV = null;
+	private EditText m_nameTV       = null;
+	private EditText m_phoneNumTV   = null;
+	private EditText m_departmentTV = null;
 	private TextView m_roomTV       = null;
 	private TextView m_bedTV        = null;
 
@@ -185,9 +186,9 @@ public class ApoitNursingActivity extends Activity
 		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
 
 		//name
-		m_nameTV = (TextView)findViewById(R.id.name);
-		m_phoneNumTV = (TextView)findViewById(R.id.phone_number_tv);
-		m_departmentTV = (TextView)findViewById(R.id.department_tv);
+		m_nameTV = (EditText)findViewById(R.id.name);
+		m_phoneNumTV = (EditText)findViewById(R.id.phone_number_tv);
+		m_departmentTV = (EditText)findViewById(R.id.department_tv);
 		m_roomTV = (TextView)findViewById(R.id.room_tv);
 		m_bedTV = (TextView)findViewById(R.id.bed_id_tv);
 
