@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  android:id="@+id/select_date_widget"
+<LinearLayout android:id="@+id/select_date_widget"
+			  xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent"
 			  android:orientation="vertical">
 
 	<LinearLayout
+		android:id="@+id/header_background_ll"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1"
-		android:background="@color/mask"/>
+		android:background="@color/mask"
+		android:orientation="vertical"/>
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -24,12 +26,12 @@
 			android:gravity="center"
 			android:text="开始时间"
 			android:textColor="@color/text_color_black"
-			android:textSize="14.0sp" />
+			android:textSize="14.0sp"/>
 
 		<View
 			android:layout_width="0.5dp"
 			android:layout_height="match_parent"
-			android:background="@color/divider_color" />
+			android:background="@color/divider_color"/>
 
 		<TextView
 			android:layout_width="match_parent"
@@ -38,13 +40,13 @@
 			android:gravity="center"
 			android:text="结束时间"
 			android:textColor="@color/text_color_black"
-			android:textSize="14.0sp" />
+			android:textSize="14.0sp"/>
 	</LinearLayout>
 
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="0.5dp"
-		android:background="@color/divider_color" />
+		android:background="@color/divider_color"/>
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -56,25 +58,25 @@
 			android:id="@+id/start_date_wheelview"
 			android:layout_width="70dp"
 			android:layout_height="200dp"
-			android:layout_weight="1.0" />
+			android:layout_weight="1.0"/>
 
 		<View
 			android:layout_width="0.5dp"
 			android:layout_height="match_parent"
-			android:background="@color/divider_color" />
+			android:background="@color/divider_color"/>
 
 		<com.taixinkanghu.widget.wheelview.WheelView
 			android:id="@+id/end_date_wheelview"
 			android:layout_width="70dp"
 			android:layout_height="200dp"
-			android:layout_weight="1.0" />
+			android:layout_weight="1.0"/>
 
 	</LinearLayout>
 
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="0.5dp"
-		android:background="@color/divider_color" />
+		android:background="@color/divider_color"/>
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -91,12 +93,12 @@
 			android:gravity="center"
 			android:text="确定"
 			android:textColor="@color/main_color"
-			android:textSize="14.0sp" />
+			android:textSize="14.0sp"/>
 
 		<View
 			android:layout_width="0.5dp"
 			android:layout_height="match_parent"
-			android:background="@color/divider_color" />
+			android:background="@color/divider_color"/>
 
 		<Button
 			android:id="@+id/cancel_btn"
@@ -107,13 +109,13 @@
 			android:gravity="center"
 			android:text="取消"
 			android:textColor="@color/text_color_gray"
-			android:textSize="14.0sp" />
+			android:textSize="14.0sp"/>
 	</LinearLayout>
 
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="0.5dp"
-		android:background="@color/divider_color" />
+		android:background="@color/divider_color"/>
 
 	<TextView
 		android:layout_width="match_parent"
@@ -123,17 +125,19 @@
 		android:padding="5dp"
 		android:text="注：开始时间的早上9：00到次日早上9：00为一天"
 		android:textColor="@color/text_color_gray"
-		android:textSize="13.0sp" />
+		android:textSize="13.0sp"/>
 
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="0.5dp"
-		android:background="@color/divider_color" />
+		android:background="@color/divider_color"/>
 
 	<LinearLayout
+		android:id="@+id/bottom_background_ll"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1"
-		android:background="@color/mask"/>
+		android:background="@color/mask"
+		android:orientation="vertical"/>
 
 </LinearLayout>
