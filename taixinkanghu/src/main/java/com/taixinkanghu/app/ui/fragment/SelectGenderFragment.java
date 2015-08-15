@@ -42,11 +42,11 @@ public class SelectGenderFragment extends Fragment implements View.OnClickListen
         switch (v.getId()) {
             case R.id.btn_Male:
                 activity.getGenderTv().setText("男");
-                activity.getDwonGender().setVisibility(View.INVISIBLE);
+//                activity.getDwonGender().setVisibility(View.INVISIBLE);
                 break;
             case R.id.btn_Female:
                 activity.getGenderTv().setText("女");
-                activity.getDwonGender().setVisibility(View.INVISIBLE);
+//                activity.getDwonGender().setVisibility(View.INVISIBLE);
                 break;
         }
         //蒙版点击一下之后消失的处理

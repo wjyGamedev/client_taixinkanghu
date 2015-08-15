@@ -21,7 +21,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="425dp"
 			android:id="@+id/func_region"
-			android:layout_weight="1.16">
+			android:layout_weight="1">
 
 			<LinearLayout
 				android:layout_width="match_parent"

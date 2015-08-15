@@ -16,8 +16,8 @@
 
 		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:background="@color/main_bg_color"
 			android:orientation="vertical">
 
 			<TextView
@@ -25,6 +25,7 @@
 				android:layout_height="30dp"
 				android:layout_marginLeft="15dp"
 				android:layout_marginRight="15dp"
+				android:layout_gravity="center"
 				android:gravity="center_vertical"
 				android:text="@string/apponintment_page_hint_text"
 				android:textColor="@color/main_color"
@@ -42,7 +43,7 @@
 					android:id="@+id/name_text"
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="30dp"
 					android:gravity="center_vertical"
 					android:text="@string/name_text"/>
 
@@ -51,7 +52,7 @@
 					android:id="@+id/name"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginRight="30dp"
+					android:layout_marginRight="60dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
@@ -74,7 +75,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="30dp"
 					android:gravity="center_vertical"
 					android:text="手机号码："/>
 
@@ -82,7 +83,7 @@
 					android:id="@+id/phone_number_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginRight="30dp"
+					android:layout_marginRight="60dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
@@ -108,7 +109,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="30dp"
 					android:gravity="center_vertical"
 					android:text="性别："/>
 
@@ -117,10 +118,10 @@
 					android:id="@+id/gender"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
-					android:hint=""
 					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
@@ -147,7 +148,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="30dp"
 					android:gravity="center_vertical"
 					android:text="年龄："/>
 
@@ -155,10 +156,10 @@
 					android:id="@+id/age"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
-					android:hint=""
 					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
@@ -185,7 +186,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
+					android:layout_marginLeft="30dp"
 					android:gravity="center_vertical"
 					android:text="体重（kg）："/>
 
@@ -193,10 +194,10 @@
 					android:id="@+id/weight"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
-					android:hint=""
 					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
@@ -221,9 +222,9 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:layout_width="wrap_content"
+					android:layout_width="10dp"
 					android:layout_height="30dp"
-					android:layout_marginLeft="10dp"
+					android:layout_marginLeft="20dp"
 					android:gravity="center_vertical"
 					android:text="*"
 					android:textColor="@color/text_color_red"/>
@@ -231,7 +232,6 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="3dp"
 					android:gravity="center_vertical"
 					android:text="所在医院："/>
 
@@ -239,10 +239,10 @@
 					android:id="@+id/hospital"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
-					android:hint=""
 					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
@@ -266,9 +266,9 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:layout_width="wrap_content"
+					android:layout_width="10dp"
 					android:layout_height="30dp"
-					android:layout_marginLeft="10dp"
+					android:layout_marginLeft="20dp"
 					android:gravity="center_vertical"
 					android:text="*"
 					android:textColor="@color/text_color_red"/>
@@ -276,7 +276,6 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="3dp"
 					android:gravity="center_vertical"
 					android:text="所在科室："/>
 
@@ -284,7 +283,7 @@
 					android:id="@+id/department_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginRight="30dp"
+					android:layout_marginRight="60dp"
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击填写"
@@ -370,9 +369,9 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:layout_width="wrap_content"
+					android:layout_width="10dp"
 					android:layout_height="30dp"
-					android:layout_marginLeft="10dp"
+					android:layout_marginLeft="20dp"
 					android:gravity="center_vertical"
 					android:text="*"
 					android:textColor="@color/text_color_red"/>
@@ -380,7 +379,6 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="3dp"
 					android:gravity="center_vertical"
 					android:text="病人状态："/>
 
@@ -388,10 +386,10 @@
 					android:id="@+id/patient_state"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
-					android:hint=""
 					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
@@ -416,9 +414,9 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:layout_width="wrap_content"
+					android:layout_width="10dp"
 					android:layout_height="30dp"
-					android:layout_marginLeft="10dp"
+					android:layout_marginLeft="20dp"
 					android:gravity="center_vertical"
 					android:text="*"
 					android:textColor="@color/text_color_red"/>
@@ -426,7 +424,6 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="30dp"
-					android:layout_marginLeft="3dp"
 					android:gravity="center_vertical"
 					android:text="陪护时间："/>
 
@@ -434,10 +431,11 @@
 					android:id="@+id/date"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
 					android:layout_weight="1"
 					android:background="#00000000"
 					android:gravity="right"
-					android:hint=""
+					android:hint="08月14日 - 08月15日 共1天"
 					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
@@ -456,6 +454,7 @@
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
+				android:background="@color/white"
 				android:gravity="center"
 				android:orientation="horizontal">
 
@@ -474,6 +473,17 @@
 					android:textColor="@color/main_color"
 					android:textSize="14.0sp"/>
 			</LinearLayout>
+
+			<include
+				layout="@layout/item_dividing_line_horizontal"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@color/main_bg_color">
 
 		</LinearLayout>
 

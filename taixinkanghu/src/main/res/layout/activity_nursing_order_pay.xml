@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent"
+			  android:background="@color/main_bg_color"
 			  android:orientation="vertical">
 
 	<include
@@ -75,12 +76,13 @@
 				android:layout_weight="1"
 				android:orientation="vertical">
 
+				<include layout="@layout/item_dividing_line_horizontal"/>
 
 				<LinearLayout
 					android:id="@id/item_cash"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="@drawable/bg_bule_frame_top"
+					android:background="@color/white"
 					android:gravity="center_vertical"
 					android:orientation="horizontal"
 					android:paddingBottom="10dp"
@@ -127,10 +129,19 @@
 				</LinearLayout>
 
 				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp">
+					<include layout="@layout/item_dividing_line_horizontal_fine"/>
+				</LinearLayout>
+
+				<LinearLayout
 					android:id="@id/item_alipay"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="@drawable/bg_order_btn"
+					android:background="@color/white"
 					android:gravity="center_vertical"
 					android:orientation="horizontal"
 					android:paddingBottom="10dp"
@@ -139,6 +150,7 @@
 					<ImageView
 						android:layout_width="40dp"
 						android:layout_height="30dp"
+						android:layout_marginLeft="15dp"
 						android:layout_marginRight="5dp"
 						android:background="@drawable/bg_pay_icon"
 						android:padding="3dp"
@@ -170,14 +182,25 @@
 						android:id="@id/item_alipay_rbtn"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
+						android:layout_marginRight="15dp"
 						android:src="@drawable/btn_pay_select"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp">
+					<include layout="@layout/item_dividing_line_horizontal_fine"/>
 				</LinearLayout>
 
 				<LinearLayout
 					android:id="@id/item_weixin"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="@drawable/bg_bule_frame_bottom"
+					android:background="@color/white"
 					android:gravity="center_vertical"
 					android:orientation="horizontal"
 					android:paddingBottom="10dp"
@@ -222,6 +245,7 @@
 						android:src="@drawable/btn_pay_select"/>
 				</LinearLayout>
 
+				<include layout="@layout/item_dividing_line_horizontal"/>
 
 			</LinearLayout>
 

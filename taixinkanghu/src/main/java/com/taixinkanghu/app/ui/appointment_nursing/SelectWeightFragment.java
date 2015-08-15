@@ -70,7 +70,7 @@ public class SelectWeightFragment extends Fragment implements View.OnClickListen
 
 		//蒙版点击一下之后消失的处理
 		FragmentManager      fgManager           = getFragmentManager();
-		android.app.Fragment fragment            = fgManager.findFragmentByTag(SelectWeightFragment.class.getName());
+		Fragment fragment            = fgManager.findFragmentByTag(SelectWeightFragment.class.getName());
 		FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
 		fragmentTransaction.remove(fragment);
 		fragmentTransaction.commit();
