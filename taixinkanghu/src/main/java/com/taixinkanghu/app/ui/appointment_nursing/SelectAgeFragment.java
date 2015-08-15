@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.EnumConfig;
 
 /**
  * Created by Administrator on 2015/7/28.
@@ -51,33 +52,27 @@ public class SelectAgeFragment extends Fragment implements View.OnClickListener
 		switch (v.getId())
 		{
 			case R.id.btn_age_section_0_15:
-				activity.getAgeTv().setText(getString(R.string.btn_age_section_0_15_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+				activity.setAgeRage(EnumConfig.AgeRage.AGE_0_15);
 				break;
 			case R.id.btn_age_section_16_35:
-				activity.getAgeTv().setText(getString(R.string.btn_age_section_16_35_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+				activity.setAgeRage(EnumConfig.AgeRage.AGE_16_35);
 				break;
 			case R.id.btn_age_section_36_55:
-				activity.getAgeTv().setText(getString(R.string.btn_age_section_36_55_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+				activity.setAgeRage(EnumConfig.AgeRage.AGE_36_55);
 				break;
 			case R.id.btn_age_section_56_75:
-				activity.getAgeTv().setText(getString(R.string.btn_age_section_56_75_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+				activity.setAgeRage(EnumConfig.AgeRage.AGE_56_75);
 				break;
 			case R.id.btn_age_section_above_75:
-				activity.getAgeTv().setText(getString(R.string.btn_age_section_above_75_text));
-				activity.getDwonAge().setVisibility(View.INVISIBLE);
+				activity.setAgeRage(EnumConfig.AgeRage.AGE_MORE_THAN_76);
 				break;
 		}
+
 		//蒙版点击一下之后消失的处理
 		FragmentManager      fgManager           = getFragmentManager();
-		android.app.Fragment fragment            = fgManager.findFragmentById(R.id.appointment_nursing_page);
+		android.app.Fragment fragment            = fgManager.findFragmentByTag(SelectAgeFragment.class.getName());
 		FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
 		fragmentTransaction.remove(fragment);
-		String tag = null;
-		fragmentTransaction.addToBackStack(tag);
 		fragmentTransaction.commit();
 	}
 
