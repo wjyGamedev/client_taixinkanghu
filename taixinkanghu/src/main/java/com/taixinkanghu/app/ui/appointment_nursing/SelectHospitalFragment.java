@@ -155,12 +155,10 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 					break;
 				default:
 					//蒙版点击一下之后消失的处理
-					FragmentManager fgManager = getFragmentManager();
-					Fragment fragment = fgManager.findFragmentById(R.id.appointment_nursing_page);
-					FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
+					FragmentManager      fgManager           = getFragmentManager();
+					android.app.Fragment fragment            = fgManager.findFragmentByTag(SelectHospitalFragment.class.getName());
+					FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
 					fragmentTransaction.remove(fragment);
-					String tag = null;
-					fragmentTransaction.addToBackStack(tag);
 					fragmentTransaction.commit();
 					break;
 			}
@@ -197,15 +195,20 @@ public class SelectHospitalFragment extends Fragment implements View.OnClickList
 					break;
 				default:
 					//蒙版点击一下之后消失的处理
-					FragmentManager fgManager = getFragmentManager();
-					Fragment fragment = fgManager.findFragmentById(R.id.title);
-					FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
+					FragmentManager      fgManager           = getFragmentManager();
+					android.app.Fragment fragment            = fgManager.findFragmentByTag(SelectHospitalFragment.class.getName());
+					FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
 					fragmentTransaction.remove(fragment);
-					String tag = null;
-					fragmentTransaction.addToBackStack(tag);
 					fragmentTransaction.commit();
 					break;
 			}
 		}
+
+		//蒙版点击一下之后消失的处理
+		FragmentManager      fgManager           = getFragmentManager();
+		android.app.Fragment fragment            = fgManager.findFragmentByTag(SelectHospitalFragment.class.getName());
+		FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
+		fragmentTransaction.remove(fragment);
+		fragmentTransaction.commit();
 	}
 }
