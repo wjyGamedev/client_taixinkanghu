@@ -9,7 +9,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1"
-		android:background="@color/mask"/>
+		android:background="@color/mask" android:id="@+id/header_background_ll"/>
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -134,6 +134,6 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1"
-		android:background="@color/mask"/>
+		android:background="@color/mask" android:id="@+id/bottom_background_ll"/>
 
 </LinearLayout>
