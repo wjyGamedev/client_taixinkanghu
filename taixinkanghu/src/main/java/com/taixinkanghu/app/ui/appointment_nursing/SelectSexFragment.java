@@ -10,11 +10,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.EnumConfig;
 
 /**
  * Created by Administrator on 2015/7/20.
  */
-public class SelectGenderFragment extends Fragment implements View.OnClickListener {
+public class SelectSexFragment extends Fragment implements View.OnClickListener {
 
     private TextView btn_Male;
     private TextView btn_Female;
@@ -38,23 +39,22 @@ public class SelectGenderFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         ApoitNursingActivity activity = (ApoitNursingActivity) getActivity();
+        if (activity == null)
+            return;
+
         switch (v.getId()) {
             case R.id.btn_Male:
-                activity.getGenderTv().setText("男");
-                activity.getDwonGender().setVisibility(View.INVISIBLE);
+                activity.setSexType(EnumConfig.SexType.MALE);
                 break;
             case R.id.btn_Female:
-                activity.getGenderTv().setText("女");
-                activity.getDwonGender().setVisibility(View.INVISIBLE);
+                activity.setSexType(EnumConfig.SexType.FEMALE);
                 break;
         }
         //蒙版点击一下之后消失的处理
-        FragmentManager fgManager = getFragmentManager();
-        Fragment fragment = fgManager.findFragmentById(R.id.appointment_nursing_page);
-        FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
+        FragmentManager      fgManager           = getFragmentManager();
+        android.app.Fragment fragment            = fgManager.findFragmentByTag(SelectSexFragment.class.getName());
+        FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
         fragmentTransaction.remove(fragment);
-        String tag = null;
-        fragmentTransaction.addToBackStack(tag);
         fragmentTransaction.commit();
     }
 }
