@@ -24,20 +24,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class DHospitalList
 {
-	private static DHospitalList           s_dHospitalList    = new DHospitalList();
+	private static DHospitalList s_dHospitalList = new DHospitalList();
 
-	private int    m_Status  = DataConfig.S_HTTP_OK;
-	private        HashMap<Integer, DHospital> m_dHospitalHashMap = new HashMap<Integer, DHospital>();
+	private int                         m_Status          = DataConfig.S_HTTP_OK;
+	private ArrayList<DHospital>        m_hospitals       = new ArrayList<>();
+
 
 	private DHospitalList()
 	{
 	}
 
-	public static DHospitalList getInstance()
+	public static DHospitalList GetInstance()
 	{
 		return s_dHospitalList;
 	}
@@ -45,10 +46,9 @@ public class DHospitalList
 	public boolean serialization(JSONObject response) throws JSONException
 	{
 		//01. 清空原来容器
-		if (m_dHospitalHashMap != null &&
-				m_dHospitalHashMap.size() != 0)
+		if (m_hospitals != null && m_hospitals.size() != 0)
 		{
-			m_dHospitalHashMap.clear();
+			m_hospitals.clear();
 		}
 
 		//02. http is ok
@@ -76,8 +76,7 @@ public class DHospitalList
 			hospital = new DHospital();
 			hospital.serialization(jsonObject);
 
-			Integer iHospitalID = jsonObject.getInt(DataConfig.DHOSPITAL_ID);
-			m_dHospitalHashMap.put(iHospitalID, hospital);
+			m_hospitals.add(hospital);
 		}
 		return  true;
 
@@ -86,5 +85,10 @@ public class DHospitalList
 	public int getStatus()
 	{
 		return m_Status;
+	}
+
+	public ArrayList<DHospital> getHospitals()
+	{
+		return m_hospitals;
 	}
 }
