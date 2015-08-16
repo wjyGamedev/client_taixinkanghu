@@ -21,13 +21,13 @@ import org.json.JSONObject;
 
 public class DHospital
 {
-	private int    m_ID      = 0;
-	private String m_strName = null;
+	private int    m_ID   = 0;
+	private String m_name = null;
 
 	public boolean serialization(JSONObject response) throws JSONException
 	{
 		m_ID = response.getInt(DataConfig.DHOSPITAL_ID);
-		m_strName = response.getString(DataConfig.DHOSPITAL_NAME);
+		m_name = response.getString(DataConfig.DHOSPITAL_NAME);
 		return true;
 	}
 
@@ -36,9 +36,9 @@ public class DHospital
 		return m_ID;
 	}
 
-	public String getStrName()
+	public String getName()
 	{
-		return m_strName;
+		return m_name;
 	}
 
 
