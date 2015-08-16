@@ -23,7 +23,6 @@ import com.taixinkanghu.app.model.storage.OwnerPreferences;
 import com.taixinkanghu.app.model.storage.StorageWrapper;
 import com.taixinkanghu.util.android.AppUtil;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,21 +53,6 @@ public class DAccount
 
 	public boolean serialFromHttp(JSONObject response)
 	{
-		//测试代码
-//		String testData = "{\"status\":200,\"user\":{\"id\":\"3\",\"mobile\":\"15010522656\",\"nick\":\"\",\"code\":\"8ea9fd32b4\"}}";
-//		JSONObject testJsonObject = null;
-//		try
-//		{
-//			testJsonObject = new JSONObject(testData);
-//		}
-//		catch (JSONException e)
-//		{
-//			e.printStackTrace();
-//			return false;
-//		}
-
-
-		JSONArray jsonArray = null;
 		try
 		{
 			m_From = DataConfig.REGISTER_FROM_HTTP;
