@@ -14,12 +14,15 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
-import android.util.Log;
-
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.data.DNurseContainer;
+import com.taixinkanghu.app.model.event.net.recv.FinishedNurseBasicListEvent;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;
+import com.taixinkanghu.util.android.AppUtil;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.greenrobot.event.EventBus;
@@ -33,26 +36,27 @@ public class ResApoitNursingHandler extends IResponseListener
 	@Override
 	public void onResponse(JSONObject response)
 	{
-		boolean bReturnFlag = DNurseContainer.GetInstance().serialBasiclist(response);
-		if (bReturnFlag == false)
+		try
 		{
-			Log.w("error", "bReturnFlag == false");
+			DNurseContainer.GetInstance().serialBasiclist(response);
 		}
-//		try
-//		{
-//			m_Status = response.getInt(DataConfig.STATUS_KEY);
-//			if (m_Status != DataConfig.S_HTTP_OK)
-//			{
-//				m_errorMsg = response.getString(DataConfig.ERROR_MSG);
-//			}
-//
-//
-//
-//		}
-//		catch (JSONException e)
-//		{
-//			e.printStackTrace();
-//		}
+		catch (JsonSerializationException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString(), AppUtil.getContext());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		catch (JSONException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString(), AppUtil.getContext());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		//解析成功，发送event
+		FinishedNurseBasicListEvent finishedNurseBasicListEvent = new FinishedNurseBasicListEvent();
+		m_eventBus.post(finishedNurseBasicListEvent);
+		return;
 
 	}
 }
