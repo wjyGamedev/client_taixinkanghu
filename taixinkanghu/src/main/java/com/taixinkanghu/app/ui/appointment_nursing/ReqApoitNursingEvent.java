@@ -17,7 +17,7 @@ package com.taixinkanghu.app.ui.appointment_nursing;
 import android.content.Context;
 
 import com.taixinkanghu.app.model.config.EventID;
-import com.taixinkanghu.app.model.net.event.BaseNetEvent;
+import com.taixinkanghu.app.model.event.net.BaseNetEvent;
 
 public class ReqApoitNursingEvent extends BaseNetEvent
 {
