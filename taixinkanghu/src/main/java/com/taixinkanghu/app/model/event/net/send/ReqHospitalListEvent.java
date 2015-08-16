@@ -12,7 +12,15 @@
  * 2015/7/9		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.net.event;
+package com.taixinkanghu.app.model.event.net.send;
 
-public class ReqServiceAddressEvent
-{ }
+import com.taixinkanghu.app.model.config.EventID;
+import com.taixinkanghu.app.model.event.net.BaseNetEvent;
+
+public class ReqHospitalListEvent extends BaseNetEvent
+{
+	public ReqHospitalListEvent()
+	{
+		super(EventID.QUEST_HOSPITAL_LIST);
+	}
+}

@@ -12,9 +12,10 @@
  * 2015/7/9		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.exception.RuntimeExceptions;
+package com.taixinkanghu.app.model.exception.RuntimeExceptions.net;
 
 import com.taixinkanghu.app.model.config.TxkhExceptionCode;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.BaseRunTimeException;
 
 public class NetRTException extends BaseRunTimeException
 {

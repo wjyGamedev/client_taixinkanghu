@@ -1,7 +1,7 @@
-package com.taixinkanghu.app.model.net.event;
+package com.taixinkanghu.app.model.event.net.send;
 
 import com.taixinkanghu.app.model.config.EventID;
-import com.taixinkanghu.app.model.net.event.BaseNetEvent;
+import com.taixinkanghu.app.model.event.net.BaseNetEvent;
 
 /**
  * Created by Administrator on 2015/7/22.
