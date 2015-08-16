@@ -35,7 +35,7 @@ public class ResHospitalListHandler extends IResponseListener
 	{
 		try
 		{
-			DHospitalList.getInstance().serialization(response);
+			DHospitalList.GetInstance().serialization(response);
 		}
 		catch (JsonSerializationException e)
 		{
