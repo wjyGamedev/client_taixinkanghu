@@ -14,8 +14,6 @@
 
 package com.taixinkanghu.app.model.data;
 
-import android.util.Log;
-
 import com.taixinkanghu.app.model.config.DataConfig;
 
 import org.json.JSONException;
@@ -23,26 +21,19 @@ import org.json.JSONObject;
 
 public class DHospital
 {
+	private int    m_ID      = 0;
+	private String m_strName = null;
 
-	public boolean serialization(JSONObject response)
+	public boolean serialization(JSONObject response) throws JSONException
 	{
-		try
-		{
-			m_iID = response.getInt(DataConfig.DHOSPITAL_ID);
-			m_strName = response.getString(DataConfig.DHOSPITAL_NAME);
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return  false;
-		}
-		return  true;
+		m_ID = response.getInt(DataConfig.DHOSPITAL_ID);
+		m_strName = response.getString(DataConfig.DHOSPITAL_NAME);
+		return true;
 	}
 
-	public int getiID()
+	public int getID()
 	{
-		return m_iID;
+		return m_ID;
 	}
 
 	public String getStrName()
@@ -50,6 +41,5 @@ public class DHospital
 		return m_strName;
 	}
 
-	private int    m_iID     = 0;
-	private String m_strName = "default";
+
 }
