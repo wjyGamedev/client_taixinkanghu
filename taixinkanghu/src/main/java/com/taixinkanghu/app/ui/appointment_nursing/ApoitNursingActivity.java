@@ -28,6 +28,8 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.data.DHospital;
+import com.taixinkanghu.app.model.data.DHospitalList;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
@@ -401,6 +403,24 @@ public class ApoitNursingActivity extends Activity
 
 	public void setHospitalID(int hospitalID)
 	{
+		//01. 显示全部
+		if (hospitalID == 0)
+		{
+			m_hospitalTv.setText(getResources().getString(R.string.content_all));
+		}
+		//02. 显示hospitalname
+		else
+		{
+			ArrayList<DHospital> hospitals = DHospitalList.GetInstance().getHospitals();
+			for (DHospital hospital : hospitals)
+			{
+				if (hospital.getID() == hospitalID)
+				{
+					m_hospitalTv.setText(hospital.getName());
+				}
+			}
+		}
+		//03. 保存到数据类中。
 		DApoitNursing.GetInstance().setHospitalID(hospitalID);
 	}
 
