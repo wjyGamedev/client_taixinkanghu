@@ -37,7 +37,11 @@
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_top"
 				android:gravity="center_vertical"
-				android:orientation="horizontal">
+
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+
+				android:orientation="horizontal" android:clickable="true">
 
 				<TextView
 					android:id="@+id/name_text"
