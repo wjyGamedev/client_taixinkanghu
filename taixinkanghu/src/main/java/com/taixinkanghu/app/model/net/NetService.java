@@ -126,15 +126,15 @@ public class NetService extends Service
 	private void initEvent()
 	{
 		ReqHospitalListEvent      hospitalListEvent = new ReqHospitalListEvent();
-		ReqNurseBasicListEvent    nurseBasicList    = new ReqNurseBasicListEvent();
-		ReqNurseSeniorListEvent   nurseSeniorList   = new ReqNurseSeniorListEvent();
-		ReqShoppingBasicListEvent shoppingBasicList = new ReqShoppingBasicListEvent();
+//		ReqNurseBasicListEvent    nurseBasicList    = new ReqNurseBasicListEvent();
+//		ReqNurseSeniorListEvent   nurseSeniorList   = new ReqNurseSeniorListEvent();
+//		ReqShoppingBasicListEvent shoppingBasicList = new ReqShoppingBasicListEvent();
 		try
 		{
 			m_eventBus.post(hospitalListEvent);
-			m_eventBus.post(nurseBasicList);
+//			m_eventBus.post(nurseBasicList);
 			//			m_eventBus.post(nurseSeniorList);
-			m_eventBus.post(shoppingBasicList);
+//			m_eventBus.post(shoppingBasicList);
 		}
 		catch (EventBusException e)
 		{
@@ -227,7 +227,7 @@ public class NetService extends Service
 		int sexTypeID = DApoitNursing.GetInstance().getSexType().getId();
 		String age = DApoitNursing.GetInstance().getAgeRage().getName();
 		String weight = DApoitNursing.GetInstance().getWeightRage().getName();
-		int hospitalID = 1;
+		int hospitalID = DApoitNursing.GetInstance().getHospitalID();
 		String departmentName = DApoitNursing.GetInstance().getDepartmenetName();
 		int patientStateID = DApoitNursing.GetInstance().getPatientState().getId();
 
