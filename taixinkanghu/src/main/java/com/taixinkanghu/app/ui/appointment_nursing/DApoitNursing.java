@@ -120,7 +120,7 @@ public class DApoitNursing
 					dateString = m_simpleDateFormat.format(date);
 					if (schedualDate == null)
 					{
-						schedualDate = dateString;
+						schedualDate = (dateString + DataConfig.SCHEDULE_SPLIT);
 					}
 					else
 					{
