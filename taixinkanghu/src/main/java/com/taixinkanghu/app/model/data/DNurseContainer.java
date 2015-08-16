@@ -14,6 +14,7 @@
 
 package com.taixinkanghu.app.model.data;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DNurseContainer
@@ -33,7 +34,7 @@ public class DNurseContainer
 		return s_dNurseList;
 	}
 
-	public boolean serialBasiclist(JSONObject response)
+	public boolean serialBasiclist(JSONObject response) throws JSONException
 	{
 		return m_dNurseBasicsList.serialization(response);
 	}
