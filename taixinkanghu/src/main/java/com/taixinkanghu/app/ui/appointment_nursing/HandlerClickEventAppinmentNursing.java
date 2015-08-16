@@ -13,11 +13,15 @@ import com.taixinkanghu.app.ui.select_date.SelectDateFragment;
 import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by Administrator on 2015/7/28.
  */
 public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 {
+	private EventBus m_eventBus = EventBus.getDefault();
+
 	public HandlerClickEventAppinmentNursing(Activity activity)
 	{
 		super(activity);
@@ -36,6 +40,11 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 
 		switch (v.getId())
 		{
+			case R.id.name_region:
+			{
+				apoitNursingActivity.setNameFocus();
+				break;
+			}
 			case R.id.btn_back:
 			{
 				activity.finish();
@@ -43,7 +52,10 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			}
 			case R.id.btn_bottom:
 			{
-				//01. 必填选项是否已经填写
+				//01. 保存本地信息
+				apoitNursingActivity.confirmAction();
+
+				//02. 必填选项是否已经填写
 				String hospitalName = apoitNursingActivity.getHospitalName();
 				String departmentName = apoitNursingActivity.getDepartmentName();
 				String patientState = apoitNursingActivity.getPatientState();
@@ -57,10 +69,13 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 					RegisterDialog.GetInstance().show();
 					return;
 				}
-				//02. 保存本地信息
-				apoitNursingActivity.confirmAction();
 
-				//03. 页面挑战
+				//03. 发送消息到服务器
+				ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
+				reqApoitNursingEvent.init(m_context);
+				m_eventBus.post(reqApoitNursingEvent);
+
+				//04. 跳转到护理员列表界面
 				m_context.startActivity(new Intent(m_context, SelectNurseActivity.class));
 				break;
 			}
