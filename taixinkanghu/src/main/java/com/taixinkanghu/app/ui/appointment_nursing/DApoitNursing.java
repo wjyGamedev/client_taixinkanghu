@@ -14,8 +14,10 @@
 
 package com.taixinkanghu.app.ui.appointment_nursing;
 
+import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -50,11 +52,13 @@ public class DApoitNursing
 	//护理时间
 	public static class DNursingDate
 	{
-		private Date                          m_beingDate       = null;
-		private Date                          m_endDate         = null;
-		private ArrayList<ArrayList<Date>>    m_dateListAll     = new ArrayList<>();
-		private ArrayList<ArrayList<Integer>> m_typeListAll     = new ArrayList<>();
-		private String                        m_dateDescription = null;
+		private Date                          m_beingDate        = null;
+		private Date                          m_endDate          = null;
+		private ArrayList<ArrayList<Date>>    m_dateListAll      = new ArrayList<>();
+		private ArrayList<ArrayList<Integer>> m_typeListAll      = new ArrayList<>();
+		private String                        m_dateDescription  = null;
+		private SimpleDateFormat              m_simpleDateFormat = new SimpleDateFormat(DataConfig.PATTERN_DATE_YEAR_MONTH_DAY);
+
 
 		public DNursingDate(Date beingDate, Date endDate, ArrayList<ArrayList<Date>> dateListAll, ArrayList<ArrayList<Integer>>
 				typeListAll, String dateDescription)
@@ -90,6 +94,61 @@ public class DApoitNursing
 		{
 			return m_dateDescription;
 		}
+
+		private String getDateDescription(int selectType)
+		{
+			if (m_dateListAll.size() != m_typeListAll.size())
+				return null;
+
+			String schedualDate = null;
+			String dateString = null;
+			for (int iMonth = 0; iMonth < m_typeListAll.size(); iMonth++)
+			{
+				ArrayList<Integer> typeArrayList = m_typeListAll.get(iMonth);
+				ArrayList<Date> dateArrayList = m_dateListAll.get(iMonth);
+
+				if (m_typeListAll.size() != m_dateListAll.size())
+					return null;
+
+				for (int iDay = 0; iDay < typeArrayList.size(); ++iDay)
+				{
+					//DataConfig.SELECT_DAY_TYEP_ALL,SELECT_DAY_TYEP_DAY,SELECT_DAY_TYEP_NIGHT
+					if (typeArrayList.get(iDay) != selectType)
+						continue;
+
+					Date date = dateArrayList.get(iDay);
+					dateString = m_simpleDateFormat.format(date);
+					if (schedualDate == null)
+					{
+						schedualDate = dateString;
+					}
+					else
+					{
+						schedualDate += (dateString + DataConfig.SCHEDULE_SPLIT);
+					}
+				}
+			}
+
+			return schedualDate;
+		}
+
+
+		public String getSchedualAllDescription()
+		{
+			return getDateDescription(DataConfig.SELECT_DAY_TYEP_ALL);
+		}
+
+		public String getSchedualDayDescription()
+		{
+			return getDateDescription(DataConfig.SELECT_DAY_TYEP_DAY);
+		}
+
+		public String getSchedualNightDescription()
+		{
+			return getDateDescription(DataConfig.SELECT_DAY_TYEP_NIGHT);
+		}
+
+
 	}
 	private DNursingDate m_dNursingDate = null;
 
