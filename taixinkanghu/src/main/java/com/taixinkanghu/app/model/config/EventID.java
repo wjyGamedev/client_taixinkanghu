@@ -25,7 +25,9 @@ public class EventID
 	public final static int FINISHED_HOSPITAL_LIST = QUEST_HOSPITAL_LIST + 1;
 
 	public final static int QUEST_NURSE_BASIC_LIST = FINISHED_HOSPITAL_LIST + 1;
-	public final static int QUEST_NURSE_SENIOR_LIST = QUEST_NURSE_BASIC_LIST + 1;
+	public final static int FINISHED_NURSE_BASIC_LIST = QUEST_NURSE_BASIC_LIST + 1;
+
+	public final static int QUEST_NURSE_SENIOR_LIST = FINISHED_NURSE_BASIC_LIST + 1;
 
 	public final static int QUEST_REGISTER = QUEST_NURSE_SENIOR_LIST + 1;
 
