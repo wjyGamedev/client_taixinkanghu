@@ -88,6 +88,19 @@ public class DataConfig
 	public final static String REGISTER_FROM_HTTP    = "http";
 	public final static String REGISTER_FROM_STORATE = "storage";
 
+	//预约陪护
+	public final static String NAME = "name";
+	public final static String PHONE_NUM = "phone_num";
+	public final static String SEX_ID = "sex_id";
+	public final static String AGE = "age";
+	public final static String WEIGHT = "weight";
+	public final static String HOSPITAL_ID = "hospital_id";
+	public final static String DEPARTMENT_NAME = "department_name";
+	public final static String PATIENT_STATE_ID = "patient_state_id";
+	public final static String STRICT = "strict";
+
+
+
 	public final static String SCHEDULE_ALL   = "schedule_all";
 	public final static String SCHEDULE_DAY   = "schedule_day";
 	public final static String SCHEDULE_NIGHT = "schedule_night";
@@ -96,6 +109,7 @@ public class DataConfig
 	//日期样式
 	public final static String PATTERN_DATE_MONTH_DAY_WEEK = "MM月dd日(E)";    //MM月dd日(星期E)
 	public final static String PATTERN_DATE_MONTH_DAY = "MM月dd日";    //MM月dd日
+	public final static String PATTERN_DATE_YEAR_MONTH_DAY = "yyyy-MM-dd";    //YYYY年MM月dd日
 	public final static int    MAX_SELECT_MONTH            = 3;
 
 	public final static int MAX_SELECT_DAY_TYEP = 3;

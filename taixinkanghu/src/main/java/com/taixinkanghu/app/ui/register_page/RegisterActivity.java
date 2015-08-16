@@ -23,7 +23,6 @@ import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.data.DAccount;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
-import com.taixinkanghu.app.ui.select_date.SureSelectDateEvent;
 import com.taixinkanghu.third.party.sms.SmsAutho;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
@@ -133,11 +132,6 @@ public class RegisterActivity extends Activity
 		//注册成功，关闭当前页面
 		finish();
 		return;
-
-	}
-
-	public void onEventMainThread(SureSelectDateEvent event)
-	{
 
 	}
 

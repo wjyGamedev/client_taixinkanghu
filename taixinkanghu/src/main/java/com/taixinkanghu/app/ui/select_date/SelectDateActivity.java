@@ -122,6 +122,20 @@ public class SelectDateActivity extends Activity
 
 	}
 
+	public String getDateDescription()
+	{
+		if (m_beginDate == null || m_endDate == null)
+			return null;
+
+		String beginContent = m_simpleDateFormat.format(m_beginDate);
+		String endContent = m_simpleDateFormat.format(m_endDate);
+		int days = LogicalUtil.GetDayNums(m_beginDate, m_endDate);
+		String total = getResources().getString(R.string.char_total);
+		String day = getResources().getString(R.string.char_day);
+		String display = beginContent + " - " + endContent + total + days + day;
+		return display;
+	}
+
 	public void setBeginDate(Date beginDate)
 	{
 		m_beginDate = beginDate;
@@ -147,6 +161,7 @@ public class SelectDateActivity extends Activity
 
 		//02. schedular_all
 		m_schedularDateListAll.clear();
+		m_schedularTypeListAll.clear();
 
 		int beginMonth = m_beginDateCalendar.get(Calendar.MONTH);
 		int endMonth = m_endDateCalendar.get(Calendar.MONTH);
@@ -190,6 +205,26 @@ public class SelectDateActivity extends Activity
 		m_calendarView.loadDateList(m_schedularDateListAll, m_schedularTypeListAll);
 	}
 
+	public Date getBeginDate()
+	{
+		return m_beginDate;
+	}
+
+	public Date getEndDate()
+	{
+		return m_endDate;
+	}
+
+	public ArrayList<ArrayList<Date>> getSchedularDateListAll()
+	{
+		return m_schedularDateListAll;
+	}
+
+	public ArrayList<ArrayList<Integer>> getSchedularTypeListAll()
+	{
+		return m_schedularTypeListAll;
+	}
+
 	protected class HandleOnMonthChangedEvent implements OnMonthChangedListener
 	{
 
@@ -229,7 +264,7 @@ public class SelectDateActivity extends Activity
 			{
 				if (monthView.getMonth().getMonth() == iMonth)
 				{
-					monthView.loadDateList(calendarDayArrayList, typeArrayList);
+					monthView.loadDateList(calendarDayArrayList, typeArrayList, dateMonthlist);
 					monthView.invalidateDecorators();
 				}
 			}
@@ -364,6 +399,7 @@ public class SelectDateActivity extends Activity
 			ArrayList<Integer> typeArrayList = new ArrayList<>();
 			Date tmpDate = new Date();
 			LinkedList<MonthView> monthViewLinkedList = widget.getMonthViewList();
+			boolean bFindFlag = false;
 			for (int index = 0; index < m_schedularDateListAll.size(); ++index)
 			{
 				dateArrayList = m_schedularDateListAll.get(index);
@@ -390,14 +426,27 @@ public class SelectDateActivity extends Activity
 						if (monthView.getMonth().getMonth() == month)
 						{
 							monthView.setTypeList(typeArrayList);
-							monthView.invalidateDecorators();
-							return;
+							bFindFlag = true;
+							break;
 						}
 					}
 
+					if (bFindFlag)
+					{
+						break;
+					}
+				}
+
+				if (bFindFlag)
+				{
+					break;
 				}
 			}
 
+			for (MonthView monthView : monthViewLinkedList)
+			{
+				monthView.invalidateDecorators();
+			}
 			return;
 		}
 	}

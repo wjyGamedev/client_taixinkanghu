@@ -19,7 +19,11 @@ import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.appointment_nursing.DApoitNursing;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 import de.greenrobot.event.EventBus;
 
@@ -49,8 +53,19 @@ public class HandleClickEventOnActivity extends BaseHandleOnClickEvent
 			case R.id.btn_bottom:
 			{
 				activity.finish();
-				SureSelectDateEvent sureSelectDateEvent = new SureSelectDateEvent();
-				m_eventBus.post(sureSelectDateEvent);
+				SelectDateActivity selectDateActivity = (SelectDateActivity)activity;
+				if (selectDateActivity == null)
+					return;
+
+				Date beginDate = selectDateActivity.getBeginDate();
+				Date endDate = selectDateActivity.getEndDate();
+				ArrayList<ArrayList<Date>>    dateListAll = selectDateActivity.getSchedularDateListAll();
+				ArrayList<ArrayList<Integer>> typeListAll = selectDateActivity.getSchedularTypeListAll();
+				String dateDescription = selectDateActivity.getDateDescription();
+
+				DApoitNursing.DNursingDate dNursingDate = new DApoitNursing.DNursingDate(beginDate, endDate, dateListAll, typeListAll, dateDescription);
+				ConfirmSelectDateEvent event = new ConfirmSelectDateEvent(dNursingDate);
+				m_eventBus.post(event);
 				break;
 			}
 			default:

@@ -16,46 +16,20 @@ package com.taixinkanghu.app.ui.select_date;
 
 import com.taixinkanghu.app.model.config.EventID;
 import com.taixinkanghu.app.model.event.ui.UIEvent;
+import com.taixinkanghu.app.ui.appointment_nursing.DApoitNursing;
 
-public class SureSelectDateEvent extends UIEvent
+public class ConfirmSelectDateEvent extends UIEvent
 {
-	private String m_all = null;
-	private String m_day = null;
-	private String m_night = null;
+	private DApoitNursing.DNursingDate m_dNursingDate = null;
 
-	public SureSelectDateEvent()
+	public ConfirmSelectDateEvent(DApoitNursing.DNursingDate dNursingDate)
 	{
 		super(EventID.UI_SELECT_DATE_SURE);
+		m_dNursingDate = dNursingDate;
 	}
 
-	public String getAll()
+	public DApoitNursing.DNursingDate getdNursingDate()
 	{
-		return m_all;
+		return m_dNursingDate;
 	}
-
-	public void setAll(String all)
-	{
-		m_all = all;
-	}
-
-	public String getDay()
-	{
-		return m_day;
-	}
-
-	public void setDay(String day)
-	{
-		m_day = day;
-	}
-
-	public String getNight()
-	{
-		return m_night;
-	}
-
-	public void setNight(String night)
-	{
-		m_night = night;
-	}
-
 }

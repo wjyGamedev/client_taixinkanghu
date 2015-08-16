@@ -26,6 +26,9 @@ public class EventID
 
 	public final static int QUEST_REGISTER = 110;
 
+	//预约陪护信息
+	public final static int QUEST_APPPINTMENT_NURSING = 111;
+
 
 	//康复用品
 	public final static int QUEST_SHOPPING_BASIC_LIST = 104;

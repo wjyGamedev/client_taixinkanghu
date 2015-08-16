@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.EnumConfig;
 
 /**
  * Created by Administrator on 2015/7/28.
@@ -45,26 +46,21 @@ public class SelectPatientStateFragment extends Fragment implements View.OnClick
 		switch (v.getId())
 		{
 			case R.id.btn_state_care_myself:
-				activity.getPatientStateTv().setText(getString(R.string.btn_state_care_myself_text));
-//				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
+				activity.setPatientState(EnumConfig.PatientState.PATIENT_STATE_CARE_MYSELF);
 				break;
 			case R.id.btn_state_half_care_myself:
-				activity.getPatientStateTv().setText(getString(R.string.btn_state_half_care_myself_text));
-//				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
+				activity.setPatientState(EnumConfig.PatientState.PATIENT_STATE_HALF_CARE_MYSELF);
 				break;
 			case R.id.btn_state_not_care_myself:
-				activity.getPatientStateTv().setText(getString(R.string.btn_state_not_care_myself_text));
-//				activity.getDwonPatientState().setVisibility(View.INVISIBLE);
+				activity.setPatientState(EnumConfig.PatientState.PATIENT_STATE_CANNT_CARE_MYSELF);
 				break;
 		}
 
 		//蒙版点击一下之后消失的处理
 		FragmentManager      fgManager           = getFragmentManager();
-		Fragment fragment            = fgManager.findFragmentById(R.id.appointment_nursing_page);
+		android.app.Fragment fragment            = fgManager.findFragmentByTag(SelectPatientStateFragment.class.getName());
 		FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
 		fragmentTransaction.remove(fragment);
-		String tag = null;
-		fragmentTransaction.addToBackStack(tag);
 		fragmentTransaction.commit();
 
 	}

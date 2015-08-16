@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.EnumConfig;
 
 /**
  * Created by Administrator on 2015/7/28.
@@ -51,34 +52,27 @@ public class SelectWeightFragment extends Fragment implements View.OnClickListen
 		switch (v.getId())
 		{
 			case R.id.btn_weight_section_0_35:
-				activity.getWeightTv().setText(getString(R.string.btn_weight_section_0_35_text));
-//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+				activity.setWeightRage(EnumConfig.WeightRage.WEIGHT_0_35);
 				break;
 			case R.id.btn_age_section_35_50:
-				activity.getWeightTv().setText(getString(R.string.btn_weight_section_35_50_text));
-//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+				activity.setWeightRage(EnumConfig.WeightRage.WEIGHT_35_50);
 				break;
 			case R.id.btn_age_section_50_80:
-				activity.getWeightTv().setText(getString(R.string.btn_weight_section_50_80_text));
-//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+				activity.setWeightRage(EnumConfig.WeightRage.WEIGHT_50_80);
 				break;
 			case R.id.btn_age_section_80_120:
-				activity.getWeightTv().setText(getString(R.string.btn_weight_section_80_120_text));
-//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+				activity.setWeightRage(EnumConfig.WeightRage.WEIGHT_80_120);
 				break;
 			case R.id.btn_age_section_above_120:
-				activity.getWeightTv().setText(getString(R.string.btn_weight_section_above_120_text));
-//				activity.getDwonWeight().setVisibility(View.INVISIBLE);
+				activity.setWeightRage(EnumConfig.WeightRage.WEIGHT_MORE_THAN_120);
 				break;
 		}
 
 		//蒙版点击一下之后消失的处理
 		FragmentManager      fgManager           = getFragmentManager();
-		Fragment fragment            = fgManager.findFragmentById(R.id.appointment_nursing_page);
+		Fragment fragment            = fgManager.findFragmentByTag(SelectWeightFragment.class.getName());
 		FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
 		fragmentTransaction.remove(fragment);
-		String tag = null;
-		fragmentTransaction.addToBackStack(tag);
 		fragmentTransaction.commit();
 
 	}

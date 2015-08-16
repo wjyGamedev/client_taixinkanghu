@@ -31,7 +31,8 @@ public class NetConfig
 	//注册
 	public final static String s_registerAddress = "http://"+IP_ADDREDD_TEST+"/user/loginAction/";
 
-
+	//预约陪护地址
+	public final static String s_appointmentNursingAddress = "http://"+IP_ADDREDD_TEST+"/carer/getCarerList/";
 
 
 

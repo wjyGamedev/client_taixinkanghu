@@ -39,7 +39,11 @@
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_top"
 				android:gravity="center_vertical"
-				android:orientation="horizontal">
+
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+
+				android:orientation="horizontal" android:clickable="true">
 
 				<TextView
 					android:id="@+id/name_text"
@@ -59,7 +63,7 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="@string/name_hint_text"
-					android:imeOptions="actionNext"
+					android:imeOptions="actionDone"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
@@ -90,7 +94,7 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击填写"
-					android:imeOptions="actionNext"
+					android:imeOptions="actionDone"
 					android:maxLength="11"
 					android:phoneNumber="true"
 					android:singleLine="true"
@@ -293,7 +297,7 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击填写"
-					android:imeOptions="actionNext"
+					android:imeOptions="actionDone"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
