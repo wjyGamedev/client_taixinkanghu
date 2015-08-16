@@ -57,6 +57,9 @@
 	<string name="char_total">共</string>
 	<string name="char_day">天</string>
 
+	<!-- 选择医院列表-->
+	<string name="content_all">全部</string>
+
 	<!-- 公共信息-->
 	<string name="content_sure">确认</string>
 
