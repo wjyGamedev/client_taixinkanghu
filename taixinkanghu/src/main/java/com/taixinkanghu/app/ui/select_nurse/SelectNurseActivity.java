@@ -20,7 +20,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.event.net.recv.FinishedNurseBasicListEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
+
+import de.greenrobot.event.EventBus;
 
 public class SelectNurseActivity  extends Activity
 {
@@ -35,6 +38,9 @@ public class SelectNurseActivity  extends Activity
 	private HandlerItemClickEventListView m_handlerItemClickEventListView = null;
 	private SelectNurseAdapter            m_selectNurseAdapter            = null;
 
+	//logical
+	private EventBus m_eventBus = EventBus.getDefault();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -42,7 +48,14 @@ public class SelectNurseActivity  extends Activity
 		setContentView(R.layout.activity_select_nurse);
 
 		init();
-		initModule();
+		initContent();
+	}
+
+	@Override
+	protected void onDestroy()
+	{
+		m_eventBus.unregister(this);
+		super.onDestroy();
 	}
 
 	private void init()
@@ -62,7 +75,7 @@ public class SelectNurseActivity  extends Activity
 		//bottom
 	}
 
-	private void initModule()
+	private void initContent()
 	{
 		//title
 		m_headerCommon.setTitle(R.string.select_nurse_title);
@@ -76,6 +89,19 @@ public class SelectNurseActivity  extends Activity
 
 		//bottom
 
+		m_eventBus.register(this);
 	}
+
+	/**
+	 * EventBus handler
+	 */
+	/**
+	 * EventBus  handler
+	 */
+	public void onEventMainThread(FinishedNurseBasicListEvent event)
+	{
+		m_selectNurseAdapter.notifyDataSetChanged();
+	}
+
 
 }
