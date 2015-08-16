@@ -26,15 +26,11 @@ import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
 import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
-import com.taixinkanghu.app.model.event.net.send.ReqNurseBasicListEvent;
-import com.taixinkanghu.app.model.event.net.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqRegisterEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqShoppingBasicListEvent;
 import com.taixinkanghu.app.model.net.handler.BaseErrorListener;
 import com.taixinkanghu.app.model.net.handler.ResApoitNursingHandler;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
-import com.taixinkanghu.app.model.net.handler.ResNurseBasicListHandler;
-import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
 import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
 import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
 import com.taixinkanghu.app.ui.appointment_nursing.DApoitNursing;
@@ -55,14 +51,12 @@ public class NetService extends Service
 	private EventBus                    m_eventBus                    = EventBus.getDefault();
 	private BaseErrorListener           m_baseErrorListener           = null;
 	private ResHospitalListHandler      m_resHospitalListHandler      = null;
-	private ResNurseBasicListHandler    m_resNurseBasicListHandler    = null;
-	private ResNurseSeniorListHandler   m_resNurseSeniorListHandler   = null;
-	private ResShoppingBasicListHandler m_resShoppingBasicListHandler = null;
 	private ResRegisterHandler          m_resRegisterHandler          = null;
 	private ResApoitNursingHandler      m_resApoitNursingHandler      = null;
 
+	private ResShoppingBasicListHandler m_resShoppingBasicListHandler = null;
+
 	private RequestQueue      m_requestQueue      = null;
-	private JsonObjectRequest m_jsonObjectRequest = null;
 
 	@Override
 	public void onCreate()
@@ -110,11 +104,10 @@ public class NetService extends Service
 		m_eventBus = EventBus.getDefault();
 		m_baseErrorListener = new BaseErrorListener(this);
 		m_resHospitalListHandler = new ResHospitalListHandler();
-		m_resNurseBasicListHandler = new ResNurseBasicListHandler();
-		m_resNurseSeniorListHandler = new ResNurseSeniorListHandler();
-		m_resShoppingBasicListHandler = new ResShoppingBasicListHandler();
 		m_resRegisterHandler = new ResRegisterHandler();
 		m_resApoitNursingHandler = new ResApoitNursingHandler();
+
+		m_resShoppingBasicListHandler = new ResShoppingBasicListHandler();
 		m_requestQueue = BaseHttp.getInstance().getRequestQueue();
 	}
 
@@ -126,15 +119,9 @@ public class NetService extends Service
 	private void initEvent()
 	{
 		ReqHospitalListEvent      hospitalListEvent = new ReqHospitalListEvent();
-//		ReqNurseBasicListEvent    nurseBasicList    = new ReqNurseBasicListEvent();
-//		ReqNurseSeniorListEvent   nurseSeniorList   = new ReqNurseSeniorListEvent();
-//		ReqShoppingBasicListEvent shoppingBasicList = new ReqShoppingBasicListEvent();
 		try
 		{
 			m_eventBus.post(hospitalListEvent);
-//			m_eventBus.post(nurseBasicList);
-			//			m_eventBus.post(nurseSeniorList);
-//			m_eventBus.post(shoppingBasicList);
 		}
 		catch (EventBusException e)
 		{
@@ -161,30 +148,16 @@ public class NetService extends Service
 		m_requestQueue.add(myReq);
 	}
 
-	public void onEventAsync(ReqNurseBasicListEvent event)
-	{
-		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
-														NetConfig.s_nurseBasicsListAddress,
-														null,
-														m_resNurseBasicListHandler,
-														m_baseErrorListener);
-
-		m_requestQueue.add(myReq);
-	}
-
-	public void onEventAsync(ReqNurseSeniorListEvent event)
-	{
-		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
-														NetConfig.s_nurseSeniorListAddress,
-														null,
-														m_resNurseSeniorListHandler,
-														m_baseErrorListener);
-
-		m_requestQueue.add(myReq);
-	}
-
-
-
+//	public void onEventAsync(ReqNurseSeniorListEvent event)
+//	{
+//		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
+//														NetConfig.s_nurseSeniorListAddress,
+//														null,
+//														m_resNurseSeniorListHandler,
+//														m_baseErrorListener);
+//
+//		m_requestQueue.add(myReq);
+//	}
 
 	//康复用品
 	public void onEventAsync(ReqShoppingBasicListEvent event)
