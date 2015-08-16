@@ -31,18 +31,20 @@ import com.taixinkanghu.app.ui.adapter.IBaseAdapter;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
 public class SelectNurseAdapter extends IBaseAdapter
 {
-	private DNurseBasicsList m_dNurseBasicsList = null;
-	private LayoutInflater   m_layoutInflater   = null;
+	private DNurseBasicsList m_nurseBasicsList = null;
+	private LayoutInflater   m_layoutInflater  = null;
 
 	@Override
 	public int getCount()
 	{
-		return m_dNurseBasicsList.GetNurseBasicsHashMap().size();
+		ArrayList<DNurseBasics> nurseBasicses = m_nurseBasicsList.getNurseBasicses();
+		if (nurseBasicses == null || nurseBasicses.isEmpty())
+			return 0;
+
+		return nurseBasicses.size();
 	}
 
 	@Override
@@ -62,7 +64,8 @@ public class SelectNurseAdapter extends IBaseAdapter
 	{
 		ViewHolder viewHolder = null;
 
-		if (convertView == null) {
+		if (convertView == null)
+		{
 
 			viewHolder = new ViewHolder();
 			convertView = m_layoutInflater.inflate(R.layout.item_worker_list, null);
@@ -70,11 +73,12 @@ public class SelectNurseAdapter extends IBaseAdapter
 
 			viewHolder.initListViewItem(convertView);
 		}
-		else {
-			viewHolder = (ViewHolder) convertView.getTag();
+		else
+		{
+			viewHolder = (ViewHolder)convertView.getTag();
 		}
 
-		viewHolder.initContent(m_dNurseBasicsList,position);
+		viewHolder.initContent(m_nurseBasicsList, position);
 		return convertView;
 	}
 
@@ -86,7 +90,7 @@ public class SelectNurseAdapter extends IBaseAdapter
 
 	private void init()
 	{
-		m_dNurseBasicsList = DNurseContainer.GetInstance().GetNurseBaisicsList();
+		m_nurseBasicsList = DNurseContainer.GetInstance().GetNurseBaisicsList();
 		m_layoutInflater = LayoutInflater.from(m_context);
 	}
 }
@@ -103,8 +107,7 @@ final class ViewHolder {
 	private TextView        m_tvServiceChargePerDay; //价格
 	private TextView        m_tvServiceStatus; //服务状态
 
-	private HashMap<Integer, DNurseBasics> m_dNurseBasicsHashMap   = null;
-	private ArrayList<DNurseBasics>        m_dNurseBasicsArrayList = new ArrayList<DNurseBasics>();
+	private ArrayList<DNurseBasics> m_nurseBasics = new ArrayList<DNurseBasics>();
 
 	public void initListViewItem(View view)
 	{
@@ -122,30 +125,24 @@ final class ViewHolder {
 
 	public void initContent(DNurseBasicsList nurseBasicsList, int position)
 	{
-
-		if (m_dNurseBasicsHashMap == null || m_dNurseBasicsHashMap.size() == 0)
+		if (m_nurseBasics == null || m_nurseBasics.isEmpty())
 		{
-			initHashMap(nurseBasicsList);
+			m_nurseBasics = nurseBasicsList.getNurseBasicses();
 		}
 
-		if (m_dNurseBasicsArrayList == null || m_dNurseBasicsArrayList.size() == 0)
-		{
-			initArrayList(nurseBasicsList);
-		}
-
-		if (m_dNurseBasicsArrayList == null)
+		if (m_nurseBasics == null)
 		{
 			//TODO:error
 			return;
 		}
 
-		if (position >= m_dNurseBasicsArrayList.size())
+		if (position >= m_nurseBasics.size())
 		{
 			//TODO:error
 			return;
 		}
 
-		DNurseBasics tmpNurseBasics = m_dNurseBasicsArrayList.get(position);
+		DNurseBasics tmpNurseBasics = m_nurseBasics.get(position);
 		int          iID            = tmpNurseBasics.getID();
 		int          iImageIndex    = (iID - 1);
 		int          iImageID       = DFaceImages.getInstance().getImageIDbyIndex(iImageIndex);
@@ -156,38 +153,8 @@ final class ViewHolder {
 		m_tvHomeTown.setText(tmpNurseBasics.getHomeTown());
 		m_tvNursingExp.setText(tmpNurseBasics.getNursingExp());
 		m_tvNursingLevel.setText(tmpNurseBasics.getNursingLevel());
-		m_tvServiceChargePerDay.setText(tmpNurseBasics.getServiceChargePerDay().toString());
+		m_tvServiceChargePerDay.setText(String.valueOf(tmpNurseBasics.getServiceChargePerAllCanntCare()));
 		m_tvServiceStatus.setText(tmpNurseBasics.getServiceStatus());
-
-	}
-
-	private void initHashMap(DNurseBasicsList nurseBasicsList)
-	{
-		m_dNurseBasicsHashMap = nurseBasicsList.GetNurseBasicsHashMap();
-	}
-
-	private void initArrayList(DNurseBasicsList nurseBasicsList)
-	{
-		if (m_dNurseBasicsArrayList != null || m_dNurseBasicsArrayList.size() != 0)
-		{
-			m_dNurseBasicsArrayList.clear();
-		}
-
-		Iterator<HashMap.Entry<Integer, DNurseBasics> > iterator = null;
-		if (m_dNurseBasicsHashMap != null)
-		{
-			iterator = m_dNurseBasicsHashMap.entrySet().iterator();
-		}
-		else
-		{
-			iterator = nurseBasicsList.GetNurseBasicsHashMap().entrySet().iterator();
-		}
-
-		while (iterator.hasNext())
-		{
-			HashMap.Entry<Integer, DNurseBasics> entry = iterator.next();
-			m_dNurseBasicsArrayList.add(entry.getValue());
-		}
 
 	}
 
