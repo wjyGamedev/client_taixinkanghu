@@ -12,7 +12,7 @@
  * 2015/7/19		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.net.exception;
+package com.taixinkanghu.app.model.net.handler;
 
 import android.content.Context;
 import android.widget.Toast;
