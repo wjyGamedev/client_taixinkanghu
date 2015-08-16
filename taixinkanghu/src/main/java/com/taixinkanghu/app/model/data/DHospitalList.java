@@ -14,9 +14,10 @@
 
 package com.taixinkanghu.app.model.data;
 
-import android.util.Log;
-
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
+import com.taixinkanghu.util.android.AppUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +36,7 @@ public class DHospitalList
 		return s_dHospitalList;
 	}
 
-	public boolean serialization(JSONObject response)
+	public boolean serialization(JSONObject response) throws JSONException
 	{
 		if (m_dHospitalHashMap != null &&
 				m_dHospitalHashMap.size() != 0)
@@ -43,34 +44,24 @@ public class DHospitalList
 			m_dHospitalHashMap.clear();
 		}
 
-		JSONArray jsonArray = null;
-		try
+		JSONArray jsonArray = response.getJSONArray(DataConfig.DHOSPITAL_LIST);
+		if (jsonArray == null)
 		{
-			jsonArray = response.getJSONArray(DataConfig.DHOSPITAL_LIST);
-
-			if (jsonArray == null)
-				return false;
-
-			JSONObject jsonObject = null;
-			DHospital hospital = null;
-			for (int index = 0; index < jsonArray.length(); index++)
-			{
-				jsonObject=(JSONObject)jsonArray.get(index);
-				hospital = new DHospital();
-				hospital.serialization(jsonObject);
-
-				Integer iHospitalID = jsonObject.getInt(DataConfig.DHOSPITAL_ID);
-				m_dHospitalHashMap.put(iHospitalID, hospital);
-			}
-
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return false;
+			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
+			throw new JsonSerializationException(errMsg + ":" + "hospital_list");
 		}
 
+		JSONObject jsonObject = null;
+		DHospital hospital = null;
+		for (int index = 0; index < jsonArray.length(); index++)
+		{
+			jsonObject=(JSONObject)jsonArray.get(index);
+			hospital = new DHospital();
+			hospital.serialization(jsonObject);
+
+			Integer iHospitalID = jsonObject.getInt(DataConfig.DHOSPITAL_ID);
+			m_dHospitalHashMap.put(iHospitalID, hospital);
+		}
 		return  true;
 
 	}
