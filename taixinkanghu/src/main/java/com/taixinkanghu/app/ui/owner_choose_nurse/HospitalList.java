@@ -19,12 +19,12 @@ import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.fragment.SelectHospitalOldFragment;
+import com.taixinkanghu.app.ui.appointment_nursing.SelectHospitalFragment;
 import com.taixinkanghu.widget.drop_down_list.DropDownList;
 
 public class HospitalList extends DropDownList
 {
-	private SelectHospitalOldFragment m_selectHospitalOldFragment = null;
+	private SelectHospitalFragment m_selectHospitalOldFragment = null;
 
 	public HospitalList(Activity activity)
 	{
@@ -36,12 +36,8 @@ public class HospitalList extends DropDownList
 	{
 		if (m_selectHospitalOldFragment == null)
 		{
-			m_selectHospitalOldFragment = new SelectHospitalOldFragment();
+			m_selectHospitalOldFragment = new SelectHospitalFragment();
 		}
-
-//		m_activity.getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.owner_select_page, new SelectHospitalOldFragment()
-//																					 ).commit();
-		m_selectHospitalOldFragment.setIntoWay(1);
 
 		FragmentTransaction transaction = m_activity.getFragmentManager().beginTransaction();
 		transaction.replace(R.id.owner_select_page, m_selectHospitalOldFragment, m_selectHospitalOldFragment.getClass().getName());
