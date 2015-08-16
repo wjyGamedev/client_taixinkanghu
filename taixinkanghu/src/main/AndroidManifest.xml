@@ -169,6 +169,12 @@
 		<activity
 			android:name=".app.ui.nurs_order_change_page.NursOrderChangeActivity"
 			android:label="@string/title_nurs_order_change"/>
+		<activity
+			android:name=".app.ui.address_management_page.AddressManagementAcitvity"
+			android:label="@string/title_address_management"/>
+		<activity
+			android:name=".app.ui.create_address_page.CreateAddressActivity"
+			android:label="@string/title_create_address"/>
 	</application>
 
 </manifest>

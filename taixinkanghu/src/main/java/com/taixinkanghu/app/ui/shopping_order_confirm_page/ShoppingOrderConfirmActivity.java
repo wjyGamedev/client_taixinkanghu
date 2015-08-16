@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.address_management_page.AddressManagementAcitvity;
 import com.taixinkanghu.app.ui.nurs_order_pay_page.NursOrderPayActivity;
 
 /**
@@ -20,7 +21,10 @@ public class ShoppingOrderConfirmActivity extends Activity
 
 	private LinearLayout m_paymentBtn;
 
+	private LinearLayout m_addressBtn;
+
 	private Intent m_toPaymentIntent;
+	private Intent m_toAddressIntent;
 
 	private HandlerClickEventShoppingOrderConfirm m_handlerClickEventShoppingOrderConfirm = null;
 
@@ -42,15 +46,19 @@ public class ShoppingOrderConfirmActivity extends Activity
 		m_backBtn = (ImageButton)findViewById(R.id.btn_back);
 		m_paymentBtn = (LinearLayout)findViewById(R.id.btn_payment);
 
+		m_addressBtn = (LinearLayout)findViewById(R.id.address_region);
+
 		m_handlerClickEventShoppingOrderConfirm = new HandlerClickEventShoppingOrderConfirm(this);
 
 		m_toPaymentIntent = new Intent(ShoppingOrderConfirmActivity.this, NursOrderPayActivity.class);
+		m_toAddressIntent = new Intent(ShoppingOrderConfirmActivity.this, AddressManagementAcitvity.class);
 	}
 
 	private void initListener()
 	{
 		m_backBtn.setOnClickListener(m_handlerClickEventShoppingOrderConfirm);
 		m_paymentBtn.setOnClickListener(m_handlerClickEventShoppingOrderConfirm);
+		m_addressBtn.setOnClickListener(m_handlerClickEventShoppingOrderConfirm);
 	}
 
 	private void initModule()
@@ -61,5 +69,10 @@ public class ShoppingOrderConfirmActivity extends Activity
 	public Intent getToPaymentIntent()
 	{
 		return m_toPaymentIntent;
+	}
+
+	public Intent getToAddressIntent()
+	{
+		return m_toAddressIntent;
 	}
 }

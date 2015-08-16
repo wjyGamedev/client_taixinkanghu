@@ -41,6 +41,8 @@
 	<string name="shopping_car_title">购物车</string>
 	<string name="shopping_order_confirm_title">确认订单</string>
 	<string name="nurs_order_change_title">订单变更</string>
+	<string name="address_management_title">地址管理</string>
+	<string name="new_address_title">新建地址</string>
 
 	<!-- 基本内容信息-->
 	<string name="content_male">男</string>
@@ -112,7 +114,7 @@
 	<string name="four_star_worker_explain">由具有6个月以上护理员工作经验，通过专业考核并取得中级护理员证书且好评率在95%以上的中级护理员提供的陪护服务。\n服务内容\n包括初级护理的所有服务内容；\n帮助患者翻身、扣背，防止患者身体长褥疮；\n观察患者病情变化（观察监护仪变化）；\n记录患者的出入量（入食和排便）；\n保持各种医疗管路畅通；\n在医护人员的指导下熟练掌握各种医疗辅具；</string>
 	<string name="five_star_worker_explain">由具有4年以上护理员工作经验，年龄在30~50岁之间，中学以上文化程度，通过专业考核并取得高级护理员证书，沟通能力良好且好评率在98%以上的高级护理员提供的陪护服务。\n服务内容\n包括中级护理的所有服务内容；\n懂得ICU及危重、特殊病人的看护；\n协助患者进行简单康复锻炼；\n陪同患者读书、聊天或进行一些娱乐活动；</string>
 	<string name="six_star_worker_explain">由具有6年以上护理员工作经验，年龄在30~50岁之间，中学以上文化程度，通过专业考核并取得特级护理员证书，沟通能力强且好评率100%的特级护理员提供的陪护服务。\n服务内容\n包括高级护理的所有服务内容；\n安抚病人情绪、为病人做心理辅导；</string>
-	<string name="apponintment_page_hint_text">请填写以下信息，我们将根据您的实际情况为您匹配相应的护理员</string>
+	<string name="apponintment_page_hint_text">请填写以下信息\n我们将根据您的实际情况为您匹配相应的护理员</string>
 	<string name="protocol_confirm_text">点击确认表示已阅读并同意</string>
 	<string name="confirm_btn_text">确认</string>
 	<string name="name_text">姓名：</string>
@@ -188,6 +190,8 @@
 	<string name="change_money_text">差价金额：</string>
 	<string name="write_change_amount_text">请输入差价金额</string>
 	<string name="patient_status_change_text">患者状态变更</string>
+	<string name="service_price_text">服务价格</string>
+	<string name="basic_information_text">基础信息</string>
 
 	<string name="pay_the_way_text">支付方式</string>
 	<string name="need_pay_text">需支付</string>
@@ -197,6 +201,7 @@
 	<string name="ali_pay_hint_text">推荐有支付宝账号的用户使用</string>
 	<string name="weixin_pay_text">微信支付</string>
 	<string name="weixin_pay_hint_text">推荐安装微信5.0版本以上的用户使用</string>
+
 
 	//选择护理员
 	<string name="select_nurse_title">选择护理员</string>
@@ -265,6 +270,8 @@
 	<string name="title_shopping_car">ShoppingCarActivity</string>
 	<string name="title_shopping_order_confirm">ShoppingOrderConfirmActivity</string>
 	<string name="title_nurs_order_change">NursOrderChangeActivity</string>
+	<string name="title_address_management">AddressManagementAcitvity</string>
+	<string name="title_create_address">CreateAddressActivity</string>
 
 	<string name="sunday">日</string>
 	<string name="monday">一</string>
@@ -331,6 +338,8 @@
 	<string name="single_time_text">下单时间：</string>
 	<string name="single_time_date_data_text">2015-06-29</string>
 	<string name="single_time_time_data_text">08:59:41</string>
+	<string name="new_address_btn_text">新建地址</string>
+	<string name="save_btn_text">保存</string>
 
 	<!--协议-->
 	<string name="agreement_text">尊敬的用户：\n\t\t\t您即将通过本页面确认使用由北京首卫康勤医院管理有限公司（以下简称“本公司”）研发的优爱医护系统为您提供优质的病患陪护预约服务。 为了给您带来完美的服务体验，以及更好的享受方便快捷预约的乐趣，请您仔细阅读本协议。 如果对本协议有疑问，请通过本公司客服渠道（400-630-9860）进行详细咨询，由本公司专业客服为您解释条款内容，其他非本公司解释或声明都是非官方渠道，一概与本公司无关，请知晓。\n用户通过网络页面点击确认或以其他方式选择接受本协议，即表示您在享受护理员服务期间同意并接受以下全部内容：\n \n一、护理员服务范围：\n1.负责照顾患者的日常生活起居，协助患者洗脸、刷牙、梳头、刮胡须、剪指（趾）甲、擦洗、换洗内衣裤（条件允许的情况下）。\n2.负责患者的床单位干净整洁。\n3.在护士站的需要和指导下并经患者同意，协助护士完成留取患者体液、分泌物等标本，但由此产生的后果护理人员和本公司不承担责任。\n4.在医护人员指导下协助患者服药、进食、喝水、就寝。\n5.在患者需要时，协助患者排便。\n6.在患者需要时，遵医嘱护送患者到医疗机构指定的地点做检查、理疗、康复等活动。\n7.在患者病情及家属和患者允许的情况下，与患者互动、沟通、聊天及做一些有益于身心健康的活动。\n8.经患者或家属要求，帮助患者购置生活必需品、清洗餐具，此期间护理员属于在岗状态，患者在此期间发生任何意外责任均自负。\n9.尽量满足患者的陪护要求，但不涉及医疗护理项目（如：推拿、按摩等）。\n10.本公司为用户所提供的服务仅限于以上各项生活护理，不涉及任何医疗、康复等行为，如用户私自要求本公司护理员超出上述服务范围，本公司对此产生的一切后果不负责任。\n \n二、	注意事项：\n1.我们的服务时间是早上9点到次日早上9点为一天，不足一天按一天收取费用。收费方式为预收，即按用户的委托天数提前收取。依国家规定，每年的法定节日将收取三倍服务费。（除夕、大年初一、初二、初三、元旦、清明、五一、端午、中秋、10月1日、10月2日、10月3日）\n2.用户的贵重物品及现金应自行妥善保管，若因自身原因保管不当导致丢失，请立即报案，本公司对此不承担责任。\n3.用户不得私自允许护理员外出或给假，不得与护理员私自续约或增加工作时间、工作内容，由此引发的一切后果由用户方承担。\n4.如用户方隐瞒患者病情、病史，本公司有权终止服务，并由用户方自己承担由此引发的后果。\n5.用户方应保证护理员的就餐时间，护理员外出就餐期间患者由用户方负责。\n6.若用户需要继续服务应在费用到期前24小时告知本公司进行续单操作，缴纳费用，否则到期视为终止服务。由此引发的一切后果由用户负责。\n7.陪护人员应用户的要求，为患者提供喂药、使用热水袋或冰袋等服务，导致患者出现意外，由用户承担责任。\n8.如用户或患者不配合服务或擅自活动（如：患者需要大小便等活动未叫醒或未等待陪护人员到场协助的）而造成的意外事故应由用户承担责任。\n9.护理员在陪护服务期间，受到用户或患者造成的人身伤害，由用户方承担医疗费用和赔偿责任。\n10.本公司有权根据市场情况进行收费调整，用户应遵循新收费标准预付费用。收费以本公司最新修订的标准为准。\n \n三、	陪护声明：\n1.在委托期间内出现以下情况，公司责任免除。\n2.患者病情突然变化造成的病理后果，如：痉挛、心脑血管疾病等引发的意外。\n3.患者不按医院规定住院，私自离开医院在院外出现的交通事故和其他事故。\n4.由于患者吵架、打架、酗酒、自杀或他杀引发的意外。\n5.患者不听护理员劝阻自行活动、或夜间不叫护理员陪同私自进行起居活动导致的意外。\n6.由于患者自身的精神状况、病情、体质的特殊性（如患者高龄、患有骨质疏松、吞咽功能障碍），所引发的难以预料的意外（如：骨折、摔伤、噎食、烫伤等不可预测的意外情况）。\n7.公司有对精神异常患者、传染病患者、有自杀自残倾向等患者不提供服务的权利。如用户方坚持要求，须经签字确认以下内容：本公司对此服务过程出现的意外不承担责任。 用户还应承担在服务期间患者给公司护理员造成的人身或财产的意外伤害。\n8.护理员按用户或患者的意愿进行与陪护理员作无关的操作，所引发的意外。\n \n北京首卫康勤医院管理有限公司</string>

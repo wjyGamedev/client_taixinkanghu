@@ -32,6 +32,11 @@ public class HandlerClickEventShoppingOrderConfirm extends BaseHandleOnClickEven
 				activity.startActivity(activity.getToPaymentIntent());
 				break;
 			}
+			case R.id.address_region:                //点击付款按钮
+			{
+				activity.startActivity(activity.getToAddressIntent());
+				break;
+			}
 		}
 	}
 }
