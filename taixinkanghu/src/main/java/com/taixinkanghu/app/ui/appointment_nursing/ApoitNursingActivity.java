@@ -48,6 +48,7 @@ public class ApoitNursingActivity extends Activity
 	private Button m_bottomBtn;
 
 	//name
+	private LinearLayout m_nameRegion = null;
 	private EditText m_nameTV       = null;
 	private EditText m_phoneNumTV   = null;
 	private EditText m_departmentTV = null;
@@ -186,6 +187,7 @@ public class ApoitNursingActivity extends Activity
 		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
 
 		//name
+		m_nameRegion = (LinearLayout)findViewById(R.id.name_region);
 		m_nameTV = (EditText)findViewById(R.id.name);
 		m_phoneNumTV = (EditText)findViewById(R.id.phone_number_tv);
 		m_departmentTV = (EditText)findViewById(R.id.department_tv);
@@ -227,6 +229,7 @@ public class ApoitNursingActivity extends Activity
 
 		//name
 		//		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_nameRegion.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_nameTV.setOnEditorActionListener(m_handleEditActionEvent);
 		m_phoneNumTV.setOnEditorActionListener(m_handleEditActionEvent);
 
@@ -370,6 +373,13 @@ public class ApoitNursingActivity extends Activity
 		m_dateListAll = dateListAll;
 	}
 
+
+	//焦点设置
+	public void setNameFocus()
+	{
+		m_nameTV.requestFocus();
+	}
+
 	//数据设置
 	public void setSexType(EnumConfig.SexType sexType)
 	{
@@ -408,7 +418,7 @@ public class ApoitNursingActivity extends Activity
 		if (event.getdNursingDate() == null)
 			return;
 
-		m_dateTv.setText(event.getdNursingDate().getDateDescription());
+		setDateDescription(event.getdNursingDate().getDateDescription());
 		DApoitNursing.GetInstance().setdNursingDate(event.getdNursingDate());
 	}
 
