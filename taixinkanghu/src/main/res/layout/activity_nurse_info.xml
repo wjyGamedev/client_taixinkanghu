@@ -205,6 +205,16 @@
 							app:border_width="1dp"/>
 					</RelativeLayout>
 
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="40dp"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="15dp"
+						android:text="@string/basic_information_text"
+						android:textColor="@color/text_color_gray"
+						android:textSize="14.0sp"/>
+
 					<include layout="@layout/item_dividing_line_horizontal"/>
 
 					<LinearLayout
@@ -447,7 +457,8 @@
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:layout_marginLeft="15dp"
-							android:layout_marginRight="15dp">
+							android:layout_marginRight="15dp"
+							android:visibility="gone">
 
 							<include
 								layout="@layout/item_dividing_line_horizontal_fine"/>
@@ -463,6 +474,7 @@
 							android:orientation="horizontal"
 							android:paddingBottom="5dp"
 							android:paddingTop="5dp"
+							android:visibility="gone"
 							android:weightSum="1">
 
 							<ImageView
@@ -587,7 +599,7 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="10dp"
-						android:background="@drawable/bg_order_btn"
+						android:background="@color/white"
 						android:orientation="vertical"
 						android:paddingTop="10dp"
 						android:visibility="gone">
@@ -647,13 +659,7 @@
 
 							</LinearLayout>
 						</LinearLayout>
-
 					</LinearLayout>
-
-					<TextView
-						android:layout_width="match_parent"
-						android:layout_height="0.5dp"
-						android:background="@color/main_color"/>
 
 					<LinearLayout
 						android:id="@id/order_title"
@@ -753,6 +759,200 @@
 							android:textSize="14.0sp"/>
 
 					</LinearLayout>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="40dp"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="15dp"
+						android:text="@string/service_price_text"
+						android:textColor="@color/text_color_gray"
+						android:textSize="14.0sp"/>
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@color/white"
+						android:orientation="vertical">
+
+						<include layout="@layout/item_dividing_line_horizontal"/>
+
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="2.5dp"
+							android:layout_marginLeft="15dp"
+							android:layout_marginRight="15dp"
+							android:layout_marginTop="5dp"
+							android:orientation="horizontal">
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1.1"
+								android:gravity="center"
+								android:text="患者可自理"
+								android:textColor="@color/text_color_black"
+								android:textSize="12sp"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="患者可半自理"
+								android:textColor="@color/text_color_black"
+								android:textSize="12sp"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="患者不可自理"
+								android:textColor="@color/text_color_black"
+								android:textSize="12sp"/>
+
+						</LinearLayout>
+
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="2.5dp"
+							android:layout_marginLeft="15dp"
+							android:layout_marginRight="15dp"
+							android:layout_marginTop="5dp"
+							android:orientation="horizontal">
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:text="全天24小时陪护"
+								android:textSize="12sp"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1.1"
+								android:gravity="center"
+								android:text="120元/天"
+								android:textColor="@color/text_color_orange"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="150元/天"
+								android:textColor="@color/text_color_orange"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="180元/天"
+								android:textColor="@color/text_color_orange"/>
+
+						</LinearLayout>
+
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="2.5dp"
+							android:layout_marginLeft="15dp"
+							android:layout_marginRight="15dp"
+							android:layout_marginTop="2.5dp"
+							android:orientation="horizontal">
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:text="白天12小时陪护"
+								android:textSize="12sp"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1.1"
+								android:gravity="center"
+								android:text="110元/天"
+								android:textColor="@color/text_color_orange"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="120元/天"
+								android:textColor="@color/text_color_orange"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="160元/天"
+								android:textColor="@color/text_color_orange"/>
+
+						</LinearLayout>
+
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="5dp"
+							android:layout_marginLeft="15dp"
+							android:layout_marginRight="15dp"
+							android:layout_marginTop="2.5dp"
+							android:orientation="horizontal">
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:text="夜间12小时陪护"
+								android:textSize="12sp"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1.1"
+								android:gravity="center"
+								android:text="110元/天"
+								android:textColor="@color/text_color_orange"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="120元/天"
+								android:textColor="@color/text_color_orange"/>
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="160元/天"
+								android:textColor="@color/text_color_orange"/>
+
+						</LinearLayout>
+
+						<include layout="@layout/item_dividing_line_horizontal"/>
+
+
+					</LinearLayout>
+
+
 				</LinearLayout>
 			</ScrollView>
 		</android.support.v4.widget.SwipeRefreshLayout>
