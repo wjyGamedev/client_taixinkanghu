@@ -30,7 +30,7 @@ import com.taixinkanghu.app.model.event.net.send.ReqNurseBasicListEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqRegisterEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqShoppingBasicListEvent;
-import com.taixinkanghu.app.model.net.exception.BaseErrorListener;
+import com.taixinkanghu.app.model.net.handler.BaseErrorListener;
 import com.taixinkanghu.app.model.net.handler.ResApoitNursingHandler;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseBasicListHandler;
