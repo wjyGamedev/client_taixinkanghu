@@ -21,7 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.net.event.ReqHospitalListEvent;
+import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 
 import de.greenrobot.event.EventBus;
