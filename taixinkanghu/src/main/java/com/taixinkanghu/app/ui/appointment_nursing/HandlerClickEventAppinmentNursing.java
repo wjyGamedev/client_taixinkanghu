@@ -83,7 +83,6 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			{
 				SelectSexFragment selectSexFragment = new SelectSexFragment();
 				transaction.replace(R.id.appointment_nursing_page, selectSexFragment, selectSexFragment.getClass().getName());
-//				transaction.addToBackStack(null);
 				transaction.commit();
 				break;
 			}
@@ -91,7 +90,6 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			{
 				SelectAgeFragment selectAgeFragment = new SelectAgeFragment();
 				transaction.replace(R.id.appointment_nursing_page, selectAgeFragment, selectAgeFragment.getClass().getName());
-//				transaction.addToBackStack(null);
 				transaction.commit();
 				break;
 			}
@@ -99,16 +97,13 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			{
 				SelectWeightFragment selectWeightFragment = new SelectWeightFragment();
 				transaction.replace(R.id.appointment_nursing_page, selectWeightFragment, selectWeightFragment.getClass().getName());
-//				transaction.addToBackStack(null);
 				transaction.commit();
 				break;
 			}
 			case R.id.btn_hospital:
 			{
 				SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-				selectHospitalFragment.setIntoWay(1);
 				transaction.replace(R.id.appointment_nursing_page, selectHospitalFragment, selectHospitalFragment.getClass().getName());
-//				transaction.addToBackStack(null);
 				transaction.commit();
 				break;
 			}
@@ -116,7 +111,6 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			{
 				SelectPatientStateFragment selectPatientStateFragment = new SelectPatientStateFragment();
 				transaction.replace(R.id.appointment_nursing_page, selectPatientStateFragment, selectPatientStateFragment.getClass().getName());
-//				transaction.addToBackStack(null);
 				transaction.commit();
 				break;
 			}
