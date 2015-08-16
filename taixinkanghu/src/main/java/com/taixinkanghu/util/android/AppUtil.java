@@ -30,6 +30,11 @@ public class AppUtil
 		m_context = context;
 	}
 
+	public static Context getContext()
+	{
+		return m_context;
+	}
+
 	public static Resources GetResources()
 	{
 		if (m_context == null)
