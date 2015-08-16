@@ -14,52 +14,41 @@
 
 package com.taixinkanghu.app.model.data;
 
-import android.util.Log;
-
 import com.taixinkanghu.app.model.config.DataConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DNurseBasicsList
 {
-	public boolean serialization(JSONObject response)
+	private HashMap<Integer, DNurseBasics> m_dNurseBasicsHashMap = new HashMap<Integer, DNurseBasics>();
+	private ArrayList<DNurseBasics>        m_nurseBasicses       = new ArrayList<>();
+
+	public boolean serialization(JSONObject response) throws JSONException
 	{
-		if (m_dNurseBasicsHashMap != null &&
-				m_dNurseBasicsHashMap.size() != 0)
+		if (m_nurseBasicses != null && m_nurseBasicses.isEmpty() == false)
 		{
 			m_dNurseBasicsHashMap.clear();
 		}
 
-		JSONArray jsonArray = null;
-		try
-		{
-			jsonArray = response.getJSONArray(DataConfig.NURSE_BASICS_LIST);
+		JSONArray jsonArray = response.getJSONArray(DataConfig.NURSE_BASICS_LIST);
 
-			if (jsonArray == null)
-				return false;
-
-			JSONObject jsonObject = null;
-			DNurseBasics dNurseBasics = null;
-			for (int index = 0; index < jsonArray.length(); index++)
-			{
-				jsonObject=(JSONObject)jsonArray.get(index);
-				dNurseBasics = new DNurseBasics();
-				dNurseBasics.serialization(jsonObject);
-
-				Integer iID = jsonObject.getInt(DataConfig.NURSE_ID);
-				m_dNurseBasicsHashMap.put(iID, dNurseBasics);
-			}
-
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
+		if (jsonArray == null)
 			return false;
+
+		JSONObject jsonObject = null;
+		DNurseBasics dNurseBasics = null;
+		for (int index = 0; index < jsonArray.length(); index++)
+		{
+			jsonObject = (JSONObject)jsonArray.get(index);
+			dNurseBasics = new DNurseBasics();
+			dNurseBasics.serialization(jsonObject);
+
+			m_nurseBasicses.add(dNurseBasics);
 		}
 
 		return  true;
@@ -70,5 +59,5 @@ public class DNurseBasicsList
 		return m_dNurseBasicsHashMap;
 	}
 
-	private HashMap<Integer, DNurseBasics> m_dNurseBasicsHashMap = new HashMap<Integer, DNurseBasics>();
+
 }
