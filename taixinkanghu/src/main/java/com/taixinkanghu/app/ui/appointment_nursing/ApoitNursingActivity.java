@@ -410,18 +410,6 @@ public class ApoitNursingActivity extends Activity
 		DApoitNursing.GetInstance().setPatientState(patientState);
 	}
 
-	public void onEventMainThread(ConfirmSelectDateEvent event)
-	{
-		if (event == null)
-			return;
-
-		if (event.getdNursingDate() == null)
-			return;
-
-		setDateDescription(event.getdNursingDate().getDateDescription());
-		DApoitNursing.GetInstance().setdNursingDate(event.getdNursingDate());
-	}
-
 	public void confirmAction()
 	{
 		//姓名
@@ -445,5 +433,20 @@ public class ApoitNursingActivity extends Activity
 			DApoitNursing.GetInstance().setDepartmenetName(department);
 		}
 
+	}
+
+	/**
+	 * EventBus  handler
+	 */
+	public void onEventMainThread(ConfirmSelectDateEvent event)
+	{
+		if (event == null)
+			return;
+
+		if (event.getdNursingDate() == null)
+			return;
+
+		setDateDescription(event.getdNursingDate().getDateDescription());
+		DApoitNursing.GetInstance().setdNursingDate(event.getdNursingDate());
 	}
 }
