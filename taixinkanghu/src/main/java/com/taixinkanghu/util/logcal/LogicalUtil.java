@@ -14,6 +14,8 @@
 
 package com.taixinkanghu.util.logcal;
 
+import com.taixinkanghu.app.model.config.DataConfig;
+
 import java.util.Date;
 
 public class LogicalUtil
@@ -48,6 +50,11 @@ public class LogicalUtil
 		long beginTime = begin.getTime();
 		long endTime = end.getTime();
 		return Math.abs((int) (beginTime - endTime)/(24 * 60 * 60 * 1000));
+	}
+
+	public static boolean IsHttpSuccess(int httpStatus)
+	{
+		return (httpStatus == DataConfig.S_HTTP_OK);
 	}
 
 }
