@@ -30,7 +30,21 @@ public class DataConfig
 	public final static String NURSE_HOMETOWN               = "hometown";
 	public final static String NURSE_NURING_EXP             = "nursing_exp";
 	public final static String NURSE_NURING_LEVEL           = "nursing_level";
-	public final static String NURSE_SERVICE_CHARGE_PER_DAY = "service_charge_per_day";
+
+	public final static String SERVICE_CHARGE_PER_ALL_CARE = "service_charge_per_all_care";				//24小时，可自理
+	public final static String SERVICE_CHARGE_PER_ALL_HALF_CARE = "service_charge_per_all_half_care";		//24小时，半自理
+	public final static String SERVICE_CHARGE_PER_ALL_CANNT_CARE = "service_charge_per_all_cannt_care";	//24小时，不可自理
+
+	public final static String SERVICE_CHARGE_PER_DAY_CARE = "service_charge_per_day_care";				//12白，可自理
+	public final static String SERVICE_CHARGE_PER_DAY_HALF_CARE = "service_charge_per_day_half_care";		//12白，半自理
+	public final static String SERVICE_CHARGE_PER_DAY_CANNT_CARE = "service_charge_per_day_cannt_care";	//12白，不可自理
+
+	public final static String SERVICE_CHARGE_PER_NIGHT_CARE = "service_charge_per_night_care";			//12黑，可自理
+	public final static String SERVICE_CHARGE_PER_NIGHTL_HALF_CARE = "service_charge_per_night_care";		//12黑，半自理
+	public final static String SERVICE_CHARGE_PER_NIGHT_CANNT_CARE = "service_charge_per_night_care";		//12黑，不可自理
+
+
+
 	public final static String NURSE_SERVICE_STATUS         = "nurse_service_status";
 
 	public final static String NURSE_SENIOR_LIST     = "nurse_senior_list";
