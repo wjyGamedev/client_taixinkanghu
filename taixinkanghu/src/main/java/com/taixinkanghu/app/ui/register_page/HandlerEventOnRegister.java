@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.net.event.ReqRegisterEvent;
+import com.taixinkanghu.app.model.event.net.send.ReqRegisterEvent;
 import com.taixinkanghu.third.party.sms.DSmsAutho;
 import com.taixinkanghu.third.party.sms.SmsAutho;
 import com.taixinkanghu.third.party.sms.SmsConfig;
