@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.fragment.SelectHospitalOldFragment;
+import com.taixinkanghu.app.ui.appointment_nursing.SelectHospitalFragment;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
@@ -99,8 +99,7 @@ public class WorkerInfoMoreActivity extends Activity implements View.OnClickList
                 startActivity(new Intent(this, WorkerDateActivity.class));
                 break;
             case R.id.btn_address:
-                SelectHospitalOldFragment selectHospitalOldFragment = new SelectHospitalOldFragment();
-                selectHospitalOldFragment.setIntoWay(2);
+                SelectHospitalFragment selectHospitalOldFragment = new SelectHospitalFragment();
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.title, selectHospitalOldFragment).commit();
                 break;
         }
