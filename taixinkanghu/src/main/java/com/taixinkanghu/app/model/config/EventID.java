@@ -20,11 +20,14 @@ public class EventID
 	 * network 100~999
 	 */
 	public final static int NETWORK_DEFAULT     = 100;
-	public final static int QUEST_HOSPITAL_LIST = 101;
-	public final static int QUEST_NURSE_BASIC_LIST = 102;
-	public final static int QUEST_NURSE_SENIOR_LIST = 103;
 
-	public final static int QUEST_REGISTER = 110;
+	public final static int QUEST_HOSPITAL_LIST = NETWORK_DEFAULT + 1;
+	public final static int FINISHED_HOSPITAL_LIST = QUEST_HOSPITAL_LIST + 1;
+
+	public final static int QUEST_NURSE_BASIC_LIST = FINISHED_HOSPITAL_LIST + 1;
+	public final static int QUEST_NURSE_SENIOR_LIST = QUEST_NURSE_BASIC_LIST + 1;
+
+	public final static int QUEST_REGISTER = QUEST_NURSE_SENIOR_LIST + 1;
 
 	//预约陪护信息
 	public final static int QUEST_APPPINTMENT_NURSING = 111;
