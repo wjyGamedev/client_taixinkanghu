@@ -14,23 +14,46 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
-import android.util.Log;
-
 import com.taixinkanghu.app.model.data.DHospitalList;
+import com.taixinkanghu.app.model.event.net.recv.FinishedHospitalListEvent;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;
+import com.taixinkanghu.util.android.AppUtil;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import de.greenrobot.event.EventBus;
 
 public class ResHospitalListHandler extends IResponseListener
 {
+	private EventBus m_eventBus = EventBus.getDefault();
+
 	@Override
 	public void onResponse(JSONObject response)
 	{
-		boolean bReturnFlag = DHospitalList.getInstance().serialization(response);
-		if (bReturnFlag == false)
+		try
 		{
-			Log.w("error", "bReturnFlag == false");
+			DHospitalList.getInstance().serialization(response);
 		}
+		catch (JsonSerializationException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString(), AppUtil.getContext());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		catch (JSONException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString(), AppUtil.getContext());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		//解析成功，发送event
+		FinishedHospitalListEvent finishedHospitalListEvent = new FinishedHospitalListEvent();
+		m_eventBus.post(finishedHospitalListEvent);
+		return;
 
 	}
 }
