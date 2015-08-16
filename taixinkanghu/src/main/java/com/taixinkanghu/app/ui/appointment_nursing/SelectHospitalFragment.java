@@ -2,120 +2,155 @@ package com.taixinkanghu.app.ui.appointment_nursing;
 
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.UIConfig;
+import com.taixinkanghu.app.model.data.DHospital;
+import com.taixinkanghu.app.model.data.DHospitalList;
+import com.taixinkanghu.app.model.event.net.recv.FinishedHospitalListEvent;
+import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
+
+import java.util.ArrayList;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SelectHospitalFragment extends Fragment implements View.OnClickListener
+public class SelectHospitalFragment extends Fragment implements View.OnTouchListener
 {
-	private Button btn1, btn2, btn3, btn4;
-	private static final int All_YIYUAN     = 1;
-	private static final int CHAOYANGYIYUAN = 2;
-	private static final int TIANTANYIYUAN  = 3;
-	private static final int ZHONGLIUYIYUAN = 4;
-	private LinearLayout titleLinearLayout;
-	private View view;
+	//widget
+	private LayoutInflater m_layoutInflater = null;
+	private View m_view;
+	private GridLayout   m_gridLayout = null;
+	private LinearLayout m_headerBgLL = null;
+	private LinearLayout m_bottomBgLL = null;
+	private ArrayList<Button>       m_buttons  = new ArrayList<>();
 
-	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-	}
+	//logical
+	private HandleClickEventHospitalFragment m_handleClickEventHospitalFragment = null;
+	private EventBus                          m_eventBus                          = EventBus.getDefault();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-
-		view = inflater.inflate(R.layout.fragment_select_hospital, container, false);
-		view.setOnClickListener(this);
-
-		btn1 = (Button)view.findViewById(R.id.all_item);
-		btn2 = (Button)view.findViewById(R.id.item_1);
-		btn3 = (Button)view.findViewById(R.id.item_2);
-		btn4 = (Button)view.findViewById(R.id.item_3);
-
-		btn1.setOnClickListener(this);
-		btn2.setOnClickListener(this);
-		btn3.setOnClickListener(this);
-		btn4.setOnClickListener(this);
-
-		titleLinearLayout = (LinearLayout)view.findViewById(R.id.title_linear_layout);
-		titleLinearLayout.setBackgroundResource(getResources().getColor(R.color.all_null));
-
-		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)titleLinearLayout.getLayoutParams(); // 取控件mGrid当前的布局参数
-		final float               scale        = getActivity().getResources().getDisplayMetrics().density;
-		linearParams.height = (int)(317 * scale + 0.5f);// 当控件的高强制设成50象素
-		titleLinearLayout.setLayoutParams(linearParams); // 使设置好的布局参数应用到控件myGrid
-
-		ApoitNursingActivity activity = (ApoitNursingActivity)getActivity();
-		switch (activity.getSelected_hospital())
-		{
-			case All_YIYUAN:
-				btn1.setSelected(true);
-				break;
-			case CHAOYANGYIYUAN:
-				btn2.setSelected(true);
-				break;
-			case TIANTANYIYUAN:
-				btn3.setSelected(true);
-				break;
-			case ZHONGLIUYIYUAN:
-				btn4.setSelected(true);
-				break;
-		}
-
-		return view;
+		m_layoutInflater = inflater;
+		m_view = m_layoutInflater.inflate(R.layout.fragment_select_hospital, container, false);
+		init();
+		initContent();
+		initListener();
+		return m_view;
 	}
+
 
 	@Override
-	public void onClick(View v)
+	public boolean onTouch(View v, MotionEvent event)
 	{
-		ApoitNursingActivity activity = (ApoitNursingActivity)getActivity();
-		switch (v.getId())
+		return true;
+	}
+
+	private void init()
+	{
+		m_gridLayout = (GridLayout)m_view.findViewById(R.id.widget_region_gl);
+		m_headerBgLL = (LinearLayout)m_view.findViewById(R.id.header_bg_ll);
+		m_bottomBgLL = (LinearLayout)m_view.findViewById(R.id.bottom_bg_ll);
+		m_handleClickEventHospitalFragment = new HandleClickEventHospitalFragment(getActivity());
+	}
+
+	private void initContent()
+	{
+		if (m_layoutInflater == null)
+			return;
+
+		ArrayList<DHospital> hospitals = DHospitalList.GetInstance().getHospitals();
+
+		//01. 没有医院列表，则重新发送
+		if (hospitals.isEmpty())
 		{
-			case R.id.all_item:
-				btn1.setSelected(true);
-				getFragmentManager().popBackStack();
-				activity.getHospitalTv().setText(btn1.getText());
-				activity.setSelected_hospital(All_YIYUAN);
-				break;
-			case R.id.item_1:
-				btn2.setSelected(true);
-				getFragmentManager().popBackStack();
-				activity.getHospitalTv().setText(btn2.getText());
-				activity.setSelected_hospital(TIANTANYIYUAN);
-				break;
-			case R.id.item_2:
-				btn3.setSelected(true);
-				getFragmentManager().popBackStack();
-				activity.getHospitalTv().setText(btn3.getText());
-				activity.setSelected_hospital(ZHONGLIUYIYUAN);
-				break;
-			case R.id.item_3:
-				btn4.setSelected(true);
-				getFragmentManager().popBackStack();
-				activity.getHospitalTv().setText(btn4.getText());
-				activity.setSelected_hospital(ZHONGLIUYIYUAN);
-				break;
-			default:
-				break;
+			ReqHospitalListEvent hospitalListEvent = new ReqHospitalListEvent();
+			m_eventBus.post(hospitalListEvent);
+			return;
 		}
 
-		//蒙版点击一下之后消失的处理
-		FragmentManager      fgManager           = getFragmentManager();
-		android.app.Fragment fragment            = fgManager.findFragmentByTag(SelectHospitalFragment.class.getName());
-		FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
-		fragmentTransaction.remove(fragment);
-		fragmentTransaction.commit();
+		//02. 有医院列表，则在本地动态显示。
+		int size = hospitals.size();
+		int iMaxColumn = UIConfig.SELECT_HOSPITAL_FRAGMENT_MAX_COLUMN;
+		int iMaxRow = (size + iMaxColumn - 1)/iMaxColumn;
+		int indexHospital = 0;
+		int indexBtn = 0;
+		DHospital dHospital = null;
+		String tag = null;
+		for (int indexRow = 0; indexRow < iMaxRow; ++indexRow)
+		{
+			for (int indexColumn = 0; indexColumn < iMaxColumn; ++indexColumn)
+			{
+				indexBtn = indexRow * iMaxColumn + indexColumn;
+				//因为第一个为全部，所以-1
+				indexHospital = indexBtn - 1;
+				if (indexHospital >= size)
+				{
+					return;
+				}
+
+				View view = m_layoutInflater.inflate(R.layout.fragment_select_hospital_item, m_gridLayout, false);
+				tag = String.valueOf(indexBtn);
+				Button btn = (Button)view.findViewById(R.id.item_id);
+				btn.setTag(tag);
+				if (indexRow == 0 && indexColumn == 0)
+				{
+					btn.setText(getActivity().getResources().getString(R.string.content_all));
+				}
+				else
+				{
+					dHospital = hospitals.get(indexHospital);
+					if (dHospital == null)
+						return;
+
+					String name = dHospital.getName();
+					btn.setText(name);
+				}
+				m_buttons.add(btn);
+
+				//设置它的行和列
+				GridLayout.Spec rowSpec = GridLayout.spec(indexRow);
+				GridLayout.Spec columnSpec=GridLayout.spec(indexColumn);
+				GridLayout.LayoutParams params=new GridLayout.LayoutParams(rowSpec,columnSpec);
+				params.setGravity(Gravity.FILL);
+				m_gridLayout.addView(view, params);
+			}
+		}
+		return;
+
 	}
+
+	private void initListener()
+	{
+		for (Button btn : m_buttons)
+		{
+			btn.setOnClickListener(m_handleClickEventHospitalFragment);
+		}
+		m_headerBgLL.setOnClickListener(m_handleClickEventHospitalFragment);
+		m_bottomBgLL.setOnClickListener(m_handleClickEventHospitalFragment);
+		//防止点击穿透
+		m_view.setOnTouchListener(this);
+	}
+
+	/**
+	 * EventBus handler
+	 */
+	public void onEventMainThread(FinishedHospitalListEvent event)
+	{
+		initContent();
+		return;
+	}
+
 }
