@@ -23,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonObjectRequestForm;
+import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
 import com.taixinkanghu.app.model.net.event.ReqHospitalListEvent;
 import com.taixinkanghu.app.model.net.event.ReqNurseBasicListEvent;
@@ -30,11 +31,14 @@ import com.taixinkanghu.app.model.net.event.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.model.net.event.ReqRegisterEvent;
 import com.taixinkanghu.app.model.net.event.ReqShoppingBasicListEvent;
 import com.taixinkanghu.app.model.net.exception.BaseErrorListener;
+import com.taixinkanghu.app.model.net.handler.ResApoitNursingHandler;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseBasicListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
 import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
 import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
+import com.taixinkanghu.app.ui.appointment_nursing.DApoitNursing;
+import com.taixinkanghu.app.ui.appointment_nursing.ReqApoitNursingEvent;
 import com.taixinkanghu.net.BaseHttp;
 import com.taixinkanghu.third.party.sms.SmsConfig;
 
@@ -54,9 +58,11 @@ public class NetService extends Service
 	private ResNurseBasicListHandler    m_resNurseBasicListHandler    = null;
 	private ResNurseSeniorListHandler   m_resNurseSeniorListHandler   = null;
 	private ResShoppingBasicListHandler m_resShoppingBasicListHandler = null;
-	private ResRegisterHandler m_resRegisterHandler = null;
-	private RequestQueue                m_requestQueue                = null;
-	private JsonObjectRequest           m_jsonObjectRequest           = null;
+	private ResRegisterHandler          m_resRegisterHandler          = null;
+	private ResApoitNursingHandler      m_resApoitNursingHandler      = null;
+
+	private RequestQueue      m_requestQueue      = null;
+	private JsonObjectRequest m_jsonObjectRequest = null;
 
 	@Override
 	public void onCreate()
@@ -70,15 +76,12 @@ public class NetService extends Service
 	}
 
 
-
-
 	@Override
 	public void onDestroy()
 	{
 		cleanupModule();
 		super.onDestroy();
 	}
-
 
 
 	@Override
@@ -111,23 +114,26 @@ public class NetService extends Service
 		m_resNurseSeniorListHandler = new ResNurseSeniorListHandler();
 		m_resShoppingBasicListHandler = new ResShoppingBasicListHandler();
 		m_resRegisterHandler = new ResRegisterHandler();
+		m_resApoitNursingHandler = new ResApoitNursingHandler();
 		m_requestQueue = BaseHttp.getInstance().getRequestQueue();
 	}
+
 	private void initModule()
 	{
 		m_eventBus.register(this);
 	}
+
 	private void initEvent()
 	{
-		ReqHospitalListEvent hospitalListEvent = new ReqHospitalListEvent();
-		ReqNurseBasicListEvent nurseBasicList = new ReqNurseBasicListEvent();
-		ReqNurseSeniorListEvent nurseSeniorList = new ReqNurseSeniorListEvent();
+		ReqHospitalListEvent      hospitalListEvent = new ReqHospitalListEvent();
+		ReqNurseBasicListEvent    nurseBasicList    = new ReqNurseBasicListEvent();
+		ReqNurseSeniorListEvent   nurseSeniorList   = new ReqNurseSeniorListEvent();
 		ReqShoppingBasicListEvent shoppingBasicList = new ReqShoppingBasicListEvent();
 		try
 		{
 			m_eventBus.post(hospitalListEvent);
-//			m_eventBus.post(nurseBasicList);
-//			m_eventBus.post(nurseSeniorList);
+			m_eventBus.post(nurseBasicList);
+			//			m_eventBus.post(nurseSeniorList);
 			m_eventBus.post(shoppingBasicList);
 		}
 		catch (EventBusException e)
@@ -158,7 +164,7 @@ public class NetService extends Service
 	public void onEventAsync(ReqNurseBasicListEvent event)
 	{
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
-														NetConfig.s_hospitalListAddress,
+														NetConfig.s_nurseBasicsListAddress,
 														null,
 														m_resNurseBasicListHandler,
 														m_baseErrorListener);
@@ -169,7 +175,7 @@ public class NetService extends Service
 	public void onEventAsync(ReqNurseSeniorListEvent event)
 	{
 		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
-														NetConfig.s_nurseBasicsListAddress,
+														NetConfig.s_nurseSeniorListAddress,
 														null,
 														m_resNurseSeniorListHandler,
 														m_baseErrorListener);
@@ -212,4 +218,51 @@ public class NetService extends Service
 
 		m_requestQueue.add(myReq);
 	}
+
+	//预约陪护
+	public void onEventAsync(ReqApoitNursingEvent event)
+	{
+		String name = DApoitNursing.GetInstance().getName();
+		String phone = DApoitNursing.GetInstance().getPhone();
+		int sexTypeID = DApoitNursing.GetInstance().getSexType().getId();
+		String age = DApoitNursing.GetInstance().getAgeRage().getName();
+		String weight = DApoitNursing.GetInstance().getWeightRage().getName();
+		int hospitalID = 1;
+		String departmentName = DApoitNursing.GetInstance().getDepartmenetName();
+		int patientStateID = DApoitNursing.GetInstance().getPatientState().getId();
+
+		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getdNursingDate();
+		if (dNursingDate == null)
+			return;
+
+		String schedualAll = dNursingDate.getSchedualAllDescription();
+		String schedualDay = dNursingDate.getSchedualDayDescription();
+		String schedualNight = dNursingDate.getSchedualNightDescription();
+
+		HashMap<String, String> registerData = new HashMap<String, String>();
+		registerData.put(DataConfig.NAME, name);
+		registerData.put(DataConfig.PHONE_NUM, phone);
+		registerData.put(DataConfig.SEX_ID, String.valueOf(sexTypeID));
+		registerData.put(DataConfig.AGE, age);
+		registerData.put(DataConfig.WEIGHT, weight);
+		registerData.put(DataConfig.HOSPITAL_ID, String.valueOf(hospitalID));
+		registerData.put(DataConfig.DEPARTMENT_NAME, departmentName);
+		registerData.put(DataConfig.PATIENT_STATE_ID, String.valueOf(patientStateID));
+
+		registerData.put(DataConfig.SCHEDULE_ALL, schedualAll);
+		registerData.put(DataConfig.SCHEDULE_DAY, schedualDay);
+		registerData.put(DataConfig.SCHEDULE_NIGHT, schedualNight);
+		//过滤条件
+		registerData.put(DataConfig.STRICT, String.valueOf(0));
+
+		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
+																NetConfig.s_appointmentNursingAddress,
+																registerData,
+																m_resApoitNursingHandler,
+																m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
+	}
+
+
 }
