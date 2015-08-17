@@ -33,6 +33,7 @@ public class DNurseBasicsList
 
 	public boolean serialization(JSONObject response) throws JSONException
 	{
+		//01. clear up
 		if (m_nurseBasicses != null && m_nurseBasicses.isEmpty() == false)
 		{
 			m_nurseBasicses.clear();
@@ -53,7 +54,7 @@ public class DNurseBasicsList
 		if (jsonArray == null)
 		{
 			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
-			throw new JsonSerializationException(errMsg + ":" + "nurse_basics_list");
+			throw new JsonSerializationException(errMsg + ":" + DataConfig.NURSE_BASICS_LIST);
 		}
 
 		JSONObject jsonObject = null;
@@ -66,8 +67,8 @@ public class DNurseBasicsList
 
 			m_nurseBasicses.add(dNurseBasics);
 		}
-
 		return  true;
+
 	}
 
 	public ArrayList<DNurseBasics> getNurseBasicses()
