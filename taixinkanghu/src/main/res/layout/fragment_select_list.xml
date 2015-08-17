@@ -36,17 +36,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="请选择医院"
                     android:textColor="@color/text_color_gray"
-                    android:textSize="14.0sp" />
+                    android:textSize="14.0sp" android:id="@+id/content_tips"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.0"
-                    android:text="更多医院敬请期待"
                     android:textColor="@color/text_color_gray"
-                    android:textSize="14.0sp" />
+                    android:textSize="14.0sp" android:id="@+id/more_content_tips"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
