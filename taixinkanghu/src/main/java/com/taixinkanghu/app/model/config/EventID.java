@@ -21,12 +21,19 @@ public class EventID
 	 */
 	public final static int NETWORK_DEFAULT     = 100;
 
+	//医院列表
 	public final static int QUEST_HOSPITAL_LIST = NETWORK_DEFAULT + 1;
 	public final static int FINISHED_HOSPITAL_LIST = QUEST_HOSPITAL_LIST + 1;
 
-	public final static int QUEST_NURSE_BASIC_LIST = FINISHED_HOSPITAL_LIST + 1;
+	//科室列表
+	public final static int QUEST_DEPARTMENT_LIST = FINISHED_HOSPITAL_LIST + 1;
+	public final static int FINISHED_DEPARTMENT_LIST = QUEST_DEPARTMENT_LIST + 1;
+
+	//护工基础信息列表
+	public final static int QUEST_NURSE_BASIC_LIST = FINISHED_DEPARTMENT_LIST + 1;
 	public final static int FINISHED_NURSE_BASIC_LIST = QUEST_NURSE_BASIC_LIST + 1;
 
+	//护工高阶信息列表
 	public final static int QUEST_NURSE_SENIOR_LIST = FINISHED_NURSE_BASIC_LIST + 1;
 	public final static int FINISHED_NURSE_SENIOR_LIST = QUEST_NURSE_SENIOR_LIST + 1;
 
