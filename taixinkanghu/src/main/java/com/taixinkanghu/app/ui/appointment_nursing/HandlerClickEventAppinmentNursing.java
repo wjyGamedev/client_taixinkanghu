@@ -78,7 +78,7 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				m_eventBus.post(reqApoitNursingEvent);
 				//0302. nurse senior list
 				ReqNurseSeniorListEvent reqNurseSeniorListEvent = new ReqNurseSeniorListEvent();
-				m_eventBus.post(reqApoitNursingEvent);
+				m_eventBus.post(reqNurseSeniorListEvent);
 
 				//04. 跳转到护理员列表界面
 				m_context.startActivity(new Intent(m_context, SelectNurseActivity.class));
