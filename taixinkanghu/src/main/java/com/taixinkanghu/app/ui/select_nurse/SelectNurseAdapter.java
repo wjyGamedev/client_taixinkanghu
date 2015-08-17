@@ -29,6 +29,7 @@ import com.taixinkanghu.app.model.data.DNurseBasicsList;
 import com.taixinkanghu.app.model.data.DNurseContainer;
 import com.taixinkanghu.app.ui.adapter.IBaseAdapter;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,7 @@ public class SelectNurseAdapter extends IBaseAdapter
 {
 	private DNurseBasicsList m_nurseBasicsList = null;
 	private LayoutInflater   m_layoutInflater  = null;
+	private ArrayList<DNurseBasics> m_nurseBasics = new ArrayList<DNurseBasics>();
 
 	@Override
 	public int getCount()
@@ -56,7 +58,15 @@ public class SelectNurseAdapter extends IBaseAdapter
 	@Override
 	public long getItemId(int position)
 	{
-		return 0;
+		if (position >= m_nurseBasics.size())
+		{
+			RegisterDialog.GetInstance().setMsg("position >= m_nurseBasics.size()[position:="+position+"][m_nurseBasics.size():="+m_nurseBasics.size()+"]");
+			RegisterDialog.GetInstance().show();
+			return 0;
+		}
+
+		DNurseBasics tmpNurseBasics = m_nurseBasics.get(position);
+		return tmpNurseBasics.getID();
 	}
 
 	@Override
@@ -78,7 +88,8 @@ public class SelectNurseAdapter extends IBaseAdapter
 			viewHolder = (ViewHolder)convertView.getTag();
 		}
 
-		viewHolder.initContent(m_nurseBasicsList, position);
+		m_nurseBasics = m_nurseBasicsList.getNurseBasicses();
+		viewHolder.initContent(m_nurseBasics, position);
 		return convertView;
 	}
 
@@ -90,9 +101,10 @@ public class SelectNurseAdapter extends IBaseAdapter
 
 	private void init()
 	{
-		m_nurseBasicsList = DNurseContainer.GetInstance().GetNurseBaisicsList();
+		m_nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
 		m_layoutInflater = LayoutInflater.from(m_context);
 	}
+
 }
 
 final class ViewHolder {
@@ -106,8 +118,6 @@ final class ViewHolder {
 	private TextView        m_tvNursingLevel;    //护理级别
 	private TextView        m_tvServiceChargePerDay; //价格
 	private TextView        m_tvServiceStatus; //服务状态
-
-	private ArrayList<DNurseBasics> m_nurseBasics = new ArrayList<DNurseBasics>();
 
 	public void initListViewItem(View view)
 	{
@@ -123,22 +133,19 @@ final class ViewHolder {
 		m_tvServiceStatus = (TextView)view.findViewById(R.id.inService);
 	}
 
-	public void initContent(DNurseBasicsList nurseBasicsList, int position)
+	public void initContent(ArrayList<DNurseBasics> m_nurseBasics, int position)
 	{
 		if (m_nurseBasics == null || m_nurseBasics.isEmpty())
 		{
-			m_nurseBasics = nurseBasicsList.getNurseBasicses();
-		}
-
-		if (m_nurseBasics == null)
-		{
-			//TODO:error
+			RegisterDialog.GetInstance().setMsg("m_nurseBasics == null");
+			RegisterDialog.GetInstance().show();
 			return;
 		}
 
 		if (position >= m_nurseBasics.size())
 		{
-			//TODO:error
+			RegisterDialog.GetInstance().setMsg("position >= m_nurseBasics.size()[position:="+position+"][m_nurseBasics.size():="+m_nurseBasics.size()+"]");
+			RegisterDialog.GetInstance().show();
 			return;
 		}
 
@@ -149,7 +156,7 @@ final class ViewHolder {
 		m_faceImage.setImageResource(iImageID);
 		m_tvName.setText(tmpNurseBasics.getName());
 		m_starLevel.setRating(tmpNurseBasics.getStarLevel());
-		m_tvAge.setText(tmpNurseBasics.getAge().toString());
+		m_tvAge.setText(String.valueOf(tmpNurseBasics.getAge()));
 		m_tvHomeTown.setText(tmpNurseBasics.getHomeTown());
 		m_tvNursingExp.setText(tmpNurseBasics.getNursingExp());
 		m_tvNursingLevel.setText(tmpNurseBasics.getNursingLevel());
