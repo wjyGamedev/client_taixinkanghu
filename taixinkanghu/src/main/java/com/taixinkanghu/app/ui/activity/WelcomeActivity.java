@@ -21,6 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.data.DGlobal;
 import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 
@@ -43,6 +44,8 @@ public class WelcomeActivity extends Activity
 	{
 		super.onStart();
 		m_eventBus.post(new ReqHospitalListEvent());
+
+		DGlobal.GetInstance().setContext(this);
 	}
 
 	@Override
@@ -54,29 +57,39 @@ public class WelcomeActivity extends Activity
 	@Override
 	protected void onResume()
 	{
+		DGlobal.GetInstance().setContext(this);
 		super.onResume();
 	}
 
-	private Handler  mHandler   = new Handler()
+	@Override
+	protected void onStop()
+	{
+
+		super.onStop();
+	}
+
+	private Handler mHandler = new Handler()
 	{
 		@Override
 		public void handleMessage(Message msg)
 		{
 			switch (msg.what)
 			{
-			case GO_MAIN:
-				goMain();
-				break;
+				case GO_MAIN:
+					goMain();
+					break;
 			}
 		}
 	};
 
-	private void goMain(){
+	private void goMain()
+	{
 		Intent i = new Intent(this, MainActivity.class);
 		startActivity(i);
 		finish();
 	}
-	private EventBus m_eventBus = EventBus.getDefault();
-	private static final int GO_MAIN = 1000;
-	private static final int GO_TIME = 3000;
+
+	private              EventBus m_eventBus = EventBus.getDefault();
+	private static final int      GO_MAIN    = 1000;
+	private static final int      GO_TIME    = 3000;
 }
