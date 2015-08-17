@@ -14,11 +14,6 @@
 
 package com.taixinkanghu.app.model.data;
 
-import android.util.Log;
-
-import com.taixinkanghu.app.model.config.DataConfig;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,47 +22,35 @@ import java.util.HashMap;
 
 public class DScheduleList
 {
-	public boolean serialization(JSONObject response)
+	private int                                  m_ID             = 0;                            //ID
+	private HashMap<Integer, ArrayList<Integer>> m_timeListHashMap = new HashMap<Integer, ArrayList<Integer>>();    //近日服务时间安排
+
+	public boolean serialization(JSONObject response) throws JSONException
 	{
-		JSONArray jsonArray = null;
-		try
-		{
-			jsonArray = response.getJSONArray(DataConfig.NURSE_SHEDULE_LIST);
-
-			if (jsonArray == null)
-				return false;
-
-			JSONObject jsonObject = null;
-			DNurseBasics dNurseBasics = null;
-			for (int index = 0; index < jsonArray.length(); index++)
-			{
-			}
-
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return false;
-		}
 		return true;
+
+//		JSONArray jsonArray = response.getJSONArray(DataConfig.NURSE_SHEDULE_LIST);
+//		if (jsonArray == null)
+//			return false;
+//
+//		JSONObject jsonObject = null;
+//		DNurseBasics dNurseBasics = null;
+//		for (int index = 0; index < jsonArray.length(); index++)
+//		{
+//		}
+//		return true;
 	}
 
 	public void init(int iID)
 	{
-		m_iID = iID;
+		m_ID = iID;
 	}
 
-	public int getiID()
+	public int getID()
 	{
-		return m_iID;
+		return m_ID;
 	}
 
-	public HashMap<Integer, ArrayList<Integer>> getTimeListHashMap()
-	{
-		return m_timeListHashMap;
-	}
 
-	private int                                  m_iID             = 0;                            //ID
-	private HashMap<Integer, ArrayList<Integer>> m_timeListHashMap = new HashMap<Integer, ArrayList<Integer>>();    //近日服务时间安排
+
 }
