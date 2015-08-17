@@ -94,7 +94,7 @@
 			android:label="NurseInfoActivity"/>
 
 		<activity
-			android:name=".app.ui.nurs_order_confirm_page.OrderConfirmActivity"
+			android:name=".app.ui.nurse_order_confirm_page.OrderConfirmActivity"
 			android:label="OrderConfirmActivity"/>
 		<activity
 			android:name=".app.ui.activity.ReviewsActivity"
