@@ -25,6 +25,9 @@ import com.taixinkanghu.app.model.storage.OwnerPreferences;
 import com.taixinkanghu.app.model.storage.StorageWrapper;
 import com.taixinkanghu.app.ui.bottom.BottomCommon;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
+
+import org.json.JSONException;
 
 import de.greenrobot.event.EventBus;
 
@@ -141,8 +144,15 @@ public class SettingActivity extends Activity
 	{
 		//0201. 注销登录数据
 		OwnerPreferences setting = StorageWrapper.GetInstance().getOwnerPreferences();
-		if (!setting.logout())
-			return;
+		try
+		{
+			setting.logout();
+		}
+		catch (JSONException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString(), this);
+			RegisterDialog.GetInstance().show();
+		}
 
 		//0202. 设置UI界面
 		logoutSurface();

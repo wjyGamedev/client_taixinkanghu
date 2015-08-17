@@ -31,6 +31,8 @@ public class TxkhExceptionCode
 
 	public static final Integer REX_UI = 50000;
 
+	public static final Integer REX_LOGICAL = 60000;
+
 	/**
 	 * exception code
 	 */

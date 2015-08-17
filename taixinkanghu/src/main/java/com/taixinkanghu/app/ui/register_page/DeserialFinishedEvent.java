@@ -15,26 +15,13 @@
 package com.taixinkanghu.app.ui.register_page;
 
 import com.taixinkanghu.app.model.config.EventID;
-import com.taixinkanghu.app.model.config.NetConfig;
 import com.taixinkanghu.app.model.event.ui.UIEvent;
 
 public class DeserialFinishedEvent extends UIEvent
 {
-	private boolean m_serialFlag = false;
-
 	public DeserialFinishedEvent()
 	{
 		super(EventID.UI_SMS_DESERIALIZATION_FINISHED);
-	}
-
-	public void init(boolean serialFlag)
-	{
-		m_serialFlag = serialFlag;
-	}
-
-	public boolean isSerialFlag()
-	{
-		return m_serialFlag;
 	}
 
 }

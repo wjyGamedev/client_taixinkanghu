@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.data.DGlobal;
 import com.taixinkanghu.app.model.event.net.recv.FinishedNurseBasicListEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 
@@ -49,6 +50,24 @@ public class SelectNurseActivity  extends Activity
 
 		init();
 		initContent();
+		initGlobalData();
+	}
+
+	private void initGlobalData()
+	{
+		DGlobal.GetInstance().setContext(this);
+	}
+
+	@Override
+	protected void onStop()
+	{
+		clearupGlobalData();
+		super.onStop();
+	}
+
+	private void clearupGlobalData()
+	{
+		DGlobal.GetInstance().setContext(null);
 	}
 
 	@Override

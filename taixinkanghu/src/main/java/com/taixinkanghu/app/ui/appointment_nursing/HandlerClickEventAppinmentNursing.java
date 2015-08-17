@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.event.net.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.select_date.SelectDateActivity;
 import com.taixinkanghu.app.ui.select_date.SelectDateFragment;
@@ -71,8 +72,12 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				}
 
 				//03. 发送消息到服务器
+				//0301. nurse basic list
 				ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
 				reqApoitNursingEvent.init(m_context);
+				m_eventBus.post(reqApoitNursingEvent);
+				//0302. nurse senior list
+				ReqNurseSeniorListEvent reqNurseSeniorListEvent = new ReqNurseSeniorListEvent();
 				m_eventBus.post(reqApoitNursingEvent);
 
 				//04. 跳转到护理员列表界面

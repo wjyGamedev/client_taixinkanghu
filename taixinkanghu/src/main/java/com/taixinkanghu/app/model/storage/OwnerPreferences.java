@@ -16,10 +16,11 @@ package com.taixinkanghu.app.model.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
-import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.model.event.net.config.RegisterConfig;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.logical.OwnerPreferencesException;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,82 +47,76 @@ public class OwnerPreferences extends BaseStorage
 
 	}
 
-	public boolean serialization(JSONObject jsonObject)
+	public boolean serialization(JSONObject jsonObject) throws JSONException
 	{
-		try
-		{
-			String id = jsonObject.getString(DataConfig.ID_KEY);
-			String code = jsonObject.getString(DataConfig.CODE_KEY);
-			String mobile = jsonObject.getString(DataConfig.MOBILE_KEY);
-			String nick = jsonObject.getString(DataConfig.NICK_KEY);
+		String id = jsonObject.getString(RegisterConfig.ID);
+		String code = jsonObject.getString(RegisterConfig.CODE);
+		String mobile = jsonObject.getString(RegisterConfig.MOBILE);
+		String nick = jsonObject.getString(RegisterConfig.NICK);
 
-			m_editor.putString(DataConfig.ID_KEY, id);
-			m_editor.putString(DataConfig.CODE_KEY, code);
-			m_editor.putString(DataConfig.MOBILE_KEY, mobile);
-			m_editor.putString(DataConfig.NICK_KEY, nick);
-			m_editor.commit();
-
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return false;
-		}
-
+		m_editor.putString(RegisterConfig.ID, id);
+		m_editor.putString(RegisterConfig.CODE, code);
+		m_editor.putString(RegisterConfig.MOBILE, mobile);
+		m_editor.putString(RegisterConfig.NICK, nick);
+		m_editor.commit();
 		return true;
 	}
 
 	public boolean tryLogin()
 	{
-		String id = m_setting.getString(DataConfig.ID_KEY, "");
-		String code = m_setting.getString(DataConfig.CODE_KEY, "");
-		String mobile = m_setting.getString(DataConfig.MOBILE_KEY, "");
-		String nick = m_setting.getString(DataConfig.NICK_KEY, "");
+		String id = m_setting.getString(RegisterConfig.ID, "");
+		String code = m_setting.getString(RegisterConfig.CODE, "");
+		String mobile = m_setting.getString(RegisterConfig.MOBILE, "");
+		String nick = m_setting.getString(RegisterConfig.NICK, "");
 
 		HashMap<String, String> data = new HashMap<String, String>();
-		data.put(DataConfig.ID_KEY, id);
-		data.put(DataConfig.CODE_KEY, code);
-		data.put(DataConfig.MOBILE_KEY, mobile);
-		data.put(DataConfig.NICK_KEY, nick);
+		data.put(RegisterConfig.ID, id);
+		data.put(RegisterConfig.CODE, code);
+		data.put(RegisterConfig.MOBILE, mobile);
+		data.put(RegisterConfig.NICK, nick);
 
 		JSONObject jsonObject = new JSONObject(data);
-		boolean   bReturnFlag = DAccount.GetInstance().serialFromStorage(jsonObject);
-		if (!bReturnFlag)
+
+		try
 		{
-			//TODO:ERROR
+			DAccount.GetInstance().serialFromStorage(jsonObject);
+		}
+		catch (JSONException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString());
+			RegisterDialog.GetInstance().show();
 			return false;
 		}
 		return true;
 
 	}
-	public boolean logout()
+	public boolean logout() throws JSONException
 	{
 		//01. 有效性检测
 		if (m_editor == null)
-			return false;
+		{
+			throw new OwnerPreferencesException("m_editor == null");
+		}
 
 		//02. prefer set null
-		m_editor.putString(DataConfig.ID_KEY, "");
-		m_editor.putString(DataConfig.CODE_KEY, "");
-		m_editor.putString(DataConfig.MOBILE_KEY, "");
-		m_editor.putString(DataConfig.NICK_KEY, "");
+		m_editor.putString(RegisterConfig.ID, "");
+		m_editor.putString(RegisterConfig.CODE, "");
+		m_editor.putString(RegisterConfig.MOBILE, "");
+		m_editor.putString(RegisterConfig.NICK, "");
 		m_editor.commit();
 
 		//03. 更新DAccount
 		HashMap<String, String> data = new HashMap<String, String>();
-		data.put(DataConfig.ID_KEY, "");
-		data.put(DataConfig.CODE_KEY, "");
-		data.put(DataConfig.MOBILE_KEY, "");
-		data.put(DataConfig.NICK_KEY, "");
+		data.put(RegisterConfig.ID, "");
+		data.put(RegisterConfig.CODE, "");
+		data.put(RegisterConfig.MOBILE, "");
+		data.put(RegisterConfig.NICK, "");
 
 		JSONObject jsonObject = new JSONObject(data);
-		boolean   bReturnFlag = DAccount.GetInstance().serialFromStorage(jsonObject);
-		if (!bReturnFlag)
-		{
-			//TODO:ERROR
-		}
+		DAccount.GetInstance().serialFromStorage(jsonObject);
+
 		return true;
+
 	}
 
 }

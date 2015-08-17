@@ -29,6 +29,7 @@ import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.util.logcal.LogicalUtil;
 
@@ -55,7 +56,7 @@ public class SelectDateActivity extends Activity
 	private Date                          m_endDate                     = null;
 	private ArrayList<ArrayList<Date>>    m_schedularDateListAll        = new ArrayList<>();
 	private ArrayList<ArrayList<Integer>> m_schedularTypeListAll        = new ArrayList<>();
-	private SimpleDateFormat              m_simpleDateFormat            = new SimpleDateFormat(DataConfig.PATTERN_DATE_MONTH_DAY);
+	private SimpleDateFormat              m_simpleDateFormat            = new SimpleDateFormat(DateConfig.PATTERN_DATE_MONTH_DAY);
 	private HandleOnMonthChangedEvent     m_handleOnMonthChangedEvent   = new HandleOnMonthChangedEvent();
 	private SelectorBothDecorator         m_selectorBothDecorator       = new SelectorBothDecorator();
 	private SelectorDayDecorator          m_selectorDayDecorator        = new SelectorDayDecorator();

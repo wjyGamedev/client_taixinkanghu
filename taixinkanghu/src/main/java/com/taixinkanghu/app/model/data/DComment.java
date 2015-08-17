@@ -9,32 +9,10 @@
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/7/19		WangJY		1.0.0		create
+ * 2015/8/17		WangJY		1.0.0		create
  */
 
 package com.taixinkanghu.app.model.data;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class DScheduleList
-{
-	private int m_ID = 0;	//ID
-
-	public boolean serialization(JSONObject response) throws JSONException
-	{
-		return true;
-	}
-
-	public void init(int iID)
-	{
-		m_ID = iID;
-	}
-
-	public int getID()
-	{
-		return m_ID;
-	}
-
-
-}
+public class DComment
+{ }

@@ -9,13 +9,13 @@
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/7/19		WangJY		1.0.0		create
+ * 2015/8/17		WangJY		1.0.0		create
  */
 
 package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.event.net.config.DepartmentListConfig;
 import com.taixinkanghu.app.model.event.net.config.ProtocalConfig;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.util.android.AppUtil;
@@ -27,17 +27,28 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class DNurseBasicsList
+public class DDepartmentList
 {
-	private int                     m_Status        = ProtocalConfig.HTTP_OK;
-	private ArrayList<DNurseBasics> m_nurseBasicses = new ArrayList<>();
+	private static DDepartmentList s_departmentList = new DDepartmentList();
+
+	private int                  m_Status    = ProtocalConfig.HTTP_OK;
+	private ArrayList<DDepartment> m_departments = new ArrayList<>();
+
+	private DDepartmentList()
+	{
+	}
+
+	public static DDepartmentList GetInstance()
+	{
+		return s_departmentList;
+	}
 
 	public synchronized boolean serialization(JSONObject response) throws JSONException
 	{
-		//01. clear up
-		if (m_nurseBasicses != null && m_nurseBasicses.isEmpty() == false)
+		//01. 清空原来容器
+		if (m_departments != null && m_departments.size() != 0)
 		{
-			m_nurseBasicses.clear();
+			m_departments.clear();
 		}
 
 		//02. http is ok
@@ -50,35 +61,37 @@ public class DNurseBasicsList
 		}
 
 		//03. 序列化json
-		JSONArray jsonArray = response.getJSONArray(NurseBasicListConfig.LIST);
-
+		JSONArray jsonArray = response.getJSONArray(DepartmentListConfig.LIST);
 		if (jsonArray == null)
 		{
 			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
-			throw new JsonSerializationException(errMsg + ":" + NurseBasicListConfig.LIST);
+			throw new JsonSerializationException(errMsg + ":" + DepartmentListConfig.LIST);
 		}
 
-		JSONObject   jsonObject   = null;
-		DNurseBasics dNurseBasics = null;
+		JSONObject jsonObject = null;
+		DDepartment department = null;
 		for (int index = 0; index < jsonArray.length(); index++)
 		{
-			jsonObject = (JSONObject)jsonArray.get(index);
-			dNurseBasics = new DNurseBasics();
-			dNurseBasics.serialization(jsonObject);
+			jsonObject=(JSONObject)jsonArray.get(index);
+			department = new DDepartment();
+			department.serialization(jsonObject);
 
-			m_nurseBasicses.add(dNurseBasics);
+			m_departments.add(department);
 		}
 		return  true;
 
 	}
 
-	public synchronized ArrayList<DNurseBasics> getNurseBasicses()
-	{
-		return m_nurseBasicses;
-	}
 
 	public synchronized int getStatus()
 	{
 		return m_Status;
 	}
+
+	public synchronized ArrayList<DDepartment> getDepartments()
+	{
+		return m_departments;
+	}
 }
+
+

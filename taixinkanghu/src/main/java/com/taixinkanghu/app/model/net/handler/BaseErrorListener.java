@@ -15,11 +15,10 @@
 package com.taixinkanghu.app.model.net.handler;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.net.IErrorListener;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class BaseErrorListener extends IErrorListener
 {
@@ -31,8 +30,8 @@ public class BaseErrorListener extends IErrorListener
 	@Override
 	public void onErrorResponse(VolleyError error)
 	{
-		//TODO:error
-		Toast.makeText(m_context, R.string.error_disconnect, Toast.LENGTH_SHORT).show();
+		RegisterDialog.GetInstance().setMsg(error.toString());
+		RegisterDialog.GetInstance().show();
 	}
 
 	private Context m_context = null;

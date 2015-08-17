@@ -19,14 +19,16 @@ import org.json.JSONObject;
 
 public class DNurseContainer
 {
+	/**
+	 * 数据区
+	 */
+	private static DNurseContainer          s_dNurseList       = new DNurseContainer();
+
+	private        DNurseBasicsList         m_dNurseBasicsList = new DNurseBasicsList();
+	private        DNurseSeniorList         m_dNurseSeniorList = new DNurseSeniorList();
+
 	private DNurseContainer()
 	{
-		initDataTest();
-	}
-
-	private void initDataTest()
-	{
-
 	}
 
 	public static DNurseContainer GetInstance()
@@ -39,7 +41,7 @@ public class DNurseContainer
 		return m_dNurseBasicsList.serialization(response);
 	}
 
-	public boolean serialSeniorList(JSONObject response)
+	public boolean serialSeniorList(JSONObject response) throws JSONException
 	{
 		return m_dNurseSeniorList.serialization(response);
 	}
@@ -48,14 +50,5 @@ public class DNurseContainer
 	{
 		return m_dNurseBasicsList;
 	}
-
-	/**
-	 * 数据区
-	 */
-	private static DNurseContainer          s_dNurseList       = new DNurseContainer();
-
-	private        DNurseBasicsList         m_dNurseBasicsList = new DNurseBasicsList();
-	private        DNurseSeniorList         m_dNurseSeniorList = new DNurseSeniorList();
-
 
 }

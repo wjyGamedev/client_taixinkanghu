@@ -15,9 +15,12 @@
 package com.taixinkanghu.app.model.net.handler;
 
 import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;
 import com.taixinkanghu.app.ui.register_page.DeserialFinishedEvent;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.greenrobot.event.EventBus;
@@ -38,11 +41,25 @@ public class ResRegisterHandler extends IResponseListener
 	@Override
 	public void onResponse(JSONObject response)
 	{
-		boolean   bReturnFlag = DAccount.GetInstance().serialFromHttp(response);
+		try
+		{
+			DAccount.GetInstance().serialFromHttp(response);
+		}
+		catch (JsonSerializationException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		catch (JSONException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
 
 		//发送序列化完成event
 		DeserialFinishedEvent event = new DeserialFinishedEvent();
-		event.init(bReturnFlag);
 		m_eventBus.post(event);
 	}
 }

@@ -15,7 +15,9 @@
 package com.taixinkanghu.app.ui.appointment_nursing;
 
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,7 +59,7 @@ public class DApoitNursing
 		private ArrayList<ArrayList<Date>>    m_dateListAll      = new ArrayList<>();
 		private ArrayList<ArrayList<Integer>> m_typeListAll      = new ArrayList<>();
 		private String                        m_dateDescription  = null;
-		private SimpleDateFormat              m_simpleDateFormat = new SimpleDateFormat(DataConfig.PATTERN_DATE_YEAR_MONTH_DAY);
+		private SimpleDateFormat              m_simpleDateFormat = new SimpleDateFormat(DateConfig.PATTERN_DATE_YEAR_MONTH_DAY);
 
 
 		public DNursingDate(Date beingDate, Date endDate, ArrayList<ArrayList<Date>> dateListAll, ArrayList<ArrayList<Integer>>
@@ -101,7 +103,7 @@ public class DApoitNursing
 				return null;
 
 			String schedualDate = null;
-			String dateString = null;
+			String dateString   = null;
 			for (int iMonth = 0; iMonth < m_typeListAll.size(); iMonth++)
 			{
 				ArrayList<Integer> typeArrayList = m_typeListAll.get(iMonth);
@@ -120,11 +122,11 @@ public class DApoitNursing
 					dateString = m_simpleDateFormat.format(date);
 					if (schedualDate == null)
 					{
-						schedualDate = (dateString + DataConfig.SCHEDULE_SPLIT);
+						schedualDate = (dateString + NurseBasicListConfig.SCHEDULE_SPLIT);
 					}
 					else
 					{
-						schedualDate += (dateString + DataConfig.SCHEDULE_SPLIT);
+						schedualDate += (dateString + NurseBasicListConfig.SCHEDULE_SPLIT);
 					}
 				}
 			}

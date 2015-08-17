@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.app.model.data;
 
-import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.event.net.config.HospitalListConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,8 +26,8 @@ public class DHospital
 
 	public boolean serialization(JSONObject response) throws JSONException
 	{
-		m_ID = response.getInt(DataConfig.DHOSPITAL_ID);
-		m_name = response.getString(DataConfig.DHOSPITAL_NAME);
+		m_ID = response.getInt(HospitalListConfig.ID);
+		m_name = response.getString(HospitalListConfig.NAME);
 		return true;
 	}
 

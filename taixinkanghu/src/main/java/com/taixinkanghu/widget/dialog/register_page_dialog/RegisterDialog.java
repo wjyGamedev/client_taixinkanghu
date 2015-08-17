@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.data.DGlobal;
 
 public class RegisterDialog
 {
@@ -37,6 +38,21 @@ public class RegisterDialog
 
 	public void setMsg(String msg, Context context)
 	{
+		m_builder = new AlertDialog.Builder(context);
+		m_msg = msg;
+		if (m_builder != null)
+		{
+			m_builder.setPositiveButton(context.getResources().getString(R.string.info_i_known), null);
+			m_builder.setMessage(m_msg);
+		}
+	}
+
+	public void setMsg(String msg)
+	{
+		Context context = DGlobal.GetInstance().getContext();
+		if (context == null)
+			return;
+
 		m_builder = new AlertDialog.Builder(context);
 		m_msg = msg;
 		if (m_builder != null)

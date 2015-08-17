@@ -14,22 +14,44 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
-import android.util.Log;
-
 import com.taixinkanghu.app.model.data.DNurseContainer;
+import com.taixinkanghu.app.model.event.net.recv.FinishedNurseSeniorListEvent;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import de.greenrobot.event.EventBus;
 
 public class ResNurseSeniorListHandler extends IResponseListener
 {
+	private EventBus m_eventBus = EventBus.getDefault();
+
 	@Override
 	public void onResponse(JSONObject response)
 	{
-		boolean bReturnFlag = DNurseContainer.GetInstance().serialSeniorList(response);
-		if (bReturnFlag == false)
+		try
 		{
-			Log.w("error", "bReturnFlag == false");
+			DNurseContainer.GetInstance().serialSeniorList(response);
 		}
+		catch (JsonSerializationException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		catch (JSONException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		//解析成功，发送event
+		FinishedNurseSeniorListEvent finishedNurseSeniorListEvent = new FinishedNurseSeniorListEvent();
+		m_eventBus.post(finishedNurseSeniorListEvent);
+		return;
 	}
 }

@@ -14,48 +14,26 @@
 
 package com.taixinkanghu.app.model.data;
 
-import android.util.Log;
-
-import com.taixinkanghu.app.model.config.DataConfig;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DCommentList
 {
-	public boolean serialization(JSONObject response)
+	private int m_ID = 0;	//ID
+
+	public boolean serialization(JSONObject response) throws JSONException
 	{
-		try
-		{
-			m_iGoodRate = response.getInt(DataConfig.NURSE_GOOD_RATE);
-			m_iCommentNum = response.getInt(DataConfig.NURSE_COMMENT_NUM);
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return  false;
-		}
 		return true;
 	}
 
-	public void initID(int iID)
+	public void init(int iID)
 	{
-		m_iID = iID;
-	}
-	public int getiGoodRate()
-	{
-		return m_iGoodRate;
+		m_ID = iID;
 	}
 
-	public int getiCommentNum()
+	public int getID()
 	{
-		return m_iCommentNum;
+		return m_ID;
 	}
-
-	private int m_iID = 0;                   //ID
-	private int m_iGoodRate   = 0;    //好评率
-	private int m_iCommentNum = 0;//多少人进行了评论
-
 
 }

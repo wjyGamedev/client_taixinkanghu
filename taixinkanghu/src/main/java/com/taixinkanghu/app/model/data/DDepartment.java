@@ -9,26 +9,26 @@
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/7/19		WangJY		1.0.0		create
+ * 2015/8/17		WangJY		1.0.0		create
  */
 
 package com.taixinkanghu.app.model.data;
 
+import com.taixinkanghu.app.model.event.net.config.DepartmentListConfig;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DScheduleList
+public class DDepartment
 {
-	private int m_ID = 0;	//ID
+	private int    m_ID   = 0;
+	private String m_name = null;
 
 	public boolean serialization(JSONObject response) throws JSONException
 	{
+		m_ID = response.getInt(DepartmentListConfig.ID);
+		m_name = response.getString(DepartmentListConfig.NAME);
 		return true;
-	}
-
-	public void init(int iID)
-	{
-		m_ID = iID;
 	}
 
 	public int getID()
@@ -36,5 +36,9 @@ public class DScheduleList
 		return m_ID;
 	}
 
+	public String getName()
+	{
+		return m_name;
+	}
 
 }

@@ -15,10 +15,11 @@
 package com.taixinkanghu.app.model.data;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.event.net.config.ProtocalConfig;
+import com.taixinkanghu.app.model.event.net.config.RegisterConfig;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.storage.OwnerPreferences;
 import com.taixinkanghu.app.model.storage.StorageWrapper;
 import com.taixinkanghu.util.android.AppUtil;
@@ -31,19 +32,18 @@ public class DAccount
 	private static DAccount s_dAccount = new DAccount();
 
 	//http into
-	private int    m_Status  = DataConfig.S_HTTP_OK;
+	private int    m_Status   = ProtocalConfig.HTTP_OK;
 	private String m_errorMsg = null;
 
 	//data
-	private String m_From = null;
-	private String m_id = null;
-	private String m_code = null;
+	private String m_From   = null;
+	private String m_id     = null;
+	private String m_code   = null;
 	private String m_mobile = null;
-	private String m_nick = null;
+	private String m_nick   = null;
 
 	private DAccount()
 	{
-
 	}
 
 	public static DAccount GetInstance()
@@ -51,75 +51,49 @@ public class DAccount
 		return s_dAccount;
 	}
 
-	public boolean serialFromHttp(JSONObject response)
+	public boolean serialFromHttp(JSONObject response) throws JSONException
 	{
-		try
+		m_From = RegisterConfig.FROM_HTTP;
+
+		//http info
+		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
+		//http error
+		if (!isHttpSuccess())
 		{
-			m_From = DataConfig.REGISTER_FROM_HTTP;
-
-			//http info
-			m_Status = response.getInt(DataConfig.STATUS_KEY);
-			//http error
-			if (m_Status != DataConfig.S_HTTP_OK)
-			{
-				m_errorMsg = response.getString(DataConfig.ERROR_MSG);
-				return false;
-			}
-
-			//正常
-			m_errorMsg = AppUtil.GetResources().getString(R.string.info_register_success);
-
-			JSONObject jsonObject = response.getJSONObject(DataConfig.USER_KEY);
-			if (jsonObject == null)
-				return false;
-
-			if (serializationData(jsonObject) == false)
-			{
-				return false;
-			}
-
-			//序列化到本地存储
-			OwnerPreferences setting = StorageWrapper.GetInstance().getOwnerPreferences();
-			if (setting.serialization(jsonObject) == false)
-			{
-				return false;
-			}
-
-
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
+			m_errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
 			return false;
 		}
+
+		JSONObject jsonObject = response.getJSONObject(RegisterConfig.USER_KEY);
+		if (jsonObject == null)
+		{
+			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
+			throw new JsonSerializationException(errMsg + ":" + RegisterConfig.NAME);
+		}
+
+		//序列化到成员变量
+		serializationData(jsonObject);
+
+		//序列化到本地存储
+		OwnerPreferences setting = StorageWrapper.GetInstance().getOwnerPreferences();
+		setting.serialization(jsonObject);
 
 		return true;
 
 	}
 
-	public boolean serialFromStorage(JSONObject response)
+	public boolean serialFromStorage(JSONObject response) throws JSONException
 	{
-		m_From = DataConfig.REGISTER_FROM_STORATE;
+		m_From = RegisterConfig.FROM_STORATE;
 		return serializationData(response);
 	}
 
-	private boolean serializationData(JSONObject jsonObject)
+	private boolean serializationData(JSONObject jsonObject) throws JSONException
 	{
-		try
-		{
-			m_id = jsonObject.getString(DataConfig.ID_KEY);
-			m_code = jsonObject.getString(DataConfig.CODE_KEY);
-			m_mobile = jsonObject.getString(DataConfig.MOBILE_KEY);
-			m_nick = jsonObject.getString(DataConfig.NICK_KEY);
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return false;
-		}
-
+		m_id = jsonObject.getString(RegisterConfig.ID);
+		m_code = jsonObject.getString(RegisterConfig.CODE);
+		m_mobile = jsonObject.getString(RegisterConfig.MOBILE);
+		m_nick = jsonObject.getString(RegisterConfig.NICK);
 		return true;
 	}
 
@@ -132,7 +106,7 @@ public class DAccount
 
 	public boolean isHttpSuccess()
 	{
-		return (m_Status == DataConfig.S_HTTP_OK);
+		return (m_Status == ProtocalConfig.HTTP_OK);
 	}
 
 	public boolean isRegisterSuccess()

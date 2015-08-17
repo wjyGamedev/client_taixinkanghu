@@ -19,6 +19,7 @@ import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.controller.CMainPage;
 import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.model.data.DGlobal;
 import com.taixinkanghu.app.model.data.DMainPage;
 import com.taixinkanghu.app.ui.activity.MyWealthActivity;
 import com.taixinkanghu.app.ui.activity.NursOrderActivity;
@@ -48,7 +49,24 @@ public class MainActivity extends FragmentActivity
 
 		initData();
 		initWidget();
+		initGlobalData();
+	}
 
+	@Override
+	protected void onStop()
+	{
+		clearupGlobalData();
+		super.onStop();
+	}
+
+	private void clearupGlobalData()
+	{
+		DGlobal.GetInstance().setContext(null);
+	}
+
+	private void initGlobalData()
+	{
+		DGlobal.GetInstance().setContext(this);
 	}
 
 	@Override
