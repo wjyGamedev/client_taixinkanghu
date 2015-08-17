@@ -1,155 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/about_us_page"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout
+	android:id="@+id/about_us_page"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/white"
+		android:orientation="vertical">
 
-        <include layout="@layout/include_header"
-                 android:id="@+id/title"/>
+		<include
+			android:id="@+id/title"
+			layout="@layout/include_header"/>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/show_region">
+		<ScrollView
+			android:id="@+id/show_region"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:id="@+id/func_region">
+			<LinearLayout
+				android:id="@+id/func_region"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal"
+				android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="60dp"
-                    android:src="@mipmap/logo_img"
-                    android:id="@+id/company_logo"/>
+				<ImageView
+					android:id="@+id/company_logo"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
+					android:layout_marginTop="60dp"
+					android:src="@mipmap/logo_img"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="60dp"
-                    android:layout_marginTop="10dp"
-                    android:text="v1.0 for Android"
-                    android:textColor="@color/text_color_gray"
-                    android:textSize="18.0sp"
-                    android:id="@+id/edition_number"/>
+				<TextView
+					android:id="@+id/edition_number"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="60dp"
+					android:layout_marginTop="10dp"
+					android:text="v1.0 for Android"
+					android:textColor="@color/text_color_gray"
+					android:textSize="18.0sp"/>
 
-                <LinearLayout
-                    android:id="@id/company_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_order_btn"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp">
+				<include layout="@layout/item_dividing_line_horizontal"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:text="公司介绍"
-                        android:textColor="@color/text_color_black"
-                        android:textSize="16.0sp" />
+				<LinearLayout
+					android:id="@id/company_info"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp"
+					android:background="@color/white"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="15dp"
+					android:paddingTop="15dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=">"
-                        android:textColor="@color/text_color_gray"
-                        android:textSize="18.0sp" />
-                </LinearLayout>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:text="公司介绍"
+						android:textColor="@color/text_color_black"
+						android:textSize="16.0sp"/>
 
-                <LinearLayout
-                    android:id="@id/service_introduction"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_order_btn"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp">
+					<ImageView
+						android:id="@+id/dwon_hospital"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:background="@mipmap/img_right"/>
+				</LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:text="服务介绍"
-                        android:textColor="@color/text_color_black"
-                        android:textSize="16.0sp" />
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp"
+					android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=">"
-                        android:textColor="@color/text_color_gray"
-                        android:textSize="18.0sp" />
-                </LinearLayout>
+					<include layout="@layout/item_dividing_line_horizontal_fine"/>
+				</LinearLayout>
 
-                <LinearLayout
-                    android:id="@id/worker_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_order_btn"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp">
+				<LinearLayout
+					android:id="@id/service_introduction"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp"
+					android:background="@color/white"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="15dp"
+					android:paddingTop="15dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:text="护理员级别"
-                        android:textColor="@color/text_color_black"
-                        android:textSize="16.0sp" />
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:text="服务介绍"
+						android:textColor="@color/text_color_black"
+						android:textSize="16.0sp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=">"
-                        android:textColor="@color/text_color_gray"
-                        android:textSize="18.0sp" />
-                </LinearLayout>
+					<ImageView
+						android:id="@+id/dwon_hospital"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:background="@mipmap/img_right"/>
+				</LinearLayout>
 
-                <LinearLayout
-                    android:id="@id/goto_faq"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_order_btn"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp">
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp"
+					android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:text="常见问题"
-                        android:textColor="@color/text_color_black"
-                        android:textSize="16.0sp" />
+					<include layout="@layout/item_dividing_line_horizontal_fine"/>
+				</LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=">"
-                        android:textColor="@color/text_color_gray"
-                        android:textSize="18.0sp" />
-                </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
+				<LinearLayout
+					android:id="@id/worker_level"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp"
+					android:background="@color/white"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="15dp"
+					android:paddingTop="15dp">
 
-        <!--底部功能菜单-->
-        <!--<include layout="@layout/item_rg_main" />-->
-    </LinearLayout>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:text="护理员级别"
+						android:textColor="@color/text_color_black"
+						android:textSize="16.0sp"/>
+
+					<ImageView
+						android:id="@+id/dwon_hospital"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:background="@mipmap/img_right"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp"
+					android:orientation="vertical">
+
+					<include layout="@layout/item_dividing_line_horizontal_fine"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@id/goto_faq"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="15dp"
+					android:layout_marginRight="15dp"
+					android:background="@color/white"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:paddingBottom="15dp"
+					android:paddingTop="15dp">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:text="常见问题"
+						android:textColor="@color/text_color_black"
+						android:textSize="16.0sp"/>
+
+					<ImageView
+						android:id="@+id/dwon_hospital"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:background="@mipmap/img_right"/>
+				</LinearLayout>
+
+				<include layout="@layout/item_dividing_line_horizontal"/>
+
+			</LinearLayout>
+
+		</ScrollView>
+
+		<!--底部功能菜单-->
+		<!--<include layout="@layout/item_rg_main" />-->
+	</LinearLayout>
 </FrameLayout>
