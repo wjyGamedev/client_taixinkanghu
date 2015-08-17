@@ -14,5 +14,7 @@
 
 package com.taixinkanghu.app.model.data;
 
-public class DComment
+import java.io.Serializable;
+
+public class DComment  implements Serializable
 { }

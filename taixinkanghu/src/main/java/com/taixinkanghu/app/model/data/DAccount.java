@@ -27,7 +27,9 @@ import com.taixinkanghu.util.android.AppUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DAccount
+import java.io.Serializable;
+
+public class DAccount implements Serializable
 {
 	private static DAccount s_dAccount = new DAccount();
 

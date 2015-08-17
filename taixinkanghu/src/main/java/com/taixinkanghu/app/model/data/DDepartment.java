@@ -19,7 +19,9 @@ import com.taixinkanghu.app.model.event.net.config.DepartmentListConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DDepartment
+import java.io.Serializable;
+
+public class DDepartment implements Serializable
 {
 	private int    m_ID   = 0;
 	private String m_name = null;
