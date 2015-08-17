@@ -41,4 +41,9 @@ public class DDepartment
 		return m_name;
 	}
 
+	public DDepartment(int ID, String name)
+	{
+		m_ID = ID;
+		m_name = name;
+	}
 }
