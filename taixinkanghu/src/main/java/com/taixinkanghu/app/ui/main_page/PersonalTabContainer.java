@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.controller.CMainPage;
-import com.taixinkanghu.app.model.exception.RuntimeExceptions.UIRTException;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.ui.UIRTException;
 
 public class PersonalTabContainer extends BaseTabContainer
 {
