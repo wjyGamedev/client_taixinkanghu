@@ -15,7 +15,8 @@
 package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.event.net.config.NurseSeniorListConfig;
+import com.taixinkanghu.app.model.event.net.config.ProtocalConfig;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.util.logcal.LogicalUtil;
@@ -28,8 +29,8 @@ import java.util.ArrayList;
 
 public class DNurseSeniorList
 {
+	private int                     m_Status       = ProtocalConfig.HTTP_OK;
 	private ArrayList<DNurseSenior> m_nurseSeniors = new ArrayList<>();
-	private int                     m_Status        = DataConfig.S_HTTP_OK;
 
 	public synchronized boolean serialization(JSONObject response) throws JSONException
 	{
@@ -40,24 +41,24 @@ public class DNurseSeniorList
 		}
 
 		//02. http is ok
-		m_Status = response.getInt(DataConfig.STATUS_KEY);
+		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
 
 		if (!LogicalUtil.IsHttpSuccess(m_Status))
 		{
-			String errorMsg = response.getString(DataConfig.ERROR_MSG);
+			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
 			throw new JsonSerializationException(errorMsg);
 		}
 
 		//03. 序列化json
-		JSONArray jsonArray = response.getJSONArray(DataConfig.NURSE_SENIOR_LIST);
+		JSONArray jsonArray = response.getJSONArray(NurseSeniorListConfig.LIST);
 
 		if (jsonArray == null)
 		{
 			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
-			throw new JsonSerializationException(errMsg + ":" + DataConfig.NURSE_SENIOR_LIST);
+			throw new JsonSerializationException(errMsg + ":" + NurseSeniorListConfig.LIST);
 		}
 
-		JSONObject jsonObject = null;
+		JSONObject   jsonObject   = null;
 		DNurseSenior dNurseSenior = null;
 		for (int index = 0; index < jsonArray.length(); index++)
 		{
