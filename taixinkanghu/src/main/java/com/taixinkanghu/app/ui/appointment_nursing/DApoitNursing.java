@@ -46,7 +46,7 @@ public class DApoitNursing
 	private int m_hospitalID = -1;
 
 	//科室
-	private String m_departmenetName = null;
+	private int m_departmenetID = -1;
 
 	//病人状态
 	private EnumConfig.PatientState m_patientState = null;
@@ -224,14 +224,14 @@ public class DApoitNursing
 		m_hospitalID = hospitalID;
 	}
 
-	public String getDepartmenetName()
+	public int getDepartmenetID()
 	{
-		return m_departmenetName;
+		return m_departmenetID;
 	}
 
-	public void setDepartmenetName(String departmenetName)
+	public void setDepartmenetID(int departmenetID)
 	{
-		m_departmenetName = departmenetName;
+		m_departmenetID = departmenetID;
 	}
 
 	public EnumConfig.PatientState getPatientState()
