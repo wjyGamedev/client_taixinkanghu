@@ -14,93 +14,99 @@
 
 package com.taixinkanghu.app.model.data;
 
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.event.net.config.NurseSeniorListConfig;
+import com.taixinkanghu.util.android.AppUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DNurseSenior
+import java.io.Serializable;
+
+public class DNurseSenior implements Serializable
 {
 	/**
 	 * 数据区
 	 */
-	private int m_iID = 0;                         //ID
+	private int m_ID = 0;                         //ID
 
-	private int    m_iJobNum           = 0;       //工号
-	private String m_strLanguageLevel  = null;   //语言水平
-	private String m_strEducation      = null;   //文化程度
-	private String m_strNation         = null;    //民族
-	private String m_strIntro          = null;   //自我介绍
-	private String m_strDepartments    = null;  //擅长科室
-	private String m_strCertificate    = null;  //持有证书
-	private String m_strServiceContent = null;  //服务内容
+	private int    m_jobNum         = 0;       //工号
+	private String m_languageLevel  = null;   //语言水平
+	private String m_educationLevel = null;   //文化程度
+	private String m_nation         = null;    //民族
+	private String m_intro          = null;   //自我介绍
+	private String m_departments    = null;  //擅长科室
+	private String m_certificate    = null;  //持有证书
+	private String m_serviceContent = null;  //服务内容
 
 	private DScheduleList m_scheduleList = new DScheduleList();
 	private DCommentList  m_commentList  = new DCommentList();
 
 	public boolean serialization(JSONObject response) throws JSONException
 	{
-		m_iID = response.getInt(NurseSeniorListConfig.ID);
-		m_iJobNum = response.getInt(NurseSeniorListConfig.JOB_NUM);
-		m_strLanguageLevel = response.getString(NurseSeniorListConfig.LANGUAGE_LEVEL);
-		m_strEducation = response.getString(NurseSeniorListConfig.EDUCATION);
-		m_strNation = response.getString(NurseSeniorListConfig.NATION);
-		m_strIntro = response.getString(NurseSeniorListConfig.EDUCATION);
-		m_strDepartments = response.getString(NurseSeniorListConfig.DEPARTMENTS);
-		m_strCertificate = response.getString(NurseSeniorListConfig.CERTIFICATE);
-		m_strServiceContent = response.getString(NurseSeniorListConfig.SERVICE_CONTENT);
+		m_ID = response.getInt(NurseSeniorListConfig.ID);
+		m_jobNum = response.getInt(NurseSeniorListConfig.JOB_NUM);
+		m_languageLevel = response.getString(NurseSeniorListConfig.LANGUAGE_LEVEL);
+		m_educationLevel = response.getString(NurseSeniorListConfig.EDUCATION);
+		m_nation = response.getString(NurseSeniorListConfig.NATION);
+		m_intro = response.getString(NurseSeniorListConfig.INTRO);
+		m_intro += AppUtil.GetResources().getString(R.string.content_self_intro);
+		m_departments = response.getString(NurseSeniorListConfig.DEPARTMENTS);
+		m_certificate = response.getString(NurseSeniorListConfig.CERTIFICATE);
+		m_certificate += AppUtil.GetResources().getString(R.string.content_service_content);
+		m_serviceContent = response.getString(NurseSeniorListConfig.SERVICE_CONTENT);
 
-		m_scheduleList.init(m_iID);
+		m_scheduleList.init(m_ID);
 		m_scheduleList.serialization(response);
 
-		m_commentList.init(m_iID);
+		m_commentList.init(m_ID);
 		m_commentList.serialization(response);
 		return true;
 	}
 
-	public int getiID()
+	public int getID()
 	{
-		return m_iID;
+		return m_ID;
 	}
 
-	public int getiJobNum()
+	public int getJobNum()
 	{
-		return m_iJobNum;
+		return m_jobNum;
 	}
 
-	public String getStrLanguageLevel()
+	public String getLanguageLevel()
 	{
-		return m_strLanguageLevel;
+		return m_languageLevel;
 	}
 
-	public String getStrEducation()
+	public String getEducationLevel()
 	{
-		return m_strEducation;
+		return m_educationLevel;
 	}
 
-	public String getStrNation()
+	public String getNation()
 	{
-		return m_strNation;
+		return m_nation;
 	}
 
-	public String getStrIntro()
+	public String getIntro()
 	{
-		return m_strIntro;
+		return m_intro;
 	}
 
-	public String getStrDepartments()
+	public String getDepartments()
 	{
-		return m_strDepartments;
+		return m_departments;
 	}
 
-	public String getStrCertificate()
+	public String getCertificate()
 	{
-		return m_strCertificate;
+		return m_certificate;
 	}
 
-	public String getStrServiceContent()
+	public String getServiceContent()
 	{
-		return m_strServiceContent;
+		return m_serviceContent;
 	}
 
 	public DScheduleList getScheduleList()
