@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.ui.activity.ReviewsActivity;
 import com.taixinkanghu.app.ui.nurs_order_confirm_page.OrderConfirmActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
@@ -44,6 +45,11 @@ public class HandlerClickEventNurseInfo  extends BaseHandleOnClickEvent
 			case R.id.btn_select:
 			{
 				activity.startActivity(new Intent(activity, OrderConfirmActivity.class ));
+			}
+			break;
+			case R.id.btn_reviews:
+			{
+				activity.startActivity(new Intent(activity, ReviewsActivity.class ));
 			}
 			break;
 			default:

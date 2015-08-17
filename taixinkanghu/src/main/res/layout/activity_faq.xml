@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/bg_order_rb">
+            android:background="@drawable/bg_bule_frame_all">
 
             <TextView
                 android:layout_width="match_parent"
