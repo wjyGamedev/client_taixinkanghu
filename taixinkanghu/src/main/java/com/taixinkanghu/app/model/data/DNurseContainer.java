@@ -39,7 +39,7 @@ public class DNurseContainer
 		return m_dNurseBasicsList.serialization(response);
 	}
 
-	public boolean serialSeniorList(JSONObject response)
+	public boolean serialSeniorList(JSONObject response) throws JSONException
 	{
 		return m_dNurseSeniorList.serialization(response);
 	}
