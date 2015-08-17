@@ -14,30 +14,47 @@
 
 package com.taixinkanghu.app.model.data;
 
-import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.event.net.config.NurseSeniorListConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DNurseSenior
 {
+	/**
+	 * 数据区
+	 */
+	private int m_iID = 0;                         //ID
+
+	private int    m_iJobNum           = 0;       //工号
+	private String m_strLanguageLevel  = null;   //语言水平
+	private String m_strEducation      = null;   //文化程度
+	private String m_strNation         = null;    //民族
+	private String m_strIntro          = null;   //自我介绍
+	private String m_strDepartments    = null;  //擅长科室
+	private String m_strCertificate    = null;  //持有证书
+	private String m_strServiceContent = null;  //服务内容
+
+	private DScheduleList m_scheduleList = new DScheduleList();
+	private DCommentList  m_commentList  = new DCommentList();
+
 	public boolean serialization(JSONObject response) throws JSONException
 	{
-		m_iID = response.getInt(DataConfig.NURSE_ID);
-		m_iJobNum = response.getInt(DataConfig.NURSE_JOB_NUM);
-		m_strLanguageLevel = response.getString(DataConfig.NURSE_LANGUAGE_LEVEL);
-		m_strEducation = response.getString(DataConfig.NURSE_EDUCATION);
-		m_strNation = response.getString(DataConfig.NURSE_NATION);
-		m_strIntro = response.getString(DataConfig.NURSE_EDUCATION);
-		m_strDepartments = response.getString(DataConfig.NURSE_DEPARTMENTS);
-		m_strCertificate = response.getString(DataConfig.NURSE_CERTIFICATE);
-		m_strServiceContent = response.getString(DataConfig.NURSE_SERVICE_CONTENT);
+		m_iID = response.getInt(NurseSeniorListConfig.ID);
+		m_iJobNum = response.getInt(NurseSeniorListConfig.JOB_NUM);
+		m_strLanguageLevel = response.getString(NurseSeniorListConfig.LANGUAGE_LEVEL);
+		m_strEducation = response.getString(NurseSeniorListConfig.EDUCATION);
+		m_strNation = response.getString(NurseSeniorListConfig.NATION);
+		m_strIntro = response.getString(NurseSeniorListConfig.EDUCATION);
+		m_strDepartments = response.getString(NurseSeniorListConfig.DEPARTMENTS);
+		m_strCertificate = response.getString(NurseSeniorListConfig.CERTIFICATE);
+		m_strServiceContent = response.getString(NurseSeniorListConfig.SERVICE_CONTENT);
 
-		m_dScheduleList.init(m_iID);
-		m_dScheduleList.serialization(response);
+		m_scheduleList.init(m_iID);
+		m_scheduleList.serialization(response);
 
-		m_dComment.initID(m_iID);
-		m_dComment.serialization(response);
+		m_commentList.init(m_iID);
+		m_commentList.serialization(response);
 		return true;
 	}
 
@@ -86,32 +103,14 @@ public class DNurseSenior
 		return m_strServiceContent;
 	}
 
-	public DScheduleList getdScheduleList()
+	public DScheduleList getScheduleList()
 	{
-		return m_dScheduleList;
+		return m_scheduleList;
 	}
 
-	public DCommentList getdComment()
+	public DCommentList getCommentList()
 	{
-		return m_dComment;
+		return m_commentList;
 	}
-
-	/**
-	 * 数据区
-	 */
-	private int m_iID = 0;                         //ID
-
-	private int    m_iJobNum           = 0;       //工号
-	private String m_strLanguageLevel  = null;   //语言水平
-	private String m_strEducation      = null;   //文化程度
-	private String m_strNation         = null;    //民族
-	private String m_strIntro          = null;   //自我介绍
-	private String m_strDepartments    = null;  //擅长科室
-	private String m_strCertificate    = null;  //持有证书
-	private String m_strServiceContent = null;  //服务内容
-
-	private DScheduleList  m_dScheduleList   = new DScheduleList();
-	private DCommentList   m_dComment        = new DCommentList();
-
 
 }
