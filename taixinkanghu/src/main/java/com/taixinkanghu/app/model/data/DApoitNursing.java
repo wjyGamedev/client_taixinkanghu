@@ -12,7 +12,7 @@
  * 2015/8/15		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.ui.appointment_nursing;
+package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.DateConfig;
