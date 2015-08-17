@@ -14,7 +14,6 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
-import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.data.DNurseContainer;
 import com.taixinkanghu.app.model.event.net.recv.FinishedNurseBasicListEvent;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
@@ -29,8 +28,6 @@ import de.greenrobot.event.EventBus;
 
 public class ResApoitNursingHandler extends IResponseListener
 {
-	private int    m_Status  = DataConfig.S_HTTP_OK;
-	private String m_errorMsg = null;
 	private EventBus m_eventBus = EventBus.getDefault();
 
 	@Override
