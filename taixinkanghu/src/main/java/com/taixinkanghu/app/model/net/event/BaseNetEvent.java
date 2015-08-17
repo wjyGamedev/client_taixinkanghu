@@ -12,7 +12,7 @@
  * 2015/7/9		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.event.net;
+package com.taixinkanghu.app.model.net.event;
 
 import com.taixinkanghu.app.model.event.BaseEvent;
 

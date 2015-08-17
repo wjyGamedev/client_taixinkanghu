@@ -15,7 +15,7 @@
 package com.taixinkanghu.app.model.net.handler;
 
 import com.taixinkanghu.app.model.data.DHospitalList;
-import com.taixinkanghu.app.model.event.net.recv.FinishedHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.recv.FinishedHospitalListEvent;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;

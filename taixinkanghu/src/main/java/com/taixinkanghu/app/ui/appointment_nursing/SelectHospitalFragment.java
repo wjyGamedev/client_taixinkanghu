@@ -16,8 +16,8 @@ import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.UIConfig;
 import com.taixinkanghu.app.model.data.DHospital;
 import com.taixinkanghu.app.model.data.DHospitalList;
-import com.taixinkanghu.app.model.event.net.recv.FinishedHospitalListEvent;
-import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.recv.FinishedHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
 
 import java.util.ArrayList;
 

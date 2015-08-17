@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.event.net.send.ReqNurseSeniorListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.select_date.SelectDateActivity;
 import com.taixinkanghu.app.ui.select_date.SelectDateFragment;

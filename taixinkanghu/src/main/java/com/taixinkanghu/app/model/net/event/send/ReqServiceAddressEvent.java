@@ -12,7 +12,7 @@
  * 2015/7/9		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.event.net.send;
+package com.taixinkanghu.app.model.net.event.send;
 
 public class ReqServiceAddressEvent
 { }

@@ -9,18 +9,18 @@
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/8/17		WangJY		1.0.0		create
+ * 2015/8/16		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.event.net.recv;
+package com.taixinkanghu.app.model.net.event.recv;
 
 import com.taixinkanghu.app.model.config.EventID;
-import com.taixinkanghu.app.model.event.net.BaseNetEvent;
+import com.taixinkanghu.app.model.net.event.BaseNetEvent;
 
-public class FinishedNurseSeniorListEvent  extends BaseNetEvent
+public class FinishedNurseBasicListEvent  extends BaseNetEvent
 {
-	public FinishedNurseSeniorListEvent()
+	public FinishedNurseBasicListEvent()
 	{
-		super(EventID.FINISHED_NURSE_SENIOR_LIST);
+		super(EventID.FINISHED_NURSE_BASIC_LIST);
 	}
 }

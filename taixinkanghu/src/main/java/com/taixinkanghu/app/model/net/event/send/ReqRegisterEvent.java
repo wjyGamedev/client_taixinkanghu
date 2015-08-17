@@ -12,10 +12,10 @@
  * 2015/8/1		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.event.net.send;
+package com.taixinkanghu.app.model.net.event.send;
 
 import com.taixinkanghu.app.model.config.EventID;
-import com.taixinkanghu.app.model.event.net.BaseNetEvent;
+import com.taixinkanghu.app.model.net.event.BaseNetEvent;
 
 public class ReqRegisterEvent extends BaseNetEvent
 {
