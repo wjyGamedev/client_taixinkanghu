@@ -18,7 +18,6 @@ import com.taixinkanghu.app.model.data.DNurseContainer;
 import com.taixinkanghu.app.model.event.net.recv.FinishedNurseBasicListEvent;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;
-import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import org.json.JSONException;
@@ -39,13 +38,13 @@ public class ResApoitNursingHandler extends IResponseListener
 		}
 		catch (JsonSerializationException e)
 		{
-			RegisterDialog.GetInstance().setMsg(e.toString(), AppUtil.getContext());
+			RegisterDialog.GetInstance().setMsg(e.toString());
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 		catch (JSONException e)
 		{
-			RegisterDialog.GetInstance().setMsg(e.toString(), AppUtil.getContext());
+			RegisterDialog.GetInstance().setMsg(e.toString());
 			RegisterDialog.GetInstance().show();
 			return;
 		}
