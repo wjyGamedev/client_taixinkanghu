@@ -31,7 +31,7 @@ public class DNurseSeniorList
 	private ArrayList<DNurseSenior> m_nurseSeniors = new ArrayList<>();
 	private int                     m_Status        = DataConfig.S_HTTP_OK;
 
-	public boolean serialization(JSONObject response) throws JSONException
+	public synchronized boolean serialization(JSONObject response) throws JSONException
 	{
 		//01. clear up
 		if (m_nurseSeniors != null && m_nurseSeniors.size() != 0)
@@ -71,5 +71,13 @@ public class DNurseSeniorList
 
 	}
 
+	public synchronized ArrayList<DNurseSenior> getNurseSeniors()
+	{
+		return m_nurseSeniors;
+	}
 
+	public synchronized int getStatus()
+	{
+		return m_Status;
+	}
 }
