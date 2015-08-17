@@ -1,4 +1,4 @@
-package com.taixinkanghu.app.ui.nurs_order_confirm_page;
+package com.taixinkanghu.app.ui.nurse_order_confirm_page;
 
 import android.app.Activity;
 import android.content.Intent;
