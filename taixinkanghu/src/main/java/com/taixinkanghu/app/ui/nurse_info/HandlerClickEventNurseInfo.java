@@ -20,7 +20,7 @@ import android.view.View;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.activity.ReviewsActivity;
-import com.taixinkanghu.app.ui.nurs_order_confirm_page.OrderConfirmActivity;
+import com.taixinkanghu.app.ui.nurse_order_confirm_page.OrderConfirmActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 
@@ -52,11 +52,6 @@ public class HandlerClickEventNurseInfo  extends BaseHandleOnClickEvent
 				activity.startActivity(new Intent(activity, ReviewsActivity.class ));
 			}
 			break;
-			default:
-			{
-				//TODO:ERROR
-			}
-			return;
 		}
 
 		return;
