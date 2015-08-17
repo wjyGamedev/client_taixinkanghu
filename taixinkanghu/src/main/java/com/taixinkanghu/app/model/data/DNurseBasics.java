@@ -20,19 +20,22 @@ import com.taixinkanghu.util.nurse.NurseUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DNurseBasics
+import java.io.Serializable;
+
+public class DNurseBasics implements Serializable
 {
 	/**
 	 * 数据区
 	 */
-	private int    m_iID             = 0;          //ID
-	private int    m_iHospitalID     = 0;             //hospital ID
-	private String m_strName         = null;      //姓名
-	private int    m_iStarLevel      = 0;            //星级
-	private int    m_iAge            = 0;         //年龄
-	private String m_strHomeTown     = null;    //籍贯
-	private String m_strNursingExp   = null;        //护理经验
-	private String m_strNursingLevel = null;    //护理级别
+	private int    m_ID           = 0;          //ID
+	private int    m_hospitalID   = 0;             //hospital ID
+	private String m_name         = null;      //姓名
+	private String m_sex          = null;      //性别
+	private int    m_starLevel    = 0;            //星级
+	private int    m_age          = 0;         //年龄
+	private String m_homeTown     = null;    //籍贯
+	private String m_nursingExp   = null;        //护理经验
+	private String m_nursingLevel = null;    //护理级别
 
 	private int m_serviceChargePerAllCare      = 0;            //24小时，可自理
 	private int m_serviceChargePerAllHalfCare  = 0;        //24小时，半自理
@@ -46,23 +49,24 @@ public class DNurseBasics
 	private int m_serviceChargePerNightHalfCare  = 0;        //12黑，半自理
 	private int m_serviceChargePerNightCanntCare = 0;    //黑，不可自理
 
-	private String m_strServiceStatus = null;    //服务状态
+	private String m_serviceStatus = null;    //服务状态
 
 
 	public boolean serialization(JSONObject response) throws JSONException
 	{
-		m_iID = response.getInt(NurseBasicListConfig.ID);
-		m_iHospitalID = response.getInt(NurseBasicListConfig.HOSPITAL_ID);
-		m_strName = response.getString(NurseBasicListConfig.NAME);
-		m_iStarLevel = response.getInt(NurseBasicListConfig.STAR_LEVEL);
-		m_iAge = response.getInt(NurseBasicListConfig.AGE);
-		m_strHomeTown = response.getString(NurseBasicListConfig.HOMETOWN);
+		m_ID = response.getInt(NurseBasicListConfig.ID);
+		m_hospitalID = response.getInt(NurseBasicListConfig.HOSPITAL_ID);
+		m_name = response.getString(NurseBasicListConfig.NAME);
+//		m_sex = response.getString(NurseBasicListConfig.SEX);
+		m_starLevel = response.getInt(NurseBasicListConfig.STAR_LEVEL);
+		m_age = response.getInt(NurseBasicListConfig.AGE);
+		m_homeTown = response.getString(NurseBasicListConfig.HOMETOWN);
 
 		int itmp = response.getInt(NurseBasicListConfig.NURING_EXP);
-		m_strNursingExp = NurseUtil.GetServiceExpByInteger(itmp);
+		m_nursingExp = NurseUtil.GetServiceExpByInteger(itmp);
 
 		itmp = response.getInt(NurseBasicListConfig.NURING_LEVEL);
-		m_strNursingLevel = NurseUtil.GetNursingLevelByInteger(itmp);
+		m_nursingLevel = NurseUtil.GetNursingLevelByInteger(itmp);
 
 		m_serviceChargePerAllCare = response.getInt(NurseBasicListConfig.SERVICE_CHARGE_PER_ALL_CARE);
 		m_serviceChargePerAllHalfCare = response.getInt(NurseBasicListConfig.SERVICE_CHARGE_PER_ALL_HALF_CARE);
@@ -77,49 +81,54 @@ public class DNurseBasics
 		m_serviceChargePerNightCanntCare = response.getInt(NurseBasicListConfig.SERVICE_CHARGE_PER_NIGHT_CANNT_CARE);
 
 		itmp = response.getInt(NurseBasicListConfig.SERVICE_STATUS);
-		m_strServiceStatus = NurseUtil.GetStatusByInteger(itmp);
+		m_serviceStatus = NurseUtil.GetStatusByInteger(itmp);
 
 		return true;
 	}
 
 	public int getID()
 	{
-		return m_iID;
+		return m_ID;
 	}
 
 	public int getHospitalID()
 	{
-		return m_iHospitalID;
+		return m_hospitalID;
 	}
 
 	public String getName()
 	{
-		return m_strName;
+		return m_name;
+	}
+
+	public String getSex()
+	{
+		return m_sex;
 	}
 
 	public int getStarLevel()
 	{
-		return m_iStarLevel;
+		return m_starLevel;
 	}
 
-	public Integer getAge()
+	public int getAge()
 	{
-		return m_iAge;
+		return m_age;
 	}
 
 	public String getHomeTown()
 	{
-		return m_strHomeTown;
+		return m_homeTown;
 	}
 
 	public String getNursingExp()
 	{
-		return m_strNursingExp;
+		return m_nursingExp;
 	}
 
 	public String getNursingLevel()
 	{
-		return m_strNursingLevel;
+		return m_nursingLevel;
 	}
 
 	public int getServiceChargePerAllCare()
@@ -169,7 +178,7 @@ public class DNurseBasics
 
 	public String getServiceStatus()
 	{
-		return m_strServiceStatus;
+		return m_serviceStatus;
 	}
 
 
