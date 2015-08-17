@@ -102,7 +102,8 @@ public class DataConfig
 	public final static String REGISTER_FROM_HTTP    = "http";
 	public final static String REGISTER_FROM_STORATE = "storage";
 
-	//预约陪护
+	//02. 预约陪护
+	//0201. nurse basic list
 	public final static String NAME = "name";
 	public final static String PHONE_NUM = "phone_num";
 	public final static String SEX_ID = "sex_id";
@@ -112,8 +113,6 @@ public class DataConfig
 	public final static String DEPARTMENT_NAME = "department_name";
 	public final static String PATIENT_STATE_ID = "patient_state_id";
 	public final static String STRICT = "strict";
-
-
 
 	public final static String SCHEDULE_ALL   = "schedule_all";
 	public final static String SCHEDULE_DAY   = "schedule_day";
@@ -125,6 +124,11 @@ public class DataConfig
 	public final static String PATTERN_DATE_MONTH_DAY = "MM月dd日";    //MM月dd日
 	public final static String PATTERN_DATE_YEAR_MONTH_DAY = "yyyy-MM-dd";    //YYYY年MM月dd日
 	public final static int    MAX_SELECT_MONTH            = 3;
+
+	//0202. nurse senior list
+
+
+
 
 	public final static int MAX_SELECT_DAY_TYEP = 3;
 	public final static int SELECT_DAY_TYEP_ALL = 0;
