@@ -21,12 +21,6 @@ public class DNurseContainer
 {
 	private DNurseContainer()
 	{
-		initDataTest();
-	}
-
-	private void initDataTest()
-	{
-
 	}
 
 	public static DNurseContainer GetInstance()
