@@ -112,6 +112,13 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				transaction.commit();
 				break;
 			}
+			case R.id.department_ll:
+			{
+				SelectDepartmentFragment selectDepartmentFragment = new SelectDepartmentFragment();
+				transaction.replace(R.id.appointment_nursing_page, selectDepartmentFragment, selectDepartmentFragment.getClass().getName());
+				transaction.commit();
+				break;
+			}
 			case R.id.btn_patient_state:
 			{
 				SelectPatientStateFragment selectPatientStateFragment = new SelectPatientStateFragment();
