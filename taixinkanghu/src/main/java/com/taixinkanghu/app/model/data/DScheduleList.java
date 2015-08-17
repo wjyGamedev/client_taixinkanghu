@@ -17,28 +17,13 @@ package com.taixinkanghu.app.model.data;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class DScheduleList
 {
-	private int                                  m_ID             = 0;                            //ID
-	private HashMap<Integer, ArrayList<Integer>> m_timeListHashMap = new HashMap<Integer, ArrayList<Integer>>();    //近日服务时间安排
+	private int m_ID = 0;	//ID
 
 	public boolean serialization(JSONObject response) throws JSONException
 	{
 		return true;
-
-//		JSONArray jsonArray = response.getJSONArray(DataConfig.NURSE_SHEDULE_LIST);
-//		if (jsonArray == null)
-//			return false;
-//
-//		JSONObject jsonObject = null;
-//		DNurseBasics dNurseBasics = null;
-//		for (int index = 0; index < jsonArray.length(); index++)
-//		{
-//		}
-//		return true;
 	}
 
 	public void init(int iID)
@@ -50,7 +35,6 @@ public class DScheduleList
 	{
 		return m_ID;
 	}
-
 
 
 }
