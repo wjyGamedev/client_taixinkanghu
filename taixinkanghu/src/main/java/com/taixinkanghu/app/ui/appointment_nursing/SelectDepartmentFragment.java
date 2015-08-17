@@ -105,7 +105,6 @@ public class SelectDepartmentFragment extends Fragment implements View.OnTouchLi
 		int iMaxColumn = UIConfig.SELECT_DEPARTMENT_FRAGMENT_MAX_COLUMN;
 		int iMaxRow = (size + iMaxColumn - 1)/iMaxColumn;
 		int indexHospital = 0;
-		int indexBtn = 0;
 		DDepartment department = null;
 		String tag = null;
 		for (int indexRow = 0; indexRow < iMaxRow; ++indexRow)
@@ -119,7 +118,7 @@ public class SelectDepartmentFragment extends Fragment implements View.OnTouchLi
 				}
 
 				View view = m_layoutInflater.inflate(R.layout.fragment_select_list_item, m_gridLayout, false);
-				tag = String.valueOf(indexBtn);
+				tag = String.valueOf(indexHospital);
 				Button btn = (Button)view.findViewById(R.id.item_id);
 				btn.setTag(tag);
 				department = departments.get(indexHospital);
