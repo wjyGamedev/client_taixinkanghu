@@ -12,9 +12,10 @@
  * 2015/7/22		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.exception.RuntimeExceptions;
+package com.taixinkanghu.app.model.exception.RuntimeExceptions.ui;
 
 import com.taixinkanghu.app.model.config.TxkhExceptionCode;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.BaseRunTimeException;
 
 public class UIRTException extends BaseRunTimeException
 {
