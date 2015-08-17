@@ -22,10 +22,10 @@ public class DNurseContainer
 	/**
 	 * 数据区
 	 */
-	private static DNurseContainer          s_dNurseList       = new DNurseContainer();
+	private static DNurseContainer s_dNurseList = new DNurseContainer();
 
-	private        DNurseBasicsList         m_dNurseBasicsList = new DNurseBasicsList();
-	private        DNurseSeniorList         m_dNurseSeniorList = new DNurseSeniorList();
+	private DNurseBasicsList m_nurseBasicsList = new DNurseBasicsList();
+	private DNurseSeniorList m_nurseSeniorList = new DNurseSeniorList();
 
 	private DNurseContainer()
 	{
@@ -38,17 +38,21 @@ public class DNurseContainer
 
 	public boolean serialBasiclist(JSONObject response) throws JSONException
 	{
-		return m_dNurseBasicsList.serialization(response);
+		return m_nurseBasicsList.serialization(response);
 	}
 
 	public boolean serialSeniorList(JSONObject response) throws JSONException
 	{
-		return m_dNurseSeniorList.serialization(response);
+		return m_nurseSeniorList.serialization(response);
 	}
 
-	public DNurseBasicsList GetNurseBaisicsList()
+	public DNurseBasicsList getNurseBasicsList()
 	{
-		return m_dNurseBasicsList;
+		return m_nurseBasicsList;
 	}
 
+	public DNurseSeniorList getNurseSeniorList()
+	{
+		return m_nurseSeniorList;
+	}
 }
