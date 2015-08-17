@@ -28,8 +28,10 @@ public class EventID
 	public final static int FINISHED_NURSE_BASIC_LIST = QUEST_NURSE_BASIC_LIST + 1;
 
 	public final static int QUEST_NURSE_SENIOR_LIST = FINISHED_NURSE_BASIC_LIST + 1;
+	public final static int FINISHED_NURSE_SENIOR_LIST = QUEST_NURSE_SENIOR_LIST + 1;
 
-	public final static int QUEST_REGISTER = QUEST_NURSE_SENIOR_LIST + 1;
+
+	public final static int QUEST_REGISTER = FINISHED_NURSE_SENIOR_LIST + 1;
 
 	//预约陪护信息
 	public final static int QUEST_APPPINTMENT_NURSING = 111;
