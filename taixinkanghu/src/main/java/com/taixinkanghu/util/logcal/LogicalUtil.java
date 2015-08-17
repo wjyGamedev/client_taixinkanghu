@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.util.logcal;
 
-import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.event.net.config.ProtocalConfig;
 
 import java.util.Date;
 
@@ -54,7 +54,7 @@ public class LogicalUtil
 
 	public static boolean IsHttpSuccess(int httpStatus)
 	{
-		return (httpStatus == DataConfig.S_HTTP_OK);
+		return (httpStatus == ProtocalConfig.HTTP_OK);
 	}
 
 }
