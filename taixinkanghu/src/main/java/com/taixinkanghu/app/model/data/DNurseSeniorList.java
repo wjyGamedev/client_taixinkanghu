@@ -19,7 +19,6 @@ import com.taixinkanghu.app.model.event.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.app.model.event.net.config.ProtocalConfig;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.util.android.AppUtil;
-import com.taixinkanghu.util.logcal.LogicalUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,13 +40,13 @@ public class DNurseSeniorList
 		}
 
 		//02. http is ok
-		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
-
-		if (!LogicalUtil.IsHttpSuccess(m_Status))
-		{
-			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
-			throw new JsonSerializationException(errorMsg);
-		}
+//		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
+//
+//		if (!LogicalUtil.IsHttpSuccess(m_Status))
+//		{
+//			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
+//			throw new JsonSerializationException(errorMsg);
+//		}
 
 		//03. 序列化json
 		JSONArray jsonArray = response.getJSONArray(NurseSeniorListConfig.LIST);
@@ -76,6 +75,24 @@ public class DNurseSeniorList
 	{
 		return m_nurseSeniors;
 	}
+
+	public synchronized DNurseSenior getNurseSeniorByID(int id)
+	{
+		if (m_nurseSeniors == null)
+			return null;
+
+		for (DNurseSenior nurseSenior : m_nurseSeniors)
+		{
+			if (nurseSenior == null)
+				continue;
+
+			if (nurseSenior.getID() == id)
+				return nurseSenior;
+		}
+
+		return null;
+	}
+
 
 	public synchronized int getStatus()
 	{
