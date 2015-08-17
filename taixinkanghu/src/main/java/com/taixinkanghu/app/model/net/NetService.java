@@ -17,6 +17,7 @@ package com.taixinkanghu.app.model.net;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -226,10 +227,10 @@ public class NetService extends Service
 
 		HashMap<String, String> registerData = new HashMap<String, String>();
 
-		if (name != null)
+		if (!TextUtils.isEmpty(name))
 			registerData.put(DataConfig.NAME, name);
 
-		if (phone != null)
+		if (!TextUtils.isEmpty(phone))
 			registerData.put(DataConfig.PHONE_NUM, phone);
 
 		if (sexType != null)
@@ -246,9 +247,14 @@ public class NetService extends Service
 		registerData.put(DataConfig.DEPARTMENT_NAME, departmentName);
 		registerData.put(DataConfig.PATIENT_STATE_ID, String.valueOf(patientStateID));
 
-		registerData.put(DataConfig.SCHEDULE_ALL, schedualAll);
-		registerData.put(DataConfig.SCHEDULE_DAY, schedualDay);
-		registerData.put(DataConfig.SCHEDULE_NIGHT, schedualNight);
+		if (!TextUtils.isEmpty(schedualAll))
+			registerData.put(DataConfig.SCHEDULE_ALL, schedualAll);
+
+		if (!TextUtils.isEmpty(schedualDay))
+			registerData.put(DataConfig.SCHEDULE_DAY, schedualDay);
+
+		if (!TextUtils.isEmpty(schedualNight))
+			registerData.put(DataConfig.SCHEDULE_NIGHT, schedualNight);
 
 		//过滤条件
 		registerData.put(DataConfig.STRICT, String.valueOf(0));
