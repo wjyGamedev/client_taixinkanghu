@@ -28,6 +28,8 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.data.DDepartment;
+import com.taixinkanghu.app.model.data.DDepartmentList;
 import com.taixinkanghu.app.model.data.DHospital;
 import com.taixinkanghu.app.model.data.DHospitalList;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
@@ -53,7 +55,7 @@ public class ApoitNursingActivity extends Activity
 	private LinearLayout m_nameRegion = null;
 	private EditText m_nameTV       = null;
 	private EditText m_phoneNumTV   = null;
-	private EditText m_departmentTV = null;
+	private TextView m_departmentTV = null;
 	private TextView m_roomTV       = null;
 	private TextView m_bedTV        = null;
 
@@ -65,6 +67,7 @@ public class ApoitNursingActivity extends Activity
 	private LinearLayout m_ageBtn;
 	private LinearLayout m_weightBtn;
 	private LinearLayout m_hospitaltBtn;
+	private LinearLayout m_departmentLL = null;
 	private LinearLayout m_patientStateBtn;
 	private LinearLayout m_dateBtn;
 
@@ -148,12 +151,34 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//所在医院
+		int hospitalID = DApoitNursing.GetInstance().getHospitalID();
+		//01. 显示全部
+		if (hospitalID == 0)
+		{
+			m_hospitalTv.setText(getResources().getString(R.string.content_all));
+		}
+		//02. 显示hospitalname
+		else
+		{
+			ArrayList<DHospital> hospitals = DHospitalList.GetInstance().getHospitals();
+			for (DHospital hospital : hospitals)
+			{
+				if (hospital.getID() == hospitalID)
+				{
+					m_hospitalTv.setText(hospital.getName());
+				}
+			}
+		}
 
 		//所在科室
-		String deparmentName = DApoitNursing.GetInstance().getDepartmenetName();
-		if (deparmentName != null)
+		int departmentID = DApoitNursing.GetInstance().getDepartmenetID();
+		ArrayList<DDepartment> departmentList = DDepartmentList.GetInstance().getDepartments();
+		for (DDepartment department : departmentList)
 		{
-			m_departmentTV.setText(deparmentName);
+			if (department.getID() == departmentID)
+			{
+				m_departmentTV.setText(department.getName());
+			}
 		}
 
 		//病人状态
@@ -192,7 +217,7 @@ public class ApoitNursingActivity extends Activity
 		m_nameRegion = (LinearLayout)findViewById(R.id.name_region);
 		m_nameTV = (EditText)findViewById(R.id.name);
 		m_phoneNumTV = (EditText)findViewById(R.id.phone_number_tv);
-		m_departmentTV = (EditText)findViewById(R.id.department_tv);
+		m_departmentTV = (TextView)findViewById(R.id.department_tv);
 		m_roomTV = (TextView)findViewById(R.id.room_tv);
 		m_bedTV = (TextView)findViewById(R.id.bed_id_tv);
 
@@ -218,6 +243,7 @@ public class ApoitNursingActivity extends Activity
 		m_ageBtn = (LinearLayout)findViewById(R.id.btn_age);
 		m_weightBtn = (LinearLayout)findViewById(R.id.btn_weight);
 		m_hospitaltBtn = (LinearLayout)findViewById(R.id.btn_hospital);
+		m_departmentLL = (LinearLayout)findViewById(R.id.department_ll);
 		m_patientStateBtn = (LinearLayout)findViewById(R.id.btn_patient_state);
 		m_dateBtn = (LinearLayout)findViewById(R.id.btn_date);
 
@@ -244,6 +270,7 @@ public class ApoitNursingActivity extends Activity
 		m_ageBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_weightBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_hospitaltBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_departmentLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_patientStateBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_dateBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 	}
@@ -401,6 +428,22 @@ public class ApoitNursingActivity extends Activity
 		DApoitNursing.GetInstance().setWeightRage(weightRage);
 	}
 
+	public void setDepartmentID(int departmentID)
+	{
+		//01. set department ui
+		ArrayList<DDepartment> departmentList = DDepartmentList.GetInstance().getDepartments();
+		for (DDepartment department : departmentList)
+		{
+			if (department.getID() == departmentID)
+			{
+				m_departmentTV.setText(department.getName());
+			}
+		}
+
+		//02. 保存到数据类中。
+		DApoitNursing.GetInstance().setDepartmenetID(departmentID);
+	}
+
 	public void setHospitalID(int hospitalID)
 	{
 		//01. 显示全部
@@ -444,13 +487,6 @@ public class ApoitNursingActivity extends Activity
 		if (!TextUtils.isEmpty(phone))
 		{
 			DApoitNursing.GetInstance().setPhone(phone);
-		}
-
-		//科室
-		String department = m_departmentTV.getText().toString();
-		if (!TextUtils.isEmpty(department))
-		{
-			DApoitNursing.GetInstance().setDepartmenetName(department);
 		}
 
 	}
