@@ -14,8 +14,6 @@
 
 package com.taixinkanghu.app.model.data;
 
-import android.util.Log;
-
 import com.taixinkanghu.app.model.config.DataConfig;
 
 import org.json.JSONException;
@@ -23,19 +21,10 @@ import org.json.JSONObject;
 
 public class DCommentList
 {
-	public boolean serialization(JSONObject response)
+	public boolean serialization(JSONObject response) throws JSONException
 	{
-		try
-		{
-			m_iGoodRate = response.getInt(DataConfig.NURSE_GOOD_RATE);
-			m_iCommentNum = response.getInt(DataConfig.NURSE_COMMENT_NUM);
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return  false;
-		}
+		m_iGoodRate = response.getInt(DataConfig.NURSE_GOOD_RATE);
+		m_iCommentNum = response.getInt(DataConfig.NURSE_COMMENT_NUM);
 		return true;
 	}
 
