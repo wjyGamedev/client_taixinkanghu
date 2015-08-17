@@ -14,56 +14,62 @@
 
 package com.taixinkanghu.app.model.data;
 
-import android.util.Log;
-
+import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
+import com.taixinkanghu.util.android.AppUtil;
+import com.taixinkanghu.util.logcal.LogicalUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class DNurseSeniorList
 {
-	public boolean serialization(JSONObject response)
+	private ArrayList<DNurseSenior> m_nurseSeniors = new ArrayList<>();
+	private int                     m_Status        = DataConfig.S_HTTP_OK;
+
+	public boolean serialization(JSONObject response) throws JSONException
 	{
-		if (m_dNurseSeniorHashMap != null &&
-				m_dNurseSeniorHashMap.size() != 0)
+		//01. clear up
+		if (m_nurseSeniors != null && m_nurseSeniors.size() != 0)
 		{
-			m_dNurseSeniorHashMap.clear();
+			m_nurseSeniors.clear();
 		}
 
-		JSONArray jsonArray = null;
-		try
+		//02. http is ok
+		m_Status = response.getInt(DataConfig.STATUS_KEY);
+
+		if (!LogicalUtil.IsHttpSuccess(m_Status))
 		{
-			jsonArray = response.getJSONArray(DataConfig.NURSE_SENIOR_LIST);
-
-			if (jsonArray == null)
-				return false;
-
-			JSONObject jsonObject = null;
-			DNurseSenior dNurseSenior = null;
-			for (int index = 0; index < jsonArray.length(); index++)
-			{
-				jsonObject=(JSONObject)jsonArray.get(index);
-				dNurseSenior = new DNurseSenior();
-				dNurseSenior.serialization(jsonObject);
-
-				Integer iID = jsonObject.getInt(DataConfig.NURSE_ID);
-				m_dNurseSeniorHashMap.put(iID, dNurseSenior);
-			}
-
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return false;
+			String errorMsg = response.getString(DataConfig.ERROR_MSG);
+			throw new JsonSerializationException(errorMsg);
 		}
 
+		//03. 序列化json
+		JSONArray jsonArray = response.getJSONArray(DataConfig.NURSE_SENIOR_LIST);
+
+		if (jsonArray == null)
+		{
+			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
+			throw new JsonSerializationException(errMsg + ":" + DataConfig.NURSE_SENIOR_LIST);
+		}
+
+		JSONObject jsonObject = null;
+		DNurseSenior dNurseSenior = null;
+		for (int index = 0; index < jsonArray.length(); index++)
+		{
+			jsonObject = (JSONObject)jsonArray.get(index);
+			dNurseSenior = new DNurseSenior();
+			dNurseSenior.serialization(jsonObject);
+
+			m_nurseSeniors.add(dNurseSenior);
+		}
 		return  true;
+
 	}
 
-	private HashMap<Integer, DNurseSenior> m_dNurseSeniorHashMap = new HashMap<Integer, DNurseSenior>();
+
 }
