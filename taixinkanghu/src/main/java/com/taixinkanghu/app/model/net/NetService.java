@@ -24,9 +24,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonObjectRequestForm;
-import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
+import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.event.net.send.ReqDepartmentListEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqRegisterEvent;
@@ -41,6 +42,7 @@ import com.taixinkanghu.app.ui.appointment_nursing.DApoitNursing;
 import com.taixinkanghu.app.ui.appointment_nursing.ReqApoitNursingEvent;
 import com.taixinkanghu.net.BaseHttp;
 import com.taixinkanghu.third.party.sms.SmsConfig;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import java.util.HashMap;
 
@@ -126,14 +128,18 @@ public class NetService extends Service
 	private void initEvent()
 	{
 		ReqHospitalListEvent hospitalListEvent = new ReqHospitalListEvent();
+		ReqDepartmentListEvent departmentListEvent = new ReqDepartmentListEvent();
 		try
 		{
 			m_eventBus.post(hospitalListEvent);
+			m_eventBus.post(departmentListEvent);
 		}
 		catch (EventBusException e)
 		{
-			Log.e("error", e.getMessage().toString());
+			RegisterDialog.GetInstance().setMsg(e.toString());
+			RegisterDialog.GetInstance().show();
 		}
+		return;
 	}
 
 	private void cleanupModule()
@@ -228,36 +234,36 @@ public class NetService extends Service
 		HashMap<String, String> registerData = new HashMap<String, String>();
 
 		if (!TextUtils.isEmpty(name))
-			registerData.put(DataConfig.NAME, name);
+			registerData.put(NurseBasicListConfig.NAME, name);
 
 		if (!TextUtils.isEmpty(phone))
-			registerData.put(DataConfig.PHONE_NUM, phone);
+			registerData.put(NurseBasicListConfig.PHONE_NUM, phone);
 
 		if (sexType != null)
-			registerData.put(DataConfig.SEX_ID, String.valueOf(sexTypeID));
+			registerData.put(NurseBasicListConfig.SEX_ID, String.valueOf(sexTypeID));
 
 		if (ageRage != null)
-			registerData.put(DataConfig.AGE, age);
+			registerData.put(NurseBasicListConfig.AGE, age);
 
 		if (weightRage != null)
-			registerData.put(DataConfig.WEIGHT, weight);
+			registerData.put(NurseBasicListConfig.WEIGHT, weight);
 
 		//由于下面是必填项目，所以不判断是否为空，直接填充信息。
-		registerData.put(DataConfig.HOSPITAL_ID, String.valueOf(hospitalID));
-		registerData.put(DataConfig.DEPARTMENT_NAME, departmentName);
-		registerData.put(DataConfig.PATIENT_STATE_ID, String.valueOf(patientStateID));
+		registerData.put(NurseBasicListConfig.HOSPITAL_ID, String.valueOf(hospitalID));
+		registerData.put(NurseBasicListConfig.DEPARTMENT_NAME, departmentName);
+		registerData.put(NurseBasicListConfig.PATIENT_STATE_ID, String.valueOf(patientStateID));
 
 		if (!TextUtils.isEmpty(schedualAll))
-			registerData.put(DataConfig.SCHEDULE_ALL, schedualAll);
+			registerData.put(NurseBasicListConfig.SCHEDULE_ALL, schedualAll);
 
 		if (!TextUtils.isEmpty(schedualDay))
-			registerData.put(DataConfig.SCHEDULE_DAY, schedualDay);
+			registerData.put(NurseBasicListConfig.SCHEDULE_DAY, schedualDay);
 
 		if (!TextUtils.isEmpty(schedualNight))
-			registerData.put(DataConfig.SCHEDULE_NIGHT, schedualNight);
+			registerData.put(NurseBasicListConfig.SCHEDULE_NIGHT, schedualNight);
 
 		//过滤条件
-		registerData.put(DataConfig.STRICT, String.valueOf(0));
+		registerData.put(NurseBasicListConfig.STRICT, String.valueOf(0));
 
 		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
 																NetConfig.s_appointmentNursingAddress,
