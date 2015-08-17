@@ -24,6 +24,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
 import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
 import com.taixinkanghu.app.model.event.net.send.ReqRegisterEvent;
@@ -197,12 +198,36 @@ public class NetService extends Service
 	{
 		String name = DApoitNursing.GetInstance().getName();
 		String phone = DApoitNursing.GetInstance().getPhone();
-		int sexTypeID = DApoitNursing.GetInstance().getSexType().getId();
-		String age = DApoitNursing.GetInstance().getAgeRage().getName();
-		String weight = DApoitNursing.GetInstance().getWeightRage().getName();
+
+		EnumConfig.SexType sexType   = DApoitNursing.GetInstance().getSexType();
+		int                sexTypeID = 0;
+		if (sexType != null)
+		{
+			sexTypeID = sexType.getId();
+		}
+
+		String age = null;
+		EnumConfig.AgeRage ageRage = DApoitNursing.GetInstance().getAgeRage();
+		if (ageRage != null)
+		{
+			age = ageRage.getName();
+		}
+
+		String weight = null;
+		EnumConfig.WeightRage weightRage = DApoitNursing.GetInstance().getWeightRage();
+		if (weightRage != null)
+		{
+			weight = weightRage.getName();
+		}
+
 		int hospitalID = DApoitNursing.GetInstance().getHospitalID();
 		String departmentName = DApoitNursing.GetInstance().getDepartmenetName();
-		int patientStateID = DApoitNursing.GetInstance().getPatientState().getId();
+		int patientStateID = 0;
+		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
+		if (patientState != null)
+		{
+			patientStateID = patientState.getId();
+		}
 
 		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getdNursingDate();
 		if (dNursingDate == null)
@@ -213,11 +238,23 @@ public class NetService extends Service
 		String schedualNight = dNursingDate.getSchedualNightDescription();
 
 		HashMap<String, String> registerData = new HashMap<String, String>();
-		registerData.put(DataConfig.NAME, name);
-		registerData.put(DataConfig.PHONE_NUM, phone);
-		registerData.put(DataConfig.SEX_ID, String.valueOf(sexTypeID));
-		registerData.put(DataConfig.AGE, age);
-		registerData.put(DataConfig.WEIGHT, weight);
+
+		if (name != null)
+			registerData.put(DataConfig.NAME, name);
+
+		if (phone != null)
+			registerData.put(DataConfig.PHONE_NUM, phone);
+
+		if (sexType != null)
+			registerData.put(DataConfig.SEX_ID, String.valueOf(sexTypeID));
+
+		if (ageRage != null)
+			registerData.put(DataConfig.AGE, age);
+
+		if (weightRage != null)
+			registerData.put(DataConfig.WEIGHT, weight);
+
+		//由于下面是必填项目，所以不判断是否为空，直接填充信息。
 		registerData.put(DataConfig.HOSPITAL_ID, String.valueOf(hospitalID));
 		registerData.put(DataConfig.DEPARTMENT_NAME, departmentName);
 		registerData.put(DataConfig.PATIENT_STATE_ID, String.valueOf(patientStateID));
@@ -225,6 +262,7 @@ public class NetService extends Service
 		registerData.put(DataConfig.SCHEDULE_ALL, schedualAll);
 		registerData.put(DataConfig.SCHEDULE_DAY, schedualDay);
 		registerData.put(DataConfig.SCHEDULE_NIGHT, schedualNight);
+
 		//过滤条件
 		registerData.put(DataConfig.STRICT, String.valueOf(0));
 
