@@ -19,11 +19,12 @@ import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DApoitNursing
+public class DApoitNursing implements Serializable
 {
 	private static DApoitNursing s_dApoitNursing = new DApoitNursing();
 
