@@ -61,6 +61,12 @@
 
 	<!-- 选择医院列表-->
 	<string name="content_all">全部</string>
+	<string name="hospital_content_tips">请选择医院</string>
+	<string name="hospital_more_content_tips">更多医院敬请期待</string>
+
+	<!-- 选择科室列表-->
+	<string name="department_content_tips">请选择科室</string>
+	<string name="department_more_content_tips">更多科室敬请期待</string>
 
 	<!-- 公共信息-->
 	<string name="content_sure">确认</string>
