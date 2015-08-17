@@ -371,7 +371,7 @@ public class ApoitNursingActivity extends Activity
 
 	public String getDateDescription()
 	{
-		return m_dateDescription;
+		return m_dateTv.getText().toString();
 	}
 
 	public void setDateDescription(String dateDescription)
