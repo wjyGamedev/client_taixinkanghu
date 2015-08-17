@@ -39,7 +39,7 @@ public class ResApoitNursingHandler extends IResponseListener
 		catch (JsonSerializationException e)
 		{
 			RegisterDialog.GetInstance().setMsg(e.toString());
-			RegisterDialog.GetInstance().show();
+//			RegisterDialog.GetInstance().show();
 			return;
 		}
 		catch (JSONException e)
