@@ -44,7 +44,7 @@ public class ChooseNurseAdapter extends IBaseAdapter
 
 	private void init()
 	{
-		m_nurseBasicsList = DNurseContainer.GetInstance().GetNurseBaisicsList();
+		m_nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
 		m_layoutInflater = LayoutInflater.from(m_context);
 	}
 
@@ -146,7 +146,7 @@ final class ViewHolder
 		m_faceImage.setImageResource(iImageID);
 		m_tvName.setText(tmpNurseBasics.getName());
 		m_starLevel.setRating(tmpNurseBasics.getStarLevel());
-		m_tvAge.setText(tmpNurseBasics.getAge().toString());
+		m_tvAge.setText(String.valueOf(tmpNurseBasics.getAge()));
 		m_tvHomeTown.setText(tmpNurseBasics.getHomeTown());
 		m_tvNursingExp.setText(tmpNurseBasics.getNursingExp());
 		m_tvNursingLevel.setText(tmpNurseBasics.getNursingLevel());
