@@ -15,7 +15,8 @@
 package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.event.net.config.HospitalListConfig;
+import com.taixinkanghu.app.model.event.net.config.ProtocalConfig;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.util.logcal.LogicalUtil;
@@ -30,8 +31,8 @@ public class DHospitalList
 {
 	private static DHospitalList s_dHospitalList = new DHospitalList();
 
-	private int                         m_Status          = DataConfig.S_HTTP_OK;
-	private ArrayList<DHospital>        m_hospitals       = new ArrayList<>();
+	private int                  m_Status    = ProtocalConfig.HTTP_OK;
+	private ArrayList<DHospital> m_hospitals = new ArrayList<>();
 
 
 	private DHospitalList()
@@ -43,7 +44,7 @@ public class DHospitalList
 		return s_dHospitalList;
 	}
 
-	public boolean serialization(JSONObject response) throws JSONException
+	public synchronized boolean serialization(JSONObject response) throws JSONException
 	{
 		//01. 清空原来容器
 		if (m_hospitals != null && m_hospitals.size() != 0)
@@ -52,20 +53,20 @@ public class DHospitalList
 		}
 
 		//02. http is ok
-		m_Status = response.getInt(DataConfig.STATUS_KEY);
+		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
 
 		if (!LogicalUtil.IsHttpSuccess(m_Status))
 		{
-			String errorMsg = response.getString(DataConfig.ERROR_MSG);
+			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
 			throw new JsonSerializationException(errorMsg);
 		}
 
 		//03. 序列化json
-		JSONArray jsonArray = response.getJSONArray(DataConfig.DHOSPITAL_LIST);
+		JSONArray jsonArray = response.getJSONArray(HospitalListConfig.LIST);
 		if (jsonArray == null)
 		{
 			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
-			throw new JsonSerializationException(errMsg + ":" + "hospital_list");
+			throw new JsonSerializationException(errMsg + ":" + HospitalListConfig.LIST);
 		}
 
 		JSONObject jsonObject = null;
@@ -82,12 +83,12 @@ public class DHospitalList
 
 	}
 
-	public int getStatus()
+	public synchronized int getStatus()
 	{
 		return m_Status;
 	}
 
-	public ArrayList<DHospital> getHospitals()
+	public synchronized ArrayList<DHospital> getHospitals()
 	{
 		return m_hospitals;
 	}
