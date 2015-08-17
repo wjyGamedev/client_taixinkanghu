@@ -49,22 +49,22 @@ public class MainActivity extends FragmentActivity
 
 		initData();
 		initWidget();
-		initGlobal();
+		initGlobalData();
 	}
 
 	@Override
 	protected void onStop()
 	{
-		clearupGlobal();
+		clearupGlobalData();
 		super.onStop();
 	}
 
-	private void clearupGlobal()
+	private void clearupGlobalData()
 	{
 		DGlobal.GetInstance().setContext(null);
 	}
 
-	private void initGlobal()
+	private void initGlobalData()
 	{
 		DGlobal.GetInstance().setContext(this);
 	}
