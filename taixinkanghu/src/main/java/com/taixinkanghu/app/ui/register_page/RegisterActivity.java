@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.model.data.DGlobal;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.third.party.sms.SmsAutho;
@@ -55,6 +56,24 @@ public class RegisterActivity extends Activity
 		initContent();
 		initListener();
 		initEvent();
+		initGlobalData();
+	}
+
+	private void initGlobalData()
+	{
+		DGlobal.GetInstance().setContext(this);
+	}
+
+	@Override
+	protected void onStop()
+	{
+		clearupGlobalData();
+		super.onStop();
+	}
+
+	private void clearupGlobalData()
+	{
+		DGlobal.GetInstance().setContext(null);
 	}
 
 	@Override
