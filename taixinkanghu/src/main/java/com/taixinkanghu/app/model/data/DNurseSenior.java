@@ -14,8 +14,6 @@
 
 package com.taixinkanghu.app.model.data;
 
-import android.util.Log;
-
 import com.taixinkanghu.app.model.config.DataConfig;
 
 import org.json.JSONException;
@@ -23,38 +21,23 @@ import org.json.JSONObject;
 
 public class DNurseSenior
 {
-	public boolean serialization(JSONObject response)
+	public boolean serialization(JSONObject response) throws JSONException
 	{
-		try
-		{
-			m_iID = response.getInt(DataConfig.NURSE_ID);
-			m_iJobNum = response.getInt(DataConfig.NURSE_JOB_NUM);
-			m_strLanguageLevel = response.getString(DataConfig.NURSE_LANGUAGE_LEVEL);
-			m_strEducation = response.getString(DataConfig.NURSE_EDUCATION);
-			m_strNation = response.getString(DataConfig.NURSE_NATION);
-			m_strIntro = response.getString(DataConfig.NURSE_EDUCATION);
-			m_strDepartments = response.getString(DataConfig.NURSE_DEPARTMENTS);
-			m_strCertificate = response.getString(DataConfig.NURSE_CERTIFICATE);
-			m_strServiceContent = response.getString(DataConfig.NURSE_SERVICE_CONTENT);
+		m_iID = response.getInt(DataConfig.NURSE_ID);
+		m_iJobNum = response.getInt(DataConfig.NURSE_JOB_NUM);
+		m_strLanguageLevel = response.getString(DataConfig.NURSE_LANGUAGE_LEVEL);
+		m_strEducation = response.getString(DataConfig.NURSE_EDUCATION);
+		m_strNation = response.getString(DataConfig.NURSE_NATION);
+		m_strIntro = response.getString(DataConfig.NURSE_EDUCATION);
+		m_strDepartments = response.getString(DataConfig.NURSE_DEPARTMENTS);
+		m_strCertificate = response.getString(DataConfig.NURSE_CERTIFICATE);
+		m_strServiceContent = response.getString(DataConfig.NURSE_SERVICE_CONTENT);
 
-			m_dScheduleList.init(m_iID);
-			if (m_dScheduleList.serialization(response) == false)
-			{
-				return false;
-			}
+		m_dScheduleList.init(m_iID);
+		m_dScheduleList.serialization(response);
 
-			m_dComment.initID(m_iID);
-			if (m_dComment.serialization(response) == false)
-			{
-				return false;
-			}
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			Log.e("error", e.getMessage().toString());
-			return false;
-		}
+		m_dComment.initID(m_iID);
+		m_dComment.serialization(response);
 		return true;
 	}
 
