@@ -24,7 +24,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.widget.wheelview.TosGallery;
 import com.taixinkanghu.widget.wheelview.WheelView;
 
@@ -56,6 +56,7 @@ public class SelectDateFragment extends Fragment
 	}
 
 	//widget
+	public static int MAX_SELECT_MONTH = 3;
 	private WheelView    m_beginDateWheel   = null;
 	private WheelView    m_endDateWheel     = null;
 	private Button       m_confirmBtn       = null;
@@ -79,7 +80,7 @@ public class SelectDateFragment extends Fragment
 	private WheelViewAdapter               m_beginAdapter                   = null;
 	private WheelViewAdapter               m_endAdapter                     = null;
 	private Calendar                       m_today                          = Calendar.getInstance();
-	private SimpleDateFormat               m_simpleDateFormat               = new SimpleDateFormat(DataConfig.PATTERN_DATE_MONTH_DAY_WEEK);
+	private SimpleDateFormat               m_simpleDateFormat               = new SimpleDateFormat(DateConfig.PATTERN_DATE_MONTH_DAY_WEEK);
 	private HandleEndFlingOnBeginDateWheel m_handleEndFlingOnBeginDateWheel = new HandleEndFlingOnBeginDateWheel();
 	private HandleEndFlingOnEndDateWheel   m_handleEndFlingOnEndDateWheel   = new HandleEndFlingOnEndDateWheel();
 	private HandleClickEventOnFragment     m_handleClickEventOnFragment     = null;
@@ -147,7 +148,7 @@ public class SelectDateFragment extends Fragment
 		int iCurMonth = 0;
 		int iMaxDay = 0;
 		int iDay = 0;
-		for (int iMonth = 0; iMonth < DataConfig.MAX_SELECT_MONTH; ++iMonth)
+		for (int iMonth = 0; iMonth < MAX_SELECT_MONTH; ++iMonth)
 		{
 			Calendar tmpCalendar = Calendar.getInstance();
 
