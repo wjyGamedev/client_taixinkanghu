@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.fragment.SelectGenderFragment;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
-import com.taixinkanghu.app.ui.nurs_order_confirm_page.OrderConfirmActivity;
+import com.taixinkanghu.app.ui.nurse_order_confirm_page.OrderConfirmActivity;
 
 /**
  * Created by Administrator on 2015/7/11.
