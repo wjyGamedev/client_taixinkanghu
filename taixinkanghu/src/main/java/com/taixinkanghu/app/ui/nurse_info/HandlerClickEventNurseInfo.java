@@ -19,10 +19,11 @@ import android.content.Intent;
 import android.view.View;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.ui.activity.ReviewsActivity;
-import com.taixinkanghu.app.ui.nurse_order_confirm_page.OrderConfirmActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class HandlerClickEventNurseInfo  extends BaseHandleOnClickEvent
 {
@@ -34,26 +35,35 @@ public class HandlerClickEventNurseInfo  extends BaseHandleOnClickEvent
 	@Override
 	public void onClick(View v)
 	{
-		Activity activity = (Activity)m_context;
+		NurseInfoActivity nurseInfoActivity = (NurseInfoActivity)m_context;
+		if (nurseInfoActivity == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseInfoActivity == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
 		switch(v.getId())
 		{
 			case R.id.btn_goto_main:
 			{
-				activity.startActivity(new Intent(activity, MainActivity.class));
+				nurseInfoActivity.startActivity(new Intent(nurseInfoActivity, MainActivity.class));
 			}
-			break;
+			return;
 			case R.id.btn_select:
 			{
-				activity.startActivity(new Intent(activity, OrderConfirmActivity.class ));
+				int nurseID = nurseInfoActivity.getNurseID();
+				Intent intent = new Intent(nurseInfoActivity, NurseInfoActivity.class);
+				intent.putExtra(NurseBasicListConfig.ID, nurseID);
+				nurseInfoActivity.startActivity(intent);
 			}
-			break;
+			return;
 			case R.id.btn_reviews:
 			{
-				activity.startActivity(new Intent(activity, ReviewsActivity.class ));
+				nurseInfoActivity.startActivity(new Intent(nurseInfoActivity, ReviewsActivity.class ));
 			}
-			break;
+			return;
 		}
-
 		return;
 	}
 }
