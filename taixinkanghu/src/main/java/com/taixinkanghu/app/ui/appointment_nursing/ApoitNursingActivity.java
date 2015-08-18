@@ -138,6 +138,7 @@ public class ApoitNursingActivity extends Activity
 				if (hospital.getID() == hospitalID)
 				{
 					m_hospitalTV.setText(hospital.getName());
+					break;
 				}
 			}
 		}
@@ -150,6 +151,7 @@ public class ApoitNursingActivity extends Activity
 			if (department.getID() == departmentID)
 			{
 				m_departmentTV.setText(department.getName());
+				break;
 			}
 		}
 
@@ -191,7 +193,7 @@ public class ApoitNursingActivity extends Activity
 		m_ageRegionLL = (LinearLayout)findViewById(R.id.age_region_ll);
 		m_ageTV = (TextView)findViewById(R.id.age_tv);
 		m_weightRegionLL = (LinearLayout)findViewById(R.id.weight_region_ll);
-		m_weightTV = (TextView)findViewById(R.id.weight);
+		m_weightTV = (TextView)findViewById(R.id.weight_tv);
 		m_hospitaltRegionLL = (LinearLayout)findViewById(R.id.hospital_region_ll);
 		m_hospitalTV = (TextView)findViewById(R.id.hospital_tv);
 		m_departmentRegionLL = (LinearLayout)findViewById(R.id.department_region_ll);
