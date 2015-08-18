@@ -17,10 +17,24 @@ package com.taixinkanghu.app.model.net.event.send;
 import com.taixinkanghu.app.model.config.EventID;
 import com.taixinkanghu.app.model.net.event.BaseNetEvent;
 
+import java.util.ArrayList;
+
 public class ReqNurseSeniorListEvent extends BaseNetEvent
 {
+	private ArrayList<Integer> m_nurseIDList = new ArrayList<>();
+
 	public ReqNurseSeniorListEvent()
 	{
 		super(EventID.QUEST_NURSE_SENIOR_LIST);
+	}
+
+	public ArrayList<Integer> getNurseIDList()
+	{
+		return m_nurseIDList;
+	}
+
+	public void setNurseIDList(ArrayList<Integer> nurseIDList)
+	{
+		m_nurseIDList = nurseIDList;
 	}
 }
