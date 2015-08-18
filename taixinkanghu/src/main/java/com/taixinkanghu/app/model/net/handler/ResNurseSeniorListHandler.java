@@ -23,6 +23,8 @@ import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+
 import de.greenrobot.event.EventBus;
 
 public class ResNurseSeniorListHandler extends IResponseListener
@@ -43,6 +45,12 @@ public class ResNurseSeniorListHandler extends IResponseListener
 			return;
 		}
 		catch (JSONException e)
+		{
+			RegisterDialog.GetInstance().setMsg(e.toString());
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		catch (ParseException e)
 		{
 			RegisterDialog.GetInstance().setMsg(e.toString());
 			RegisterDialog.GetInstance().show();
