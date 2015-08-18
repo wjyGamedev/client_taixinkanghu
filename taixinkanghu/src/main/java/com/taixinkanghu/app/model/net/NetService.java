@@ -26,7 +26,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
+import com.taixinkanghu.app.model.data.DApoitNursing;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.app.model.net.event.send.ReqDepartmentListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
@@ -39,12 +41,12 @@ import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
 import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
 import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
-import com.taixinkanghu.app.model.data.DApoitNursing;
 import com.taixinkanghu.app.ui.appointment_nursing.ReqApoitNursingEvent;
 import com.taixinkanghu.net.BaseHttp;
 import com.taixinkanghu.third.party.sms.SmsConfig;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import de.greenrobot.event.EventBus;
@@ -291,9 +293,26 @@ public class NetService extends Service
 	//nurse senior list
 	public void onEventAsync(ReqNurseSeniorListEvent event)
 	{
-		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
+		ArrayList<Integer> nurseIDList = event.getNurseIDList();
+
+		String strIDList = null;
+		for (Integer id : nurseIDList)
+		{
+			if (TextUtils.isEmpty(strIDList))
+			{
+				strIDList = String.valueOf(id) + NurseSeniorListConfig.SPLIT;
+			}
+			else
+			{
+				strIDList += String.valueOf(id) + NurseSeniorListConfig.SPLIT;
+			}
+		}
+		HashMap<String, String> nurseIDHashMap = new HashMap<String, String>();
+		nurseIDHashMap.put(NurseSeniorListConfig.ID_LIST, strIDList);
+
+		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
 														NetConfig.s_nurseSeniorListAddress,
-														null,
+														nurseIDHashMap,
 														m_resNurseSeniorListHandler,
 														m_baseErrorListener);
 
