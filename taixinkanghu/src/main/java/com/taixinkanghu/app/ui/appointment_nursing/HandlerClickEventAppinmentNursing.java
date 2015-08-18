@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.select_date.SelectDateActivity;
@@ -129,9 +128,7 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
 				reqApoitNursingEvent.init(m_context);
 				m_eventBus.post(reqApoitNursingEvent);
-				//0302. nurse senior list
-				ReqNurseSeniorListEvent reqNurseSeniorListEvent = new ReqNurseSeniorListEvent();
-				m_eventBus.post(reqNurseSeniorListEvent);
+				//备注：nurse senior list 在接收完成nurse basic list成功后，发送。
 
 				//04. 跳转到护理员列表界面
 				m_context.startActivity(new Intent(m_context, SelectNurseActivity.class));
