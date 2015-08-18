@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.data.DApoitNursing;
 import com.taixinkanghu.app.model.data.DDepartment;
 import com.taixinkanghu.app.model.data.DDepartmentList;
 import com.taixinkanghu.app.model.data.DHospital;
@@ -189,7 +190,7 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//护理时间
-		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getdNursingDate();
+		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getNursingDate();
 		if (dNursingDate != null)
 		{
 			String dateDescription = dNursingDate.getDateDescription();
@@ -503,6 +504,6 @@ public class ApoitNursingActivity extends Activity
 			return;
 
 		setDateDescription(event.getdNursingDate().getDateDescription());
-		DApoitNursing.GetInstance().setdNursingDate(event.getdNursingDate());
+		DApoitNursing.GetInstance().setNursingDate(event.getdNursingDate());
 	}
 }
