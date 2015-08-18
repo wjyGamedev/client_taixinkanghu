@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.text.ParseException;
 
 public class DNurseSenior implements Serializable
 {
@@ -30,7 +31,7 @@ public class DNurseSenior implements Serializable
 	 */
 	private int m_ID = 0;                         //ID
 
-	private int    m_jobNum         = 0;       //工号
+	private String m_jobNum         = null;       //工号
 	private String m_languageLevel  = null;   //语言水平
 	private String m_educationLevel = null;   //文化程度
 	private String m_nation         = null;    //民族
@@ -42,10 +43,10 @@ public class DNurseSenior implements Serializable
 	private DScheduleList m_scheduleList = new DScheduleList();
 	private DCommentList  m_commentList  = new DCommentList();
 
-	public boolean serialization(JSONObject response) throws JSONException
+	public boolean serialization(JSONObject response) throws JSONException, ParseException
 	{
 		m_ID = response.getInt(NurseSeniorListConfig.ID);
-		m_jobNum = response.getInt(NurseSeniorListConfig.JOB_NUM);
+		m_jobNum = response.getString(NurseSeniorListConfig.JOB_NUM);
 		m_languageLevel = response.getString(NurseSeniorListConfig.LANGUAGE_LEVEL);
 		m_educationLevel = response.getString(NurseSeniorListConfig.EDUCATION);
 		m_nation = response.getString(NurseSeniorListConfig.NATION);
@@ -53,13 +54,11 @@ public class DNurseSenior implements Serializable
 		m_intro = AppUtil.GetResources().getString(R.string.content_self_intro) + m_intro;
 		m_departments = response.getString(NurseSeniorListConfig.DEPARTMENTS);
 		m_certificate = response.getString(NurseSeniorListConfig.CERTIFICATE);
-		m_certificate = AppUtil.GetResources().getString(R.string.content_service_content) + m_certificate;
 		m_serviceContent = response.getString(NurseSeniorListConfig.SERVICE_CONTENT);
+		m_serviceContent = AppUtil.GetResources().getString(R.string.content_service_content) + m_serviceContent;
 
-		m_scheduleList.init(m_ID);
 		m_scheduleList.serialization(response);
 
-		m_commentList.init(m_ID);
 		m_commentList.serialization(response);
 		return true;
 	}
@@ -69,7 +68,7 @@ public class DNurseSenior implements Serializable
 		return m_ID;
 	}
 
-	public int getJobNum()
+	public String getJobNum()
 	{
 		return m_jobNum;
 	}
