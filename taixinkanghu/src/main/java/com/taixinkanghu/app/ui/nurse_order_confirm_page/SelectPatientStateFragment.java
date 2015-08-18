@@ -15,9 +15,9 @@ import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class SelectPatientStateFragment extends Fragment implements View.OnClickListener
 {
-	private TextView m_careMyselfBtn;
-	private TextView m_halfCareMyselfBtn;
-	private TextView m_notCareMyselfBtn;
+	private TextView m_careMyselfBtn     = null;
+	private TextView m_halfCareMyselfBtn = null;
+	private TextView m_notCareMyselfBtn  = null;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
