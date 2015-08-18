@@ -50,10 +50,10 @@ public class DNurseSenior implements Serializable
 		m_educationLevel = response.getString(NurseSeniorListConfig.EDUCATION);
 		m_nation = response.getString(NurseSeniorListConfig.NATION);
 		m_intro = response.getString(NurseSeniorListConfig.INTRO);
-		m_intro += AppUtil.GetResources().getString(R.string.content_self_intro);
+		m_intro = AppUtil.GetResources().getString(R.string.content_self_intro) + m_intro;
 		m_departments = response.getString(NurseSeniorListConfig.DEPARTMENTS);
 		m_certificate = response.getString(NurseSeniorListConfig.CERTIFICATE);
-		m_certificate += AppUtil.GetResources().getString(R.string.content_service_content);
+		m_certificate = AppUtil.GetResources().getString(R.string.content_service_content) + m_certificate;
 		m_serviceContent = response.getString(NurseSeniorListConfig.SERVICE_CONTENT);
 
 		m_scheduleList.init(m_ID);
