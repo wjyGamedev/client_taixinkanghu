@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
+import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.select_date.SelectDateActivity;
 import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
@@ -44,16 +45,65 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 
 		switch (v.getId())
 		{
-			case R.id.name_region:
+			//01. 点击区域
+			case R.id.name_region_ll:
 			{
 				apoitNursingActivity.setNameFocus();
-				break;
 			}
-			case R.id.btn_back:
+			return;
+			case R.id.gender_region_ll:
 			{
-				activity.finish();
-				break;
+				SelectSexFragment selectSexFragment = new SelectSexFragment();
+				transaction.replace(R.id.appointment_nursing_page, selectSexFragment, selectSexFragment.getClass().getName());
+				transaction.commit();
 			}
+			return;
+			case R.id.age_region_ll:
+			{
+				SelectAgeFragment selectAgeFragment = new SelectAgeFragment();
+				transaction.replace(R.id.appointment_nursing_page, selectAgeFragment, selectAgeFragment.getClass().getName());
+				transaction.commit();
+			}
+			return;
+			case R.id.weight_region_ll:
+			{
+				SelectWeightFragment selectWeightFragment = new SelectWeightFragment();
+				transaction.replace(R.id.appointment_nursing_page, selectWeightFragment, selectWeightFragment.getClass().getName());
+				transaction.commit();
+			}
+			return;
+			case R.id.hospital_region_ll:
+			{
+				SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
+				transaction.replace(R.id.appointment_nursing_page, selectHospitalFragment, selectHospitalFragment.getClass().getName());
+				transaction.commit();
+			}
+			return;
+			case R.id.department_region_ll:
+			{
+				SelectDepartmentFragment selectDepartmentFragment = new SelectDepartmentFragment();
+				transaction.replace(R.id.appointment_nursing_page, selectDepartmentFragment, selectDepartmentFragment.getClass().getName());
+				transaction.commit();
+			}
+			return;
+			case R.id.patient_state_region_ll:
+			{
+				SelectPatientStateFragment selectPatientStateFragment = new SelectPatientStateFragment();
+				transaction.replace(R.id.appointment_nursing_page, selectPatientStateFragment, selectPatientStateFragment.getClass().getName());
+				transaction.commit();
+			}
+			return;
+			case R.id.service_date_region_ll:
+			{
+				m_context.startActivity(new Intent(m_context, SelectDateActivity.class));
+			}
+			return;
+			//02. 控件点击
+			case R.id.protocol_tv:
+			{
+				m_context.startActivity(new Intent(m_context, AgreementActivity.class));
+			}
+			return;
 			case R.id.btn_bottom:
 			{
 				//01. 保存本地信息
@@ -87,53 +137,12 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				m_context.startActivity(new Intent(m_context, SelectNurseActivity.class));
 				break;
 			}
-			case R.id.btn_gender:
-			{
-				SelectSexFragment selectSexFragment = new SelectSexFragment();
-				transaction.replace(R.id.appointment_nursing_page, selectSexFragment, selectSexFragment.getClass().getName());
-				transaction.commit();
-				break;
-			}
-			case R.id.btn_age:
-			{
-				SelectAgeFragment selectAgeFragment = new SelectAgeFragment();
-				transaction.replace(R.id.appointment_nursing_page, selectAgeFragment, selectAgeFragment.getClass().getName());
-				transaction.commit();
-				break;
-			}
-			case R.id.btn_weight:
-			{
-				SelectWeightFragment selectWeightFragment = new SelectWeightFragment();
-				transaction.replace(R.id.appointment_nursing_page, selectWeightFragment, selectWeightFragment.getClass().getName());
-				transaction.commit();
-				break;
-			}
-			case R.id.btn_hospital:
-			{
-				SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
-				transaction.replace(R.id.appointment_nursing_page, selectHospitalFragment, selectHospitalFragment.getClass().getName());
-				transaction.commit();
-				break;
-			}
-			case R.id.department_ll:
-			{
-				SelectDepartmentFragment selectDepartmentFragment = new SelectDepartmentFragment();
-				transaction.replace(R.id.appointment_nursing_page, selectDepartmentFragment, selectDepartmentFragment.getClass().getName());
-				transaction.commit();
-				break;
-			}
-			case R.id.btn_patient_state:
-			{
-				SelectPatientStateFragment selectPatientStateFragment = new SelectPatientStateFragment();
-				transaction.replace(R.id.appointment_nursing_page, selectPatientStateFragment, selectPatientStateFragment.getClass().getName());
-				transaction.commit();
-				break;
-			}
-			case R.id.btn_date:
-			{
-				m_context.startActivity(new Intent(m_context, SelectDateActivity.class));
-				break;
-			}
-		}
-	}
+		}	//end_switch (v.getId())
+
+		return;
+
+	}	//end_onClick
+
+
+
 }
