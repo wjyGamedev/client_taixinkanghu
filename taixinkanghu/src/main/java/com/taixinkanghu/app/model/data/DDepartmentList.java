@@ -90,6 +90,17 @@ public class DDepartmentList
 	{
 		return m_departments;
 	}
+
+	public synchronized DDepartment getDepartmentByID(int id)
+	{
+		for (DDepartment department : m_departments)
+		{
+			if (department.getID() == id)
+				return department;
+		}
+		return null;
+	}
+
 }
 
 
