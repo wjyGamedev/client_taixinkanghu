@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
-import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.nurs_order_pay_page.NursOrderPayActivity;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
@@ -45,7 +44,7 @@ public class HandlerClickEventNursOrderConfirm extends BaseHandleOnClickEvent
 			return;
 			case R.id.patient_region_ll:
 			{
-				Intent intent = new Intent(orderconfirmActivity, ApoitNursingActivity.class);
+				Intent intent = new Intent(orderconfirmActivity, PatientActivity.class);
 				m_context.startActivity(intent);
 			}
 			return;
