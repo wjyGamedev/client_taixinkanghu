@@ -127,7 +127,7 @@ final class ViewHolder
 		DShoppingBasics tmpShoppingBasics = m_dShoppingBasicsArrayList.get(position);
 		int             iID               = tmpShoppingBasics.getId();
 		int             iImageIndex       = (iID - 1);
-		int             iImageID          = DFaceImages.getInstance().getImageIDbyIndex(iImageIndex);
+		int             iImageID          = DFaceImages.getInstance().getImgResIDbyIndex(iImageIndex);
 
 		m_goodsImage.setImageResource(iImageID);
 		m_nameText.setText(tmpShoppingBasics.getName());
