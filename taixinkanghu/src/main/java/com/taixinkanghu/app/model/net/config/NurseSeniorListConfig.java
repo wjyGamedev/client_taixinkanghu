@@ -12,7 +12,7 @@
  * 2015/8/17		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.event.net.config;
+package com.taixinkanghu.app.model.net.config;
 
 public class NurseSeniorListConfig
 {

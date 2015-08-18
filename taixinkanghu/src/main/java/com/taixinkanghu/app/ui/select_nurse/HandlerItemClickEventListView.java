@@ -20,7 +20,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.ui.nurse_info.NurseInfoActivity;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 

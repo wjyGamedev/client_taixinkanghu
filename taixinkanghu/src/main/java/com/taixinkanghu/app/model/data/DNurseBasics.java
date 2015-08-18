@@ -16,7 +16,7 @@ package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.EnumConfig.PatientState;
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.util.nurse.NurseUtil;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 

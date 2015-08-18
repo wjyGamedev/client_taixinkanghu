@@ -24,7 +24,7 @@ import com.taixinkanghu.app.model.data.DNurseContainer;
 import com.taixinkanghu.app.model.data.DNurseOrderConfirm;
 import com.taixinkanghu.app.model.data.DNurseSenior;
 import com.taixinkanghu.app.model.data.DNurseSeniorList;
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;

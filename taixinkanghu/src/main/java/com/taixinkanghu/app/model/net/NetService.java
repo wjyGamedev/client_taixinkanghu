@@ -26,7 +26,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.event.send.ReqDepartmentListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;

@@ -17,7 +17,7 @@ package com.taixinkanghu.app.model.data;
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

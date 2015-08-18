@@ -29,7 +29,7 @@ import com.taixinkanghu.app.model.data.DNurseBasicsList;
 import com.taixinkanghu.app.model.data.DNurseContainer;
 import com.taixinkanghu.app.model.data.DNurseSenior;
 import com.taixinkanghu.app.model.data.DNurseSeniorList;
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseSeniorListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;

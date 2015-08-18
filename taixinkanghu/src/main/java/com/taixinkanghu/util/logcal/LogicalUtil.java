@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.util.logcal;
 
-import com.taixinkanghu.app.model.event.net.config.ProtocalConfig;
+import com.taixinkanghu.app.model.net.config.ProtocalConfig;
 
 import java.util.Date;
 

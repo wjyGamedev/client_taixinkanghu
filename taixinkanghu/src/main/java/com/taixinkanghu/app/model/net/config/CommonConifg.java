@@ -12,12 +12,12 @@
  * 2015/8/17		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.event.net.config;
+package com.taixinkanghu.app.model.net.config;
 
-public class ProtocalConfig
+public class CommonConifg
 {
-	//01. http
-	public final static int    HTTP_OK     = 200;
-	public final static String HTTP_STATUS = "status";
-	public final static String HTTP_ERROR_MSG = "msg";
+	//通用
+	public final static String NAME      = "name";
+	public final static String ID        = "id";
+
 }

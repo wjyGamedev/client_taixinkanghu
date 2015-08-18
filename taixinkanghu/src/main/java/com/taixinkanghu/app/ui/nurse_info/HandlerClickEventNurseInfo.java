@@ -19,7 +19,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.ui.activity.ReviewsActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
