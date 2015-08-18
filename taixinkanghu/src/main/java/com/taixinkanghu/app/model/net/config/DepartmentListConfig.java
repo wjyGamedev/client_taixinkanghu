@@ -16,11 +16,10 @@ package com.taixinkanghu.app.model.net.config;
 
 public class DepartmentListConfig
 {
-	//common
-	public final static String ID   = CommonConifg.ID;
-	public final static String NAME = CommonConifg.NAME;
 	//send(无)
 	//recv
 	public final static String LIST = "department_list";
+	public final static String ID   = CommonConifg.ID;
+	public final static String NAME = "department_name";
 
 }
