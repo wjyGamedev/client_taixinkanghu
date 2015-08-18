@@ -336,7 +336,7 @@ public class OrderConfirmActivity extends Activity
 
 		//总价格
 		m_totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
-		String strTotalCharge = String.valueOf(m_totalCharge);
+		String strTotalCharge = String.valueOf(m_totalCharge) + getResources().getString(R.string.content_yuan);
 		m_TotalChargeTV.setText(strTotalCharge);
 	}
 
