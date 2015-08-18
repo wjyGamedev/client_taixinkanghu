@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-	android:id="@+id/appointment_nursing_page"
+	android:id="@+id/patient_page"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:background="@color/main_bg_color"
@@ -23,7 +23,7 @@
 			android:orientation="vertical">
 
 			<LinearLayout
-				android:id="@+id/name_region"
+				android:id="@+id/name_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_top"
@@ -45,7 +45,7 @@
 
 
 				<EditText
-					android:id="@+id/name"
+					android:id="@+id/name_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="60dp"
@@ -66,7 +66,7 @@
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
 				android:gravity="center_vertical"
-				android:orientation="horizontal">
+				android:orientation="horizontal" android:id="@+id/phone_num_region_ll">
 
 				<TextView
 					android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
 					android:text="手机号码："/>
 
 				<EditText
-					android:id="@+id/phone_number_tv"
+					android:id="@+id/phone_num_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="60dp"
@@ -95,7 +95,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_gender"
+				android:id="@+id/gender_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -111,7 +111,7 @@
 
 
 				<TextView
-					android:id="@+id/gender"
+					android:id="@+id/gender_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -119,7 +119,6 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击选择"
-					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
@@ -135,7 +134,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_age"
+				android:id="@+id/age_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -150,7 +149,7 @@
 					android:text="年龄："/>
 
 				<TextView
-					android:id="@+id/age"
+					android:id="@+id/age_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -158,7 +157,6 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击选择"
-					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
@@ -174,7 +172,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_weight"
+				android:id="@+id/weight_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -189,7 +187,7 @@
 					android:text="体重（kg）："/>
 
 				<TextView
-					android:id="@+id/weight"
+					android:id="@+id/weight_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -197,7 +195,6 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击选择"
-					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
@@ -235,7 +232,7 @@
 					android:text="所在医院："/>
 
 				<TextView
-					android:id="@+id/hospital"
+					android:id="@+id/hospital_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -243,7 +240,6 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击选择"
-					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
@@ -289,7 +285,6 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击选择"
-					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
@@ -393,7 +388,7 @@
 					android:text="病人状态："/>
 
 				<TextView
-					android:id="@+id/patient_state"
+					android:id="@+id/patient_state_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -401,7 +396,6 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击选择"
-					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
@@ -412,7 +406,7 @@
 					android:layout_width="20dp"
 					android:layout_height="20dp"
 					android:layout_marginRight="30dp"
-					android:background="@mipmap/img_down"/>
+					android:background="@mipmap/img_down" android:visibility="invisible"/>
 
 			</LinearLayout>
 
@@ -439,7 +433,7 @@
 					android:text="陪护时间："/>
 
 				<TextView
-					android:id="@+id/date"
+					android:id="@+id/service_date_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -447,7 +441,6 @@
 					android:background="#00000000"
 					android:gravity="right"
 					android:hint="点击选择"
-					android:imeOptions="actionNext"
 					android:singleLine="true"
 					android:textColor="@android:color/black"
 					android:textColorHint="@color/text_color_gray"
