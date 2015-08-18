@@ -5,7 +5,7 @@
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p/>
+ * <p>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
@@ -15,14 +15,11 @@
 package com.taixinkanghu.app.ui.appointment_nursing;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,7 +31,6 @@ import com.taixinkanghu.app.model.data.DDepartmentList;
 import com.taixinkanghu.app.model.data.DHospital;
 import com.taixinkanghu.app.model.data.DHospitalList;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
-import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.select_date.ConfirmSelectDateEvent;
 
@@ -45,58 +41,33 @@ import de.greenrobot.event.EventBus;
 
 public class ApoitNursingActivity extends Activity
 {
-	//title
-	private HeaderCommon m_headerCommon = null;
-
-
-	//bottom
-	private Button m_bottomBtn;
-
-	//name
-	private LinearLayout m_nameRegion = null;
-	private EditText m_nameTV       = null;
-	private EditText m_phoneNumTV   = null;
-	private TextView m_departmentTV = null;
-	private TextView m_roomTV       = null;
-	private TextView m_bedTV        = null;
-
-	//事件
-	private HandleEditActionEvent m_handleEditActionEvent = null;
-
-	//按钮
-	private LinearLayout m_genderBtn;
-	private LinearLayout m_ageBtn;
-	private LinearLayout m_weightBtn;
-	private LinearLayout m_hospitaltBtn;
-	private LinearLayout m_departmentLL = null;
-	private LinearLayout m_patientStateBtn;
-	private LinearLayout m_dateBtn;
-
-	private TextView  m_dateTv;
-	private ImageView m_rightDate;
-
-	private TextView  m_patientStateTv;
-	private ImageView m_dwonPatientState;
-
-	private TextView  m_hospitalTv;
-	private ImageView m_dwonHospital;
-
-	private TextView  m_weightTv;
-	private ImageView m_dwonWeight;
-
-	private TextView  m_ageTv;
-	private ImageView m_dwonAge;
-
-	private TextView  m_genderTv;
-	private ImageView m_dwonGender;
-
-	private int selected_hospital;
-
-	private TextView m_protocolTv;
+	//widget
+	private HeaderCommon m_headerCommon         = null;    //title：预约陪护
+	private LinearLayout m_nameRegionLL         = null;    //姓名点击区域
+	private EditText     m_nameTV               = null;    //姓名
+	private EditText     m_phoneNumTV           = null;    //手机号码
+	private LinearLayout m_genderRegionLL       = null;    //性别点击区域
+	private TextView     m_genderTV             = null;     //性别
+	private LinearLayout m_ageRegionLL          = null;    //年龄点击区域
+	private TextView     m_ageTV                = null;    //年龄
+	private LinearLayout m_weightRegionLL       = null;    //体重点击区域
+	private TextView     m_weightTV             = null;    //体重
+	private LinearLayout m_hospitaltRegionLL    = null;    //医院点击区域
+	private TextView     m_hospitalTV           = null;    //医院
+	private LinearLayout m_departmentRegionLL   = null;    //科室点击区域
+	private TextView     m_departmentTV         = null;    //科室
+	private LinearLayout m_patientStateRegionLL = null;    //患者状态点击区域
+	private TextView     m_patientStateTV       = null;    //患者状态
+	private LinearLayout m_serviceDateRegionLL  = null;    //服务时间点击区域
+	private TextView     m_serviceDateTV        = null;    //服务时间
+	private TextView     m_protocolTV           = null;    //用户协议
+	private Button       m_confirmBtn           = null;    //确定预约
 
 	//logical
+	private HandleEditActionEvent             m_handleEditActionEvent               = null;
 	private HandlerClickEventAppinmentNursing m_handlerClickEventAppointmentNursing = null;
-	private EventBus                          m_eventBus                            = EventBus.getDefault();
+
+	private EventBus m_eventBus = EventBus.getDefault();
 
 	private ArrayList<ArrayList<Date>>    m_dateListAll     = new ArrayList<>();
 	private ArrayList<ArrayList<Integer>> m_typeListAll     = new ArrayList<>();
@@ -134,21 +105,21 @@ public class ApoitNursingActivity extends Activity
 		EnumConfig.SexType sexType = DApoitNursing.GetInstance().getSexType();
 		if (sexType != null)
 		{
-			m_genderTv.setText(sexType.getName());
+			m_genderTV.setText(sexType.getName());
 		}
 
 		//年龄
 		EnumConfig.AgeRage ageRage = DApoitNursing.GetInstance().getAgeRage();
 		if (ageRage != null)
 		{
-			m_ageTv.setText(ageRage.getName());
+			m_ageTV.setText(ageRage.getName());
 		}
 
 		//体重
 		EnumConfig.WeightRage weightRage = DApoitNursing.GetInstance().getWeightRage();
 		if (weightRage != null)
 		{
-			m_weightTv.setText(weightRage.getName());
+			m_weightTV.setText(weightRage.getName());
 		}
 
 		//所在医院
@@ -156,7 +127,7 @@ public class ApoitNursingActivity extends Activity
 		//01. 显示全部
 		if (hospitalID == 0)
 		{
-			m_hospitalTv.setText(getResources().getString(R.string.content_all));
+			m_hospitalTV.setText(getResources().getString(R.string.content_all));
 		}
 		//02. 显示hospitalname
 		else
@@ -166,13 +137,13 @@ public class ApoitNursingActivity extends Activity
 			{
 				if (hospital.getID() == hospitalID)
 				{
-					m_hospitalTv.setText(hospital.getName());
+					m_hospitalTV.setText(hospital.getName());
 				}
 			}
 		}
 
 		//所在科室
-		int departmentID = DApoitNursing.GetInstance().getDepartmenetID();
+		int                    departmentID   = DApoitNursing.GetInstance().getDepartmenetID();
 		ArrayList<DDepartment> departmentList = DDepartmentList.GetInstance().getDepartments();
 		for (DDepartment department : departmentList)
 		{
@@ -186,7 +157,7 @@ public class ApoitNursingActivity extends Activity
 		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
 		if (patientState != null)
 		{
-			m_patientStateTv.setText(patientState.getName());
+			m_patientStateTV.setText(patientState.getName());
 		}
 
 		//护理时间
@@ -194,7 +165,7 @@ public class ApoitNursingActivity extends Activity
 		if (dNursingDate != null)
 		{
 			String dateDescription = dNursingDate.getDateDescription();
-			m_dateTv.setText(dateDescription);
+			m_serviceDateTV.setText(dateDescription);
 		}
 
 	}
@@ -208,45 +179,32 @@ public class ApoitNursingActivity extends Activity
 
 	private void init()
 	{
-		//title
+		//01. widget
 		m_headerCommon = new HeaderCommon(this);
 		m_headerCommon.init();
 
-		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
-
-		//name
-		m_nameRegion = (LinearLayout)findViewById(R.id.name_region);
-		m_nameTV = (EditText)findViewById(R.id.name);
-		m_phoneNumTV = (EditText)findViewById(R.id.phone_number_tv);
+		m_nameRegionLL = (LinearLayout)findViewById(R.id.name_region_ll);
+		m_nameTV = (EditText)findViewById(R.id.name_tv);
+		m_phoneNumTV = (EditText)findViewById(R.id.phone_num_tv);
+		m_genderRegionLL = (LinearLayout)findViewById(R.id.gender_region_ll);
+		m_genderTV = (TextView)findViewById(R.id.gender_tv);
+		m_ageRegionLL = (LinearLayout)findViewById(R.id.age_region_ll);
+		m_ageTV = (TextView)findViewById(R.id.age_tv);
+		m_weightRegionLL = (LinearLayout)findViewById(R.id.weight_region_ll);
+		m_weightTV = (TextView)findViewById(R.id.weight);
+		m_hospitaltRegionLL = (LinearLayout)findViewById(R.id.hospital_region_ll);
+		m_hospitalTV = (TextView)findViewById(R.id.hospital_tv);
+		m_departmentRegionLL = (LinearLayout)findViewById(R.id.department_region_ll);
 		m_departmentTV = (TextView)findViewById(R.id.department_tv);
-		m_roomTV = (TextView)findViewById(R.id.room_tv);
-		m_bedTV = (TextView)findViewById(R.id.bed_id_tv);
+		m_patientStateRegionLL = (LinearLayout)findViewById(R.id.patient_state_region_ll);
+		m_patientStateTV = (TextView)findViewById(R.id.patient_state_tv);
+		m_serviceDateRegionLL = (LinearLayout)findViewById(R.id.service_date_region_ll);
+		m_serviceDateTV = (TextView)findViewById(R.id.service_date_tv);
+		m_protocolTV = (TextView)findViewById(R.id.protocol_tv);
+		m_confirmBtn = (Button)findViewById(R.id.btn_bottom);
 
 		m_handleEditActionEvent = new HandleEditActionEvent(this);
 
-		m_protocolTv = (TextView)findViewById(R.id.btn_protocol);
-
-		m_genderTv = (TextView)findViewById(R.id.gender);
-		m_ageTv = (TextView)findViewById(R.id.age);
-		m_weightTv = (TextView)findViewById(R.id.weight);
-		m_hospitalTv = (TextView)findViewById(R.id.hospital);
-		m_patientStateTv = (TextView)findViewById(R.id.patient_state);
-		m_dateTv = (TextView)findViewById(R.id.date);
-
-		m_dwonGender = (ImageView)findViewById(R.id.dwon_gender);
-		m_dwonAge = (ImageView)findViewById(R.id.dwon_age);
-		m_dwonWeight = (ImageView)findViewById(R.id.dwon_weight);
-		m_dwonHospital = (ImageView)findViewById(R.id.dwon_hospital);
-		m_dwonPatientState = (ImageView)findViewById(R.id.dwon_patient_state);
-		m_rightDate = (ImageView)findViewById(R.id.right_date);
-
-		m_genderBtn = (LinearLayout)findViewById(R.id.btn_gender);
-		m_ageBtn = (LinearLayout)findViewById(R.id.btn_age);
-		m_weightBtn = (LinearLayout)findViewById(R.id.btn_weight);
-		m_hospitaltBtn = (LinearLayout)findViewById(R.id.btn_hospital);
-		m_departmentLL = (LinearLayout)findViewById(R.id.department_ll);
-		m_patientStateBtn = (LinearLayout)findViewById(R.id.btn_patient_state);
-		m_dateBtn = (LinearLayout)findViewById(R.id.btn_date);
 
 		m_handlerClickEventAppointmentNursing = new HandlerClickEventAppinmentNursing(this);
 		m_eventBus.register(this);
@@ -254,100 +212,59 @@ public class ApoitNursingActivity extends Activity
 
 	private void initListener()
 	{
-		//title
-
-		//name
-		//		m_nameTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_nameRegion.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		//01. 点击区域
+		m_nameRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_genderRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_ageRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_weightRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_hospitaltRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_departmentRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_patientStateRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_serviceDateRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		//02. 控件点击
+		m_protocolTV.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_confirmBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		//03. edittext
 		m_nameTV.setOnEditorActionListener(m_handleEditActionEvent);
 		m_phoneNumTV.setOnEditorActionListener(m_handleEditActionEvent);
 
-		m_departmentTV.setOnEditorActionListener(m_handleEditActionEvent);
-		m_roomTV.setOnEditorActionListener(m_handleEditActionEvent);
-		m_bedTV.setOnEditorActionListener(m_handleEditActionEvent);
-
-		m_bottomBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_genderBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_ageBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_weightBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_hospitaltBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_departmentLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_patientStateBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
-		m_dateBtn.setOnClickListener(m_handlerClickEventAppointmentNursing);
 	}
 
 	private void initContent()
 	{
 		m_headerCommon.setTitle(R.string.appointment_nursing_title);
-		m_bottomBtn.setText(R.string.confirm_btn_text);
-		m_protocolTv.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
-		m_protocolTv.setOnClickListener(new View.OnClickListener()
-										{
-											@Override
-											public void onClick(View v)
-											{
-												startActivity(new Intent(ApoitNursingActivity.this, AgreementActivity.class));
-											}
-										}
-									   );
-
-
+		m_confirmBtn.setText(R.string.confirm_btn_text);
+		m_protocolTV.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
 	}
 
 
-	public TextView getGenderTv()
+	public TextView getGenderTV()
 	{
-		return m_genderTv;
+		return m_genderTV;
 	}
 
-	public ImageView getDwonGender()
+
+	public TextView getAgeTV()
 	{
-		return m_dwonGender;
+		return m_ageTV;
 	}
 
-	public TextView getAgeTv()
+
+	public TextView getWeightTV()
 	{
-		return m_ageTv;
+		return m_weightTV;
 	}
 
-	public ImageView getDwonAge()
+
+	public TextView getHospitalTV()
 	{
-		return m_dwonAge;
+		return m_hospitalTV;
 	}
 
-	public TextView getWeightTv()
-	{
-		return m_weightTv;
-	}
-
-	public ImageView getDwonWeight()
-	{
-		return m_dwonWeight;
-	}
-
-	public TextView getHospitalTv()
-	{
-		return m_hospitalTv;
-	}
-
-	public ImageView getDwonHospital()
-	{
-		return m_dwonHospital;
-	}
-
-	public void setSelected_hospital(int selected_hospital)
-	{
-		this.selected_hospital = selected_hospital;
-	}
-
-	public int getSelected_hospital()
-	{
-		return selected_hospital;
-	}
 
 	public String getHospitalName()
 	{
-		return m_hospitalTv.getText().toString();
+		return m_hospitalTV.getText().toString();
 	}
 
 	public String getDepartmentName()
@@ -357,30 +274,25 @@ public class ApoitNursingActivity extends Activity
 
 	public String getPatientState()
 	{
-		return m_patientStateTv.getText().toString();
+		return m_patientStateTV.getText().toString();
 	}
 
-	public TextView getPatientStateTv()
+	public TextView getPatientStateTV()
 	{
-		return m_patientStateTv;
-	}
-
-	public ImageView getDwonPatientState()
-	{
-		return m_dwonPatientState;
+		return m_patientStateTV;
 	}
 
 	public String getDateDescription()
 	{
-		return m_dateTv.getText().toString();
+		return m_serviceDateTV.getText().toString();
 	}
 
 	public void setDateDescription(String dateDescription)
 	{
 		m_dateDescription = dateDescription;
-		if (m_dateTv == null)
+		if (m_serviceDateTV == null)
 			return;
-		m_dateTv.setText(m_dateDescription);
+		m_serviceDateTV.setText(m_dateDescription);
 	}
 
 	public ArrayList<ArrayList<Integer>> getTypeListAll()
@@ -413,19 +325,19 @@ public class ApoitNursingActivity extends Activity
 	//数据设置
 	public void setSexType(EnumConfig.SexType sexType)
 	{
-		m_genderTv.setText(sexType.getName());
+		m_genderTV.setText(sexType.getName());
 		DApoitNursing.GetInstance().setSexType(sexType);
 	}
 
 	public void setAgeRage(EnumConfig.AgeRage ageRage)
 	{
-		m_ageTv.setText(ageRage.getName());
+		m_ageTV.setText(ageRage.getName());
 		DApoitNursing.GetInstance().setAgeRage(ageRage);
 	}
 
 	public void setWeightRage(EnumConfig.WeightRage weightRage)
 	{
-		m_weightTv.setText(weightRage.getName());
+		m_weightTV.setText(weightRage.getName());
 		DApoitNursing.GetInstance().setWeightRage(weightRage);
 	}
 
@@ -450,7 +362,7 @@ public class ApoitNursingActivity extends Activity
 		//01. 显示全部
 		if (hospitalID == 0)
 		{
-			m_hospitalTv.setText(getResources().getString(R.string.content_all));
+			m_hospitalTV.setText(getResources().getString(R.string.content_all));
 		}
 		//02. 显示hospitalname
 		else
@@ -460,7 +372,7 @@ public class ApoitNursingActivity extends Activity
 			{
 				if (hospital.getID() == hospitalID)
 				{
-					m_hospitalTv.setText(hospital.getName());
+					m_hospitalTV.setText(hospital.getName());
 				}
 			}
 		}
@@ -470,7 +382,7 @@ public class ApoitNursingActivity extends Activity
 
 	public void setPatientState(EnumConfig.PatientState patientState)
 	{
-		m_patientStateTv.setText(patientState.getName());
+		m_patientStateTV.setText(patientState.getName());
 		DApoitNursing.GetInstance().setPatientState(patientState);
 	}
 
