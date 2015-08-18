@@ -11,13 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.UIConfig;
 import com.taixinkanghu.app.model.data.DHospital;
 import com.taixinkanghu.app.model.data.DHospitalList;
-import com.taixinkanghu.app.model.event.net.recv.FinishedHospitalListEvent;
-import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.recv.FinishedHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,8 @@ public class SelectHospitalFragment extends Fragment implements View.OnTouchList
 	//widget
 	private LayoutInflater m_layoutInflater = null;
 	private View m_view;
+	private TextView m_contentTipsTV = null;
+	private TextView m_moreContentTipsTV = null;
 	private GridLayout   m_gridLayout = null;
 	private LinearLayout m_headerBgLL = null;
 	private LinearLayout m_bottomBgLL = null;
@@ -44,7 +47,7 @@ public class SelectHospitalFragment extends Fragment implements View.OnTouchList
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		m_layoutInflater = inflater;
-		m_view = m_layoutInflater.inflate(R.layout.fragment_select_hospital, container, false);
+		m_view = m_layoutInflater.inflate(R.layout.fragment_select_list, container, false);
 		init();
 		initContent();
 		initListener();
@@ -60,6 +63,8 @@ public class SelectHospitalFragment extends Fragment implements View.OnTouchList
 
 	private void init()
 	{
+		m_contentTipsTV = (TextView)m_view.findViewById(R.id.content_tips);
+		m_moreContentTipsTV = (TextView)m_view.findViewById(R.id.more_content_tips);
 		m_gridLayout = (GridLayout)m_view.findViewById(R.id.widget_region_gl);
 		m_headerBgLL = (LinearLayout)m_view.findViewById(R.id.header_bg_ll);
 		m_bottomBgLL = (LinearLayout)m_view.findViewById(R.id.bottom_bg_ll);
@@ -70,6 +75,10 @@ public class SelectHospitalFragment extends Fragment implements View.OnTouchList
 	{
 		if (m_layoutInflater == null)
 			return;
+
+		//设置提示信息
+		m_contentTipsTV.setText(getActivity().getResources().getString(R.string.hospital_content_tips));
+		m_moreContentTipsTV.setText(getActivity().getResources().getString(R.string.hospital_more_content_tips));
 
 		ArrayList<DHospital> hospitals = DHospitalList.GetInstance().getHospitals();
 
@@ -101,7 +110,7 @@ public class SelectHospitalFragment extends Fragment implements View.OnTouchList
 					return;
 				}
 
-				View view = m_layoutInflater.inflate(R.layout.fragment_select_hospital_item, m_gridLayout, false);
+				View view = m_layoutInflater.inflate(R.layout.fragment_select_list_item, m_gridLayout, false);
 				tag = String.valueOf(indexBtn);
 				Button btn = (Button)view.findViewById(R.id.item_id);
 				btn.setTag(tag);

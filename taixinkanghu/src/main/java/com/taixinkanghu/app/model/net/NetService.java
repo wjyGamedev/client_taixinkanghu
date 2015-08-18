@@ -27,13 +27,14 @@ import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
 import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
-import com.taixinkanghu.app.model.event.net.send.ReqDepartmentListEvent;
-import com.taixinkanghu.app.model.event.net.send.ReqHospitalListEvent;
-import com.taixinkanghu.app.model.event.net.send.ReqNurseSeniorListEvent;
-import com.taixinkanghu.app.model.event.net.send.ReqRegisterEvent;
-import com.taixinkanghu.app.model.event.net.send.ReqShoppingBasicListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqDepartmentListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqRegisterEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqShoppingBasicListEvent;
 import com.taixinkanghu.app.model.net.handler.BaseErrorListener;
 import com.taixinkanghu.app.model.net.handler.ResApoitNursingHandler;
+import com.taixinkanghu.app.model.net.handler.ResDepartmentListHandler;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
 import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
@@ -57,6 +58,7 @@ public class NetService extends Service
 	private EventBus               m_eventBus               = EventBus.getDefault();
 	private BaseErrorListener      m_baseErrorListener      = null;
 	private ResHospitalListHandler m_resHospitalListHandler = null;
+	private ResDepartmentListHandler m_resDepartmentListHandler = null;
 	private ResRegisterHandler     m_resRegisterHandler     = null;
 	private ResApoitNursingHandler m_resApoitNursingHandler = null;
 	private ResNurseSeniorListHandler m_resNurseSeniorListHandler = null;
@@ -112,6 +114,7 @@ public class NetService extends Service
 		m_eventBus = EventBus.getDefault();
 		m_baseErrorListener = new BaseErrorListener(this);
 		m_resHospitalListHandler = new ResHospitalListHandler();
+		m_resDepartmentListHandler = new ResDepartmentListHandler();
 		m_resRegisterHandler = new ResRegisterHandler();
 		m_resApoitNursingHandler = new ResApoitNursingHandler();
 		m_resNurseSeniorListHandler = new ResNurseSeniorListHandler();
@@ -164,7 +167,17 @@ public class NetService extends Service
 	}
 
 	//科室列表
+	public void onEventAsync(ReqDepartmentListEvent event)
+	{
+		JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
+														NetConfig.S_NORMAL_DEPARTMENTLIST_ADDRESS,
+														null,
+														m_resDepartmentListHandler,
+														m_baseErrorListener
+		);
 
+		m_requestQueue.add(myReq);
+	}
 
 	//注册
 	public void onEventAsync(ReqRegisterEvent event)
@@ -215,7 +228,7 @@ public class NetService extends Service
 		}
 
 		int hospitalID = DApoitNursing.GetInstance().getHospitalID();
-		String departmentName = DApoitNursing.GetInstance().getDepartmenetName();
+		int departmentID = DApoitNursing.GetInstance().getDepartmenetID();
 		int patientStateID = 0;
 		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
 		if (patientState != null)
@@ -250,7 +263,7 @@ public class NetService extends Service
 
 		//由于下面是必填项目，所以不判断是否为空，直接填充信息。
 		registerData.put(NurseBasicListConfig.HOSPITAL_ID, String.valueOf(hospitalID));
-		registerData.put(NurseBasicListConfig.DEPARTMENT_NAME, departmentName);
+		registerData.put(NurseBasicListConfig.DEPARTMENT_NAME, String.valueOf(departmentID));
 		registerData.put(NurseBasicListConfig.PATIENT_STATE_ID, String.valueOf(patientStateID));
 
 		if (!TextUtils.isEmpty(schedualAll))

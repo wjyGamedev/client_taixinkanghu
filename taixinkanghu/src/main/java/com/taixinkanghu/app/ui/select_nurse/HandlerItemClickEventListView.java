@@ -20,7 +20,9 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.ui.nurse_info.NurseInfoActivity;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class HandlerItemClickEventListView implements AdapterView.OnItemClickListener
 {
@@ -29,9 +31,19 @@ public class HandlerItemClickEventListView implements AdapterView.OnItemClickLis
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
-		Activity activity = (Activity)m_context;
-		Intent intent = new Intent(activity, NurseInfoActivity.class);
-		activity.startActivity(intent);
+		SelectNurseActivity selectNurseActivity = (SelectNurseActivity)m_context;
+		if (selectNurseActivity == null)
+		{
+			RegisterDialog.GetInstance().setMsg("selectNurseActivity == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		Intent intent = new Intent(selectNurseActivity, NurseInfoActivity.class);
+		intent.putExtra(NurseBasicListConfig.ID, (int)id);
+		selectNurseActivity.startActivity(intent);
+		return;
+
 	}
 
 	public HandlerItemClickEventListView(Activity activity)

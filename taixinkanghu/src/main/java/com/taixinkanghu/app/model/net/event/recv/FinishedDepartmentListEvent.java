@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 213Team
  *
- * @className : com.taixinkanghu.app.model.event.net.send.${type_name}
+ * @className : com.taixinkanghu.app.model.net.event.recv.${type_name}
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
@@ -12,15 +12,15 @@
  * 2015/8/17		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.event.net.send;
+package com.taixinkanghu.app.model.net.event.recv;
 
 import com.taixinkanghu.app.model.config.EventID;
-import com.taixinkanghu.app.model.event.net.BaseNetEvent;
+import com.taixinkanghu.app.model.net.event.BaseNetEvent;
 
-public class ReqDepartmentListEvent extends BaseNetEvent
+public class FinishedDepartmentListEvent  extends BaseNetEvent
 {
-	public ReqDepartmentListEvent()
+	public FinishedDepartmentListEvent()
 	{
-		super(EventID.QUEST_HOSPITAL_LIST);
+		super(EventID.FINISHED_DEPARTMENT_LIST);
 	}
 }

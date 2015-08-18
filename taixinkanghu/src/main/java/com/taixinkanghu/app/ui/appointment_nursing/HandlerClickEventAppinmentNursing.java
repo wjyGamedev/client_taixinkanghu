@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.event.net.send.ReqNurseSeniorListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.select_date.SelectDateActivity;
 import com.taixinkanghu.app.ui.select_date.SelectDateFragment;
@@ -78,7 +78,7 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				m_eventBus.post(reqApoitNursingEvent);
 				//0302. nurse senior list
 				ReqNurseSeniorListEvent reqNurseSeniorListEvent = new ReqNurseSeniorListEvent();
-				m_eventBus.post(reqApoitNursingEvent);
+				m_eventBus.post(reqNurseSeniorListEvent);
 
 				//04. 跳转到护理员列表界面
 				m_context.startActivity(new Intent(m_context, SelectNurseActivity.class));
@@ -109,6 +109,13 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			{
 				SelectHospitalFragment selectHospitalFragment = new SelectHospitalFragment();
 				transaction.replace(R.id.appointment_nursing_page, selectHospitalFragment, selectHospitalFragment.getClass().getName());
+				transaction.commit();
+				break;
+			}
+			case R.id.department_ll:
+			{
+				SelectDepartmentFragment selectDepartmentFragment = new SelectDepartmentFragment();
+				transaction.replace(R.id.appointment_nursing_page, selectDepartmentFragment, selectDepartmentFragment.getClass().getName());
 				transaction.commit();
 				break;
 			}

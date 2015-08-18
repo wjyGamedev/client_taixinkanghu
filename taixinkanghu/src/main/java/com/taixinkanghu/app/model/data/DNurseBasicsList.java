@@ -77,6 +77,25 @@ public class DNurseBasicsList
 		return m_nurseBasicses;
 	}
 
+	public synchronized DNurseBasics getNurseBasicByID(int id)
+	{
+		if (m_nurseBasicses == null)
+			return null;
+
+		for (DNurseBasics nurseBasics : m_nurseBasicses)
+		{
+			if (nurseBasics == null)
+				continue;
+
+			if (nurseBasics.getID() == id)
+			{
+				return nurseBasics;
+			}
+		}
+
+		return null;
+	}
+
 	public synchronized int getStatus()
 	{
 		return m_Status;

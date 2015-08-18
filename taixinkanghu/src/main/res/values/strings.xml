@@ -50,6 +50,10 @@
 	<string name="content_care_myself">可自理</string>
 	<string name="content_half_care_myself">半自理</string>
 	<string name="content_not_care_myself">不能自理</string>
+	<string name="content_main_page">首页</string>
+	<string name="content_yuan_per_day">元/天</string>
+	<string name="content_self_intro">自我介绍：</string>
+	<string name="content_service_content">服务内容：</string>
 
 	//注册信息
 	<string name="title_register">注册页面</string>
@@ -61,6 +65,12 @@
 
 	<!-- 选择医院列表-->
 	<string name="content_all">全部</string>
+	<string name="hospital_content_tips">请选择医院</string>
+	<string name="hospital_more_content_tips">更多医院敬请期待</string>
+
+	<!-- 选择科室列表-->
+	<string name="department_content_tips">请选择科室</string>
+	<string name="department_more_content_tips">更多科室敬请期待</string>
 
 	<!-- 公共信息-->
 	<string name="content_sure">确认</string>
