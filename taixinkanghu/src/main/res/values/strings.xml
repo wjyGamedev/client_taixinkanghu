@@ -56,6 +56,7 @@
 	<string name="content_service_content">服务内容：</string>
 	<string name="content_day">天</string>
 	<string name="content_yuan">元</string>
+	<string name="content_age">岁</string>
 
 	//注册信息
 	<string name="title_register">注册页面</string>
