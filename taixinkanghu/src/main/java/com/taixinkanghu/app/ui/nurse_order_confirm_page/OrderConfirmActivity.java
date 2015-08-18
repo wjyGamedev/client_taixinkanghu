@@ -520,7 +520,7 @@ public class OrderConfirmActivity extends Activity
 		//ui
 		m_serviceAddressTV.setText(address);
 		//data
-		DNurseOrderConfirm.GetInstance().setServiceDate(address);
+		DNurseOrderConfirm.GetInstance().setServiceAddress(address);
 	}
 
 }
