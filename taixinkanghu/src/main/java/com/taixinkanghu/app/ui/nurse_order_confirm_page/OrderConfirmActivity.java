@@ -267,8 +267,8 @@ public class OrderConfirmActivity extends Activity
 		String name = DNurseOrderConfirm.GetInstance().getNurseName();
 		m_nameTV.setText(name);
 
-		int jobNum = DNurseOrderConfirm.GetInstance().getNurseJobNum();
-		m_jobNumTV.setText(String.valueOf(jobNum));
+		String jobNum = DNurseOrderConfirm.GetInstance().getNurseJobNum();
+		m_jobNumTV.setText(jobNum);
 
 		String nursingLevel = DNurseOrderConfirm.GetInstance().getNursingLevel();
 		m_nuringLevelTV.setText(nursingLevel);
@@ -491,10 +491,10 @@ public class OrderConfirmActivity extends Activity
 		DNurseOrderConfirm.GetInstance().setNurseHeaderImgResID(resID);
 	}
 
-	private void setNurseJobNum(int jobNum)
+	private void setNurseJobNum(String jobNum)
 	{
 		//ui
-		m_jobNumTV.setText(String.valueOf(jobNum));
+		m_jobNumTV.setText(jobNum);
 		//data
 		DNurseOrderConfirm.GetInstance().setNurseJobNum(jobNum);
 	}
