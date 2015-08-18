@@ -10,7 +10,6 @@ import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.select_date.SelectDateActivity;
-import com.taixinkanghu.app.ui.select_date.SelectDateFragment;
 import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
@@ -34,9 +33,13 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 		Activity activity = (Activity)m_context;
 		ApoitNursingActivity apoitNursingActivity = (ApoitNursingActivity)activity;
 		if (apoitNursingActivity == null)
+		{
+			RegisterDialog.GetInstance().setMsg("apoitNursingActivity == null");
+			RegisterDialog.GetInstance().show();
 			return;
+		}
 
-		SelectDateFragment          selectDateFragment = new SelectDateFragment();
+
 		FragmentTransaction transaction = activity.getFragmentManager().beginTransaction();
 
 		switch (v.getId())

@@ -12,18 +12,19 @@
  * 2015/8/15		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.ui.appointment_nursing;
+package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DApoitNursing
+public class DApoitNursing implements Serializable
 {
 	private static DApoitNursing s_dApoitNursing = new DApoitNursing();
 
@@ -52,6 +53,8 @@ public class DApoitNursing
 	private EnumConfig.PatientState m_patientState = null;
 
 	//护理时间
+	private DNursingDate m_nursingDate = null;
+
 	public static class DNursingDate
 	{
 		private Date                          m_beingDate        = null;
@@ -61,6 +64,9 @@ public class DApoitNursing
 		private String                        m_dateDescription  = null;
 		private SimpleDateFormat              m_simpleDateFormat = new SimpleDateFormat(DateConfig.PATTERN_DATE_YEAR_MONTH_DAY);
 
+		private int m_allNum = 0;
+		private int m_dayNum = 0;
+		private int m_nightNum = 0;
 
 		public DNursingDate(Date beingDate, Date endDate, ArrayList<ArrayList<Date>> dateListAll, ArrayList<ArrayList<Integer>>
 				typeListAll, String dateDescription)
@@ -150,9 +156,65 @@ public class DApoitNursing
 			return getDateDescription(DataConfig.SELECT_DAY_TYEP_NIGHT);
 		}
 
+		public int getAllNum()
+		{
+			if (m_allNum != 0)
+				return m_allNum;
+
+			for (ArrayList<Integer> integerList : m_typeListAll)
+			{
+				for (Integer integer : integerList)
+				{
+					if (integer == DataConfig.SELECT_DAY_TYEP_ALL)
+					{
+						m_allNum++;
+						continue;
+					}
+				}
+			}
+			return m_allNum;
+
+		}
+
+		public int getDayNum()
+		{
+			if (m_dayNum != 0)
+				return m_dayNum;
+
+			for (ArrayList<Integer> integerList : m_typeListAll)
+			{
+				for (Integer integer : integerList)
+				{
+					if (integer == DataConfig.SELECT_DAY_TYEP_DAY)
+					{
+						m_dayNum++;
+						continue;
+					}
+				}
+			}
+			return m_dayNum;
+		}
+
+		public int getNightNum()
+		{
+			if (m_nightNum != 0)
+				return m_nightNum;
+
+			for (ArrayList<Integer> integerList : m_typeListAll)
+			{
+				for (Integer integer : integerList)
+				{
+					if (integer == DataConfig.SELECT_DAY_TYEP_NIGHT)
+					{
+						m_nightNum++;
+						continue;
+					}
+				}
+			}
+			return m_nightNum;
+		}
 
 	}
-	private DNursingDate m_dNursingDate = null;
 
 	private DApoitNursing()
 	{
@@ -244,13 +306,13 @@ public class DApoitNursing
 		m_patientState = patientState;
 	}
 
-	public DNursingDate getdNursingDate()
+	public DNursingDate getNursingDate()
 	{
-		return m_dNursingDate;
+		return m_nursingDate;
 	}
 
-	public void setdNursingDate(DNursingDate dNursingDate)
+	public void setNursingDate(DNursingDate nursingDate)
 	{
-		m_dNursingDate = dNursingDate;
+		m_nursingDate = nursingDate;
 	}
 }

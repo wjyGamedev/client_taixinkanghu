@@ -14,8 +14,11 @@
 
 package com.taixinkanghu.app.model.data;
 
+import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.EnumConfig.PatientState;
 import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
 import com.taixinkanghu.util.nurse.NurseUtil;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -175,6 +178,91 @@ public class DNurseBasics implements Serializable
 	{
 		return m_serviceChargePerNightCanntCare;
 	}
+
+	public int getServiceCharge(int dayType, PatientState patientState)
+	{
+		if (dayType < DataConfig.SELECT_DAY_TYEP_ALL || dayType > DataConfig.SELECT_DAY_TYEP_NIGHT)
+		{
+			RegisterDialog.GetInstance().setMsg("dayType is invalid![dayType:="+dayType+"]");
+			RegisterDialog.GetInstance().show();
+			return 0;
+		}
+
+		if (dayType == DataConfig.SELECT_DAY_TYEP_ALL)
+		{
+			switch(patientState)
+			{
+				case PATIENT_STATE_CARE_MYSELF:
+				{
+					return getServiceChargePerAllCare();
+				}
+				case PATIENT_STATE_HALF_CARE_MYSELF:
+				{
+					return getServiceChargePerAllHalfCare();
+				}
+				case PATIENT_STATE_CANNT_CARE_MYSELF:
+				{
+					return getServiceChargePerAllCanntCare();
+				}
+				default:
+				{
+					RegisterDialog.GetInstance().setMsg("patientState is invalid!"+patientState.toString());
+					RegisterDialog.GetInstance().show();
+					return 0;
+				}
+			}
+		}
+		else if (dayType == DataConfig.SELECT_DAY_TYEP_DAY)
+		{
+			switch(patientState)
+			{
+				case PATIENT_STATE_CARE_MYSELF:
+				{
+					return getServiceChargePerDayCare();
+				}
+				case PATIENT_STATE_HALF_CARE_MYSELF:
+				{
+					return getServiceChargePerDayHalfCare();
+				}
+				case PATIENT_STATE_CANNT_CARE_MYSELF:
+				{
+					return getServiceChargePerDayCanntCare();
+				}
+				default:
+				{
+					RegisterDialog.GetInstance().setMsg("patientState is invalid!"+patientState.toString());
+					RegisterDialog.GetInstance().show();
+					return 0;
+				}
+			}
+		}
+		else
+		{
+			switch(patientState)
+			{
+				case PATIENT_STATE_CARE_MYSELF:
+				{
+					return getServiceChargePerNightCare();
+				}
+				case PATIENT_STATE_HALF_CARE_MYSELF:
+				{
+					return getServiceChargePerNightHalfCare();
+				}
+				case PATIENT_STATE_CANNT_CARE_MYSELF:
+				{
+					return getServiceChargePerNightCanntCare();
+				}
+				default:
+				{
+					RegisterDialog.GetInstance().setMsg("patientState is invalid!"+patientState.toString());
+					RegisterDialog.GetInstance().show();
+					return 0;
+				}
+			}
+		}
+
+	}
+
 
 	public String getServiceStatus()
 	{

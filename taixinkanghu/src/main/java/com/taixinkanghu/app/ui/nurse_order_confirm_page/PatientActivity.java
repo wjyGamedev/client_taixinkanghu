@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 213Team
  *
- * @className : com.taixinkanghu.app.ui.appointment_nursing.${type_name}
+ * @className : com.taixinkanghu.app.ui.nurse_order_confirm_page.${type_name}
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
@@ -9,10 +9,10 @@
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/7/27		WangJY		1.0.0		create
+ * 2015/8/18		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.ui.appointment_nursing;
+package com.taixinkanghu.app.ui.nurse_order_confirm_page;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -34,16 +34,15 @@ import com.taixinkanghu.app.model.data.DDepartmentList;
 import com.taixinkanghu.app.model.data.DHospital;
 import com.taixinkanghu.app.model.data.DHospitalList;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
-import com.taixinkanghu.app.ui.activity.AgreementActivity;
+import com.taixinkanghu.app.ui.appointment_nursing.HandlerClickEventAppinmentNursing;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
-import com.taixinkanghu.app.ui.select_date.ConfirmSelectDateEvent;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 import de.greenrobot.event.EventBus;
 
-public class ApoitNursingActivity extends Activity
+public class PatientActivity extends Activity
 {
 	//title
 	private HeaderCommon m_headerCommon = null;
@@ -53,12 +52,12 @@ public class ApoitNursingActivity extends Activity
 	private Button m_bottomBtn;
 
 	//name
-	private LinearLayout m_nameRegion = null;
-	private EditText m_nameTV       = null;
-	private EditText m_phoneNumTV   = null;
-	private TextView m_departmentTV = null;
-	private TextView m_roomTV       = null;
-	private TextView m_bedTV        = null;
+	private LinearLayout m_nameRegion   = null;
+	private EditText     m_nameTV       = null;
+	private EditText     m_phoneNumTV   = null;
+	private TextView     m_departmentTV = null;
+	private TextView     m_roomTV       = null;
+	private TextView     m_bedTV        = null;
 
 	//事件
 	private HandleEditActionEvent m_handleEditActionEvent = null;
@@ -172,7 +171,7 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//所在科室
-		int departmentID = DApoitNursing.GetInstance().getDepartmenetID();
+		int                    departmentID   = DApoitNursing.GetInstance().getDepartmenetID();
 		ArrayList<DDepartment> departmentList = DDepartmentList.GetInstance().getDepartments();
 		for (DDepartment department : departmentList)
 		{
@@ -286,7 +285,7 @@ public class ApoitNursingActivity extends Activity
 											@Override
 											public void onClick(View v)
 											{
-												startActivity(new Intent(ApoitNursingActivity.this, AgreementActivity.class));
+												startActivity(new Intent(PatientActivity.this, PatientActivity.class));
 											}
 										}
 									   );
@@ -492,18 +491,4 @@ public class ApoitNursingActivity extends Activity
 
 	}
 
-	/**
-	 * EventBus  handler
-	 */
-	public void onEventMainThread(ConfirmSelectDateEvent event)
-	{
-		if (event == null)
-			return;
-
-		if (event.getdNursingDate() == null)
-			return;
-
-		setDateDescription(event.getdNursingDate().getDateDescription());
-		DApoitNursing.GetInstance().setNursingDate(event.getdNursingDate());
-	}
 }

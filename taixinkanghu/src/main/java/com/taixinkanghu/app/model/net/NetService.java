@@ -39,7 +39,7 @@ import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
 import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
 import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
-import com.taixinkanghu.app.ui.appointment_nursing.DApoitNursing;
+import com.taixinkanghu.app.model.data.DApoitNursing;
 import com.taixinkanghu.app.ui.appointment_nursing.ReqApoitNursingEvent;
 import com.taixinkanghu.net.BaseHttp;
 import com.taixinkanghu.third.party.sms.SmsConfig;
@@ -236,7 +236,7 @@ public class NetService extends Service
 			patientStateID = patientState.getId();
 		}
 
-		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getdNursingDate();
+		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getNursingDate();
 		if (dNursingDate == null)
 			return;
 

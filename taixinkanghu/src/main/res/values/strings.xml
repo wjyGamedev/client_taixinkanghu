@@ -54,6 +54,8 @@
 	<string name="content_yuan_per_day">元/天</string>
 	<string name="content_self_intro">自我介绍：</string>
 	<string name="content_service_content">服务内容：</string>
+	<string name="content_day">天</string>
+	<string name="content_yuan">元</string>
 
 	//注册信息
 	<string name="title_register">注册页面</string>
@@ -182,9 +184,9 @@
 	<string name="patient_data_text">王某人</string>
 	<string name="patient_state_text">被护理人状态：</string>
 	<string name="order_amount_text">订单金额</string>
-	<string name="service_type_all_text">全天24小时陪护服务1天：</string>
-	<string name="service_type_day_text">白天12小时陪护服务1天：</string>
-	<string name="service_type_night_text">夜间12小时陪护服务1天：</string>
+	<string name="service_type_all_text">全天24小时陪护服务：</string>
+	<string name="service_type_day_text">白天12小时陪护服务：</string>
+	<string name="service_type_night_text">夜间12小时陪护服务：</string>
 	<string name="service_type_price_text">200元 × 1</string>
 	<string name="insurance_text">保险(暂无)</string>
 	<string name="insurance_price_text">+0元</string>

@@ -46,7 +46,7 @@ public class NurseInfoActivity extends Activity
 	//nurse basic
 	private CircleImageView m_circleImageView  = null;    //头像
 	private TextView        m_nameTV           = null;         //姓名
-	private TextView        m_nuringLevel      = null;         //护理级别
+	private TextView        m_nuringLevelTV    = null;         //护理级别
 	private TextView        m_jobNumTV         = null;     //工号
 	private TextView        m_sexTV            = null;     //性别
 	private TextView        m_NuringExpTV      = null;     //护理经验
@@ -84,7 +84,7 @@ public class NurseInfoActivity extends Activity
 	private EventBus                   m_eventBus                   = EventBus.getDefault();
 	private DNurseBasics               m_nurseBasics                = null;
 	private DNurseSenior               m_nurseSenior                = null;
-
+	private int                        m_nurseID                    = -1;    //当前护工的ID
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -121,7 +121,7 @@ public class NurseInfoActivity extends Activity
 		//nurse basic
 		m_circleImageView = (CircleImageView)findViewById(R.id.header_img_civ);    //头像
 		m_nameTV = (TextView)findViewById(R.id.name_tv);         //姓名
-		m_nuringLevel = (TextView)findViewById(R.id.nuring_level_tv);         //护理级别
+		m_nuringLevelTV = (TextView)findViewById(R.id.nuring_level_tv);         //护理级别
 		m_jobNumTV = (TextView)findViewById(R.id.job_num_tv);     //工号
 		m_sexTV = (TextView)findViewById(R.id.sex_tv);     //性别
 		m_NuringExpTV = (TextView)findViewById(R.id.nuring_exp_tv);     //护理经验
@@ -180,26 +180,27 @@ public class NurseInfoActivity extends Activity
 			return;
 		}
 
-		int id = intent.getIntExtra(NurseBasicListConfig.ID, -1);
-		if (id == -1)
+		m_nurseID = intent.getIntExtra(NurseBasicListConfig.ID, -1);
+		if (m_nurseID == -1)
 		{
 			RegisterDialog.GetInstance().setMsg("id is invalid", this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 
+
 		DNurseBasicsList m_nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
 		if (m_nurseBasicsList == null)
 		{
-			RegisterDialog.GetInstance().setMsg("m_nurseBasicsList == null");
+			RegisterDialog.GetInstance().setMsg("m_nurseBasicsList == null", this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 
-		m_nurseBasics = m_nurseBasicsList.getNurseBasicByID(id);
+		m_nurseBasics = m_nurseBasicsList.getNurseBasicByID(m_nurseID);
 		if (m_nurseBasics == null)
 		{
-			RegisterDialog.GetInstance().setMsg("nurseBasics == null");
+			RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
@@ -208,13 +209,13 @@ public class NurseInfoActivity extends Activity
 		DNurseSeniorList nurseSeniorList = DNurseContainer.GetInstance().getNurseSeniorList();
 		if (nurseSeniorList == null)
 		{
-			RegisterDialog.GetInstance().setMsg("nurseSeniorList == null");
+			RegisterDialog.GetInstance().setMsg("nurseSeniorList == null", this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 
 		//数据为空，则从新发送消息。
-		m_nurseSenior = nurseSeniorList.getNurseSeniorByID(id);
+		m_nurseSenior = nurseSeniorList.getNurseSeniorByID(m_nurseID);
 		if (m_nurseSenior == null)
 		{
 			ReqNurseSeniorListEvent reqNurseSeniorListEvent = new ReqNurseSeniorListEvent();
@@ -224,10 +225,10 @@ public class NurseInfoActivity extends Activity
 
 		//02. set ui
 		//nurse basic
-		int          iImageID       = DFaceImages.getInstance().getImageIDbyIndex(0);
+		int iImageID = DFaceImages.getInstance().getImageIDbyIndex(0);
 		m_circleImageView.setImageResource(iImageID);
 		m_nameTV.setText(m_nurseBasics.getName());
-		m_nuringLevel.setText(m_nurseBasics.getNursingLevel());
+		m_nuringLevelTV.setText(m_nurseBasics.getNursingLevel());
 		m_jobNumTV.setText(String.valueOf(m_nurseBasics.getID()));
 		m_sexTV.setText(m_nurseBasics.getSex());
 		m_NuringExpTV.setText(m_nurseBasics.getNursingExp());
@@ -240,11 +241,11 @@ public class NurseInfoActivity extends Activity
 		m_introTV.setText(m_nurseSenior.getIntro());
 		m_certificateTV.setText(m_nurseSenior.getCertificate());
 		m_serviceContentTV.setText(m_nurseSenior.getServiceContent());
-//		m_commentRateTV
-//		m_commentNumTV
+		//		m_commentRateTV
+		//		m_commentNumTV
 		//价格
 		String charge = String.valueOf(m_nurseBasics.getServiceChargePerAllCare());
-		String unit = getResources().getString(R.string.content_yuan_per_day);
+		String unit   = getResources().getString(R.string.content_yuan_per_day);
 		charge += unit;
 		m_serviceChargePerAllCareTV.setText(charge);
 
@@ -282,6 +283,10 @@ public class NurseInfoActivity extends Activity
 
 	}
 
+	public int getNurseID()
+	{
+		return m_nurseID;
+	}
 
 	/**
 	 * EventBus  handler

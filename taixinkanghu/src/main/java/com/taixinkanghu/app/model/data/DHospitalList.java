@@ -92,4 +92,16 @@ public class DHospitalList
 	{
 		return m_hospitals;
 	}
+
+	public synchronized DHospital getHospitalByID(int id)
+	{
+		for (DHospital hospital : m_hospitals)
+		{
+			if (hospital.getID() == id)
+			{
+				return hospital;
+			}
+		}
+		return null;
+	}
 }

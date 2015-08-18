@@ -19,7 +19,7 @@ import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.appointment_nursing.DApoitNursing;
+import com.taixinkanghu.app.model.data.DApoitNursing;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 
 import java.util.ArrayList;

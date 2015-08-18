@@ -153,7 +153,7 @@ public class EnumConfig
 		@Override
 		public String toString()
 		{
-			return ("id:" + m_id);
+			return ("[id:=" + m_id + "][name:" +m_name+"]");
 		}
 	}
 
