@@ -15,7 +15,9 @@
 package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.EnumConfig.PatientState;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.util.nurse.NurseUtil;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
@@ -60,7 +62,20 @@ public class DNurseBasics implements Serializable
 		m_ID = response.getInt(NurseBasicListConfig.ID);
 		m_hospitalID = response.getInt(NurseBasicListConfig.HOSPITAL_ID);
 		m_name = response.getString(NurseBasicListConfig.NAME);
-//		m_sex = response.getString(NurseBasicListConfig.SEX);
+		int genderType = response.getInt(NurseBasicListConfig.GENDER);
+		if (genderType == EnumConfig.SexType.MALE.getId())
+		{
+			m_sex = EnumConfig.SexType.MALE.getName();
+		}
+		else if (genderType == EnumConfig.SexType.FEMALE.getId())
+		{
+			m_sex = EnumConfig.SexType.FEMALE.getName();
+		}
+		else
+		{
+			throw new JsonSerializationException("genderType is invalid![genderType:"+genderType+"]");
+		}
+
 		m_starLevel = response.getInt(NurseBasicListConfig.STAR_LEVEL);
 		m_age = response.getInt(NurseBasicListConfig.AGE);
 		m_homeTown = response.getString(NurseBasicListConfig.HOMETOWN);
