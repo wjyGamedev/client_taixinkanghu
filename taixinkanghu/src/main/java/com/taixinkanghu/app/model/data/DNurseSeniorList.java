@@ -15,15 +15,17 @@
 package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.app.model.net.config.ProtocalConfig;
-import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.util.android.AppUtil;
+import com.taixinkanghu.util.logcal.LogicalUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class DNurseSeniorList
@@ -31,7 +33,7 @@ public class DNurseSeniorList
 	private int                     m_Status       = ProtocalConfig.HTTP_OK;
 	private ArrayList<DNurseSenior> m_nurseSeniors = new ArrayList<>();
 
-	public synchronized boolean serialization(JSONObject response) throws JSONException
+	public synchronized boolean serialization(JSONObject response) throws JSONException, ParseException
 	{
 		//01. clear up
 		if (m_nurseSeniors != null && m_nurseSeniors.size() != 0)
@@ -40,13 +42,13 @@ public class DNurseSeniorList
 		}
 
 		//02. http is ok
-//		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
-//
-//		if (!LogicalUtil.IsHttpSuccess(m_Status))
-//		{
-//			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
-//			throw new JsonSerializationException(errorMsg);
-//		}
+		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
+
+		if (!LogicalUtil.IsHttpSuccess(m_Status))
+		{
+			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
+			throw new JsonSerializationException(errorMsg);
+		}
 
 		//03. 序列化json
 		JSONArray jsonArray = response.getJSONArray(NurseSeniorListConfig.LIST);
