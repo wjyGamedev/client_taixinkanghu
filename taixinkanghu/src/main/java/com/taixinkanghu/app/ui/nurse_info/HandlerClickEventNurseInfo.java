@@ -23,6 +23,7 @@ import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.ui.activity.ReviewsActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
+import com.taixinkanghu.app.ui.nurse_order_confirm_page.OrderConfirmActivity;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class HandlerClickEventNurseInfo  extends BaseHandleOnClickEvent
@@ -53,7 +54,7 @@ public class HandlerClickEventNurseInfo  extends BaseHandleOnClickEvent
 			case R.id.btn_select:
 			{
 				int nurseID = nurseInfoActivity.getNurseID();
-				Intent intent = new Intent(nurseInfoActivity, NurseInfoActivity.class);
+				Intent intent = new Intent(nurseInfoActivity, OrderConfirmActivity.class);
 				intent.putExtra(NurseBasicListConfig.ID, nurseID);
 				nurseInfoActivity.startActivity(intent);
 			}
