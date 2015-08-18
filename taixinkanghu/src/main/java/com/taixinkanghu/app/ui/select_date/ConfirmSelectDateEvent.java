@@ -16,7 +16,7 @@ package com.taixinkanghu.app.ui.select_date;
 
 import com.taixinkanghu.app.model.config.EventID;
 import com.taixinkanghu.app.model.event.ui.UIEvent;
-import com.taixinkanghu.app.ui.appointment_nursing.DApoitNursing;
+import com.taixinkanghu.app.model.data.DApoitNursing;
 
 public class ConfirmSelectDateEvent extends UIEvent
 {
