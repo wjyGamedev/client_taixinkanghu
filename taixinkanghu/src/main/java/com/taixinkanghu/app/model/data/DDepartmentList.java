@@ -14,8 +14,14 @@
 
 package com.taixinkanghu.app.model.data;
 
+import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
+import com.taixinkanghu.app.model.net.config.DepartmentListConfig;
 import com.taixinkanghu.app.model.net.config.ProtocalConfig;
+import com.taixinkanghu.util.android.AppUtil;
+import com.taixinkanghu.util.logcal.LogicalUtil;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,42 +46,38 @@ public class DDepartmentList
 	public synchronized boolean serialization(JSONObject response) throws JSONException
 	{
 		//01. 清空原来容器
-//		if (m_departments != null && m_departments.size() != 0)
-//		{
-//			m_departments.clear();
-//		}
-//
-//		//02. http is ok
-//		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
-//
-//		if (!LogicalUtil.IsHttpSuccess(m_Status))
-//		{
-//			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
-//			throw new JsonSerializationException(errorMsg);
-//		}
-//
-//		//03. 序列化json
-//		JSONArray jsonArray = response.getJSONArray(DepartmentListConfig.LIST);
-//		if (jsonArray == null)
-//		{
-//			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
-//			throw new JsonSerializationException(errMsg + ":" + DepartmentListConfig.LIST);
-//		}
-//
-//		JSONObject jsonObject = null;
-//		DDepartment department = null;
-//		for (int index = 0; index < jsonArray.length(); index++)
-//		{
-//			jsonObject=(JSONObject)jsonArray.get(index);
-//			department = new DDepartment();
-//			department.serialization(jsonObject);
-//
-//			m_departments.add(department);
-//		}
+		if (m_departments != null && m_departments.size() != 0)
+		{
+			m_departments.clear();
+		}
 
-		//test func
-		m_departments.add(new DDepartment(1, "心血管内科"));
-		m_departments.add(new DDepartment(2, "呼吸内科"));
+		//02. http is ok
+		m_Status = response.getInt(ProtocalConfig.HTTP_STATUS);
+
+		if (!LogicalUtil.IsHttpSuccess(m_Status))
+		{
+			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
+			throw new JsonSerializationException(errorMsg);
+		}
+
+		//03. 序列化json
+		JSONArray jsonArray = response.getJSONArray(DepartmentListConfig.LIST);
+		if (jsonArray == null)
+		{
+			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
+			throw new JsonSerializationException(errMsg + ":" + DepartmentListConfig.LIST);
+		}
+
+		JSONObject jsonObject = null;
+		DDepartment department = null;
+		for (int index = 0; index < jsonArray.length(); index++)
+		{
+			jsonObject=(JSONObject)jsonArray.get(index);
+			department = new DDepartment();
+			department.serialization(jsonObject);
+
+			m_departments.add(department);
+		}
 		return  true;
 
 	}
