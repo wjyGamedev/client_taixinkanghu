@@ -28,6 +28,7 @@ import com.taixinkanghu.app.model.data.DNurseBasics;
 import com.taixinkanghu.app.model.data.DNurseBasicsList;
 import com.taixinkanghu.app.model.data.DNurseContainer;
 import com.taixinkanghu.app.ui.adapter.IBaseAdapter;
+import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
@@ -156,7 +157,8 @@ final class ViewHolder {
 		m_faceImage.setImageResource(iImageID);
 		m_tvName.setText(tmpNurseBasics.getName());
 		m_starLevel.setRating(tmpNurseBasics.getStarLevel());
-		m_tvAge.setText(String.valueOf(tmpNurseBasics.getAge()));
+		String age = String.valueOf(tmpNurseBasics.getAge()) + AppUtil.GetResources().getString(R.string.content_age);
+		m_tvAge.setText(age);
 		m_tvHomeTown.setText(tmpNurseBasics.getHomeTown());
 		m_tvNursingExp.setText(tmpNurseBasics.getNursingExp());
 		m_tvNursingLevel.setText(tmpNurseBasics.getNursingLevel());
