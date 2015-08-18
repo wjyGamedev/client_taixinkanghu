@@ -19,21 +19,9 @@ import org.json.JSONObject;
 
 public class DCommentList
 {
-	private int m_ID = 0;	//ID
-
 	public boolean serialization(JSONObject response) throws JSONException
 	{
 		return true;
-	}
-
-	public void init(int iID)
-	{
-		m_ID = iID;
-	}
-
-	public int getID()
-	{
-		return m_ID;
 	}
 
 }
