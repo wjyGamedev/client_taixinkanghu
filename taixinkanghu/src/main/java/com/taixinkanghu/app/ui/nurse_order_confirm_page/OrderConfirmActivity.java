@@ -299,7 +299,7 @@ public class OrderConfirmActivity extends Activity
 
 			m_allNumTV.setText(strAllNum + unitDay);
 			m_chargePerAllTV.setText(strChargetPerAll + unitYuan);
-			m_allCoeffTV.setText(strChargetPerAll);
+			m_allCoeffTV.setText(strAllNum);
 			m_allRegionLL.setVisibility(View.VISIBLE);
 		}
 
@@ -314,7 +314,7 @@ public class OrderConfirmActivity extends Activity
 
 			m_dayNumTV.setText(strDayNum + unitDay);
 			m_chargePerDayTV.setText(strChargePerDay + unitYuan);
-			m_dayCoeffTV.setText(strChargePerDay);
+			m_dayCoeffTV.setText(strDayNum);
 			m_dayRegionLL.setVisibility(View.GONE);
 
 		}
@@ -330,7 +330,7 @@ public class OrderConfirmActivity extends Activity
 
 			m_nightNumTV.setText(strNightNum + unitDay);
 			m_chargePerNightTV.setText(strChargePerNight + unitYuan);
-			m_NightCoeffTV.setText(strChargePerNight);
+			m_NightCoeffTV.setText(strNightNum);
 			m_nightRegionLL.setVisibility(View.VISIBLE);
 		}
 
