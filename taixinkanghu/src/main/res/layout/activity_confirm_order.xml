@@ -126,7 +126,7 @@
 								android:textSize="14.0sp"/>
 
 							<TextView
-								android:id="@+id/worker_name_data"
+								android:id="@+id/name_tv"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:singleLine="true"
