@@ -36,7 +36,7 @@ public class NurseBasicListConfig
 	//recv
 	public final static String LIST  = "nurse_basics_list";
 	public final static String STAR_LEVEL   = "star_level";
-	public final static String SEX     = "gender";
+	public final static String GENDER     = "gender";
 	public final static String HOMETOWN     = "hometown";
 	public final static String NURING_EXP   = "nursing_exp";
 	public final static String NURING_LEVEL = "nursing_level";
