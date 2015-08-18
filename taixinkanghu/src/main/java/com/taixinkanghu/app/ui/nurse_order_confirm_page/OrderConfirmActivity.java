@@ -315,7 +315,7 @@ public class OrderConfirmActivity extends Activity
 			m_dayNumTV.setText(strDayNum + unitDay);
 			m_chargePerDayTV.setText(strChargePerDay + unitYuan);
 			m_dayCoeffTV.setText(strDayNum);
-			m_dayRegionLL.setVisibility(View.GONE);
+			m_dayRegionLL.setVisibility(View.VISIBLE);
 
 		}
 
