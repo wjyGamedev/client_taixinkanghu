@@ -176,6 +176,7 @@
 	<string name="order_content_text">订单内容</string>
 	<string name="nursing_worker_text">护理员:</string>
 	<string name="job_number_text">工号：</string>
+	<string name="worker_level_text">级别：</string>
 	<string name="job_id_text">job_number</string>
 	<string name="service_time_text">服务时间:</string>
 	<string name="service_time_datda_text">6月24日 - 6月25日 共1天</string>
