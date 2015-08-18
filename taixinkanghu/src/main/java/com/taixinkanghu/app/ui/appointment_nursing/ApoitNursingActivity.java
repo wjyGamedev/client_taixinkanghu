@@ -53,7 +53,7 @@ public class ApoitNursingActivity extends Activity
 	private LinearLayout m_nameRegion = null;
 	private EditText m_nameTV       = null;
 	private EditText m_phoneNumTV   = null;
-	private EditText m_departmentTV = null;
+	private TextView m_departmentTV = null;
 	private TextView m_roomTV       = null;
 	private TextView m_bedTV        = null;
 
@@ -192,7 +192,7 @@ public class ApoitNursingActivity extends Activity
 		m_nameRegion = (LinearLayout)findViewById(R.id.name_region);
 		m_nameTV = (EditText)findViewById(R.id.name);
 		m_phoneNumTV = (EditText)findViewById(R.id.phone_number_tv);
-		m_departmentTV = (EditText)findViewById(R.id.department_tv);
+		m_departmentTV = (TextView)findViewById(R.id.department_tv);
 		m_roomTV = (TextView)findViewById(R.id.room_tv);
 		m_bedTV = (TextView)findViewById(R.id.bed_id_tv);
 

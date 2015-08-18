@@ -97,49 +97,60 @@
 						android:layout_width="55dp"
 						android:layout_height="55dp"
 						android:layout_centerInParent="true"
-						android:layout_marginRight="10dp"
+						android:layout_marginRight="30dp"
 						android:src="@mipmap/face_img"
 						app:border_color="@color/main_color"
 						app:border_width="0.5dp"/>
 
 					<LinearLayout
-						android:layout_width="wrap_content"
+						android:layout_width="100dp"
 						android:layout_height="match_parent"
 						android:layout_marginRight="15dp"
 						android:layout_weight="0.0"
 						android:gravity="right|center"
 						android:orientation="vertical">
 
-						<TextView
-							android:id="@+id/worker_name"
-							android:layout_width="wrap_content"
+						<LinearLayout
+							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
-							android:singleLine="true"
-							android:text="@string/name_text"
-							android:textColor="@color/text_color_black"
-							android:textSize="14.0sp"/>
+							android:orientation="horizontal">
 
-						<TextView
-							android:id="@+id/worker_level_name"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:singleLine="true"
-							android:text="@string/intermediates_junior"
-							android:textColor="@color/text_color_gray"
-							android:textSize="12.0sp"/>
+							<TextView
+								android:id="@+id/worker_name"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:singleLine="true"
+								android:text="@string/name_text"
+								android:layout_weight="1"
+								android:textColor="@color/text_color_black"
+								android:textSize="14.0sp"/>
+
+							<TextView
+								android:id="@+id/worker_name_data"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:singleLine="true"
+								android:text="@string/patient_data_text"
+								android:textColor="@color/text_color_black"
+								android:textSize="14.0sp"/>
+
+
+
+						</LinearLayout>
 
 						<LinearLayout
 							android:layout_width="wrap_content"
-							android:layout_height="match_parent"
+							android:layout_height="wrap_content"
 							android:orientation="horizontal">
 
 							<TextView
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:singleLine="true"
+								android:layout_weight="1"
 								android:text="@string/job_number_text"
-								android:textColor="@color/text_color_gray"
-								android:textSize="12.0sp"/>
+								android:textColor="@color/text_color_black"
+								android:textSize="14.0sp"/>
 
 							<TextView
 								android:id="@+id/worker_id"
@@ -147,11 +158,19 @@
 								android:layout_height="wrap_content"
 								android:singleLine="true"
 								android:text="@string/job_id_text"
-								android:textColor="@color/text_color_gray"
-								android:textSize="12.0sp"/>
-
+								android:textColor="@color/text_color_black"
+								android:textSize="14.0sp"/>
 
 						</LinearLayout>
+
+						<TextView
+							android:id="@+id/worker_level_name"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:singleLine="true"
+							android:text="@string/intermediates_junior"
+							android:textColor="@color/text_color_black"
+							android:textSize="14.0sp"/>
 
 					</LinearLayout>
 
