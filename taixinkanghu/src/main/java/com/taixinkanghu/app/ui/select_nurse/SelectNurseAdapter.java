@@ -153,7 +153,7 @@ final class ViewHolder {
 		DNurseBasics tmpNurseBasics = m_nurseBasics.get(position);
 		int          iID            = tmpNurseBasics.getID();
 		int          iImageIndex    = (iID - 1);
-		int          iImageID       = DFaceImages.getInstance().getImageIDbyIndex(iImageIndex);
+		int          iImageID       = DFaceImages.getInstance().getImgResIDbyIndex(iImageIndex);
 		m_faceImage.setImageResource(iImageID);
 		m_tvName.setText(tmpNurseBasics.getName());
 		m_starLevel.setRating(tmpNurseBasics.getStarLevel());
