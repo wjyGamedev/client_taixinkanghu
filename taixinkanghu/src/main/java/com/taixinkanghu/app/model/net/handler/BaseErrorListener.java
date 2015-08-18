@@ -30,7 +30,7 @@ public class BaseErrorListener extends IErrorListener
 	@Override
 	public void onErrorResponse(VolleyError error)
 	{
-		RegisterDialog.GetInstance().setMsg(error.toString());
+		RegisterDialog.GetInstance().setMsg(error.getMessage().toString());
 		RegisterDialog.GetInstance().show();
 	}
 
