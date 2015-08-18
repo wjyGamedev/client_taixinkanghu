@@ -17,6 +17,8 @@ package com.taixinkanghu.app.model.data;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+
 public class DNurseContainer
 {
 	/**
@@ -41,7 +43,7 @@ public class DNurseContainer
 		return m_nurseBasicsList.serialization(response);
 	}
 
-	public boolean serialSeniorList(JSONObject response) throws JSONException
+	public boolean serialSeniorList(JSONObject response) throws JSONException, ParseException
 	{
 		return m_nurseSeniorList.serialization(response);
 	}
