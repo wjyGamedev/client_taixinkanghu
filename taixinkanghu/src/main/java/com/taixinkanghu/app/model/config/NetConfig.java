@@ -23,22 +23,22 @@ public class NetConfig
 	//测试地址
 	public final static String s_hospitalListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/hospital_list/";
 	public final static String s_nurseBasicsListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/nurse_basics_list/";
-	public final static String s_nurseSeniorListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/nurse_senior_list/";
+
 	public final static String s_ShoppingBasicsListAddress = "http://"+IP_ADDREDD_INNER+"/downloads/goods_basics_list/";
 
 
 	//医院URL
 	public final static String S_NORMAL_HOSPITALLIST_ADDRESS = "http://"+IP_ADDREDD_TEST+"/hospital/gethospitallist/";
 	//科室URL
-	public final static String S_NORMAL_DEPARTMENTLIST_ADDRESS = "http://"+IP_ADDREDD_TEST+"/hospital/gethospitallist/";
+	public final static String S_NORMAL_DEPARTMENTLIST_ADDRESS = "http://"+IP_ADDREDD_TEST+"/department/getDepartmentList/";
 
 	//注册
 	public final static String s_registerAddress = "http://"+IP_ADDREDD_TEST+"/user/loginAction/";
 
 	//预约陪护地址
 	public final static String s_appointmentNursingAddress = "http://"+IP_ADDREDD_TEST+"/carer/getCarerList/";
-
-
+	//nurse senior list address
+	public final static String s_nurseSeniorListAddress = "http://"+IP_ADDREDD_TEST+"/carer/getCarerSeniorList/";
 
 
 }
