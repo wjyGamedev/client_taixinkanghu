@@ -93,7 +93,7 @@
 						android:textSize="14.0sp"/>
 
 					<com.taixinkanghu.widget.circleimageview.CircleImageView
-						android:id="@+id/worker_pic"
+						android:id="@+id/header_img_civ"
 						android:layout_width="55dp"
 						android:layout_height="55dp"
 						android:layout_centerInParent="true"
@@ -111,7 +111,7 @@
 						android:orientation="vertical">
 
 						<TextView
-							android:id="@+id/worker_name"
+							android:id="@+id/name_tv"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:singleLine="true"
@@ -120,7 +120,7 @@
 							android:textSize="14.0sp"/>
 
 						<TextView
-							android:id="@+id/worker_level_name"
+							android:id="@+id/nuring_level_tv"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:singleLine="true"
@@ -142,7 +142,7 @@
 								android:textSize="12.0sp"/>
 
 							<TextView
-								android:id="@+id/worker_id"
+								android:id="@+id/job_num_tv"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:singleLine="true"
@@ -194,7 +194,7 @@
 							android:textSize="14.0sp"/>
 
 						<TextView
-							android:id="@+id/date"
+							android:id="@+id/service_date_tv"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginRight="15dp"
@@ -237,7 +237,7 @@
 							android:textSize="14.0sp"/>
 
 						<TextView
-							android:id="@+id/place"
+							android:id="@+id/service_address_tv"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginRight="15dp"
@@ -261,7 +261,7 @@
 					</LinearLayout>
 
 					<LinearLayout
-						android:id="@+id/patient_region"
+						android:id="@+id/patient_region_ll"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginBottom="5dp"
@@ -280,7 +280,7 @@
 							android:textSize="14.0sp"/>
 
 						<TextView
-							android:id="@+id/patient_mame"
+							android:id="@+id/patient_name_tv"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_weight="1.0"
@@ -310,7 +310,7 @@
 					</LinearLayout>
 
 					<LinearLayout
-						android:id="@+id/patient_state_region"
+						android:id="@+id/patient_state_region_ll"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginBottom="5dp"
@@ -327,7 +327,7 @@
 							android:text="@string/patient_state_text"/>
 
 						<TextView
-							android:id="@+id/patient_state"
+							android:id="@+id/patient_state_tv"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:layout_weight="1"
@@ -341,7 +341,7 @@
 							android:textSize="14.0sp"/>
 
 						<ImageView
-							android:id="@+id/dwon_patient_state"
+							android:id="@+id/patient_state_img"
 							android:layout_width="20dp"
 							android:layout_height="20dp"
 							android:layout_marginRight="15dp"
@@ -384,10 +384,10 @@
 							android:layout_height="match_parent"
 							android:layout_marginBottom="2.5dp"
 							android:layout_marginTop="5dp"
-							android:orientation="horizontal">
+							android:orientation="horizontal" android:id="@+id/all_region_ll">
 
 							<TextView
-								android:id="@+id/service_name"
+								android:id="@+id/all_tips_tv"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_marginLeft="15dp"
@@ -396,17 +396,40 @@
 								android:textColor="@color/text_color_black"
 								android:textSize="14.0sp"/>
 
+							<TextView android:id="@+id/all_num_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content"
+									  android:layout_marginLeft="15dp"
+									  android:layout_marginRight="10dp"
+									  android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp" android:text="1天"/>
 							<TextView
-								android:id="@+id/service_price"
+								android:id="@+id/charge_per_all_tv"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_marginRight="15.0dp"
 								android:layout_weight="1"
 								android:gravity="right"
 								android:singleLine="true"
-								android:text="@string/service_type_price_text"
+								android:text="200元"
 								android:textColor="@color/text_color_black"
 								android:textSize="14.0sp"/>
+							<TextView android:id="@+id/all_multiply_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content"
+									  android:layout_marginRight="15.0dp" android:layout_weight="1"
+									  android:gravity="right" android:singleLine="true"
+									  android:text="X"
+									  android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp"/>
+							<TextView android:id="@+id/all_coeff_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content"
+									  android:layout_marginRight="15.0dp" android:layout_weight="1"
+									  android:gravity="right" android:singleLine="true"
+									  android:text="1"
+									  android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp"/>
 
 						</LinearLayout>
 
@@ -415,10 +438,10 @@
 							android:layout_height="match_parent"
 							android:layout_marginBottom="2.5dp"
 							android:layout_marginTop="2.5dp"
-							android:orientation="horizontal">
+							android:orientation="horizontal" android:id="@+id/day_region_ll">
 
 							<TextView
-								android:id="@+id/service_name"
+								android:id="@+id/day_tips_tv"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_marginLeft="15dp"
@@ -427,17 +450,41 @@
 								android:textColor="@color/text_color_black"
 								android:textSize="14.0sp"/>
 
+							<TextView android:id="@+id/day_num_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content"
+									  android:layout_marginLeft="15dp"
+									  android:layout_marginRight="10dp"
+									  android:text="1天"
+									  android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp"/>
 							<TextView
-								android:id="@+id/service_price"
+								android:id="@+id/charge_per_day_tv"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_marginRight="15.0dp"
 								android:layout_weight="1"
 								android:gravity="right"
 								android:singleLine="true"
-								android:text="@string/service_type_price_text"
+								android:text="200元"
 								android:textColor="@color/text_color_black"
 								android:textSize="14.0sp"/>
+							<TextView android:id="@+id/day_multiply_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content"
+									  android:layout_marginRight="15.0dp" android:layout_weight="1"
+									  android:gravity="right" android:singleLine="true"
+									  android:text="X"
+									  android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp"/>
+							<TextView android:id="@+id/day_coeff_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content"
+									  android:layout_marginRight="15.0dp" android:layout_weight="1"
+									  android:gravity="right" android:singleLine="true"
+									  android:text="1"
+									  android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp"/>
 
 						</LinearLayout>
 
@@ -446,10 +493,10 @@
 							android:layout_height="match_parent"
 							android:layout_marginBottom="5dp"
 							android:layout_marginTop="2.5dp"
-							android:orientation="horizontal">
+							android:orientation="horizontal" android:id="@+id/night_region_ll">
 
 							<TextView
-								android:id="@+id/service_name"
+								android:id="@+id/night_tips_tv"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_marginLeft="15dp"
@@ -458,17 +505,41 @@
 								android:textColor="@color/text_color_black"
 								android:textSize="14.0sp"/>
 
+							<TextView android:id="@+id/night_num_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content"
+									  android:layout_marginLeft="15dp"
+									  android:layout_marginRight="10dp"
+									  android:text="1天"
+									  android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp"/>
 							<TextView
-								android:id="@+id/service_price"
+								android:id="@+id/charge_per_night_tv"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_marginRight="15.0dp"
 								android:layout_weight="1"
 								android:gravity="right"
 								android:singleLine="true"
-								android:text="@string/service_type_price_text"
+								android:text="200元"
 								android:textColor="@color/text_color_black"
 								android:textSize="14.0sp"/>
+							<TextView android:id="@+id/night_multiply_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content"
+									  android:layout_weight="1"
+									  android:gravity="right" android:singleLine="true"
+									  android:text="X"
+									  android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp"
+									  android:layout_marginRight="15.0dp"/>
+							<TextView android:id="@+id/night_coeff_tv"
+									  android:layout_width="wrap_content"
+									  android:layout_height="wrap_content" android:layout_weight="1"
+									  android:gravity="right" android:singleLine="true"
+									  android:text="1" android:textColor="@color/text_color_black"
+									  android:textSize="14.0sp"
+									  android:layout_marginRight="15.0dp"/>
 
 						</LinearLayout>
 
@@ -541,7 +612,7 @@
 							android:textSize="14.0sp"/>
 
 						<TextView
-							android:id="@+id/total_price"
+							android:id="@+id/total_charge_tv"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginRight="15dp"
@@ -606,7 +677,7 @@
 						android:textSize="14.0sp"/>
 
 					<TextView
-						android:id="@+id/user_protocol"
+						android:id="@+id/user_protocol_tv"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
@@ -626,7 +697,7 @@
 		</ScrollView>
 
 		<Button
-			android:id="@id/btn_pay"
+			android:id="@+id/confirm_appointment_btn"
 			android:layout_width="match_parent"
 			android:layout_height="48dp"
 			android:background="@drawable/bg_btn_main_color"
