@@ -3,6 +3,7 @@
 	android:id="@+id/appointment_nursing_page"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
+	android:background="@color/main_bg_color"
 	android:layout_height="match_parent">
 
 	<LinearLayout
@@ -17,6 +18,7 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
 			android:background="@color/main_bg_color"
 			android:orientation="vertical">
 
@@ -25,12 +27,13 @@
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_top"
-				android:gravity="center_vertical"
+				android:clickable="true"
 
 				android:focusable="true"
 				android:focusableInTouchMode="true"
 
-				android:orientation="horizontal" android:clickable="true">
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
 
 				<TextView
 					android:id="@+id/name_text"
@@ -409,8 +412,7 @@
 					android:layout_width="20dp"
 					android:layout_height="20dp"
 					android:layout_marginRight="30dp"
-					android:background="@mipmap/img_down"
-					android:visibility="invisible"/>
+					android:background="@mipmap/img_down"/>
 
 			</LinearLayout>
 
@@ -456,7 +458,8 @@
 					android:layout_width="20dp"
 					android:layout_height="20dp"
 					android:layout_marginRight="30dp"
-					android:background="@mipmap/img_right"/>
+					android:background="@mipmap/img_right"
+					android:visibility="invisible"/>
 
 			</LinearLayout>
 
@@ -484,8 +487,8 @@
 					android:textSize="14.0sp"/>
 			</LinearLayout>
 
-			<include
-				layout="@layout/item_dividing_line_horizontal"/>
+			<!--<include-->
+			<!--layout="@layout/item_dividing_line_horizontal"/>-->
 
 		</LinearLayout>
 
