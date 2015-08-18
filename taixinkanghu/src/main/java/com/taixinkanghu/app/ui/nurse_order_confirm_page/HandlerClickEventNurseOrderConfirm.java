@@ -14,9 +14,9 @@ import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 /**
  * Created by Administrator on 2015/8/3.
  */
-public class HandlerClickEventNursOrderConfirm extends BaseHandleOnClickEvent
+public class HandlerClickEventNurseOrderConfirm extends BaseHandleOnClickEvent
 {
-	public HandlerClickEventNursOrderConfirm(Activity activity)
+	public HandlerClickEventNurseOrderConfirm(Activity activity)
 	{
 		super(activity);
 	}
