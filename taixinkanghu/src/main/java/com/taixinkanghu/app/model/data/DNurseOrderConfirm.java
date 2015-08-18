@@ -23,7 +23,7 @@ public class DNurseOrderConfirm implements Serializable
 	private int    m_nurseID             = -1;    //护工ID
 	private int    m_nurseHeaderImgResID = -1;    //护工头像ID
 	private String m_nurseName           = null;    //护工名字
-	private int    m_nurseJobNum         = -1;    //护工的工号
+	private String m_nurseJobNum         = null;    //护工的工号
 	private String m_nursingLevel        = null;    //护理级别
 	private String m_serviceDate         = null;    //服务时间
 	private String m_serviceAddress      = null;    //服务地点
@@ -88,12 +88,12 @@ public class DNurseOrderConfirm implements Serializable
 		m_nurseName = nurseName;
 	}
 
-	public int getNurseJobNum()
+	public String getNurseJobNum()
 	{
 		return m_nurseJobNum;
 	}
 
-	public void setNurseJobNum(int nurseJobNum)
+	public void setNurseJobNum(String nurseJobNum)
 	{
 		m_nurseJobNum = nurseJobNum;
 	}
