@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  xmlns:app="http://schemas.android.com/apk/res-auto"
+			  android:id="@+id/nurs_order_ll"
 			  android:layout_width="match_parent"
 			  android:layout_height="wrap_content"
+			  android:layout_marginTop="10dp"
 			  android:orientation="vertical">
+
+	<include layout="@layout/item_dividing_line_horizontal"/>
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -33,7 +37,7 @@
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginBottom="2dp"
+				android:layout_marginBottom="3dp"
 				android:gravity="center_vertical"
 				android:orientation="horizontal">
 
@@ -41,32 +45,29 @@
 					android:id="@id/name"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginRight="5dp"
-					android:text="@string/name_text"
+					android:singleLine="true"
+					android:text="@string/patient_data_text"
 					android:textColor="@color/text_color_black"
 					android:textSize="16.0sp"/>
 
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginBottom="-5dp"
-					android:layout_marginRight="3dp"
-					android:layout_marginTop="-5dp"
 					android:layout_weight="1.0"
 					android:gravity="right"
+					android:singleLine="true"
 					android:text="@string/order_status_text"
 					android:textColor="@color/text_color_black"
 					android:textSize="14.0sp"/>
 
 				<TextView
+					android:id="@+id/order_state"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginRight="20dp"
-					android:layout_weight="0.0"
+					android:singleLine="true"
 					android:text="@string/cancelled_text"
 					android:textColor="@color/text_color_black"
-					android:textSize="14.0sp"
-					android:id="@+id/order_state"/>
+					android:textSize="14.0sp"/>
 			</LinearLayout>
 
 			<TextView
@@ -78,6 +79,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="3dp"
+				android:layout_marginTop="3dp"
 				android:gravity="center_vertical"
 				android:orientation="horizontal">
 
@@ -116,6 +118,8 @@
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginBottom="3dp"
+					android:layout_marginTop="3dp"
 					android:gravity="center_vertical"
 					android:orientation="horizontal">
 
@@ -156,7 +160,8 @@
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:orientation="horizontal">
+					android:orientation="horizontal"
+					android:visibility="gone">
 
 					<TextView
 						android:id="@+id/unit_price"
@@ -214,13 +219,14 @@
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginTop="3dp"
 					android:orientation="horizontal">
 
 					<TextView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:gravity="right"
 						android:layout_weight="1"
+						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/total_text"
 						android:textColor="@color/text_color_orange"
@@ -269,6 +275,7 @@
 		android:orientation="horizontal">
 
 		<Button
+			android:id="@+id/item_btn_1"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -277,10 +284,10 @@
 			android:layout_marginTop="5dp"
 			android:layout_weight="1"
 			android:background="@drawable/bg_btn_item_nurs_order"
-			android:text="@string/evaluation_text"
-			android:id="@+id/item_btn_1"/>
+			android:text="@string/evaluation_text"/>
 
 		<Button
+			android:id="@+id/item_btn_2"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -289,10 +296,10 @@
 			android:layout_marginTop="5dp"
 			android:layout_weight="1"
 			android:background="@drawable/bg_btn_item_nurs_order"
-			android:text="@string/continue_text"
-			android:id="@+id/item_btn_2"/>
+			android:text="@string/continue_text"/>
 
 		<Button
+			android:id="@+id/item_btn_3"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -301,10 +308,10 @@
 			android:layout_marginTop="5dp"
 			android:layout_weight="1"
 			android:background="@drawable/bg_btn_item_nurs_order"
-			android:text="@string/replacement_text"
-			android:id="@+id/item_btn_3"/>
+			android:text="@string/replacement_text"/>
 
 		<Button
+			android:id="@+id/item_btn_4"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -313,10 +320,10 @@
 			android:layout_marginTop="5dp"
 			android:layout_weight="1"
 			android:background="@drawable/bg_btn_item_nurs_order"
-			android:text="@string/unsubscribe_text"
-			android:id="@+id/item_btn_4"/>
+			android:text="@string/unsubscribe_text"/>
 
 		<Button
+			android:id="@+id/item_btn_5"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -325,8 +332,7 @@
 			android:layout_marginTop="5dp"
 			android:layout_weight="1"
 			android:background="@drawable/bg_btn_item_nurs_order"
-			android:text="@string/fill_post_text"
-			android:id="@+id/item_btn_5"/>
+			android:text="@string/fill_post_text"/>
 
 	</LinearLayout>
 
