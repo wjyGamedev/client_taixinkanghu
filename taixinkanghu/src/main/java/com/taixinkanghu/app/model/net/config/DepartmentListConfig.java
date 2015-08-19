@@ -12,12 +12,15 @@
  * 2015/8/17		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.event.net.config;
+package com.taixinkanghu.app.model.net.config;
 
-public class CommonConifg
+public class DepartmentListConfig
 {
-	//通用
-	public final static String NAME      = "name";
-	public final static String ID        = "id";
+	//common
+	public final static String ID   = CommonConifg.ID;
+	public final static String NAME = CommonConifg.NAME;
+	//send(无)
+	//recv
+	public final static String LIST = "department_list";
 
 }

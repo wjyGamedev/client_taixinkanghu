@@ -34,7 +34,7 @@
 				android:textSize="14sp"/>
 
 			<LinearLayout
-				android:id="@+id/name_region"
+				android:id="@+id/name_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_top"
@@ -55,7 +55,7 @@
 
 
 				<EditText
-					android:id="@+id/name"
+					android:id="@+id/name_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="60dp"
@@ -86,7 +86,7 @@
 					android:text="手机号码："/>
 
 				<EditText
-					android:id="@+id/phone_number_tv"
+					android:id="@+id/phone_num_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="60dp"
@@ -105,7 +105,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_gender"
+				android:id="@+id/gender_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -121,7 +121,7 @@
 
 
 				<TextView
-					android:id="@+id/gender"
+					android:id="@+id/gender_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -144,7 +144,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_age"
+				android:id="@+id/age_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -159,7 +159,7 @@
 					android:text="年龄："/>
 
 				<TextView
-					android:id="@+id/age"
+					android:id="@+id/age_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -182,7 +182,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_weight"
+				android:id="@+id/weight_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -197,7 +197,7 @@
 					android:text="体重（kg）："/>
 
 				<TextView
-					android:id="@+id/weight"
+					android:id="@+id/weight_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -220,7 +220,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_hospital"
+				android:id="@+id/hospital_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -242,7 +242,7 @@
 					android:text="所在医院："/>
 
 				<TextView
-					android:id="@+id/hospital"
+					android:id="@+id/hospital_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -269,7 +269,7 @@
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
 				android:gravity="center_vertical"
-				android:orientation="horizontal" android:id="@+id/department_ll">
+				android:orientation="horizontal" android:id="@+id/department_region_ll">
 
 				<TextView
 					android:layout_width="10dp"
@@ -372,7 +372,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_patient_state"
+				android:id="@+id/patient_state_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_all"
@@ -394,7 +394,7 @@
 					android:text="病人状态："/>
 
 				<TextView
-					android:id="@+id/patient_state"
+					android:id="@+id/patient_state_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -417,7 +417,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/btn_date"
+				android:id="@+id/service_date_region_ll"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
 				android:background="@drawable/bg_bule_frame_bottom"
@@ -439,7 +439,7 @@
 					android:text="陪护时间："/>
 
 				<TextView
-					android:id="@+id/date"
+					android:id="@+id/service_date_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
@@ -476,7 +476,7 @@
 					android:textSize="14.0sp"/>
 
 				<TextView
-					android:id="@id/btn_protocol"
+					android:id="@+id/protocol_tv"
 					android:layout_width="wrap_content"
 					android:layout_height="44dp"
 					android:gravity="center"

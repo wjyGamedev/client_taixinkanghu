@@ -15,7 +15,7 @@
 package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.event.net.config.NurseSeniorListConfig;
+import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.util.android.AppUtil;
 
 import org.json.JSONException;

@@ -18,7 +18,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.taixinkanghu.app.model.data.DAccount;
-import com.taixinkanghu.app.model.event.net.config.RegisterConfig;
+import com.taixinkanghu.app.model.net.config.RegisterConfig;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.logical.OwnerPreferencesException;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 

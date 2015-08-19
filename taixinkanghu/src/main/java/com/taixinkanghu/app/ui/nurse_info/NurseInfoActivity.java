@@ -29,7 +29,7 @@ import com.taixinkanghu.app.model.data.DNurseBasicsList;
 import com.taixinkanghu.app.model.data.DNurseContainer;
 import com.taixinkanghu.app.model.data.DNurseSenior;
 import com.taixinkanghu.app.model.data.DNurseSeniorList;
-import com.taixinkanghu.app.model.event.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseSeniorListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
@@ -225,7 +225,7 @@ public class NurseInfoActivity extends Activity
 
 		//02. set ui
 		//nurse basic
-		int iImageID = DFaceImages.getInstance().getImageIDbyIndex(0);
+		int iImageID = DFaceImages.getInstance().getImgResIDbyIndex(0);
 		m_circleImageView.setImageResource(iImageID);
 		m_nameTV.setText(m_nurseBasics.getName());
 		m_nuringLevelTV.setText(m_nurseBasics.getNursingLevel());

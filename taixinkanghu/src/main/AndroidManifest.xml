@@ -64,6 +64,11 @@
 			android:name=".app.ui.select_date.SelectDateActivity"
 			android:label="SelectDateActivity"/>
 
+		<!-- 患者信息-->
+		<activity
+			android:name=".app.ui.nurse_order_confirm_page.PatientActivity"
+			android:label="PatientActivity"/>
+
 		<activity
 			android:name=".app.ui.activity.AboutUsActivity"
 			android:label="AboutUsActivity"/>

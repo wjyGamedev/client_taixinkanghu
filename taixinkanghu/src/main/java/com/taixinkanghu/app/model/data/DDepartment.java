@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.app.model.data;
 
-import com.taixinkanghu.app.model.event.net.config.DepartmentListConfig;
+import com.taixinkanghu.app.model.net.config.DepartmentListConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;

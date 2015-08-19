@@ -57,6 +57,8 @@
 	<string name="content_day">天</string>
 	<string name="content_yuan">元</string>
 	<string name="content_age">岁</string>
+	<string name="content_confirm">确定</string>
+	<string name="content_patient_info">患者信息</string>
 
 	//注册信息
 	<string name="title_register">注册页面</string>

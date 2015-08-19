@@ -78,7 +78,7 @@ public class DFaceImages
 		return m_ImageArrayList;
 	}
 
-	public Integer getImageIDbyIndex(int index)
+	public Integer getImgResIDbyIndex(int index)
 	{
 		if (index >= m_ImageArrayList.size())
 		{

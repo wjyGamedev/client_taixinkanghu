@@ -1,4 +1,4 @@
-package com.taixinkanghu.app.ui.fragment;
+package com.taixinkanghu.app.ui.nurse_order_confirm_page;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -10,12 +10,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
+import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 /**
  * Created by Administrator on 2015/7/20.
  */
-public class SelectGenderFragment extends Fragment implements View.OnClickListener {
+public class SelectSexFragment extends Fragment implements View.OnClickListener {
 
     private TextView btn_Male;
     private TextView btn_Female;
@@ -38,24 +39,27 @@ public class SelectGenderFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        ApoitNursingActivity activity = (ApoitNursingActivity) getActivity();
+        PatientActivity patientActivity = (PatientActivity) getActivity();
+        if (patientActivity == null)
+        {
+            RegisterDialog.GetInstance().setMsg("patientActivity == null");
+            RegisterDialog.GetInstance().show();
+            return;
+        }
+
         switch (v.getId()) {
             case R.id.btn_Male:
-                activity.getGenderTV().setText("男");
-//                activity.getDwonGender().setVisibility(View.INVISIBLE);
+                patientActivity.setSexType(EnumConfig.SexType.MALE);
                 break;
             case R.id.btn_Female:
-                activity.getGenderTV().setText("女");
-//                activity.getDwonGender().setVisibility(View.INVISIBLE);
+                patientActivity.setSexType(EnumConfig.SexType.FEMALE);
                 break;
         }
         //蒙版点击一下之后消失的处理
-        FragmentManager fgManager = getFragmentManager();
-        Fragment fragment = fgManager.findFragmentById(R.id.appointment_nursing_page);
-        FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
+        FragmentManager      fgManager           = getFragmentManager();
+        Fragment fragment            = fgManager.findFragmentByTag(SelectSexFragment.class.getName());
+        FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
         fragmentTransaction.remove(fragment);
-        String tag = null;
-        fragmentTransaction.addToBackStack(tag);
         fragmentTransaction.commit();
     }
 }

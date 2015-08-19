@@ -17,8 +17,8 @@ package com.taixinkanghu.app.model.data;
 import android.text.TextUtils;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.event.net.config.ProtocalConfig;
-import com.taixinkanghu.app.model.event.net.config.RegisterConfig;
+import com.taixinkanghu.app.model.net.config.ProtocalConfig;
+import com.taixinkanghu.app.model.net.config.RegisterConfig;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.storage.OwnerPreferences;
 import com.taixinkanghu.app.model.storage.StorageWrapper;
