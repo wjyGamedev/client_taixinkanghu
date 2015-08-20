@@ -1,4 +1,4 @@
-package com.taixinkanghu.app.ui.nurs_order_pay_page;
+package com.taixinkanghu.app.ui.nurse_order_pay_page;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import com.taixinkanghu.R;
 /**
  * Created by Administrator on 2015/8/3.
  */
-public class NursOrderPayActivity extends Activity
+public class NurseOrderPayActivity extends Activity
 {
 	private ImageButton m_backBtn;
 	private TextView    m_titleTextView;
@@ -23,10 +23,10 @@ public class NursOrderPayActivity extends Activity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_nursing_order_pay);
+		setContentView(R.layout.activity_nurse_order_pay);
 		init();
 		initListener();
-		initModule();
+		initContent();
 	}
 
 	private void init()
@@ -44,7 +44,7 @@ public class NursOrderPayActivity extends Activity
 		m_bottomBtn.setOnClickListener(m_handlerClickEventNursOrderPay);
 	}
 
-	private void initModule()
+	private void initContent()
 	{
 		m_titleTextView.setText(R.string.nursing_order_pay_title);
 		m_bottomBtn.setText(R.string.determine_pay_title);
