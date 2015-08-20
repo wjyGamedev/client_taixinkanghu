@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.address_management_page.AddressManagementAcitvity;
-import com.taixinkanghu.app.ui.nurs_order_pay_page.NursOrderPayActivity;
+import com.taixinkanghu.app.ui.nurse_order_pay_page.NurseOrderPayActivity;
 
 /**
  * Created by Administrator on 2015/8/14.
@@ -50,7 +50,7 @@ public class ShoppingOrderConfirmActivity extends Activity
 
 		m_handlerClickEventShoppingOrderConfirm = new HandlerClickEventShoppingOrderConfirm(this);
 
-		m_toPaymentIntent = new Intent(ShoppingOrderConfirmActivity.this, NursOrderPayActivity.class);
+		m_toPaymentIntent = new Intent(ShoppingOrderConfirmActivity.this, NurseOrderPayActivity.class);
 		m_toAddressIntent = new Intent(ShoppingOrderConfirmActivity.this, AddressManagementAcitvity.class);
 	}
 
