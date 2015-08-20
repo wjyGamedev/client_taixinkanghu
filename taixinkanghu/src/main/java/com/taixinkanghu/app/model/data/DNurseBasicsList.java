@@ -96,8 +96,4 @@ public class DNurseBasicsList
 		return null;
 	}
 
-	public synchronized int getStatus()
-	{
-		return m_Status;
-	}
 }
