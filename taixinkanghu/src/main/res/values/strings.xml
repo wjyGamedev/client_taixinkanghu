@@ -43,6 +43,7 @@
 	<string name="nurs_order_change_title">订单变更</string>
 	<string name="address_management_title">地址管理</string>
 	<string name="new_address_title">新建地址</string>
+	<string name="worker_evaluate_title">服务评价</string>
 
 	<!-- 基本内容信息-->
 	<string name="content_male">男</string>
@@ -188,9 +189,10 @@
 	<string name="order_content_text">订单内容</string>
 	<string name="nursing_worker_text">护理员:</string>
 	<string name="job_number_text">工号：</string>
+	<string name="worker_level_text">级别：</string>
 	<string name="job_id_text">job_number</string>
 	<string name="service_time_text">服务时间:</string>
-	<string name="service_time_datda_text">6月24日 - 6月25日 共1天</string>
+	<string name="service_time_datda_text">6月24日 - 6月26日 共3天</string>
 	<string name="service_location_text">服务地点:</string>
 	<string name="service_location_data_text">北京朝阳医院心血管内科</string>
 	<string name="patient_text">被护理人:</string>
@@ -297,6 +299,7 @@
 	<string name="title_nurs_order_change">NursOrderChangeActivity</string>
 	<string name="title_address_management">AddressManagementAcitvity</string>
 	<string name="title_create_address">CreateAddressActivity</string>
+	<string name="title_worder_evaluate">WorderEvaluateActivity</string>
 
 	<string name="sunday">日</string>
 	<string name="monday">一</string>
