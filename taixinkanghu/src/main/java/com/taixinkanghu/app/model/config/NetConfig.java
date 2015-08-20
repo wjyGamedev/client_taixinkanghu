@@ -37,8 +37,13 @@ public class NetConfig
 
 	//预约陪护地址
 	public final static String s_appointmentNursingAddress = "http://"+IP_ADDREDD_TEST+"/carer/getCarerList/";
+
 	//nurse senior list address
 	public final static String s_nurseSeniorListAddress = "http://"+IP_ADDREDD_TEST+"/carer/getCarerSeniorList/";
 
+	//nurse order confirm
+	public final static String s_nurseOrderConfirmAddress = "http://"+IP_ADDREDD_TEST+"/order/preAddOrder/";
 
+	//nurse order list address
+	public final static String s_nurseOrderListAddress = "http://"+IP_ADDREDD_TEST+"/";
 }
