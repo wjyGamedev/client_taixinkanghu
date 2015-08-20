@@ -52,7 +52,13 @@ public class SelectNurseActivity  extends Activity
 
 		init();
 		initContent();
+	}
+
+	@Override
+	protected void onStart()
+	{
 		initGlobalData();
+		super.onStart();
 	}
 
 	private void initGlobalData()
@@ -69,7 +75,7 @@ public class SelectNurseActivity  extends Activity
 
 	private void clearupGlobalData()
 	{
-		DGlobal.GetInstance().setContext(null);
+		DGlobal.GetInstance().clearupContext(this);
 	}
 
 	@Override
