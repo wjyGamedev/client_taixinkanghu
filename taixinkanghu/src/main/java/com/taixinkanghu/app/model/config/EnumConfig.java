@@ -157,4 +157,40 @@ public class EnumConfig
 		}
 	}
 
+	//05. 订单状态
+	public enum NurseOrderStatus
+	{
+		WAIT_PAYMENT(AppUtil.GetResources().getString(R.string.nurse_order_status_wait_payment), 1),
+		WAIT_SERVICE(AppUtil.GetResources().getString(R.string.nurse_order_status_wait_service), 2),
+		IN_SERVICE(AppUtil.GetResources().getString(R.string.nurse_order_status_in_service), 3),
+		FINISHED(AppUtil.GetResources().getString(R.string.nurse_order_status_finished), 4),
+		CANCELED(AppUtil.GetResources().getString(R.string.nurse_order_status_canceled), 5),
+		WAIT_EVALUATION(AppUtil.GetResources().getString(R.string.nurse_order_status_wait_evaluation), 6);
+
+		private String m_name = null;
+		private int m_id = 0;
+
+		private NurseOrderStatus(String name, int id)
+		{
+			m_name = name;
+			m_id = id;
+		}
+
+		public String getName()
+		{
+			return m_name;
+		}
+
+		public int getId()
+		{
+			return m_id;
+		}
+
+		@Override
+		public String toString()
+		{
+			return ("[id:=" + m_id + "][name:" +m_name+"]");
+		}
+	}
+
 }
