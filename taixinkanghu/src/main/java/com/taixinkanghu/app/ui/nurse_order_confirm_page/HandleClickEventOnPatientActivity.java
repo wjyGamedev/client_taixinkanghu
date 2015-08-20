@@ -16,7 +16,6 @@ package com.taixinkanghu.app.ui.nurse_order_confirm_page;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 
 import com.taixinkanghu.R;
@@ -79,7 +78,9 @@ public class HandleClickEventOnPatientActivity extends BaseHandleOnClickEvent
 				patientActivity.confirmAction();
 
 				//02. 跳转到订单确认页面
-				m_context.startActivity(new Intent(m_context, OrderConfirmActivity.class));
+				//由于订单确认页面，在该页面之下。当前是从订单确认页面跳转过来的。所以直接销毁本地就可以了。
+				patientActivity.finish();
+//				m_context.startActivity(new Intent(m_context, OrderConfirmActivity.class));
 				break;
 			}
 		}	//end_switch (v.getId())
