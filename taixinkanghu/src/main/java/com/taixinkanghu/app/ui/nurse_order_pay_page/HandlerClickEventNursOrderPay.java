@@ -27,11 +27,6 @@ public class HandlerClickEventNursOrderPay extends BaseHandleOnClickEvent
 		Activity activity = (Activity)m_context;
 		switch (v.getId())
 		{
-			case R.id.btn_back:
-			{
-				activity.finish();
-				break;
-			}
 			case R.id.btn_bottom:
 			{
 				new AlertDialog.Builder(activity).setTitle("支付提示").setMessage("确认支付？").setPositiveButton("确定",
