@@ -41,7 +41,7 @@
                             android:layout_width="20dp"
                             android:layout_height="match_parent"
                             android:background="@drawable/bg_top_tab"
-                            android:text="全部"/>
+                            android:text="全部" android:id="@+id/all_rbtn"/>
 
                         <RadioButton
                             style="@style/home_radio_button_style"

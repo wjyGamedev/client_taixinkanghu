@@ -35,7 +35,7 @@
 				android:textSize="14.0sp"/>
 
 			<TextView
-				android:id="@+id/pay_money"
+				android:id="@+id/pay_money_tips_tv"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:gravity="right"
@@ -45,7 +45,7 @@
 				android:textSize="16.0sp"/>
 
 			<TextView
-				android:id="@+id/pay_money"
+				android:id="@+id/pay_money_tv"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:gravity="right"
@@ -55,7 +55,7 @@
 				android:textSize="16.0sp"/>
 
 			<TextView
-				android:id="@+id/pay_money"
+				android:id="@+id/pay_uint_tv"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:gravity="right"
@@ -79,7 +79,7 @@
 				<include layout="@layout/item_dividing_line_horizontal"/>
 
 				<LinearLayout
-					android:id="@id/item_cash"
+					android:id="@+id/cash_ll"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:background="@color/white"
@@ -119,12 +119,13 @@
 							android:textSize="12.0sp"/>
 					</LinearLayout>
 
-					<ImageView
-						android:id="@id/item_cash_rbtn"
+					<RadioButton
+						android:id="@+id/cash_rbtn"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
 						android:layout_marginRight="15dp"
-						android:src="@drawable/btn_pay_select"/>
+						android:layout_gravity="fill"
+						/>
 
 				</LinearLayout>
 
@@ -138,14 +139,14 @@
 				</LinearLayout>
 
 				<LinearLayout
-					android:id="@id/item_alipay"
+					android:id="@+id/alipay_ll"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:background="@color/white"
 					android:gravity="center_vertical"
 					android:orientation="horizontal"
 					android:paddingBottom="10dp"
-					android:paddingTop="10dp">
+					android:paddingTop="10dp" android:focusableInTouchMode="false">
 
 					<ImageView
 						android:layout_width="40dp"
@@ -178,12 +179,13 @@
 							android:textSize="12.0sp"/>
 					</LinearLayout>
 
-					<ImageView
-						android:id="@id/item_alipay_rbtn"
+					<RadioButton
+						android:id="@+id/alipay_rbtn"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
 						android:layout_marginRight="15dp"
-						android:src="@drawable/btn_pay_select"/>
+						android:layout_gravity="fill"
+						/>
 
 				</LinearLayout>
 
@@ -197,7 +199,7 @@
 				</LinearLayout>
 
 				<LinearLayout
-					android:id="@id/item_weixin"
+					android:id="@+id/weixin_ll"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:background="@color/white"
@@ -237,12 +239,12 @@
 							android:textSize="12.0sp"/>
 					</LinearLayout>
 
-					<ImageView
-						android:id="@id/item_weixin_rbtn"
+					<RadioButton
+						android:id="@+id/weixin_rbtn"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
-						android:layout_marginRight="15dp"
-						android:src="@drawable/btn_pay_select"/>
+						android:layout_marginRight="20dp"
+						android:layout_gravity="fill"/>
 				</LinearLayout>
 
 				<include layout="@layout/item_dividing_line_horizontal"/>
