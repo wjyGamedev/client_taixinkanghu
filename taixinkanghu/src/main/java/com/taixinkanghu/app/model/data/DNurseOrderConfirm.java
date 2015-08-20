@@ -47,10 +47,22 @@ public class DNurseOrderConfirm implements Serializable
 
 	public void clearup()
 	{
-		m_nurseID = -1;
-		m_serviceDate = null;
-		m_serviceAddress = null;
-		m_totalCharge = 0;
+		m_nurseID             = -1;    //护工ID
+		m_nurseHeaderImgResID = -1;    //护工头像ID
+		m_nurseName           = null;    //护工名字
+		m_nurseJobNum         = null;    //护工的工号
+		m_nursingLevel        = null;    //护理级别
+		m_serviceDate         = null;    //服务时间
+		m_serviceAddress      = null;    //服务地点
+
+		m_allNum      = 0;    //全天24小时服务的天数
+		m_dayNum      = 0;    //白天12小时服务的天数
+		m_nightNum    = 0;    //夜间12小时服务的天数
+
+		m_chargePerAll = 0;	//全天24小时服务的单价
+		m_chargePerDay = 0;	//白天12小时服务的单价
+		m_chargePerNight = 0;	//夜间12小时服务的单价
+		m_totalCharge = 0;    //合计
 	}
 
 	public boolean isInitialized()
