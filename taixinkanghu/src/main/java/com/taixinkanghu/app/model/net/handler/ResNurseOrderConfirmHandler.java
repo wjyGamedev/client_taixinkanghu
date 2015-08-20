@@ -14,6 +14,7 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
+import com.taixinkanghu.app.model.data.DNurseOrder;
 import com.taixinkanghu.app.model.data.DNurserOrderList;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.NurseInServiceRTException;
@@ -27,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import de.greenrobot.event.EventBus;
 
@@ -75,6 +77,24 @@ public class ResNurseOrderConfirmHandler extends IResponseListener
 
 		//02. 接收成功，
 		FinishedNurseOrderListEvent finishedNurseOrderListEvent = new FinishedNurseOrderListEvent();
+		ArrayList<DNurseOrder> nurseOrders = DNurserOrderList.GetInstance().getNurseOrders();
+		if (nurseOrders.size() != 1)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrders.size() != 1[nurseOrders.size():=" + nurseOrders.size() + "]");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		DNurseOrder nurseOrder = nurseOrders.get(0);
+		if (nurseOrder == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrder == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		finishedNurseOrderListEvent.setNurseID(nurseOrder.getNurseID());
+		finishedNurseOrderListEvent.setOrderID(nurseOrder.getOrderID());
+
 		m_eventBus.post(finishedNurseOrderListEvent);
 
 		return;
