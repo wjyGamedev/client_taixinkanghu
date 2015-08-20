@@ -126,7 +126,6 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				//03. 发送消息到服务器
 				//0301. nurse basic list
 				ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
-				reqApoitNursingEvent.init(m_context);
 				m_eventBus.post(reqApoitNursingEvent);
 				//备注：nurse senior list 在接收完成nurse basic list成功后，发送。
 
