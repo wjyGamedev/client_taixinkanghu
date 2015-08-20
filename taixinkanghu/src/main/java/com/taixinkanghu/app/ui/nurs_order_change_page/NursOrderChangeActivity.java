@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.ui.nurs_order_pay_page.NursOrderPayActivity;
+import com.taixinkanghu.app.ui.nurse_order_pay_page.NurseOrderPayActivity;
 
 /**
  * Created by Administrator on 2015/8/14.
@@ -42,7 +42,7 @@ public class NursOrderChangeActivity extends Activity
 		m_bottomBtn = (Button)findViewById(R.id.btn_bottom);
 
 		m_handlerClickEventNursOrderChange = new HandlerClickEventNursOrderChange(this);
-		m_toPayIntent = new Intent(NursOrderChangeActivity.this, NursOrderPayActivity.class);
+		m_toPayIntent = new Intent(NursOrderChangeActivity.this, NurseOrderPayActivity.class);
 	}
 
 	private void initListener()
