@@ -98,9 +98,16 @@ public class NurseInfoActivity extends Activity
 	}
 
 	@Override
+	protected void onStart()
+	{
+		initGlobalData();
+		super.onStart();
+	}
+
+	@Override
 	protected void onStop()
 	{
-		DGlobal.GetInstance().setContext(null);
+		clearupGlobalData();
 		super.onStop();
 	}
 
@@ -109,6 +116,16 @@ public class NurseInfoActivity extends Activity
 	{
 		m_eventBus.unregister(this);
 		super.onDestroy();
+	}
+
+	private void initGlobalData()
+	{
+		DGlobal.GetInstance().setContext(this);
+	}
+
+	private void clearupGlobalData()
+	{
+		DGlobal.GetInstance().clearupContext(this);
 	}
 
 	private void init()
@@ -159,7 +176,6 @@ public class NurseInfoActivity extends Activity
 
 		m_eventBus.register(this);
 
-		DGlobal.GetInstance().setContext(this);
 	}
 
 	private void initListener()
