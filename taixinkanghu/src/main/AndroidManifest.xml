@@ -163,7 +163,7 @@
 			android:name=".app.ui.appointment_nursing.SelectDateActivity"
 			android:label="SelectDateActivity"/>
 		<activity
-			android:name=".app.ui.nurs_order_pay_page.NursOrderPayActivity"
+			android:name=".app.ui.nurse_order_pay_page.NurseOrderPayActivity"
 			android:label="@string/title_nurs_order_pay"/>
 		<activity
 			android:name=".app.ui.shopping_car_page.ShoppingCarActivity"
