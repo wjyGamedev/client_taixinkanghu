@@ -70,6 +70,30 @@ public class PatientActivity extends Activity
 		initDate();
 	}
 
+	@Override
+	protected void onStart()
+	{
+		initGlobalData();
+		super.onStart();
+	}
+
+	@Override
+	protected void onStop()
+	{
+		clearupGlobalData();
+		super.onStop();
+	}
+
+	private void initGlobalData()
+	{
+		DGlobal.GetInstance().setContext(this);
+	}
+
+	private void clearupGlobalData()
+	{
+		DGlobal.GetInstance().clearupContext(this);
+	}
+
 	private void initDate()
 	{
 		//姓名
@@ -158,13 +182,6 @@ public class PatientActivity extends Activity
 	}
 
 	@Override
-	protected void onStop()
-	{
-		DGlobal.GetInstance().setContext(null);
-		super.onStop();
-	}
-
-	@Override
 	protected void onDestroy()
 	{
 		super.onDestroy();
@@ -193,8 +210,6 @@ public class PatientActivity extends Activity
 
 		m_handleEditActionEvent = new HandleEditActionEvent(this);
 		m_handleClickEventOnPatientActivity = new HandleClickEventOnPatientActivity(this);
-
-		DGlobal.GetInstance().setContext(this);
 
 	}
 
