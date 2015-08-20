@@ -180,6 +180,9 @@
 		<activity
 			android:name=".app.ui.create_address_page.CreateAddressActivity"
 			android:label="@string/title_create_address"/>
+		<activity
+			android:name=".app.ui.worder_evaluate.WorderEvaluateActivity"
+			android:label="@string/title_worder_evaluate"/>
 	</application>
 
 </manifest>
