@@ -3,7 +3,8 @@
     <color name="color_main_focus">#ff2aa384</color>
     <color name="color_main_disable">#ffcccccc</color>
     <color name="date_select_gray">#ffeaeaea</color>
-    <color name="date_select_green">#ff15d280</color>
+    <color name="date_select_old_green">#ff15d280</color>
+    <color name="date_select_green">#008000</color>
     <color name="date_select_green_focus">#ff87e4bc</color>
     <color name="date_select_orange">#fffebf72</color>
     <color name="date_select_text">#ffa4aeb9</color>
