@@ -33,7 +33,9 @@
 				android:text="订单号："
 				android:textColor="@color/text_color_black"
 				android:textSize="14sp"/>
+
 			<TextView
+				android:id="@+id/order_serial_num_tv"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:gravity="center"
@@ -41,16 +43,8 @@
 				android:textColor="@color/text_color_black"
 				android:textSize="14.0sp"/>
 
+		</LinearLayout>
 
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:text="201506172734270"
-					android:textSize="20sp"
-					android:id="@+id/order_serial_num_tv"/>
-
-			</LinearLayout>
 		<include layout="@layout/item_dividing_line_horizontal"/>
 
 		<LinearLayout
@@ -64,8 +58,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
-				android:layout_marginTop="30dp"
 				android:layout_marginBottom="30dp"
+				android:layout_marginTop="30dp"
 				android:orientation="horizontal">
 
 				<TextView
@@ -74,7 +68,7 @@
 					android:gravity="center"
 					android:text="￥"
 					android:textColor="@color/date_select_green"
-					android:textSize="60sp"/>
+					android:textSize="40sp"/>
 
 				<TextView
 					android:id="@+id/price_tv"
