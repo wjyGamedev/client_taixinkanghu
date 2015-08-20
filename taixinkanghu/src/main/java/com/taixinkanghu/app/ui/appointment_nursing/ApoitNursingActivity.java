@@ -83,12 +83,12 @@ public class ApoitNursingActivity extends Activity
 		init();
 		initListener();
 		initContent();
-		initDate();
 	}
 
 	@Override
 	protected void onStart()
 	{
+		updateDate();
 		initGlobalData();
 		super.onStart();
 	}
@@ -110,7 +110,7 @@ public class ApoitNursingActivity extends Activity
 		DGlobal.GetInstance().clearupContext(this);
 	}
 
-	private void initDate()
+	private void updateDate()
 	{
 		//姓名
 		String name = DApoitNursing.GetInstance().getName();
