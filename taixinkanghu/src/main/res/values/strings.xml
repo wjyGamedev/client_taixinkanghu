@@ -60,6 +60,16 @@
 	<string name="content_confirm">确定</string>
 	<string name="content_patient_info">患者信息</string>
 
+	<!-- 护工订单状态-->
+	<string name="nurse_order_status_wait_payment">待支付</string>
+	<string name="nurse_order_status_wait_service">待服务</string>
+	<string name="nurse_order_status_in_service">服务中</string>
+	<string name="nurse_order_status_finished">已完成</string>
+	<string name="nurse_order_status_canceled">已取消</string>
+	<string name="nurse_order_status_wait_evaluation">待评价</string>
+
+
+
 	//注册信息
 	<string name="title_register">注册页面</string>
 
