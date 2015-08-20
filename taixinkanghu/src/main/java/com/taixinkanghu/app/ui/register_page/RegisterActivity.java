@@ -54,7 +54,13 @@ public class RegisterActivity extends Activity
 		initContent();
 		initListener();
 		initEvent();
+	}
+
+	@Override
+	protected void onStart()
+	{
 		initGlobalData();
+		super.onStart();
 	}
 
 	private void initGlobalData()
@@ -71,7 +77,7 @@ public class RegisterActivity extends Activity
 
 	private void clearupGlobalData()
 	{
-		DGlobal.GetInstance().setContext(null);
+		DGlobal.GetInstance().clearupContext(this);
 	}
 
 	@Override
