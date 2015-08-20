@@ -48,7 +48,16 @@
                             android:layout_width="20dp"
                             android:layout_height="match_parent"
                             android:background="@drawable/bg_top_tab"
-                            android:text="未付款"/>
+                            android:text="未付款"
+                            android:id="@+id/wait_pay_rbtn"/>
+
+                        <RadioButton
+                            style="@style/home_radio_button_style"
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_top_tab"
+                            android:text="已完成"
+                            android:id="@+id/wait_service_rbtn"/>
 
                         <RadioButton
                             style="@style/home_radio_button_style"
@@ -57,13 +66,6 @@
                             android:background="@drawable/bg_top_tab"
                             android:text="服务中"
                             android:visibility="gone"/>
-
-                        <RadioButton
-                            style="@style/home_radio_button_style"
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/bg_top_tab"
-                            android:text="已完成"/>
 
                     </RadioGroup>
 
