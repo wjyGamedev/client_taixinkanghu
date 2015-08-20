@@ -131,7 +131,7 @@
 						<LinearLayout
 							android:id="@+id/item_cash"
 							android:layout_width="match_parent"
-							android:layout_height="55dp"
+							android:layout_height="60dp"
 							android:background="@color/white"
 							android:gravity="center_vertical"
 							android:orientation="horizontal"
@@ -183,7 +183,7 @@
 						<LinearLayout
 							android:id="@id/item_alipay"
 							android:layout_width="match_parent"
-							android:layout_height="55dp"
+							android:layout_height="60dp"
 							android:background="@color/white"
 							android:gravity="center_vertical"
 							android:orientation="horizontal"
@@ -235,7 +235,7 @@
 						<LinearLayout
 							android:id="@id/item_weixin"
 							android:layout_width="match_parent"
-							android:layout_height="55dp"
+							android:layout_height="60dp"
 							android:background="@color/white"
 							android:gravity="center_vertical"
 							android:orientation="horizontal"
@@ -292,7 +292,7 @@
 								style="@style/tick_radio_button_style"
 								android:layout_width="20dp"
 								android:layout_height="20dp"
-								android:layout_marginBottom="17.5dp"
+								android:layout_marginBottom="18dp"
 								android:layout_marginRight="15dp"
 								android:layout_marginTop="17.5dp"
 								android:background="@drawable/bg_radio_button_tick"/>
