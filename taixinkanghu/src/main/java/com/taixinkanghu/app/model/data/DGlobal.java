@@ -48,4 +48,15 @@ public class DGlobal
 		}
 	}
 
+	public void clearupContext(Context context)
+	{
+		synchronized (m_syncContentObj)
+		{
+			if (m_context == context)
+			{
+				m_context = null;
+			}
+		}
+	}
+
 }
