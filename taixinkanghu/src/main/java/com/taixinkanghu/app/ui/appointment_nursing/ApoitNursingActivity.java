@@ -28,6 +28,7 @@ import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.DApoitNursing;
 import com.taixinkanghu.app.model.data.DDepartment;
 import com.taixinkanghu.app.model.data.DDepartmentList;
+import com.taixinkanghu.app.model.data.DGlobal;
 import com.taixinkanghu.app.model.data.DHospital;
 import com.taixinkanghu.app.model.data.DHospitalList;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
@@ -83,6 +84,30 @@ public class ApoitNursingActivity extends Activity
 		initListener();
 		initContent();
 		initDate();
+	}
+
+	@Override
+	protected void onStart()
+	{
+		initGlobalData();
+		super.onStart();
+	}
+
+	@Override
+	protected void onStop()
+	{
+		clearupGlobalData();
+		super.onStop();
+	}
+
+	private void initGlobalData()
+	{
+		DGlobal.GetInstance().setContext(this);
+	}
+
+	private void clearupGlobalData()
+	{
+		DGlobal.GetInstance().clearupContext(this);
 	}
 
 	private void initDate()
