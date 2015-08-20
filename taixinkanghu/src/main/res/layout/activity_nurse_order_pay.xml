@@ -42,7 +42,8 @@
 					android:layout_height="wrap_content"
 					android:gravity="center"
 					android:text="201506172734270"
-					android:textSize="20sp"/>
+					android:textSize="20sp"
+					android:id="@+id/order_serial_num_tv"/>
 
 			</LinearLayout>
 
@@ -61,7 +62,7 @@
 					android:textSize="60sp"/>
 
 				<TextView
-					android:id="@+id/pay_money_tv"
+					android:id="@+id/price_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
@@ -118,7 +119,7 @@
 						android:orientation="vertical">
 
 						<LinearLayout
-							android:id="@id/item_cash"
+							android:id="@+id/item_cash"
 							android:layout_width="match_parent"
 							android:layout_height="55dp"
 							android:background="@color/white"
