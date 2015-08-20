@@ -31,6 +31,8 @@ import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.app.model.net.event.send.ReqDepartmentListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderConfirmEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqRegisterEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqShoppingBasicListEvent;
@@ -38,6 +40,8 @@ import com.taixinkanghu.app.model.net.handler.BaseErrorListener;
 import com.taixinkanghu.app.model.net.handler.ResApoitNursingHandler;
 import com.taixinkanghu.app.model.net.handler.ResDepartmentListHandler;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
+import com.taixinkanghu.app.model.net.handler.ResNurseOrderConfirmHandler;
+import com.taixinkanghu.app.model.net.handler.ResNurseOrderListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
 import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
 import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
@@ -64,7 +68,8 @@ public class NetService extends Service
 	private ResRegisterHandler     m_resRegisterHandler     = null;
 	private ResApoitNursingHandler m_resApoitNursingHandler = null;
 	private ResNurseSeniorListHandler m_resNurseSeniorListHandler = null;
-
+	private ResNurseOrderConfirmHandler m_resNurseOrderConfirmHandler = null;
+	private ResNurseOrderListHandler m_resNurseOrderListHandler = null;
 
 	private ResShoppingBasicListHandler m_resShoppingBasicListHandler = null;
 
@@ -120,6 +125,9 @@ public class NetService extends Service
 		m_resRegisterHandler = new ResRegisterHandler();
 		m_resApoitNursingHandler = new ResApoitNursingHandler();
 		m_resNurseSeniorListHandler = new ResNurseSeniorListHandler();
+		m_resNurseOrderConfirmHandler = new ResNurseOrderConfirmHandler();
+		m_resNurseOrderListHandler = new ResNurseOrderListHandler();
+
 
 		m_resShoppingBasicListHandler = new ResShoppingBasicListHandler();
 		m_requestQueue = BaseHttp.getInstance().getRequestQueue();
@@ -319,6 +327,42 @@ public class NetService extends Service
 		m_requestQueue.add(myReq);
 	}
 
+	//nurse order confirm
+	public void onEventAsync(ReqNurseOrderConfirmEvent event)
+	{
+		HashMap<String, String> nurseOrderConfirmMap = event.getHashMap();
+
+		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
+														NetConfig.s_nurseOrderConfirmAddress,
+																nurseOrderConfirmMap,
+																m_resNurseOrderConfirmHandler,
+														m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
+	}
+
+	//nurse order list
+	public void onEventAsync(ReqNurseOrderListEvent event)
+	{
+
+
+
+		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
+																NetConfig.s_nurseOrderListAddress,
+																null,
+																m_resNurseOrderListHandler,
+																m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
+	}
+
+
+
+
+
+
+
+
 	//康复用品
 	public void onEventAsync(ReqShoppingBasicListEvent event)
 	{
@@ -330,4 +374,7 @@ public class NetService extends Service
 
 		m_requestQueue.add(myReq);
 	}
+
+
+
 }
