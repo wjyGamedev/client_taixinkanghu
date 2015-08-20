@@ -574,8 +574,10 @@ public class OrderConfirmActivity extends Activity
 	public void onEventMainThread(FinishedNurseOrderListEvent event)
 	{
 		Intent intent = new Intent(this, NurseOrderPayActivity.class);
-		int totalCharge = DNurseOrderConfirm.GetInstance().getTotalCharge();
-		intent.putExtra(NurseOrderConfig.ORDER_TOTAL_CHARGE, totalCharge);
+		int nurserID = event.getNurseID();
+		int orderID = event.getOrderID();
+		intent.putExtra(NurseOrderConfig.NURSE_ID, nurserID);
+		intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
 		startActivity(intent);
 		return;
 	}

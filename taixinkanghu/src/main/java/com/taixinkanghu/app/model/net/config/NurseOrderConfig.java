@@ -47,6 +47,9 @@ public class NurseOrderConfig
 	public final static String DATE_DAY_LIST      = "day";
 	public final static String DATE_NIGHT_LIST    = "night";
 
+	//04. nurse order check
+
+
 	//logical
 	public final static int NURSE_IN_SERVICE = -2;
 

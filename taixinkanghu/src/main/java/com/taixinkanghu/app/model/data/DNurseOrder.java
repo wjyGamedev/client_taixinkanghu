@@ -5,7 +5,7 @@
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p/>
+ * <p>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
@@ -43,7 +43,7 @@ public class DNurseOrder
 	private int                         m_totalCharge      = 0;
 	private EnumConfig.NurseOrderStatus m_nurseOrderStatus = null;
 	private int                         m_orderID          = -1;
-	private int                         m_orderSerialNum   = 0;
+	private String                      m_orderSerialNum   = null;
 
 	private DScheduleList m_scheduleList = new DScheduleList();
 
@@ -74,7 +74,7 @@ public class DNurseOrder
 		}
 		else
 		{
-			throw new JsonSerializationException("genderId is invalid![genderId:="+genderId+"]");
+			throw new JsonSerializationException("genderId is invalid![genderId:=" + genderId + "]");
 		}
 
 		m_patientAge = response.getString(NurseOrderConfig.PATIENT_AGE);
@@ -95,7 +95,7 @@ public class DNurseOrder
 		}
 		else
 		{
-			throw new JsonSerializationException("patientStatus is invalid![patientStatus:="+genderId+"]");
+			throw new JsonSerializationException("patientStatus is invalid![patientStatus:=" + genderId + "]");
 		}
 
 		m_patientRemark = response.getString(NurseOrderConfig.PATIENT_REMARK);
@@ -128,8 +128,12 @@ public class DNurseOrder
 		}
 		else
 		{
-			throw new JsonSerializationException("orderStateID is invalid![orderStateID:="+orderStateID+"]");
+			throw new JsonSerializationException("orderStateID is invalid![orderStateID:=" + orderStateID + "]");
 		}
+
+		m_orderID = response.getInt(NurseOrderConfig.ORDER_ID);
+		m_orderSerialNum = response.getString(NurseOrderConfig.ORDER_SERIAL_NUM);
+
 
 		//service date
 		m_scheduleList.serialization(response);
@@ -208,7 +212,7 @@ public class DNurseOrder
 		return m_orderID;
 	}
 
-	public int getOrderSerialNum()
+	public String getOrderSerialNum()
 	{
 		return m_orderSerialNum;
 	}
