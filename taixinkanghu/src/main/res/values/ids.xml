@@ -146,4 +146,5 @@
     <item name="btn_address" type="id">btn_address</item>
     <item name="add_info" type="id">add_info</item>
     <item name="btn_bottom" type="id">btn_bottom</item>
+    <item name="btn_comment" type="id">btn_comment</item>
 </resources>
