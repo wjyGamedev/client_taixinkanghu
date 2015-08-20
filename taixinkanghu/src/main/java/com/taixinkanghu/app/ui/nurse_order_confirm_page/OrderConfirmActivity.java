@@ -16,6 +16,7 @@ import com.taixinkanghu.app.model.data.DApoitNursing;
 import com.taixinkanghu.app.model.data.DDepartment;
 import com.taixinkanghu.app.model.data.DDepartmentList;
 import com.taixinkanghu.app.model.data.DFaceImages;
+import com.taixinkanghu.app.model.data.DGlobal;
 import com.taixinkanghu.app.model.data.DHospital;
 import com.taixinkanghu.app.model.data.DHospitalList;
 import com.taixinkanghu.app.model.data.DNurseBasics;
@@ -25,10 +26,18 @@ import com.taixinkanghu.app.model.data.DNurseOrderConfirm;
 import com.taixinkanghu.app.model.data.DNurseSenior;
 import com.taixinkanghu.app.model.data.DNurseSeniorList;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
+import com.taixinkanghu.app.model.net.event.recv.FailedNurseOrderConfirmEvent;
+import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderListEvent;
+import com.taixinkanghu.app.ui.appointment_nursing.ReqApoitNursingEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
+import com.taixinkanghu.app.ui.nurse_order_pay_page.NurseOrderPayActivity;
+import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
+
+import de.greenrobot.event.EventBus;
 
 public class OrderConfirmActivity extends Activity
 {
@@ -68,6 +77,8 @@ public class OrderConfirmActivity extends Activity
 	//logical
 	private HandlerClickEventNurseOrderConfirm m_handlerClickEventNurseOrderConfirm = null;
 
+	private EventBus m_eventBus = EventBus.getDefault();
+
 	private final String UNIT_DAY = AppUtil.GetResources().getString(R.string.content_day);
 	private final String UNIT_YUAN = AppUtil.GetResources().getString(R.string.content_yuan);
 
@@ -80,17 +91,48 @@ public class OrderConfirmActivity extends Activity
 		init();
 		initListener();
 
-		boolean initFlag = DNurseOrderConfirm.GetInstance().isInitialized();
-		if (initFlag == false)
-		{
+//		boolean initFlag = DNurseOrderConfirm.GetInstance().isInitialized();
+//		if (initFlag == false)
+//		{
 			updateContent();
 			updateCharge();
-		}
-		else
-		{
-			setContent();
-			setCharge();
-		}
+//		}
+//		else
+//		{
+//			setContent();
+//			setCharge();
+//		}
+	}
+
+	@Override
+	protected void onStart()
+	{
+		initGlobalData();
+		super.onStart();
+	}
+
+	@Override
+	protected void onStop()
+	{
+		clearupGlobalData();
+		super.onStop();
+	}
+
+	@Override
+	protected void onDestroy()
+	{
+		m_eventBus.unregister(this);
+		super.onDestroy();
+	}
+
+	private void initGlobalData()
+	{
+		DGlobal.GetInstance().setContext(this);
+	}
+
+	private void clearupGlobalData()
+	{
+		DGlobal.GetInstance().clearupContext(this);
 	}
 
 	private void init()
@@ -137,6 +179,8 @@ public class OrderConfirmActivity extends Activity
 		m_userProtcolTV.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
 
 		m_handlerClickEventNurseOrderConfirm = new HandlerClickEventNurseOrderConfirm(this);
+
+		m_eventBus.register(this);
 	}
 
 	private void initListener()
@@ -521,6 +565,35 @@ public class OrderConfirmActivity extends Activity
 		m_serviceAddressTV.setText(address);
 		//data
 		DNurseOrderConfirm.GetInstance().setServiceAddress(address);
+	}
+
+	/**
+	 * event bus handle
+	 */
+	//下订单成功，跳转到支付页面。
+	public void onEventMainThread(FinishedNurseOrderListEvent event)
+	{
+		Intent intent = new Intent(this, NurseOrderPayActivity.class);
+		int totalCharge = DNurseOrderConfirm.GetInstance().getTotalCharge();
+		intent.putExtra(NurseOrderConfig.ORDER_TOTAL_CHARGE, totalCharge);
+		startActivity(intent);
+		return;
+	}
+
+	//下订单失败，护工在服务中。
+	public void onEventMainThread(FailedNurseOrderConfirmEvent event)
+	{
+		//01. 清除DNurseOrderConfirm的数据
+		DNurseOrderConfirm.GetInstance().clearup();
+
+		//02. flush nurse basic list event
+		ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
+		m_eventBus.post(reqApoitNursingEvent);
+
+		//03. 跳转到选择nurse页面
+		startActivity(new Intent(this, SelectNurseActivity.class));
+
+		return;
 	}
 
 }
