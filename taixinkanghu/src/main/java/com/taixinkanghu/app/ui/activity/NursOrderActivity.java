@@ -20,7 +20,6 @@ import com.taixinkanghu.R;
 import com.taixinkanghu.app.ui.data.ChooseWorkerData;
 import com.taixinkanghu.app.ui.data.NursOrderData;
 import com.taixinkanghu.app.ui.fragment.NursOrderScreeningFragment;
-import com.taixinkanghu.app.ui.fragment.SelectDateFragment;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 
 import java.text.SimpleDateFormat;
@@ -45,7 +44,7 @@ public class NursOrderActivity extends Activity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nurs_order);
+        setContentView(R.layout.activity_nurse_order);
 
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         page_title = (TextView) findViewById(R.id.page_title);
