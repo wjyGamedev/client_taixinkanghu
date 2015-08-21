@@ -98,6 +98,7 @@
 							</LinearLayout>
 
 							<LinearLayout
+								android:id="@+id/phone_num_region_ll"
 								android:layout_width="match_parent"
 								android:layout_height="40dp"
 								android:background="@drawable/bg_bule_frame_all"
