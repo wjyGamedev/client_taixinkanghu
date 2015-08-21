@@ -46,10 +46,21 @@ public class EventID
 	//护工订单确认
 	public final static int QUEST_NURSE_ORDER_CONFIRM    = QUEST_APPPINTMENT_NURSING + 1;
 	public final static int FINISHED_NURSE_ORDER_CONFIRM = QUEST_NURSE_ORDER_CONFIRM + 1;
-	public final static int FAILED_NURSE_ORDER_CONFIRM = FINISHED_NURSE_ORDER_CONFIRM + 1;
+
+	//护工订单check
+	public final static int QUEST_NURSE_ORDER_CHECK    = FINISHED_NURSE_ORDER_CONFIRM + 1;
+	public final static int FAILED_NURSE_ORDER_CHECK = QUEST_NURSE_ORDER_CHECK + 1;
+	public final static int FINISHED_NURSE_ORDER_CHECK = FAILED_NURSE_ORDER_CHECK + 1;
+
+	//护理订单alipay
+	public final static int QUEST_NURSE_ORDER_ALIPAY    = FINISHED_NURSE_ORDER_CHECK + 1;
+	public final static int FAILED_NURSE_ORDER_ALIPAY    = QUEST_NURSE_ORDER_ALIPAY + 1;
+	public final static int FINISHED_NURSE_ORDER_ALIPAY    = FAILED_NURSE_ORDER_ALIPAY + 1;
+
+
 
 	//订单列表
-	public final static int QUEST_NURSE_ORDER_LIST    = FINISHED_NURSE_ORDER_CONFIRM + 1;
+	public final static int QUEST_NURSE_ORDER_LIST    = FINISHED_NURSE_ORDER_ALIPAY + 1;
 	public final static int FINISHED_NURSE_ORDER_LIST = QUEST_NURSE_ORDER_LIST + 1;
 
 	//康复用品
