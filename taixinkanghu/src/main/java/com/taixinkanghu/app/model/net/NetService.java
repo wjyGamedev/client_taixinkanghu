@@ -28,7 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
-import com.taixinkanghu.app.model.data.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;

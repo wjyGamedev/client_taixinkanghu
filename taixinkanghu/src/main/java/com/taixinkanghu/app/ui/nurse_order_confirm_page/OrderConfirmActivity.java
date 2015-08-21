@@ -6,26 +6,25 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
-import com.taixinkanghu.app.model.data.DApoitNursingPage;
-import com.taixinkanghu.app.model.data.DDepartment;
-import com.taixinkanghu.app.model.data.DDepartmentList;
-import com.taixinkanghu.app.model.data.DFaceImages;
-import com.taixinkanghu.app.model.data.DGlobal;
-import com.taixinkanghu.app.model.data.DHospital;
-import com.taixinkanghu.app.model.data.DHospitalList;
-import com.taixinkanghu.app.model.data.DNurseBasics;
-import com.taixinkanghu.app.model.data.DNurseBasicsList;
-import com.taixinkanghu.app.model.data.DNurseContainer;
-import com.taixinkanghu.app.model.data.DNurseOrderConfirmPage;
-import com.taixinkanghu.app.model.data.DNurseSenior;
-import com.taixinkanghu.app.model.data.DNurseSeniorList;
+import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.net.DDepartment;
+import com.taixinkanghu.app.model.data.net.DDepartmentList;
+import com.taixinkanghu.app.model.data.page.DFaceImages;
+import com.taixinkanghu.app.model.data.page.DGlobal;
+import com.taixinkanghu.app.model.data.net.DHospital;
+import com.taixinkanghu.app.model.data.net.DHospitalList;
+import com.taixinkanghu.app.model.data.net.DNurseBasics;
+import com.taixinkanghu.app.model.data.net.DNurseBasicsList;
+import com.taixinkanghu.app.model.data.net.DNurseContainer;
+import com.taixinkanghu.app.model.data.page.DNurseOrderConfirmPage;
+import com.taixinkanghu.app.model.data.net.DNurseSenior;
+import com.taixinkanghu.app.model.data.net.DNurseSeniorList;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderListEvent;
@@ -73,8 +72,8 @@ public class OrderConfirmActivity extends Activity
 	private Button   m_confirmAppointmentBtn = null;    //确定预约
 
 	//测量高度用的LL
-	private LinearLayout m_measuringPatientStateHeightLL       = null;    //测量患者状态下拉框所需高度的LL
-	private Integer      m_selectPatientStateTitleHight        = 0;    //患者状态下拉框所需高度
+	private LinearLayout m_measuringPatientStateHeightLL = null;    //测量患者状态下拉框所需高度的LL
+	private Integer      m_selectPatientStateTitleHight  = 0;    //患者状态下拉框所需高度
 
 	//logical
 	private HandlerClickEventNurseOrderConfirm m_handlerClickEventNurseOrderConfirm = null;

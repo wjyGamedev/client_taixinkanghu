@@ -19,7 +19,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.model.data.net.DAccount;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.app.ui.register_page.RegisterActivity;
 

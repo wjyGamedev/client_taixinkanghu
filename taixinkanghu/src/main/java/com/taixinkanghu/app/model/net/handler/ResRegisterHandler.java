@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
-import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.model.data.net.DAccount;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;
 import com.taixinkanghu.app.ui.register_page.DeserialFinishedEvent;

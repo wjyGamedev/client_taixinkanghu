@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
-import com.taixinkanghu.app.model.data.DNurseContainer;
+import com.taixinkanghu.app.model.data.net.DNurseContainer;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseSeniorListEvent;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;

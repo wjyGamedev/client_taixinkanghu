@@ -12,9 +12,11 @@
  * 2015/8/20		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.data;
+package com.taixinkanghu.app.model.data.page;
 
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.data.net.DNurseOrder;
+import com.taixinkanghu.app.model.data.net.DNurserOrderList;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class DNurseOrderPayPage

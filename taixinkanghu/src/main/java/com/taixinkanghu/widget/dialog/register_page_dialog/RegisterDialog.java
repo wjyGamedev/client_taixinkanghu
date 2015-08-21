@@ -18,7 +18,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DGlobal;
+import com.taixinkanghu.app.model.data.page.DGlobal;
 
 public class RegisterDialog
 {

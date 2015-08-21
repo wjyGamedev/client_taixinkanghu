@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.taixinkanghu.app.model.controller.CMainPage;
-import com.taixinkanghu.app.model.data.DMainPage;
+import com.taixinkanghu.app.model.data.page.DMainPage;
 
 /**
  * Created by ysnow on 2015/3/3.

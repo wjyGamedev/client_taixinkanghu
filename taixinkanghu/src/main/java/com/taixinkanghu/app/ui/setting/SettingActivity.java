@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.model.data.net.DAccount;
 import com.taixinkanghu.app.model.storage.OwnerPreferences;
 import com.taixinkanghu.app.model.storage.StorageWrapper;
 import com.taixinkanghu.app.ui.bottom.BottomCommon;

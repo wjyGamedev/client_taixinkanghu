@@ -22,8 +22,8 @@ import android.content.Context;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DHospital;
-import com.taixinkanghu.app.model.data.DHospitalList;
+import com.taixinkanghu.app.model.data.net.DHospital;
+import com.taixinkanghu.app.model.data.net.DHospitalList;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 

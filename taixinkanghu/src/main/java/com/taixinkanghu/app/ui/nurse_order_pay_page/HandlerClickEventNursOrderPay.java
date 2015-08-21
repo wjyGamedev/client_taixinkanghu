@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DNurseOrderPayPage;
+import com.taixinkanghu.app.model.data.page.DNurseOrderPayPage;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCheckEvent;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 

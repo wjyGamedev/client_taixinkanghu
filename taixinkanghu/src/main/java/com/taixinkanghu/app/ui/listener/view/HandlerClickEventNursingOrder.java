@@ -18,7 +18,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.taixinkanghu.app.model.data.DAccount;
+import com.taixinkanghu.app.model.data.net.DAccount;
 import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 import com.taixinkanghu.app.ui.register_page.RegisterActivity;
 
