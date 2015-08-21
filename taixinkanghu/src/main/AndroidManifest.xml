@@ -69,6 +69,12 @@
 			android:name=".app.ui.nurse_order_confirm_page.PatientActivity"
 			android:label="PatientActivity"/>
 
+		<!-- 护理订单页面-->
+		<activity
+			android:name=".app.ui.nurse_order_page.NurseOrderActivity"
+			android:label="NurseOrderActivity"/>
+
+
 		<activity
 			android:name=".app.ui.activity.AboutUsActivity"
 			android:label="AboutUsActivity"/>
