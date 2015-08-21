@@ -290,9 +290,9 @@
 							<RadioButton
 								android:id="@+id/cash_rbtn"
 								style="@style/tick_radio_button_style"
-								android:layout_width="20dp"
-								android:layout_height="20dp"
-								android:layout_marginBottom="18dp"
+								android:layout_width="27dp"
+								android:layout_height="30dp"
+								android:layout_marginBottom="17.5dp"
 								android:layout_marginRight="15dp"
 								android:layout_marginTop="17.5dp"
 								android:background="@drawable/bg_radio_button_tick"/>
@@ -309,8 +309,8 @@
 							<RadioButton
 								android:id="@+id/alipay_rbtn"
 								style="@style/tick_radio_button_style"
-								android:layout_width="20dp"
-								android:layout_height="20dp"
+								android:layout_width="27dp"
+								android:layout_height="30dp"
 								android:layout_marginBottom="17.5dp"
 								android:layout_marginRight="15dp"
 								android:layout_marginTop="17.5dp"
@@ -328,8 +328,8 @@
 							<RadioButton
 								android:id="@+id/weixin_rbtn"
 								style="@style/tick_radio_button_style"
-								android:layout_width="20dp"
-								android:layout_height="20dp"
+								android:layout_width="27dp"
+								android:layout_height="30dp"
 								android:layout_marginBottom="17.5dp"
 								android:layout_marginRight="15dp"
 								android:layout_marginTop="17.5dp"
