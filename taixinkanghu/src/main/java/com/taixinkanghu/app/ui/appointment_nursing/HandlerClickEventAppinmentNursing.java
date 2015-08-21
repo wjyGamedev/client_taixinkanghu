@@ -52,21 +52,27 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			return;
 			case R.id.gender_region_ll:
 			{
+				Integer genderTitleHight = apoitNursingActivity.getSelectGenderTitleHight();
 				SelectSexFragment selectSexFragment = new SelectSexFragment();
+				selectSexFragment.setGenderTitleHight(genderTitleHight);
 				transaction.replace(R.id.appointment_nursing_page, selectSexFragment, selectSexFragment.getClass().getName());
 				transaction.commit();
 			}
 			return;
 			case R.id.age_region_ll:
 			{
+				Integer ageTitleHight = apoitNursingActivity.getSelectAgeTitleHight();
 				SelectAgeFragment selectAgeFragment = new SelectAgeFragment();
+				selectAgeFragment.setAgeTitleHight(ageTitleHight);
 				transaction.replace(R.id.appointment_nursing_page, selectAgeFragment, selectAgeFragment.getClass().getName());
 				transaction.commit();
 			}
 			return;
 			case R.id.weight_region_ll:
 			{
+				Integer weightTitleHight = apoitNursingActivity.getSelectWeightTitleHight();
 				SelectWeightFragment selectWeightFragment = new SelectWeightFragment();
+				selectWeightFragment.setWeightTitleHight(weightTitleHight);
 				transaction.replace(R.id.appointment_nursing_page, selectWeightFragment, selectWeightFragment.getClass().getName());
 				transaction.commit();
 			}
@@ -87,7 +93,9 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			return;
 			case R.id.patient_state_region_ll:
 			{
+				Integer patientStateTitleHight = apoitNursingActivity.getSelectPatientStateTitleHight();
 				SelectPatientStateFragment selectPatientStateFragment = new SelectPatientStateFragment();
+				selectPatientStateFragment.setPatientStateTitleHight(patientStateTitleHight);
 				transaction.replace(R.id.appointment_nursing_page, selectPatientStateFragment, selectPatientStateFragment.getClass().getName());
 				transaction.commit();
 			}

@@ -8,303 +8,335 @@
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:layout_weight="1"
 		android:orientation="vertical">
-
-		<include
-			android:id="@+id/titile"
-			layout="@layout/include_header"/>
 
 		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/main_bg_color"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
 			android:orientation="vertical">
 
-			<TextView
+
+			<LinearLayout
+				android:id="@+id/measuring_height_patient_state"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				android:layout_marginLeft="15dp"
-				android:layout_marginRight="15dp"
-				android:gravity="center"
-				android:text="@string/apponintment_page_hint_text"
-				android:textColor="@color/main_color"
-				android:textSize="14sp"/>
+				android:orientation="vertical">
 
-			<LinearLayout
-				android:id="@+id/name_region_ll"
-				android:layout_width="match_parent"
-				android:layout_height="40dp"
-				android:background="@drawable/bg_bule_frame_top"
-				android:gravity="center_vertical"
-
-				android:focusable="true"
-				android:focusableInTouchMode="true"
-
-				android:orientation="horizontal" android:clickable="true">
-
-				<TextView
-					android:id="@+id/name_text"
-					android:layout_width="wrap_content"
-					android:layout_height="30dp"
-					android:layout_marginLeft="30dp"
-					android:gravity="center_vertical"
-					android:text="@string/name_text"/>
-
-
-				<EditText
-					android:id="@+id/name_tv"
+				<LinearLayout
+					android:id="@+id/measuring_height_weight"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginRight="60dp"
-					android:layout_weight="1"
-					android:background="#00000000"
-					android:gravity="right"
-					android:hint="@string/name_hint_text"
-					android:imeOptions="actionDone"
-					android:singleLine="true"
-					android:textColor="@android:color/black"
-					android:textColorHint="@color/text_color_gray"
-					android:textSize="14.0sp"/>
+					android:orientation="vertical">
 
-			</LinearLayout>
+					<LinearLayout
+						android:id="@+id/measuring_height_age"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical">
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="40dp"
-				android:background="@drawable/bg_bule_frame_all"
-				android:gravity="center_vertical"
-				android:orientation="horizontal">
+						<LinearLayout
+							android:id="@+id/measuring_height_gender"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:background="@color/main_bg_color"
+							android:orientation="vertical">
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="30dp"
-					android:layout_marginLeft="30dp"
-					android:gravity="center_vertical"
-					android:text="手机号码："/>
+							<include
+								android:id="@+id/titile"
+								layout="@layout/include_header"/>
 
-				<EditText
-					android:id="@+id/phone_num_tv"
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_gravity="center"
+								android:layout_marginBottom="5dp"
+								android:layout_marginLeft="15dp"
+								android:layout_marginRight="15dp"
+								android:layout_marginTop="5dp"
+								android:gravity="center"
+								android:text="@string/apponintment_page_hint_text"
+								android:textColor="@color/main_color"
+								android:textSize="14sp"/>
+
+							<LinearLayout
+								android:id="@+id/name_region_ll"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:background="@drawable/bg_bule_frame_top"
+								android:clickable="true"
+								android:focusable="true"
+								android:focusableInTouchMode="true"
+								android:gravity="center_vertical"
+								android:orientation="horizontal">
+
+								<TextView
+									android:id="@+id/name_text"
+									android:layout_width="wrap_content"
+									android:layout_height="30dp"
+									android:layout_marginLeft="30dp"
+									android:gravity="center_vertical"
+									android:text="@string/name_text"/>
+
+
+								<EditText
+									android:id="@+id/name_tv"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginRight="60dp"
+									android:layout_weight="1"
+									android:background="#00000000"
+									android:gravity="right"
+									android:hint="@string/name_hint_text"
+									android:imeOptions="actionDone"
+									android:singleLine="true"
+									android:textColor="@android:color/black"
+									android:textColorHint="@color/text_color_gray"
+									android:textSize="14.0sp"/>
+
+							</LinearLayout>
+
+							<LinearLayout
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:background="@drawable/bg_bule_frame_all"
+								android:gravity="center_vertical"
+								android:orientation="horizontal">
+
+								<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="30dp"
+									android:layout_marginLeft="30dp"
+									android:gravity="center_vertical"
+									android:text="手机号码："/>
+
+								<EditText
+									android:id="@+id/phone_num_tv"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginRight="60dp"
+									android:layout_weight="1"
+									android:background="#00000000"
+									android:gravity="right"
+									android:hint="点击填写"
+									android:imeOptions="actionDone"
+									android:maxLength="11"
+									android:phoneNumber="true"
+									android:singleLine="true"
+									android:textColor="@android:color/black"
+									android:textColorHint="@color/text_color_gray"
+									android:textSize="14.0sp"/>
+
+							</LinearLayout>
+
+							<LinearLayout
+								android:id="@+id/gender_region_ll"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:background="@drawable/bg_bule_frame_all"
+								android:gravity="center_vertical"
+								android:orientation="horizontal">
+
+								<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="30dp"
+									android:layout_marginLeft="30dp"
+									android:gravity="center_vertical"
+									android:text="性别："/>
+
+
+								<TextView
+									android:id="@+id/gender_tv"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginRight="10dp"
+									android:layout_weight="1"
+									android:background="#00000000"
+									android:gravity="right"
+									android:hint="点击选择"
+									android:singleLine="true"
+									android:textColor="@android:color/black"
+									android:textColorHint="@color/text_color_gray"
+									android:textSize="14.0sp"/>
+
+								<ImageView
+									android:id="@+id/dwon_gender"
+									android:layout_width="20dp"
+									android:layout_height="20dp"
+									android:layout_marginRight="30dp"
+									android:background="@mipmap/img_down"/>
+
+							</LinearLayout>
+						</LinearLayout>
+
+						<LinearLayout
+							android:id="@+id/age_region_ll"
+							android:layout_width="match_parent"
+							android:layout_height="40dp"
+							android:background="@drawable/bg_bule_frame_all"
+							android:gravity="center_vertical"
+							android:orientation="horizontal">
+
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="30dp"
+								android:layout_marginLeft="30dp"
+								android:gravity="center_vertical"
+								android:text="年龄："/>
+
+							<TextView
+								android:id="@+id/age_tv"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginRight="10dp"
+								android:layout_weight="1"
+								android:background="#00000000"
+								android:gravity="right"
+								android:hint="点击选择"
+								android:singleLine="true"
+								android:textColor="@android:color/black"
+								android:textColorHint="@color/text_color_gray"
+								android:textSize="14.0sp"/>
+
+							<ImageView
+								android:id="@+id/dwon_age"
+								android:layout_width="20dp"
+								android:layout_height="20dp"
+								android:layout_marginRight="30dp"
+								android:background="@mipmap/img_down"/>
+
+						</LinearLayout>
+					</LinearLayout>
+
+					<LinearLayout
+						android:id="@+id/weight_region_ll"
+						android:layout_width="match_parent"
+						android:layout_height="40dp"
+						android:background="@drawable/bg_bule_frame_all"
+						android:gravity="center_vertical"
+						android:orientation="horizontal">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="30dp"
+							android:layout_marginLeft="30dp"
+							android:gravity="center_vertical"
+							android:text="体重（kg）："/>
+
+						<TextView
+							android:id="@+id/weight_tv"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginRight="10dp"
+							android:layout_weight="1"
+							android:background="#00000000"
+							android:gravity="right"
+							android:hint="点击选择"
+							android:singleLine="true"
+							android:textColor="@android:color/black"
+							android:textColorHint="@color/text_color_gray"
+							android:textSize="14.0sp"/>
+
+						<ImageView
+							android:id="@+id/dwon_weight"
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:layout_marginRight="30dp"
+							android:background="@mipmap/img_down"/>
+
+					</LinearLayout>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/hospital_region_ll"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginRight="60dp"
-					android:layout_weight="1"
-					android:background="#00000000"
-					android:gravity="right"
-					android:hint="点击填写"
-					android:imeOptions="actionDone"
-					android:maxLength="11"
-					android:phoneNumber="true"
-					android:singleLine="true"
-					android:textColor="@android:color/black"
-					android:textColorHint="@color/text_color_gray"
-					android:textSize="14.0sp"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:id="@+id/gender_region_ll"
-				android:layout_width="match_parent"
-				android:layout_height="40dp"
-				android:background="@drawable/bg_bule_frame_all"
-				android:gravity="center_vertical"
-				android:orientation="horizontal">
-
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="30dp"
-					android:layout_marginLeft="30dp"
+					android:layout_height="40dp"
+					android:background="@drawable/bg_bule_frame_all"
 					android:gravity="center_vertical"
-					android:text="性别："/>
+					android:orientation="horizontal">
 
+					<TextView
+						android:layout_width="10dp"
+						android:layout_height="30dp"
+						android:layout_marginLeft="20dp"
+						android:gravity="center_vertical"
+						android:text="*"
+						android:textColor="@color/text_color_red"/>
 
-				<TextView
-					android:id="@+id/gender_tv"
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="30dp"
+						android:gravity="center_vertical"
+						android:text="所在医院："/>
+
+					<TextView
+						android:id="@+id/hospital_tv"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:layout_weight="1"
+						android:background="#00000000"
+						android:gravity="right"
+						android:hint="点击选择"
+						android:singleLine="true"
+						android:textColor="@android:color/black"
+						android:textColorHint="@color/text_color_gray"
+						android:textSize="14.0sp"/>
+
+					<ImageView
+						android:id="@+id/dwon_hospital"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="30dp"
+						android:background="@mipmap/img_down"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/department_region_ll"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginRight="10dp"
-					android:layout_weight="1"
-					android:background="#00000000"
-					android:gravity="right"
-					android:hint="点击选择"
-					android:singleLine="true"
-					android:textColor="@android:color/black"
-					android:textColorHint="@color/text_color_gray"
-					android:textSize="14.0sp"/>
-
-				<ImageView
-					android:id="@+id/dwon_gender"
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:layout_marginRight="30dp"
-					android:background="@mipmap/img_down"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:id="@+id/age_region_ll"
-				android:layout_width="match_parent"
-				android:layout_height="40dp"
-				android:background="@drawable/bg_bule_frame_all"
-				android:gravity="center_vertical"
-				android:orientation="horizontal">
-
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="30dp"
-					android:layout_marginLeft="30dp"
+					android:layout_height="40dp"
+					android:background="@drawable/bg_bule_frame_all"
 					android:gravity="center_vertical"
-					android:text="年龄："/>
+					android:orientation="horizontal">
 
-				<TextView
-					android:id="@+id/age_tv"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginRight="10dp"
-					android:layout_weight="1"
-					android:background="#00000000"
-					android:gravity="right"
-					android:hint="点击选择"
-					android:singleLine="true"
-					android:textColor="@android:color/black"
-					android:textColorHint="@color/text_color_gray"
-					android:textSize="14.0sp"/>
+					<TextView
+						android:layout_width="10dp"
+						android:layout_height="30dp"
+						android:layout_marginLeft="20dp"
+						android:gravity="center_vertical"
+						android:text="*"
+						android:textColor="@color/text_color_red"/>
 
-				<ImageView
-					android:id="@+id/dwon_age"
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:layout_marginRight="30dp"
-					android:background="@mipmap/img_down"/>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="30dp"
+						android:gravity="center_vertical"
+						android:text="所在科室："/>
 
-			</LinearLayout>
+					<TextView
+						android:id="@+id/department_tv"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						android:layout_weight="1"
+						android:background="#00000000"
+						android:gravity="right"
+						android:hint="点击选择"
+						android:singleLine="true"
+						android:textColor="@android:color/black"
+						android:textColorHint="@color/text_color_gray"
+						android:textSize="14.0sp"/>
 
-			<LinearLayout
-				android:id="@+id/weight_region_ll"
-				android:layout_width="match_parent"
-				android:layout_height="40dp"
-				android:background="@drawable/bg_bule_frame_all"
-				android:gravity="center_vertical"
-				android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/dwon_department"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_marginRight="30dp"
+						android:background="@mipmap/img_down"/>
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="30dp"
-					android:layout_marginLeft="30dp"
-					android:gravity="center_vertical"
-					android:text="体重（kg）："/>
-
-				<TextView
-					android:id="@+id/weight_tv"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginRight="10dp"
-					android:layout_weight="1"
-					android:background="#00000000"
-					android:gravity="right"
-					android:hint="点击选择"
-					android:singleLine="true"
-					android:textColor="@android:color/black"
-					android:textColorHint="@color/text_color_gray"
-					android:textSize="14.0sp"/>
-
-				<ImageView
-					android:id="@+id/dwon_weight"
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:layout_marginRight="30dp"
-					android:background="@mipmap/img_down"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:id="@+id/hospital_region_ll"
-				android:layout_width="match_parent"
-				android:layout_height="40dp"
-				android:background="@drawable/bg_bule_frame_all"
-				android:gravity="center_vertical"
-				android:orientation="horizontal">
-
-				<TextView
-					android:layout_width="10dp"
-					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
-					android:gravity="center_vertical"
-					android:text="*"
-					android:textColor="@color/text_color_red"/>
-
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="30dp"
-					android:gravity="center_vertical"
-					android:text="所在医院："/>
-
-				<TextView
-					android:id="@+id/hospital_tv"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginRight="10dp"
-					android:layout_weight="1"
-					android:background="#00000000"
-					android:gravity="right"
-					android:hint="点击选择"
-					android:singleLine="true"
-					android:textColor="@android:color/black"
-					android:textColorHint="@color/text_color_gray"
-					android:textSize="14.0sp"/>
-
-				<ImageView
-					android:id="@+id/dwon_hospital"
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:layout_marginRight="30dp"
-					android:background="@mipmap/img_down"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="40dp"
-				android:background="@drawable/bg_bule_frame_all"
-				android:gravity="center_vertical"
-				android:orientation="horizontal" android:id="@+id/department_region_ll">
-
-				<TextView
-					android:layout_width="10dp"
-					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
-					android:gravity="center_vertical"
-					android:text="*"
-					android:textColor="@color/text_color_red"/>
-
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="30dp"
-					android:gravity="center_vertical"
-					android:text="所在科室："/>
-
-				<TextView
-					android:id="@+id/department_tv"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginRight="10dp"
-					android:layout_weight="1"
-					android:background="#00000000"
-					android:gravity="right"
-					android:hint="点击选择"
-					android:singleLine="true"
-					android:textColor="@android:color/black"
-					android:textColorHint="@color/text_color_gray"
-					android:textSize="14.0sp"/>
-
-				<ImageView
-					android:id="@+id/dwon_department"
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:layout_marginRight="30dp"
-					android:background="@mipmap/img_down"/>
+				</LinearLayout>
 
 			</LinearLayout>
 
@@ -489,16 +521,8 @@
 
 		</LinearLayout>
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
-			android:background="@color/main_bg_color">
-
-		</LinearLayout>
-
 		<include
-			android:id="@+id/bottom"
+			android:id="@+id/bottom_btn_region"
 			layout="@layout/include_bottom_btn"/>
 
 	</LinearLayout>

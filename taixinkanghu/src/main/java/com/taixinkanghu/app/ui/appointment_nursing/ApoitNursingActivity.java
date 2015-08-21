@@ -5,7 +5,7 @@
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p>
+ * <p/>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -64,6 +65,17 @@ public class ApoitNursingActivity extends Activity
 	private TextView     m_protocolTV           = null;    //用户协议
 	private Button       m_confirmBtn           = null;    //确定预约
 
+	//测量高度用的LL
+	private LinearLayout m_measuringGenderHeightLL       = null;    //测量性别下拉框所需高度的LL
+	private Integer      m_selectGenderTitleHight        = 0;    //性别下拉框所需高度
+	private LinearLayout m_measuringAgeHeightLL          = null;    //测量年龄下拉框所需高度的LL
+	private Integer      m_selectAgeTitleHight           = 0;    //年龄下拉框所需高度
+	private LinearLayout m_measuringWeightHeightLL       = null;    //测量体重下拉框所需高度的LL
+	private Integer      m_selectWeightTitleHight        = 0;    //体重下拉框所需高度
+	private LinearLayout m_measuringPatientStateHeightLL = null;    //测量患者状态下拉框所需高度的LL
+	private Integer      m_selectPatientStateTitleHight  = 0;    //患者状态下拉框所需高度
+
+
 	//logical
 	private HandleEditActionEvent             m_handleEditActionEvent               = null;
 	private HandlerClickEventAppinmentNursing m_handlerClickEventAppointmentNursing = null;
@@ -80,9 +92,11 @@ public class ApoitNursingActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_appointment_nursing);
 
+
 		init();
 		initListener();
 		initContent();
+		gethight();
 	}
 
 	@Override
@@ -230,8 +244,13 @@ public class ApoitNursingActivity extends Activity
 		m_protocolTV = (TextView)findViewById(R.id.protocol_tv);
 		m_confirmBtn = (Button)findViewById(R.id.btn_bottom);
 
-		m_handleEditActionEvent = new HandleEditActionEvent(this);
+		//测量高度用的LL
+		m_measuringGenderHeightLL = (LinearLayout)findViewById(R.id.measuring_height_gender);
+		m_measuringAgeHeightLL = (LinearLayout)findViewById(R.id.measuring_height_age);
+		m_measuringWeightHeightLL = (LinearLayout)findViewById(R.id.measuring_height_weight);
+		m_measuringPatientStateHeightLL = (LinearLayout)findViewById(R.id.measuring_height_patient_state);
 
+		m_handleEditActionEvent = new HandleEditActionEvent(this);
 
 		m_handlerClickEventAppointmentNursing = new HandlerClickEventAppinmentNursing(this);
 		m_eventBus.register(this);
@@ -264,6 +283,25 @@ public class ApoitNursingActivity extends Activity
 		m_protocolTV.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
 	}
 
+	private void gethight()
+	{
+		int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+		int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+
+		m_measuringGenderHeightLL.measure(w, h);
+		m_selectGenderTitleHight = m_measuringGenderHeightLL.getMeasuredHeight();
+
+		m_measuringAgeHeightLL.measure(w, h);
+		m_selectAgeTitleHight = m_measuringAgeHeightLL.getMeasuredHeight();
+
+		m_measuringWeightHeightLL.measure(w, h);
+		m_selectWeightTitleHight = m_measuringWeightHeightLL.getMeasuredHeight();
+
+		m_measuringPatientStateHeightLL.measure(w, h);
+		m_selectPatientStateTitleHight = m_measuringPatientStateHeightLL.getMeasuredHeight();
+
+	}
+
 
 	public TextView getGenderTV()
 	{
@@ -286,6 +324,30 @@ public class ApoitNursingActivity extends Activity
 	public TextView getHospitalTV()
 	{
 		return m_hospitalTV;
+	}
+
+
+	public Integer getSelectPatientStateTitleHight()
+	{
+		return m_selectPatientStateTitleHight;
+	}
+
+
+	public Integer getSelectWeightTitleHight()
+	{
+		return m_selectWeightTitleHight;
+	}
+
+
+	public Integer getSelectAgeTitleHight()
+	{
+		return m_selectAgeTitleHight;
+	}
+
+
+	public Integer getSelectGenderTitleHight()
+	{
+		return m_selectGenderTitleHight;
 	}
 
 

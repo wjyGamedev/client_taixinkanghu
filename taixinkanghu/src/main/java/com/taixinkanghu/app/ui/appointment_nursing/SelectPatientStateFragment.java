@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
@@ -21,6 +22,10 @@ public class SelectPatientStateFragment extends Fragment implements View.OnClick
 	private TextView m_halfCareMyselfBtn;
 	private TextView m_notCareMyselfBtn;
 
+	private LinearLayout m_titleLL;
+
+	private Integer m_patientStateTitleHight = 0;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -31,6 +36,16 @@ public class SelectPatientStateFragment extends Fragment implements View.OnClick
 		m_careMyselfBtn = (TextView)view.findViewById(R.id.btn_state_care_myself);
 		m_halfCareMyselfBtn = (TextView)view.findViewById(R.id.btn_state_half_care_myself);
 		m_notCareMyselfBtn = (TextView)view.findViewById(R.id.btn_state_not_care_myself);
+
+		m_titleLL = (LinearLayout)view.findViewById(R.id.patient_state_title_region);
+
+		//设置底部LL控件高度
+		if (m_patientStateTitleHight != 0)
+		{
+			LinearLayout.LayoutParams Lp = (LinearLayout.LayoutParams)m_titleLL.getLayoutParams();
+			Lp.height = m_patientStateTitleHight;
+			m_titleLL.setLayoutParams(Lp);
+		}
 
 		m_careMyselfBtn.setOnClickListener(this);
 		m_halfCareMyselfBtn.setOnClickListener(this);
@@ -63,5 +78,10 @@ public class SelectPatientStateFragment extends Fragment implements View.OnClick
 		fragmentTransaction.remove(fragment);
 		fragmentTransaction.commit();
 
+	}
+
+	public void setPatientStateTitleHight(Integer patientStateTitleHight)
+	{
+		m_patientStateTitleHight = patientStateTitleHight;
 	}
 }

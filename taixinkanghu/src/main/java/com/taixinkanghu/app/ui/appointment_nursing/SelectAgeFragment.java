@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
@@ -17,13 +18,19 @@ import com.taixinkanghu.app.model.config.EnumConfig;
  */
 public class SelectAgeFragment extends Fragment implements View.OnClickListener
 {
-	private TextView m_0To15AgeBtn;
-	private TextView m_16To35AgeBtn;
-	private TextView m_36To55AgeBtn;
-	private TextView m_56To75AgeBtn;
-	private TextView m_above75AgeBtn;
+	private TextView     m_0To15AgeBtn;
+	private TextView     m_16To35AgeBtn;
+	private TextView     m_36To55AgeBtn;
+	private TextView     m_56To75AgeBtn;
+	private TextView     m_above75AgeBtn;
+
+	private LinearLayout m_titleLL;
+
+	private Integer m_ageTitleHight = 0;
+
 
 	@Override
+
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fragment_select_age, container, false);
@@ -41,6 +48,16 @@ public class SelectAgeFragment extends Fragment implements View.OnClickListener
 		m_36To55AgeBtn.setOnClickListener(this);
 		m_56To75AgeBtn.setOnClickListener(this);
 		m_above75AgeBtn.setOnClickListener(this);
+
+		m_titleLL = (LinearLayout)view.findViewById(R.id.age_titleLL);
+
+		//设置顶部LL控件高度
+		if (m_ageTitleHight != 0)
+		{
+			LinearLayout.LayoutParams Lp = (LinearLayout.LayoutParams)m_titleLL.getLayoutParams();
+			Lp.height = m_ageTitleHight;
+			m_titleLL.setLayoutParams(Lp);
+		}
 
 		return view;
 	}
@@ -74,6 +91,11 @@ public class SelectAgeFragment extends Fragment implements View.OnClickListener
 		FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
 		fragmentTransaction.remove(fragment);
 		fragmentTransaction.commit();
+	}
+
+	public void setAgeTitleHight(Integer ageTitleHight)
+	{
+		m_ageTitleHight = ageTitleHight;
 	}
 
 
