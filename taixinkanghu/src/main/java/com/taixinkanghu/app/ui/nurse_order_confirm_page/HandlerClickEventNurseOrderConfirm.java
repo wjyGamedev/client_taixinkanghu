@@ -7,9 +7,9 @@ import android.view.View;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.EnumConfig;
-import com.taixinkanghu.app.model.data.DAccount;
-import com.taixinkanghu.app.model.data.DApoitNursingPage;
-import com.taixinkanghu.app.model.data.DNurseOrderConfirmPage;
+import com.taixinkanghu.app.model.data.net.DAccount;
+import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.page.DNurseOrderConfirmPage;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderConfirmEvent;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;

@@ -28,8 +28,8 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.UIConfig;
-import com.taixinkanghu.app.model.data.DDepartment;
-import com.taixinkanghu.app.model.data.DDepartmentList;
+import com.taixinkanghu.app.model.data.net.DDepartment;
+import com.taixinkanghu.app.model.data.net.DDepartmentList;
 import com.taixinkanghu.app.model.net.event.recv.FinishedDepartmentListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqDepartmentListEvent;
 

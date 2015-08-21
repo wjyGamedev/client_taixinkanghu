@@ -12,7 +12,7 @@
  * 2015/8/15		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.data;
+package com.taixinkanghu.app.model.data.page;
 
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.DateConfig;
@@ -216,9 +216,10 @@ public class DApoitNursingPage implements Serializable
 
 	}
 
-	private DApoitNursingPage()
+	public DApoitNursingPage()
 	{
 	}
+
 
 	public static DApoitNursingPage GetInstance()
 	{

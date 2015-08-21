@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DFaceImages;
+import com.taixinkanghu.app.model.data.page.DFaceImages;
 import com.taixinkanghu.app.ui.adapter.IBaseAdapter;
 
 import java.util.ArrayList;

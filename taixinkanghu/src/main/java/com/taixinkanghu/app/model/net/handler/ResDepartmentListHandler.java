@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
-import com.taixinkanghu.app.model.data.DDepartmentList;
+import com.taixinkanghu.app.model.data.net.DDepartmentList;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.IResponseListener;
 import com.taixinkanghu.app.model.net.event.recv.FinishedDepartmentListEvent;

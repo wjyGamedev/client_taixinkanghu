@@ -22,8 +22,8 @@ import android.content.Context;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DDepartment;
-import com.taixinkanghu.app.model.data.DDepartmentList;
+import com.taixinkanghu.app.model.data.net.DDepartment;
+import com.taixinkanghu.app.model.data.net.DDepartmentList;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 

@@ -20,7 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DGlobal;
+import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseBasicListEvent;
 import com.taixinkanghu.app.ui.bottom.BottomCommon;
 import com.taixinkanghu.app.ui.header.HeaderCommon;

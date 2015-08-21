@@ -23,10 +23,10 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DFaceImages;
-import com.taixinkanghu.app.model.data.DNurseBasics;
-import com.taixinkanghu.app.model.data.DNurseBasicsList;
-import com.taixinkanghu.app.model.data.DNurseContainer;
+import com.taixinkanghu.app.model.data.page.DFaceImages;
+import com.taixinkanghu.app.model.data.net.DNurseBasics;
+import com.taixinkanghu.app.model.data.net.DNurseBasicsList;
+import com.taixinkanghu.app.model.data.net.DNurseContainer;
 import com.taixinkanghu.app.ui.adapter.IBaseAdapter;
 import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;

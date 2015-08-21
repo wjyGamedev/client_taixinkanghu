@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.app.model.controller;
 
-import com.taixinkanghu.app.model.data.DMainPage;
+import com.taixinkanghu.app.model.data.page.DMainPage;
 
 public class CMainPage
 {

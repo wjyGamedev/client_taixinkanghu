@@ -12,7 +12,7 @@
  * 2015/7/19		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.data;
+package com.taixinkanghu.app.model.data.page;
 
 import android.util.Log;
 

@@ -21,7 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DGlobal;
+import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 

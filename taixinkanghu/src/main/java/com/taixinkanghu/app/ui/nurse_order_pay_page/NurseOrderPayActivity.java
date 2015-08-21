@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
-import com.taixinkanghu.app.model.data.DAccount;
-import com.taixinkanghu.app.model.data.DGlobal;
-import com.taixinkanghu.app.model.data.DNurseOrderConfirmPage;
-import com.taixinkanghu.app.model.data.DNurseOrderPayPage;
+import com.taixinkanghu.app.model.data.net.DAccount;
+import com.taixinkanghu.app.model.data.page.DGlobal;
+import com.taixinkanghu.app.model.data.page.DNurseOrderConfirmPage;
+import com.taixinkanghu.app.model.data.page.DNurseOrderPayPage;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.event.recv.FailedNurseOrderCheckEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;

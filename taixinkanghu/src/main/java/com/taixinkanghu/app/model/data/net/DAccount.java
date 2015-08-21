@@ -12,7 +12,7 @@
  * 2015/8/1		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.data;
+package com.taixinkanghu.app.model.data.net;
 
 import android.text.TextUtils;
 

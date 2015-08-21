@@ -26,12 +26,12 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.EnumConfig;
-import com.taixinkanghu.app.model.data.DApoitNursingPage;
-import com.taixinkanghu.app.model.data.DDepartment;
-import com.taixinkanghu.app.model.data.DDepartmentList;
-import com.taixinkanghu.app.model.data.DGlobal;
-import com.taixinkanghu.app.model.data.DHospital;
-import com.taixinkanghu.app.model.data.DHospitalList;
+import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.net.DDepartment;
+import com.taixinkanghu.app.model.data.net.DDepartmentList;
+import com.taixinkanghu.app.model.data.page.DGlobal;
+import com.taixinkanghu.app.model.data.net.DHospital;
+import com.taixinkanghu.app.model.data.net.DHospitalList;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.select_date.ConfirmSelectDateEvent;
