@@ -30,6 +30,6 @@ public class DataConfig
 	public final static int SELECT_DAY_TYEP_NIGHT = 2;
 
 	public static final int DEFAULT_VALUE = -1;
-
+	public final static String SCHEDULE_SPLIT = ",";
 }
 
