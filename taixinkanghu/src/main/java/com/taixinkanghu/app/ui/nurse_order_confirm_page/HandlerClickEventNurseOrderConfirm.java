@@ -44,8 +44,10 @@ public class HandlerClickEventNurseOrderConfirm extends BaseHandleOnClickEvent
 		{
 			case R.id.patient_state_region_ll:
 			{
+				Integer patientStateTitleHight = orderconfirmActivity.getSelectPatientStateTitleHight();
 				FragmentTransaction transaction = orderconfirmActivity.getFragmentManager().beginTransaction();
 				SelectPatientStateFragment selectPatientStateFragment = new SelectPatientStateFragment();
+				selectPatientStateFragment.setPatientStateTitleHight(patientStateTitleHight);
 				transaction.replace(R.id.order_confirm_page, selectPatientStateFragment, selectPatientStateFragment.getClass().getName());
 				transaction.commit();
 			}

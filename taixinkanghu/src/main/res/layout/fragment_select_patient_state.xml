@@ -4,50 +4,62 @@
 			  android:layout_height="match_parent"
 			  android:orientation="vertical">
 
+
 	<LinearLayout
-		android:id="@+id/title_region"
+		android:id="@+id/patient_state_title_region"
 		android:layout_width="match_parent"
-		android:layout_height="230dp"
-		android:background="@color/mask"
+		android:layout_height="wrap_content"
 		android:orientation="vertical">
+
+
+		<LinearLayout
+			android:id="@+id/title_region"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@color/mask"
+			android:orientation="vertical">
+
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/btn_state_care_myself"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:background="@drawable/bg_order_btn"
+			android:gravity="center"
+			android:text="@string/btn_state_care_myself_text"
+			android:textColor="#ff666666"
+			android:textSize="14.0sp"/>
+
+		<TextView
+			android:id="@+id/btn_state_half_care_myself"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:background="@drawable/bg_order_btn"
+			android:gravity="center"
+			android:text="@string/btn_state_half_care_myself_text"
+			android:textColor="#ff666666"
+			android:textSize="14.0sp"/>
+
+		<TextView
+			android:id="@+id/btn_state_not_care_myself"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:background="@drawable/bg_order_btn"
+			android:gravity="center"
+			android:text="@string/btn_state_not_care_myself_text"
+			android:textColor="#ff666666"
+			android:textSize="14.0sp"/>
 
 	</LinearLayout>
 
-	<TextView
-		android:id="@+id/btn_state_care_myself"
-		android:layout_width="match_parent"
-		android:layout_height="48dp"
-		android:background="@drawable/bg_order_btn"
-		android:gravity="center"
-		android:text="@string/btn_state_care_myself_text"
-		android:textColor="#ff666666"
-		android:textSize="14.0sp"/>
-
-	<TextView
-		android:id="@+id/btn_state_half_care_myself"
-		android:layout_width="match_parent"
-		android:layout_height="48dp"
-		android:background="@drawable/bg_order_btn"
-		android:gravity="center"
-		android:text="@string/btn_state_half_care_myself_text"
-		android:textColor="#ff666666"
-		android:textSize="14.0sp"/>
-
-	<TextView
-		android:id="@+id/btn_state_not_care_myself"
-		android:layout_width="match_parent"
-		android:layout_height="48dp"
-		android:background="@drawable/bg_bule_frame_bottom"
-		android:gravity="center"
-		android:text="@string/btn_state_not_care_myself_text"
-		android:textColor="#ff666666"
-		android:textSize="14.0sp"/>
-
 	<LinearLayout
-		android:id="@+id/bottom_region"
+		android:id="@+id/patient_state_bottomLL"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
 		android:background="@color/all_null"
+		android:layout_weight="1"
 		android:orientation="vertical">
 
 	</LinearLayout>

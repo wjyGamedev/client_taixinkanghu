@@ -5,9 +5,11 @@
 			  android:orientation="vertical">
 
 	<LinearLayout
+		android:id="@+id/weight_titleLL"
 		android:layout_width="match_parent"
-		android:layout_height="294dp"
-		android:background="@color/all_null">
+		android:layout_height="wrap_content"
+		android:background="@color/all_null"
+		android:orientation="vertical">
 
 	</LinearLayout>
 
