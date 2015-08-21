@@ -14,12 +14,14 @@
 
 package com.taixinkanghu.app.model.net;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.alipay.sdk.app.PayTask;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -29,8 +31,11 @@ import com.taixinkanghu.app.model.config.NetConfig;
 import com.taixinkanghu.app.model.data.DApoitNursing;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
+import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqDepartmentListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderAlipayEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCheckEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderConfirmEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
@@ -40,6 +45,7 @@ import com.taixinkanghu.app.model.net.handler.BaseErrorListener;
 import com.taixinkanghu.app.model.net.handler.ResApoitNursingHandler;
 import com.taixinkanghu.app.model.net.handler.ResDepartmentListHandler;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
+import com.taixinkanghu.app.model.net.handler.ResNurseOrderCheckHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderConfirmHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
@@ -61,14 +67,16 @@ public class NetService extends Service
 	/**
 	 * 数据区
 	 */
-	private EventBus               m_eventBus               = EventBus.getDefault();
-	private BaseErrorListener      m_baseErrorListener      = null;
-	private ResHospitalListHandler m_resHospitalListHandler = null;
-	private ResDepartmentListHandler m_resDepartmentListHandler = null;
-	private ResRegisterHandler     m_resRegisterHandler     = null;
-	private ResApoitNursingHandler m_resApoitNursingHandler = null;
-	private ResNurseSeniorListHandler m_resNurseSeniorListHandler = null;
+	private EventBus                    m_eventBus                    = EventBus.getDefault();
+	private BaseErrorListener           m_baseErrorListener           = null;
+	private ResHospitalListHandler      m_resHospitalListHandler      = null;
+	private ResDepartmentListHandler    m_resDepartmentListHandler    = null;
+	private ResRegisterHandler          m_resRegisterHandler          = null;
+	private ResApoitNursingHandler      m_resApoitNursingHandler      = null;
+	private ResNurseSeniorListHandler   m_resNurseSeniorListHandler   = null;
 	private ResNurseOrderConfirmHandler m_resNurseOrderConfirmHandler = null;
+	private ResNurseOrderCheckHandler   m_resNurseOrderCheckHandler   = null;
+
 	private ResNurseOrderListHandler m_resNurseOrderListHandler = null;
 
 	private ResShoppingBasicListHandler m_resShoppingBasicListHandler = null;
@@ -127,7 +135,7 @@ public class NetService extends Service
 		m_resNurseSeniorListHandler = new ResNurseSeniorListHandler();
 		m_resNurseOrderConfirmHandler = new ResNurseOrderConfirmHandler();
 		m_resNurseOrderListHandler = new ResNurseOrderListHandler();
-
+		m_resNurseOrderCheckHandler = new ResNurseOrderCheckHandler();
 
 		m_resShoppingBasicListHandler = new ResShoppingBasicListHandler();
 		m_requestQueue = BaseHttp.getInstance().getRequestQueue();
@@ -140,7 +148,7 @@ public class NetService extends Service
 
 	private void initEvent()
 	{
-		ReqHospitalListEvent hospitalListEvent = new ReqHospitalListEvent();
+		ReqHospitalListEvent   hospitalListEvent   = new ReqHospitalListEvent();
 		ReqDepartmentListEvent departmentListEvent = new ReqDepartmentListEvent();
 		try
 		{
@@ -340,6 +348,42 @@ public class NetService extends Service
 
 		m_requestQueue.add(myReq);
 	}
+
+	//nurse order check
+	public void onEventAsync(ReqNurseOrderCheckEvent event)
+	{
+		HashMap<String, String> nurseOrderCheck = event.getHashMap();
+
+		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
+																NetConfig.s_nurseOrderCheckAddress,
+																nurseOrderCheck,
+																m_resNurseOrderCheckHandler,
+																m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
+	}
+
+	//nurse order alipay
+	public void onEventAsync(ReqNurseOrderAlipayEvent event)
+	{
+		String payInfo = event.getPayInfo();
+		Activity activity = event.getActivity();
+		//01. 构造PayTask 对象
+		PayTask alipay = new PayTask(activity);
+
+		//02. 调用支付接口，获取支付结果
+		String result = alipay.pay(payInfo);
+
+		//03. 将支付结果发送到原来的页面中。
+		FinishNurseOrderAlipayEvent finishNurseOrderAlipayEvent = new FinishNurseOrderAlipayEvent();
+		finishNurseOrderAlipayEvent.setResult(result);
+		m_eventBus.post(finishNurseOrderAlipayEvent);
+		return;
+
+	}
+
+
+
 
 	//nurse order list
 	public void onEventAsync(ReqNurseOrderListEvent event)
