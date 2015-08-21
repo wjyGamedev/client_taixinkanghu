@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,7 +27,6 @@ public class SelectWeightFragment extends Fragment implements View.OnClickListen
 	private LinearLayout m_titleLL;
 
 	private Integer m_weightTitleHight = 0;
-	private Button  m_bottomBtn        = null;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -54,12 +52,6 @@ public class SelectWeightFragment extends Fragment implements View.OnClickListen
 		//设置顶部LL控件高度
 		if (m_weightTitleHight != 0)
 		{
-
-			int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-			int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-
-
-
 
 			LinearLayout.LayoutParams Lp = (LinearLayout.LayoutParams)m_titleLL.getLayoutParams();
 			Lp.height = m_weightTitleHight;

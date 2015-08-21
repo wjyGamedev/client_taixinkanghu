@@ -96,7 +96,7 @@ public class ApoitNursingActivity extends Activity
 		init();
 		initListener();
 		initContent();
-		gethight();
+		getHight();
 	}
 
 	@Override
@@ -283,7 +283,7 @@ public class ApoitNursingActivity extends Activity
 		m_protocolTV.append(Html.fromHtml("<a href=>" + "《用户协议》" + "</a> "));
 	}
 
-	private void gethight()
+	private void getHight()
 	{
 		int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
 		int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);

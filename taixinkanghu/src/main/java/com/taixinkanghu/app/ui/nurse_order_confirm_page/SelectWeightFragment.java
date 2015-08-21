@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
@@ -23,6 +24,10 @@ public class SelectWeightFragment extends Fragment implements View.OnClickListen
 	private TextView m_50To80WeightBtn;
 	private TextView m_80To120WeightBtn;
 	private TextView m_above120WeightBtn;
+
+	private LinearLayout m_titleLL;
+
+	private Integer m_weightTitleHight = 0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -43,13 +48,23 @@ public class SelectWeightFragment extends Fragment implements View.OnClickListen
 		m_80To120WeightBtn.setOnClickListener(this);
 		m_above120WeightBtn.setOnClickListener(this);
 
+		m_titleLL = (LinearLayout)view.findViewById(R.id.weight_titleLL);
+
+		//设置顶部LL控件高度
+		if (m_weightTitleHight != 0)
+		{
+			LinearLayout.LayoutParams Lp = (LinearLayout.LayoutParams)m_titleLL.getLayoutParams();
+			Lp.height = m_weightTitleHight;
+			m_titleLL.setLayoutParams(Lp);
+		}
+
 		return view;
 	}
 
 	@Override
 	public void onClick(View v)
 	{
-		PatientActivity patientActivity = (PatientActivity) getActivity();
+		PatientActivity patientActivity = (PatientActivity)getActivity();
 		if (patientActivity == null)
 		{
 			RegisterDialog.GetInstance().setMsg("patientActivity == null");
@@ -77,11 +92,16 @@ public class SelectWeightFragment extends Fragment implements View.OnClickListen
 		}
 
 		//蒙版点击一下之后消失的处理
-		FragmentManager      fgManager           = getFragmentManager();
-		Fragment fragment            = fgManager.findFragmentByTag(SelectWeightFragment.class.getName());
-		FragmentTransaction  fragmentTransaction = fgManager.beginTransaction();
+		FragmentManager     fgManager           = getFragmentManager();
+		Fragment            fragment            = fgManager.findFragmentByTag(SelectWeightFragment.class.getName());
+		FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
 		fragmentTransaction.remove(fragment);
 		fragmentTransaction.commit();
 
+	}
+
+	public void setWeightTitleHight(Integer weightTitleHight)
+	{
+		m_weightTitleHight = weightTitleHight;
 	}
 }

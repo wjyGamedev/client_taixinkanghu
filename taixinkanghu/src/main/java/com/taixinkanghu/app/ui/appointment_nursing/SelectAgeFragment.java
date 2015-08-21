@@ -98,5 +98,4 @@ public class SelectAgeFragment extends Fragment implements View.OnClickListener
 		m_ageTitleHight = ageTitleHight;
 	}
 
-
 }

@@ -53,21 +53,27 @@ public class HandleClickEventOnPatientActivity extends BaseHandleOnClickEvent
 			return;
 			case R.id.gender_region_ll:
 			{
+				Integer genderTitleHight = patientActivity.getSelectGenderTitleHight();
 				SelectSexFragment selectSexFragment = new SelectSexFragment();
+				selectSexFragment.setGenderTitleHight(genderTitleHight);
 				transaction.replace(R.id.patient_page, selectSexFragment, selectSexFragment.getClass().getName());
 				transaction.commit();
 			}
 			return;
 			case R.id.age_region_ll:
 			{
+				Integer ageTitleHight = patientActivity.getSelectAgeTitleHight();
 				SelectAgeFragment selectAgeFragment = new SelectAgeFragment();
+				selectAgeFragment.setAgeTitleHight(ageTitleHight);
 				transaction.replace(R.id.patient_page, selectAgeFragment, selectAgeFragment.getClass().getName());
 				transaction.commit();
 			}
 			return;
 			case R.id.weight_region_ll:
 			{
+				Integer weightTitleHight = patientActivity.getSelectWeightTitleHight();
 				SelectWeightFragment selectWeightFragment = new SelectWeightFragment();
+				selectWeightFragment.setWeightTitleHight(weightTitleHight);
 				transaction.replace(R.id.patient_page, selectWeightFragment, selectWeightFragment.getClass().getName());
 				transaction.commit();
 			}
