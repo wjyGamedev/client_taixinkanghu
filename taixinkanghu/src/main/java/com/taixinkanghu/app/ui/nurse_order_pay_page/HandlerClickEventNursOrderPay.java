@@ -1,21 +1,23 @@
 package com.taixinkanghu.app.ui.nurse_order_pay_page;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.data.DNurseOrderPay;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCheckEvent;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
-import com.taixinkanghu.app.ui.main_page.MainActivity;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Administrator on 2015/8/3.
  */
 public class HandlerClickEventNursOrderPay extends BaseHandleOnClickEvent
 {
+	private EventBus m_eventBus = EventBus.getDefault();
+
+
 	public HandlerClickEventNursOrderPay(Activity activity)
 	{
 		super(activity);
@@ -27,38 +29,22 @@ public class HandlerClickEventNursOrderPay extends BaseHandleOnClickEvent
 		Activity activity = (Activity)m_context;
 		switch (v.getId())
 		{
-			case R.id.btn_bottom:
-			{
-				new AlertDialog.Builder(activity).setTitle("支付提示").setMessage("确认支付？").setPositiveButton("确定",
-																										 new DialogInterface
-																												 .OnClickListener()
-																										 {
-																											 public void onClick
-																													 (DialogInterface
-																															  dialog, int
-																															  which)
-																											 {
+		case R.id.btn_bottom:
+		{
+			ReqNurseOrderCheckEvent event = new ReqNurseOrderCheckEvent();
 
-																												 Intent intent = new
-																														 Intent(
-																														 m_context,
-																														 MainActivity.class
-																												 );
-																												 Toast.makeText(m_context
-																																		.getApplicationContext(),
-																																"支付成功",
-																																Toast
-																																		.LENGTH_SHORT
-																															   ).show();
-																												 m_context.startActivity(
-																														 intent
-																																		);
-																											 }
-																										 }
-																										).setNegativeButton("取消", null
-																														   ).show();
-				break;
-			}
+			String nurseID = DNurseOrderPay.GetInstance().getUserID();
+			event.setUserID(nurseID);
+
+			String orderID = DNurseOrderPay.GetInstance().getOrderID();
+			event.setOrderID(orderID);
+
+			m_eventBus.post(event);
+			return;
 		}
+		}
+
+		return;
+
 	}
 }
