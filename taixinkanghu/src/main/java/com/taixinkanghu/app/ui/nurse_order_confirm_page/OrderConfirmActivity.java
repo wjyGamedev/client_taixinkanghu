@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
-import com.taixinkanghu.app.model.data.DApoitNursing;
+import com.taixinkanghu.app.model.data.DApoitNursingPage;
 import com.taixinkanghu.app.model.data.DDepartment;
 import com.taixinkanghu.app.model.data.DDepartmentList;
 import com.taixinkanghu.app.model.data.DFaceImages;
@@ -22,7 +22,7 @@ import com.taixinkanghu.app.model.data.DHospitalList;
 import com.taixinkanghu.app.model.data.DNurseBasics;
 import com.taixinkanghu.app.model.data.DNurseBasicsList;
 import com.taixinkanghu.app.model.data.DNurseContainer;
-import com.taixinkanghu.app.model.data.DNurseOrderConfirm;
+import com.taixinkanghu.app.model.data.DNurseOrderConfirmPage;
 import com.taixinkanghu.app.model.data.DNurseSenior;
 import com.taixinkanghu.app.model.data.DNurseSeniorList;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
@@ -88,22 +88,16 @@ public class OrderConfirmActivity extends Activity
 		init();
 		initListener();
 
-//		boolean initFlag = DNurseOrderConfirm.GetInstance().isInitialized();
-//		if (initFlag == false)
-//		{
-			updateContent();
-			updateCharge();
-//		}
-//		else
-//		{
-//			setContent();
-//			setCharge();
-//		}
+		updateContent();
+		updateCharge();
+
 	}
 
 	@Override
 	protected void onStart()
 	{
+		setContent();
+		setCharge();
 		initGlobalData();
 		super.onStart();
 	}
@@ -207,7 +201,7 @@ public class OrderConfirmActivity extends Activity
 			return;
 		}
 		//data
-		DNurseOrderConfirm.GetInstance().setNurseID(nurseID);
+		DNurseOrderConfirmPage.GetInstance().setNurseID(nurseID);
 
 		//0101. m_nurseID有效性判断
 		//通过ID可以找到DNurseBasics
@@ -252,7 +246,7 @@ public class OrderConfirmActivity extends Activity
 		setNurseJobNum(nurseSenior.getJobNum());
 
 		//服务时间
-		DApoitNursing.DNursingDate nursingDate = DApoitNursing.GetInstance().getNursingDate();
+		DApoitNursingPage.DNursingDate nursingDate = DApoitNursingPage.GetInstance().getNursingDate();
 		if (nursingDate == null)
 		{
 			RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
@@ -263,7 +257,7 @@ public class OrderConfirmActivity extends Activity
 		setServiceDate(serviceDate);
 
 		//服务地点
-		int       hospitalID = DApoitNursing.GetInstance().getHospitalID();
+		int       hospitalID = DApoitNursingPage.GetInstance().getHospitalID();
 		DHospital hospital   = DHospitalList.GetInstance().getHospitalByID(hospitalID);
 		if (hospital == null)
 		{
@@ -273,7 +267,7 @@ public class OrderConfirmActivity extends Activity
 		}
 		String hospitalName = hospital.getName();
 
-		int         departmentID = DApoitNursing.GetInstance().getDepartmenetID();
+		int         departmentID = DApoitNursingPage.GetInstance().getDepartmenetID();
 		DDepartment department   = DDepartmentList.GetInstance().getDepartmentByID(departmentID);
 		if (department == null)
 		{
@@ -286,10 +280,10 @@ public class OrderConfirmActivity extends Activity
 		setServiceAddress(serviceAddress);
 
 		//被护理人
-		String patientName = DApoitNursing.GetInstance().getName();
+		String patientName = DApoitNursingPage.GetInstance().getName();
 		m_patientNameTV.setText(patientName);
 		//被护理人状态
-		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
+		EnumConfig.PatientState patientState = DApoitNursingPage.GetInstance().getPatientState();
 		if (patientState == null)
 		{
 			RegisterDialog.GetInstance().setMsg("patientState == null");
@@ -302,29 +296,29 @@ public class OrderConfirmActivity extends Activity
 
 	private void setContent()
 	{
-		int headerImgResID = DNurseOrderConfirm.GetInstance().getNurseHeaderImgResID();
+		int headerImgResID = DNurseOrderConfirmPage.GetInstance().getNurseHeaderImgResID();
 		m_nurseHeadImgIV.setImageResource(headerImgResID);
 
-		String name = DNurseOrderConfirm.GetInstance().getNurseName();
+		String name = DNurseOrderConfirmPage.GetInstance().getNurseName();
 		m_nameTV.setText(name);
 
-		String jobNum = DNurseOrderConfirm.GetInstance().getNurseJobNum();
+		String jobNum = DNurseOrderConfirmPage.GetInstance().getNurseJobNum();
 		m_jobNumTV.setText(jobNum);
 
-		String nursingLevel = DNurseOrderConfirm.GetInstance().getNursingLevel();
+		String nursingLevel = DNurseOrderConfirmPage.GetInstance().getNursingLevel();
 		m_nuringLevelTV.setText(nursingLevel);
 
-		String serviceDate = DNurseOrderConfirm.GetInstance().getServiceDate();
+		String serviceDate = DNurseOrderConfirmPage.GetInstance().getServiceDate();
 		m_serviceDateTV.setText(serviceDate);
 
-		String serviceAddress = DNurseOrderConfirm.GetInstance().getServiceAddress();
+		String serviceAddress = DNurseOrderConfirmPage.GetInstance().getServiceAddress();
 		m_serviceAddressTV.setText(serviceAddress);
 
 		//被护理人
-		String patientName = DApoitNursing.GetInstance().getName();
+		String patientName = DApoitNursingPage.GetInstance().getName();
 		m_patientNameTV.setText(patientName);
 		//被护理人状态
-		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
+		EnumConfig.PatientState patientState = DApoitNursingPage.GetInstance().getPatientState();
 		if (patientState == null)
 		{
 			RegisterDialog.GetInstance().setMsg("patientState == null");
@@ -337,7 +331,7 @@ public class OrderConfirmActivity extends Activity
 	private void updateCharge()
 	{
 		//01. PatientState
-		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
+		EnumConfig.PatientState patientState = DApoitNursingPage.GetInstance().getPatientState();
 		if (patientState == null)
 		{
 			RegisterDialog.GetInstance().setMsg("patientState == null]", this);
@@ -346,7 +340,7 @@ public class OrderConfirmActivity extends Activity
 		}
 
 		//02. DNursingDate
-		DApoitNursing.DNursingDate nursingDate = DApoitNursing.GetInstance().getNursingDate();
+		DApoitNursingPage.DNursingDate nursingDate = DApoitNursingPage.GetInstance().getNursingDate();
 		if (nursingDate == null)
 		{
 			RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
@@ -363,7 +357,7 @@ public class OrderConfirmActivity extends Activity
 			return;
 		}
 
-		int nurseID = DNurseOrderConfirm.GetInstance().getNurseID();
+		int nurseID = DNurseOrderConfirmPage.GetInstance().getNurseID();
 		DNurseBasics nurseBasics = nurseBasicsList.getNurseBasicByID(nurseID);
 		if (nurseBasics == null)
 		{
@@ -388,8 +382,8 @@ public class OrderConfirmActivity extends Activity
 			m_allCoeffTV.setText(strAllNum);
 			m_allRegionLL.setVisibility(View.VISIBLE);
 			//data
-			DNurseOrderConfirm.GetInstance().setAllNum(allNum);
-			DNurseOrderConfirm.GetInstance().setChargePerAll(chargePerAll);
+			DNurseOrderConfirmPage.GetInstance().setAllNum(allNum);
+			DNurseOrderConfirmPage.GetInstance().setChargePerAll(chargePerAll);
 		}
 		else
 		{
@@ -411,8 +405,8 @@ public class OrderConfirmActivity extends Activity
 			m_dayCoeffTV.setText(strDayNum);
 			m_dayRegionLL.setVisibility(View.VISIBLE);
 			//data
-			DNurseOrderConfirm.GetInstance().setDayNum(dayNum);
-			DNurseOrderConfirm.GetInstance().setChargePerDay(chargePerDay);
+			DNurseOrderConfirmPage.GetInstance().setDayNum(dayNum);
+			DNurseOrderConfirmPage.GetInstance().setChargePerDay(chargePerDay);
 		}
 		else
 		{
@@ -434,8 +428,8 @@ public class OrderConfirmActivity extends Activity
 			m_NightCoeffTV.setText(strNightNum);
 			m_nightRegionLL.setVisibility(View.VISIBLE);
 			//data
-			DNurseOrderConfirm.GetInstance().setNightNum(nightNum);
-			DNurseOrderConfirm.GetInstance().setChargePerNight(chargePerNight);
+			DNurseOrderConfirmPage.GetInstance().setNightNum(nightNum);
+			DNurseOrderConfirmPage.GetInstance().setChargePerNight(chargePerNight);
 		}
 		else
 		{
@@ -448,14 +442,14 @@ public class OrderConfirmActivity extends Activity
 		//ui
 		m_TotalChargeTV.setText(strTotalCharge);
 		//data
-		DNurseOrderConfirm.GetInstance().setTotalCharge(totalCharge);
+		DNurseOrderConfirmPage.GetInstance().setTotalCharge(totalCharge);
 
 	}
 
 	private void setCharge()
 	{
-		int allNum       = DNurseOrderConfirm.GetInstance().getAllNum();
-		int chargePerAll = DNurseOrderConfirm.GetInstance().getChargePerAll();
+		int allNum       = DNurseOrderConfirmPage.GetInstance().getAllNum();
+		int chargePerAll = DNurseOrderConfirmPage.GetInstance().getChargePerAll();
 		String strAllNum = String.valueOf(allNum);
 
 		if (allNum != 0)
@@ -470,8 +464,8 @@ public class OrderConfirmActivity extends Activity
 			m_allRegionLL.setVisibility(View.GONE);
 		}
 
-		int dayNum       = DNurseOrderConfirm.GetInstance().getDayNum();
-		int chargePerDay = DNurseOrderConfirm.GetInstance().getChargePerDay();
+		int dayNum       = DNurseOrderConfirmPage.GetInstance().getDayNum();
+		int chargePerDay = DNurseOrderConfirmPage.GetInstance().getChargePerDay();
 		String strDayNum = String.valueOf(dayNum);
 
 		if (dayNum != 0)
@@ -487,8 +481,8 @@ public class OrderConfirmActivity extends Activity
 		}
 
 
-		int nightNum       = DNurseOrderConfirm.GetInstance().getNightNum();
-		int chargePerNight = DNurseOrderConfirm.GetInstance().getChargePerNight();
+		int nightNum       = DNurseOrderConfirmPage.GetInstance().getNightNum();
+		int chargePerNight = DNurseOrderConfirmPage.GetInstance().getChargePerNight();
 		String strNightNum = String.valueOf(nightNum);
 
 		if (nightNum != 0)
@@ -511,7 +505,7 @@ public class OrderConfirmActivity extends Activity
 		m_patientStateTV.setText(patientState.getName());
 		//02. upate data
 		//注意02和03顺序不要变动。依赖于setPatientState，然后getPatientState
-		DApoitNursing.GetInstance().setPatientState(patientState);
+		DApoitNursingPage.GetInstance().setPatientState(patientState);
 		//03. update charge
 		updateCharge();
 	}
@@ -521,7 +515,7 @@ public class OrderConfirmActivity extends Activity
 		//ui
 		m_nameTV.setText(name);
 		//data
-		DNurseOrderConfirm.GetInstance().setNurseName(name);
+		DNurseOrderConfirmPage.GetInstance().setNurseName(name);
 	}
 
 	private void setNurseHeaderImgResID(int resID)
@@ -529,7 +523,7 @@ public class OrderConfirmActivity extends Activity
 		//ui
 		m_nurseHeadImgIV.setImageResource(resID);
 		//data
-		DNurseOrderConfirm.GetInstance().setNurseHeaderImgResID(resID);
+		DNurseOrderConfirmPage.GetInstance().setNurseHeaderImgResID(resID);
 	}
 
 	private void setNurseJobNum(String jobNum)
@@ -537,7 +531,7 @@ public class OrderConfirmActivity extends Activity
 		//ui
 		m_jobNumTV.setText(jobNum);
 		//data
-		DNurseOrderConfirm.GetInstance().setNurseJobNum(jobNum);
+		DNurseOrderConfirmPage.GetInstance().setNurseJobNum(jobNum);
 	}
 
 	private void setNursingLevel(String nursingLevel)
@@ -545,7 +539,7 @@ public class OrderConfirmActivity extends Activity
 		//ui
 		m_nuringLevelTV.setText(nursingLevel);
 		//data
-		DNurseOrderConfirm.GetInstance().setNursingLevel(nursingLevel);
+		DNurseOrderConfirmPage.GetInstance().setNursingLevel(nursingLevel);
 	}
 
 	private void setServiceDate(String serviceDate)
@@ -553,7 +547,7 @@ public class OrderConfirmActivity extends Activity
 		//ui
 		m_serviceDateTV.setText(serviceDate);
 		//data
-		DNurseOrderConfirm.GetInstance().setServiceDate(serviceDate);
+		DNurseOrderConfirmPage.GetInstance().setServiceDate(serviceDate);
 	}
 
 	private void setServiceAddress(String address)
@@ -561,7 +555,7 @@ public class OrderConfirmActivity extends Activity
 		//ui
 		m_serviceAddressTV.setText(address);
 		//data
-		DNurseOrderConfirm.GetInstance().setServiceAddress(address);
+		DNurseOrderConfirmPage.GetInstance().setServiceAddress(address);
 	}
 
 	/**

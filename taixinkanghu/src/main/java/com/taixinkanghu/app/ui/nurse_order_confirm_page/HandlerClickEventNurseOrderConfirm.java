@@ -8,8 +8,8 @@ import android.view.View;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.DAccount;
-import com.taixinkanghu.app.model.data.DApoitNursing;
-import com.taixinkanghu.app.model.data.DNurseOrderConfirm;
+import com.taixinkanghu.app.model.data.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.DNurseOrderConfirmPage;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderConfirmEvent;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
@@ -66,40 +66,40 @@ public class HandlerClickEventNurseOrderConfirm extends BaseHandleOnClickEvent
 			{
 				//01. 发送nurse order confirm event
 				ReqNurseOrderConfirmEvent event = new ReqNurseOrderConfirmEvent();
-				int hospitalID = DApoitNursing.GetInstance().getHospitalID();
+				int hospitalID = DApoitNursingPage.GetInstance().getHospitalID();
 				event.setHospitalID(hospitalID);
 
 				String userID = DAccount.GetInstance().getId();
 				event.setUserID(userID);
 
-				int nurseID = DNurseOrderConfirm.GetInstance().getNurseID();
+				int nurseID = DNurseOrderConfirmPage.GetInstance().getNurseID();
 				event.setNurseID(nurseID);
 
-				String phoneNum = DApoitNursing.GetInstance().getPhone();
+				String phoneNum = DApoitNursingPage.GetInstance().getPhone();
 				event.setPhoneNum(phoneNum);
 
-				String name = DApoitNursing.GetInstance().getName();
+				String name = DApoitNursingPage.GetInstance().getName();
 				event.setPatientName(name);
 
-				EnumConfig.SexType sexType = DApoitNursing.GetInstance().getSexType();
+				EnumConfig.SexType sexType = DApoitNursingPage.GetInstance().getSexType();
 				if (sexType != null)
 				{
 					event.setGenderID(sexType.getId());
 				}
 
-				EnumConfig.AgeRage age = DApoitNursing.GetInstance().getAgeRage();
+				EnumConfig.AgeRage age = DApoitNursingPage.GetInstance().getAgeRage();
 				if (age != null)
 				{
 					event.setPatientAge(age.getName());
 				}
 
-				EnumConfig.WeightRage weight = DApoitNursing.GetInstance().getWeightRage();
+				EnumConfig.WeightRage weight = DApoitNursingPage.GetInstance().getWeightRage();
 				if (weight != null)
 				{
 					event.setPatientWeight(weight.getName());
 				}
 
-				EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
+				EnumConfig.PatientState patientState = DApoitNursingPage.GetInstance().getPatientState();
 				if (patientState != null)
 				{
 					event.setPatientStatusID(patientState.getId());
@@ -107,10 +107,10 @@ public class HandlerClickEventNurseOrderConfirm extends BaseHandleOnClickEvent
 
 				event.setPatientRemark("");
 
-				int totalCharge = DNurseOrderConfirm.GetInstance().getTotalCharge();
+				int totalCharge = DNurseOrderConfirmPage.GetInstance().getTotalCharge();
 				event.setTotalCharge(totalCharge);
 
-				DApoitNursing.DNursingDate nursingDate = DApoitNursing.GetInstance().getNursingDate();
+				DApoitNursingPage.DNursingDate nursingDate = DApoitNursingPage.GetInstance().getNursingDate();
 				if (nursingDate == null)
 				{
 					RegisterDialog.GetInstance().setMsg("nursingDate == null", m_context);

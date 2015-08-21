@@ -17,21 +17,21 @@ package com.taixinkanghu.app.model.data;
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
-public class DNurseOrderPay
+public class DNurseOrderPayPage
 {
-	private static DNurseOrderPay s_nurseOrderPay = new DNurseOrderPay();
+	private static DNurseOrderPayPage s_nurseOrderPay = new DNurseOrderPayPage();
 
-	private String m_userID         = null;    //用户ID
-	private String m_orderID        = null;    //订单ID，数据库主key，不是交易流水号。
+	private String m_userID  = null;    //用户ID
+	private String m_orderID = null;    //订单ID，数据库主key，不是交易流水号。
 
 	private String m_orderSerialNum = null;
-	private int m_totalPrice = DataConfig.DEFAULT_VALUE;
+	private int    m_totalPrice     = DataConfig.DEFAULT_VALUE;
 
-	private DNurseOrderPay()
+	private DNurseOrderPayPage()
 	{
 	}
 
-	public static DNurseOrderPay GetInstance()
+	public static DNurseOrderPayPage GetInstance()
 	{
 		return s_nurseOrderPay;
 	}

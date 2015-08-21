@@ -24,9 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DApoitNursing implements Serializable
+public class DApoitNursingPage implements Serializable
 {
-	private static DApoitNursing s_dApoitNursing = new DApoitNursing();
+	private static DApoitNursingPage s_dApoitNursingPage = new DApoitNursingPage();
 
 	//姓名
 	private String m_name = null;
@@ -64,8 +64,8 @@ public class DApoitNursing implements Serializable
 		private String                        m_dateDescription  = null;
 		private SimpleDateFormat              m_simpleDateFormat = new SimpleDateFormat(DateConfig.PATTERN_DATE_YEAR_MONTH_DAY);
 
-		private int m_allNum = 0;
-		private int m_dayNum = 0;
+		private int m_allNum   = 0;
+		private int m_dayNum   = 0;
 		private int m_nightNum = 0;
 
 		public DNursingDate(Date beingDate, Date endDate, ArrayList<ArrayList<Date>> dateListAll, ArrayList<ArrayList<Integer>>
@@ -216,13 +216,13 @@ public class DApoitNursing implements Serializable
 
 	}
 
-	private DApoitNursing()
+	private DApoitNursingPage()
 	{
 	}
 
-	public static DApoitNursing GetInstance()
+	public static DApoitNursingPage GetInstance()
 	{
-		return s_dApoitNursing;
+		return s_dApoitNursingPage;
 	}
 
 	//function:get/set

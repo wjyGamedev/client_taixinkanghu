@@ -11,8 +11,8 @@ import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.data.DAccount;
 import com.taixinkanghu.app.model.data.DGlobal;
-import com.taixinkanghu.app.model.data.DNurseOrderConfirm;
-import com.taixinkanghu.app.model.data.DNurseOrderPay;
+import com.taixinkanghu.app.model.data.DNurseOrderConfirmPage;
+import com.taixinkanghu.app.model.data.DNurseOrderPayPage;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.event.recv.FailedNurseOrderCheckEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;
@@ -90,7 +90,7 @@ public class NurseOrderPayActivity extends Activity
 	{
 		Intent intent = getIntent();
 		String userID = DAccount.GetInstance().getId();
-		DNurseOrderPay.GetInstance().setUserID(userID);
+		DNurseOrderPayPage.GetInstance().setUserID(userID);
 
 		int orderID = intent.getIntExtra(NurseOrderConfig.ORDER_ID, DataConfig.DEFAULT_VALUE);
 		if (orderID == DataConfig.DEFAULT_VALUE)
@@ -99,15 +99,15 @@ public class NurseOrderPayActivity extends Activity
 			RegisterDialog.GetInstance().show();
 			return;
 		}
-		DNurseOrderPay.GetInstance().setOrderID(orderID);
+		DNurseOrderPayPage.GetInstance().setOrderID(orderID);
 
 	}
 
 	private void updateContent()
 	{
-		String orderSerialNum = DNurseOrderPay.GetInstance().getOrderSerialNum();
+		String orderSerialNum = DNurseOrderPayPage.GetInstance().getOrderSerialNum();
 		m_orderSerialNumTV.setText(orderSerialNum);
-		int totalPrice = DNurseOrderPay.GetInstance().getTotalPrice();
+		int totalPrice = DNurseOrderPayPage.GetInstance().getTotalPrice();
 		m_priceTV.setText(String.valueOf(totalPrice));
 	}
 
@@ -151,8 +151,8 @@ public class NurseOrderPayActivity extends Activity
 	public void onEventMainThread(FailedNurseOrderCheckEvent event)
 	{
 		//01. 清除下整个下订单流程中的数据
-		DNurseOrderConfirm.GetInstance().clearup();
-		DNurseOrderPay.GetInstance().clearup();
+		DNurseOrderConfirmPage.GetInstance().clearup();
+		DNurseOrderPayPage.GetInstance().clearup();
 
 		//02. flush nurse basic list event
 		ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
@@ -167,8 +167,8 @@ public class NurseOrderPayActivity extends Activity
 	public void onEventMainThread(FinishedNurseOrderCheckEvent event)
 	{
 		//01. 获取order info
-		String orderID = DNurseOrderPay.GetInstance().getOrderID();
-		int totalPrice = DNurseOrderPay.GetInstance().getTotalPrice();
+		String orderID = DNurseOrderPayPage.GetInstance().getOrderID();
+		int totalPrice = DNurseOrderPayPage.GetInstance().getTotalPrice();
 		//String orderInfo = Util.GetNurseOrder(orderID, String.valueOf(totalPrice));
 		//测试
 		String orderInfo = Util.GetNurseOrder(orderID, "0.01");

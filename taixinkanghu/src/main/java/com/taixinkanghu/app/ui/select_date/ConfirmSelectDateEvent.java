@@ -16,19 +16,19 @@ package com.taixinkanghu.app.ui.select_date;
 
 import com.taixinkanghu.app.model.config.EventID;
 import com.taixinkanghu.app.model.event.ui.UIEvent;
-import com.taixinkanghu.app.model.data.DApoitNursing;
+import com.taixinkanghu.app.model.data.DApoitNursingPage;
 
 public class ConfirmSelectDateEvent extends UIEvent
 {
-	private DApoitNursing.DNursingDate m_dNursingDate = null;
+	private DApoitNursingPage.DNursingDate m_dNursingDate = null;
 
-	public ConfirmSelectDateEvent(DApoitNursing.DNursingDate dNursingDate)
+	public ConfirmSelectDateEvent(DApoitNursingPage.DNursingDate dNursingDate)
 	{
 		super(EventID.UI_SELECT_DATE_SURE);
 		m_dNursingDate = dNursingDate;
 	}
 
-	public DApoitNursing.DNursingDate getdNursingDate()
+	public DApoitNursingPage.DNursingDate getdNursingDate()
 	{
 		return m_dNursingDate;
 	}

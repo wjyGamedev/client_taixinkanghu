@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.DNurseOrderPay;
+import com.taixinkanghu.app.model.data.DNurseOrderPayPage;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCheckEvent;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 
@@ -33,10 +33,10 @@ public class HandlerClickEventNursOrderPay extends BaseHandleOnClickEvent
 		{
 			ReqNurseOrderCheckEvent event = new ReqNurseOrderCheckEvent();
 
-			String nurseID = DNurseOrderPay.GetInstance().getUserID();
+			String nurseID = DNurseOrderPayPage.GetInstance().getUserID();
 			event.setUserID(nurseID);
 
-			String orderID = DNurseOrderPay.GetInstance().getOrderID();
+			String orderID = DNurseOrderPayPage.GetInstance().getOrderID();
 			event.setOrderID(orderID);
 
 			m_eventBus.post(event);

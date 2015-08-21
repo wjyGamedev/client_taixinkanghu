@@ -28,7 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
-import com.taixinkanghu.app.model.data.DApoitNursing;
+import com.taixinkanghu.app.model.data.DApoitNursingPage;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;
@@ -221,10 +221,10 @@ public class NetService extends Service
 	//预约陪护 nurse basic list
 	public void onEventAsync(ReqApoitNursingEvent event)
 	{
-		String name = DApoitNursing.GetInstance().getName();
-		String phone = DApoitNursing.GetInstance().getPhone();
+		String name = DApoitNursingPage.GetInstance().getName();
+		String phone = DApoitNursingPage.GetInstance().getPhone();
 
-		EnumConfig.SexType sexType   = DApoitNursing.GetInstance().getSexType();
+		EnumConfig.SexType sexType   = DApoitNursingPage.GetInstance().getSexType();
 		int                sexTypeID = 0;
 		if (sexType != null)
 		{
@@ -232,29 +232,29 @@ public class NetService extends Service
 		}
 
 		String age = null;
-		EnumConfig.AgeRage ageRage = DApoitNursing.GetInstance().getAgeRage();
+		EnumConfig.AgeRage ageRage = DApoitNursingPage.GetInstance().getAgeRage();
 		if (ageRage != null)
 		{
 			age = ageRage.getName();
 		}
 
 		String weight = null;
-		EnumConfig.WeightRage weightRage = DApoitNursing.GetInstance().getWeightRage();
+		EnumConfig.WeightRage weightRage = DApoitNursingPage.GetInstance().getWeightRage();
 		if (weightRage != null)
 		{
 			weight = weightRage.getName();
 		}
 
-		int hospitalID = DApoitNursing.GetInstance().getHospitalID();
-		int departmentID = DApoitNursing.GetInstance().getDepartmenetID();
+		int hospitalID = DApoitNursingPage.GetInstance().getHospitalID();
+		int departmentID = DApoitNursingPage.GetInstance().getDepartmenetID();
 		int patientStateID = 0;
-		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
+		EnumConfig.PatientState patientState = DApoitNursingPage.GetInstance().getPatientState();
 		if (patientState != null)
 		{
 			patientStateID = patientState.getId();
 		}
 
-		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getNursingDate();
+		DApoitNursingPage.DNursingDate dNursingDate = DApoitNursingPage.GetInstance().getNursingDate();
 		if (dNursingDate == null)
 			return;
 

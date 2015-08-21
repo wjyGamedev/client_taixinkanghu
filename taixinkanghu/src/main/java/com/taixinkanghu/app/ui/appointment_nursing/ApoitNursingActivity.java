@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.EnumConfig;
-import com.taixinkanghu.app.model.data.DApoitNursing;
+import com.taixinkanghu.app.model.data.DApoitNursingPage;
 import com.taixinkanghu.app.model.data.DDepartment;
 import com.taixinkanghu.app.model.data.DDepartmentList;
 import com.taixinkanghu.app.model.data.DGlobal;
@@ -113,42 +113,42 @@ public class ApoitNursingActivity extends Activity
 	private void updateDate()
 	{
 		//姓名
-		String name = DApoitNursing.GetInstance().getName();
+		String name = DApoitNursingPage.GetInstance().getName();
 		if (TextUtils.isEmpty(name) == false)
 		{
 			m_nameTV.setText(name);
 		}
 
 		//手机号
-		String phone = DApoitNursing.GetInstance().getPhone();
+		String phone = DApoitNursingPage.GetInstance().getPhone();
 		if (TextUtils.isEmpty(phone) == false)
 		{
 			m_phoneNumTV.setText(phone);
 		}
 
 		//性别
-		EnumConfig.SexType sexType = DApoitNursing.GetInstance().getSexType();
+		EnumConfig.SexType sexType = DApoitNursingPage.GetInstance().getSexType();
 		if (sexType != null)
 		{
 			m_genderTV.setText(sexType.getName());
 		}
 
 		//年龄
-		EnumConfig.AgeRage ageRage = DApoitNursing.GetInstance().getAgeRage();
+		EnumConfig.AgeRage ageRage = DApoitNursingPage.GetInstance().getAgeRage();
 		if (ageRage != null)
 		{
 			m_ageTV.setText(ageRage.getName());
 		}
 
 		//体重
-		EnumConfig.WeightRage weightRage = DApoitNursing.GetInstance().getWeightRage();
+		EnumConfig.WeightRage weightRage = DApoitNursingPage.GetInstance().getWeightRage();
 		if (weightRage != null)
 		{
 			m_weightTV.setText(weightRage.getName());
 		}
 
 		//所在医院
-		int hospitalID = DApoitNursing.GetInstance().getHospitalID();
+		int hospitalID = DApoitNursingPage.GetInstance().getHospitalID();
 		//01. 显示全部
 		if (hospitalID == 0)
 		{
@@ -169,7 +169,7 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//所在科室
-		int                    departmentID   = DApoitNursing.GetInstance().getDepartmenetID();
+		int                    departmentID   = DApoitNursingPage.GetInstance().getDepartmenetID();
 		ArrayList<DDepartment> departmentList = DDepartmentList.GetInstance().getDepartments();
 		for (DDepartment department : departmentList)
 		{
@@ -181,14 +181,14 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//病人状态
-		EnumConfig.PatientState patientState = DApoitNursing.GetInstance().getPatientState();
+		EnumConfig.PatientState patientState = DApoitNursingPage.GetInstance().getPatientState();
 		if (patientState != null)
 		{
 			m_patientStateTV.setText(patientState.getName());
 		}
 
 		//护理时间
-		DApoitNursing.DNursingDate dNursingDate = DApoitNursing.GetInstance().getNursingDate();
+		DApoitNursingPage.DNursingDate dNursingDate = DApoitNursingPage.GetInstance().getNursingDate();
 		if (dNursingDate != null)
 		{
 			String dateDescription = dNursingDate.getDateDescription();
@@ -353,19 +353,19 @@ public class ApoitNursingActivity extends Activity
 	public void setSexType(EnumConfig.SexType sexType)
 	{
 		m_genderTV.setText(sexType.getName());
-		DApoitNursing.GetInstance().setSexType(sexType);
+		DApoitNursingPage.GetInstance().setSexType(sexType);
 	}
 
 	public void setAgeRage(EnumConfig.AgeRage ageRage)
 	{
 		m_ageTV.setText(ageRage.getName());
-		DApoitNursing.GetInstance().setAgeRage(ageRage);
+		DApoitNursingPage.GetInstance().setAgeRage(ageRage);
 	}
 
 	public void setWeightRage(EnumConfig.WeightRage weightRage)
 	{
 		m_weightTV.setText(weightRage.getName());
-		DApoitNursing.GetInstance().setWeightRage(weightRage);
+		DApoitNursingPage.GetInstance().setWeightRage(weightRage);
 	}
 
 	public void setDepartmentID(int departmentID)
@@ -381,7 +381,7 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//02. 保存到数据类中。
-		DApoitNursing.GetInstance().setDepartmenetID(departmentID);
+		DApoitNursingPage.GetInstance().setDepartmenetID(departmentID);
 	}
 
 	public void setHospitalID(int hospitalID)
@@ -404,13 +404,13 @@ public class ApoitNursingActivity extends Activity
 			}
 		}
 		//03. 保存到数据类中。
-		DApoitNursing.GetInstance().setHospitalID(hospitalID);
+		DApoitNursingPage.GetInstance().setHospitalID(hospitalID);
 	}
 
 	public void setPatientState(EnumConfig.PatientState patientState)
 	{
 		m_patientStateTV.setText(patientState.getName());
-		DApoitNursing.GetInstance().setPatientState(patientState);
+		DApoitNursingPage.GetInstance().setPatientState(patientState);
 	}
 
 	public void confirmAction()
@@ -419,14 +419,14 @@ public class ApoitNursingActivity extends Activity
 		String name = m_nameTV.getText().toString();
 		if (!TextUtils.isEmpty(name))
 		{
-			DApoitNursing.GetInstance().setName(name);
+			DApoitNursingPage.GetInstance().setName(name);
 		}
 
 		//手机号码
 		String phone = m_phoneNumTV.getText().toString();
 		if (!TextUtils.isEmpty(phone))
 		{
-			DApoitNursing.GetInstance().setPhone(phone);
+			DApoitNursingPage.GetInstance().setPhone(phone);
 		}
 
 	}
@@ -443,6 +443,6 @@ public class ApoitNursingActivity extends Activity
 			return;
 
 		setDateDescription(event.getdNursingDate().getDateDescription());
-		DApoitNursing.GetInstance().setNursingDate(event.getdNursingDate());
+		DApoitNursingPage.GetInstance().setNursingDate(event.getdNursingDate());
 	}
 }

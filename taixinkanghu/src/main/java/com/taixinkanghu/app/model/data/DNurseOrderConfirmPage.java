@@ -16,9 +16,9 @@ package com.taixinkanghu.app.model.data;
 
 import java.io.Serializable;
 
-public class DNurseOrderConfirm implements Serializable
+public class DNurseOrderConfirmPage implements Serializable
 {
-	private static DNurseOrderConfirm s_nurseOrderConfirm = new DNurseOrderConfirm();
+	private static DNurseOrderConfirmPage s_nurseOrderConfirm = new DNurseOrderConfirmPage();
 
 	private int    m_nurseID             = -1;    //护工ID
 	private int    m_nurseHeaderImgResID = -1;    //护工头像ID
@@ -28,34 +28,34 @@ public class DNurseOrderConfirm implements Serializable
 	private String m_serviceDate         = null;    //服务时间
 	private String m_serviceAddress      = null;    //服务地点
 
-	private int m_allNum      = 0;    //全天24小时服务的天数
-	private int m_dayNum      = 0;    //白天12小时服务的天数
-	private int m_nightNum    = 0;    //夜间12小时服务的天数
+	private int m_allNum   = 0;    //全天24小时服务的天数
+	private int m_dayNum   = 0;    //白天12小时服务的天数
+	private int m_nightNum = 0;    //夜间12小时服务的天数
 
-	private int m_chargePerAll = 0;	//全天24小时服务的单价
-	private int m_chargePerDay = 0;	//白天12小时服务的单价
-	private int m_chargePerNight = 0;	//夜间12小时服务的单价
-	private int m_totalCharge = 0;    //合计
+	private int m_chargePerAll   = 0;    //全天24小时服务的单价
+	private int m_chargePerDay   = 0;    //白天12小时服务的单价
+	private int m_chargePerNight = 0;    //夜间12小时服务的单价
+	private int m_totalCharge    = 0;    //合计
 
-	private DNurseOrderConfirm()
+	private DNurseOrderConfirmPage()
 	{}
 
-	public static DNurseOrderConfirm GetInstance()
+	public static DNurseOrderConfirmPage GetInstance()
 	{
 		return s_nurseOrderConfirm;
 	}
 
 	public void clearup()
 	{
-		m_nurseID             = -1;    //护工ID
+		m_nurseID = -1;    //护工ID
 		m_nurseHeaderImgResID = -1;    //护工头像ID
-		m_nurseName           = null;    //护工名字
-		m_nurseJobNum         = null;    //护工的工号
-		m_nursingLevel        = null;    //护理级别
-		m_serviceDate         = null;    //服务时间
-		m_serviceAddress      = null;    //服务地点
+		m_nurseName = null;    //护工名字
+		m_nurseJobNum = null;    //护工的工号
+		m_nursingLevel = null;    //护理级别
+		m_serviceDate = null;    //服务时间
+		m_serviceAddress = null;    //服务地点
 
-		m_allNum      = 0;    //全天24小时服务的天数
+		m_allNum = 0;    //全天24小时服务的天数
 		m_dayNum      = 0;    //白天12小时服务的天数
 		m_nightNum    = 0;    //夜间12小时服务的天数
 
