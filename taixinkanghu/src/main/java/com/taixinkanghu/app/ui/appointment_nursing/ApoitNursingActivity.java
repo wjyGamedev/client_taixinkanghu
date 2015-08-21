@@ -26,15 +26,18 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.EnumConfig;
-import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
 import com.taixinkanghu.app.model.data.net.DDepartment;
 import com.taixinkanghu.app.model.data.net.DDepartmentList;
-import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.data.net.DHospital;
 import com.taixinkanghu.app.model.data.net.DHospitalList;
+import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.page.DGlobal;
+import com.taixinkanghu.app.model.data.page.DNursingDate;
+import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.select_date.ConfirmSelectDateEvent;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,6 +89,8 @@ public class ApoitNursingActivity extends Activity
 	private ArrayList<ArrayList<Integer>> m_typeListAll     = new ArrayList<>();
 	private String                        m_dateDescription = null;
 
+	private DApoitNursingPage m_apoitNursingPage = DNursingModule.GetInstance().getApoitNursingPage();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -126,43 +131,50 @@ public class ApoitNursingActivity extends Activity
 
 	private void updateDate()
 	{
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
 		//姓名
-		String name = DApoitNursingPage.GetInstance().getName();
+		String name = m_apoitNursingPage.getName();
 		if (TextUtils.isEmpty(name) == false)
 		{
 			m_nameTV.setText(name);
 		}
 
 		//手机号
-		String phone = DApoitNursingPage.GetInstance().getPhone();
+		String phone = m_apoitNursingPage.getPhone();
 		if (TextUtils.isEmpty(phone) == false)
 		{
 			m_phoneNumTV.setText(phone);
 		}
 
 		//性别
-		EnumConfig.SexType sexType = DApoitNursingPage.GetInstance().getSexType();
+		EnumConfig.SexType sexType = m_apoitNursingPage.getSexType();
 		if (sexType != null)
 		{
 			m_genderTV.setText(sexType.getName());
 		}
 
 		//年龄
-		EnumConfig.AgeRage ageRage = DApoitNursingPage.GetInstance().getAgeRage();
+		EnumConfig.AgeRage ageRage = m_apoitNursingPage.getAgeRage();
 		if (ageRage != null)
 		{
 			m_ageTV.setText(ageRage.getName());
 		}
 
 		//体重
-		EnumConfig.WeightRage weightRage = DApoitNursingPage.GetInstance().getWeightRage();
+		EnumConfig.WeightRage weightRage = m_apoitNursingPage.getWeightRage();
 		if (weightRage != null)
 		{
 			m_weightTV.setText(weightRage.getName());
 		}
 
 		//所在医院
-		int hospitalID = DApoitNursingPage.GetInstance().getHospitalID();
+		int hospitalID = m_apoitNursingPage.getHospitalID();
 		//01. 显示全部
 		if (hospitalID == 0)
 		{
@@ -183,7 +195,7 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//所在科室
-		int                    departmentID   = DApoitNursingPage.GetInstance().getDepartmenetID();
+		int                    departmentID   = m_apoitNursingPage.getDepartmenetID();
 		ArrayList<DDepartment> departmentList = DDepartmentList.GetInstance().getDepartments();
 		for (DDepartment department : departmentList)
 		{
@@ -195,17 +207,17 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//病人状态
-		EnumConfig.PatientState patientState = DApoitNursingPage.GetInstance().getPatientState();
+		EnumConfig.PatientState patientState = m_apoitNursingPage.getPatientState();
 		if (patientState != null)
 		{
 			m_patientStateTV.setText(patientState.getName());
 		}
 
 		//护理时间
-		DApoitNursingPage.DNursingDate dNursingDate = DApoitNursingPage.GetInstance().getNursingDate();
-		if (dNursingDate != null)
+		DNursingDate nursingDate = m_apoitNursingPage.getNursingDate();
+		if (nursingDate != null)
 		{
-			String dateDescription = dNursingDate.getDateDescription();
+			String dateDescription = nursingDate.getDateDescription();
 			m_serviceDateTV.setText(dateDescription);
 		}
 
@@ -415,19 +427,41 @@ public class ApoitNursingActivity extends Activity
 	public void setSexType(EnumConfig.SexType sexType)
 	{
 		m_genderTV.setText(sexType.getName());
-		DApoitNursingPage.GetInstance().setSexType(sexType);
+
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		m_apoitNursingPage.setSexType(sexType);
 	}
 
 	public void setAgeRage(EnumConfig.AgeRage ageRage)
 	{
 		m_ageTV.setText(ageRage.getName());
-		DApoitNursingPage.GetInstance().setAgeRage(ageRage);
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		m_apoitNursingPage.setAgeRage(ageRage);
 	}
 
 	public void setWeightRage(EnumConfig.WeightRage weightRage)
 	{
 		m_weightTV.setText(weightRage.getName());
-		DApoitNursingPage.GetInstance().setWeightRage(weightRage);
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		m_apoitNursingPage.setWeightRage(weightRage);
 	}
 
 	public void setDepartmentID(int departmentID)
@@ -443,7 +477,14 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//02. 保存到数据类中。
-		DApoitNursingPage.GetInstance().setDepartmenetID(departmentID);
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		m_apoitNursingPage.setDepartmenetID(departmentID);
 	}
 
 	public void setHospitalID(int hospitalID)
@@ -466,29 +507,50 @@ public class ApoitNursingActivity extends Activity
 			}
 		}
 		//03. 保存到数据类中。
-		DApoitNursingPage.GetInstance().setHospitalID(hospitalID);
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		m_apoitNursingPage.setHospitalID(hospitalID);
 	}
 
 	public void setPatientState(EnumConfig.PatientState patientState)
 	{
 		m_patientStateTV.setText(patientState.getName());
-		DApoitNursingPage.GetInstance().setPatientState(patientState);
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		m_apoitNursingPage.setPatientState(patientState);
 	}
 
 	public void confirmAction()
 	{
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
 		//姓名
 		String name = m_nameTV.getText().toString();
 		if (!TextUtils.isEmpty(name))
 		{
-			DApoitNursingPage.GetInstance().setName(name);
+			m_apoitNursingPage.setName(name);
 		}
 
 		//手机号码
 		String phone = m_phoneNumTV.getText().toString();
 		if (!TextUtils.isEmpty(phone))
 		{
-			DApoitNursingPage.GetInstance().setPhone(phone);
+			m_apoitNursingPage.setPhone(phone);
 		}
 
 	}
@@ -501,10 +563,17 @@ public class ApoitNursingActivity extends Activity
 		if (event == null)
 			return;
 
-		if (event.getdNursingDate() == null)
+		if (event.getNursingDate() == null)
 			return;
 
-		setDateDescription(event.getdNursingDate().getDateDescription());
-		DApoitNursingPage.GetInstance().setNursingDate(event.getdNursingDate());
+		if (m_apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		setDateDescription(event.getNursingDate().getDateDescription());
+		m_apoitNursingPage.setNursingDate(event.getNursingDate());
 	}
 }
