@@ -34,7 +34,8 @@ public class Config
 	//返回status
 	public enum PayStatus
 	{
-		PAY_STATUS_SUCCESS(AppUtil.GetResources().getString(R.string.pay_status_success),1);
+		PAY_STATUS_SUCCESS(AppUtil.GetResources().getString(R.string.pay_status_success),9000),
+		PAY_STATUS_PAY_RESULT_WAIT_CONFIRM(AppUtil.GetResources().getString(R.string.pay_status_pay_result_wait_confirm),8000);
 
 		private String m_name = null;
 		private int    m_id   = 0;
