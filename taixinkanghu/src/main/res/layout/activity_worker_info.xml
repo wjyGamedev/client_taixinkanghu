@@ -376,7 +376,7 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:text="￥"
-							android:textColor="@color/text_color_orange"
+							android:textColor="@color/date_select_green"
 							android:textSize="14.0sp"/>
 
 						<TextView
@@ -384,7 +384,7 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:text="180"
-							android:textColor="@color/text_color_orange"
+							android:textColor="@color/date_select_green"
 							android:textSize="23.0sp"/>
 
 						<TextView

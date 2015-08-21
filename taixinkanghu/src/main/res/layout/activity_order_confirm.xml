@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:textColor="@color/text_color_orange"
+                    android:textColor="@color/date_select_green"
                     android:textSize="14.0sp" />
             </LinearLayout>
 
@@ -379,7 +379,7 @@
                     android:gravity="right"
                     android:singleLine="true"
                     android:text="200元"
-                    android:textColor="@color/text_color_orange"
+                    android:textColor="@color/date_select_green"
                     android:textSize="14.0sp" />
             </LinearLayout>
 
@@ -414,7 +414,7 @@
                         android:gravity="right"
                         android:singleLine="true"
                         android:text="需支付200元"
-                        android:textColor="@color/date_select_orange"
+                        android:textColor="@color/date_select_green"
                         android:textSize="16.0sp" />
                 </LinearLayout>
 
@@ -608,7 +608,7 @@
                     android:layout_weight="1.0"
                     android:gravity="right"
                     android:singleLine="true"
-                    android:textColor="@color/date_select_orange"
+                    android:textColor="@color/date_select_green"
                     android:textSize="16.0sp" />
             </LinearLayout>
 

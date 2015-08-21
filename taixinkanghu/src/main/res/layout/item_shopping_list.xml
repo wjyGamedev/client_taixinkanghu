@@ -43,7 +43,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/currency_symbol"
-				android:textColor="@color/text_color_orange"
+				android:textColor="@color/date_select_green"
 				android:textSize="18sp"/>
 
 			<TextView
@@ -51,7 +51,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/item_price"
-				android:textColor="@color/text_color_orange"
+				android:textColor="@color/date_select_green"
 				android:textSize="18sp"/>
 
 		</LinearLayout>

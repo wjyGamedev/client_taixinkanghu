@@ -65,7 +65,7 @@
                     android:layout_weight="1.0"
                     android:gravity="right"
                     android:text="250"
-                    android:textColor="@color/text_color_orange"
+                    android:textColor="@color/date_select_green"
                     android:textSize="18.0sp" />
 
                 <TextView

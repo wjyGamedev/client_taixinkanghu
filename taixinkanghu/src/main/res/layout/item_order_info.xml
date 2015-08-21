@@ -171,7 +171,7 @@
 						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/unit_price_text"
-						android:textColor="@color/text_color_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="14.0sp"/>
 
 					<TextView
@@ -181,7 +181,7 @@
 						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/yuan_text"
-						android:textColor="@color/text_color_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="14.0sp"/>
 
 					<TextView
@@ -191,7 +191,7 @@
 						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/multiplication_sign_text"
-						android:textColor="@color/text_color_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="14.0sp"/>
 
 					<TextView
@@ -201,7 +201,7 @@
 						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/number_of_days_text"
-						android:textColor="@color/text_color_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="14.0sp"/>
 
 					<TextView
@@ -211,7 +211,7 @@
 						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/day_text"
-						android:textColor="@color/text_color_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="14.0sp"/>
 
 				</LinearLayout>
@@ -229,7 +229,7 @@
 						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/total_text"
-						android:textColor="@color/text_color_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="14.0sp"/>
 
 					<TextView
@@ -240,7 +240,7 @@
 						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/unit_price_text"
-						android:textColor="@color/text_color_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="14.0sp"/>
 
 					<TextView
@@ -250,7 +250,7 @@
 						android:gravity="right"
 						android:singleLine="true"
 						android:text="@string/yuan_text"
-						android:textColor="@color/text_color_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="14.0sp"/>
 
 				</LinearLayout>

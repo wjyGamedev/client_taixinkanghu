@@ -124,7 +124,7 @@
 						android:id="@+id/num_day"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:background="@color/date_select_orange"
+						android:background="@color/date_select_green"
 						android:gravity="center"
 						android:minWidth="24dp"
 						android:paddingLeft="3dp"
@@ -505,7 +505,7 @@
 						android:layout_height="wrap_content"
 						android:layout_marginRight="15dp"
 						android:text="￥180"
-						android:textColor="@color/date_select_orange"
+						android:textColor="@color/date_select_green"
 						android:textSize="18.0sp"/>
 				</LinearLayout>
 

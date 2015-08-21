@@ -136,7 +136,7 @@
 					android:layout_gravity="center"
 					android:layout_marginLeft="15dp"
 					android:text="@string/postage_colon_text"
-					android:textColor="@color/text_color_orange"
+					android:textColor="@color/date_select_green"
 					android:textSize="18sp"/>
 
 				<TextView
@@ -144,7 +144,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:text="@string/currency_symbol"
-					android:textColor="@color/text_color_orange"
+					android:textColor="@color/date_select_green"
 					android:textSize="18sp"/>
 
 				<TextView
@@ -152,7 +152,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:text="@string/item_price"
-					android:textColor="@color/text_color_orange"
+					android:textColor="@color/date_select_green"
 					android:textSize="18sp"/>
 
 				<TextView
@@ -163,7 +163,7 @@
 					android:layout_weight="1"
 					android:gravity="right"
 					android:text="@string/subtotal_colon_text"
-					android:textColor="@color/text_color_orange"
+					android:textColor="@color/date_select_green"
 					android:textSize="18sp"/>
 
 				<TextView
@@ -171,7 +171,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:text="@string/currency_symbol"
-					android:textColor="@color/text_color_orange"
+					android:textColor="@color/date_select_green"
 					android:textSize="18sp"/>
 
 				<TextView
@@ -180,7 +180,7 @@
 					android:layout_gravity="center"
 					android:layout_marginRight="15dp"
 					android:text="@string/item_price"
-					android:textColor="@color/text_color_orange"
+					android:textColor="@color/date_select_green"
 					android:textSize="18sp"/>
 
 			</LinearLayout>
