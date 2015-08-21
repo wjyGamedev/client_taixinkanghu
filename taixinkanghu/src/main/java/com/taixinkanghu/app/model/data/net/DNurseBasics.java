@@ -99,7 +99,11 @@ public class DNurseBasics implements Serializable
 		m_serviceChargePerNightCanntCare = response.getInt(NurseBasicListConfig.SERVICE_CHARGE_PER_NIGHT_CANNT_CARE);
 
 		itmp = response.getInt(NurseBasicListConfig.SERVICE_STATUS);
-		m_serviceStatus = NurseUtil.GetStatusByInteger(itmp);
+		EnumConfig.NurseServiceStatus nurseServiceStatus = EnumConfig.NurseServiceStatus.valueOf(itmp);
+		if (nurseServiceStatus != null)
+		{
+			m_serviceStatus = 	nurseServiceStatus.getName();
+		}
 
 		return true;
 	}
