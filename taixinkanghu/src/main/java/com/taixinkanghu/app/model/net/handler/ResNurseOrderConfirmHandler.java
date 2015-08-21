@@ -17,10 +17,8 @@ package com.taixinkanghu.app.model.net.handler;
 import com.taixinkanghu.app.model.data.DNurseOrder;
 import com.taixinkanghu.app.model.data.DNurserOrderList;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
-import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.NurseInServiceRTException;
 import com.taixinkanghu.app.model.net.IResponseListener;
 import com.taixinkanghu.app.model.net.config.ProtocalConfig;
-import com.taixinkanghu.app.model.net.event.recv.FailedNurseOrderConfirmEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderListEvent;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
@@ -45,16 +43,6 @@ public class ResNurseOrderConfirmHandler extends IResponseListener
 		{
 			//01. 返回nurse order list
 			DNurserOrderList.GetInstance().serialization(response);
-		}
-		catch (NurseInServiceRTException e)
-		{
-			RegisterDialog.GetInstance().setMsg(e.toString());
-			RegisterDialog.GetInstance().show();
-
-			//02. 选择护工处于服务状态，请重新选择。
-			FailedNurseOrderConfirmEvent event = new FailedNurseOrderConfirmEvent();
-			m_eventBus.post(event);
-			return;
 		}
 		catch (JsonSerializationException e)
 		{

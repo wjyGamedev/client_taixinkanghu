@@ -28,12 +28,9 @@ import com.taixinkanghu.app.model.data.DNurseSenior;
 import com.taixinkanghu.app.model.data.DNurseSeniorList;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
-import com.taixinkanghu.app.model.net.event.recv.FailedNurseOrderConfirmEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderListEvent;
-import com.taixinkanghu.app.ui.appointment_nursing.ReqApoitNursingEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.nurse_order_pay_page.NurseOrderPayActivity;
-import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
@@ -602,22 +599,6 @@ public class OrderConfirmActivity extends Activity
 		intent.putExtra(NurseOrderConfig.NURSE_ID, nurserID);
 		intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
 		startActivity(intent);
-		return;
-	}
-
-	//下订单失败，护工在服务中。
-	public void onEventMainThread(FailedNurseOrderConfirmEvent event)
-	{
-		//01. 清除DNurseOrderConfirm的数据
-		DNurseOrderConfirm.GetInstance().clearup();
-
-		//02. flush nurse basic list event
-		ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
-		m_eventBus.post(reqApoitNursingEvent);
-
-		//03. 跳转到选择nurse页面
-		startActivity(new Intent(this, SelectNurseActivity.class));
-
 		return;
 	}
 

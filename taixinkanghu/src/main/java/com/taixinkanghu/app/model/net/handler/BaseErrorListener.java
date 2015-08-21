@@ -22,6 +22,8 @@ import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class BaseErrorListener extends IErrorListener
 {
+	private Context m_context = null;
+
 	public BaseErrorListener(Context context)
 	{
 		m_context = context;
@@ -30,9 +32,9 @@ public class BaseErrorListener extends IErrorListener
 	@Override
 	public void onErrorResponse(VolleyError error)
 	{
-		RegisterDialog.GetInstance().setMsg(error.getMessage().toString());
+		RegisterDialog.GetInstance().setMsg(error.toString());
 		RegisterDialog.GetInstance().show();
+		return;
 	}
 
-	private Context m_context = null;
 }

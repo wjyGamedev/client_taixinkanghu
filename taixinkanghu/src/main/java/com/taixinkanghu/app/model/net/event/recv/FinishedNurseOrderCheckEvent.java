@@ -5,11 +5,11 @@
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p/>
+ * <p>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/8/19		WangJY		1.0.0		create
+ * 2015/8/21		WangJY		1.0.0		create
  */
 
 package com.taixinkanghu.app.model.net.event.recv;
@@ -17,10 +17,10 @@ package com.taixinkanghu.app.model.net.event.recv;
 import com.taixinkanghu.app.model.config.EventID;
 import com.taixinkanghu.app.model.net.event.BaseNetEvent;
 
-public class FailedNurseOrderConfirmEvent  extends BaseNetEvent
+public class FinishedNurseOrderCheckEvent extends BaseNetEvent
 {
-	public FailedNurseOrderConfirmEvent()
+	public FinishedNurseOrderCheckEvent()
 	{
-		super(EventID.FAILED_NURSE_ORDER_CONFIRM);
+		super(EventID.FINISHED_NURSE_ORDER_CHECK);
 	}
 }

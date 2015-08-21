@@ -16,12 +16,12 @@ package com.taixinkanghu.app.model.data;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
-import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.NurseInServiceRTException;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.config.ProtocalConfig;
 import com.taixinkanghu.util.android.AppUtil;
 import com.taixinkanghu.util.logcal.LogicalUtil;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,44 +58,27 @@ public class DNurserOrderList
 		if (!LogicalUtil.IsHttpSuccess(m_Status))
 		{
 			String errorMsg = response.getString(ProtocalConfig.HTTP_ERROR_MSG);
-			if (m_Status == NurseOrderConfig.NURSE_IN_SERVICE)
-			{
-				throw new NurseInServiceRTException(errorMsg);
-			}
-			else
-			{
-				throw new JsonSerializationException(errorMsg);
-			}
+			throw new JsonSerializationException(errorMsg);
 		}
 
 		//03. 序列化json
-//		JSONArray jsonArray = response.getJSONArray(NurseOrderConfig.NURSE_ORDER_LIST);
-//		if (jsonArray == null)
-//		{
-//			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
-//			throw new JsonSerializationException(errMsg + ":" + NurseOrderConfig.NURSE_ORDER_LIST);
-//		}
-//
-//		JSONObject  jsonObject = null;
-//		DNurseOrder nurseOrder = null;
-//		for (int index = 0; index < jsonArray.length(); index++)
-//		{
-//			jsonObject = (JSONObject)jsonArray.get(index);
-//			nurseOrder = new DNurseOrder();
-//			nurseOrder.serialization(jsonObject);
-//
-//			m_nurseOrders.add(nurseOrder);
-//		}
-		//测试流程
-		JSONObject jsonObject = response.getJSONObject(NurseOrderConfig.NURSE_ORDER_LIST);
-		if (jsonObject == null)
+		JSONArray jsonArray = response.getJSONArray(NurseOrderConfig.NURSE_ORDER_LIST);
+		if (jsonArray == null)
 		{
 			String errMsg = AppUtil.GetResources().getString(R.string.err_info_json_serilization);
 			throw new JsonSerializationException(errMsg + ":" + NurseOrderConfig.NURSE_ORDER_LIST);
 		}
-		DNurseOrder nurseOrder = new DNurseOrder();
-		nurseOrder.serialization(jsonObject);
-		m_nurseOrders.add(nurseOrder);
+
+		JSONObject  jsonObject = null;
+		DNurseOrder nurseOrder = null;
+		for (int index = 0; index < jsonArray.length(); index++)
+		{
+			jsonObject = (JSONObject)jsonArray.get(index);
+			nurseOrder = new DNurseOrder();
+			nurseOrder.serialization(jsonObject);
+
+			m_nurseOrders.add(nurseOrder);
+		}
 		return  true;
 
 	}

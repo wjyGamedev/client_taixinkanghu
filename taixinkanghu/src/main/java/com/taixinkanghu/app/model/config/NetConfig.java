@@ -44,6 +44,14 @@ public class NetConfig
 	//nurse order confirm
 	public final static String s_nurseOrderConfirmAddress = "http://"+IP_ADDREDD_TEST+"/order/preAddOrder/";
 
+	//nurse order check
+	public final static String s_nurseOrderCheckAddress = "http://"+IP_ADDREDD_TEST+"/order/checkOrder/";
+
+	//服务器异步通知页面路径
+	public static final String s_nurserOrderAlipayServerNoticePageURL = "http://"+IP_ADDREDD_TEST+"/order/payCallBack/";
+
 	//nurse order list address
 	public final static String s_nurseOrderListAddress = "http://"+IP_ADDREDD_TEST+"/";
+
+
 }

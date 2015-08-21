@@ -124,10 +124,10 @@ public class HandlerClickEventNurseOrderConfirm extends BaseHandleOnClickEvent
 				event.setAllDescription(allDescription);
 
 				String dayDescription   = nursingDate.getSchedualDayDescription();
-				event.setDayDescription(allDescription);
+				event.setDayDescription(dayDescription);
 
 				String nightDescription = nursingDate.getSchedualNightDescription();
-				event.setNightDescription(allDescription);
+				event.setNightDescription(nightDescription);
 
 				m_eventBus.post(event);
 

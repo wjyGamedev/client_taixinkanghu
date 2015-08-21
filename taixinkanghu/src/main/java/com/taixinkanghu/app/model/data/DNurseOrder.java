@@ -134,7 +134,6 @@ public class DNurseOrder
 		m_orderID = response.getInt(NurseOrderConfig.ORDER_ID);
 		m_orderSerialNum = response.getString(NurseOrderConfig.ORDER_SERIAL_NUM);
 
-
 		//service date
 		m_scheduleList.serialization(response);
 
