@@ -15,21 +15,21 @@
 package com.taixinkanghu.app.ui.select_date;
 
 import com.taixinkanghu.app.model.config.EventID;
+import com.taixinkanghu.app.model.data.page.DNursingDate;
 import com.taixinkanghu.app.model.event.ui.UIEvent;
-import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
 
 public class ConfirmSelectDateEvent extends UIEvent
 {
-	private DApoitNursingPage.DNursingDate m_dNursingDate = null;
+	private DNursingDate m_nursingDate = null;
 
-	public ConfirmSelectDateEvent(DApoitNursingPage.DNursingDate dNursingDate)
+	public ConfirmSelectDateEvent(DNursingDate nursingDate)
 	{
 		super(EventID.UI_SELECT_DATE_SURE);
-		m_dNursingDate = dNursingDate;
+		m_nursingDate = nursingDate;
 	}
 
-	public DApoitNursingPage.DNursingDate getdNursingDate()
+	public DNursingDate getNursingDate()
 	{
-		return m_dNursingDate;
+		return m_nursingDate;
 	}
 }
