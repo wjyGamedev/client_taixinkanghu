@@ -46,8 +46,7 @@
 	<string name="worker_evaluate_title">服务评价</string>
 
 	<!-- 基本内容信息-->
-	<string name="content_male">男</string>
-	<string name="content_female">女</string>
+
 	<string name="content_care_myself">可自理</string>
 	<string name="content_half_care_myself">半自理</string>
 	<string name="content_not_care_myself">不能自理</string>
@@ -61,13 +60,7 @@
 	<string name="content_confirm">确定</string>
 	<string name="content_patient_info">患者信息</string>
 
-	<!-- 护工订单状态-->
-	<string name="nurse_order_status_wait_payment">待支付</string>
-	<string name="nurse_order_status_wait_service">待服务</string>
-	<string name="nurse_order_status_in_service">服务中</string>
-	<string name="nurse_order_status_finished">已完成</string>
-	<string name="nurse_order_status_canceled">已取消</string>
-	<string name="nurse_order_status_wait_evaluation">待评价</string>
+
 
 
 
@@ -145,19 +138,9 @@
 	<string name="confirm_btn_text">确认</string>
 	<string name="name_text">姓名：</string>
 	<string name="name_hint_text">点击填写患者姓名</string>
-	<string name="btn_age_section_0_15_text">0岁至15岁</string>
-	<string name="btn_age_section_16_35_text">16岁至35岁</string>
-	<string name="btn_age_section_36_55_text">36岁至55岁</string>
-	<string name="btn_age_section_56_75_text">55岁至75岁</string>
-	<string name="btn_age_section_above_75_text">75岁以上</string>
-	<string name="btn_weight_section_0_35_text">0kg至35kg</string>
-	<string name="btn_weight_section_35_50_text">35kg至50kg</string>
-	<string name="btn_weight_section_50_80_text">50kg至80kg</string>
-	<string name="btn_weight_section_80_120_text">80kg至120kg</string>
-	<string name="btn_weight_section_above_120_text">120kg以上</string>
-	<string name="btn_state_care_myself_text">可自理</string>
-	<string name="btn_state_half_care_myself_text">半自理</string>
-	<string name="btn_state_not_care_myself_text">不能自理</string>
+
+
+
 
 	//陪护订单
 	<string name="evaluation_text">评价</string>
