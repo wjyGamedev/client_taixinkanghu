@@ -17,40 +17,49 @@
 		android:orientation="vertical">
 
 		<LinearLayout
-			android:layout_width="300dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingBottom="5dp"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="订单号："
+				android:textColor="@color/text_color_black"
+				android:textSize="14sp"/>
+
+			<TextView
+				android:id="@+id/order_serial_num_tv"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="201506172734270"
+				android:textColor="@color/text_color_black"
+				android:textSize="14.0sp"/>
+
+		</LinearLayout>
+
+		<include layout="@layout/item_dividing_line_horizontal"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
-			android:layout_marginBottom="20dp"
-			android:layout_marginTop="40dp"
+			android:background="@color/white"
 			android:orientation="vertical">
 
 			<LinearLayout
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
-				android:orientation="horizontal">
-
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:text="订单号："
-					android:textSize="20sp"/>
-
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:text="201506172734270"
-					android:textSize="20sp"
-					android:id="@+id/order_serial_num_tv"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
+				android:layout_marginBottom="30dp"
+				android:layout_marginTop="30dp"
 				android:orientation="horizontal">
 
 				<TextView
@@ -59,20 +68,21 @@
 					android:gravity="center"
 					android:text="￥"
 					android:textColor="@color/date_select_green"
-					android:textSize="60sp"/>
+					android:textSize="40sp"/>
 
 				<TextView
 					android:id="@+id/price_tv"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
-					android:text="5600"
+					android:text="660"
 					android:textColor="@color/date_select_green"
 					android:textSize="60sp"/>
 
 			</LinearLayout>
-
 		</LinearLayout>
+
+		<include layout="@layout/item_dividing_line_horizontal"/>
 
 		<LinearLayout
 			android:layout_width="match_parent"
@@ -121,7 +131,7 @@
 						<LinearLayout
 							android:id="@+id/item_cash"
 							android:layout_width="match_parent"
-							android:layout_height="55dp"
+							android:layout_height="60dp"
 							android:background="@color/white"
 							android:gravity="center_vertical"
 							android:orientation="horizontal"
@@ -173,7 +183,7 @@
 						<LinearLayout
 							android:id="@id/item_alipay"
 							android:layout_width="match_parent"
-							android:layout_height="55dp"
+							android:layout_height="60dp"
 							android:background="@color/white"
 							android:gravity="center_vertical"
 							android:orientation="horizontal"
@@ -225,7 +235,7 @@
 						<LinearLayout
 							android:id="@id/item_weixin"
 							android:layout_width="match_parent"
-							android:layout_height="55dp"
+							android:layout_height="60dp"
 							android:background="@color/white"
 							android:gravity="center_vertical"
 							android:orientation="horizontal"
@@ -282,7 +292,7 @@
 								style="@style/tick_radio_button_style"
 								android:layout_width="20dp"
 								android:layout_height="20dp"
-								android:layout_marginBottom="17.5dp"
+								android:layout_marginBottom="18dp"
 								android:layout_marginRight="15dp"
 								android:layout_marginTop="17.5dp"
 								android:background="@drawable/bg_radio_button_tick"/>
