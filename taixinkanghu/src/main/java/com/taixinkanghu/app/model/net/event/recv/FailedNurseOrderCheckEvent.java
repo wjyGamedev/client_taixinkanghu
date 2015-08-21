@@ -17,10 +17,10 @@ package com.taixinkanghu.app.model.net.event.recv;
 import com.taixinkanghu.app.model.config.EventID;
 import com.taixinkanghu.app.model.net.event.BaseNetEvent;
 
-public class FailedNurseOrderConfirmEvent  extends BaseNetEvent
+public class FailedNurseOrderCheckEvent extends BaseNetEvent
 {
-	public FailedNurseOrderConfirmEvent()
+	public FailedNurseOrderCheckEvent()
 	{
-		super(EventID.FAILED_NURSE_ORDER_CONFIRM);
+		super(EventID.FAILED_NURSE_ORDER_CHECK);
 	}
 }
