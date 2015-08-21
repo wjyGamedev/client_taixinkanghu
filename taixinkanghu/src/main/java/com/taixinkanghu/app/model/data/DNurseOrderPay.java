@@ -21,10 +21,11 @@ public class DNurseOrderPay
 {
 	private static DNurseOrderPay s_nurseOrderPay = new DNurseOrderPay();
 
-	private int m_nurseID        = DataConfig.DEFAULT_VALUE;    //护工ID
-	private int m_orderID        = DataConfig.DEFAULT_VALUE;    //订单ID，数据库主key，不是交易流水号。
-	private String m_orderSerialNum = null;    //订单流水号
-	private int m_totalPrice     = DataConfig.DEFAULT_VALUE;    //总价格
+	private String m_userID         = null;    //用户ID
+	private String m_orderID        = null;    //订单ID，数据库主key，不是交易流水号。
+
+	private String m_orderSerialNum = null;
+	private int m_totalPrice = DataConfig.DEFAULT_VALUE;
 
 	private DNurseOrderPay()
 	{
@@ -37,30 +38,32 @@ public class DNurseOrderPay
 
 	public void clearup()
 	{
-		m_nurseID = -1;
-		m_orderID = -1;
-		m_totalPrice = -1;
+		m_userID = null;
+		m_orderID = null;
+		m_orderSerialNum = null;
+		m_totalPrice = DataConfig.DEFAULT_VALUE;
 		return;
 	}
 
-	public int getNurseID()
+	public String getUserID()
 	{
-		return m_nurseID;
+		return m_userID;
 	}
 
-	public void setNurseID(int nurseID)
+	public void setUserID(String userID)
 	{
-		m_nurseID = nurseID;
+		m_userID = userID;
 	}
 
-	public int getOrderID()
+	public String getOrderID()
 	{
 		return m_orderID;
 	}
 
 	public void setOrderID(int orderID)
 	{
-		m_orderID = orderID;
+		m_orderID = String.valueOf(orderID);
+
 		DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByID(orderID);
 		if (nurseOrder == null)
 		{
@@ -72,6 +75,7 @@ public class DNurseOrderPay
 		m_orderSerialNum = nurseOrder.getOrderSerialNum();
 		m_totalPrice = nurseOrder.getTotalCharge();
 
+		return;
 	}
 
 	public String getOrderSerialNum()
@@ -83,5 +87,4 @@ public class DNurseOrderPay
 	{
 		return m_totalPrice;
 	}
-
 }
