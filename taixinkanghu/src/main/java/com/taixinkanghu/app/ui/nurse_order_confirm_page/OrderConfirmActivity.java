@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -74,12 +75,16 @@ public class OrderConfirmActivity extends Activity
 	private TextView m_userProtcolTV         = null;    //用户协议
 	private Button   m_confirmAppointmentBtn = null;    //确定预约
 
+	//测量高度用的LL
+	private LinearLayout m_measuringPatientStateHeightLL       = null;    //测量患者状态下拉框所需高度的LL
+	private Integer      m_selectPatientStateTitleHight        = 0;    //患者状态下拉框所需高度
+
 	//logical
 	private HandlerClickEventNurseOrderConfirm m_handlerClickEventNurseOrderConfirm = null;
 
 	private EventBus m_eventBus = EventBus.getDefault();
 
-	private final String UNIT_DAY = AppUtil.GetResources().getString(R.string.content_day);
+	private final String UNIT_DAY  = AppUtil.GetResources().getString(R.string.content_day);
 	private final String UNIT_YUAN = AppUtil.GetResources().getString(R.string.content_yuan);
 
 	@Override
@@ -90,18 +95,19 @@ public class OrderConfirmActivity extends Activity
 
 		init();
 		initListener();
+		getHight();
 
-//		boolean initFlag = DNurseOrderConfirm.GetInstance().isInitialized();
-//		if (initFlag == false)
-//		{
-			updateContent();
-			updateCharge();
-//		}
-//		else
-//		{
-//			setContent();
-//			setCharge();
-//		}
+		//		boolean initFlag = DNurseOrderConfirm.GetInstance().isInitialized();
+		//		if (initFlag == false)
+		//		{
+		updateContent();
+		updateCharge();
+		//		}
+		//		else
+		//		{
+		//			setContent();
+		//			setCharge();
+		//		}
 	}
 
 	@Override
@@ -181,6 +187,9 @@ public class OrderConfirmActivity extends Activity
 		m_handlerClickEventNurseOrderConfirm = new HandlerClickEventNurseOrderConfirm(this);
 
 		m_eventBus.register(this);
+
+		//测量高度用的LL
+		m_measuringPatientStateHeightLL = (LinearLayout)findViewById(R.id.measuring_height_patient_state);
 	}
 
 	private void initListener()
@@ -190,6 +199,15 @@ public class OrderConfirmActivity extends Activity
 
 		m_userProtcolTV.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
 		m_confirmAppointmentBtn.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
+	}
+
+	private void getHight()
+	{
+		int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+		int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+
+		m_measuringPatientStateHeightLL.measure(w, h);
+		m_selectPatientStateTitleHight = m_measuringPatientStateHeightLL.getMeasuredHeight();
 	}
 
 	private void updateContent()
@@ -366,7 +384,7 @@ public class OrderConfirmActivity extends Activity
 			return;
 		}
 
-		int nurseID = DNurseOrderConfirm.GetInstance().getNurseID();
+		int          nurseID     = DNurseOrderConfirm.GetInstance().getNurseID();
 		DNurseBasics nurseBasics = nurseBasicsList.getNurseBasicByID(nurseID);
 		if (nurseBasics == null)
 		{
@@ -446,7 +464,7 @@ public class OrderConfirmActivity extends Activity
 		}
 
 		//总价格
-		int totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
+		int    totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
 		String strTotalCharge = String.valueOf(totalCharge) + getResources().getString(R.string.content_yuan);
 		//ui
 		m_TotalChargeTV.setText(strTotalCharge);
@@ -457,9 +475,9 @@ public class OrderConfirmActivity extends Activity
 
 	private void setCharge()
 	{
-		int allNum       = DNurseOrderConfirm.GetInstance().getAllNum();
-		int chargePerAll = DNurseOrderConfirm.GetInstance().getChargePerAll();
-		String strAllNum = String.valueOf(allNum);
+		int    allNum       = DNurseOrderConfirm.GetInstance().getAllNum();
+		int    chargePerAll = DNurseOrderConfirm.GetInstance().getChargePerAll();
+		String strAllNum    = String.valueOf(allNum);
 
 		if (allNum != 0)
 		{
@@ -473,9 +491,9 @@ public class OrderConfirmActivity extends Activity
 			m_allRegionLL.setVisibility(View.GONE);
 		}
 
-		int dayNum       = DNurseOrderConfirm.GetInstance().getDayNum();
-		int chargePerDay = DNurseOrderConfirm.GetInstance().getChargePerDay();
-		String strDayNum = String.valueOf(dayNum);
+		int    dayNum       = DNurseOrderConfirm.GetInstance().getDayNum();
+		int    chargePerDay = DNurseOrderConfirm.GetInstance().getChargePerDay();
+		String strDayNum    = String.valueOf(dayNum);
 
 		if (dayNum != 0)
 		{
@@ -490,9 +508,9 @@ public class OrderConfirmActivity extends Activity
 		}
 
 
-		int nightNum       = DNurseOrderConfirm.GetInstance().getNightNum();
-		int chargePerNight = DNurseOrderConfirm.GetInstance().getChargePerNight();
-		String strNightNum = String.valueOf(nightNum);
+		int    nightNum       = DNurseOrderConfirm.GetInstance().getNightNum();
+		int    chargePerNight = DNurseOrderConfirm.GetInstance().getChargePerNight();
+		String strNightNum    = String.valueOf(nightNum);
 
 		if (nightNum != 0)
 		{
@@ -506,6 +524,11 @@ public class OrderConfirmActivity extends Activity
 			m_nightRegionLL.setVisibility(View.GONE);
 		}
 
+	}
+
+	public Integer getSelectPatientStateTitleHight()
+	{
+		return m_selectPatientStateTitleHight;
 	}
 
 	public void setPatientState(EnumConfig.PatientState patientState)
@@ -573,9 +596,9 @@ public class OrderConfirmActivity extends Activity
 	//下订单成功，跳转到支付页面。
 	public void onEventMainThread(FinishedNurseOrderListEvent event)
 	{
-		Intent intent = new Intent(this, NurseOrderPayActivity.class);
-		int nurserID = event.getNurseID();
-		int orderID = event.getOrderID();
+		Intent intent   = new Intent(this, NurseOrderPayActivity.class);
+		int    nurserID = event.getNurseID();
+		int    orderID  = event.getOrderID();
 		intent.putExtra(NurseOrderConfig.NURSE_ID, nurserID);
 		intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
 		startActivity(intent);
