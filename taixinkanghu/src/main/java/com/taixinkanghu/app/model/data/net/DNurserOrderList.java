@@ -15,6 +15,7 @@
 package com.taixinkanghu.app.model.data.net;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.config.ProtocalConfig;
@@ -106,5 +107,42 @@ public class DNurserOrderList
 
 		return null;
 	}
+
+	public synchronized ArrayList<DNurseOrder> getNurseOrdersAll()
+	{
+		return m_nurseOrders;
+	}
+
+	public synchronized ArrayList<DNurseOrder> getNurseOrdersWaitPay()
+	{
+		return getNurseOrdersByOrderStatus(EnumConfig.NurseOrderStatus.WAIT_PAYMENT);
+	}
+
+	public synchronized ArrayList<DNurseOrder> getNurseOrdersWaitService()
+	{
+		return getNurseOrdersByOrderStatus(EnumConfig.NurseOrderStatus.WAIT_SERVICE);
+	}
+
+	private synchronized ArrayList<DNurseOrder> getNurseOrdersByOrderStatus(EnumConfig.NurseOrderStatus orderStatus)
+	{
+		ArrayList<DNurseOrder> nurseOrdersByOrderStatus = new ArrayList<>();
+		if (m_nurseOrders == null || m_nurseOrders.isEmpty())
+		{
+			return null;
+		}
+
+		nurseOrdersByOrderStatus.clear();
+
+		for (DNurseOrder nurseOrder : m_nurseOrders)
+		{
+			if (nurseOrder.getOrderStatus() == orderStatus)
+			{
+				nurseOrdersByOrderStatus.add(nurseOrder);
+			}
+		}
+
+		return nurseOrdersByOrderStatus;
+	}
+
 }
 
