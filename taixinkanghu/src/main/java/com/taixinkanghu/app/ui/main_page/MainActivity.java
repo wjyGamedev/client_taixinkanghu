@@ -21,6 +21,7 @@ import com.taixinkanghu.app.model.controller.CMainPage;
 import com.taixinkanghu.app.model.data.net.DAccount;
 import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.data.page.DMainPage;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderListEvent;
 import com.taixinkanghu.app.ui.activity.MyWealthActivity;
 import com.taixinkanghu.app.ui.activity.NursOrderActivity;
 import com.taixinkanghu.app.ui.register_page.RegisterActivity;
@@ -31,6 +32,8 @@ import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnBeforeTabCh
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx.OnTabClickListener;
 import com.taixinkanghu.widget.tab_item.TabItem;
 
+import de.greenrobot.event.EventBus;
+
 public class MainActivity extends FragmentActivity
 {
 	private FragmentTabHostEx          m_fragmentTabHost            = null;
@@ -40,6 +43,8 @@ public class MainActivity extends FragmentActivity
 	private ImpBeforeTabChangeListener m_impBeforeTabChangeListener = null;
 	private ImpAfterTabChangeListener  m_impAfterTabChangeListener  = null;
 	private ImpTabChangeListener       m_impTabChangeListener       = null;
+
+	private EventBus m_eventBus = EventBus.getDefault();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -230,6 +235,13 @@ public class MainActivity extends FragmentActivity
 	{
 		if (DAccount.GetInstance().isRegisterSuccess())
 		{
+			//01. 发送event，请求获取nurse order list
+			ReqNurseOrderListEvent reqNurseOrderListEvent = new ReqNurseOrderListEvent();
+			String userID = DAccount.GetInstance().getId();
+			reqNurseOrderListEvent.setUserID(userID);
+			m_eventBus.post(reqNurseOrderListEvent);
+
+			//02. 跳转页面到nurse order
 			startActivity(new Intent(MainActivity.this, NursOrderActivity.class));
 		}
 		else
