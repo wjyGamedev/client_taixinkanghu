@@ -17,7 +17,6 @@ package com.taixinkanghu.app.model.data.net;
 import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.EnumConfig.PatientState;
-import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.util.nurse.NurseUtil;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
@@ -35,7 +34,7 @@ public class DNurseBasics implements Serializable
 	private int    m_ID           = 0;          //ID
 	private int    m_hospitalID   = 0;             //hospital ID
 	private String m_name         = null;      //姓名
-	private String m_sex          = null;      //性别
+	private String m_gender       = null;      //性别
 	private int    m_starLevel    = 0;            //星级
 	private int    m_age          = 0;         //年龄
 	private String m_homeTown     = null;    //籍贯
@@ -63,17 +62,10 @@ public class DNurseBasics implements Serializable
 		m_hospitalID = response.getInt(NurseBasicListConfig.HOSPITAL_ID);
 		m_name = response.getString(NurseBasicListConfig.NAME);
 		int genderType = response.getInt(NurseBasicListConfig.GENDER);
-		if (genderType == EnumConfig.SexType.MALE.getId())
+		EnumConfig.GenderStatus genderStatus = EnumConfig.GenderStatus.valueOf(genderType);
+		if (genderStatus != null)
 		{
-			m_sex = EnumConfig.SexType.MALE.getName();
-		}
-		else if (genderType == EnumConfig.SexType.FEMALE.getId())
-		{
-			m_sex = EnumConfig.SexType.FEMALE.getName();
-		}
-		else
-		{
-			throw new JsonSerializationException("genderType is invalid![genderType:"+genderType+"]");
+			m_gender = genderStatus.getName();
 		}
 
 		m_starLevel = response.getInt(NurseBasicListConfig.STAR_LEVEL);
@@ -123,9 +115,9 @@ public class DNurseBasics implements Serializable
 		return m_name;
 	}
 
-	public String getSex()
+	public String getGender()
 	{
-		return m_sex;
+		return m_gender;
 	}
 
 	public int getStarLevel()
