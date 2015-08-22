@@ -21,40 +21,48 @@ import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class DNurseOrderPayPage
 {
-	private static DNurseOrderPayPage s_nurseOrderPay = new DNurseOrderPayPage();
+	private String m_userID     = null;    //用户ID
+	private Object m_syncUserID = new Object();
 
-	private String m_userID  = null;    //用户ID
-	private String m_orderID = null;    //订单ID，数据库主key，不是交易流水号。
-
+	private String m_orderID        = null;    //订单ID，数据库主key，不是交易流水号。
 	private String m_orderSerialNum = null;
 	private int    m_totalPrice     = DataConfig.DEFAULT_VALUE;
+	private Object m_syncOrderTotal = new Object();
 
-	private DNurseOrderPayPage()
+	public DNurseOrderPayPage()
 	{
-	}
-
-	public static DNurseOrderPayPage GetInstance()
-	{
-		return s_nurseOrderPay;
 	}
 
 	public void clearup()
 	{
-		m_userID = null;
-		m_orderID = null;
-		m_orderSerialNum = null;
-		m_totalPrice = DataConfig.DEFAULT_VALUE;
+		synchronized (m_syncUserID)
+		{
+			m_userID = null;
+		}
+
+		synchronized (m_syncOrderTotal)
+		{
+			m_orderID = null;
+			m_orderSerialNum = null;
+			m_totalPrice = DataConfig.DEFAULT_VALUE;
+		}
 		return;
 	}
 
 	public String getUserID()
 	{
-		return m_userID;
+		synchronized (m_syncUserID)
+		{
+			return m_userID;
+		}
 	}
 
 	public void setUserID(String userID)
 	{
-		m_userID = userID;
+		synchronized (m_syncUserID)
+		{
+			m_userID = userID;
+		}
 	}
 
 	public String getOrderID()
@@ -64,29 +72,38 @@ public class DNurseOrderPayPage
 
 	public void setOrderID(int orderID)
 	{
-		m_orderID = String.valueOf(orderID);
-
-		DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByID(orderID);
-		if (nurseOrder == null)
+		synchronized (m_syncOrderTotal)
 		{
-			RegisterDialog.GetInstance().setMsg("nurseOrder == null!Input order is invalid![orderID:=" + orderID + "]");
-			RegisterDialog.GetInstance().show();
+			m_orderID = String.valueOf(orderID);
+
+			DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByID(orderID);
+			if (nurseOrder == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseOrder == null!Input order is invalid![orderID:=" + orderID + "]");
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			m_orderSerialNum = nurseOrder.getOrderSerialNum();
+			m_totalPrice = nurseOrder.getTotalCharge();
+
 			return;
 		}
-
-		m_orderSerialNum = nurseOrder.getOrderSerialNum();
-		m_totalPrice = nurseOrder.getTotalCharge();
-
-		return;
 	}
 
 	public String getOrderSerialNum()
 	{
-		return m_orderSerialNum;
+		synchronized (m_syncOrderTotal)
+		{
+			return m_orderSerialNum;
+		}
 	}
 
 	public int getTotalPrice()
 	{
-		return m_totalPrice;
+		synchronized (m_syncOrderTotal)
+		{
+			return m_totalPrice;
+		}
 	}
 }
