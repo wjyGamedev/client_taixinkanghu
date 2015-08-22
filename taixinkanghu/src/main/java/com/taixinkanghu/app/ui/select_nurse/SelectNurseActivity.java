@@ -57,6 +57,7 @@ public class SelectNurseActivity  extends Activity
 	@Override
 	protected void onStart()
 	{
+		updateContent();
 		initGlobalData();
 		super.onStart();
 	}
@@ -123,12 +124,16 @@ public class SelectNurseActivity  extends Activity
 		m_eventBus.register(this);
 	}
 
+	private void updateContent()
+	{
+		m_selectNurseAdapter.notifyDataSetChanged();
+	}
 	/**
 	 * EventBus  handler
 	 */
 	public void onEventMainThread(FinishedNurseBasicListEvent event)
 	{
-		m_selectNurseAdapter.notifyDataSetChanged();
+		updateContent();
 	}
 
 
