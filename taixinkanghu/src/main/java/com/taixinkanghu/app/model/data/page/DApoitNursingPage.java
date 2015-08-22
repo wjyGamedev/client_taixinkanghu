@@ -30,8 +30,8 @@ public class DApoitNursingPage implements Serializable
 	private Object m_syncPhone = new Object();
 
 	//性别：男，女
-	private EnumConfig.SexType m_sexType    = null;
-	private Object             m_syncGender = new Object();
+	private EnumConfig.GenderStatus m_genderStatus = null;
+	private Object                  m_syncGender   = new Object();
 
 	//年龄
 	private EnumConfig.AgeRage m_ageRage     = null;
@@ -46,7 +46,8 @@ public class DApoitNursingPage implements Serializable
 	private Object m_syncHospitalID = new Object();
 
 	//科室
-	private int    m_departmenetID     = DataConfig.DEFAULT_VALUE;;
+	private int m_departmenetID = DataConfig.DEFAULT_VALUE;
+	;
 	private Object m_syncDepartmenetID = new Object();
 
 	//病人状态
@@ -71,7 +72,7 @@ public class DApoitNursingPage implements Serializable
 
 		synchronized (m_syncGender)
 		{
-			m_sexType = null;
+			m_genderStatus = null;
 		}
 
 		synchronized (m_syncAgeRage)
@@ -138,19 +139,19 @@ public class DApoitNursingPage implements Serializable
 		}
 	}
 
-	public EnumConfig.SexType getSexType()
+	public EnumConfig.GenderStatus getGenderStatus()
 	{
 		synchronized (m_syncGender)
 		{
-			return m_sexType;
+			return m_genderStatus;
 		}
 	}
 
-	public void setSexType(EnumConfig.SexType sexType)
+	public void setGenderStatus(EnumConfig.GenderStatus genderStatus)
 	{
 		synchronized (m_syncGender)
 		{
-			m_sexType = sexType;
+			m_genderStatus = genderStatus;
 		}
 	}
 
