@@ -246,7 +246,7 @@ public class NurseInfoActivity extends Activity
 		m_nameTV.setText(m_nurseBasics.getName());
 		m_nuringLevelTV.setText(m_nurseBasics.getNursingLevel());
 		m_jobNumTV.setText(String.valueOf(m_nurseBasics.getID()));
-		m_sexTV.setText(m_nurseBasics.getSex());
+		m_sexTV.setText(m_nurseBasics.getGender());
 		m_NuringExpTV.setText(m_nurseBasics.getNursingExp());
 		m_ageTV.setText(String.valueOf(m_nurseBasics.getAge()));
 		m_hometownTV.setText(m_nurseBasics.getHomeTown());
