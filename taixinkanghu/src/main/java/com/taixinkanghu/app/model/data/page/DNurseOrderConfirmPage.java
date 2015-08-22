@@ -18,195 +18,345 @@ import java.io.Serializable;
 
 public class DNurseOrderConfirmPage implements Serializable
 {
-	private static DNurseOrderConfirmPage s_nurseOrderConfirm = new DNurseOrderConfirmPage();
-
 	private int    m_nurseID             = -1;    //护工ID
+	private Object m_syncNurseID = new Object();
+
 	private int    m_nurseHeaderImgResID = -1;    //护工头像ID
+	private Object m_syncNurseHeaderImgResID = new Object();
+
 	private String m_nurseName           = null;    //护工名字
+	private Object m_syncNurseName = new Object();
+
 	private String m_nurseJobNum         = null;    //护工的工号
+	private Object m_syncNurseJobNum = new Object();
+
 	private String m_nursingLevel        = null;    //护理级别
+	private Object m_syncNursingLevel = new Object();
+
 	private String m_serviceDate         = null;    //服务时间
+	private Object m_syncServiceDate = new Object();
+
 	private String m_serviceAddress      = null;    //服务地点
+	private Object m_syncServiceAddress = new Object();
 
 	private int m_allNum   = 0;    //全天24小时服务的天数
+	private Object m_syncAllNum = new Object();
+
 	private int m_dayNum   = 0;    //白天12小时服务的天数
+	private Object m_syncDayNum = new Object();
+
 	private int m_nightNum = 0;    //夜间12小时服务的天数
+	private Object m_syncNightNum = new Object();
 
 	private int m_chargePerAll   = 0;    //全天24小时服务的单价
+	private Object m_syncChargePerAll = new Object();
+
 	private int m_chargePerDay   = 0;    //白天12小时服务的单价
+	private Object m_syncChargePerDay = new Object();
+
 	private int m_chargePerNight = 0;    //夜间12小时服务的单价
+	private Object m_syncChargePerNight = new Object();
+
 	private int m_totalCharge    = 0;    //合计
+	private Object m_syncTotalCharge = new Object();
 
-	private DNurseOrderConfirmPage()
+	public DNurseOrderConfirmPage()
 	{}
-
-	public static DNurseOrderConfirmPage GetInstance()
-	{
-		return s_nurseOrderConfirm;
-	}
 
 	public void clearup()
 	{
-		m_nurseID = -1;    //护工ID
-		m_nurseHeaderImgResID = -1;    //护工头像ID
-		m_nurseName = null;    //护工名字
-		m_nurseJobNum = null;    //护工的工号
-		m_nursingLevel = null;    //护理级别
-		m_serviceDate = null;    //服务时间
-		m_serviceAddress = null;    //服务地点
+		synchronized (m_syncNurseID)
+		{
+			m_nurseID = -1;    //护工ID
+		}
 
-		m_allNum = 0;    //全天24小时服务的天数
-		m_dayNum      = 0;    //白天12小时服务的天数
-		m_nightNum    = 0;    //夜间12小时服务的天数
+		synchronized (m_syncNurseHeaderImgResID)
+		{
+			m_nurseHeaderImgResID = -1;    //护工头像ID
+		}
 
-		m_chargePerAll = 0;	//全天24小时服务的单价
-		m_chargePerDay = 0;	//白天12小时服务的单价
-		m_chargePerNight = 0;	//夜间12小时服务的单价
-		m_totalCharge = 0;    //合计
-	}
+		synchronized (m_syncNurseName)
+		{
+			m_nurseName = null;    //护工名字
+		}
 
-	public boolean isInitialized()
-	{
-		return (m_nurseID != -1);
+		synchronized (m_syncNurseJobNum)
+		{
+			m_nurseJobNum = null;    //护工的工号
+		}
+
+		synchronized (m_syncNursingLevel)
+		{
+			m_nursingLevel = null;    //护理级别
+		}
+
+		synchronized (m_syncServiceDate)
+		{
+			m_serviceDate = null;    //服务时间
+		}
+
+		synchronized (m_syncServiceAddress)
+		{
+			m_serviceAddress = null;    //服务地点
+		}
+
+		synchronized (m_syncAllNum)
+		{
+			m_allNum = 0;    //全天24小时服务的天数
+		}
+
+		synchronized (m_syncDayNum)
+		{
+			m_dayNum = 0;    //白天12小时服务的天数
+		}
+
+		synchronized (m_syncNightNum)
+		{
+			m_nightNum = 0;    //夜间12小时服务的天数
+		}
+
+		synchronized (m_syncChargePerAll)
+		{
+			m_chargePerAll = 0;    //全天24小时服务的单价
+		}
+
+		synchronized (m_syncChargePerDay	)
+		{
+			m_chargePerDay = 0;    //白天12小时服务的单价
+		}
+
+		synchronized (m_syncChargePerNight)
+		{
+			m_chargePerNight = 0;    //夜间12小时服务的单价
+		}
+
+		synchronized (m_syncTotalCharge)
+		{
+			m_totalCharge = 0;    //合计
+		}
 	}
 
 	public int getNurseID()
 	{
-		return m_nurseID;
+		synchronized (m_syncNurseID)
+		{
+			return m_nurseID;
+		}
 	}
 
 	public void setNurseID(int nurseID)
 	{
-		m_nurseID = nurseID;
+		synchronized (m_syncNurseID)
+		{
+			m_nurseID = nurseID;
+		}
 	}
 
 	public int getNurseHeaderImgResID()
 	{
-		return m_nurseHeaderImgResID;
+		synchronized (m_syncNurseHeaderImgResID)
+		{
+			return m_nurseHeaderImgResID;
+		}
 	}
 
 	public void setNurseHeaderImgResID(int nurseHeaderImgResID)
 	{
-		m_nurseHeaderImgResID = nurseHeaderImgResID;
+		synchronized (m_syncNurseHeaderImgResID)
+		{
+			m_nurseHeaderImgResID = nurseHeaderImgResID;
+		}
 	}
 
 	public String getNurseName()
 	{
-		return m_nurseName;
+		synchronized (m_syncNurseName)
+		{
+			return m_nurseName;
+		}
 	}
 
 	public void setNurseName(String nurseName)
 	{
-		m_nurseName = nurseName;
+		synchronized (m_syncNurseName)
+		{
+			m_nurseName = nurseName;
+		}
 	}
 
 	public String getNurseJobNum()
 	{
-		return m_nurseJobNum;
+		synchronized (m_syncNurseJobNum)
+		{
+			return m_nurseJobNum;
+		}
 	}
 
 	public void setNurseJobNum(String nurseJobNum)
 	{
-		m_nurseJobNum = nurseJobNum;
+		synchronized (m_syncNurseJobNum)
+		{
+			m_nurseJobNum = nurseJobNum;
+		}
 	}
 
 	public String getNursingLevel()
 	{
-		return m_nursingLevel;
+		synchronized (m_syncNursingLevel)
+		{
+			return m_nursingLevel;
+		}
 	}
 
 	public void setNursingLevel(String nursingLevel)
 	{
-		m_nursingLevel = nursingLevel;
+		synchronized (m_syncNursingLevel)
+		{
+			m_nursingLevel = nursingLevel;
+		}
 	}
 
 	public String getServiceDate()
 	{
-		return m_serviceDate;
+		synchronized (m_syncServiceDate)
+		{
+			return m_serviceDate;
+		}
 	}
 
 	public void setServiceDate(String serviceDate)
 	{
-		m_serviceDate = serviceDate;
+		synchronized (m_syncServiceDate)
+		{
+			m_serviceDate = serviceDate;
+		}
 	}
 
 	public String getServiceAddress()
 	{
-		return m_serviceAddress;
+		synchronized (m_syncServiceAddress)
+		{
+			return m_serviceAddress;
+		}
 	}
 
 	public void setServiceAddress(String serviceAddress)
 	{
-		m_serviceAddress = serviceAddress;
+		synchronized (m_syncServiceAddress)
+		{
+			m_serviceAddress = serviceAddress;
+		}
 	}
 
 	public int getAllNum()
 	{
-		return m_allNum;
+		synchronized (m_syncAllNum)
+		{
+			return m_allNum;
+		}
 	}
 
 	public void setAllNum(int allNum)
 	{
-		m_allNum = allNum;
+		synchronized (m_syncAllNum)
+		{
+			m_allNum = allNum;
+		}
 	}
 
 	public int getDayNum()
 	{
-		return m_dayNum;
+		synchronized (m_syncDayNum)
+		{
+			return m_dayNum;
+		}
 	}
 
 	public void setDayNum(int dayNum)
 	{
-		m_dayNum = dayNum;
+		synchronized (m_syncDayNum)
+		{
+			m_dayNum = dayNum;
+		}
 	}
 
 	public int getNightNum()
 	{
-		return m_nightNum;
+		synchronized (m_syncNightNum)
+		{
+			return m_nightNum;
+		}
 	}
 
 	public void setNightNum(int nightNum)
 	{
-		m_nightNum = nightNum;
+		synchronized (m_syncNightNum)
+		{
+			m_nightNum = nightNum;
+		}
 	}
 
 	public int getChargePerAll()
 	{
-		return m_chargePerAll;
+		synchronized (m_syncChargePerAll)
+		{
+			return m_chargePerAll;
+		}
 	}
 
 	public void setChargePerAll(int chargePerAll)
 	{
-		m_chargePerAll = chargePerAll;
+		synchronized (m_syncChargePerAll)
+		{
+			m_chargePerAll = chargePerAll;
+		}
 	}
 
 	public int getChargePerDay()
 	{
-		return m_chargePerDay;
+		synchronized (m_syncChargePerDay)
+		{
+			return m_chargePerDay;
+		}
 	}
 
 	public void setChargePerDay(int chargePerDay)
 	{
-		m_chargePerDay = chargePerDay;
+		synchronized (m_syncChargePerDay)
+		{
+			m_chargePerDay = chargePerDay;
+		}
 	}
 
 	public int getChargePerNight()
 	{
-		return m_chargePerNight;
+		synchronized (m_syncChargePerNight)
+		{
+			return m_chargePerNight;
+		}
 	}
 
 	public void setChargePerNight(int chargePerNight)
 	{
-		m_chargePerNight = chargePerNight;
+		synchronized (m_syncChargePerNight)
+		{
+			m_chargePerNight = chargePerNight;
+		}
 	}
 
 	public int getTotalCharge()
 	{
-		return m_totalCharge;
+		synchronized (m_syncTotalCharge)
+		{
+			return m_totalCharge;
+		}
 	}
 
 	public void setTotalCharge(int totalCharge)
 	{
-		m_totalCharge = totalCharge;
+		synchronized (m_syncTotalCharge)
+		{
+			m_totalCharge = totalCharge;
+		}
 	}
 }
