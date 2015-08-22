@@ -65,10 +65,10 @@ public class SelectSexFragment extends Fragment implements View.OnClickListener
 		switch (v.getId())
 		{
 			case R.id.btn_Male:
-				patientActivity.setSexType(EnumConfig.SexType.MALE);
+				patientActivity.setGenderStatus(EnumConfig.GenderStatus.MALE);
 				break;
 			case R.id.btn_Female:
-				patientActivity.setSexType(EnumConfig.SexType.FEMALE);
+				patientActivity.setGenderStatus(EnumConfig.GenderStatus.FEMALE);
 				break;
 		}
 		//蒙版点击一下之后消失的处理
