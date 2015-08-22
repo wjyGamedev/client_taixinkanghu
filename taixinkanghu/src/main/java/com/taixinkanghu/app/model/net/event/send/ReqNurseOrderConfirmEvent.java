@@ -29,6 +29,7 @@ public class ReqNurseOrderConfirmEvent extends BaseNetEvent
 	private int    m_hospitalID       = DEFAULT_VALUE;
 	private String m_userID           = null;
 	private int m_nurseID = DEFAULT_VALUE;
+	private int m_nurseDepartmentID = DEFAULT_VALUE;
 	private String m_phoneNum         = null;
 	private String m_patientName      = null;
 	private int    m_genderID         = DEFAULT_VALUE;
@@ -74,6 +75,16 @@ public class ReqNurseOrderConfirmEvent extends BaseNetEvent
 	public void setNurseID(int nurseID)
 	{
 		m_nurseID = nurseID;
+	}
+
+	public int getNurseDepartmentID()
+	{
+		return m_nurseDepartmentID;
+	}
+
+	public void setNurseDepartmentID(int nurseDepartmentID)
+	{
+		m_nurseDepartmentID = nurseDepartmentID;
 	}
 
 	public String getPhoneNum()
@@ -201,6 +212,10 @@ public class ReqNurseOrderConfirmEvent extends BaseNetEvent
 		if (m_nurseID != DEFAULT_VALUE)
 		{
 			nurseOrderConfirm.put(NurseOrderConfig.NURSE_ID, String.valueOf(m_nurseID));
+		}
+		if (m_nurseDepartmentID != DEFAULT_VALUE)
+		{
+			nurseOrderConfirm.put(NurseOrderConfig.DEPARTMENT_ID, String.valueOf(m_nurseDepartmentID));
 		}
 		if (!TextUtils.isEmpty(m_phoneNum))
 		{
