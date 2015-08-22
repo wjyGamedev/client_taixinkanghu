@@ -19,7 +19,7 @@ import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.taixinkanghu.R;
-import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.page.DNursingDate;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
 
 import java.util.ArrayList;
@@ -63,8 +63,8 @@ public class HandleClickEventOnActivity extends BaseHandleOnClickEvent
 				ArrayList<ArrayList<Integer>> typeListAll = selectDateActivity.getSchedularTypeListAll();
 				String dateDescription = selectDateActivity.getDateDescription();
 
-				DApoitNursingPage.DNursingDate dNursingDate = new DApoitNursingPage.DNursingDate(beginDate, endDate, dateListAll, typeListAll, dateDescription);
-				ConfirmSelectDateEvent event = new ConfirmSelectDateEvent(dNursingDate);
+				DNursingDate nursingDate = new DNursingDate(beginDate, endDate, dateListAll, typeListAll, dateDescription);
+				ConfirmSelectDateEvent event = new ConfirmSelectDateEvent(nursingDate);
 				m_eventBus.post(event);
 				break;
 			}
