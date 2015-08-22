@@ -16,6 +16,7 @@ package com.taixinkanghu.app.ui.appointment_nursing;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -101,12 +102,12 @@ public class SelectDepartmentFragment extends Fragment implements View.OnTouchLi
 		}
 
 		//02. 科室列表，则在本地动态显示。
-		int size = departments.size();
-		int iMaxColumn = UIConfig.SELECT_DEPARTMENT_FRAGMENT_MAX_COLUMN;
-		int iMaxRow = (size + iMaxColumn - 1)/iMaxColumn;
-		int indexHospital = 0;
-		DDepartment department = null;
-		String tag = null;
+		int         size          = departments.size();
+		int         iMaxColumn    = UIConfig.SELECT_DEPARTMENT_FRAGMENT_MAX_COLUMN;
+		int         iMaxRow       = (size + iMaxColumn - 1) / iMaxColumn;
+		int         indexHospital = 0;
+		DDepartment department    = null;
+		String      tag           = null;
 		for (int indexRow = 0; indexRow < iMaxRow; ++indexRow)
 		{
 			for (int indexColumn = 0; indexColumn < iMaxColumn; ++indexColumn)
@@ -127,12 +128,19 @@ public class SelectDepartmentFragment extends Fragment implements View.OnTouchLi
 
 				String name = department.getName();
 				btn.setText(name);
+
+				DisplayMetrics metric = new DisplayMetrics();
+				getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+				int windowWidth = metric.widthPixels; // 屏幕宽度（像素）
+				//				int height = metric.heightPixels; // 屏幕高度（像素）
+
+				btn.setWidth(windowWidth / 2);
 				m_buttons.add(btn);
 
 				//设置它的行和列
 				GridLayout.Spec rowSpec = GridLayout.spec(indexRow);
-				GridLayout.Spec columnSpec=GridLayout.spec(indexColumn);
-				GridLayout.LayoutParams params=new GridLayout.LayoutParams(rowSpec,columnSpec);
+				GridLayout.Spec columnSpec = GridLayout.spec(indexColumn);
+				GridLayout.LayoutParams params = new GridLayout.LayoutParams(rowSpec, columnSpec);
 				params.setGravity(Gravity.FILL);
 				m_gridLayout.addView(view, params);
 			}
