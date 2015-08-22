@@ -153,10 +153,10 @@ public class ApoitNursingActivity extends Activity
 		}
 
 		//性别
-		EnumConfig.SexType sexType = m_apoitNursingPage.getSexType();
-		if (sexType != null)
+		EnumConfig.GenderStatus genderStatus = m_apoitNursingPage.getGenderStatus();
+		if (genderStatus != null)
 		{
-			m_genderTV.setText(sexType.getName());
+			m_genderTV.setText(genderStatus.getName());
 		}
 
 		//年龄
@@ -424,9 +424,9 @@ public class ApoitNursingActivity extends Activity
 	}
 
 	//数据设置
-	public void setSexType(EnumConfig.SexType sexType)
+	public void setGenderStatus(EnumConfig.GenderStatus genderStatus)
 	{
-		m_genderTV.setText(sexType.getName());
+		m_genderTV.setText(genderStatus.getName());
 
 		if (m_apoitNursingPage == null)
 		{
@@ -435,7 +435,7 @@ public class ApoitNursingActivity extends Activity
 			return;
 		}
 
-		m_apoitNursingPage.setSexType(sexType);
+		m_apoitNursingPage.setGenderStatus(genderStatus);
 	}
 
 	public void setAgeRage(EnumConfig.AgeRage ageRage)
