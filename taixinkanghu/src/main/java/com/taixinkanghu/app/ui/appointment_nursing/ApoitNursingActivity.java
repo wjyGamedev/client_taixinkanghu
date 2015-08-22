@@ -18,7 +18,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -32,8 +34,6 @@ import com.taixinkanghu.app.model.data.net.DHospital;
 import com.taixinkanghu.app.model.data.net.DHospitalList;
 import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
 import com.taixinkanghu.app.model.data.page.DGlobal;
-import com.taixinkanghu.app.model.data.page.DNursingDate;
-import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.select_date.ConfirmSelectDateEvent;
@@ -41,6 +41,8 @@ import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.greenrobot.event.EventBus;
 
@@ -50,6 +52,7 @@ public class ApoitNursingActivity extends Activity
 	private HeaderCommon m_headerCommon         = null;    //title：预约陪护
 	private LinearLayout m_nameRegionLL         = null;    //姓名点击区域
 	private EditText     m_nameTV               = null;    //姓名
+	private LinearLayout m_phoneNumRegionLL    = null;    //手机号码区域
 	private EditText     m_phoneNumTV           = null;    //手机号码
 	private LinearLayout m_genderRegionLL       = null;    //性别点击区域
 	private TextView     m_genderTV             = null;     //性别
@@ -238,6 +241,7 @@ public class ApoitNursingActivity extends Activity
 
 		m_nameRegionLL = (LinearLayout)findViewById(R.id.name_region_ll);
 		m_nameTV = (EditText)findViewById(R.id.name_tv);
+		m_phoneNumRegionLL = (LinearLayout)findViewById(R.id.phone_num_region_ll);
 		m_phoneNumTV = (EditText)findViewById(R.id.phone_num_tv);
 		m_genderRegionLL = (LinearLayout)findViewById(R.id.gender_region_ll);
 		m_genderTV = (TextView)findViewById(R.id.gender_tv);
@@ -272,6 +276,7 @@ public class ApoitNursingActivity extends Activity
 	{
 		//01. 点击区域
 		m_nameRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
+		m_phoneNumRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_genderRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_ageRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
 		m_weightRegionLL.setOnClickListener(m_handlerClickEventAppointmentNursing);
@@ -421,6 +426,35 @@ public class ApoitNursingActivity extends Activity
 	public void setNameFocus()
 	{
 		m_nameTV.requestFocus();
+		Timer timer = new Timer(); //设置定时器
+		timer.schedule(new TimerTask()
+					   {
+						   @Override
+						   public void run()
+						   { //弹出软键盘的代码
+							   InputMethodManager imm = (InputMethodManager)getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+							   imm.showSoftInput(m_nameTV, InputMethodManager.RESULT_SHOWN);
+							   imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+						   }
+					   }, 300
+					  );
+	}
+
+	public void setPhoneNumFocus()
+	{
+		m_phoneNumTV.requestFocus();
+		Timer timer = new Timer(); //设置定时器
+		timer.schedule(new TimerTask()
+					   {
+						   @Override
+						   public void run()
+						   { //弹出软键盘的代码
+							   InputMethodManager imm = (InputMethodManager)getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+							   imm.showSoftInput(m_phoneNumTV, InputMethodManager.RESULT_SHOWN);
+							   imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+						   }
+					   }, 300
+					  );
 	}
 
 	//数据设置
@@ -575,5 +609,55 @@ public class ApoitNursingActivity extends Activity
 
 		setDateDescription(event.getNursingDate().getDateDescription());
 		m_apoitNursingPage.setNursingDate(event.getNursingDate());
+	}
+
+	//网上复制下来的代码，作用：点击EditText文本框之外任何地方隐藏键盘
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev)
+	{
+		if (ev.getAction() == MotionEvent.ACTION_DOWN)
+		{
+			View v = getCurrentFocus();
+			if (isShouldHideInput(v, ev))
+			{
+
+				InputMethodManager imm = (InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
+				if (imm != null)
+				{
+					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+				}
+			}
+			return super.dispatchTouchEvent(ev);
+		}
+		// 必不可少，否则所有的组件都不会有TouchEvent了
+		if (getWindow().superDispatchTouchEvent(ev))
+		{
+			return true;
+		}
+		return onTouchEvent(ev);
+	}
+
+	public boolean isShouldHideInput(View v, MotionEvent event)
+	{
+		if (v != null && (v instanceof EditText))
+		{
+			int[] leftTop = {0, 0};
+			//获取输入框当前的location位置
+			v.getLocationInWindow(leftTop);
+			int left = leftTop[0];
+			int top = leftTop[1];
+			int bottom = top + v.getHeight();
+			int right = left + v.getWidth();
+			if (event.getX() > left && event.getX() < right && event.getY() > top && event.getY() < bottom)
+			{
+				// 点击的是输入框区域，保留点击EditText的事件
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }

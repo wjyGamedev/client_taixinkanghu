@@ -30,7 +30,7 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 	@Override
 	public void onClick(View v)
 	{
-		Activity activity = (Activity)m_context;
+		Activity             activity             = (Activity)m_context;
 		ApoitNursingActivity apoitNursingActivity = (ApoitNursingActivity)activity;
 		if (apoitNursingActivity == null)
 		{
@@ -48,6 +48,11 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			case R.id.name_region_ll:
 			{
 				apoitNursingActivity.setNameFocus();
+			}
+			return;
+			case R.id.phone_num_region_ll:
+			{
+				apoitNursingActivity.setPhoneNumFocus();
 			}
 			return;
 			case R.id.gender_region_ll:
@@ -87,7 +92,8 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			case R.id.department_region_ll:
 			{
 				SelectDepartmentFragment selectDepartmentFragment = new SelectDepartmentFragment();
-				transaction.replace(R.id.appointment_nursing_page, selectDepartmentFragment, selectDepartmentFragment.getClass().getName());
+				transaction.replace(R.id.appointment_nursing_page, selectDepartmentFragment, selectDepartmentFragment.getClass().getName
+											());
 				transaction.commit();
 			}
 			return;
@@ -96,7 +102,10 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				Integer patientStateTitleHight = apoitNursingActivity.getSelectPatientStateTitleHight();
 				SelectPatientStateFragment selectPatientStateFragment = new SelectPatientStateFragment();
 				selectPatientStateFragment.setPatientStateTitleHight(patientStateTitleHight);
-				transaction.replace(R.id.appointment_nursing_page, selectPatientStateFragment, selectPatientStateFragment.getClass().getName());
+				transaction.replace(R.id.appointment_nursing_page,
+									selectPatientStateFragment,
+									selectPatientStateFragment.getClass().getName()
+								   );
 				transaction.commit();
 			}
 			return;
@@ -121,7 +130,9 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				String departmentName = apoitNursingActivity.getDepartmentName();
 				String patientState = apoitNursingActivity.getPatientState();
 				String dateDescription = apoitNursingActivity.getDateDescription();
-				if (TextUtils.isEmpty(hospitalName) ||TextUtils.isEmpty(departmentName) || TextUtils.isEmpty(patientState) || TextUtils.isEmpty(dateDescription))
+				if (TextUtils.isEmpty(hospitalName) || TextUtils.isEmpty(departmentName) || TextUtils.isEmpty(patientState) || TextUtils.isEmpty(
+						dateDescription
+																																				))
 				{
 					RegisterDialog.GetInstance().setMsg(apoitNursingActivity.getResources().getString(R.string
 																											  .err_info_fill_required_options),
@@ -141,12 +152,11 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 				m_context.startActivity(new Intent(m_context, SelectNurseActivity.class));
 				break;
 			}
-		}	//end_switch (v.getId())
+		}    //end_switch (v.getId())
 
 		return;
 
-	}	//end_onClick
-
+	}    //end_onClick
 
 
 }

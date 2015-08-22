@@ -17,7 +17,9 @@ package com.taixinkanghu.app.ui.nurse_order_confirm_page;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -38,6 +40,8 @@ import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PatientActivity extends Activity
 {
@@ -285,6 +289,35 @@ public class PatientActivity extends Activity
 	public void setNameFocus()
 	{
 		m_nameTV.requestFocus();
+		Timer timer = new Timer(); //设置定时器
+		timer.schedule(new TimerTask()
+					   {
+						   @Override
+						   public void run()
+						   { //弹出软键盘的代码
+							   InputMethodManager imm = (InputMethodManager)getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+							   imm.showSoftInput(m_nameTV, InputMethodManager.RESULT_SHOWN);
+							   imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+						   }
+					   }, 300
+					  );
+	}
+
+	public void setPhoneNumFocus()
+	{
+		m_phoneNumTV.requestFocus();
+		Timer timer = new Timer(); //设置定时器
+		timer.schedule(new TimerTask()
+					   {
+						   @Override
+						   public void run()
+						   { //弹出软键盘的代码
+							   InputMethodManager imm = (InputMethodManager)getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+							   imm.showSoftInput(m_phoneNumTV, InputMethodManager.RESULT_SHOWN);
+							   imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+						   }
+					   }, 300
+					  );
 	}
 
 	//数据设置
@@ -367,4 +400,53 @@ public class PatientActivity extends Activity
 		return m_selectGenderTitleHight;
 	}
 
+	//网上复制下来的代码，作用：点击EditText文本框之外任何地方隐藏键盘
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev)
+	{
+		if (ev.getAction() == MotionEvent.ACTION_DOWN)
+		{
+			View v = getCurrentFocus();
+			if (isShouldHideInput(v, ev))
+			{
+
+				InputMethodManager imm = (InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
+				if (imm != null)
+				{
+					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+				}
+			}
+			return super.dispatchTouchEvent(ev);
+		}
+		// 必不可少，否则所有的组件都不会有TouchEvent了
+		if (getWindow().superDispatchTouchEvent(ev))
+		{
+			return true;
+		}
+		return onTouchEvent(ev);
+	}
+
+	public boolean isShouldHideInput(View v, MotionEvent event)
+	{
+		if (v != null && (v instanceof EditText))
+		{
+			int[] leftTop = {0, 0};
+			//获取输入框当前的location位置
+			v.getLocationInWindow(leftTop);
+			int left = leftTop[0];
+			int top = leftTop[1];
+			int bottom = top + v.getHeight();
+			int right = left + v.getWidth();
+			if (event.getX() > left && event.getX() < right && event.getY() > top && event.getY() < bottom)
+			{
+				// 点击的是输入框区域，保留点击EditText的事件
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

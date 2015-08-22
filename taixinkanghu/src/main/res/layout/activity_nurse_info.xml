@@ -509,7 +509,7 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:text="￥"
-							android:textColor="@color/text_color_orange"
+							android:textColor="@color/date_select_green"
 							android:textSize="14.0sp"/>
 
 						<TextView
@@ -517,7 +517,7 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:text="180"
-							android:textColor="@color/text_color_orange"
+							android:textColor="@color/date_select_green"
 							android:textSize="20.0sp"/>
 
 						<TextView
@@ -978,181 +978,6 @@
 
 
 					</LinearLayout>
-
-
-					<!--<LinearLayout-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginBottom="2.5dp"-->
-					<!--android:layout_marginLeft="15dp"-->
-					<!--android:layout_marginTop="5dp"-->
-					<!--android:orientation="horizontal">-->
-
-					<!--<TextView-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_weight="1"/>-->
-
-					<!--<TextView-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="15dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="患者可自理"-->
-					<!--android:textColor="@color/text_color_black"-->
-					<!--android:textSize="12sp"/>-->
-
-					<!--<TextView-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="10dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="患者可半自理"-->
-					<!--android:textColor="@color/text_color_black"-->
-					<!--android:textSize="12sp"/>-->
-
-					<!--<TextView-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="10dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="患者不可自理"-->
-					<!--android:textColor="@color/text_color_black"-->
-					<!--android:textSize="12sp"/>-->
-
-					<!--</LinearLayout>-->
-
-					<!--<LinearLayout-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginBottom="2.5dp"-->
-					<!--android:layout_marginLeft="15dp"-->
-					<!--android:layout_marginTop="5dp"-->
-					<!--android:orientation="horizontal">-->
-
-					<!--<TextView-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="8dp"-->
-					<!--android:text="全天24小时陪护"-->
-					<!--android:textColor="@color/text_color_black"-->
-					<!--android:textSize="12sp"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_all_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="25dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="120元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_all_half_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="25dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="150元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_all_cannt_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:gravity="center"-->
-					<!--android:text="180元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--</LinearLayout>-->
-
-					<!--<LinearLayout-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginBottom="2.5dp"-->
-					<!--android:layout_marginLeft="15dp"-->
-					<!--android:layout_marginTop="2.5dp"-->
-					<!--android:orientation="horizontal">-->
-
-					<!--<TextView-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="8dp"-->
-					<!--android:text="白天12小时陪护"-->
-					<!--android:textColor="@color/text_color_black"-->
-					<!--android:textSize="12sp"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_day_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="25dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="110元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_day_half_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="25dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="120元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_day_cannt_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:gravity="center"-->
-					<!--android:text="160元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--</LinearLayout>-->
-
-					<!--<LinearLayout-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginBottom="5dp"-->
-					<!--android:layout_marginLeft="15dp"-->
-					<!--android:layout_marginTop="2.5dp"-->
-					<!--android:orientation="horizontal">-->
-
-					<!--<TextView-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="8dp"-->
-					<!--android:text="白天12小时陪护"-->
-					<!--android:textColor="@color/text_color_black"-->
-					<!--android:textSize="12sp"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_night_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="25dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="110元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_night_half_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:layout_marginRight="25dp"-->
-					<!--android:gravity="center"-->
-					<!--android:text="120元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--<TextView-->
-					<!--android:id="@+id/service_charge_per_night_cannt_care_tv"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:gravity="center"-->
-					<!--android:text="160元/天"-->
-					<!--android:textColor="@color/text_color_orange"/>-->
-
-					<!--</LinearLayout>-->
 
 					<include layout="@layout/item_dividing_line_horizontal"/>
 
