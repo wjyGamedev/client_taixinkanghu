@@ -29,6 +29,8 @@ import com.android.volley.toolbox.JsonObjectRequestForm;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.config.NetConfig;
 import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.page.DNursingDate;
+import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;
@@ -221,46 +223,54 @@ public class NetService extends Service
 	//预约陪护 nurse basic list
 	public void onEventAsync(ReqApoitNursingEvent event)
 	{
-		String name = DApoitNursingPage.GetInstance().getName();
-		String phone = DApoitNursingPage.GetInstance().getPhone();
-
-		EnumConfig.SexType sexType   = DApoitNursingPage.GetInstance().getSexType();
-		int                sexTypeID = 0;
-		if (sexType != null)
+		DApoitNursingPage apoitNursingPage = DNursingModule.GetInstance().getApoitNursingPage();
+		if (apoitNursingPage == null)
 		{
-			sexTypeID = sexType.getId();
+			RegisterDialog.GetInstance().setMsg("apoitNursingPage == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		String name = apoitNursingPage.getName();
+		String phone = apoitNursingPage.getPhone();
+
+		EnumConfig.GenderStatus genderStatus = apoitNursingPage.getGenderStatus();
+		int                sexTypeID = 0;
+		if (genderStatus != null)
+		{
+			sexTypeID = genderStatus.getId();
 		}
 
 		String age = null;
-		EnumConfig.AgeRage ageRage = DApoitNursingPage.GetInstance().getAgeRage();
+		EnumConfig.AgeRage ageRage = apoitNursingPage.getAgeRage();
 		if (ageRage != null)
 		{
 			age = ageRage.getName();
 		}
 
 		String weight = null;
-		EnumConfig.WeightRage weightRage = DApoitNursingPage.GetInstance().getWeightRage();
+		EnumConfig.WeightRage weightRage = apoitNursingPage.getWeightRage();
 		if (weightRage != null)
 		{
 			weight = weightRage.getName();
 		}
 
-		int hospitalID = DApoitNursingPage.GetInstance().getHospitalID();
-		int departmentID = DApoitNursingPage.GetInstance().getDepartmenetID();
+		int hospitalID = apoitNursingPage.getHospitalID();
+		int departmentID = apoitNursingPage.getDepartmenetID();
 		int patientStateID = 0;
-		EnumConfig.PatientState patientState = DApoitNursingPage.GetInstance().getPatientState();
+		EnumConfig.PatientState patientState = apoitNursingPage.getPatientState();
 		if (patientState != null)
 		{
 			patientStateID = patientState.getId();
 		}
 
-		DApoitNursingPage.DNursingDate dNursingDate = DApoitNursingPage.GetInstance().getNursingDate();
-		if (dNursingDate == null)
+		DNursingDate nursingDate = apoitNursingPage.getNursingDate();
+		if (nursingDate == null)
 			return;
 
-		String schedualAll = dNursingDate.getSchedualAllDescription();
-		String schedualDay = dNursingDate.getSchedualDayDescription();
-		String schedualNight = dNursingDate.getSchedualNightDescription();
+		String schedualAll = nursingDate.getSchedualAllDescription();
+		String schedualDay = nursingDate.getSchedualDayDescription();
+		String schedualNight = nursingDate.getSchedualNightDescription();
 
 		HashMap<String, String> registerData = new HashMap<String, String>();
 
@@ -270,7 +280,7 @@ public class NetService extends Service
 		if (!TextUtils.isEmpty(phone))
 			registerData.put(NurseBasicListConfig.PHONE_NUM, phone);
 
-		if (sexType != null)
+		if (genderStatus != null)
 			registerData.put(NurseBasicListConfig.SEX_ID, String.valueOf(sexTypeID));
 
 		if (ageRage != null)
@@ -388,12 +398,12 @@ public class NetService extends Service
 	//nurse order list
 	public void onEventAsync(ReqNurseOrderListEvent event)
 	{
-
+		HashMap<String, String> nurseOrderList = event.getHashMap();
 
 
 		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
 																NetConfig.s_nurseOrderListAddress,
-																null,
+																nurseOrderList,
 																m_resNurseOrderListHandler,
 																m_baseErrorListener);
 
