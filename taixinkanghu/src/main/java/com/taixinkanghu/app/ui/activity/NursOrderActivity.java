@@ -51,7 +51,7 @@ public class NursOrderActivity extends Activity implements View.OnClickListener 
         btn_screening = (LinearLayout) findViewById(R.id.btn_screening);
         btn_goto_main = (Button) findViewById(R.id.btn_goto_main);
 
-        lv_order = (ListView) findViewById(R.id.lv_order_info);
+        lv_order = (ListView) findViewById(R.id.order_info_lv);
         lv_order.setAdapter(arrayAdapter_worker);
 
         page_title.setText(R.string.nurs_order_title);
