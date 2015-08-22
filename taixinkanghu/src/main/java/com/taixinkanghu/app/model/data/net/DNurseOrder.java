@@ -14,6 +14,7 @@
 
 package com.taixinkanghu.app.model.data.net;
 
+import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.exception.RuntimeExceptions.net.JsonSerializationException;
@@ -29,21 +30,21 @@ import java.util.Date;
 
 public class DNurseOrder
 {
-	private int                         m_hospitalID       = -1;
-	private int                         m_userID           = -1;
-	private int                         m_nurseID          = -1;
-	private String                      m_phoneNum         = null;
-	private Calendar                    m_orderTime        = Calendar.getInstance();
-	private String                      m_patientName      = null;
-	private EnumConfig.SexType          m_sexType          = null;
-	private String                      m_patientAge       = null;
-	private String                      m_patientWeight    = null;
-	private EnumConfig.PatientState     m_patientState     = null;
-	private String                      m_patientRemark    = null;
-	private int                         m_totalCharge      = 0;
-	private EnumConfig.NurseOrderStatus m_nurseOrderStatus = null;
-	private int                         m_orderID          = -1;
-	private String                      m_orderSerialNum   = null;
+	private int                         m_hospitalID     = DataConfig.DEFAULT_VALUE;
+	private int                         m_userID         = DataConfig.DEFAULT_VALUE;
+	private int                         m_nurseID        = DataConfig.DEFAULT_VALUE;
+	private String                      m_phoneNum       = null;
+	private Calendar                    m_orderTime      = Calendar.getInstance();
+	private String                      m_patientName    = null;
+	private EnumConfig.GenderStatus     m_genderStatus   = null;
+	private String                      m_patientAge     = null;
+	private String                      m_patientWeight  = null;
+	private EnumConfig.PatientState     m_patientState   = null;
+	private String                      m_patientRemark  = null;
+	private int                         m_totalCharge    = DataConfig.DEFAULT_VALUE;
+	private EnumConfig.NurseOrderStatus m_orderStatus    = null;
+	private int                         m_orderID        = DataConfig.DEFAULT_VALUE;
+	private String                      m_orderSerialNum = null;
 
 	private DScheduleList m_scheduleList = new DScheduleList();
 
@@ -64,39 +65,13 @@ public class DNurseOrder
 		m_patientName = response.getString(NurseOrderConfig.PATIENT_NAME);
 
 		int genderId = response.getInt(NurseOrderConfig.PATIENT_GENDER);
-		if (genderId == EnumConfig.SexType.MALE.getId())
-		{
-			m_sexType = EnumConfig.SexType.MALE;
-		}
-		else if (genderId == EnumConfig.SexType.FEMALE.getId())
-		{
-			m_sexType = EnumConfig.SexType.FEMALE;
-		}
-		else
-		{
-			throw new JsonSerializationException("genderId is invalid![genderId:=" + genderId + "]");
-		}
+		m_genderStatus = EnumConfig.GenderStatus.valueOf(genderId);
 
 		m_patientAge = response.getString(NurseOrderConfig.PATIENT_AGE);
 		m_patientWeight = response.getString(NurseOrderConfig.PATIENT_WEIGHT);
 
 		int patientStatus = response.getInt(NurseOrderConfig.PATIENT_STATUS);
-		if (patientStatus == EnumConfig.PatientState.PATIENT_STATE_CARE_MYSELF.getId())
-		{
-			m_patientState = EnumConfig.PatientState.PATIENT_STATE_CARE_MYSELF;
-		}
-		else if (patientStatus == EnumConfig.PatientState.PATIENT_STATE_HALF_CARE_MYSELF.getId())
-		{
-			m_patientState = EnumConfig.PatientState.PATIENT_STATE_HALF_CARE_MYSELF;
-		}
-		else if (patientStatus == EnumConfig.PatientState.PATIENT_STATE_CANNT_CARE_MYSELF.getId())
-		{
-			m_patientState = EnumConfig.PatientState.PATIENT_STATE_CANNT_CARE_MYSELF;
-		}
-		else
-		{
-			throw new JsonSerializationException("patientStatus is invalid![patientStatus:=" + genderId + "]");
-		}
+		m_patientState = EnumConfig.PatientState.valueOf(patientStatus);
 
 		m_patientRemark = response.getString(NurseOrderConfig.PATIENT_REMARK);
 		m_totalCharge = response.getInt(NurseOrderConfig.ORDER_TOTAL_CHARGE);
@@ -104,27 +79,27 @@ public class DNurseOrder
 		int orderStateID = response.getInt(NurseOrderConfig.ORDER_STATUS);
 		if (orderStateID == EnumConfig.NurseOrderStatus.WAIT_PAYMENT.getId())
 		{
-			m_nurseOrderStatus = EnumConfig.NurseOrderStatus.WAIT_PAYMENT;
+			m_orderStatus = EnumConfig.NurseOrderStatus.WAIT_PAYMENT;
 		}
 		else if (orderStateID == EnumConfig.NurseOrderStatus.WAIT_SERVICE.getId())
 		{
-			m_nurseOrderStatus = EnumConfig.NurseOrderStatus.WAIT_SERVICE;
+			m_orderStatus = EnumConfig.NurseOrderStatus.WAIT_SERVICE;
 		}
 		else if (orderStateID == EnumConfig.NurseOrderStatus.IN_SERVICE.getId())
 		{
-			m_nurseOrderStatus = EnumConfig.NurseOrderStatus.IN_SERVICE;
+			m_orderStatus = EnumConfig.NurseOrderStatus.IN_SERVICE;
 		}
 		else if (orderStateID == EnumConfig.NurseOrderStatus.FINISHED.getId())
 		{
-			m_nurseOrderStatus = EnumConfig.NurseOrderStatus.FINISHED;
+			m_orderStatus = EnumConfig.NurseOrderStatus.FINISHED;
 		}
 		else if (orderStateID == EnumConfig.NurseOrderStatus.CANCELED.getId())
 		{
-			m_nurseOrderStatus = EnumConfig.NurseOrderStatus.CANCELED;
+			m_orderStatus = EnumConfig.NurseOrderStatus.CANCELED;
 		}
 		else if (orderStateID == EnumConfig.NurseOrderStatus.WAIT_EVALUATION.getId())
 		{
-			m_nurseOrderStatus = EnumConfig.NurseOrderStatus.WAIT_EVALUATION;
+			m_orderStatus = EnumConfig.NurseOrderStatus.WAIT_EVALUATION;
 		}
 		else
 		{
@@ -171,9 +146,9 @@ public class DNurseOrder
 		return m_patientName;
 	}
 
-	public EnumConfig.SexType getSexType()
+	public EnumConfig.GenderStatus getGenderStatus()
 	{
-		return m_sexType;
+		return m_genderStatus;
 	}
 
 	public String getPatientAge()
@@ -201,9 +176,9 @@ public class DNurseOrder
 		return m_totalCharge;
 	}
 
-	public EnumConfig.NurseOrderStatus getNurseOrderStatus()
+	public EnumConfig.NurseOrderStatus getOrderStatus()
 	{
-		return m_nurseOrderStatus;
+		return m_orderStatus;
 	}
 
 	public int getOrderID()
