@@ -49,7 +49,8 @@ public class LogicalUtil
 	{
 		long beginTime = begin.getTime();
 		long endTime = end.getTime();
-		return Math.abs((int) (beginTime - endTime)/(24 * 60 * 60 * 1000));
+		long days = Math.abs((long)(endTime - beginTime) / (24 * 60 * 60 * 1000));
+		return (int)days;
 	}
 
 	public static boolean IsHttpSuccess(int httpStatus)
