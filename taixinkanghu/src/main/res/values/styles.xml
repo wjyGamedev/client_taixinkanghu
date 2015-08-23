@@ -92,4 +92,18 @@
 		<item name="android:textStyle">bold</item>
 		<item name="android:textSize">18sp</item>
 	</style>
+
+	<style name="Theme.PopupMenu"
+		   parent="@android:style/Theme.Light.NoTitleBar">
+		<item name="android:popupBackground">@drawable/bg_popup_menu_btn</item>
+		<!--<item name="android:background">@drawable/bg_popup_menu_btn</item>-->
+		<item name="android:textColor">@color/text_color_black</item>
+	</style>
+
+	<style name="Theme.InCallScreen"
+		   parent="@android:style/Theme.Holo.Light.NoActionBar">
+		<item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+		<item name="android:gravity">center_horizontal</item>
+	</style>
+
 </resources>

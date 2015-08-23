@@ -34,6 +34,8 @@ import com.taixinkanghu.app.model.data.net.DHospital;
 import com.taixinkanghu.app.model.data.net.DHospitalList;
 import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
 import com.taixinkanghu.app.model.data.page.DGlobal;
+import com.taixinkanghu.app.model.data.page.DNursingDate;
+import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.select_date.ConfirmSelectDateEvent;
@@ -52,7 +54,7 @@ public class ApoitNursingActivity extends Activity
 	private HeaderCommon m_headerCommon         = null;    //title：预约陪护
 	private LinearLayout m_nameRegionLL         = null;    //姓名点击区域
 	private EditText     m_nameTV               = null;    //姓名
-	private LinearLayout m_phoneNumRegionLL    = null;    //手机号码区域
+	private LinearLayout m_phoneNumRegionLL     = null;    //手机号码区域
 	private EditText     m_phoneNumTV           = null;    //手机号码
 	private LinearLayout m_genderRegionLL       = null;    //性别点击区域
 	private TextView     m_genderTV             = null;     //性别

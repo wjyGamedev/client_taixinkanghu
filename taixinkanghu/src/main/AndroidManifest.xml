@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.taixinkanghu"
-		  xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+	package="com.taixinkanghu"
+	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<!-- 用户权限 -->
 	<uses-permission android:name="android.permission.CALL_PHONE"/>
@@ -36,7 +37,8 @@
 		<activity
 			android:name=".app.ui.main_page.MainActivity"
 			android:label="@string/title_activity_main"
-			android:launchMode="singleTask">
+			android:launchMode="singleTask"
+			android:theme="@style/Theme.InCallScreen">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW"/>
 			</intent-filter>
