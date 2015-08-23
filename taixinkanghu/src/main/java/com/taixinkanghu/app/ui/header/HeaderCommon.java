@@ -15,6 +15,7 @@
 package com.taixinkanghu.app.ui.header;
 
 import android.app.Activity;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -51,6 +52,20 @@ public class HeaderCommon
 			return;
 		}
 		m_HeaderTV.setText(resid);
+	}
+
+	public void setTitle(int resid, View.OnClickListener backBtnListener)
+	{
+		if (isInitFlag() == false)
+		{
+			return;
+		}
+		m_HeaderTV.setText(resid);
+
+		if (backBtnListener != null)
+		{
+			m_BackImgBtn.setOnClickListener(backBtnListener);
+		}
 	}
 
 	public boolean isInitFlag()

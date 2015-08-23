@@ -14,6 +14,8 @@
 
 package com.taixinkanghu.app.model.config;
 
+import android.text.TextUtils;
+
 import com.taixinkanghu.R;
 import com.taixinkanghu.util.android.AppUtil;
 
@@ -96,6 +98,52 @@ public class EnumConfig
 			return ("id:" + m_id);
 		}
 
+		public static AgeRage valueOf(int id)
+		{    //    手写的从int到enum的转换函数
+			switch (id) {
+			case 1:
+				return AGE_0_15;
+			case 2:
+				return AGE_16_35;
+			case 3:
+				return AGE_36_55;
+			case 4:
+				return AGE_56_75;
+			case 5:
+				return AGE_MORE_THAN_76;
+			default:
+				return null;
+			}
+		}
+
+		public static AgeRage valueOfFromString(String name)
+		{    //    手写的从int到enum的转换函数
+			if (TextUtils.equals(name, AGE_0_15.getName()))
+			{
+				return AGE_0_15;
+			}
+			else if (TextUtils.equals(name, AGE_16_35.getName()))
+			{
+				return AGE_16_35;
+			}
+			else if (TextUtils.equals(name, AGE_36_55.getName()))
+			{
+				return AGE_36_55;
+			}
+			else if (TextUtils.equals(name, AGE_56_75.getName()))
+			{
+				return AGE_56_75;
+			}
+			else if (TextUtils.equals(name, AGE_MORE_THAN_76.getName()))
+			{
+				return AGE_MORE_THAN_76;
+			}
+			else
+			{
+				return AGE_0_15;
+			}
+		}
+
 	}
 
 	//03. 体重:千克/公斤
@@ -130,6 +178,52 @@ public class EnumConfig
 		public String toString()
 		{
 			return ("id:" + m_id);
+		}
+
+		public static WeightRage valueOf(int id)
+		{    //    手写的从int到enum的转换函数
+			switch (id) {
+			case 1:
+				return WEIGHT_0_35;
+			case 2:
+				return WEIGHT_35_50;
+			case 3:
+				return WEIGHT_50_80;
+			case 4:
+				return WEIGHT_80_120;
+			case 5:
+				return WEIGHT_MORE_THAN_120;
+			default:
+				return null;
+			}
+		}
+
+		public static WeightRage valueOfFromString(String name)
+		{    //    手写的从int到enum的转换函数
+			if (TextUtils.equals(name, WEIGHT_0_35.getName()))
+			{
+				return WEIGHT_0_35;
+			}
+			else if (TextUtils.equals(name, WEIGHT_35_50.getName()))
+			{
+				return WEIGHT_35_50;
+			}
+			else if (TextUtils.equals(name, WEIGHT_50_80.getName()))
+			{
+				return WEIGHT_50_80;
+			}
+			else if (TextUtils.equals(name, WEIGHT_80_120.getName()))
+			{
+				return WEIGHT_80_120;
+			}
+			else if (TextUtils.equals(name, WEIGHT_MORE_THAN_120.getName()))
+			{
+				return WEIGHT_MORE_THAN_120;
+			}
+			else
+			{
+				return WEIGHT_0_35;
+			}
 		}
 
 	}
@@ -281,5 +375,101 @@ public class EnumConfig
 		}
 	}
 
+	//07. 选择护理时间的类型
+	public enum NurseServiceDayStatus
+	{
+		ALL(AppUtil.GetResources().getString(R.string.nurse_service_day_status_all), 0),
+		DAY(AppUtil.GetResources().getString(R.string.nurse_service_day_status_day), 1),
+		NIGHT(AppUtil.GetResources().getString(R.string.nurse_service_day_status_night), 2);
+
+
+		private String m_name = null;
+		private int m_id = 0;
+
+		private NurseServiceDayStatus(String name, int id)
+		{
+			m_name = name;
+			m_id = id;
+		}
+
+		public String getName()
+		{
+			return m_name;
+		}
+
+		public int getId()
+		{
+			return m_id;
+		}
+
+		@Override
+		public String toString()
+		{
+			return ("[id:=" + m_id + "][name:" +m_name+"]");
+		}
+
+		public static NurseServiceDayStatus valueOf(int id) {    //    手写的从int到enum的转换函数
+			switch (id) {
+			case 0:
+				return ALL;
+			case 1:
+				return DAY;
+			case 2:
+				return NIGHT;
+			default:
+				return null;
+			}
+		}
+
+
+	}
+
+	//08. 护理模块的业务类型
+	//不同的状态，每个page的action不同。
+	public enum NursingModuleStatus
+	{
+		APIOT_NURSING(AppUtil.GetResources().getString(R.string.nuring_module_status_apiot_nursing), 1),
+		REPEAT_ORDER(AppUtil.GetResources().getString(R.string.nuring_module_repeat_order), 2),
+		CHANGE_NURSE(AppUtil.GetResources().getString(R.string.nuring_module_change_nurse), 3);
+
+		private String m_name = null;
+		private int m_id = 0;
+
+		private NursingModuleStatus(String name, int id)
+		{
+			m_name = name;
+			m_id = id;
+		}
+
+		public String getName()
+		{
+			return m_name;
+		}
+
+		public int getId()
+		{
+			return m_id;
+		}
+
+		@Override
+		public String toString()
+		{
+			return ("[id:=" + m_id + "][name:" +m_name+"]");
+		}
+
+		public static NursingModuleStatus valueOf(int id) {    //    手写的从int到enum的转换函数
+			switch (id) {
+			case 0:
+				return APIOT_NURSING;
+			case 1:
+				return REPEAT_ORDER;
+			case 2:
+				return CHANGE_NURSE;
+			default:
+				return null;
+			}
+		}
+
+	}
 
 }

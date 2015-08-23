@@ -17,7 +17,7 @@ package com.taixinkanghu.app.model.net.config;
 public class NurseSeniorListConfig
 {
 	//common
-	public final static String ID           = CommonConifg.ID;
+	public final static String ID           = "cid";
 	//send
 	public final static String ID_LIST     = "id_list";
 	//recv

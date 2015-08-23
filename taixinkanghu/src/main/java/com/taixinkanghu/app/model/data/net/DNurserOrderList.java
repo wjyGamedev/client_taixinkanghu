@@ -89,25 +89,6 @@ public class DNurserOrderList
 		return m_nurseOrders;
 	}
 
-	public synchronized DNurseOrder getNurseOrderByID(int id)
-	{
-		if (m_nurseOrders == null)
-			return null;
-
-		for (DNurseOrder nurseOrder : m_nurseOrders)
-		{
-			if (nurseOrder == null)
-				continue;
-
-			if (nurseOrder.getOrderID() == id)
-			{
-				return nurseOrder;
-			}
-		}
-
-		return null;
-	}
-
 	public synchronized ArrayList<DNurseOrder> getNurseOrdersAll()
 	{
 		return m_nurseOrders;
@@ -142,6 +123,44 @@ public class DNurserOrderList
 		}
 
 		return nurseOrdersByOrderStatus;
+	}
+
+	public synchronized DNurseOrder getNurseOrderByOrderID(int id)
+	{
+		if (m_nurseOrders == null)
+			return null;
+
+		for (DNurseOrder nurseOrder : m_nurseOrders)
+		{
+			if (nurseOrder == null)
+				continue;
+
+			if (nurseOrder.getOrderID() == id)
+			{
+				return nurseOrder;
+			}
+		}
+
+		return null;
+	}
+
+	public synchronized DNurseOrder getNurseOrderByNurseID(int id)
+	{
+		if (m_nurseOrders == null)
+			return null;
+
+		for (DNurseOrder nurseOrder : m_nurseOrders)
+		{
+			if (nurseOrder == null)
+				continue;
+
+			if (nurseOrder.getNurseID() == id)
+			{
+				return nurseOrder;
+			}
+		}
+
+		return null;
 	}
 
 }

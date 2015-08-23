@@ -83,4 +83,114 @@ public class DScheduleList
 	{
 		return m_nightCalendarList;
 	}
+
+	public Date getBeginDate()
+	{
+		Date minDate = null;
+		for (Calendar calendarAll : m_allCalendarList)
+		{
+			Date tmpAllDate = calendarAll.getTime();
+			if (minDate == null)
+			{
+				minDate = tmpAllDate;
+				continue;
+			}
+
+			if (tmpAllDate.getTime() <= minDate.getTime())
+			{
+				minDate = tmpAllDate;
+				continue;
+			}
+		}
+
+		for (Calendar calendarDay : m_dayCalendarList)
+		{
+			Date tmpDayDate = calendarDay.getTime();
+			if (minDate == null)
+			{
+				minDate = tmpDayDate;
+				continue;
+			}
+
+			if (tmpDayDate.getTime() <= minDate.getTime())
+			{
+				minDate = tmpDayDate;
+				continue;
+			}
+		}
+
+		for (Calendar calendarNight : m_nightCalendarList)
+		{
+			Date tmpNightDate = calendarNight.getTime();
+			if (minDate == null)
+			{
+				minDate = tmpNightDate;
+				continue;
+			}
+
+			if (tmpNightDate.getTime() <= minDate.getTime())
+			{
+				minDate = tmpNightDate;
+				continue;
+			}
+		}
+
+		return minDate;
+
+	}
+
+	public Date getEndDate()
+	{
+		Date maxDate = null;
+		for (Calendar calendarAll : m_allCalendarList)
+		{
+			Date tmpAllDate = calendarAll.getTime();
+			if (maxDate == null)
+			{
+				maxDate = tmpAllDate;
+				continue;
+			}
+
+			if (tmpAllDate.getTime() >= maxDate.getTime())
+			{
+				maxDate = tmpAllDate;
+				continue;
+			}
+		}
+
+		for (Calendar calendarDay : m_dayCalendarList)
+		{
+			Date tmpDayDate = calendarDay.getTime();
+			if (maxDate == null)
+			{
+				maxDate = tmpDayDate;
+				continue;
+			}
+
+			if (tmpDayDate.getTime() >= maxDate.getTime())
+			{
+				maxDate = tmpDayDate;
+				continue;
+			}
+		}
+
+		for (Calendar calendarNight : m_nightCalendarList)
+		{
+			Date tmpNightDate = calendarNight.getTime();
+			if (maxDate == null)
+			{
+				maxDate = tmpNightDate;
+				continue;
+			}
+
+			if (tmpNightDate.getTime() >= maxDate.getTime())
+			{
+				maxDate = tmpNightDate;
+				continue;
+			}
+		}
+
+		return maxDate;
+	}
+
 }

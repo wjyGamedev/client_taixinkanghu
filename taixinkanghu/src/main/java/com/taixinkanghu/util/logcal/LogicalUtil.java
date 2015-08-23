@@ -47,6 +47,9 @@ public class LogicalUtil
 
 	public static int GetDayNums(Date begin, Date end)
 	{
+		if (begin == null || end == null)
+			return 0;
+
 		long beginTime = begin.getTime();
 		long endTime = end.getTime();
 		return Math.abs((int) (beginTime - endTime)/(24 * 60 * 60 * 1000));

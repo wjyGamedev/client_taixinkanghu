@@ -18,7 +18,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.net.DAccount;
+import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 import com.taixinkanghu.app.ui.register_page.RegisterActivity;
 
@@ -38,6 +40,7 @@ public class HandlerClickEventNursingOrder extends BaseHandleOnClickEvent
 		}
 		else
 		{
+			DGlobal.GetInstance().SetNursingModuleStatus(EnumConfig.NursingModuleStatus.APIOT_NURSING);
 			m_context.startActivity(new Intent(m_context, ApoitNursingActivity.class));
 		}
 

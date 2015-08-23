@@ -22,6 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.page.DFaceImages;
 import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.data.net.DNurseBasics;
@@ -84,9 +86,9 @@ public class NurseInfoActivity extends Activity
 	private EventBus                   m_eventBus                   = EventBus.getDefault();
 	private DNurseBasics               m_nurseBasics                = null;
 	private DNurseSenior               m_nurseSenior                = null;
-	private int                        m_nurseID                    = -1;    //当前护工的ID
+	private int                        m_nurseID                    = DataConfig.DEFAULT_VALUE;    //当前护工的ID
+	private int m_oldNurseID = DataConfig.DEFAULT_VALUE;
 
-	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -100,6 +102,7 @@ public class NurseInfoActivity extends Activity
 	@Override
 	protected void onStart()
 	{
+		updateContext();
 		initGlobalData();
 		super.onStart();
 	}
@@ -196,15 +199,28 @@ public class NurseInfoActivity extends Activity
 			return;
 		}
 
-		m_nurseID = intent.getIntExtra(NurseBasicListConfig.ID, -1);
-		if (m_nurseID == -1)
+		m_nurseID = intent.getIntExtra(NurseBasicListConfig.NEW_ID, DataConfig.DEFAULT_VALUE);
+		if (m_nurseID == DataConfig.DEFAULT_VALUE)
 		{
 			RegisterDialog.GetInstance().setMsg("id is invalid", this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 
+		//如果是更换，则保存原来的护工ID。
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+			m_oldNurseID = intent.getIntExtra(NurseBasicListConfig.OLD_ID, DataConfig.DEFAULT_VALUE);
+		}
 
+
+
+	}
+
+	public void updateContext()
+	{
+		//01. init nurse basic
 		DNurseBasicsList m_nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
 		if (m_nurseBasicsList == null)
 		{
@@ -221,7 +237,7 @@ public class NurseInfoActivity extends Activity
 			return;
 		}
 
-		//02. 初始化senior
+		//02. 初始化nurse senior
 		DNurseSeniorList nurseSeniorList = DNurseContainer.GetInstance().getNurseSeniorList();
 		if (nurseSeniorList == null)
 		{
@@ -296,12 +312,16 @@ public class NurseInfoActivity extends Activity
 		charge = String.valueOf(m_nurseBasics.getServiceChargePerNightCanntCare());
 		charge += unit;
 		m_serviceChargePerNightCanntCare.setText(charge);
-
 	}
 
 	public int getNurseID()
 	{
 		return m_nurseID;
+	}
+
+	public int getOldNurseID()
+	{
+		return m_oldNurseID;
 	}
 
 	/**

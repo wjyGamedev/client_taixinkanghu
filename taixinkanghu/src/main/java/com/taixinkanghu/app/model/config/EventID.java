@@ -47,8 +47,11 @@ public class EventID
 	public final static int QUEST_NURSE_ORDER_CONFIRM    = QUEST_APPPINTMENT_NURSING + 1;
 	public final static int FINISHED_NURSE_ORDER_CONFIRM = QUEST_NURSE_ORDER_CONFIRM + 1;
 
+	public final static int QUEST_NURSE_ORDER_CONFIRM_FOR_CHANGE_NURSE    = FINISHED_NURSE_ORDER_CONFIRM + 1;
+
+
 	//护工订单check
-	public final static int QUEST_NURSE_ORDER_CHECK    = FINISHED_NURSE_ORDER_CONFIRM + 1;
+	public final static int QUEST_NURSE_ORDER_CHECK    = QUEST_NURSE_ORDER_CONFIRM_FOR_CHANGE_NURSE + 1;
 	public final static int FAILED_NURSE_ORDER_CHECK = QUEST_NURSE_ORDER_CHECK + 1;
 	public final static int FINISHED_NURSE_ORDER_CHECK = FAILED_NURSE_ORDER_CHECK + 1;
 
@@ -57,11 +60,13 @@ public class EventID
 	public final static int FAILED_NURSE_ORDER_ALIPAY    = QUEST_NURSE_ORDER_ALIPAY + 1;
 	public final static int FINISHED_NURSE_ORDER_ALIPAY    = FAILED_NURSE_ORDER_ALIPAY + 1;
 
-
-
 	//订单列表
 	public final static int QUEST_NURSE_ORDER_LIST    = FINISHED_NURSE_ORDER_ALIPAY + 1;
 	public final static int FINISHED_NURSE_ORDER_LIST = QUEST_NURSE_ORDER_LIST + 1;
+
+	//取消订单，在未支付状态。
+	public final static int QUEST_NURSE_ORDER_CANCEL = FINISHED_NURSE_ORDER_LIST + 1;
+	public final static int FINISHED_NURSE_ORDER_CANCEL = QUEST_NURSE_ORDER_CANCEL + 1;
 
 	//康复用品
 	public final static int QUEST_SHOPPING_BASIC_LIST = 104;

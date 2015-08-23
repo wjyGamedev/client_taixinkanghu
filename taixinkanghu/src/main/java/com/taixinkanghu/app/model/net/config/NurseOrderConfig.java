@@ -29,10 +29,14 @@ public class NurseOrderConfig
 	public final static String PATIENT_WEIGHT     = "patient_weight";            //患者体重
 	public final static String PATIENT_STATUS     = "patient_status";            //患者自理状态
 	public final static String PATIENT_REMARK     = "patient_remark";            //患者备注
-	public final static String ORDER_TOTAL_CHARGE = "order_total_charge";        //订单的总价格。
+	public final static String ORDER_TOTAL_CHARGE = "order_total_charge";        //护理员获取的该订单的价格。
+	public final static String ORDER_USER_PAY = "order_user_pay";        //订单的总价格。
 	public final static String SCHEDULE_ALL       = NurseBasicListConfig.SCHEDULE_ALL;
 	public final static String SCHEDULE_DAY       = NurseBasicListConfig.SCHEDULE_DAY;
 	public final static String SCHEDULE_NIGHT     = NurseBasicListConfig.SCHEDULE_NIGHT;
+	public final static String NURSE_INFO     = "carer";
+	public final static String BEGIN_DATE_FOR_CHANGE_NURSE    = "from_date";
+
 
 	//02. confirm
 	//0201. recv(无)

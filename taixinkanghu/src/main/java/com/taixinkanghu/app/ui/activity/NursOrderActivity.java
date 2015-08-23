@@ -158,9 +158,9 @@ public class NursOrderActivity extends Activity implements View.OnClickListener 
                 convertView = mInflater.inflate(R.layout.item_order_info, null);
                 holder.name = (TextView) convertView.findViewById(R.id.name);
                 holder.pic = (CircleImageView) convertView.findViewById(R.id.pic);
-                holder.startdate = (TextView) convertView.findViewById(R.id.startdate);
-                holder.enddate = (TextView) convertView.findViewById(R.id.enddate);
-                holder.days = (TextView) convertView.findViewById(R.id.days);
+                holder.startdate = (TextView) convertView.findViewById(R.id.order_begin_date_tv);
+                holder.enddate = (TextView) convertView.findViewById(R.id.order_end_date_tv);
+                holder.days = (TextView) convertView.findViewById(R.id.total_day_num_tv);
 
                 convertView.setTag(holder);
             } else {

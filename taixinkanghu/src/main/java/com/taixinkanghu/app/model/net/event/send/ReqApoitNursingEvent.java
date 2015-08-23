@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 213Team
  *
- * @className : com.taixinkanghu.app.model.net.event.recv.${type_name}
+ * @className : com.taixinkanghu.app.ui.appointment_nursing.${type_name}
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
@@ -9,22 +9,18 @@
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/8/19		WangJY		1.0.0		create
+ * 2015/8/16		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.model.net.event.recv;
+package com.taixinkanghu.app.model.net.event.send;
 
 import com.taixinkanghu.app.model.config.EventID;
 import com.taixinkanghu.app.model.net.event.BaseNetEvent;
 
-public class FinishedNurseOrderListEvent  extends BaseNetEvent
+public class ReqApoitNursingEvent extends BaseNetEvent
 {
-
-
-	public FinishedNurseOrderListEvent()
+	public ReqApoitNursingEvent()
 	{
-		super(EventID.FINISHED_NURSE_ORDER_CONFIRM);
+		super(EventID.QUEST_APPPINTMENT_NURSING);
 	}
-
-
 }

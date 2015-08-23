@@ -28,9 +28,21 @@ public class HandlerClickEventNursOrderPay extends BaseHandleOnClickEvent
 	@Override
 	public void onClick(View v)
 	{
-		Activity activity = (Activity)m_context;
+		NurseOrderPayActivity activity = (NurseOrderPayActivity)m_context;
+		if (activity == null)
+		{
+			RegisterDialog.GetInstance().setMsg("activity == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
 		switch (v.getId())
 		{
+		case R.id.btn_back:
+		{
+			activity.backAction();
+		}
+		return;
 		case R.id.btn_bottom:
 		{
 			DNurseOrderPayPage nurseOrderPayPage = DNursingModule.GetInstance().getNurseOrderPayPage();

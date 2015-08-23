@@ -15,10 +15,11 @@
 		android:descendantFocusability="blocksDescendants"
 		android:gravity="center_vertical"
 		android:orientation="horizontal"
-		android:padding="10dp">
+		android:padding="10dp"
+		android:id="@+id/order_click_region_ll">
 
 		<com.taixinkanghu.widget.circleimageview.CircleImageView
-			android:id="@+id/pic"
+			android:id="@+id/header_img_iv"
 			android:layout_width="116dp"
 			android:layout_height="99dp"
 			android:layout_marginLeft="5dp"
@@ -42,7 +43,7 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:id="@id/name"
+					android:id="@+id/nurse_name_tv"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:singleLine="true"
@@ -61,7 +62,7 @@
 					android:textSize="14.0sp"/>
 
 				<TextView
-					android:id="@+id/order_state"
+					android:id="@+id/order_state_tv"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:singleLine="true"
@@ -84,7 +85,7 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:id="@+id/startdate"
+					android:id="@+id/order_begin_date_tv"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:gravity="right"
@@ -100,7 +101,7 @@
 					android:textSize="13.0sp"/>
 
 				<TextView
-					android:id="@+id/enddate"
+					android:id="@+id/order_end_date_tv"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
@@ -132,7 +133,7 @@
 						android:textSize="14.0sp"/>
 
 					<TextView
-						android:id="@+id/days"
+						android:id="@+id/total_day_num_tv"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:singleLine="true"
@@ -233,7 +234,7 @@
 						android:textSize="14.0sp"/>
 
 					<TextView
-						android:id="@+id/total_price"
+						android:id="@+id/total_price_tv"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginRight="10dp"
@@ -275,7 +276,7 @@
 		android:orientation="horizontal">
 
 		<Button
-			android:id="@+id/item_btn_1"
+			android:id="@+id/func_btn_1"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -287,7 +288,7 @@
 			android:text="@string/evaluation_text"/>
 
 		<Button
-			android:id="@+id/item_btn_2"
+			android:id="@+id/func_btn_2"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -299,7 +300,7 @@
 			android:text="@string/continue_text"/>
 
 		<Button
-			android:id="@+id/item_btn_3"
+			android:id="@+id/func_btn_3"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -311,7 +312,7 @@
 			android:text="@string/replacement_text"/>
 
 		<Button
-			android:id="@+id/item_btn_4"
+			android:id="@+id/func_btn_4"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"
@@ -323,7 +324,7 @@
 			android:text="@string/unsubscribe_text"/>
 
 		<Button
-			android:id="@+id/item_btn_5"
+			android:id="@+id/func_btn_5"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginBottom="5dp"

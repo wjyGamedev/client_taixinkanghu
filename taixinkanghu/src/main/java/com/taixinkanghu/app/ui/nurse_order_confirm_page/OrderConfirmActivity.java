@@ -7,6 +7,8 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
@@ -19,8 +21,10 @@ import com.taixinkanghu.app.model.data.net.DHospitalList;
 import com.taixinkanghu.app.model.data.net.DNurseBasics;
 import com.taixinkanghu.app.model.data.net.DNurseBasicsList;
 import com.taixinkanghu.app.model.data.net.DNurseContainer;
+import com.taixinkanghu.app.model.data.net.DNurseOrder;
 import com.taixinkanghu.app.model.data.net.DNurseSenior;
 import com.taixinkanghu.app.model.data.net.DNurseSeniorList;
+import com.taixinkanghu.app.model.data.net.DNurserOrderList;
 import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
 import com.taixinkanghu.app.model.data.page.DFaceImages;
 import com.taixinkanghu.app.model.data.page.DGlobal;
@@ -29,7 +33,7 @@ import com.taixinkanghu.app.model.data.page.DNursingDate;
 import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
-import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderListEvent;
+import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderConfirmEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.nurse_order_pay_page.NurseOrderPayActivity;
 import com.taixinkanghu.util.android.AppUtil;
@@ -42,6 +46,13 @@ public class OrderConfirmActivity extends Activity
 {
 	//widget
 	private HeaderCommon m_headerCommon = null;
+
+	//tab标签相关
+	private LinearLayout m_funcTabRegionLL = null;
+	private RadioGroup m_changeNurseRGrp = null;
+	private RadioButton m_newNurseRBtn = null;
+	private RadioButton m_oldBurseRBtn = null;
+	private TextView m_TabTopDividingLine = null;
 
 	//订单内容
 	private CircleImageView m_nurseHeadImgIV       = null;    //头像
@@ -85,6 +96,9 @@ public class OrderConfirmActivity extends Activity
 	private DApoitNursingPage      m_apoitNursingPage    = DNursingModule.GetInstance().getApoitNursingPage();
 	private DNurseOrderConfirmPage m_nurseOrderConfirmPage = DNursingModule.GetInstance().getNurseOrderConfirmPage();
 
+	private int m_newNurseID = DataConfig.DEFAULT_VALUE;
+	private int m_oldNurseID = DataConfig.DEFAULT_VALUE;
+	private String m_orderID = null;
 
 	private final String UNIT_DAY  = AppUtil.GetResources().getString(R.string.content_day);
 	private final String UNIT_YUAN = AppUtil.GetResources().getString(R.string.content_yuan);
@@ -98,16 +112,15 @@ public class OrderConfirmActivity extends Activity
 		init();
 		initListener();
 		getHight();
-		updateContent();
-		updateCharge();
+		initUI();
+		initContent();
 
 	}
 
 	@Override
 	protected void onStart()
 	{
-		setContent();
-		setCharge();
+		updateContent();
 		initGlobalData();
 		super.onStart();
 	}
@@ -126,6 +139,31 @@ public class OrderConfirmActivity extends Activity
 		super.onDestroy();
 	}
 
+	private void initUI()
+	{
+		m_funcTabRegionLL = (LinearLayout)findViewById(R.id.func_tab_region_ll);
+		m_changeNurseRGrp = (RadioGroup)findViewById(R.id.change_nurse_rgrp);
+		m_newNurseRBtn = (RadioButton)findViewById(R.id.new_nurse_rbtn);
+		m_oldBurseRBtn = (RadioButton)findViewById(R.id.old_nurse_rbtn);
+		m_TabTopDividingLine = (TextView)findViewById(R.id.tab_top_dividing_line);
+
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+			m_funcTabRegionLL.setVisibility(View.VISIBLE);
+			m_TabTopDividingLine.setVisibility(View.GONE);
+			m_newNurseRBtn.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
+			m_oldBurseRBtn.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
+			m_newNurseRBtn.setChecked(true);
+		}
+		else
+		{
+			m_funcTabRegionLL.setVisibility(View.GONE);
+			m_TabTopDividingLine.setVisibility(View.VISIBLE);
+		}
+
+	}
+
 	private void initGlobalData()
 	{
 		DGlobal.GetInstance().setContext(this);
@@ -142,6 +180,13 @@ public class OrderConfirmActivity extends Activity
 		m_headerCommon = new HeaderCommon(this);
 		m_headerCommon.init();
 		m_headerCommon.setTitle(R.string.determine_order_title);
+
+		//tab标签相关
+		m_funcTabRegionLL = (LinearLayout)findViewById(R.id.func_tab_region_ll);
+		m_changeNurseRGrp = (RadioGroup)findViewById(R.id.change_nurse_rgrp);
+		m_newNurseRBtn = (RadioButton)findViewById(R.id.new_nurse_rbtn);
+		m_oldBurseRBtn = (RadioButton)findViewById(R.id.old_nurse_rbtn);
+		m_TabTopDividingLine = (TextView)findViewById(R.id.tab_top_dividing_line);
 
 		//订单内容
 		m_nurseHeadImgIV = (CircleImageView)findViewById(R.id.header_img_civ);
@@ -205,7 +250,19 @@ public class OrderConfirmActivity extends Activity
 		m_selectPatientStateTitleHight = m_measuringPatientStateHeightLL.getMeasuredHeight();
 	}
 
-	private void updateContent()
+	public void switchNewNurse()
+	{
+		m_newNurseRBtn.setChecked(true);
+		updateContent();
+	}
+
+	public void switchOldNurse()
+	{
+		m_oldBurseRBtn.setChecked(true);
+		updateContent();
+	}
+
+	private void initContent()
 	{
 		Intent intent = getIntent();
 		if (intent == null)
@@ -215,121 +272,39 @@ public class OrderConfirmActivity extends Activity
 			return;
 		}
 
-		int nurseID = intent.getIntExtra(NurseBasicListConfig.ID, -1);
-		if (nurseID == -1)
+		m_newNurseID = intent.getIntExtra(NurseBasicListConfig.NEW_ID, DataConfig.DEFAULT_VALUE);
+		m_oldNurseID = intent.getIntExtra(NurseBasicListConfig.OLD_ID, DataConfig.DEFAULT_VALUE);
+		if (m_newNurseID == DataConfig.DEFAULT_VALUE)
 		{
 			RegisterDialog.GetInstance().setMsg("id is invalid", this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
-		//data
-		if (m_apoitNursingPage == null)
-		{
-			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-		if (m_nurseOrderConfirmPage == null)
-		{
-			RegisterDialog.GetInstance().setMsg("m_nurseOrderConfirmPage == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
 
-		m_nurseOrderConfirmPage.setNurseID(nurseID);
-
-		//0101. m_nurseID有效性判断
-		//通过ID可以找到DNurseBasics
-		DNurseBasicsList nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
-		if (nurseBasicsList == null)
+		if (DGlobal.GetInstance().getNursingModuleStatus() == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
 		{
-			RegisterDialog.GetInstance().setMsg("nurseBasicsList == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
+			DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByNurseID(m_oldNurseID);
+			if (nurseOrder == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseOrder == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			int orderID = nurseOrder.getOrderID();
+			m_orderID = String.valueOf(orderID);
 		}
 
-		DNurseBasics nurseBasics = nurseBasicsList.getNurseBasicByID(nurseID);
-		if (nurseBasics == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
-		//通过ID可以找到DNurseSenior
-		DNurseSeniorList nurseSeniorList = DNurseContainer.GetInstance().getNurseSeniorList();
-		if (nurseSeniorList == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nurseSeniorList == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
-		DNurseSenior nurseSenior = nurseSeniorList.getNurseSeniorByID(nurseID);
-		if (nurseSenior == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nurseSeniorList == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
-		//0102. update ui
-		int imgResID = DFaceImages.getInstance().getImgResIDbyIndex(0);
-		setNurseHeaderImgResID(imgResID);
-		setNurseName(nurseBasics.getName());
-		setNursingLevel(nurseBasics.getNursingLevel());
-		setNurseJobNum(nurseSenior.getJobNum());
-
-		//服务时间
-		DNursingDate nursingDate = m_apoitNursingPage.getNursingDate();
-		if (nursingDate == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-		String serviceDate = nursingDate.getDateDescription();
-		setServiceDate(serviceDate);
-
-		//服务地点
-		int       hospitalID = m_apoitNursingPage.getHospitalID();
-		DHospital hospital   = DHospitalList.GetInstance().getHospitalByID(hospitalID);
-		if (hospital == null)
-		{
-			RegisterDialog.GetInstance().setMsg("hospital == null[hospitalID:=" + hospitalID + "]", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-		String hospitalName = hospital.getName();
-
-		int         departmentID = m_apoitNursingPage.getDepartmenetID();
-		DDepartment department   = DDepartmentList.GetInstance().getDepartmentByID(departmentID);
-		if (department == null)
-		{
-			RegisterDialog.GetInstance().setMsg("department == null[departmentID:=" + departmentID + "]", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-		String departmentName = department.getName();
-		String serviceAddress = hospitalName + departmentName;
-		setServiceAddress(serviceAddress);
-
-		//被护理人
-		String patientName = m_apoitNursingPage.getName();
-		m_patientNameTV.setText(patientName);
-		//被护理人状态
-		EnumConfig.PatientState patientState = m_apoitNursingPage.getPatientState();
-		if (patientState == null)
-		{
-			RegisterDialog.GetInstance().setMsg("patientState == null");
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-		m_patientStateTV.setText(patientState.getName());
+		saveToDOrderConfirm(m_newNurseID);
 
 	}
 
-	private void setContent()
+	public String getOrderID()
+	{
+		return m_orderID;
+	}
+
+	private void updateContentByDefault()
 	{
 		if (m_apoitNursingPage == null)
 		{
@@ -374,150 +349,8 @@ public class OrderConfirmActivity extends Activity
 			return;
 		}
 		m_patientStateTV.setText(patientState.getName());
-	}
 
-	private void updateCharge()
-	{
-		if (m_apoitNursingPage == null)
-		{
-			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-		if (m_nurseOrderConfirmPage == null)
-		{
-			RegisterDialog.GetInstance().setMsg("m_nurseOrderConfirmPage == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
-
-
-		//01. PatientState
-		EnumConfig.PatientState patientState = m_apoitNursingPage.getPatientState();
-		if (patientState == null)
-		{
-			RegisterDialog.GetInstance().setMsg("patientState == null]", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
-		//02. DNursingDate
-		DNursingDate nursingDate = m_apoitNursingPage.getNursingDate();
-		if (nursingDate == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
-		//03. DNurseBasics
-		DNurseBasicsList nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
-		if (nurseBasicsList == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nurseBasicsList == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
-		int          nurseID     = m_nurseOrderConfirmPage.getNurseID();
-		DNurseBasics nurseBasics = nurseBasicsList.getNurseBasicByID(nurseID);
-		if (nurseBasics == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
-		//04. 订单金额
-		//全天24小时
-		int allNum       = nursingDate.getAllNum();
-		int chargePerAll = 0;
-		if (allNum > 0)
-		{
-			String strAllNum = String.valueOf(allNum);
-			chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
-			String strChargetPerAll = String.valueOf(chargePerAll);
-
-			//ui
-			m_allNumTV.setText(strAllNum + UNIT_DAY);
-			m_chargePerAllTV.setText(strChargetPerAll + UNIT_YUAN);
-			m_allCoeffTV.setText(strAllNum);
-			m_allRegionLL.setVisibility(View.VISIBLE);
-			//data
-			m_nurseOrderConfirmPage.setAllNum(allNum);
-			m_nurseOrderConfirmPage.setChargePerAll(chargePerAll);
-		}
-		else
-		{
-			m_allRegionLL.setVisibility(View.GONE);
-		}
-
-		//白天12小时
-		int dayNum       = nursingDate.getDayNum();
-		int chargePerDay = 0;
-		if (dayNum > 0)
-		{
-			String strDayNum = String.valueOf(dayNum);
-			chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
-			String strChargePerDay = String.valueOf(chargePerDay);
-
-			//ui
-			m_dayNumTV.setText(strDayNum + UNIT_DAY);
-			m_chargePerDayTV.setText(strChargePerDay + UNIT_YUAN);
-			m_dayCoeffTV.setText(strDayNum);
-			m_dayRegionLL.setVisibility(View.VISIBLE);
-			//data
-			m_nurseOrderConfirmPage.setDayNum(dayNum);
-			m_nurseOrderConfirmPage.setChargePerDay(chargePerDay);
-		}
-		else
-		{
-			m_dayRegionLL.setVisibility(View.GONE);
-		}
-
-		//夜间12小时
-		int nightNum       = nursingDate.getNightNum();
-		int chargePerNight = 0;
-		if (nightNum > 0)
-		{
-			String strNightNum = String.valueOf(nightNum);
-			chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
-			String strChargePerNight = String.valueOf(chargePerNight);
-
-			//ui
-			m_nightNumTV.setText(strNightNum + UNIT_DAY);
-			m_chargePerNightTV.setText(strChargePerNight + UNIT_YUAN);
-			m_NightCoeffTV.setText(strNightNum);
-			m_nightRegionLL.setVisibility(View.VISIBLE);
-			//data
-			m_nurseOrderConfirmPage.setNightNum(nightNum);
-			m_nurseOrderConfirmPage.setChargePerNight(chargePerNight);
-		}
-		else
-		{
-			m_nightRegionLL.setVisibility(View.GONE);
-		}
-
-		//总价格
-		int    totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
-		String strTotalCharge = String.valueOf(totalCharge) + getResources().getString(R.string.content_yuan);
-		//ui
-		m_TotalChargeTV.setText(strTotalCharge);
-		//data
-		m_nurseOrderConfirmPage.setTotalCharge(totalCharge);
-
-	}
-
-	private void setCharge()
-	{
-		if (m_nurseOrderConfirmPage == null)
-		{
-			RegisterDialog.GetInstance().setMsg("m_nurseOrderConfirmPage == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-
+		//金额
 		int    allNum       = m_nurseOrderConfirmPage.getAllNum();
 		int    chargePerAll = m_nurseOrderConfirmPage.getChargePerAll();
 		String strAllNum    = String.valueOf(allNum);
@@ -567,6 +400,313 @@ public class OrderConfirmActivity extends Activity
 			m_nightRegionLL.setVisibility(View.GONE);
 		}
 
+		int totalCharge = m_nurseOrderConfirmPage.getTotalCharge();
+		m_TotalChargeTV.setText(String.valueOf(totalCharge));
+
+	}
+
+	private void updateContentByOldNurse()
+	{
+		int nurseHeaderImgResID = DFaceImages.getInstance().getImgResIDbyIndex(0);
+		m_nurseHeadImgIV.setImageResource(nurseHeaderImgResID);
+
+
+		DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByNurseID(m_oldNurseID);
+		if (nurseOrder == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrder == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		DNurseBasics nurseBasics = nurseOrder.getNurseBasics();
+		if (nurseBasics == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		m_nameTV.setText(nurseBasics.getName());
+		m_nuringLevelTV.setText(nurseBasics.getNursingLevel());
+
+		DNurseSenior nurseSenior = nurseOrder.getNurseSenior();
+		if (nurseSenior == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseSenior == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		m_jobNumTV.setText(nurseSenior.getJobNum());
+
+		//服务时间
+		DNursingDate nursingDate = m_apoitNursingPage.getNursingDate();
+		if (nursingDate == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		String serviceDate = nursingDate.getDateDescription();
+		m_serviceDateTV.setText(serviceDate);
+
+		//服务地点
+		int       hospitalID = m_apoitNursingPage.getHospitalID();
+		DHospital hospital   = DHospitalList.GetInstance().getHospitalByID(hospitalID);
+		if (hospital == null)
+		{
+			RegisterDialog.GetInstance().setMsg("hospital == null[hospitalID:=" + hospitalID + "]", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		String hospitalName = hospital.getName();
+
+		int         departmentID = m_apoitNursingPage.getDepartmenetID();
+		DDepartment department   = DDepartmentList.GetInstance().getDepartmentByID(departmentID);
+		if (department == null)
+		{
+			RegisterDialog.GetInstance().setMsg("department == null[departmentID:=" + departmentID + "]", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		String departmentName = department.getName();
+		String serviceAddress = hospitalName + departmentName;
+		m_serviceAddressTV.setText(serviceAddress);
+
+		//被护理人
+		m_patientNameTV.setText(m_apoitNursingPage.getName());
+
+		//被护理人状态
+		EnumConfig.PatientState patientState = m_apoitNursingPage.getPatientState();
+		if (patientState == null)
+		{
+			RegisterDialog.GetInstance().setMsg("patientState == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		m_patientStateTV.setText(patientState.getName());
+
+		//天数：全天24小时，白天12小时，黑天12小时
+		int allNum = nursingDate.getAllNum();
+		int dayNum = nursingDate.getDayNum();
+		int nightNum = nursingDate.getNightNum();
+
+		//单价：全天24小时，白天12小时，黑天12小时
+		int chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+		int chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+		int chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
+		int    totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
+
+		String strAllNum    = String.valueOf(allNum);
+		if (allNum != 0)
+		{
+			m_allNumTV.setText(strAllNum + UNIT_DAY);
+			m_chargePerAllTV.setText(String.valueOf(chargePerAll) + UNIT_YUAN);
+			m_allCoeffTV.setText(strAllNum);
+			m_allRegionLL.setVisibility(View.VISIBLE);
+		}
+		else
+		{
+			m_allRegionLL.setVisibility(View.GONE);
+		}
+
+		String strDayNum    = String.valueOf(dayNum);
+		if (dayNum != 0)
+		{
+			m_dayNumTV.setText(strDayNum + UNIT_DAY);
+			m_chargePerDayTV.setText(String.valueOf(chargePerDay) + UNIT_YUAN);
+			m_dayCoeffTV.setText(strDayNum);
+			m_dayRegionLL.setVisibility(View.VISIBLE);
+		}
+		else
+		{
+			m_dayRegionLL.setVisibility(View.GONE);
+		}
+
+
+		String strNightNum    = String.valueOf(nightNum);
+		if (nightNum != 0)
+		{
+			m_nightNumTV.setText(strNightNum + UNIT_DAY);
+			m_chargePerNightTV.setText(String.valueOf(chargePerNight) + UNIT_YUAN);
+			m_NightCoeffTV.setText(strNightNum);
+			m_nightRegionLL.setVisibility(View.VISIBLE);
+		}
+		else
+		{
+			m_nightRegionLL.setVisibility(View.GONE);
+		}
+
+		m_TotalChargeTV.setText(String.valueOf(totalCharge));
+
+	}
+
+	private void updateContent()
+	{
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+			int id = m_changeNurseRGrp.getCheckedRadioButtonId();
+			if (id == R.id.new_nurse_rbtn)
+			{
+				updateContentByDefault();
+			}
+			else
+			{
+				updateContentByOldNurse();
+			}
+		}
+		else
+		{
+			updateContentByDefault();
+		}
+	}
+
+	private void updateCharge()
+	{
+		DNursingDate nursingDate = m_apoitNursingPage.getNursingDate();
+		if (nursingDate == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		EnumConfig.PatientState patientState = m_apoitNursingPage.getPatientState();
+		if (patientState == null)
+		{
+			RegisterDialog.GetInstance().setMsg("patientState == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		int nurseID = m_nurseOrderConfirmPage.getNurseID();
+		DNurseBasics nurseBasics = null;
+
+
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+
+		//01. 来自于续订流程
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.REPEAT_ORDER)
+		{
+			DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByOrderID(nurseID);
+			if (nurseOrder == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseOrder == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			nurseBasics = nurseOrder.getNurseBasics();
+			if (nurseBasics == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+		}
+		//03. 来自于预约陪护流程
+		else
+		{
+			DNurseBasicsList nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
+			if (nurseBasicsList == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseBasicsList == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			nurseBasics = nurseBasicsList.getNurseBasicByID(nurseID);
+			if (nurseBasics == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+		}
+
+		//天数：全天24小时，白天12小时，黑天12小时
+		int allNum = nursingDate.getAllNum();
+		int dayNum = nursingDate.getDayNum();
+		int nightNum = nursingDate.getNightNum();
+
+		//单价：全天24小时，白天12小时，黑天12小时
+		int chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+		int chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+		int chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
+
+		//04. 订单金额
+		//全天24小时
+		if (allNum > 0)
+		{
+			String strAllNum = String.valueOf(allNum);
+			chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+			String strChargetPerAll = String.valueOf(chargePerAll);
+
+			//ui
+			m_allNumTV.setText(strAllNum + UNIT_DAY);
+			m_chargePerAllTV.setText(strChargetPerAll + UNIT_YUAN);
+			m_allCoeffTV.setText(strAllNum);
+			m_allRegionLL.setVisibility(View.VISIBLE);
+			//data
+			m_nurseOrderConfirmPage.setAllNum(allNum);
+			m_nurseOrderConfirmPage.setChargePerAll(chargePerAll);
+		}
+		else
+		{
+			m_allRegionLL.setVisibility(View.GONE);
+		}
+
+		//白天12小时
+		if (dayNum > 0)
+		{
+			String strDayNum = String.valueOf(dayNum);
+			chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+			String strChargePerDay = String.valueOf(chargePerDay);
+
+			//ui
+			m_dayNumTV.setText(strDayNum + UNIT_DAY);
+			m_chargePerDayTV.setText(strChargePerDay + UNIT_YUAN);
+			m_dayCoeffTV.setText(strDayNum);
+			m_dayRegionLL.setVisibility(View.VISIBLE);
+			//data
+			m_nurseOrderConfirmPage.setDayNum(dayNum);
+			m_nurseOrderConfirmPage.setChargePerDay(chargePerDay);
+		}
+		else
+		{
+			m_dayRegionLL.setVisibility(View.GONE);
+		}
+
+		//夜间12小时
+		if (nightNum > 0)
+		{
+			String strNightNum = String.valueOf(nightNum);
+			chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
+			String strChargePerNight = String.valueOf(chargePerNight);
+
+			//ui
+			m_nightNumTV.setText(strNightNum + UNIT_DAY);
+			m_chargePerNightTV.setText(strChargePerNight + UNIT_YUAN);
+			m_NightCoeffTV.setText(strNightNum);
+			m_nightRegionLL.setVisibility(View.VISIBLE);
+			//data
+			m_nurseOrderConfirmPage.setNightNum(nightNum);
+			m_nurseOrderConfirmPage.setChargePerNight(chargePerNight);
+		}
+		else
+		{
+			m_nightRegionLL.setVisibility(View.GONE);
+		}
+
+		//总价格
+		int    totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
+		String strTotalCharge = String.valueOf(totalCharge) + getResources().getString(R.string.content_yuan);
+		//ui
+		m_TotalChargeTV.setText(strTotalCharge);
+		//data
+		m_nurseOrderConfirmPage.setTotalCharge(totalCharge);
+
 	}
 
 	public Integer getSelectPatientStateTitleHight()
@@ -591,6 +731,186 @@ public class OrderConfirmActivity extends Activity
 		//03. update charge
 		updateCharge();
 	}
+
+	private void saveToDOrderConfirm(int nurseID)
+	{
+		//01. 有效性判断
+		if (m_nurseOrderConfirmPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_nurseOrderConfirmPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		m_nurseOrderConfirmPage.setNurseID(nurseID);	//nurse ID
+
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+
+		int nurseHeaderImgResID = DFaceImages.getInstance().getImgResIDbyIndex(0);
+		String nurseName = null;
+		String nursingLevel = null;
+		String jobNum = null;
+
+		//服务时间
+		String serviceDate = null;
+		DNursingDate nursingDate = m_apoitNursingPage.getNursingDate();
+		if (nursingDate == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		serviceDate = nursingDate.getDateDescription();
+
+		//服务地点
+		String serviceAddress = null;
+		int       hospitalID = m_apoitNursingPage.getHospitalID();
+		DHospital hospital   = DHospitalList.GetInstance().getHospitalByID(hospitalID);
+		if (hospital == null)
+		{
+			RegisterDialog.GetInstance().setMsg("hospital == null[hospitalID:=" + hospitalID + "]", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		String hospitalName = hospital.getName();
+
+		int         departmentID = m_apoitNursingPage.getDepartmenetID();
+		DDepartment department   = DDepartmentList.GetInstance().getDepartmentByID(departmentID);
+		if (department == null)
+		{
+			RegisterDialog.GetInstance().setMsg("department == null[departmentID:=" + departmentID + "]", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		String departmentName = department.getName();
+		serviceAddress = hospitalName + departmentName;
+
+		//被护理人
+		String patientName = m_apoitNursingPage.getName();
+
+		//被护理人状态
+		EnumConfig.PatientState patientState = m_apoitNursingPage.getPatientState();
+		if (patientState == null)
+		{
+			RegisterDialog.GetInstance().setMsg("patientState == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+
+		//天数：全天24小时，白天12小时，黑天12小时
+		int allNum = nursingDate.getAllNum();
+		int dayNum = nursingDate.getDayNum();
+		int nightNum = nursingDate.getNightNum();
+
+		//单价：全天24小时，白天12小时，黑天12小时
+		int chargePerAll = 0;
+		int chargePerDay = 0;
+		int chargePerNight = 0;
+
+		//02. 来自于续订流程
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.REPEAT_ORDER)
+		{
+			DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByNurseID(nurseID);
+			if (nurseOrder == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseOrder == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			DNurseBasics nurseBasics = nurseOrder.getNurseBasics();
+			if (nurseBasics == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			nurseName = nurseBasics.getName();
+			nursingLevel = nurseBasics.getNursingLevel();
+
+
+			DNurseSenior nurseSenior = nurseOrder.getNurseSenior();
+			if (nurseSenior == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseSenior == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+			jobNum = nurseSenior.getJobNum();
+
+			chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+			chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+			chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
+		}
+		//03. 来自于预约陪护流程,换护理员流程
+		else
+		{
+			DNurseBasicsList nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
+			if (nurseBasicsList == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseBasicsList == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			DNurseBasics nurseBasics = nurseBasicsList.getNurseBasicByID(nurseID);
+			if (nurseBasics == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			DNurseSeniorList nurseSeniorList = DNurseContainer.GetInstance().getNurseSeniorList();
+			if (nurseSeniorList == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseSeniorList == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			DNurseSenior nurseSenior = nurseSeniorList.getNurseSeniorByID(nurseID);
+			if (nurseSenior == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseSeniorList == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			nurseName = nurseBasics.getName();
+			nursingLevel = nurseBasics.getNursingLevel();
+			jobNum = nurseSenior.getJobNum();
+
+			chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+			chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+			chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
+
+		}
+
+		m_nurseOrderConfirmPage.setNurseHeaderImgResID(nurseHeaderImgResID);
+		m_nurseOrderConfirmPage.setNurseName(nurseName);
+		m_nurseOrderConfirmPage.setNursingLevel(nursingLevel);
+		m_nurseOrderConfirmPage.setNurseJobNum(jobNum);
+		m_nurseOrderConfirmPage.setServiceDate(serviceDate);
+		m_nurseOrderConfirmPage.setServiceAddress(serviceAddress);
+		m_patientNameTV.setText(patientName);
+		m_patientStateTV.setText(patientState.getName());
+
+		m_nurseOrderConfirmPage.setAllNum(allNum);
+		m_nurseOrderConfirmPage.setDayNum(dayNum);
+		m_nurseOrderConfirmPage.setNightNum(nightNum);
+		m_nurseOrderConfirmPage.setChargePerAll(chargePerAll);
+		m_nurseOrderConfirmPage.setChargePerDay(chargePerAll);
+		m_nurseOrderConfirmPage.setChargePerNight(chargePerAll);
+
+		//总价格
+		int    totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
+		m_nurseOrderConfirmPage.setTotalCharge(totalCharge);
+
+	}
+
 
 	private void setNurseName(String name)
 	{
@@ -680,15 +1000,21 @@ public class OrderConfirmActivity extends Activity
 	 * event bus handle
 	 */
 	//下订单成功，跳转到支付页面。
-	public void onEventMainThread(FinishedNurseOrderListEvent event)
+	public void onEventMainThread(FinishedNurseOrderConfirmEvent event)
 	{
 		Intent intent   = new Intent(this, NurseOrderPayActivity.class);
 		int    nurserID = event.getNurseID();
 		int    orderID  = event.getOrderID();
+		String orderSerialNum = event.getOrderSerialNum();
+		int	totalPrice = event.getTotalPrice();
 		intent.putExtra(NurseOrderConfig.NURSE_ID, nurserID);
 		intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
+		intent.putExtra(NurseOrderConfig.ORDER_SERIAL_NUM, orderSerialNum);
+		intent.putExtra(NurseOrderConfig.ORDER_USER_PAY, totalPrice);
+
 		startActivity(intent);
 		return;
 	}
+
 
 }
