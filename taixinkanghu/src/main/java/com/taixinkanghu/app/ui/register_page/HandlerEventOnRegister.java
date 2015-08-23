@@ -5,7 +5,7 @@
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p/>
+ * <p>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
@@ -36,10 +36,11 @@ import de.greenrobot.event.EventBus;
 
 public class HandlerEventOnRegister implements View.OnClickListener
 {
-	private RegisterActivity  m_registerActivity             = null;
-	private String m_CountryZipCode = null;
-	private String m_phoneNum = null;
-	private TextView m_phoneNumTV = null;
+	private RegisterActivity m_registerActivity = null;
+	private TimeButton       m_verificationBtn  = null;
+	private String           m_CountryZipCode   = null;
+	private String           m_phoneNum         = null;
+	private TextView         m_phoneNumTV       = null;
 
 	public HandlerEventOnRegister()
 	{
@@ -50,6 +51,7 @@ public class HandlerEventOnRegister implements View.OnClickListener
 	{
 		m_registerActivity = registerActivity;
 		m_phoneNumTV = (TextView)m_registerActivity.findViewById(R.id.phone_num_tv);
+		m_verificationBtn = (TimeButton)m_registerActivity.findViewById(R.id.verification_id_btn);
 	}
 
 	public void clearup()
@@ -73,6 +75,17 @@ public class HandlerEventOnRegister implements View.OnClickListener
 			break;
 
 		}
+	}
+
+
+	public interface OnClickListener
+	{
+		/**
+		 * Called when a view has been clicked.
+		 *
+		 * @param v The view that was clicked.
+		 */
+		void onClick(View v);
 	}
 
 
@@ -100,13 +113,14 @@ public class HandlerEventOnRegister implements View.OnClickListener
 		//03. 发送手机验证
 		SmsAutho.GetInstance().getVerificationCode(m_CountryZipCode, m_phoneNum);
 
+		//04.开始倒计时
+		m_verificationBtn.startTimer();
 	}
 
 	private void initPhoneNum()
 	{
 		String phoneNum = m_phoneNumTV.getText().toString().trim();
-		if (TextUtils.isEmpty(m_phoneNum) == true ||
-				m_phoneNum.equals(phoneNum) == false)
+		if (TextUtils.isEmpty(m_phoneNum) == true || m_phoneNum.equals(phoneNum) == false)
 		{
 			m_phoneNum = phoneNum;
 		}
@@ -150,7 +164,9 @@ public class HandlerEventOnRegister implements View.OnClickListener
 		Matcher matcher = pattern.matcher(m_phoneNum);
 		if (matcher.matches() == false)
 		{
-			RegisterDialog.GetInstance().setMsg(m_registerActivity.getResources().getString(R.string.err_info_invalid_country_zip_code), m_registerActivity);
+			RegisterDialog.GetInstance().setMsg(m_registerActivity.getResources().getString(R.string.err_info_invalid_country_zip_code),
+												m_registerActivity
+											   );
 			RegisterDialog.GetInstance().show();
 			return false;
 		}
@@ -160,10 +176,10 @@ public class HandlerEventOnRegister implements View.OnClickListener
 	private void handleRegisterEvent()
 	{
 		//01. 提交验证码
-		TextView authTV =  m_registerActivity.getAuthTV();
-		String authCode = authTV.getText().toString().trim();
+		TextView authTV   = m_registerActivity.getAuthTV();
+		String   authCode = authTV.getText().toString().trim();
 		//更改提交方式，由提交到第三方，更改为提交到本地服务器。
-//		SmsAutho.GetInstance().submitVerificationCode(m_CountryZipCode, m_phoneNum, authCode);
+		//		SmsAutho.GetInstance().submitVerificationCode(m_CountryZipCode, m_phoneNum, authCode);
 		initPhoneNum();
 		if (!initCountryZipCode())
 			return;

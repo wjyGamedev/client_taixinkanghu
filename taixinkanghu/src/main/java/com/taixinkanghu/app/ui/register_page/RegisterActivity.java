@@ -35,7 +35,7 @@ public class RegisterActivity extends Activity
 	//
 	private TextView               m_phoneNumTV             = null;
 	private TextView               m_authTV                 = null;
-	private Button                 m_verificationBtn        = null;
+	private TimeButton             m_verificationBtn        = null;
 	private Button                 m_registerBtn            = null;
 	//event
 	private HandleEditActionEvent  m_handleEditActionEvent  = null;
@@ -51,7 +51,7 @@ public class RegisterActivity extends Activity
 		setContentView(R.layout.activity_register);
 
 		init();
-		initContent();
+		initContent(savedInstanceState);
 		initListener();
 		initEvent();
 	}
@@ -84,6 +84,7 @@ public class RegisterActivity extends Activity
 	protected void onDestroy()
 	{
 		m_eventBus.unregister(this);
+		m_verificationBtn.onDestroy();
 		super.onDestroy();
 	}
 
@@ -99,7 +100,7 @@ public class RegisterActivity extends Activity
 
 		m_phoneNumTV = (TextView)findViewById(R.id.phone_num_tv);
 		m_authTV = (TextView)findViewById(R.id.auth_code);
-		m_verificationBtn = (Button)findViewById(R.id.verification_id_btn);
+		m_verificationBtn = (TimeButton)findViewById(R.id.verification_id_btn);
 		m_registerBtn = (Button)findViewById(R.id.register_id_btn);
 
 		m_handlerEventOnRegister = new HandlerEventOnRegister();
@@ -111,9 +112,11 @@ public class RegisterActivity extends Activity
 		m_eventBus.register(this);
 	}
 
-	private void initContent()
+	private void initContent(Bundle savedInstanceState)
 	{
 		m_headerCommon.setTitle(R.string.title_register);
+		m_verificationBtn.onCreate(savedInstanceState);
+		m_verificationBtn.setTextAfter("秒后重新获取").setTextBefore("获取验证码").setLenght(60 * 1000);
 	}
 
 
@@ -139,7 +142,5 @@ public class RegisterActivity extends Activity
 		return;
 
 	}
-
-
 
 }

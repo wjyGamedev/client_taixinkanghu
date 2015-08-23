@@ -69,7 +69,6 @@
 						android:textSize="16.0sp"/>
 
 					<ImageView
-						android:id="@+id/dwon_hospital"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
 						android:background="@mipmap/img_right"/>
@@ -106,7 +105,6 @@
 						android:textSize="16.0sp"/>
 
 					<ImageView
-						android:id="@+id/dwon_hospital"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
 						android:background="@mipmap/img_right"/>
@@ -143,7 +141,6 @@
 						android:textSize="16.0sp"/>
 
 					<ImageView
-						android:id="@+id/dwon_hospital"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
 						android:background="@mipmap/img_right"/>
@@ -180,7 +177,6 @@
 						android:textSize="16.0sp"/>
 
 					<ImageView
-						android:id="@+id/dwon_hospital"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
 						android:background="@mipmap/img_right"/>
