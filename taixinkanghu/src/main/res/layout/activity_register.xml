@@ -35,7 +35,7 @@
 					android:maxLength="11"
 					android:phoneNumber="true"/>
 
-				<Button
+				<com.taixinkanghu.app.ui.register_page.TimeButton
 					android:id="@+id/verification_id_btn"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
