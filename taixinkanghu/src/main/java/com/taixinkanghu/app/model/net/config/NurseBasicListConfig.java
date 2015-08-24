@@ -5,7 +5,7 @@
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p/>
+ * <p>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
@@ -17,10 +17,10 @@ package com.taixinkanghu.app.model.net.config;
 public class NurseBasicListConfig
 {
 	//common
-	public final static String ID           = CommonConifg.ID;
-	public final static String NAME             = CommonConifg.NAME;
-	public final static String AGE              = "age";
-	public final static String HOSPITAL_ID      = "hospital_id";
+	public final static String ID          = "cid";
+	public final static String NAME        = CommonConifg.NAME;
+	public final static String AGE         = "age";
+	public final static String HOSPITAL_ID = "hospital_id";
 
 	//send
 	public final static String PHONE_NUM        = "phone_num";
@@ -29,18 +29,18 @@ public class NurseBasicListConfig
 	public final static String DEPARTMENT_NAME  = "department_name";
 	public final static String PATIENT_STATE_ID = "patient_state_id";
 	public final static String STRICT           = "strict";
-	public final static String SCHEDULE_ALL   = "schedule_all";
-	public final static String SCHEDULE_DAY   = "schedule_day";
-	public final static String SCHEDULE_NIGHT = "schedule_night";
+	public final static String SCHEDULE_ALL     = "schedule_all";
+	public final static String SCHEDULE_DAY     = "schedule_day";
+	public final static String SCHEDULE_NIGHT   = "schedule_night";
 
 	//recv
-	public final static String LIST  = "nurse_basics_list";
-	public final static String STAR_LEVEL   = "star_level";
-	public final static String GENDER     = "gender";
-	public final static String HOMETOWN     = "hometown";
-	public final static String NURING_EXP   = "nursing_exp";
-	public final static String NURING_LEVEL = "nursing_level";
-	public final static String SERVICE_STATUS         = "nurse_service_status";
+	public final static String LIST           = "nurse_basics_list";
+	public final static String STAR_LEVEL     = "star_level";
+	public final static String GENDER         = "gender";
+	public final static String HOMETOWN       = "hometown";
+	public final static String NURING_EXP     = "nursing_exp";
+	public final static String NURING_LEVEL   = "nursing_level";
+	public final static String SERVICE_STATUS = "nurse_service_status";
 
 	public final static String SERVICE_CHARGE_PER_ALL_CARE       = "service_charge_per_all_care";           //24小时，可自理
 	public final static String SERVICE_CHARGE_PER_ALL_HALF_CARE  = "service_charge_per_all_half_care";     //24小时，半自理
@@ -56,5 +56,6 @@ public class NurseBasicListConfig
 
 	//logical
 	public final static String SCHEDULE_SPLIT = ",";
-
+	public final static String OLD_ID         = "old_id";
+	public final static String NEW_ID         = "new_id";
 }

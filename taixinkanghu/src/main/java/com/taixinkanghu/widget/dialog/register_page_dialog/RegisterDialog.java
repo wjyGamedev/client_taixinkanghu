@@ -95,8 +95,8 @@ public class RegisterDialog
 		m_msg = msg;
 		if (m_builder != null)
 		{
-			m_builder.setPositiveButton(context.getResources().getString(R.string.cancel_btn), cancelListener);
-			m_builder.setNegativeButton(context.getResources().getString(R.string.confirm_btn), confirmListener);
+			m_builder.setPositiveButton(context.getResources().getString(R.string.cancel_btn), confirmListener);
+			m_builder.setNegativeButton(context.getResources().getString(R.string.confirm_btn), cancelListener);
 			m_builder.setMessage(m_msg);
 		}
 	}
@@ -111,8 +111,8 @@ public class RegisterDialog
 		m_msg = msg;
 		if (m_builder != null)
 		{
-			m_builder.setPositiveButton(context.getResources().getString(R.string.cancel_btn), cancelListener);
-			m_builder.setNegativeButton(context.getResources().getString(R.string.confirm_btn), confirmListener);
+			m_builder.setPositiveButton(context.getResources().getString(R.string.cancel_btn), confirmListener);
+			m_builder.setNegativeButton(context.getResources().getString(R.string.confirm_btn), cancelListener);
 			m_builder.setMessage(m_msg);
 		}
 	}

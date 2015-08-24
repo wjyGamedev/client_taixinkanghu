@@ -15,6 +15,7 @@
 package com.taixinkanghu.app.ui.appointment_nursing;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -27,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.net.DDepartment;
 import com.taixinkanghu.app.model.data.net.DDepartmentList;
@@ -37,6 +39,7 @@ import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.data.page.DNursingDate;
 import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.event.editevent.HandleEditActionEvent;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.select_date.ConfirmSelectDateEvent;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
@@ -96,7 +99,8 @@ public class ApoitNursingActivity extends Activity
 
 	private DApoitNursingPage m_apoitNursingPage = DNursingModule.GetInstance().getApoitNursingPage();
 
-	@Override
+	private int m_nurseID = DataConfig.DEFAULT_VALUE;
+
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -136,6 +140,13 @@ public class ApoitNursingActivity extends Activity
 
 	private void updateDate()
 	{
+		Intent intent = getIntent();
+		int nurseID = intent.getIntExtra(NurseBasicListConfig.ID, DataConfig.DEFAULT_VALUE);
+		if (nurseID != DataConfig.DEFAULT_VALUE)
+		{
+			m_nurseID = nurseID;
+		}
+
 		if (m_apoitNursingPage == null)
 		{
 			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null", this);
@@ -321,6 +332,10 @@ public class ApoitNursingActivity extends Activity
 
 	}
 
+	public int getNurseID()
+	{
+		return m_nurseID;
+	}
 
 	public TextView getGenderTV()
 	{

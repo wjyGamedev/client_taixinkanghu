@@ -54,8 +54,10 @@ public class HandlerClickEventNurseInfo  extends BaseHandleOnClickEvent
 			case R.id.btn_select:
 			{
 				int nurseID = nurseInfoActivity.getNurseID();
+				int oldNurseID = nurseInfoActivity.getOldNurseID();
 				Intent intent = new Intent(nurseInfoActivity, OrderConfirmActivity.class);
-				intent.putExtra(NurseBasicListConfig.ID, nurseID);
+				intent.putExtra(NurseBasicListConfig.NEW_ID, nurseID);
+				intent.putExtra(NurseBasicListConfig.OLD_ID, oldNurseID);
 				nurseInfoActivity.startActivity(intent);
 			}
 			return;

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.data.page.DFaceImages;
 import com.taixinkanghu.app.ui.adapter.IBaseAdapter;
 
@@ -125,11 +126,13 @@ final class ViewHolder
 		}
 
 		DShoppingBasics tmpShoppingBasics = m_dShoppingBasicsArrayList.get(position);
-		int             iID               = tmpShoppingBasics.getId();
-		int             iImageIndex       = (iID - 1);
-		int             iImageID          = DFaceImages.getInstance().getImgResIDbyIndex(iImageIndex);
 
-		m_goodsImage.setImageResource(iImageID);
+		int headerImgResID = DFaceImages.getInstance().getImgResIDbyID(tmpShoppingBasics.getId());
+		if (headerImgResID == DataConfig.DEFAULT_VALUE)
+		{
+			headerImgResID = DFaceImages.DEFAULT_IMAGE_RES_ID;
+		}
+		m_goodsImage.setImageResource(headerImgResID);
 		m_nameText.setText(tmpShoppingBasics.getName());
 		m_priceText.setText(tmpShoppingBasics.getPrice().toString());
 		m_praiseRateText.setText(tmpShoppingBasics.getPraiseRate().toString());

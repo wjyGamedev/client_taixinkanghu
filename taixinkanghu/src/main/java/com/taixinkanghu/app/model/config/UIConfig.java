@@ -16,7 +16,7 @@ package com.taixinkanghu.app.model.config;
 
 public class UIConfig
 {
-	public final static int SELECT_HOSPITAL_FRAGMENT_MAX_COLUMN = 2;
+	public final static int SELECT_HOSPITAL_FRAGMENT_MAX_COLUMN = 1;
 	public final static int SELECT_DEPARTMENT_FRAGMENT_MAX_COLUMN = 2;
 	public final static String SELECT_HOSPITAL_FRAGMENT_SPLIT = "_";
 }

@@ -23,7 +23,7 @@ import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.data.page.DMainPage;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderListEvent;
 import com.taixinkanghu.app.ui.activity.MyWealthActivity;
-import com.taixinkanghu.app.ui.activity.NursOrderActivity;
+import com.taixinkanghu.app.ui.nurse_order_page.NurseOrderActivity;
 import com.taixinkanghu.app.ui.register_page.RegisterActivity;
 import com.taixinkanghu.app.ui.setting.SettingActivity;
 import com.taixinkanghu.widget.fragmenttabhostex.FragmentTabHostEx;
@@ -242,7 +242,7 @@ public class MainActivity extends FragmentActivity
 			m_eventBus.post(reqNurseOrderListEvent);
 
 			//02. 跳转页面到nurse order
-			startActivity(new Intent(MainActivity.this, NursOrderActivity.class));
+			startActivity(new Intent(MainActivity.this, NurseOrderActivity.class));
 		}
 		else
 		{

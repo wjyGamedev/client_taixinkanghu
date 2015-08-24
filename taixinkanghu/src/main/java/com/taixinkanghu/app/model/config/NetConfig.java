@@ -51,7 +51,13 @@ public class NetConfig
 	public static final String s_nurserOrderAlipayServerNoticePageURL = "http://"+IP_ADDREDD_TEST+"/order/payCallBack/";
 
 	//nurse order list address
-	public final static String s_nurseOrderListAddress = "http://"+IP_ADDREDD_TEST+"/";
+	public final static String s_nurseOrderListAddress = "http://"+IP_ADDREDD_TEST+"/order/getOder/";
+
+	//取消订单，在未付款的情况下。
+	public final static String s_nurseOrderCancel = "http://"+IP_ADDREDD_TEST+"/order/cancelOrder/";
+
+	//更换护工的地址
+	public final static String s_changeNurseAddress = "http://"+IP_ADDREDD_TEST+"/order/changeCarer/";
 
 
 }

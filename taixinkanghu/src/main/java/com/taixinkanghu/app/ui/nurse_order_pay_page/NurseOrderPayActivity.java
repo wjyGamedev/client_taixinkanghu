@@ -22,7 +22,7 @@ import com.taixinkanghu.app.model.net.event.recv.FailedNurseOrderCheckEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderCheckEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderAlipayEvent;
-import com.taixinkanghu.app.ui.appointment_nursing.ReqApoitNursingEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqApoitNursingEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
@@ -96,12 +96,18 @@ public class NurseOrderPayActivity extends Activity
 	{
 		if (keyCode == KeyEvent.KEYCODE_BACK)
 		{
-			RegisterDialog.GetInstance().setMsg(getString(R.string.cancel_title), this, m_handleClickEventOnDialog, m_handleClickEventOnDialog);
-			RegisterDialog.GetInstance().show();
+			backAction();
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
 
+	}
+
+	public void backAction()
+	{
+		RegisterDialog.GetInstance().setMsg(getString(R.string.cancel_title), this, m_handleClickEventOnDialog, m_handleClickEventOnDialog);
+		RegisterDialog.GetInstance().show();
+		return;
 	}
 
 	private void initData()
@@ -126,6 +132,24 @@ public class NurseOrderPayActivity extends Activity
 			return;
 		}
 		m_nurseOrderPayPage.setOrderID(orderID);
+
+		String orderSerialNum = intent.getStringExtra(NurseOrderConfig.ORDER_SERIAL_NUM);
+		if (orderSerialNum == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseID is invalid[orderSerialNum == null]");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		m_nurseOrderPayPage.setOrderSerialNum(orderSerialNum);
+
+		int totalPrice = intent.getIntExtra(NurseOrderConfig.ORDER_USER_PAY, DataConfig.DEFAULT_VALUE);
+		if (totalPrice == DataConfig.DEFAULT_VALUE)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseID is invalid[totalPrice:=" + totalPrice + "]", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		m_nurseOrderPayPage.setTotalPrice(totalPrice);
 
 	}
 
@@ -158,7 +182,7 @@ public class NurseOrderPayActivity extends Activity
 	{
 		m_headerCommon = new HeaderCommon(this);
 		m_headerCommon.init();
-		m_headerCommon.setTitle(R.string.title);
+
 
 		m_orderSerialNumTV = (TextView)findViewById(R.id.order_serial_num_tv);
 		m_priceTV = (TextView)findViewById(R.id.price_tv);
@@ -170,6 +194,10 @@ public class NurseOrderPayActivity extends Activity
 
 		m_handlerClickEventNursOrderPay = new HandlerClickEventNursOrderPay(this);
 		m_handleClickEventOnDialog = new HandleClickEventOnDialog();
+
+		m_headerCommon.setTitle(R.string.title, m_handlerClickEventNursOrderPay);
+
+
 		m_eventBus.register(this);
 	}
 
@@ -350,8 +378,9 @@ public class NurseOrderPayActivity extends Activity
 		DNursingModule.GetInstance().clearup();
 
 		//02. 跳转到主页面。
-		finish();
 		startActivity(new Intent(this, MainActivity.class));
+		finish();
+
 	}
 
 }

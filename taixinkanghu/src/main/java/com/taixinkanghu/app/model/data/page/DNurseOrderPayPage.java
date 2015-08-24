@@ -15,9 +15,6 @@
 package com.taixinkanghu.app.model.data.page;
 
 import com.taixinkanghu.app.model.config.DataConfig;
-import com.taixinkanghu.app.model.data.net.DNurseOrder;
-import com.taixinkanghu.app.model.data.net.DNurserOrderList;
-import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class DNurseOrderPayPage
 {
@@ -25,9 +22,13 @@ public class DNurseOrderPayPage
 	private Object m_syncUserID = new Object();
 
 	private String m_orderID        = null;    //订单ID，数据库主key，不是交易流水号。
+	private Object m_syncOrderID = new Object();
+
 	private String m_orderSerialNum = null;
+	private Object m_syncOrderSerialNum = new Object();
+
 	private int    m_totalPrice     = DataConfig.DEFAULT_VALUE;
-	private Object m_syncOrderTotal = new Object();
+	private Object m_syncTotalPrice = new Object();
 
 	public DNurseOrderPayPage()
 	{
@@ -40,12 +41,21 @@ public class DNurseOrderPayPage
 			m_userID = null;
 		}
 
-		synchronized (m_syncOrderTotal)
+		synchronized (m_syncOrderID)
 		{
 			m_orderID = null;
+		}
+
+		synchronized (m_syncOrderSerialNum)
+		{
 			m_orderSerialNum = null;
+		}
+
+		synchronized (m_syncTotalPrice)
+		{
 			m_totalPrice = DataConfig.DEFAULT_VALUE;
 		}
+
 		return;
 	}
 
@@ -67,43 +77,50 @@ public class DNurseOrderPayPage
 
 	public String getOrderID()
 	{
-		return m_orderID;
+		synchronized (m_syncOrderID)
+		{
+			return m_orderID;
+		}
 	}
 
 	public void setOrderID(int orderID)
 	{
-		synchronized (m_syncOrderTotal)
+		synchronized (m_syncOrderID)
 		{
 			m_orderID = String.valueOf(orderID);
-
-			DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByID(orderID);
-			if (nurseOrder == null)
-			{
-				RegisterDialog.GetInstance().setMsg("nurseOrder == null!Input order is invalid![orderID:=" + orderID + "]");
-				RegisterDialog.GetInstance().show();
-				return;
-			}
-
-			m_orderSerialNum = nurseOrder.getOrderSerialNum();
-			m_totalPrice = nurseOrder.getTotalCharge();
-
-			return;
 		}
 	}
 
 	public String getOrderSerialNum()
 	{
-		synchronized (m_syncOrderTotal)
+		synchronized (m_syncOrderSerialNum)
 		{
 			return m_orderSerialNum;
 		}
 	}
 
+	public void setOrderSerialNum(String orderSerialNum)
+	{
+		synchronized (m_syncOrderSerialNum)
+		{
+			m_orderSerialNum = orderSerialNum;
+		}
+	}
+
 	public int getTotalPrice()
 	{
-		synchronized (m_syncOrderTotal)
+		synchronized (m_syncTotalPrice)
 		{
 			return m_totalPrice;
 		}
 	}
+
+	public void setTotalPrice(int totalPrice)
+	{
+		synchronized (m_syncTotalPrice)
+		{
+			m_totalPrice = totalPrice;
+		}
+	}
+
 }

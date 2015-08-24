@@ -1,27 +1,24 @@
 /**
  * Copyright (c) 213Team
  *
- * @className : com.taixinkanghu.app.ui.select_nurse.${type_name}
+ * @className : com.taixinkanghu.app.ui.nurse_order_page.${type_name}
  * @version : 1.0.0
  * @author : WangJY
  * @description : ${TODO}
- * <p>
+ * <p/>
  * Modification History:
  * Date         	Author 		Version		Description
  * ----------------------------------------------------------------
- * 2015/7/29		WangJY		1.0.0		create
+ * 2015/8/23		WangJY		1.0.0		create
  */
 
-package com.taixinkanghu.app.ui.select_nurse;
+package com.taixinkanghu.app.ui.nurse_order_page;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
-import com.taixinkanghu.app.ui.nurse_info.NurseInfoActivity;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 public class HandlerItemClickEventListView implements AdapterView.OnItemClickListener
@@ -36,26 +33,17 @@ public class HandlerItemClickEventListView implements AdapterView.OnItemClickLis
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
-		SelectNurseActivity selectNurseActivity = (SelectNurseActivity)m_context;
-		if (selectNurseActivity == null)
+		NurseOrderActivity nurseOrderActivity = (NurseOrderActivity)m_context;
+		if (nurseOrderActivity == null)
 		{
-			RegisterDialog.GetInstance().setMsg("selectNurseActivity == null");
+			RegisterDialog.GetInstance().setMsg("nurseOrderActivity == null");
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 
-		Intent intent = new Intent(selectNurseActivity, NurseInfoActivity.class);
-		intent.putExtra(NurseBasicListConfig.NEW_ID, (int)id);
-		intent.putExtra(NurseBasicListConfig.OLD_ID, selectNurseActivity.getOldNurseID());
-		selectNurseActivity.startActivity(intent);
+		//跳转到详细订单页面。
+//		Intent intent = new Intent(nurseOrderActivity, NurseInfoActivity.class);
+//		nurseOrderActivity.startActivity(intent);
 		return;
-
-	}
-
-
-
-	public Context getContext()
-	{
-		return m_context;
 	}
 }

@@ -98,7 +98,7 @@ public class SelectHospitalFragment extends Fragment implements View.OnTouchList
 		int indexBtn = 0;
 		DHospital dHospital = null;
 		String tag = null;
-		for (int indexRow = 0; indexRow < iMaxRow; ++indexRow)
+		for (int indexRow = 0; indexRow <= iMaxRow; ++indexRow)
 		{
 			for (int indexColumn = 0; indexColumn < iMaxColumn; ++indexColumn)
 			{
@@ -127,6 +127,10 @@ public class SelectHospitalFragment extends Fragment implements View.OnTouchList
 					String name = dHospital.getName();
 					btn.setText(name);
 				}
+//				DisplayMetrics metric = new DisplayMetrics();
+//				getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+//				int windowWidth = metric.widthPixels; // 屏幕宽度（像素）
+//				btn.setWidth(windowWidth / 2);
 				m_buttons.add(btn);
 
 				//设置它的行和列

@@ -23,6 +23,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.data.page.DFaceImages;
 import com.taixinkanghu.app.model.data.net.DNurseBasics;
 import com.taixinkanghu.app.model.data.net.DNurseBasicsList;
@@ -151,10 +152,13 @@ final class ViewHolder {
 		}
 
 		DNurseBasics tmpNurseBasics = m_nurseBasics.get(position);
-		int          iID            = tmpNurseBasics.getID();
-		int          iImageIndex    = (iID - 1);
-		int          iImageID       = DFaceImages.getInstance().getImgResIDbyIndex(iImageIndex);
-		m_faceImage.setImageResource(iImageID);
+
+		int headerImgResID = DFaceImages.getInstance().getImgResIDbyID(tmpNurseBasics.getID());
+		if (headerImgResID == DataConfig.DEFAULT_VALUE)
+		{
+			headerImgResID = DFaceImages.DEFAULT_IMAGE_RES_ID;
+		}
+		m_faceImage.setImageResource(headerImgResID);
 		m_tvName.setText(tmpNurseBasics.getName());
 		m_starLevel.setRating(tmpNurseBasics.getStarLevel());
 		String age = String.valueOf(tmpNurseBasics.getAge()) + AppUtil.GetResources().getString(R.string.content_age);

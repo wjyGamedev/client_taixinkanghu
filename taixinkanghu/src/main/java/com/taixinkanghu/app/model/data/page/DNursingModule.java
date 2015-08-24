@@ -28,6 +28,8 @@ public class DNursingModule
 //	private Object m_syncDNurseOrderPayPage = new Object();
 
 
+
+
 	private DNursingModule()
 	{
 	}

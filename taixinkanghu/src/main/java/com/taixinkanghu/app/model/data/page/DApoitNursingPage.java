@@ -47,7 +47,6 @@ public class DApoitNursingPage implements Serializable
 
 	//科室
 	private int m_departmenetID = DataConfig.DEFAULT_VALUE;
-	;
 	private Object m_syncDepartmenetID = new Object();
 
 	//病人状态

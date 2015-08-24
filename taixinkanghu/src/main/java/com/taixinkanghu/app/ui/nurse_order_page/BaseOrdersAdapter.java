@@ -14,7 +14,7 @@
 
 package com.taixinkanghu.app.ui.nurse_order_page;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +27,12 @@ import java.util.ArrayList;
 
 public class BaseOrdersAdapter extends IBaseAdapter
 {
-	private LayoutInflater         m_layoutInflater = null;
+	protected   LayoutInflater         m_layoutInflater = null;
 	protected ArrayList<DNurseOrder> m_nurseOrderList = new ArrayList<>();
 
-	public BaseOrdersAdapter(Context context)
+	public BaseOrdersAdapter(Activity activity)
 	{
-		super(context);
+		super(activity);
 		init();
 	}
 
@@ -58,7 +58,9 @@ public class BaseOrdersAdapter extends IBaseAdapter
 
 		if (position >= m_nurseOrderList.size())
 		{
-			RegisterDialog.GetInstance().setMsg("position >= m_nurseOrderList.size()[position:=" + position + "][m_nurseOrderList.size():=" + m_nurseOrderList.size() + "]");
+			RegisterDialog.GetInstance().setMsg("position >= m_nurseOrderList.size()[position:=" + position + "][m_nurseOrderList.size()" +
+														":=" + m_nurseOrderList.size() + "]"
+											   );
 			RegisterDialog.GetInstance().show();
 			return 0;
 		}

@@ -36,7 +36,15 @@
 	<string name="nurse_service_status_in_service">服务中</string>
 	<string name="nurse_service_status_cannt_service">暂时不能服务</string>
 
+	<!-- 07. 选择护理时间的类型-->
+	<string name="nurse_service_day_status_all">全天24小时</string>
+	<string name="nurse_service_day_status_day">白天12小时</string>
+	<string name="nurse_service_day_status_night">黑天12小时</string>
 
+	<!-- 08. 护理模块的业务类型-->
+	<string name="nuring_module_status_apiot_nursing">预约陪护</string>
+	<string name="nuring_module_repeat_order">续订</string>
+	<string name="nuring_module_change_nurse">更换</string>
 
 
 </resources>

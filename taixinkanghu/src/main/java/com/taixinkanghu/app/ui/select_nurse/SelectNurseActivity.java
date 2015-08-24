@@ -15,12 +15,16 @@
 package com.taixinkanghu.app.ui.select_nurse;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.page.DGlobal;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseBasicListEvent;
 import com.taixinkanghu.app.ui.bottom.BottomCommon;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
@@ -43,6 +47,8 @@ public class SelectNurseActivity  extends Activity
 
 	//logical
 	private EventBus m_eventBus = EventBus.getDefault();
+
+	private int m_oldNurseID = DataConfig.DEFAULT_VALUE;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -122,12 +128,28 @@ public class SelectNurseActivity  extends Activity
 
 		//logical
 		m_eventBus.register(this);
+
+		//如果是更换，则保存原来的护工ID。
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+			Intent intent = getIntent();
+			m_oldNurseID = intent.getIntExtra(NurseBasicListConfig.ID, DataConfig.DEFAULT_VALUE);
+		}
+
+
 	}
 
 	private void updateContent()
 	{
 		m_selectNurseAdapter.notifyDataSetChanged();
 	}
+
+	public int getOldNurseID()
+	{
+		return m_oldNurseID;
+	}
+
 	/**
 	 * EventBus  handler
 	 */

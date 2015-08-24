@@ -7,8 +7,15 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.data.page.DApoitNursingPage;
+import com.taixinkanghu.app.model.data.page.DGlobal;
+import com.taixinkanghu.app.model.data.page.DNursingModule;
+import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
+import com.taixinkanghu.app.model.net.event.send.ReqApoitNursingEvent;
 import com.taixinkanghu.app.ui.activity.AgreementActivity;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
+import com.taixinkanghu.app.ui.nurse_order_confirm_page.OrderConfirmActivity;
 import com.taixinkanghu.app.ui.select_date.SelectDateActivity;
 import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
@@ -30,8 +37,7 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 	@Override
 	public void onClick(View v)
 	{
-		Activity             activity             = (Activity)m_context;
-		ApoitNursingActivity apoitNursingActivity = (ApoitNursingActivity)activity;
+		ApoitNursingActivity apoitNursingActivity = (ApoitNursingActivity)m_context;
 		if (apoitNursingActivity == null)
 		{
 			RegisterDialog.GetInstance().setMsg("apoitNursingActivity == null");
@@ -40,7 +46,7 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 		}
 
 
-		FragmentTransaction transaction = activity.getFragmentManager().beginTransaction();
+		FragmentTransaction transaction = apoitNursingActivity.getFragmentManager().beginTransaction();
 
 		switch (v.getId())
 		{
@@ -111,45 +117,73 @@ public class HandlerClickEventAppinmentNursing extends BaseHandleOnClickEvent
 			return;
 			case R.id.service_date_region_ll:
 			{
-				m_context.startActivity(new Intent(m_context, SelectDateActivity.class));
+				apoitNursingActivity.startActivity(new Intent(apoitNursingActivity, SelectDateActivity.class));
 			}
 			return;
 			//02. 控件点击
 			case R.id.protocol_tv:
 			{
-				m_context.startActivity(new Intent(m_context, AgreementActivity.class));
+				apoitNursingActivity.startActivity(new Intent(apoitNursingActivity, AgreementActivity.class));
 			}
 			return;
 			case R.id.btn_bottom:
 			{
-				//01. 保存本地信息
-				apoitNursingActivity.confirmAction();
-
-				//02. 必填选项是否已经填写
-				String hospitalName = apoitNursingActivity.getHospitalName();
-				String departmentName = apoitNursingActivity.getDepartmentName();
-				String patientState = apoitNursingActivity.getPatientState();
-				String dateDescription = apoitNursingActivity.getDateDescription();
-				if (TextUtils.isEmpty(hospitalName) || TextUtils.isEmpty(departmentName) || TextUtils.isEmpty(patientState) || TextUtils.isEmpty(
-						dateDescription
-																																				))
+				//01. 从预约陪护发起的业务流程
+				EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+				if (nursingModuleStatus == null ||
+						nursingModuleStatus == EnumConfig.NursingModuleStatus.APIOT_NURSING)
 				{
-					RegisterDialog.GetInstance().setMsg(apoitNursingActivity.getResources().getString(R.string
-																											  .err_info_fill_required_options),
-														apoitNursingActivity
-													   );
-					RegisterDialog.GetInstance().show();
+					//0101. 保存本地信息
+					apoitNursingActivity.confirmAction();
+
+					//0102. 必填选项是否已经填写
+					String hospitalName = apoitNursingActivity.getHospitalName();
+					String departmentName = apoitNursingActivity.getDepartmentName();
+					String patientState = apoitNursingActivity.getPatientState();
+					String dateDescription = apoitNursingActivity.getDateDescription();
+					if (TextUtils.isEmpty(hospitalName) || TextUtils.isEmpty(departmentName) || TextUtils.isEmpty(patientState) || TextUtils.isEmpty(
+							dateDescription
+																																					))
+					{
+						RegisterDialog.GetInstance().setMsg(apoitNursingActivity.getResources().getString(R.string
+																												  .err_info_fill_required_options),
+															apoitNursingActivity
+														   );
+						RegisterDialog.GetInstance().show();
+						return;
+					}
+
+					//0103. 发送消息到服务器
+					ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
+					m_eventBus.post(reqApoitNursingEvent);
+					//备注：nurse senior list 在接收完成nurse basic list成功后，发送。
+
+					//0104. 跳转到护理员列表界面
+					apoitNursingActivity.startActivity(new Intent(apoitNursingActivity, SelectNurseActivity.class));
+
+					//0105. set global data
+					DGlobal.GetInstance().trySetNursingModuleStatus(EnumConfig.NursingModuleStatus.APIOT_NURSING);
+
 					return;
 				}
+				//02. 从续订发起的业务流程
+				else
+				{
+					//0201. 跳转到订单确认页面。
+					DApoitNursingPage apoitNursingPage = DNursingModule.GetInstance().getApoitNursingPage();
+					if (apoitNursingPage == null)
+					{
+						RegisterDialog.GetInstance().setMsg("apoitNursingPage == null");
+						RegisterDialog.GetInstance().show();
+						return;
+					}
+					int nurseID = apoitNursingActivity.getNurseID();
+					Intent intent = new Intent(apoitNursingActivity, OrderConfirmActivity.class);
+					intent.putExtra(NurseBasicListConfig.NEW_ID, nurseID);
+					m_context.startActivity(intent);
 
-				//03. 发送消息到服务器
-				//0301. nurse basic list
-				ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
-				m_eventBus.post(reqApoitNursingEvent);
-				//备注：nurse senior list 在接收完成nurse basic list成功后，发送。
+				}
 
-				//04. 跳转到护理员列表界面
-				m_context.startActivity(new Intent(m_context, SelectNurseActivity.class));
 				break;
 			}
 		}    //end_switch (v.getId())
