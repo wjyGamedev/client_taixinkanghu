@@ -89,7 +89,7 @@ public class SelectDepartmentFragment extends Fragment implements View.OnTouchLi
 
 		//设置提示信息
 		m_contentTipsTV.setText(getActivity().getResources().getString(R.string.department_content_tips));
-		m_moreContentTipsTV.setText(getActivity().getResources().getString(R.string.department_more_content_tips));
+//		m_moreContentTipsTV.setText(getActivity().getResources().getString(R.string.department_more_content_tips));
 
 		ArrayList<DDepartment> departments = DDepartmentList.GetInstance().getDepartments();
 

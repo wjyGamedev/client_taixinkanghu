@@ -118,7 +118,6 @@ public class NetService extends Service
 	@Override
 	public boolean onUnbind(Intent intent)
 	{
-		Log.e("NetService", "onUnbind");
 		return super.onUnbind(intent);
 	}
 
@@ -126,7 +125,6 @@ public class NetService extends Service
 	public void onRebind(Intent intent)
 	{
 		super.onRebind(intent);
-		Log.e("NetService", "onRebind");
 	}
 
 

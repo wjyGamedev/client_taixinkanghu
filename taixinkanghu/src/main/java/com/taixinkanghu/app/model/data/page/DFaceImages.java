@@ -14,9 +14,8 @@
 
 package com.taixinkanghu.app.model.data.page;
 
-import android.util.Log;
-
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.DataConfig;
 
 import org.json.JSONObject;
 
@@ -24,6 +23,8 @@ import java.util.ArrayList;
 
 public class DFaceImages
 {
+	public static final int DEFAULT_IMAGE_RES_ID = R.drawable.face_1001;
+
 	private DFaceImages()
 	{
 		initTestData();
@@ -31,41 +32,63 @@ public class DFaceImages
 
 	private void initTestData()
 	{
-		m_ImageArrayList.add(R.drawable.face_1);
-		m_ImageArrayList.add(R.drawable.face_2);
-		m_ImageArrayList.add(R.drawable.face_3);
-		m_ImageArrayList.add(R.drawable.face_4);
-		m_ImageArrayList.add(R.drawable.face_5);
-		m_ImageArrayList.add(R.drawable.face_6);
-		m_ImageArrayList.add(R.drawable.face_7);
-		m_ImageArrayList.add(R.drawable.face_8);
-		m_ImageArrayList.add(R.drawable.face_9);
-		m_ImageArrayList.add(R.drawable.face_10);
-		m_ImageArrayList.add(R.drawable.face_11);
-		m_ImageArrayList.add(R.drawable.face_12);
-		m_ImageArrayList.add(R.drawable.face_13);
-		m_ImageArrayList.add(R.drawable.face_14);
-		m_ImageArrayList.add(R.drawable.face_15);
-		m_ImageArrayList.add(R.drawable.face_16);
-		m_ImageArrayList.add(R.drawable.face_17);
-		m_ImageArrayList.add(R.drawable.face_18);
-		m_ImageArrayList.add(R.drawable.face_19);
-		m_ImageArrayList.add(R.drawable.face_20);
-		m_ImageArrayList.add(R.drawable.face_21);
-		m_ImageArrayList.add(R.drawable.face_22);
-		m_ImageArrayList.add(R.drawable.face_23);
-		m_ImageArrayList.add(R.drawable.face_24);
-		m_ImageArrayList.add(R.drawable.face_25);
-		m_ImageArrayList.add(R.drawable.face_26);
-		m_ImageArrayList.add(R.drawable.face_27);
-		m_ImageArrayList.add(R.drawable.face_28);
-		m_ImageArrayList.add(R.drawable.face_29);
-		m_ImageArrayList.add(R.drawable.face_30);
+		m_ImageArrayList.add(R.drawable.face_1001);
+		m_ImageArrayList.add(R.drawable.face_1002);
+		m_ImageArrayList.add(R.drawable.face_1003);
+		m_ImageArrayList.add(R.drawable.face_1004);
+		m_ImageArrayList.add(R.drawable.face_1005);
+		m_ImageArrayList.add(R.drawable.face_1006);
+		m_ImageArrayList.add(R.drawable.face_1007);
+		m_ImageArrayList.add(R.drawable.face_1008);
+		m_ImageArrayList.add(R.drawable.face_1009);
+		m_ImageArrayList.add(R.drawable.face_1010);
+		m_ImageArrayList.add(R.drawable.face_1011);
+		m_ImageArrayList.add(R.drawable.face_1012);
+		m_ImageArrayList.add(R.drawable.face_1013);
+		m_ImageArrayList.add(R.drawable.face_1014);
+		m_ImageArrayList.add(R.drawable.face_1015);
+		m_ImageArrayList.add(R.drawable.face_1016);
+		m_ImageArrayList.add(R.drawable.face_1017);
+		m_ImageArrayList.add(R.drawable.face_1018);
+		m_ImageArrayList.add(R.drawable.face_1019);
+		m_ImageArrayList.add(R.drawable.face_1020);
+		m_ImageArrayList.add(R.drawable.face_1021);
+		m_ImageArrayList.add(R.drawable.face_1022);
+		m_ImageArrayList.add(R.drawable.face_1023);
+		m_ImageArrayList.add(R.drawable.face_1024);
+		m_ImageArrayList.add(R.drawable.face_1025);
+		m_ImageArrayList.add(R.drawable.face_1026);
+		m_ImageArrayList.add(R.drawable.face_1027);
+		m_ImageArrayList.add(R.drawable.face_1028);
+		m_ImageArrayList.add(R.drawable.face_1029);
+		m_ImageArrayList.add(R.drawable.face_1030);
+		m_ImageArrayList.add(R.drawable.face_1031);
+		m_ImageArrayList.add(R.drawable.face_1032);
+		m_ImageArrayList.add(R.drawable.face_1033);
+		m_ImageArrayList.add(R.drawable.face_1034);
+		m_ImageArrayList.add(R.drawable.face_1035);
+		m_ImageArrayList.add(R.drawable.face_1036);
+		m_ImageArrayList.add(R.drawable.face_1037);
+		m_ImageArrayList.add(R.drawable.face_1038);
+		m_ImageArrayList.add(R.drawable.face_1039);
+		m_ImageArrayList.add(R.drawable.face_1040);
+		m_ImageArrayList.add(R.drawable.face_1041);
+		m_ImageArrayList.add(R.drawable.face_1042);
+		m_ImageArrayList.add(R.drawable.face_1043);
+		m_ImageArrayList.add(R.drawable.face_1044);
+		m_ImageArrayList.add(R.drawable.face_1045);
+		m_ImageArrayList.add(R.drawable.face_1046);
+		m_ImageArrayList.add(R.drawable.face_1047);
+		m_ImageArrayList.add(R.drawable.face_1048);
+		m_ImageArrayList.add(R.drawable.face_1049);
+		m_ImageArrayList.add(R.drawable.face_1050);
+		m_ImageArrayList.add(R.drawable.face_1051);
+
 	}
 
 	public static DFaceImages getInstance()
 	{
-		return  s_dFaceImages;
+		return s_dFaceImages;
 	}
 
 	public boolean serialization(JSONObject response)
@@ -82,14 +105,20 @@ public class DFaceImages
 	{
 		if (index >= m_ImageArrayList.size())
 		{
-			Log.e("error", "index >= m_ImageArrayList.size()");
-			return 0;
+			return DataConfig.DEFAULT_VALUE;
 		}
 
-		return  m_ImageArrayList.get(index);
+		return m_ImageArrayList.get(index);
 
 	}
 
-	private static DFaceImages    s_dFaceImages = new DFaceImages();
-	private        ArrayList<Integer> m_ImageArrayList  = new ArrayList<Integer>();
+	public Integer getImgResIDbyID(int id)
+	{
+		int index = (id - 1);
+		return getImgResIDbyIndex(index);
+	}
+
+
+	private static DFaceImages        s_dFaceImages    = new DFaceImages();
+	private        ArrayList<Integer> m_ImageArrayList = new ArrayList<Integer>();
 }

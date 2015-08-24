@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.net.DNurseBasics;
@@ -123,10 +124,12 @@ public class BaseListItem
 		}
 		m_nurseOrder = nurseOrder;
 
-		int iID         = m_nurseOrder.getNurseID();
-		int iImageIndex = (iID - 1);
-		int iImageID    = DFaceImages.getInstance().getImgResIDbyIndex(iImageIndex);
-		m_nurseHeaderImgIV.setImageResource(iImageID);
+		int headerImgResID = DFaceImages.getInstance().getImgResIDbyID(m_nurseOrder.getNurseID());
+		if (headerImgResID == DataConfig.DEFAULT_VALUE)
+		{
+			headerImgResID = DFaceImages.DEFAULT_IMAGE_RES_ID;
+		}
+		m_nurseHeaderImgIV.setImageResource(headerImgResID);
 
 		String nurseName = nurseBasics.getName();
 		m_nurseNameTV.setText(nurseName);

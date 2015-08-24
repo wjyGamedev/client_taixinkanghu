@@ -49,13 +49,22 @@
         </LinearLayout>
     </LinearLayout>
 
-    <GridLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:orientation="vertical" android:id="@+id/widget_region_gl">
+        android:id="@+id/display_region_sv">
 
-    </GridLayout>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="vertical" android:id="@+id/widget_region_gl">
+
+
+        </GridLayout>
+
+    </ScrollView>
+
 
     <LinearLayout
         android:layout_width="match_parent"

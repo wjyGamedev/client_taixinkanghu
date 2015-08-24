@@ -407,8 +407,12 @@ public class OrderConfirmActivity extends Activity
 
 	private void updateContentByOldNurse()
 	{
-		int nurseHeaderImgResID = DFaceImages.getInstance().getImgResIDbyIndex(0);
-		m_nurseHeadImgIV.setImageResource(nurseHeaderImgResID);
+		int headerImgResID = DFaceImages.getInstance().getImgResIDbyID(m_oldNurseID);
+		if (headerImgResID == DataConfig.DEFAULT_VALUE)
+		{
+			headerImgResID = DFaceImages.DEFAULT_IMAGE_RES_ID;
+		}
+		m_nurseHeadImgIV.setImageResource(headerImgResID);
 
 
 		DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByNurseID(m_oldNurseID);
@@ -746,7 +750,11 @@ public class OrderConfirmActivity extends Activity
 
 		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
 
-		int nurseHeaderImgResID = DFaceImages.getInstance().getImgResIDbyIndex(0);
+		int headerImgResID = DFaceImages.getInstance().getImgResIDbyID(nurseID);
+		if (headerImgResID == DataConfig.DEFAULT_VALUE)
+		{
+			headerImgResID = DFaceImages.DEFAULT_IMAGE_RES_ID;
+		}
 		String nurseName = null;
 		String nursingLevel = null;
 		String jobNum = null;
@@ -889,7 +897,7 @@ public class OrderConfirmActivity extends Activity
 
 		}
 
-		m_nurseOrderConfirmPage.setNurseHeaderImgResID(nurseHeaderImgResID);
+		m_nurseOrderConfirmPage.setNurseHeaderImgResID(headerImgResID);
 		m_nurseOrderConfirmPage.setNurseName(nurseName);
 		m_nurseOrderConfirmPage.setNursingLevel(nursingLevel);
 		m_nurseOrderConfirmPage.setNurseJobNum(jobNum);

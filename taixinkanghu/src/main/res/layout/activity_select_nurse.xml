@@ -42,11 +42,11 @@
 
 			</LinearLayout>
 
-			<android.support.v4.widget.SwipeRefreshLayout
-				android:id="@id/swipeRefreshLayout"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_weight="1.0">
+			<!--<android.support.v4.widget.SwipeRefreshLayout-->
+				<!--android:id="@id/swipeRefreshLayout"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="match_parent"-->
+				<!--android:layout_weight="1.0">-->
 
 
 				<LinearLayout
@@ -70,7 +70,7 @@
 
 				</LinearLayout>
 
-			</android.support.v4.widget.SwipeRefreshLayout>
+			<!--</android.support.v4.widget.SwipeRefreshLayout>-->
 		</LinearLayout>
 
 		<!--底部功能菜单-->

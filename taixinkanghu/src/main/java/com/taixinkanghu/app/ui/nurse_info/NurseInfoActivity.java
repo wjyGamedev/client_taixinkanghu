@@ -257,8 +257,12 @@ public class NurseInfoActivity extends Activity
 
 		//02. set ui
 		//nurse basic
-		int iImageID = DFaceImages.getInstance().getImgResIDbyIndex(0);
-		m_circleImageView.setImageResource(iImageID);
+		int headerImgResID = DFaceImages.getInstance().getImgResIDbyID(m_nurseID);
+		if (headerImgResID == DataConfig.DEFAULT_VALUE)
+		{
+			headerImgResID = DFaceImages.DEFAULT_IMAGE_RES_ID;
+		}
+		m_circleImageView.setImageResource(headerImgResID);
 		m_nameTV.setText(m_nurseBasics.getName());
 		m_nuringLevelTV.setText(m_nurseBasics.getNursingLevel());
 		m_jobNumTV.setText(String.valueOf(m_nurseBasics.getID()));
