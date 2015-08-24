@@ -30,7 +30,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="15dp"
-                    android:src="@mipmap/face_img"
+                    android:src="@drawable/face_1008"
                     app:border_color="@color/main_color"
                     app:border_width="0.5dp" />
 

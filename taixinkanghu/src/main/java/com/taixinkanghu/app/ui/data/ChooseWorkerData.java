@@ -21,7 +21,7 @@ public class ChooseWorkerData {
 
     public ChooseWorkerData(int id) {
         if (id == 1){
-            this.pic = R.mipmap.face_img2;
+            this.pic = R.drawable.face_1001;
             this.name = "谢征";
             this.star = 5f;
             this.price = 666;
@@ -33,7 +33,7 @@ public class ChooseWorkerData {
             this.isInService = false;
             this.inService = "空闲中";
         }else if (id == 2){
-            this.pic = R.mipmap.face_img;
+            this.pic = R.drawable.face_1002;
             this.name = "王瑾瑜";
             this.star = 2.5f;
             this.price = 250;

@@ -55,10 +55,10 @@ public class WorkerInfoActivity extends Activity implements View.OnClickListener
 
         if (name.equals("谢征")) {
             tv_name.setText(name);
-            civ_pic.setImageResource(R.mipmap.face_img2);
+            civ_pic.setImageResource(R.drawable.face_1002);
         } else if (name.equals("王瑾瑜")) {
             tv_name.setText(name);
-            civ_pic.setImageResource(R.mipmap.face_img);
+            civ_pic.setImageResource(R.drawable.face_1001);
         }
 
 
