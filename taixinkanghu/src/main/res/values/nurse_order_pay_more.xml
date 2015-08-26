@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="pay_more_title">补差价</string>
+	<string name="pay_more_tips_price">请输入补差价金额？</string>
+	<string name="pay_more_tips_reason">请选择变更内容？</string>
+	<string name="pay_more_reason_option">患者状态变更</string>
+</resources>
