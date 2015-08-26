@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.data.net.DAccount;
+import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.storage.OwnerPreferences;
 import com.taixinkanghu.app.model.storage.StorageWrapper;
 import com.taixinkanghu.app.ui.bottom.BottomCommon;
@@ -55,19 +56,21 @@ public class SettingActivity extends Activity
 		init();
 		initContent();
 		initWidget();
-		initSurface();
 	}
 
 	@Override
-	protected void onRestart()
+	protected void onStart()
 	{
-		super.onRestart();
+		updateSurface();
+		initGlobalData();
+		super.onStart();
 	}
 
 	@Override
-	protected void onResume()
+	protected void onStop()
 	{
-		super.onResume();
+		clearupGlobalData();
+		super.onStop();
 	}
 
 	@Override
@@ -75,6 +78,16 @@ public class SettingActivity extends Activity
 	{
 		m_eventBus.unregister(this);
 		super.onDestroy();
+	}
+
+	private void initGlobalData()
+	{
+		DGlobal.GetInstance().setContext(this);
+	}
+
+	private void clearupGlobalData()
+	{
+		DGlobal.GetInstance().clearupContext(this);
 	}
 
 	private void init()
@@ -104,7 +117,7 @@ public class SettingActivity extends Activity
 		m_eventBus.register(this);
 	}
 
-	private void initSurface()
+	private void updateSurface()
 	{
 		boolean bRegisterFlag = DAccount.GetInstance().isRegisterSuccess();
 
