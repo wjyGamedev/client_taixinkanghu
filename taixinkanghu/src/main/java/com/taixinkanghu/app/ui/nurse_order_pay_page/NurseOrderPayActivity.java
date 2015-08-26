@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
@@ -25,8 +24,8 @@ import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.event.recv.FailedNurseOrderCheckEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderCheckEvent;
-import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderAlipayEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqApoitNursingEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderAlipayEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCheckEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
@@ -39,6 +38,7 @@ import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import de.greenrobot.event.EventBus;
 
@@ -50,23 +50,23 @@ public class NurseOrderPayActivity extends Activity
 	private HeaderCommon m_headerCommon     = null;
 	private TextView     m_orderSerialNumTV = null;
 	private TextView     m_priceTV          = null;
-	private LinearLayout m_cashRegionLL = null;
+	private LinearLayout m_cashRegionLL     = null;
 	private RadioButton  m_cashRBtn         = null;
-	private LinearLayout m_alipayRegionLL = null;
+	private LinearLayout m_alipayRegionLL   = null;
 	private RadioButton  m_alipayRBtn       = null;
-	private LinearLayout m_weixinRegionLL = null;
+	private LinearLayout m_weixinRegionLL   = null;
 	private RadioButton  m_weixinRBtn       = null;
 	private Button       m_payBtn           = null;
 
 	//logical
-	private RadioGroup m_radioGroup = null;
+	private ArrayList<RadioButton> m_radioButtons = new ArrayList<>();
 
 	private HandlerClickEventNursOrderPay m_handlerClickEventNursOrderPay = null;
 	private HandleClickEventOnDialog      m_handleClickEventOnDialog      = null;
 	private EventBus                      m_eventBus                      = EventBus.getDefault();
 
 	private DNurseOrderPayPage m_nurseOrderPayPage = DNursingModule.GetInstance().getNurseOrderPayPage();
-	private int m_selectedID = DataConfig.DEFAULT_VALUE;
+	private int                m_selectedID        = DataConfig.DEFAULT_VALUE;
 
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -78,6 +78,12 @@ public class NurseOrderPayActivity extends Activity
 		initData();
 		initUI();
 	}
+
+	private void initRbtn()
+	{
+
+	}
+
 
 	private void initUI()
 	{
@@ -135,10 +141,11 @@ public class NurseOrderPayActivity extends Activity
 		m_payBtn = (Button)findViewById(R.id.btn_bottom);
 		m_payBtn.setText(R.string.determine_pay_title);
 
-		m_radioGroup = new RadioGroup(this);
-		m_radioGroup.addView(m_cashRBtn);
-		m_radioGroup.addView(m_alipayRBtn);
-		m_radioGroup.addView(m_weixinRBtn);
+		m_radioButtons.add(m_cashRBtn);
+		m_radioButtons.add(m_alipayRBtn);
+		m_radioButtons.add(m_weixinRBtn);
+
+
 
 		m_handlerClickEventNursOrderPay = new HandlerClickEventNursOrderPay(this);
 		m_handleClickEventOnDialog = new HandleClickEventOnDialog();
@@ -249,9 +256,25 @@ public class NurseOrderPayActivity extends Activity
 	/**
 	 * action
 	 */
-	public void selectedAction()
+	public void selectedAction(int selectedID)
 	{
-		m_selectedID = m_radioGroup.getCheckedRadioButtonId();
+		for (RadioButton radioButton : m_radioButtons)
+		{
+			if (radioButton == null)
+				continue;
+
+			if (radioButton.getId() == selectedID)
+			{
+				radioButton.setChecked(true);
+			}
+			else
+			{
+				radioButton.setChecked(false);
+			}
+
+		}
+		m_selectedID = selectedID;
+
 	}
 	public void backAction()
 	{

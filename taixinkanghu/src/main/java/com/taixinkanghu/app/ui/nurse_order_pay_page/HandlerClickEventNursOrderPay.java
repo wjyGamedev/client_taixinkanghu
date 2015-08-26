@@ -34,7 +34,7 @@ public class HandlerClickEventNursOrderPay extends BaseHandleOnClickEvent
 		case R.id.alipay_rbtn:
 		case R.id.weixin_rbtn:
 		{
-			nurseOrderPayActivity.selectedAction();
+			nurseOrderPayActivity.selectedAction(v.getId());
 		}
 		return;
 		case R.id.btn_back:

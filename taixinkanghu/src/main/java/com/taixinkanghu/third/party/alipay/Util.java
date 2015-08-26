@@ -26,15 +26,13 @@ public class Util
 		//01. 补差价
 		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.PAY_MORE)
 		{
-			return "rid="+ orderID + ",type="+"addon";
+			return "rid="+ orderID + "taixintype="+"addon";
 		}
 		//02. 正常支付
-		return "rid="+ orderID + ",type="+"order";
+		return "rid="+ orderID + "taixintype="+"order";
 	}
 
-
-
-	public static String GetNurseOrder(String nurseOrderInfo, String price)
+	public static String GetNurseOrder(String nurseOrderID, String price)
 	{
 		// 签约合作者身份ID
 		String orderInfo = "partner=" + "\"" + Config.PARTNER + "\"";
@@ -43,7 +41,18 @@ public class Util
 		orderInfo += "&seller_id=" + "\"" + Config.TARGET_RECEIVE_ACCOUNT + "\"";
 
 		// 商户网站唯一订单号
-		orderInfo += "&out_trade_no=" + "\"" + nurseOrderInfo + "\"";
+		orderInfo += "&out_trade_no=" + "\"" + nurseOrderID + "\"";
+
+//		// 补差价/正常交易
+//		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+//		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.PAY_MORE)
+//		{
+//			orderInfo += "&type=" + "\"" + "addon" + "\"";
+//		}
+//		else
+//		{
+//			orderInfo += "&type=" + "\"" + "order" + "\"";
+//		}
 
 		// 商品名称
 		orderInfo += "&subject=" + "\"" + "nurse_name" + "\"";
