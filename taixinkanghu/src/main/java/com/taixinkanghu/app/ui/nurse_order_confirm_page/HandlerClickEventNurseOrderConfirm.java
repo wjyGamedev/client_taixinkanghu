@@ -112,20 +112,6 @@ public class HandlerClickEventNurseOrderConfirm extends BaseHandleOnClickEvent
 
 					//当时日期+1
 					Calendar calendar = Calendar.getInstance();
-
-					int beginMonth = calendar.get(Calendar.MONTH);
-					int beginDay = calendar.get(Calendar.DAY_OF_MONTH);
-					int iMaxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-					if (beginDay == iMaxDay)
-					{
-						calendar.set(Calendar.MONTH, beginMonth+1);
-						calendar.set(Calendar.DAY_OF_MONTH, 1);
-					}
-					else
-					{
-						calendar.set(Calendar.DAY_OF_MONTH, (beginDay+1));
-					}
-
 					String dateDescrption = m_simpleDateFormat.format(calendar.getTime());
 					event.setBeginDate(dateDescrption);
 					m_eventBus.post(event);

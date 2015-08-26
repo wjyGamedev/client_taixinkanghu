@@ -14,7 +14,9 @@
 
 package com.taixinkanghu.app.model.net.handler;
 
+import com.taixinkanghu.app.model.config.DataConfig;
 import com.taixinkanghu.app.model.net.IResponseListener;
+import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.config.ProtocalConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderPayMoreEvent;
 import com.taixinkanghu.util.logcal.LogicalUtil;
@@ -27,10 +29,12 @@ import de.greenrobot.event.EventBus;
 
 public class ResNurseOrderPayMoreHandler extends IResponseListener
 {
-	private int m_Status = ProtocalConfig.HTTP_OK;
+	private int      m_Status         = ProtocalConfig.HTTP_OK;
+	private String   m_orderID        = null;
+	private String   m_orderSerialNum = null;
+	private int      m_price          = DataConfig.DEFAULT_VALUE;
 
-	private EventBus m_eventBus = EventBus.getDefault();
-
+	private EventBus m_eventBus       = EventBus.getDefault();
 
 
 	@Override
@@ -49,8 +53,10 @@ public class ResNurseOrderPayMoreHandler extends IResponseListener
 				return;
 			}
 
-
-
+			JSONObject payMoreObjecst = response.getJSONObject(NurseOrderConfig.ORDER_PAY_MORE_OBJECT);
+			m_orderID = payMoreObjecst.getString(NurseOrderConfig.ORDER_ID);
+			m_orderSerialNum = payMoreObjecst.getString(NurseOrderConfig.ORDER_SERIAL_NUM);
+			m_price = payMoreObjecst.getInt(NurseOrderConfig.ORDER_PAY_MORE_PRICE);
 
 		}
 		catch (JSONException e)
@@ -61,7 +67,10 @@ public class ResNurseOrderPayMoreHandler extends IResponseListener
 		}
 
 		//02. 取消订单成功，则需要update nurse list
-		FinishedNurseOrderPayMoreEvent event  = new FinishedNurseOrderPayMoreEvent();
+		FinishedNurseOrderPayMoreEvent event = new FinishedNurseOrderPayMoreEvent();
+		event.setOrderID(Integer.valueOf(m_orderID));
+		event.setOrderSerialNum(m_orderSerialNum);
+		event.setPrice(m_price);
 		m_eventBus.post(event);
 		return;
 	}

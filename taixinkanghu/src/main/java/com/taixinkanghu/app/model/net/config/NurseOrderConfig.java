@@ -54,14 +54,17 @@ public class NurseOrderConfig
 	public final static String DATE_NIGHT_LIST    = "night";
 
 	//04. nurse order check
+	public final static String CHECK_TYPE = "type";
 	//05. nurse order alipay
 	public final static String RESULT_STATUS = "result_status";
 
 	//06. nurse order pay more
+	//send
 	public final static String ORDER_PAY_MORE_PRICE = "price";        //补差价的价格
 	public final static String ORDER_PAY_MORE_REASON_OPTION = "reason_option";        //补差价的option
 	public final static String ORDER_PAY_MORE_REASON_VALUE = "reason_value";        //补差价的具体原因
-
+	//recv
+	public final static String ORDER_PAY_MORE_OBJECT = "addon";        //补差价的返回对象
 
 	//logical
 	public final static int NURSE_IN_SERVICE = -2;

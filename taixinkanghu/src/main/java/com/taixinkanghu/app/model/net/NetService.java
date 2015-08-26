@@ -56,6 +56,7 @@ import com.taixinkanghu.app.model.net.handler.ResNurseOrderCancelServiceHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderCheckHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderConfirmHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderListHandler;
+import com.taixinkanghu.app.model.net.handler.ResNurseOrderPayMoreHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseSeniorListHandler;
 import com.taixinkanghu.app.model.net.handler.ResRegisterHandler;
 import com.taixinkanghu.app.model.net.handler.ResShoppingBasicListHandler;
@@ -87,6 +88,7 @@ public class NetService extends Service
 	private ResNurseOrderListHandler m_resNurseOrderListHandler = null;
 	private ResNurseOrderCancelHandler m_resNurseOrderCancelHandler = null;
 	private ResNurseOrderCancelServiceHandler m_resNurseOrderCancelServiceHandler = null;
+	private ResNurseOrderPayMoreHandler m_resNurseOrderPayMoreHandler = null;
 
 
 	private ResShoppingBasicListHandler m_resShoppingBasicListHandler = null;
@@ -146,6 +148,7 @@ public class NetService extends Service
 		m_resNurseOrderListHandler = new ResNurseOrderListHandler();
 		m_resNurseOrderCancelHandler = new ResNurseOrderCancelHandler();
 		m_resNurseOrderCancelServiceHandler = new ResNurseOrderCancelServiceHandler();
+		m_resNurseOrderPayMoreHandler = new ResNurseOrderPayMoreHandler();
 
 		m_resShoppingBasicListHandler = new ResShoppingBasicListHandler();
 
@@ -470,7 +473,7 @@ public class NetService extends Service
 		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
 																NetConfig.s_nurseOrderPayMoreAddress,
 																nurseOrderCancel,
-																m_resNurseOrderCancelServiceHandler,
+																m_resNurseOrderPayMoreHandler,
 																m_baseErrorListener);
 
 		m_requestQueue.add(myReq);

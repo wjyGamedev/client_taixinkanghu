@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -66,6 +67,10 @@ public class OrderConfirmActivity extends Activity
 	private LinearLayout    m_patientRegionLL      = null;    //被护理人状态点击区域
 	private TextView        m_patientStateTV       = null;    //被护理人状态
 
+	private ImageView	m_patientInfoArrowIV = null;
+	private ImageView   m_patientStateArrowIV = null;
+
+
 	//订单金额
 	private LinearLayout m_allRegionLL      = null;    //全天24小时点击区域
 	private TextView     m_allNumTV         = null;    //24小时服务天数
@@ -120,6 +125,7 @@ public class OrderConfirmActivity extends Activity
 	@Override
 	protected void onStart()
 	{
+		updateUI();
 		updateContent();
 		initGlobalData();
 		super.onStart();
@@ -147,21 +153,37 @@ public class OrderConfirmActivity extends Activity
 		m_oldBurseRBtn = (RadioButton)findViewById(R.id.old_nurse_rbtn);
 		m_TabTopDividingLine = (TextView)findViewById(R.id.tab_top_dividing_line);
 
+	}
+
+	private void updateUI()
+	{
 		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
 		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
 		{
+			//tab
 			m_funcTabRegionLL.setVisibility(View.VISIBLE);
 			m_TabTopDividingLine.setVisibility(View.GONE);
 			m_newNurseRBtn.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
 			m_oldBurseRBtn.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
 			m_newNurseRBtn.setChecked(true);
+
+			//btn
+			m_patientInfoArrowIV.setVisibility(View.INVISIBLE);
+			m_patientStateArrowIV.setVisibility(View.INVISIBLE);
+
+			m_patientRegionLL.setOnClickListener(null);
+			m_patientStateRegionLL.setOnClickListener(null);
 		}
 		else
 		{
 			m_funcTabRegionLL.setVisibility(View.GONE);
 			m_TabTopDividingLine.setVisibility(View.VISIBLE);
-		}
+			m_patientInfoArrowIV.setVisibility(View.VISIBLE);
+			m_patientStateArrowIV.setVisibility(View.VISIBLE);
 
+			m_patientRegionLL.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
+			m_patientStateRegionLL.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
+		}
 	}
 
 	private void initGlobalData()
@@ -199,6 +221,9 @@ public class OrderConfirmActivity extends Activity
 		m_patientNameTV = (TextView)findViewById(R.id.patient_name_tv);
 		m_patientStateRegionLL = (LinearLayout)findViewById(R.id.patient_state_region_ll);
 		m_patientStateTV = (TextView)findViewById(R.id.patient_state_tv);
+		m_patientInfoArrowIV = (ImageView)findViewById(R.id.patient_info_arrow_iv);
+		m_patientStateArrowIV = (ImageView)findViewById(R.id.patient_state_arrow_iv);
+
 		//订单金额
 		m_allRegionLL = (LinearLayout)findViewById(R.id.all_region_ll);
 		m_allRegionLL.setVisibility(View.GONE);
@@ -234,9 +259,6 @@ public class OrderConfirmActivity extends Activity
 
 	private void initListener()
 	{
-		m_patientRegionLL.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
-		m_patientStateRegionLL.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
-
 		m_userProtcolTV.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
 		m_confirmAppointmentBtn.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
 	}

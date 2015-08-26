@@ -76,6 +76,10 @@
 			android:name=".app.ui.nurse_order_page.NurseOrderActivity"
 			android:label="NurseOrderActivity"/>
 
+		<!-- 补差价-->
+		<activity
+			android:name=".app.ui.nurse_order_pay_more.NurseOrderPayMoreActivity"
+			android:label="NurseOrderPayMoreActivity"/>
 
 		<activity
 			android:name=".app.ui.activity.AboutUsActivity"
