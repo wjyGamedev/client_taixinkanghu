@@ -129,35 +129,4 @@ public class DNurseOrderPayPage
 		}
 	}
 
-	public String getPayMoreReasonValue()
-	{
-		synchronized (m_syncPayMoreReasonValue)
-		{
-			return m_payMoreReasonValue;
-		}
-	}
-
-	public void setPayMoreReasonValue(String payMoreReasonValue)
-	{
-		synchronized (m_syncPayMoreReasonValue)
-		{
-			m_payMoreReasonValue = payMoreReasonValue;
-		}
-	}
-
-	public String getPayMoreReasonOption()
-	{
-		synchronized (m_syncPayMoreReasonOption)
-		{
-			return m_payMoreReasonOption;
-		}
-	}
-
-	public void setPayMoreReasonOption(String payMoreReasonOption)
-	{
-		synchronized (m_syncPayMoreReasonOption)
-		{
-			m_payMoreReasonOption = payMoreReasonOption;
-		}
-	}
 }

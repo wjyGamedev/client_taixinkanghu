@@ -26,6 +26,7 @@ public class ReqNurseOrderCheckEvent extends BaseNetEvent
 {
 	private String m_userID = null;
 	private String m_orderID = null;
+	private String m_type = null;
 
 	public ReqNurseOrderCheckEvent()
 	{
@@ -52,6 +53,16 @@ public class ReqNurseOrderCheckEvent extends BaseNetEvent
 		m_orderID = orderID;
 	}
 
+	public String getType()
+	{
+		return m_type;
+	}
+
+	public void setType(String type)
+	{
+		m_type = type;
+	}
+
 	public HashMap<String, String> getHashMap()
 	{
 		HashMap<String, String> orderCheck = new HashMap<String, String>();
@@ -63,6 +74,10 @@ public class ReqNurseOrderCheckEvent extends BaseNetEvent
 		if (!TextUtils.isEmpty(m_orderID))
 		{
 			orderCheck.put(NurseOrderConfig.ORDER_ID, m_orderID);
+		}
+		if (!TextUtils.isEmpty(m_type))
+		{
+			orderCheck.put(NurseOrderConfig.CHECK_TYPE, m_type);
 		}
 		return orderCheck;
 	}

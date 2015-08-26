@@ -41,6 +41,7 @@ import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCancelEvent;
 import com.taixinkanghu.app.ui.appointment_nursing.ApoitNursingActivity;
 import com.taixinkanghu.app.ui.bottom.BottomCommon;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
+import com.taixinkanghu.app.ui.nurse_order_pay_more.NurseOrderPayMoreActivity;
 import com.taixinkanghu.app.ui.nurse_order_pay_page.NurseOrderPayActivity;
 import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
 import com.taixinkanghu.util.logcal.LogicalUtil;
@@ -405,7 +406,7 @@ public class NurseOrderActivity extends Activity
 		DGlobal.GetInstance().SetNursingModuleStatus(EnumConfig.NursingModuleStatus.PAY_MORE);
 
 		//02. 打开补差价的页面
-		Intent intent = new Intent(this, NurseOrderPayActivity.class);
+		Intent intent = new Intent(this, NurseOrderPayMoreActivity.class);
 
 		int orderID = m_nurseOrder.getOrderID();
 		String orderSerialID = m_nurseOrder.getOrderSerialNum();

@@ -33,6 +33,7 @@ import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderPayMoreEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderPayMoreEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
+import com.taixinkanghu.app.ui.nurse_order_pay_page.NurseOrderPayActivity;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 
 import de.greenrobot.event.EventBus;
@@ -64,16 +65,16 @@ public class NurseOrderPayMoreActivity extends Activity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_nurse_order_pay);
+		setContentView(R.layout.activity_nurse_order_pay_more);
 
 		init();
 		initListener();
-		initData();
 	}
 
 	@Override
 	protected void onStart()
 	{
+		initData();
 		updateContent();
 		initGlobalData();
 		super.onStart();
@@ -108,6 +109,7 @@ public class NurseOrderPayMoreActivity extends Activity
 		m_priceET = (EditText)findViewById(R.id.price_tv);
 
 		m_confirmBtn = (Button)findViewById(R.id.btn_bottom);
+		m_confirmBtn.setText(getString(R.string.content_confirm_btn));
 
 		m_handleClickEventOnNurseOrderPayMore = new HandleClickEventOnNurseOrderPayMore(this);
 		m_handleEditActionEvent = new HandleEditActionEvent(this);
@@ -127,7 +129,7 @@ public class NurseOrderPayMoreActivity extends Activity
 	private void initData()
 	{
 		Intent intent = getIntent();
-		int m_orderID = intent.getIntExtra(NurseOrderConfig.ORDER_ID, DataConfig.DEFAULT_VALUE);
+		m_orderID = intent.getIntExtra(NurseOrderConfig.ORDER_ID, DataConfig.DEFAULT_VALUE);
 		if (m_orderID == DataConfig.DEFAULT_VALUE)
 		{
 			RegisterDialog.GetInstance().setMsg("nurseID is invalid[orderID:=" + m_orderID + "]", this);
@@ -252,7 +254,13 @@ public class NurseOrderPayMoreActivity extends Activity
 	//补差价成功，跳转到支付页面。
 	public void onEventMainThread(FinishedNurseOrderPayMoreEvent event)
 	{
+		finish();
 
+		Intent intent = new Intent(this, NurseOrderPayActivity.class);
+		intent.putExtra(NurseOrderConfig.ORDER_ID, event.getOrderID());
+		intent.putExtra(NurseOrderConfig.ORDER_SERIAL_NUM, event.getOrderSerialNum());
+		intent.putExtra(NurseOrderConfig.ORDER_PAY_MORE_PRICE, event.getPrice());
+		startActivity(intent);
 		return;
 	}
 

@@ -88,6 +88,17 @@ public class NurseOrderPayActivity extends Activity
 	private void initUI()
 	{
 		m_weixinRegionLL.setVisibility(View.GONE);
+		//补差价不允许现金交易
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.PAY_MORE)
+		{
+			m_cashRegionLL.setVisibility(View.GONE);
+		}
+		else
+		{
+			m_cashRegionLL.setVisibility(View.VISIBLE);
+		}
+		m_alipayRegionLL.setVisibility(View.VISIBLE);
 	}
 
 	@Override
@@ -181,7 +192,7 @@ public class NurseOrderPayActivity extends Activity
 		int orderID = intent.getIntExtra(NurseOrderConfig.ORDER_ID, DataConfig.DEFAULT_VALUE);
 		if (orderID == DataConfig.DEFAULT_VALUE)
 		{
-			RegisterDialog.GetInstance().setMsg("nurseID is invalid[orderID:=" + orderID + "]", this);
+			RegisterDialog.GetInstance().setMsg("orderID is invalid[orderID:=" + orderID + "]", this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
@@ -190,41 +201,32 @@ public class NurseOrderPayActivity extends Activity
 		String orderSerialNum = intent.getStringExtra(NurseOrderConfig.ORDER_SERIAL_NUM);
 		if (orderSerialNum == null)
 		{
-			RegisterDialog.GetInstance().setMsg("nurseID is invalid[orderSerialNum == null]");
+			RegisterDialog.GetInstance().setMsg("orderSerialNum is invalid[orderSerialNum == null]");
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 		m_nurseOrderPayPage.setOrderSerialNum(orderSerialNum);
 
-		int totalPrice = intent.getIntExtra(NurseOrderConfig.ORDER_USER_PAY, DataConfig.DEFAULT_VALUE);
+		int totalPrice = DataConfig.DEFAULT_VALUE;
+		if (DGlobal.GetInstance().getNursingModuleStatus() == EnumConfig.NursingModuleStatus.PAY_MORE)
+		{
+			//补差价
+			totalPrice = intent.getIntExtra(NurseOrderConfig.ORDER_PAY_MORE_PRICE, DataConfig.DEFAULT_VALUE);
+		}
+		else
+		{
+			//总价格
+			totalPrice = intent.getIntExtra(NurseOrderConfig.ORDER_USER_PAY, DataConfig.DEFAULT_VALUE);
+		}
+
 		if (totalPrice == DataConfig.DEFAULT_VALUE)
 		{
-			RegisterDialog.GetInstance().setMsg("nurseID is invalid[totalPrice:=" + totalPrice + "]", this);
+			RegisterDialog.GetInstance().setMsg("totalPrice is invalid[totalPrice:=" + totalPrice + "]", this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
 		m_nurseOrderPayPage.setTotalPrice(totalPrice);
 
-		if (DGlobal.GetInstance().getNursingModuleStatus() == EnumConfig.NursingModuleStatus.PAY_MORE)
-		{
-			String reasonOption = intent.getStringExtra(NurseOrderConfig.ORDER_PAY_MORE_REASON_OPTION);
-			if (reasonOption == null)
-			{
-				RegisterDialog.GetInstance().setMsg("reasonOption == null");
-				RegisterDialog.GetInstance().show();
-				return;
-			}
-
-			String reasonValue = intent.getStringExtra(NurseOrderConfig.ORDER_PAY_MORE_REASON_VALUE);
-			if (reasonValue == null)
-			{
-				RegisterDialog.GetInstance().setMsg("reasonValue == null");
-				RegisterDialog.GetInstance().show();
-				return;
-			}
-			m_nurseOrderPayPage.setPayMoreReasonOption(reasonOption);
-			m_nurseOrderPayPage.setPayMoreReasonValue(reasonValue);
-		}
 	}
 
 	private void updateContent()
@@ -310,64 +312,65 @@ public class NurseOrderPayActivity extends Activity
 		if (!IsSelectedValid())
 			return;
 
-		//02. 支付event之前的订单check
-		DNurseOrderPayPage nurseOrderPayPage = DNursingModule.GetInstance().getNurseOrderPayPage();
-		if (nurseOrderPayPage == null)
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+
+		//01. 补差价，直接调用支付action
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.PAY_MORE)
 		{
-			RegisterDialog.GetInstance().setMsg("nurseOrderPayPage == null");
-			RegisterDialog.GetInstance().show();
+			payAction();
 			return;
 		}
+		//02.其他交易，先走check流程
+		else
+		{
+			//02. 支付event之前的订单check
+			DNurseOrderPayPage nurseOrderPayPage = DNursingModule.GetInstance().getNurseOrderPayPage();
+			if (nurseOrderPayPage == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseOrderPayPage == null");
+				RegisterDialog.GetInstance().show();
+				return;
+			}
 
-		ReqNurseOrderCheckEvent event = new ReqNurseOrderCheckEvent();
+			ReqNurseOrderCheckEvent event = new ReqNurseOrderCheckEvent();
 
-		String nurseID = nurseOrderPayPage.getUserID();
-		event.setUserID(nurseID);
+			String nurseID = nurseOrderPayPage.getUserID();
+			event.setUserID(nurseID);
 
-		String orderID = nurseOrderPayPage.getOrderID();
-		event.setOrderID(orderID);
+			String orderID = nurseOrderPayPage.getOrderID();
+			event.setOrderID(orderID);
 
-		m_eventBus.post(event);
-		return;
+			String payType = null;
+			//支付类型
+			if (m_selectedID == R.id.cash_rbtn)
+			{
+				payType = "cash";
+			}
+			else if (m_selectedID == R.id.alipay_rbtn)
+			{
+				payType = "alipay";
+			}
+			else if (m_selectedID == R.id.weixin_rbtn)
+			{
+				payType = "weinxin";
+			}
+			else
+			{
+				RegisterDialog.GetInstance().setMsg("m_selectedID is invalid!", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			event.setType(payType);
+
+
+			m_eventBus.post(event);
+			return;
+		}
 
 	}
 
-	/**
-	 * event bus handle
-	 */
-	//下订单失败，护工在服务中。
-	public void onEventMainThread(FailedNurseOrderCheckEvent event)
-	{
-		//01. 清除下订单流程中，order confirm，order  pay的数据
-		DNurseOrderConfirmPage nurseOrderConfirmPage = DNursingModule.GetInstance().getNurseOrderConfirmPage();
-		if (nurseOrderConfirmPage == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nurseOrderConfirmPage == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-		DNurseOrderPayPage nurseOrderPayPage = DNursingModule.GetInstance().getNurseOrderPayPage();
-		if (nurseOrderPayPage == null)
-		{
-			RegisterDialog.GetInstance().setMsg("nurseOrderPayPage == null", this);
-			RegisterDialog.GetInstance().show();
-			return;
-		}
-		nurseOrderConfirmPage.clearup();
-		nurseOrderPayPage.clearup();
-
-		//02. flush nurse basic list event
-		ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
-		m_eventBus.post(reqApoitNursingEvent);
-
-		//03. 跳转到选择nurse页面
-		finish();
-		startActivity(new Intent(this, SelectNurseActivity.class));
-
-		return;
-	}
-	//下订单成功，调用支付宝模块
-	public void onEventMainThread(FinishedNurseOrderCheckEvent event)
+	private void payAction()
 	{
 		if (m_nurseOrderPayPage == null)
 		{
@@ -376,9 +379,17 @@ public class NurseOrderPayActivity extends Activity
 			return;
 		}
 
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+
 		//01. 现金支付
 		if (m_selectedID == R.id.cash_rbtn)
 		{
+			//现金支付目前不允许补差价
+			if (nursingModuleStatus == EnumConfig.NursingModuleStatus.PAY_MORE)
+			{
+				RegisterDialog.GetInstance().setMsg(getString(R.string.error_tips_pay_more_aciton_no_cash));
+				RegisterDialog.GetInstance().show();
+			}
 			return;
 		}
 		//02. 支付宝支付
@@ -417,7 +428,50 @@ public class NurseOrderPayActivity extends Activity
 			return;
 		}
 		return;
+	}
 
+	/**
+	 * event bus handle
+	 */
+	//下订单失败，护工在服务中。
+	public void onEventMainThread(FailedNurseOrderCheckEvent event)
+	{
+		//01. 清除下订单流程中，order confirm，order  pay的数据
+		DNurseOrderConfirmPage nurseOrderConfirmPage = DNursingModule.GetInstance().getNurseOrderConfirmPage();
+		if (nurseOrderConfirmPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrderConfirmPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		DNurseOrderPayPage nurseOrderPayPage = DNursingModule.GetInstance().getNurseOrderPayPage();
+		if (nurseOrderPayPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrderPayPage == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		nurseOrderConfirmPage.clearup();
+		nurseOrderPayPage.clearup();
+
+		//02. flush nurse basic list event
+		ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
+		m_eventBus.post(reqApoitNursingEvent);
+
+		//03. 跳转到选择nurse页面
+		finish();
+		startActivity(new Intent(this, SelectNurseActivity.class));
+
+		return;
+	}
+	//下订单成功，调用支付宝模块
+
+
+
+	public void onEventMainThread(FinishedNurseOrderCheckEvent event)
+	{
+		payAction();
+		return;
 	}
 
 	//支付宝模块返回结果

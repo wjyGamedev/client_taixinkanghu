@@ -7,4 +7,5 @@
 	<string name="confirm_btn">取消</string>
 	<string name="error_tips_select_pay_option">请选择支付方式？</string>
 	<string name="error_tips_pay_aciton_invalid">该支付方式暂未开通。</string>
+	<string name="error_tips_pay_more_aciton_no_cash">补差价暂不允许使用现金支付。</string>
 </resources>

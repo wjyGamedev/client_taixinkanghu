@@ -362,7 +362,7 @@
 							android:textSize="14.0sp"/>
 
 						<ImageView
-							android:id="@+id/right_date"
+							android:id="@+id/patient_info_arrow_iv"
 							android:layout_width="15dp"
 							android:layout_height="15dp"
 							android:layout_marginRight="15dp"
@@ -411,7 +411,7 @@
 							android:textSize="14.0sp"/>
 
 						<ImageView
-							android:id="@+id/patient_state_img"
+							android:id="@+id/patient_state_arrow_iv"
 							android:layout_width="15dp"
 							android:layout_height="15dp"
 							android:layout_marginRight="15dp"
