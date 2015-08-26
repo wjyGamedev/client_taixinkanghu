@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
@@ -24,6 +27,7 @@ import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderCheckEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderAlipayEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqApoitNursingEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCheckEvent;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
 import com.taixinkanghu.app.ui.main_page.MainActivity;
 import com.taixinkanghu.app.ui.select_nurse.SelectNurseActivity;
@@ -46,20 +50,24 @@ public class NurseOrderPayActivity extends Activity
 	private HeaderCommon m_headerCommon     = null;
 	private TextView     m_orderSerialNumTV = null;
 	private TextView     m_priceTV          = null;
+	private LinearLayout m_cashRegionLL = null;
 	private RadioButton  m_cashRBtn         = null;
+	private LinearLayout m_alipayRegionLL = null;
 	private RadioButton  m_alipayRBtn       = null;
+	private LinearLayout m_weixinRegionLL = null;
 	private RadioButton  m_weixinRBtn       = null;
 	private Button       m_payBtn           = null;
 
 	//logical
+	private RadioGroup m_radioGroup = null;
+
 	private HandlerClickEventNursOrderPay m_handlerClickEventNursOrderPay = null;
 	private HandleClickEventOnDialog      m_handleClickEventOnDialog      = null;
 	private EventBus                      m_eventBus                      = EventBus.getDefault();
 
 	private DNurseOrderPayPage m_nurseOrderPayPage = DNursingModule.GetInstance().getNurseOrderPayPage();
+	private int m_selectedID = DataConfig.DEFAULT_VALUE;
 
-
-	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -73,7 +81,7 @@ public class NurseOrderPayActivity extends Activity
 
 	private void initUI()
 	{
-
+		m_weixinRegionLL.setVisibility(View.GONE);
 	}
 
 	@Override
@@ -118,11 +126,19 @@ public class NurseOrderPayActivity extends Activity
 
 		m_orderSerialNumTV = (TextView)findViewById(R.id.order_serial_num_tv);
 		m_priceTV = (TextView)findViewById(R.id.price_tv);
+		m_cashRegionLL = (LinearLayout)findViewById(R.id.cash_region_ll);
 		m_cashRBtn = (RadioButton)findViewById(R.id.cash_rbtn);
+		m_alipayRegionLL = (LinearLayout)findViewById(R.id.alipay_region_ll);
 		m_alipayRBtn = (RadioButton)findViewById(R.id.alipay_rbtn);
+		m_weixinRegionLL = (LinearLayout)findViewById(R.id.weixin_region_ll);
 		m_weixinRBtn = (RadioButton)findViewById(R.id.weixin_rbtn);
 		m_payBtn = (Button)findViewById(R.id.btn_bottom);
 		m_payBtn.setText(R.string.determine_pay_title);
+
+		m_radioGroup = new RadioGroup(this);
+		m_radioGroup.addView(m_cashRBtn);
+		m_radioGroup.addView(m_alipayRBtn);
+		m_radioGroup.addView(m_weixinRBtn);
 
 		m_handlerClickEventNursOrderPay = new HandlerClickEventNursOrderPay(this);
 		m_handleClickEventOnDialog = new HandleClickEventOnDialog();
@@ -136,6 +152,9 @@ public class NurseOrderPayActivity extends Activity
 	private void initListener()
 	{
 		m_payBtn.setOnClickListener(m_handlerClickEventNursOrderPay);
+		m_cashRBtn.setOnClickListener(m_handlerClickEventNursOrderPay);
+		m_alipayRBtn.setOnClickListener(m_handlerClickEventNursOrderPay);
+		m_weixinRBtn.setOnClickListener(m_handlerClickEventNursOrderPay);
 	}
 
 	private void initData()
@@ -226,20 +245,69 @@ public class NurseOrderPayActivity extends Activity
 		DGlobal.GetInstance().clearupContext(this);
 	}
 
+
+	/**
+	 * action
+	 */
+	public void selectedAction()
+	{
+		m_selectedID = m_radioGroup.getCheckedRadioButtonId();
+	}
 	public void backAction()
 	{
 		RegisterDialog.GetInstance().setMsg(getString(R.string.cancel_title), this, m_handleClickEventOnDialog, m_handleClickEventOnDialog);
 		RegisterDialog.GetInstance().show();
 		return;
+
 	}
 
+	public boolean IsSelectedValid()
+	{
+		if (m_selectedID == DataConfig.DEFAULT_VALUE)
+		{
+			RegisterDialog.GetInstance().setMsg(getString(R.string.error_tips_select_pay_option), this);
+			RegisterDialog.GetInstance().show();
+			return false;
+		}
+
+		if (m_selectedID == R.id.cash_rbtn	|| m_selectedID == R.id.alipay_rbtn)
+		{
+			return true;
+		}
 
 
+		RegisterDialog.GetInstance().setMsg(getString(R.string.error_tips_pay_aciton_invalid), this);
+		RegisterDialog.GetInstance().show();
+		return false;
+	}
 
+	public void confirmAction()
+	{
+		//01. 有效性判断
+		if (!IsSelectedValid())
+			return;
 
+		//02. 支付event之前的订单check
+		DNurseOrderPayPage nurseOrderPayPage = DNursingModule.GetInstance().getNurseOrderPayPage();
+		if (nurseOrderPayPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrderPayPage == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
 
+		ReqNurseOrderCheckEvent event = new ReqNurseOrderCheckEvent();
 
+		String nurseID = nurseOrderPayPage.getUserID();
+		event.setUserID(nurseID);
 
+		String orderID = nurseOrderPayPage.getOrderID();
+		event.setOrderID(orderID);
+
+		m_eventBus.post(event);
+		return;
+
+	}
 
 	/**
 	 * event bus handle
@@ -285,32 +353,48 @@ public class NurseOrderPayActivity extends Activity
 			return;
 		}
 
-		//01. 获取order info
-		String orderID = m_nurseOrderPayPage.getOrderID();
-		int totalPrice = m_nurseOrderPayPage.getTotalPrice();
-		//String orderInfo = Util.GetNurseOrder(orderID, String.valueOf(totalPrice));
-		//测试
-		String orderInfo = Util.GetNurseOrder(orderID, "0.01");
-		//02. 对订单做RSA 签名
-		String sign = signByRSA(orderInfo);
-		try {
-			// 仅需对sign 做URL编码
-			sign = URLEncoder.encode(sign, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			RegisterDialog.GetInstance().setMsg(e.toString(), this);
+		//01. 现金支付
+		if (m_selectedID == R.id.cash_rbtn)
+		{
+			return;
+		}
+		//02. 支付宝支付
+		else if (m_selectedID == R.id.alipay_rbtn)
+		{
+			//0201. 获取order info
+			String orderID = m_nurseOrderPayPage.getOrderID();
+			int totalPrice = m_nurseOrderPayPage.getTotalPrice();
+			//测试
+			String orderIDInfo = Util.GetNurseOrderInfo(orderID);
+			String orderInfo = Util.GetNurseOrder(orderIDInfo, "0.01");
+			//0202. 对订单做RSA 签名
+			String sign = signByRSA(orderInfo);
+			try {
+				// 仅需对sign 做URL编码
+				sign = URLEncoder.encode(sign, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				RegisterDialog.GetInstance().setMsg(e.toString(), this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			//0203. 完整的符合支付宝参数规范的订单信息
+			final String payInfo = orderInfo + "&sign=\"" + sign + "\"&" + getSignType();
+
+			//0204. 发送pay event
+			ReqNurseOrderAlipayEvent reqNurseOrderAlipayEvent = new ReqNurseOrderAlipayEvent();
+			reqNurseOrderAlipayEvent.setPayInfo(payInfo);
+			reqNurseOrderAlipayEvent.setActivity(this);
+			m_eventBus.post(reqNurseOrderAlipayEvent);
+		}
+		else
+		{
+			RegisterDialog.GetInstance().setMsg(getString(R.string.error_tips_pay_aciton_invalid), this);
 			RegisterDialog.GetInstance().show();
 			return;
 		}
-
-		//03. 完整的符合支付宝参数规范的订单信息
-		final String payInfo = orderInfo + "&sign=\"" + sign + "\"&" + getSignType();
-
-		//04. 发送pay event
-		ReqNurseOrderAlipayEvent reqNurseOrderAlipayEvent = new ReqNurseOrderAlipayEvent();
-		reqNurseOrderAlipayEvent.setPayInfo(payInfo);
-		reqNurseOrderAlipayEvent.setActivity(this);
-		m_eventBus.post(reqNurseOrderAlipayEvent);
 		return;
+
 	}
 
 	//支付宝模块返回结果
@@ -371,6 +455,8 @@ public class NurseOrderPayActivity extends Activity
 	{
 		return UtilRSA.Sign(orderInfo, Config.RSA_PRIVATE);
 	}
+
+
 
 
 	/**

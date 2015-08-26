@@ -129,7 +129,7 @@
 						android:orientation="vertical">
 
 						<LinearLayout
-							android:id="@+id/item_cash"
+							android:id="@+id/cash_region_ll"
 							android:layout_width="match_parent"
 							android:layout_height="60dp"
 							android:background="@color/white"
@@ -192,7 +192,7 @@
 						</LinearLayout>
 
 						<LinearLayout
-							android:id="@id/item_alipay"
+							android:id="@+id/alipay_region_ll"
 							android:layout_width="match_parent"
 							android:layout_height="60dp"
 							android:background="@color/white"
@@ -258,7 +258,7 @@
 						</LinearLayout>
 
 						<LinearLayout
-							android:id="@id/item_weixin"
+							android:id="@+id/weixin_region_ll"
 							android:layout_width="match_parent"
 							android:layout_height="60dp"
 							android:background="@color/white"
