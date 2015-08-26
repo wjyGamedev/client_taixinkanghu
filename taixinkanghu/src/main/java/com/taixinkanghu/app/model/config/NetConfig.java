@@ -56,8 +56,13 @@ public class NetConfig
 	//取消订单，在未付款的情况下。
 	public final static String s_nurseOrderCancel = "http://"+IP_ADDREDD_TEST+"/order/cancelOrder/";
 
+	//取消订单，在服务西黄太下
+	public final static String s_nurseOrderCancelService = "http://"+IP_ADDREDD_TEST+"/order/orderEarlyCancel/";
+
 	//更换护工的地址
 	public final static String s_changeNurseAddress = "http://"+IP_ADDREDD_TEST+"/order/changeCarer/";
 
+	//补差价
+	public final static String s_nurseOrderPayMoreAddress = "http://"+IP_ADDREDD_TEST+"/order/orderEarlyCancel/";
 
 }

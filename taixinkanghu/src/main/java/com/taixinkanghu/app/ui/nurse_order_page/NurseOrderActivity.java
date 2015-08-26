@@ -34,6 +34,7 @@ import com.taixinkanghu.app.model.data.page.DNursingDate;
 import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
+import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderCancelServiceEvent;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqApoitNursingEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCancelEvent;
@@ -312,7 +313,7 @@ public class NurseOrderActivity extends Activity
 		ReqNurseOrderCancelEvent event = new ReqNurseOrderCancelEvent();
 		String userID = DAccount.GetInstance().getId();
 		int orderID = m_nurseOrder.getOrderID();
-		event.setNurseID(userID);
+		event.setUserID(userID);
 		event.setNurseOrderID(String.valueOf(orderID));
 		m_eventBus.post(event);
 		return;
@@ -383,12 +384,35 @@ public class NurseOrderActivity extends Activity
 	//退订
 	public void cancelService()
 	{
+		//01. 发送退订event
+		FinishedNurseOrderCancelServiceEvent event = new FinishedNurseOrderCancelServiceEvent();
+		String userID = DAccount.GetInstance().getId();
+		int orderID = m_nurseOrder.getOrderID();
+		event.setUserID(userID);
+		event.setOrderID(String.valueOf(orderID));
+		m_eventBus.post(event);
 
+		//02. 发送消息，获取新的nurse list
+//		ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
+//		m_eventBus.post(reqApoitNursingEvent);
+
+		return;
 	}
 	//补差价
 	public void payMore()
 	{
+		//01. set DGlobal status
+		DGlobal.GetInstance().SetNursingModuleStatus(EnumConfig.NursingModuleStatus.PAY_MORE);
 
+		//02. 打开补差价的页面
+		Intent intent = new Intent(this, NurseOrderPayActivity.class);
+
+		int orderID = m_nurseOrder.getOrderID();
+		String orderSerialID = m_nurseOrder.getOrderSerialNum();
+		intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
+		intent.putExtra(NurseOrderConfig.ORDER_SERIAL_NUM, orderSerialID);
+		startActivity(intent);
+		return;
 	}
 
 	/**

@@ -68,8 +68,16 @@ public class EventID
 	public final static int QUEST_NURSE_ORDER_CANCEL = FINISHED_NURSE_ORDER_LIST + 1;
 	public final static int FINISHED_NURSE_ORDER_CANCEL = QUEST_NURSE_ORDER_CANCEL + 1;
 
+	//取消订单，在服务状态下。
+	public final static int QUEST_NURSE_ORDER_CANCEL_SERVICE = FINISHED_NURSE_ORDER_CANCEL + 1;
+
+	//补差价
+	public final static int QUEST_NURSE_ORDER_PAY_MORE = QUEST_NURSE_ORDER_CANCEL_SERVICE + 1;
+	public final static int FINISHED_NURSE_ORDER_PAY_MORE = QUEST_NURSE_ORDER_PAY_MORE + 1;
+
+
 	//康复用品
-	public final static int QUEST_SHOPPING_BASIC_LIST = 104;
+	public final static int QUEST_SHOPPING_BASIC_LIST = FINISHED_NURSE_ORDER_PAY_MORE + 1;
 
 	//sms event
 	public final static int SMS_EVENT_DEFAULT = 200;

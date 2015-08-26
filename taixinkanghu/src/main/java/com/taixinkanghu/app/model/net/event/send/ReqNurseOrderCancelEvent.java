@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class ReqNurseOrderCancelEvent extends BaseNetEvent
 {
-	private String m_nurseID = null;
+	private String m_userID       = null;
 	private String m_nurseOrderID = null;
 
 	public ReqNurseOrderCancelEvent()
@@ -33,19 +33,19 @@ public class ReqNurseOrderCancelEvent extends BaseNetEvent
 	public HashMap<String, String> getHashMap()
 	{
 		HashMap<String, String> nurseOrderList = new HashMap<String, String>();
-		nurseOrderList.put(NurseOrderConfig.USER_ID, m_nurseID);
+		nurseOrderList.put(NurseOrderConfig.USER_ID, m_userID);
 		nurseOrderList.put(NurseOrderConfig.ORDER_ID, m_nurseOrderID);
 		return nurseOrderList;
 	}
 
-	public String getNurseID()
+	public String getUserID()
 	{
-		return m_nurseID;
+		return m_userID;
 	}
 
-	public void setNurseID(String nurseID)
+	public void setUserID(String userID)
 	{
-		m_nurseID = nurseID;
+		m_userID = userID;
 	}
 
 	public String getNurseOrderID()

@@ -280,9 +280,12 @@ public class EnumConfig
 		WAIT_PAYMENT(AppUtil.GetResources().getString(R.string.nurse_order_status_wait_payment), 1),
 		WAIT_SERVICE(AppUtil.GetResources().getString(R.string.nurse_order_status_wait_service), 2),
 		IN_SERVICE(AppUtil.GetResources().getString(R.string.nurse_order_status_in_service), 3),
-		FINISHED(AppUtil.GetResources().getString(R.string.nurse_order_status_finished), 4),
-		CANCELED(AppUtil.GetResources().getString(R.string.nurse_order_status_canceled), 5),
-		WAIT_EVALUATION(AppUtil.GetResources().getString(R.string.nurse_order_status_wait_evaluation), 6);
+		WAIT_EVALUATION(AppUtil.GetResources().getString(R.string.nurse_order_status_wait_evaluation), 4),
+		FINISHED(AppUtil.GetResources().getString(R.string.nurse_order_status_finished), 5),
+		CANCELED(AppUtil.GetResources().getString(R.string.nurse_order_status_canceled), 6),
+		WAIT_CASH_PAYMENT(AppUtil.GetResources().getString(R.string.nurse_order_status_wait_cash_payment), 7);
+
+
 
 		private String m_name = null;
 		private int m_id = 0;
@@ -318,11 +321,13 @@ public class EnumConfig
 			case 3:
 				return IN_SERVICE;
 			case 4:
-				return FINISHED;
-			case 5:
-				return CANCELED;
-			case 6:
 				return WAIT_EVALUATION;
+			case 5:
+				return FINISHED;
+			case 6:
+				return CANCELED;
+			case 7:
+				return WAIT_CASH_PAYMENT;
 			default:
 				return null;
 			}
@@ -430,7 +435,9 @@ public class EnumConfig
 	{
 		APIOT_NURSING(AppUtil.GetResources().getString(R.string.nuring_module_status_apiot_nursing), 1),
 		REPEAT_ORDER(AppUtil.GetResources().getString(R.string.nuring_module_repeat_order), 2),
-		CHANGE_NURSE(AppUtil.GetResources().getString(R.string.nuring_module_change_nurse), 3);
+		CHANGE_NURSE(AppUtil.GetResources().getString(R.string.nuring_module_change_nurse), 3),
+		PAY_MORE(AppUtil.GetResources().getString(R.string.nuring_module_pay_more), 4);
+
 
 		private String m_name = null;
 		private int m_id = 0;
@@ -459,12 +466,14 @@ public class EnumConfig
 
 		public static NursingModuleStatus valueOf(int id) {    //    手写的从int到enum的转换函数
 			switch (id) {
-			case 0:
-				return APIOT_NURSING;
 			case 1:
-				return REPEAT_ORDER;
+				return APIOT_NURSING;
 			case 2:
+				return REPEAT_ORDER;
+			case 3:
 				return CHANGE_NURSE;
+			case 4:
+				return PAY_MORE;
 			default:
 				return null;
 			}
