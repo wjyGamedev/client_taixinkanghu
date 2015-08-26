@@ -19,7 +19,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alipay.sdk.app.PayTask;
 import com.android.volley.Request;
@@ -34,6 +33,7 @@ import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseSeniorListConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishNurseOrderAlipayEvent;
+import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderCancelServiceEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqApoitNursingEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqDepartmentListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqHospitalListEvent;
@@ -43,6 +43,7 @@ import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderCheckEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderConfirmEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderConfirmForChangeNurse;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderListEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderPayMoreEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqNurseSeniorListEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqRegisterEvent;
 import com.taixinkanghu.app.model.net.event.send.ReqShoppingBasicListEvent;
@@ -51,6 +52,7 @@ import com.taixinkanghu.app.model.net.handler.ResApoitNursingHandler;
 import com.taixinkanghu.app.model.net.handler.ResDepartmentListHandler;
 import com.taixinkanghu.app.model.net.handler.ResHospitalListHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderCancelHandler;
+import com.taixinkanghu.app.model.net.handler.ResNurseOrderCancelServiceHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderCheckHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderConfirmHandler;
 import com.taixinkanghu.app.model.net.handler.ResNurseOrderListHandler;
@@ -84,6 +86,8 @@ public class NetService extends Service
 
 	private ResNurseOrderListHandler m_resNurseOrderListHandler = null;
 	private ResNurseOrderCancelHandler m_resNurseOrderCancelHandler = null;
+	private ResNurseOrderCancelServiceHandler m_resNurseOrderCancelServiceHandler = null;
+
 
 	private ResShoppingBasicListHandler m_resShoppingBasicListHandler = null;
 
@@ -141,7 +145,11 @@ public class NetService extends Service
 		m_resNurseOrderCheckHandler = new ResNurseOrderCheckHandler();
 		m_resNurseOrderListHandler = new ResNurseOrderListHandler();
 		m_resNurseOrderCancelHandler = new ResNurseOrderCancelHandler();
+		m_resNurseOrderCancelServiceHandler = new ResNurseOrderCancelServiceHandler();
+
 		m_resShoppingBasicListHandler = new ResShoppingBasicListHandler();
+
+
 		m_requestQueue = BaseHttp.getInstance().getRequestQueue();
 	}
 
@@ -438,7 +446,35 @@ public class NetService extends Service
 		m_requestQueue.add(myReq);
 	}
 
+	//订单取消，在服务状态下
+	public void onEventAsync(FinishedNurseOrderCancelServiceEvent event)
+	{
+		HashMap<String, String> nurseOrderCancel = event.getHashMap();
 
+
+		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
+																NetConfig.s_nurseOrderCancelService,
+																nurseOrderCancel,
+																m_resNurseOrderCancelServiceHandler,
+																m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
+	}
+
+	//补差价
+	public void onEventAsync(ReqNurseOrderPayMoreEvent event)
+	{
+		HashMap<String, String> nurseOrderCancel = event.getHashMap();
+
+
+		JsonObjectRequestForm myReq = new JsonObjectRequestForm(Request.Method.POST,
+																NetConfig.s_nurseOrderPayMoreAddress,
+																nurseOrderCancel,
+																m_resNurseOrderCancelServiceHandler,
+																m_baseErrorListener);
+
+		m_requestQueue.add(myReq);
+	}
 
 
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.net.DAccount;
 import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.model.data.page.DNurseOrderConfirmPage;
@@ -67,6 +68,12 @@ public class NurseOrderPayActivity extends Activity
 		init();
 		initListener();
 		initData();
+		initUI();
+	}
+
+	private void initUI()
+	{
+
 	}
 
 	@Override
@@ -103,11 +110,32 @@ public class NurseOrderPayActivity extends Activity
 
 	}
 
-	public void backAction()
+	private void init()
 	{
-		RegisterDialog.GetInstance().setMsg(getString(R.string.cancel_title), this, m_handleClickEventOnDialog, m_handleClickEventOnDialog);
-		RegisterDialog.GetInstance().show();
-		return;
+		m_headerCommon = new HeaderCommon(this);
+		m_headerCommon.init();
+
+
+		m_orderSerialNumTV = (TextView)findViewById(R.id.order_serial_num_tv);
+		m_priceTV = (TextView)findViewById(R.id.price_tv);
+		m_cashRBtn = (RadioButton)findViewById(R.id.cash_rbtn);
+		m_alipayRBtn = (RadioButton)findViewById(R.id.alipay_rbtn);
+		m_weixinRBtn = (RadioButton)findViewById(R.id.weixin_rbtn);
+		m_payBtn = (Button)findViewById(R.id.btn_bottom);
+		m_payBtn.setText(R.string.determine_pay_title);
+
+		m_handlerClickEventNursOrderPay = new HandlerClickEventNursOrderPay(this);
+		m_handleClickEventOnDialog = new HandleClickEventOnDialog();
+
+		m_headerCommon.setTitle(R.string.title, m_handlerClickEventNursOrderPay);
+
+
+		m_eventBus.register(this);
+	}
+
+	private void initListener()
+	{
+		m_payBtn.setOnClickListener(m_handlerClickEventNursOrderPay);
 	}
 
 	private void initData()
@@ -151,6 +179,26 @@ public class NurseOrderPayActivity extends Activity
 		}
 		m_nurseOrderPayPage.setTotalPrice(totalPrice);
 
+		if (DGlobal.GetInstance().getNursingModuleStatus() == EnumConfig.NursingModuleStatus.PAY_MORE)
+		{
+			String reasonOption = intent.getStringExtra(NurseOrderConfig.ORDER_PAY_MORE_REASON_OPTION);
+			if (reasonOption == null)
+			{
+				RegisterDialog.GetInstance().setMsg("reasonOption == null");
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			String reasonValue = intent.getStringExtra(NurseOrderConfig.ORDER_PAY_MORE_REASON_VALUE);
+			if (reasonValue == null)
+			{
+				RegisterDialog.GetInstance().setMsg("reasonValue == null");
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+			m_nurseOrderPayPage.setPayMoreReasonOption(reasonOption);
+			m_nurseOrderPayPage.setPayMoreReasonValue(reasonValue);
+		}
 	}
 
 	private void updateContent()
@@ -178,33 +226,20 @@ public class NurseOrderPayActivity extends Activity
 		DGlobal.GetInstance().clearupContext(this);
 	}
 
-	private void init()
+	public void backAction()
 	{
-		m_headerCommon = new HeaderCommon(this);
-		m_headerCommon.init();
-
-
-		m_orderSerialNumTV = (TextView)findViewById(R.id.order_serial_num_tv);
-		m_priceTV = (TextView)findViewById(R.id.price_tv);
-		m_cashRBtn = (RadioButton)findViewById(R.id.cash_rbtn);
-		m_alipayRBtn = (RadioButton)findViewById(R.id.alipay_rbtn);
-		m_weixinRBtn = (RadioButton)findViewById(R.id.weixin_rbtn);
-		m_payBtn = (Button)findViewById(R.id.btn_bottom);
-		m_payBtn.setText(R.string.determine_pay_title);
-
-		m_handlerClickEventNursOrderPay = new HandlerClickEventNursOrderPay(this);
-		m_handleClickEventOnDialog = new HandleClickEventOnDialog();
-
-		m_headerCommon.setTitle(R.string.title, m_handlerClickEventNursOrderPay);
-
-
-		m_eventBus.register(this);
+		RegisterDialog.GetInstance().setMsg(getString(R.string.cancel_title), this, m_handleClickEventOnDialog, m_handleClickEventOnDialog);
+		RegisterDialog.GetInstance().show();
+		return;
 	}
 
-	private void initListener()
-	{
-		m_payBtn.setOnClickListener(m_handlerClickEventNursOrderPay);
-	}
+
+
+
+
+
+
+
 
 	/**
 	 * event bus handle

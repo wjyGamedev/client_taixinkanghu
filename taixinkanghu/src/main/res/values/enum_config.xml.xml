@@ -30,6 +30,7 @@
 	<string name="nurse_order_status_finished">已完成</string>
 	<string name="nurse_order_status_canceled">已取消</string>
 	<string name="nurse_order_status_wait_evaluation">待评价</string>
+	<string name="nurse_order_status_wait_cash_payment">现金待支付</string>
 
 	<!-- 06. 护工服务状态-->
 	<string name="nurse_service_status_free">空闲</string>
@@ -45,6 +46,7 @@
 	<string name="nuring_module_status_apiot_nursing">预约陪护</string>
 	<string name="nuring_module_repeat_order">续订</string>
 	<string name="nuring_module_change_nurse">更换</string>
+	<string name="nuring_module_pay_more">补差价</string>
 
 
 </resources>

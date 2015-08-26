@@ -21,14 +21,20 @@ public class DNurseOrderPayPage
 	private String m_userID     = null;    //用户ID
 	private Object m_syncUserID = new Object();
 
-	private String m_orderID        = null;    //订单ID，数据库主key，不是交易流水号。
+	private String m_orderID     = null;    //订单ID，数据库主key，不是交易流水号。
 	private Object m_syncOrderID = new Object();
 
-	private String m_orderSerialNum = null;
+	private String m_orderSerialNum     = null;
 	private Object m_syncOrderSerialNum = new Object();
 
 	private int    m_totalPrice     = DataConfig.DEFAULT_VALUE;
 	private Object m_syncTotalPrice = new Object();
+
+	private String m_payMoreReasonOption     = null;
+	private Object m_syncPayMoreReasonOption = new Object();
+
+	private String m_payMoreReasonValue     = null;
+	private Object m_syncPayMoreReasonValue = new Object();
 
 	public DNurseOrderPayPage()
 	{
@@ -123,4 +129,35 @@ public class DNurseOrderPayPage
 		}
 	}
 
+	public String getPayMoreReasonValue()
+	{
+		synchronized (m_syncPayMoreReasonValue)
+		{
+			return m_payMoreReasonValue;
+		}
+	}
+
+	public void setPayMoreReasonValue(String payMoreReasonValue)
+	{
+		synchronized (m_syncPayMoreReasonValue)
+		{
+			m_payMoreReasonValue = payMoreReasonValue;
+		}
+	}
+
+	public String getPayMoreReasonOption()
+	{
+		synchronized (m_syncPayMoreReasonOption)
+		{
+			return m_payMoreReasonOption;
+		}
+	}
+
+	public void setPayMoreReasonOption(String payMoreReasonOption)
+	{
+		synchronized (m_syncPayMoreReasonOption)
+		{
+			m_payMoreReasonOption = payMoreReasonOption;
+		}
+	}
 }
