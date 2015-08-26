@@ -169,12 +169,23 @@
 									android:textSize="12.0sp"/>
 							</LinearLayout>
 
+							<RadioButton
+								android:id="@+id/cash_rbtn"
+								style="@style/tick_radio_button_style"
+								android:layout_width="30dp"
+								android:layout_height="30dp"
+								android:layout_marginBottom="17.5dp"
+								android:layout_marginRight="15dp"
+								android:layout_marginTop="17.5dp"
+								android:background="@drawable/bg_radio_button_tick"/>
+
 						</LinearLayout>
 
 						<LinearLayout
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:layout_marginLeft="15dp"
+							android:layout_marginRight="15dp"
 							android:orientation="vertical">
 
 							<include layout="@layout/item_dividing_line_horizontal_fine"/>
@@ -201,7 +212,7 @@
 								android:src="@mipmap/icon_pay_alipay"/>
 
 							<LinearLayout
-								android:layout_width="wrap_content"
+								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
 								android:layout_weight="1.0"
 								android:orientation="vertical">
@@ -221,18 +232,28 @@
 									android:textSize="12.0sp"/>
 							</LinearLayout>
 
+							<RadioButton
+								android:id="@+id/alipay_rbtn"
+								style="@style/tick_radio_button_style"
+								android:layout_width="30dp"
+								android:layout_height="30dp"
+								android:layout_marginBottom="17.5dp"
+								android:layout_marginRight="15dp"
+								android:layout_marginTop="17.5dp"
+								android:background="@drawable/bg_radio_button_tick"/>
+
 						</LinearLayout>
 
 						<LinearLayout
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:layout_marginLeft="15dp"
+							android:layout_marginRight="15dp"
 							android:orientation="vertical">
 
 							<include
 								android:id="@+id/dividing_line"
-								layout="@layout/item_dividing_line_horizontal_fine"
-								android:visibility="gone"/>
+								layout="@layout/item_dividing_line_horizontal_fine"/>
 
 						</LinearLayout>
 
@@ -244,8 +265,7 @@
 							android:gravity="center_vertical"
 							android:orientation="horizontal"
 							android:paddingBottom="10dp"
-							android:paddingTop="10dp"
-							android:visibility="gone">
+							android:paddingTop="10dp">
 
 							<ImageView
 								android:layout_width="40dp"
@@ -278,72 +298,17 @@
 									android:textSize="12.0sp"/>
 							</LinearLayout>
 
-						</LinearLayout>
-
-					</LinearLayout>
-
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="match_parent"
-						android:orientation="vertical">
-
-						<RadioGroup
-							android:layout_width="match_parent"
-							android:layout_height="match_parent"
-							android:background="@color/white">
-
-							<RadioButton
-								android:id="@+id/cash_rbtn"
-								style="@style/tick_radio_button_style"
-								android:layout_width="27dp"
-								android:layout_height="30dp"
-								android:layout_marginBottom="17.5dp"
-								android:layout_marginRight="15dp"
-								android:layout_marginTop="17.5dp"
-								android:background="@drawable/bg_radio_button_tick"/>
-
-							<LinearLayout
-								android:layout_width="match_parent"
-								android:layout_height="wrap_content"
-								android:layout_marginRight="15dp"
-								android:orientation="vertical">
-
-								<include layout="@layout/item_dividing_line_horizontal_fine"/>
-							</LinearLayout>
-
-							<RadioButton
-								android:id="@+id/alipay_rbtn"
-								style="@style/tick_radio_button_style"
-								android:layout_width="27dp"
-								android:layout_height="30dp"
-								android:layout_marginBottom="17.5dp"
-								android:layout_marginRight="15dp"
-								android:layout_marginTop="17.5dp"
-								android:background="@drawable/bg_radio_button_tick"/>
-
-							<LinearLayout
-								android:layout_width="match_parent"
-								android:layout_height="wrap_content"
-								android:layout_marginRight="15dp"
-								android:orientation="vertical"
-								android:visibility="gone">
-
-								<include layout="@layout/item_dividing_line_horizontal_fine"/>
-							</LinearLayout>
-
 							<RadioButton
 								android:id="@+id/weixin_rbtn"
 								style="@style/tick_radio_button_style"
-								android:layout_width="27dp"
+								android:layout_width="30dp"
 								android:layout_height="30dp"
 								android:layout_marginBottom="17.5dp"
 								android:layout_marginRight="15dp"
 								android:layout_marginTop="17.5dp"
-								android:background="@drawable/bg_radio_button_tick"
-								android:visibility="gone"/>
+								android:background="@drawable/bg_radio_button_tick"/>
 
-
-						</RadioGroup>
+						</LinearLayout>
 
 					</LinearLayout>
 
