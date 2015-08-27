@@ -18,6 +18,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,6 +27,7 @@ import android.widget.RadioGroup;
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.config.MainActivityConfig;
 import com.taixinkanghu.app.model.data.net.DAccount;
 import com.taixinkanghu.app.model.data.net.DNurseOrder;
 import com.taixinkanghu.app.model.data.net.DScheduleList;
@@ -54,7 +57,7 @@ import java.util.Date;
 
 import de.greenrobot.event.EventBus;
 
-public class NurseOrderActivity extends Activity
+public class NurseOrderActivity extends Activity implements GestureDetector.OnGestureListener
 {
 	//func btn
 	public static final String FUNC_BTN_TAG_CANCEL_ORDER   = "func_btn_tag_cancel_order";
@@ -66,12 +69,13 @@ public class NurseOrderActivity extends Activity
 	public static final String FUNC_BTN_TAG_PAY_MORE       = "func_btn_tag_pay_more";
 
 	//widget
-	private HeaderCommon m_headerCommon    = null;    //title
-	private RadioGroup   m_orderOptionRG   = null;
-	private RadioButton  m_allRBtn         = null;            //全部
-	private RadioButton  m_waitPayRBtn     = null;    //未支付
-	private RadioButton  m_waitServiceRBtn = null;    //已完成
-	private ListView     m_orderInfoLV     = null;    //list列表显示区域
+	private HeaderCommon    m_headerCommon    = null;    //title
+	private RadioGroup      m_orderOptionRG   = null;
+	private RadioButton     m_allRBtn         = null;            //全部
+	private RadioButton     m_waitPayRBtn     = null;    //未支付
+	private RadioButton     m_waitServiceRBtn = null;    //已完成
+	private GestureDetector m_gestureDetector = null;
+	private ListView        m_orderInfoLV     = null;    //list列表显示区域
 
 	private BottomCommon m_bottomCommon = null;
 
@@ -155,18 +159,51 @@ public class NurseOrderActivity extends Activity
 		m_handlerItemClickEventListView = new HandlerItemClickEventListView(this);
 		m_handleClickEventOnNurseOrder = new HandleClickEventOnNurseOrder(this);
 
+		m_gestureDetector = new GestureDetector(this, this);
+
 		m_eventBus.register(this);
 	}
 
 	private void initListener()
 	{
-		m_allRBtn.setOnClickListener(m_handleClickEventOnNurseOrder);
-		m_waitPayRBtn.setOnClickListener(m_handleClickEventOnNurseOrder);
-		m_waitServiceRBtn.setOnClickListener(m_handleClickEventOnNurseOrder);
+		//		m_allRBtn.setOnClickListener(m_handleClickEventOnNurseOrder);
+		//		m_waitPayRBtn.setOnClickListener(m_handleClickEventOnNurseOrder);
+		//		m_waitServiceRBtn.setOnClickListener(m_handleClickEventOnNurseOrder);
 
 		m_orderInfoLV.setOnItemClickListener(m_handlerItemClickEventListView);
 
 
+		m_orderOptionRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+												   {
+													   @Override
+													   public void onCheckedChanged(RadioGroup group, int checkedId)
+													   {
+														   if (checkedId == m_allRBtn.getId())
+														   {
+															   allAction();
+														   }
+														   else if (checkedId == m_waitPayRBtn.getId())
+														   {
+															   waitPayAction();
+														   }
+														   else if (checkedId == m_waitServiceRBtn.getId())
+														   {
+															   waitServiceAction();
+														   }
+													   }
+												   }
+												  );
+
+
+	}
+
+	public boolean dispatchTouchEvent(MotionEvent event)
+	{
+		if (m_gestureDetector.onTouchEvent(event))
+		{
+			event.setAction(MotionEvent.ACTION_CANCEL);
+		}
+		return super.dispatchTouchEvent(event);
 	}
 
 	private void initContent()
@@ -205,7 +242,7 @@ public class NurseOrderActivity extends Activity
 
 	private void updateAllContent()
 	{
-//		m_orderInfoLV.setAdapter(null);
+		//		m_orderInfoLV.setAdapter(null);
 
 		m_orderInfoLV.setAdapter(m_ordersAllAdapter);
 		m_ordersAllAdapter.notifyDataSetChanged();
@@ -213,7 +250,7 @@ public class NurseOrderActivity extends Activity
 
 	private void updateWaitPayContent()
 	{
-//		m_orderInfoLV.setAdapter(null);
+		//		m_orderInfoLV.setAdapter(null);
 
 		m_orderInfoLV.setAdapter(m_ordersWaitPayAdapter);
 		m_ordersWaitPayAdapter.notifyDataSetChanged();
@@ -221,7 +258,7 @@ public class NurseOrderActivity extends Activity
 
 	private void updateWaitServiceyContent()
 	{
-//		m_orderInfoLV.setAdapter(null);
+		//		m_orderInfoLV.setAdapter(null);
 
 		m_orderInfoLV.setAdapter(m_ordersWaitServiceAdapter);
 		m_ordersWaitServiceAdapter.notifyDataSetChanged();
@@ -246,14 +283,14 @@ public class NurseOrderActivity extends Activity
 		dApoitNursingPage.setPatientState(m_nurseOrder.getPatientState());
 
 		Date beginDate = m_nurseOrder.getBeginDate();
-		Date endDate = m_nurseOrder.getEndDate();
+		Date endDate   = m_nurseOrder.getEndDate();
 
 		String beginContent = m_simpleDateFormat.format(beginDate);
-		String endContent = m_simpleDateFormat.format(endDate);
-		int days = LogicalUtil.GetDayNums(beginDate, endDate);
-		String total = getResources().getString(R.string.char_total);
-		String day = getResources().getString(R.string.char_day);
-		String display = beginContent + " - " + endContent + total + days + day;
+		String endContent   = m_simpleDateFormat.format(endDate);
+		int    days         = LogicalUtil.GetDayNums(beginDate, endDate);
+		String total        = getResources().getString(R.string.char_total);
+		String day          = getResources().getString(R.string.char_day);
+		String display      = beginContent + " - " + endContent + total + days + day;
 
 		DScheduleList scheduleList = m_nurseOrder.getScheduleList();
 		if (scheduleList == null)
@@ -283,16 +320,19 @@ public class NurseOrderActivity extends Activity
 	{
 		switchContentByTab(R.id.all_rbtn);
 	}
+
 	//未付款订单
 	public void waitPayAction()
 	{
 		switchContentByTab(R.id.wait_pay_rbtn);
 	}
+
 	//已完成订单
 	public void waitServiceAction()
 	{
 		switchContentByTab(R.id.wait_service_rbtn);
 	}
+
 	//02. func btn:
 	//取消订单
 	public void cancelOrder()
@@ -302,6 +342,7 @@ public class NurseOrderActivity extends Activity
 		RegisterDialog.GetInstance().show();
 		return;
 	}
+
 	public void cancelOrderAction()
 	{
 		if (m_nurseOrder == null)
@@ -311,9 +352,9 @@ public class NurseOrderActivity extends Activity
 			return;
 		}
 		//发送取消event
-		ReqNurseOrderCancelEvent event = new ReqNurseOrderCancelEvent();
-		String userID = DAccount.GetInstance().getId();
-		int orderID = m_nurseOrder.getOrderID();
+		ReqNurseOrderCancelEvent event   = new ReqNurseOrderCancelEvent();
+		String                   userID  = DAccount.GetInstance().getId();
+		int                      orderID = m_nurseOrder.getOrderID();
 		event.setUserID(userID);
 		event.setNurseOrderID(String.valueOf(orderID));
 		m_eventBus.post(event);
@@ -323,12 +364,12 @@ public class NurseOrderActivity extends Activity
 	//确认付款
 	public void payOrder()
 	{
-		int nurseID = m_nurseOrder.getNurseID();
-		int orderID = m_nurseOrder.getOrderID();
+		int    nurseID        = m_nurseOrder.getNurseID();
+		int    orderID        = m_nurseOrder.getOrderID();
 		String orderSerialNum = m_nurseOrder.getOrderSerialNum();
-		int totalPrice = m_nurseOrder.getTotalCharge();
+		int    totalPrice     = m_nurseOrder.getTotalCharge();
 
-		Intent intent   = new Intent(this, NurseOrderPayActivity.class);
+		Intent intent = new Intent(this, NurseOrderPayActivity.class);
 		intent.putExtra(NurseOrderConfig.NURSE_ID, nurseID);
 		intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
 		intent.putExtra(NurseOrderConfig.ORDER_SERIAL_NUM, orderSerialNum);
@@ -338,11 +379,13 @@ public class NurseOrderActivity extends Activity
 		return;
 
 	}
+
 	//评价
 	public void comment()
 	{
 
 	}
+
 	//续订
 	public void repeatOrder()
 	{
@@ -350,8 +393,8 @@ public class NurseOrderActivity extends Activity
 		loadDataForDApoitNursingPage();
 
 		//02. 跳转到预约陪护页面
-		Intent intent = new Intent(this, ApoitNursingActivity.class);
-		int nurseID = m_nurseOrder.getNurseID();
+		Intent intent  = new Intent(this, ApoitNursingActivity.class);
+		int    nurseID = m_nurseOrder.getNurseID();
 		intent.putExtra(NurseBasicListConfig.ID, nurseID);
 		startActivity(intent);
 
@@ -361,6 +404,7 @@ public class NurseOrderActivity extends Activity
 		return;
 
 	}
+
 	//更换护理员
 	public void changeNurse()
 	{
@@ -372,8 +416,8 @@ public class NurseOrderActivity extends Activity
 		m_eventBus.post(reqApoitNursingEvent);
 
 		//03. 跳转到护理员列表页面。
-		Intent intent = new Intent(this, SelectNurseActivity.class);
-		int oldNurseID = m_nurseOrder.getNurseID();
+		Intent intent     = new Intent(this, SelectNurseActivity.class);
+		int    oldNurseID = m_nurseOrder.getNurseID();
 		intent.putExtra(NurseBasicListConfig.ID, oldNurseID);
 		startActivity(intent);
 
@@ -382,23 +426,25 @@ public class NurseOrderActivity extends Activity
 		return;
 
 	}
+
 	//退订
 	public void cancelService()
 	{
 		//01. 发送退订event
-		FinishedNurseOrderCancelServiceEvent event = new FinishedNurseOrderCancelServiceEvent();
-		String userID = DAccount.GetInstance().getId();
-		int orderID = m_nurseOrder.getOrderID();
+		FinishedNurseOrderCancelServiceEvent event   = new FinishedNurseOrderCancelServiceEvent();
+		String                               userID  = DAccount.GetInstance().getId();
+		int                                  orderID = m_nurseOrder.getOrderID();
 		event.setUserID(userID);
 		event.setOrderID(String.valueOf(orderID));
 		m_eventBus.post(event);
 
 		//02. 发送消息，获取新的nurse list
-//		ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
-//		m_eventBus.post(reqApoitNursingEvent);
+		//		ReqApoitNursingEvent reqApoitNursingEvent = new ReqApoitNursingEvent();
+		//		m_eventBus.post(reqApoitNursingEvent);
 
 		return;
 	}
+
 	//补差价
 	public void payMore()
 	{
@@ -408,12 +454,82 @@ public class NurseOrderActivity extends Activity
 		//02. 打开补差价的页面
 		Intent intent = new Intent(this, NurseOrderPayMoreActivity.class);
 
-		int orderID = m_nurseOrder.getOrderID();
+		int    orderID       = m_nurseOrder.getOrderID();
 		String orderSerialID = m_nurseOrder.getOrderSerialNum();
 		intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
 		intent.putExtra(NurseOrderConfig.ORDER_SERIAL_NUM, orderSerialID);
 		startActivity(intent);
 		return;
+	}
+
+	@Override
+	public boolean onDown(MotionEvent e)
+	{
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e)
+	{
+
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e)
+	{
+		return false;
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
+	{
+		return false;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent e)
+	{
+
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
+	{
+
+		if (e2.getX() - e1.getX() > MainActivityConfig.DELTA_MOTION_EVENT)
+		{             // 从左向右滑动（左进右出）
+			if (m_orderOptionRG.getCheckedRadioButtonId() == m_allRBtn.getId())
+			{
+				m_waitPayRBtn.setChecked(true);
+			}
+			else if (m_orderOptionRG.getCheckedRadioButtonId() == m_waitPayRBtn.getId())
+			{
+				m_waitServiceRBtn.setChecked(true);
+			}
+			else if (m_orderOptionRG.getCheckedRadioButtonId() == m_waitServiceRBtn.getId())
+			{
+				m_allRBtn.setChecked(true);
+			}
+			return true;
+		}
+		else if (e2.getX() - e1.getX() < -MainActivityConfig.DELTA_MOTION_EVENT)
+		{         // 从右向左滑动（右进左出）
+			if (m_orderOptionRG.getCheckedRadioButtonId() == m_allRBtn.getId())
+			{
+				m_waitServiceRBtn.setChecked(true);
+			}
+			else if (m_orderOptionRG.getCheckedRadioButtonId() == m_waitPayRBtn.getId())
+			{
+				m_allRBtn.setChecked(true);
+			}
+			else if (m_orderOptionRG.getCheckedRadioButtonId() == m_waitServiceRBtn.getId())
+			{
+				m_waitPayRBtn.setChecked(true);
+			}
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -446,7 +562,6 @@ public class NurseOrderActivity extends Activity
 	{
 		updateContent();
 	}
-
 
 
 }
