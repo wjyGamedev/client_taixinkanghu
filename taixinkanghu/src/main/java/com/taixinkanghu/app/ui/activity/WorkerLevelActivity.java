@@ -2,6 +2,8 @@ package com.taixinkanghu.app.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -10,12 +12,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.MainActivityConfig;
 
 /**
  * Created by Administrator on 2015/7/16.
  */
-public class WorkerLevelActivity extends Activity
+public class WorkerLevelActivity extends Activity implements GestureDetector.OnGestureListener
 {
+
+	private GestureDetector m_GestureDetector;
+
 
 	private ImageButton btn_back;
 	private TextView    page_title;
@@ -42,6 +48,8 @@ public class WorkerLevelActivity extends Activity
 		m_fiveStarBtn = (RadioButton)findViewById(R.id.five_star_btn);
 		m_sixStarBtn = (RadioButton)findViewById(R.id.six_star_btn);
 		page_title = (TextView)findViewById(R.id.page_title);
+
+		m_GestureDetector = new GestureDetector(this, this);
 
 		m_threeStarBtn.setChecked(true);
 
@@ -73,21 +81,112 @@ public class WorkerLevelActivity extends Activity
 													   {
 														   if (checkedId == m_threeStarBtn.getId())
 														   {
-															   m_workerLevelExplainTv.setText(getString(R.string.three_star_worker_explain));
+															   m_workerLevelExplainTv.setText(getString(R.string
+																												.three_star_worker_explain));
 														   }
 														   else if (checkedId == m_fourStarBtn.getId())
 														   {
-															   m_workerLevelExplainTv.setText(getString(R.string.four_star_worker_explain));
+															   m_workerLevelExplainTv.setText(getString(R.string
+																												.four_star_worker_explain));
 														   }
 														   else if (checkedId == m_fiveStarBtn.getId())
 														   {
-															   m_workerLevelExplainTv.setText(getString(R.string.five_star_worker_explain));
+															   m_workerLevelExplainTv.setText(getString(R.string
+																												.five_star_worker_explain));
 														   }
-														   else if(checkedId == m_sixStarBtn.getId()) {
+														   else if (checkedId == m_sixStarBtn.getId())
+														   {
 															   m_workerLevelExplainTv.setText(getString(R.string.six_star_worker_explain));
-													   		}
+														   }
 													   }
 												   }
 												  );
 	}
+
+	public boolean dispatchTouchEvent(MotionEvent event)
+	{
+		if (m_GestureDetector.onTouchEvent(event))
+		{
+			event.setAction(MotionEvent.ACTION_CANCEL);
+		}
+		return super.dispatchTouchEvent(event);
+	}
+
+	@Override
+	public boolean onDown(MotionEvent e)
+	{
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e)
+	{
+
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e)
+	{
+		return false;
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
+	{
+		return false;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent e)
+	{
+
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
+	{
+		if (e2.getX() - e1.getX() > MainActivityConfig.DELTA_MOTION_EVENT)
+		{             // 从左向右滑动（左进右出）
+			if (m_workerLevelRg.getCheckedRadioButtonId() == m_threeStarBtn.getId())
+			{
+				m_sixStarBtn.setChecked(true);
+			}
+			else if (m_workerLevelRg.getCheckedRadioButtonId() == m_fourStarBtn.getId())
+			{
+				m_threeStarBtn.setChecked(true);
+			}
+			else if (m_workerLevelRg.getCheckedRadioButtonId() == m_fiveStarBtn.getId())
+			{
+				m_fourStarBtn.setChecked(true);
+			}
+			else if (m_workerLevelRg.getCheckedRadioButtonId() == m_sixStarBtn.getId())
+			{
+				m_fiveStarBtn.setChecked(true);
+			}
+			return true;
+		}
+		else if (e2.getX() - e1.getX() < -MainActivityConfig.DELTA_MOTION_EVENT)
+		{         // 从右向左滑动（右进左出）
+			if (m_workerLevelRg.getCheckedRadioButtonId() == m_threeStarBtn.getId())
+			{
+				m_fourStarBtn.setChecked(true);
+			}
+			else if (m_workerLevelRg.getCheckedRadioButtonId() == m_fourStarBtn.getId())
+			{
+				m_fiveStarBtn.setChecked(true);
+			}
+			else if (m_workerLevelRg.getCheckedRadioButtonId() == m_fiveStarBtn.getId())
+			{
+				m_sixStarBtn.setChecked(true);
+			}
+			else if (m_workerLevelRg.getCheckedRadioButtonId() == m_sixStarBtn.getId())
+			{
+				m_threeStarBtn.setChecked(true);
+			}
+			return true;
+		}
+
+		return true;
+	}
+
 }
