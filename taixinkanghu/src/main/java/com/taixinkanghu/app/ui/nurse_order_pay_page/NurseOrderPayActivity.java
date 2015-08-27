@@ -390,6 +390,18 @@ public class NurseOrderPayActivity extends Activity
 				RegisterDialog.GetInstance().setMsg(getString(R.string.error_tips_pay_more_aciton_no_cash));
 				RegisterDialog.GetInstance().show();
 			}
+
+			RegisterDialog.GetInstance().setMsg("您的订单已经生成，服务人员会在1小时内和您联系，请您保持手机畅通.",this, new DialogInterface.OnClickListener()
+												{
+													@Override
+													public void onClick(DialogInterface dialog, int which)
+													{
+														NurseOrderPayActivity.this.paySuccessAction();
+													}
+												}
+											   );
+			RegisterDialog.GetInstance().show();
+
 			return;
 		}
 		//02. 支付宝支付

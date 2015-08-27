@@ -92,6 +92,11 @@ public class WheelViewAdapter extends BaseAdapter
 			textView = (TextView)convertView;
 		}
 
+		if (position >= m_data.size())
+		{
+			return null;
+		}
+
 		SelectDateFragment.DateEle info = m_data.get(position);
 		textView.setText(info.m_content);
 		textView.setTextColor(info.m_color);

@@ -27,9 +27,21 @@ public class ListItemAll extends BaseListItem
 		{
 			waitPayfuncAction(this);
 		}
+		else if (orderStatus == EnumConfig.NurseOrderStatus.WAIT_CASH_PAYMENT)
+		{
+			waitCashPayfuncAction(this);
+		}
 		else if (orderStatus == EnumConfig.NurseOrderStatus.WAIT_SERVICE)
 		{
 			waitServicefuncAction(this);
+		}
+		else if (orderStatus == EnumConfig.NurseOrderStatus.CANCELED)
+		{
+			cancelfuncAction(this);
+		}
+		else if (orderStatus == EnumConfig.NurseOrderStatus.WAIT_EVALUATION)
+		{
+			waitCommentfuncAction(this);
 		}
 		else
 		{
@@ -37,5 +49,6 @@ public class ListItemAll extends BaseListItem
 		}
 		return;
 	}
+
 
 }

@@ -21,7 +21,10 @@ import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.taixinkanghu.R;
+import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.data.page.DGlobal;
 import com.taixinkanghu.app.ui.listener.view.BaseHandleOnClickEvent;
+import com.taixinkanghu.app.ui.nurse_order_confirm_page.OrderConfirmActivity;
 
 import java.util.Date;
 
@@ -93,13 +96,31 @@ public class HandleClickEventOnFragment extends BaseHandleOnClickEvent
 		Date beginDate = selectDateFragment.getBeginDate();
 		Date endDate = selectDateFragment.getEndDate();
 
-		SelectDateActivity selectDateActivity = (SelectDateActivity)activity;
-		if (selectDateActivity == null)
-			return;
+		EnumConfig.NursingModuleStatus  nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+			OrderConfirmActivity orderConfirmActivity = (OrderConfirmActivity)activity;
+			if (orderConfirmActivity == null)
+			{
+				return;
+			}
+			orderConfirmActivity.setNewBeginDate(beginDate);
+			orderConfirmActivity.confirmDateAction();
 
-		selectDateActivity.setBeginDate(beginDate);
-		selectDateActivity.setEndDate(endDate);
-		selectDateActivity.confirmDateAction();
+		}
+		else
+		{
+			SelectDateActivity selectDateActivity = (SelectDateActivity)activity;
+			if (selectDateActivity == null)
+				return;
+
+			selectDateActivity.setBeginDate(beginDate);
+			selectDateActivity.setEndDate(endDate);
+			selectDateActivity.confirmDateAction();
+		}
+
+
+
 
 
 	}

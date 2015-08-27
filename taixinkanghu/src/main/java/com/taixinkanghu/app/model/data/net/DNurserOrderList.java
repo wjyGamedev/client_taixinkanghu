@@ -96,7 +96,18 @@ public class DNurserOrderList
 
 	public synchronized ArrayList<DNurseOrder> getNurseOrdersWaitPay()
 	{
-		return getNurseOrdersByOrderStatus(EnumConfig.NurseOrderStatus.WAIT_PAYMENT);
+		ArrayList<DNurseOrder> nurseOrdersWaitPayment = getNurseOrdersByOrderStatus(EnumConfig.NurseOrderStatus.WAIT_PAYMENT);
+		ArrayList<DNurseOrder> nurseOrdersWaitCashPayment = getNurseOrdersByOrderStatus(EnumConfig.NurseOrderStatus.WAIT_CASH_PAYMENT);
+		ArrayList<DNurseOrder> nurseOrdersWait = new ArrayList<>();
+		for (DNurseOrder nurseOrder : nurseOrdersWaitPayment)
+		{
+			nurseOrdersWait.add(nurseOrder);
+		}
+		for (DNurseOrder nurseOrder : nurseOrdersWaitCashPayment)
+		{
+			nurseOrdersWait.add(nurseOrder);
+		}
+		return nurseOrdersWait;
 	}
 
 	public synchronized ArrayList<DNurseOrder> getNurseOrdersWaitService()
