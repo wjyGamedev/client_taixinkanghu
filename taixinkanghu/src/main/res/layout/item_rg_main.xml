@@ -1,55 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical">
 
-    <RadioGroup
-        android:id="@+id/rg_main"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:orientation="horizontal">
+	<RadioGroup
+		android:id="@+id/rg_main"
+		android:layout_width="match_parent"
+		android:layout_height="55dp"
+		android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/main_rg_main"
-            style="@style/home_radio_button_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_order_rb"
-            android:text="首页" />
-        <!--android:drawableTop="@drawable/tab_home"-->
+		<RadioButton
+			android:id="@+id/main_rg_main"
+			style="@style/home_radio_button_style"
+			android:checked="true"
+			android:text="护理员"/>
 
-        <RadioButton
-            android:id="@+id/main_rg_mine"
-            style="@style/home_radio_button_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_order_rb"
-            android:text="我的" />
-        <!--android:drawableTop="@drawable/tab_order"-->
+		<RadioButton
+			android:id="@+id/main_rg_mine"
+			style="@style/home_radio_button_style"
+			android:text="我的"/>
 
-        <RadioButton
-            android:id="@+id/main_rg_service"
-            style="@style/home_radio_button_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_order_rb"
-            android:text="客服" />
-        <!--android:drawableTop="@drawable/tab_personal"-->
+		<RadioButton
+			android:id="@+id/main_rg_service"
+			style="@style/home_radio_button_style"
+			android:text="客服"/>
 
-        <RadioButton
-            android:id="@+id/main_rg_about"
-            style="@style/home_radio_button_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_order_rb"
-            android:text="泰心" />
-        <!--android:drawableTop="@drawable/tab_more"-->
+		<RadioButton
+			android:id="@+id/main_rg_about"
+			style="@style/home_radio_button_style"
+			android:text="泰心"
+			/>
 
-    </RadioGroup>
+	</RadioGroup>
 
 </LinearLayout>
