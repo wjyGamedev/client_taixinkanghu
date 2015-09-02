@@ -59,7 +59,7 @@ public class ServiceTabFragment extends Fragment {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getActivity()).setTitle("").setMessage(m_phoneNumber)
+                new AlertDialog.Builder(getActivity()).setTitle("").setMessage("400-9696-218")
                         .setNegativeButton(getResources().getString(R.string.call), new DialogInterface.OnClickListener()
                                            {
                                                public void onClick(DialogInterface dialog, int which)
