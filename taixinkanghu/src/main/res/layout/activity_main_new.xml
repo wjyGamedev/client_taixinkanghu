@@ -1,68 +1,54 @@
-<LinearLayout
-	android:id="@+id/title"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:weightSum="1"
-	tools:context="com.taixinkanghu.app.ui.activity.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="fill_parent"
+			  android:layout_height="fill_parent"
+			  android:background="@color/main_bg_color"
+			  android:orientation="vertical">
 
-	<LinearLayout
+	<FrameLayout
+		android:id="@id/realTabContainer"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1.0"/>
+
+	<View
+		android:layout_width="fill_parent"
+		android:layout_height="0.5dip"
+		android:background="@color/divider_color"/>
+
+	<include layout="@layout/item_dividing_line_horizontal"/>
+
+	<RadioGroup
+		android:id="@id/tabs_rg"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="vertical">
+		android:layout_height="50dp"
+		android:background="#ffffffff"
+		android:orientation="horizontal"
+		android:paddingTop="2.5dp">
 
-		<include layout="@layout/include_header"/>
+		<RadioButton
+			android:id="@id/main_rg_home"
+			style="@style/home_radio_button_style"
+			android:drawableTop="@drawable/tab_rg_main"
+			android:checked="true"
+			android:text="首页"/>
 
-		<ScrollView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1">
+		<RadioButton
+			android:id="@id/main_rg_personal"
+			style="@style/home_radio_button_style"
+			android:drawableTop="@drawable/tab_rg_personal"
+			android:text="我的"/>
 
-			<FrameLayout
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_weight="1.0">
+		<RadioButton
+			android:id="@id/main_rg_service"
+			style="@style/home_radio_button_style"
+			android:drawableTop="@drawable/tab_rg_service"
+			android:text="客服"/>
 
+		<RadioButton
+			android:id="@id/main_rg_company"
+			style="@style/home_radio_button_style"
+			android:drawableTop="@drawable/tab_rg_company"
+			android:text="泰心"/>
 
-			</FrameLayout>
-
-		</ScrollView>
-
-		<include layout="@layout/item_dividing_line_horizontal"/>
-
-		<RadioGroup
-			android:id="@id/tabs_rg"
-			android:layout_width="match_parent"
-			android:layout_height="30dp"
-			android:background="@color/white"
-			android:orientation="horizontal">
-
-			<RadioButton
-				android:id="@id/main_rg_home"
-				style="@style/home_radio_button_style"
-				android:drawableTop="@drawable/tab_rg_main"
-				android:text="首页"/>
-
-			<RadioButton
-				android:id="@id/main_rg_personal"
-				style="@style/home_radio_button_style"
-				android:checked="true"
-				android:drawableTop="@drawable/tab_rg_personal"
-				android:text="我的"/>
-
-			<RadioButton
-				android:id="@id/main_rg_service"
-				style="@style/home_radio_button_style"
-				android:drawableTop="@drawable/tab_rg_service"
-				android:text="客服"/>
-
-			<RadioButton
-				android:id="@id/main_rg_company"
-				style="@style/home_radio_button_style"
-				android:drawableTop="@drawable/tab_rg_company"
-				android:text="泰心"/>
-
-		</RadioGroup>
-	</LinearLayout>
+	</RadioGroup>
 </LinearLayout>
