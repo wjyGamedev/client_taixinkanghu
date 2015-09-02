@@ -14,6 +14,7 @@
 
 package com.taixinkanghu.app.ui.select_date;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,6 +26,10 @@ import android.widget.LinearLayout;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DateConfig;
+import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.data.page.DGlobal;
+import com.taixinkanghu.app.ui.nurse_order_confirm_page.OrderConfirmActivity;
+import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
 import com.taixinkanghu.widget.wheelview.TosGallery;
 import com.taixinkanghu.widget.wheelview.WheelView;
 
@@ -85,14 +90,13 @@ public class SelectDateFragment extends Fragment
 	private HandleEndFlingOnEndDateWheel   m_handleEndFlingOnEndDateWheel   = new HandleEndFlingOnEndDateWheel();
 	private HandleClickEventOnFragment     m_handleClickEventOnFragment     = null;
 
-
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fragment_select_date_new, container, false);
 		m_container = container;
 		init(view);
 		initContent();
-
 
 		return view;
 	}
@@ -111,6 +115,31 @@ public class SelectDateFragment extends Fragment
 		m_handleClickEventOnFragment = new HandleClickEventOnFragment(getActivity());
 	}
 
+	private boolean isChangeNurse()
+	{
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == null)
+			return false;
+
+		return (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE);
+	}
+
+	private void iniDate()
+	{
+		if (isChangeNurse())
+		{
+			initBeginDateByChangeNurse();
+			initEndDateByChangeNurse();
+		}
+		else
+		{
+			initBeginDate();
+			initEndDate();
+		}
+
+	}
+
+
 	private void initContent()
 	{
 		m_confirmBtn.setOnClickListener(m_handleClickEventOnFragment);
@@ -118,9 +147,7 @@ public class SelectDateFragment extends Fragment
 		m_headerBackground.setOnClickListener(m_handleClickEventOnFragment);
 		m_bottomBackground.setOnClickListener(m_handleClickEventOnFragment);
 
-
-		initBeginDate();
-		initEndDate();
+		iniDate();
 
 		m_beginDateWheel.setSoundEffectsEnabled(true);
 		m_endDateWheel.setSoundEffectsEnabled(true);
@@ -136,6 +163,164 @@ public class SelectDateFragment extends Fragment
 
 		m_beginDateWheel.setOnEndFlingListener(m_handleEndFlingOnBeginDateWheel);
 		m_endDateWheel.setOnEndFlingListener(m_handleEndFlingOnEndDateWheel);
+
+	}
+
+	private void initBeginDateByChangeNurse()
+	{
+		//01. 清空容器
+		m_beginDateDisplay.clear();
+
+		//02. 填充容器,从beginDate开始，到endDate结束。
+		Activity activity = getActivity();
+		if (activity == null)
+		{
+			RegisterDialog.GetInstance().setMsg("activity == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		OrderConfirmActivity orderConfirmActivity = (OrderConfirmActivity)activity;
+		if (orderConfirmActivity == null)
+		{
+			RegisterDialog.GetInstance().setMsg("orderConfirmActivity == null",activity);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		Calendar tmpCalendar1 = Calendar.getInstance();
+		Date beginDate = orderConfirmActivity.getBeginDate();
+		tmpCalendar1.setTime(beginDate);
+		int yearBeginDate = tmpCalendar1.get(Calendar.YEAR);
+		int monthBeginDate = tmpCalendar1.get(Calendar.MONTH);
+		int dayBeginDate = tmpCalendar1.get(Calendar.DAY_OF_MONTH);
+
+		Date today = orderConfirmActivity.getToday();
+		tmpCalendar1.setTime(today);
+		int yearTodayDate = tmpCalendar1.get(Calendar.YEAR);
+		int monthTodayDate = tmpCalendar1.get(Calendar.MONTH);
+		int dayTodayDate = tmpCalendar1.get(Calendar.DAY_OF_MONTH);
+
+		Date endDate = orderConfirmActivity.getEndDate();
+		tmpCalendar1.setTime(endDate);
+		int yearEndDate = tmpCalendar1.get(Calendar.YEAR);
+		int monthEndDate = tmpCalendar1.get(Calendar.MONTH);
+		int dayEndDate = tmpCalendar1.get(Calendar.DAY_OF_MONTH);
+
+		if (yearTodayDate > yearEndDate)
+		{
+			RegisterDialog.GetInstance().setMsg("today >= endDate");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		if (yearTodayDate == yearEndDate && monthTodayDate > monthEndDate)
+		{
+			RegisterDialog.GetInstance().setMsg("today >= endDate");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		if (yearTodayDate == yearEndDate && monthTodayDate == monthEndDate && dayTodayDate >= dayEndDate)
+		{
+			RegisterDialog.GetInstance().setMsg("today >= endDate");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+
+		Calendar beginCalendar = Calendar.getInstance();
+		if (yearTodayDate > yearBeginDate)
+		{
+			beginCalendar.setTime(today);
+		}
+		else if (yearTodayDate == yearBeginDate && monthTodayDate > monthBeginDate)
+		{
+			beginCalendar.setTime(today);
+		}
+		else if (yearTodayDate == yearBeginDate && monthTodayDate == monthBeginDate && dayTodayDate >= dayBeginDate)
+		{
+			beginCalendar.setTime(today);
+		}
+		else
+		{
+			beginCalendar.setTime(beginDate);
+		}
+
+		Calendar endCalendar = Calendar.getInstance();
+		endCalendar.setTime(endDate);
+
+		int iCurMonth = 0;
+		int iMaxDay = 0;
+		int iDay = 0;
+		int beginMonth = beginCalendar.get(Calendar.MONTH);
+		int endMonth = endCalendar.get(Calendar.MONTH);
+		int iMonthSize = endMonth - beginMonth + 1;
+		int endDay = endCalendar.get(Calendar.DAY_OF_MONTH);
+
+
+		for (int iMonth = 0; iMonth < iMonthSize; ++iMonth)
+		{
+			Calendar tmpCalendar = Calendar.getInstance();
+
+			//设置当前月份
+			iCurMonth = tmpCalendar.get(Calendar.MONTH) + iMonth;
+			tmpCalendar.set(Calendar.MONTH, iCurMonth);
+
+			//获取本月最大天数
+			if (iCurMonth == endMonth)
+			{
+				iMaxDay = endDay;
+			}
+			else
+			{
+				iMaxDay = tmpCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+			}
+
+
+			//设置当前开始日期
+			if (iCurMonth == beginMonth)
+			{
+				iDay = beginCalendar.get(Calendar.DAY_OF_MONTH);
+			}
+			else
+			{
+				iDay = 1;
+			}
+			tmpCalendar.set(Calendar.DAY_OF_MONTH, iDay);
+
+			for(int index = 0; iDay <= iMaxDay; ++iDay, tmpCalendar.roll(Calendar.DAY_OF_MONTH, true), ++index)
+			{
+				Date tmpDate = tmpCalendar.getTime();
+				String tmpContent = m_simpleDateFormat.format(tmpDate);
+				DateEle tmpDateEle = new DateEle(tmpContent, tmpDate);
+				m_beginDateDisplay.add(tmpDateEle);
+			}
+
+		}
+
+	}
+
+	private void initEndDateByChangeNurse()
+	{
+		m_endIndexPos = 0;
+		m_endDateDisplay.clear();
+
+		if (m_beginDateDisplay.isEmpty())
+			return;
+
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+			m_endDateDisplay.add(m_beginDateDisplay.get(m_beginDateDisplay.size()-1));
+		}
+		else
+		{
+			for (int index = 1; index < m_beginDateDisplay.size(); ++index)
+			{
+				m_endDateDisplay.add(m_beginDateDisplay.get(index));
+			}
+		}
 
 	}
 
@@ -188,14 +373,25 @@ public class SelectDateFragment extends Fragment
 
 	private void initEndDate()
 	{
+		m_endDateDisplay.clear();
 		m_endIndexPos = 0;
 
-		m_endDateDisplay.clear();
+		if (m_beginDateDisplay.isEmpty())
+			return;
 
-		for (int index = 1; index < m_beginDateDisplay.size(); ++index)
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
 		{
-			m_endDateDisplay.add(m_beginDateDisplay.get(index));
+			m_endDateDisplay.add(m_beginDateDisplay.get(m_beginDateDisplay.size()-1));
 		}
+		else
+		{
+			for (int index = 1; index < m_beginDateDisplay.size(); ++index)
+			{
+				m_endDateDisplay.add(m_beginDateDisplay.get(index));
+			}
+		}
+
 	}
 
 	private void resetEndDate(int startIndex)
@@ -203,15 +399,26 @@ public class SelectDateFragment extends Fragment
 		//01. 清空容器
 		m_endDateDisplay.clear();
 
-		//02. 填充容器, 从m_beginDateDisplay+1开始
-		for (int index = startIndex; index < m_beginDateDisplay.size(); ++index)
+		if (m_beginDateDisplay.isEmpty())
+			return;
+
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
 		{
-			m_endDateDisplay.add(m_beginDateDisplay.get(index));
+			m_endDateDisplay.add(m_beginDateDisplay.get(m_beginDateDisplay.size()-1));
+		}
+		else
+		{
+
+			//02. 填充容器, 从m_beginDateDisplay+1开始
+			for (int index = startIndex; index < m_beginDateDisplay.size(); ++index)
+			{
+				m_endDateDisplay.add(m_beginDateDisplay.get(index));
+			}
 		}
 
 		WheelViewAdapter adapter = (WheelViewAdapter)m_endDateWheel.getAdapter();
 		adapter.setData(m_endDateDisplay);
-
 		m_endDateWheel.setSelection(m_endIndexPos);
 	}
 
@@ -231,8 +438,16 @@ public class SelectDateFragment extends Fragment
 	{
 		if (m_endIndexPos == indexPos)
 			return;
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.PAY_MORE)
+		{
+			m_endIndexPos = 0;
+		}
+		else
+		{
+			m_endIndexPos = indexPos;
+		}
 
-		m_endIndexPos = indexPos;
 	}
 
 	public Date getBeginDate()
@@ -274,5 +489,6 @@ public class SelectDateFragment extends Fragment
 			setEndIndexPos(pos);
 		}
 	}
+
 
 }

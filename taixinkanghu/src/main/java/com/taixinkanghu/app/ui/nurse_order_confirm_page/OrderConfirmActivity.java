@@ -1,6 +1,8 @@
 package com.taixinkanghu.app.ui.nurse_order_confirm_page;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -14,7 +16,9 @@ import android.widget.TextView;
 
 import com.taixinkanghu.R;
 import com.taixinkanghu.app.model.config.DataConfig;
+import com.taixinkanghu.app.model.config.DateConfig;
 import com.taixinkanghu.app.model.config.EnumConfig;
+import com.taixinkanghu.app.model.data.net.DAccount;
 import com.taixinkanghu.app.model.data.net.DDepartment;
 import com.taixinkanghu.app.model.data.net.DDepartmentList;
 import com.taixinkanghu.app.model.data.net.DHospital;
@@ -35,11 +39,21 @@ import com.taixinkanghu.app.model.data.page.DNursingModule;
 import com.taixinkanghu.app.model.net.config.NurseBasicListConfig;
 import com.taixinkanghu.app.model.net.config.NurseOrderConfig;
 import com.taixinkanghu.app.model.net.event.recv.FinishedNurseOrderConfirmEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderConfirmEvent;
+import com.taixinkanghu.app.model.net.event.send.ReqNurseOrderConfirmForChangeNurse;
 import com.taixinkanghu.app.ui.header.HeaderCommon;
+import com.taixinkanghu.app.ui.main_page.MainActivity;
 import com.taixinkanghu.app.ui.nurse_order_pay_page.NurseOrderPayActivity;
+import com.taixinkanghu.app.ui.select_date.SelectDateFragment;
 import com.taixinkanghu.util.android.AppUtil;
+import com.taixinkanghu.util.logcal.LogicalUtil;
 import com.taixinkanghu.widget.circleimageview.CircleImageView;
 import com.taixinkanghu.widget.dialog.register_page_dialog.RegisterDialog;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import de.greenrobot.event.EventBus;
 
@@ -48,12 +62,16 @@ public class OrderConfirmActivity extends Activity
 	//widget
 	private HeaderCommon m_headerCommon = null;
 
+	//更换时间
+	private LinearLayout m_selectBeginDateRegionLL = null;
+	private TextView     m_selectBeginDateTV       = null;
+
 	//tab标签相关
-	private LinearLayout m_funcTabRegionLL = null;
-	private RadioGroup m_changeNurseRGrp = null;
-	private RadioButton m_newNurseRBtn = null;
-	private RadioButton m_oldBurseRBtn = null;
-	private TextView m_TabTopDividingLine = null;
+	private LinearLayout m_funcTabRegionLL    = null;
+	private RadioGroup   m_changeNurseRGrp    = null;
+	private RadioButton  m_newNurseRBtn       = null;
+	private RadioButton  m_oldBurseRBtn       = null;
+	private TextView     m_TabTopDividingLine = null;
 
 	//订单内容
 	private CircleImageView m_nurseHeadImgIV       = null;    //头像
@@ -67,8 +85,8 @@ public class OrderConfirmActivity extends Activity
 	private LinearLayout    m_patientRegionLL      = null;    //被护理人状态点击区域
 	private TextView        m_patientStateTV       = null;    //被护理人状态
 
-	private ImageView	m_patientInfoArrowIV = null;
-	private ImageView   m_patientStateArrowIV = null;
+	private ImageView m_patientInfoArrowIV  = null;
+	private ImageView m_patientStateArrowIV = null;
 
 
 	//订单金额
@@ -98,17 +116,26 @@ public class OrderConfirmActivity extends Activity
 
 	private HandlerClickEventNurseOrderConfirm m_handlerClickEventNurseOrderConfirm = null;
 
-	private DApoitNursingPage      m_apoitNursingPage    = DNursingModule.GetInstance().getApoitNursingPage();
+	private DApoitNursingPage      m_apoitNursingPage      = DNursingModule.GetInstance().getApoitNursingPage();
 	private DNurseOrderConfirmPage m_nurseOrderConfirmPage = DNursingModule.GetInstance().getNurseOrderConfirmPage();
 
-	private int m_newNurseID = DataConfig.DEFAULT_VALUE;
-	private int m_oldNurseID = DataConfig.DEFAULT_VALUE;
-	private String m_orderID = null;
+	private int    m_newNurseID = DataConfig.DEFAULT_VALUE;
+	private int    m_oldNurseID = DataConfig.DEFAULT_VALUE;
+	private String m_orderID    = null;
 
 	private final String UNIT_DAY  = AppUtil.GetResources().getString(R.string.content_day);
 	private final String UNIT_YUAN = AppUtil.GetResources().getString(R.string.content_yuan);
 
-	@Override
+	//更换护理员
+	private Date m_beginDate    = null;    //老护工的开始日期
+	private Date m_newBeginDate = null;    //新护工的开始日期
+	private Date m_today        = null;
+	private Date m_endDate      = null;    //老护工的结束日期
+
+	private SimpleDateFormat m_simpleDateFormat = new SimpleDateFormat(DateConfig.PATTERN_DATE_YEAR_MONTH_DAY);
+
+	private int m_deltaPrice = DataConfig.DEFAULT_VALUE;
+
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -160,6 +187,10 @@ public class OrderConfirmActivity extends Activity
 		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
 		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
 		{
+			//select begin time
+			m_selectBeginDateRegionLL.setVisibility(View.VISIBLE);
+			m_selectBeginDateRegionLL.setOnClickListener(m_handlerClickEventNurseOrderConfirm);
+			m_selectBeginDateTV.setText(getString(R.string.contetn_click_select));
 			//tab
 			m_funcTabRegionLL.setVisibility(View.VISIBLE);
 			m_TabTopDividingLine.setVisibility(View.GONE);
@@ -176,6 +207,11 @@ public class OrderConfirmActivity extends Activity
 		}
 		else
 		{
+			//select begin time
+			m_selectBeginDateRegionLL.setVisibility(View.GONE);
+			m_selectBeginDateRegionLL.setOnClickListener(null);
+			m_selectBeginDateTV.setText("");
+
 			m_funcTabRegionLL.setVisibility(View.GONE);
 			m_TabTopDividingLine.setVisibility(View.VISIBLE);
 			m_patientInfoArrowIV.setVisibility(View.VISIBLE);
@@ -203,6 +239,9 @@ public class OrderConfirmActivity extends Activity
 		m_headerCommon.init();
 		m_headerCommon.setTitle(R.string.determine_order_title);
 
+		//更换护工，时间
+		m_selectBeginDateRegionLL = (LinearLayout)findViewById(R.id.select_begin_date_region_ll);
+		m_selectBeginDateTV = (TextView)findViewById(R.id.select_begin_date_tv);
 		//tab标签相关
 		m_funcTabRegionLL = (LinearLayout)findViewById(R.id.func_tab_region_ll);
 		m_changeNurseRGrp = (RadioGroup)findViewById(R.id.change_nurse_rgrp);
@@ -223,6 +262,7 @@ public class OrderConfirmActivity extends Activity
 		m_patientStateTV = (TextView)findViewById(R.id.patient_state_tv);
 		m_patientInfoArrowIV = (ImageView)findViewById(R.id.patient_info_arrow_iv);
 		m_patientStateArrowIV = (ImageView)findViewById(R.id.patient_state_arrow_iv);
+
 
 		//订单金额
 		m_allRegionLL = (LinearLayout)findViewById(R.id.all_region_ll);
@@ -422,8 +462,60 @@ public class OrderConfirmActivity extends Activity
 			m_nightRegionLL.setVisibility(View.GONE);
 		}
 
-		int totalCharge = m_nurseOrderConfirmPage.getTotalCharge();
-		m_TotalChargeTV.setText(String.valueOf(totalCharge));
+		//新价格
+		int newTotalCharge = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;//m_nurseOrderConfirmPage
+
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+			//老价格
+			DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByNurseID(m_oldNurseID);
+			if (nurseOrder == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseOrder == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			DNurseBasics nurseBasics = nurseOrder.getNurseBasics();
+			if (nurseBasics == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			//天数：全天24小时，白天12小时，黑天12小时
+			allNum = m_nurseOrderConfirmPage.getAllNum();//nursingDate.getAllNum();
+			dayNum = m_nurseOrderConfirmPage.getDayNum();//nursingDate.getDayNum();
+			nightNum = m_nurseOrderConfirmPage.getNightNum();//nursingDate.getNightNum();
+
+			//单价：全天24小时，白天12小时，黑天12小时
+			chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+			chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+			chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
+			int oldtotalCharge = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
+
+			int    deltaPrice = newTotalCharge - oldtotalCharge;
+			String priceDesc  = null;
+			m_deltaPrice = deltaPrice;
+			if (deltaPrice >= 0)
+			{
+				priceDesc = String.valueOf(newTotalCharge) + "(+" + deltaPrice + ")";
+			}
+			else
+			{
+				deltaPrice = Math.abs(deltaPrice);
+				priceDesc = String.valueOf(newTotalCharge) + "(-" + deltaPrice + ")";
+			}
+
+			m_TotalChargeTV.setText(String.valueOf(priceDesc));
+		}
+		else
+		{
+			m_TotalChargeTV.setText(String.valueOf(newTotalCharge));
+		}
+
 
 	}
 
@@ -473,7 +565,9 @@ public class OrderConfirmActivity extends Activity
 			RegisterDialog.GetInstance().show();
 			return;
 		}
-		String serviceDate = nursingDate.getDateDescription();
+
+		//		String serviceDate = nursingDate.getDateDescription();
+		String serviceDate = m_nurseOrderConfirmPage.getServiceDate();
 		m_serviceDateTV.setText(serviceDate);
 
 		//服务地点
@@ -513,17 +607,17 @@ public class OrderConfirmActivity extends Activity
 		m_patientStateTV.setText(patientState.getName());
 
 		//天数：全天24小时，白天12小时，黑天12小时
-		int allNum = nursingDate.getAllNum();
-		int dayNum = nursingDate.getDayNum();
-		int nightNum = nursingDate.getNightNum();
+		int allNum   = m_nurseOrderConfirmPage.getAllNum();//nursingDate.getAllNum();
+		int dayNum   = m_nurseOrderConfirmPage.getDayNum();//nursingDate.getDayNum();
+		int nightNum = m_nurseOrderConfirmPage.getNightNum();//nursingDate.getNightNum();
 
 		//单价：全天24小时，白天12小时，黑天12小时
-		int chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
-		int chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+		int chargePerAll   = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+		int chargePerDay   = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
 		int chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
-		int    totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
+		int totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
 
-		String strAllNum    = String.valueOf(allNum);
+		String strAllNum = String.valueOf(allNum);
 		if (allNum != 0)
 		{
 			m_allNumTV.setText(strAllNum + UNIT_DAY);
@@ -536,7 +630,7 @@ public class OrderConfirmActivity extends Activity
 			m_allRegionLL.setVisibility(View.GONE);
 		}
 
-		String strDayNum    = String.valueOf(dayNum);
+		String strDayNum = String.valueOf(dayNum);
 		if (dayNum != 0)
 		{
 			m_dayNumTV.setText(strDayNum + UNIT_DAY);
@@ -550,7 +644,7 @@ public class OrderConfirmActivity extends Activity
 		}
 
 
-		String strNightNum    = String.valueOf(nightNum);
+		String strNightNum = String.valueOf(nightNum);
 		if (nightNum != 0)
 		{
 			m_nightNumTV.setText(strNightNum + UNIT_DAY);
@@ -584,6 +678,7 @@ public class OrderConfirmActivity extends Activity
 		}
 		else
 		{
+			clearupDate();
 			updateContentByDefault();
 		}
 	}
@@ -606,7 +701,7 @@ public class OrderConfirmActivity extends Activity
 			return;
 		}
 
-		int nurseID = m_nurseOrderConfirmPage.getNurseID();
+		int          nurseID     = m_nurseOrderConfirmPage.getNurseID();
 		DNurseBasics nurseBasics = null;
 
 
@@ -652,13 +747,13 @@ public class OrderConfirmActivity extends Activity
 		}
 
 		//天数：全天24小时，白天12小时，黑天12小时
-		int allNum = nursingDate.getAllNum();
-		int dayNum = nursingDate.getDayNum();
+		int allNum   = nursingDate.getAllNum();
+		int dayNum   = nursingDate.getDayNum();
 		int nightNum = nursingDate.getNightNum();
 
 		//单价：全天24小时，白天12小时，黑天12小时
-		int chargePerAll = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
-		int chargePerDay = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+		int chargePerAll   = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+		int chargePerDay   = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
 		int chargePerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
 
 		//04. 订单金额
@@ -768,7 +863,7 @@ public class OrderConfirmActivity extends Activity
 			return;
 		}
 
-		m_nurseOrderConfirmPage.setNurseID(nurseID);	//nurse ID
+		m_nurseOrderConfirmPage.setNurseID(nurseID);    //nurse ID
 
 		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
 
@@ -777,12 +872,12 @@ public class OrderConfirmActivity extends Activity
 		{
 			headerImgResID = DFaceImages.DEFAULT_IMAGE_RES_ID;
 		}
-		String nurseName = null;
+		String nurseName    = null;
 		String nursingLevel = null;
-		String jobNum = null;
+		String jobNum       = null;
 
 		//服务时间
-		String serviceDate = null;
+		String       serviceDate = null;
 		DNursingDate nursingDate = m_apoitNursingPage.getNursingDate();
 		if (nursingDate == null)
 		{
@@ -793,9 +888,9 @@ public class OrderConfirmActivity extends Activity
 		serviceDate = nursingDate.getDateDescription();
 
 		//服务地点
-		String serviceAddress = null;
-		int       hospitalID = m_apoitNursingPage.getHospitalID();
-		DHospital hospital   = DHospitalList.GetInstance().getHospitalByID(hospitalID);
+		String    serviceAddress = null;
+		int       hospitalID     = m_apoitNursingPage.getHospitalID();
+		DHospital hospital       = DHospitalList.GetInstance().getHospitalByID(hospitalID);
 		if (hospital == null)
 		{
 			RegisterDialog.GetInstance().setMsg("hospital == null[hospitalID:=" + hospitalID + "]", this);
@@ -829,13 +924,13 @@ public class OrderConfirmActivity extends Activity
 
 
 		//天数：全天24小时，白天12小时，黑天12小时
-		int allNum = nursingDate.getAllNum();
-		int dayNum = nursingDate.getDayNum();
+		int allNum   = nursingDate.getAllNum();
+		int dayNum   = nursingDate.getDayNum();
 		int nightNum = nursingDate.getNightNum();
 
 		//单价：全天24小时，白天12小时，黑天12小时
-		int chargePerAll = 0;
-		int chargePerDay = 0;
+		int chargePerAll   = 0;
+		int chargePerDay   = 0;
 		int chargePerNight = 0;
 
 		//02. 来自于续订流程
@@ -936,7 +1031,7 @@ public class OrderConfirmActivity extends Activity
 		m_nurseOrderConfirmPage.setChargePerNight(chargePerAll);
 
 		//总价格
-		int    totalCharge    = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
+		int totalCharge = allNum * chargePerAll + dayNum * chargePerDay + nightNum * chargePerNight;
 		m_nurseOrderConfirmPage.setTotalCharge(totalCharge);
 
 	}
@@ -1032,19 +1127,465 @@ public class OrderConfirmActivity extends Activity
 	//下订单成功，跳转到支付页面。
 	public void onEventMainThread(FinishedNurseOrderConfirmEvent event)
 	{
-		Intent intent   = new Intent(this, NurseOrderPayActivity.class);
-		int    nurserID = event.getNurseID();
-		int    orderID  = event.getOrderID();
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == null)
+		{
+			Intent intent = new Intent(this, NurseOrderPayActivity.class);
+			int nurserID = event.getNurseID();
+			int orderID = event.getOrderID();
+			String orderSerialNum = event.getOrderSerialNum();
+			int totalPrice = event.getTotalPrice();
+			intent.putExtra(NurseOrderConfig.NURSE_ID, nurserID);
+			intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
+			intent.putExtra(NurseOrderConfig.ORDER_SERIAL_NUM, orderSerialNum);
+			intent.putExtra(NurseOrderConfig.ORDER_USER_PAY, totalPrice);
+
+			startActivity(intent);
+			return;
+		}
+
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+			if (m_deltaPrice == 0)
+			{
+				RegisterDialog.GetInstance().setMsg("多余款项为0，您不需要支付。请保持手机畅通，服务人员会在1小时内和您联系。", this, new DialogInterface.OnClickListener()
+													{
+														@Override
+														public void onClick(DialogInterface dialog, int which)
+														{
+															OrderConfirmActivity.this.finish();
+															OrderConfirmActivity.this.startActivity(new Intent(OrderConfirmActivity.this,
+																											   MainActivity.class));
+														}
+													}
+												   );
+				RegisterDialog.GetInstance().show();
+
+			}
+			else if (m_deltaPrice < 0)
+			{
+				RegisterDialog.GetInstance().setMsg("您的订单已经生成。多余款项，服务人员会在1小时内转到您的支付宝中，请注意查收。另外，请保持手机畅通。",
+													this,
+													new DialogInterface.OnClickListener()
+													{
+														@Override
+														public void onClick(DialogInterface dialog, int which)
+														{
+															OrderConfirmActivity.this.finish();
+															OrderConfirmActivity.this.startActivity(new Intent(OrderConfirmActivity.this,
+																											   MainActivity.class
+																									)
+																								   );
+														}
+													}
+												   );
+				RegisterDialog.GetInstance().show();
+
+				return;
+			}
+			else
+			{
+
+
+				Intent intent = new Intent(this, NurseOrderPayActivity.class);
+				int nurserID = event.getNurseID();
+				int orderID = event.getOrderID();
+				String orderSerialNum = event.getOrderSerialNum();
+				int totalPrice = event.getTotalPrice();
+				intent.putExtra(NurseOrderConfig.NURSE_ID, nurserID);
+				intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
+				intent.putExtra(NurseOrderConfig.ORDER_SERIAL_NUM, orderSerialNum);
+				intent.putExtra(NurseOrderConfig.ORDER_USER_PAY, totalPrice);
+
+				startActivity(intent);
+			}
+			return;
+		}
+
+		Intent intent = new Intent(this, NurseOrderPayActivity.class);
+		int nurserID = event.getNurseID();
+		int orderID = event.getOrderID();
 		String orderSerialNum = event.getOrderSerialNum();
-		int	totalPrice = event.getTotalPrice();
+		int totalPrice = event.getTotalPrice();
 		intent.putExtra(NurseOrderConfig.NURSE_ID, nurserID);
 		intent.putExtra(NurseOrderConfig.ORDER_ID, orderID);
 		intent.putExtra(NurseOrderConfig.ORDER_SERIAL_NUM, orderSerialNum);
 		intent.putExtra(NurseOrderConfig.ORDER_USER_PAY, totalPrice);
 
 		startActivity(intent);
+
 		return;
 	}
 
+	public void clearupDate()
+	{
+		m_beginDate = null;
+		m_today = null;
+		m_endDate = null;
+	}
 
+	public void selectBeginDateAction()
+	{
+		DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByNurseID(m_oldNurseID);
+		if (nurseOrder == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrder == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		DNurseBasics nurseBasics = nurseOrder.getNurseBasics();
+		if (nurseBasics == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		Calendar calendar = Calendar.getInstance();
+		m_today = calendar.getTime();
+		m_beginDate = nurseOrder.getBeginDate();
+		m_endDate = nurseOrder.getEndDate();
+
+		//打开选择日期框。
+		SelectDateFragment  selectDateFragment = new SelectDateFragment();
+		FragmentTransaction transaction        = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.order_confirm_page, selectDateFragment, selectDateFragment.getClass().getName());
+		transaction.addToBackStack(null);
+		transaction.commit();
+
+		//		Intent intent = new Intent(this, SelectDateActivity.class);
+		//		intent.putExtra(NurseOrderConfig.CHANGE_NURSE_BEGIN_DATE, beginDate);
+		//		intent.putExtra(NurseOrderConfig.CHANGE_NURSE_TODAY, today);
+		//		intent.putExtra(NurseOrderConfig.CHANGE_NURSE_END_DATE, endDate);
+		//		intent.putExtra(NurseOrderConfig.CHANGE_NURSE_DATE_DESCRIPTION, endDate);
+		//
+		//		startActivity(intent);
+	}
+
+	public Date getEndDate()
+	{
+		return m_endDate;
+	}
+
+	public void setNewBeginDate(Date date)
+	{
+		m_newBeginDate = date;
+	}
+
+	public Date getToday()
+	{
+		return m_today;
+	}
+
+	public Date getBeginDate()
+	{
+		return m_beginDate;
+	}
+
+	public void confirmDateAction()
+	{
+		//01. 显示变更日期
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == null)
+			return;
+
+		if (nursingModuleStatus != EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+			return;
+
+		if (m_newBeginDate == null)
+			return;
+
+		//01. 设置本地日期显示。
+		String beginContent = m_simpleDateFormat.format(m_newBeginDate);
+		String endContent   = m_simpleDateFormat.format(m_endDate);
+		int    days         = LogicalUtil.GetDayNums(m_newBeginDate, m_endDate);
+		if (days == 0)
+		{
+			days = 1;
+		}
+		String total   = getResources().getString(R.string.char_total);
+		String day     = getResources().getString(R.string.char_day);
+		String display = beginContent + " - " + endContent + total + days + day;
+
+		m_selectBeginDateTV.setText(display);
+		m_nurseOrderConfirmPage.setServiceDate(display);
+
+
+		//02. 显示金额
+		DNurseBasicsList nurseBasicsList = DNurseContainer.GetInstance().getNurseBasicsList();
+		if (nurseBasicsList == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseBasicsList == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		DNurseBasics nurseBasics = nurseBasicsList.getNurseBasicByID(m_newNurseID);
+		if (nurseBasics == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		EnumConfig.PatientState patientState = m_apoitNursingPage.getPatientState();
+		if (patientState == null)
+		{
+			RegisterDialog.GetInstance().setMsg("patientState == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		int chargeNewPerAll   = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+		int chargeNewPerDay   = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+		int chargeNewPerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
+
+
+		DNurseOrder nurseOrder = DNurserOrderList.GetInstance().getNurseOrderByNurseID(m_oldNurseID);
+		if (nurseOrder == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrder == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		nurseBasics = nurseOrder.getNurseBasics();
+		if (nurseBasics == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseBasics == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		int chargeOldPerAll   = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_ALL, patientState);
+		int chargeOldPerDay   = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_DAY, patientState);
+		int chargeOldPerNight = nurseBasics.getServiceCharge(DataConfig.SELECT_DAY_TYEP_NIGHT, patientState);
+
+
+		DNursingDate nursingDate = m_apoitNursingPage.getNursingDate();
+		if (nursingDate == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		ArrayList<Calendar> allCalendarList   = nursingDate.getAllCalendarList();
+		ArrayList<Calendar> dayCalendarList   = nursingDate.getDayCalendarList();
+		ArrayList<Calendar> nightCalendarList = nursingDate.getNightCalendarList();
+
+		Calendar tmpCalendar = Calendar.getInstance();
+		tmpCalendar.setTime(m_newBeginDate);
+		int currMonth = tmpCalendar.get(Calendar.MONTH);
+		int currDay   = tmpCalendar.get(Calendar.DAY_OF_MONTH);
+
+		int iMonth      = 0;
+		int iDay        = 0;
+		int allNewNum   = 0;
+		int dayNewNum   = 0;
+		int nightNewNum = 0;
+
+		int allOldNum   = 0;
+		int dayOldNum   = 0;
+		int nightOldNum = 0;
+
+		for (Calendar allCalendar : allCalendarList)
+		{
+			iMonth = allCalendar.get(Calendar.MONTH);
+			if (iMonth < currMonth)
+			{
+				allOldNum++;
+				continue;
+			}
+
+			if (iMonth > currMonth)
+			{
+				allNewNum++;
+				continue;
+			}
+
+			iDay = allCalendar.get(Calendar.DAY_OF_MONTH);
+
+			if (iDay < currDay)
+			{
+				allOldNum++;
+				continue;
+			}
+
+			allNewNum++;
+			continue;
+		}
+
+		m_nurseOrderConfirmPage.setAllNum(allNewNum);
+
+		for (Calendar dayCalendar : dayCalendarList)
+		{
+			iMonth = dayCalendar.get(Calendar.MONTH);
+			if (iMonth < currMonth)
+			{
+				dayOldNum++;
+				continue;
+			}
+
+			if (iMonth > currMonth)
+			{
+				dayNewNum++;
+				continue;
+			}
+
+			iDay = dayCalendar.get(Calendar.DAY_OF_MONTH);
+
+			if (iDay < currDay)
+			{
+				dayOldNum++;
+				continue;
+			}
+
+			dayNewNum++;
+			continue;
+		}
+
+		m_nurseOrderConfirmPage.setDayNum(dayNewNum);
+
+		for (Calendar nightCalendar : nightCalendarList)
+		{
+			iMonth = nightCalendar.get(Calendar.MONTH);
+			if (iMonth < currMonth)
+			{
+				nightOldNum++;
+				continue;
+			}
+
+			if (iMonth > currMonth)
+			{
+				nightNewNum++;
+				continue;
+			}
+
+			iDay = nightCalendar.get(Calendar.DAY_OF_MONTH);
+
+			if (iDay < currDay)
+			{
+				nightOldNum++;
+				continue;
+			}
+
+			nightNewNum++;
+			continue;
+		}
+
+		m_nurseOrderConfirmPage.setNightNum(nightNewNum);
+
+		updateContent();
+
+
+	}
+
+
+	public void confirmAction()
+	{
+		DApoitNursingPage apoitNursingPage = DNursingModule.GetInstance().getApoitNursingPage();
+		if (apoitNursingPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("m_apoitNursingPage == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+		DNurseOrderConfirmPage nurseOrderConfirmPage = DNursingModule.GetInstance().getNurseOrderConfirmPage();
+		if (nurseOrderConfirmPage == null)
+		{
+			RegisterDialog.GetInstance().setMsg("nurseOrderConfirmPage == null");
+			RegisterDialog.GetInstance().show();
+			return;
+		}
+
+		EnumConfig.NursingModuleStatus nursingModuleStatus = DGlobal.GetInstance().getNursingModuleStatus();
+		if (nursingModuleStatus == EnumConfig.NursingModuleStatus.CHANGE_NURSE)
+		{
+
+			ReqNurseOrderConfirmForChangeNurse event = new ReqNurseOrderConfirmForChangeNurse();
+			int nurseID = nurseOrderConfirmPage.getNurseID();
+			event.setNurseID(String.valueOf(nurseID));
+			String orderID = getOrderID();
+			event.setOrderID(orderID);
+
+			//当时日期
+			String dateDescrption = m_simpleDateFormat.format(m_newBeginDate);
+			event.setBeginDate(dateDescrption);
+			m_eventBus.post(event);
+
+		}
+		else
+		{
+
+			//01. 发送nurse order confirm event
+			ReqNurseOrderConfirmEvent event = new ReqNurseOrderConfirmEvent();
+			int hospitalID = apoitNursingPage.getHospitalID();
+			event.setHospitalID(hospitalID);
+
+			String userID = DAccount.GetInstance().getId();
+			event.setUserID(userID);
+
+			int nurseID = nurseOrderConfirmPage.getNurseID();
+			event.setNurseID(nurseID);
+
+			int departmentID = apoitNursingPage.getDepartmenetID();
+			event.setNurseDepartmentID(departmentID);
+
+			String phoneNum = apoitNursingPage.getPhone();
+			event.setPhoneNum(phoneNum);
+
+			String name = apoitNursingPage.getName();
+			event.setPatientName(name);
+
+			EnumConfig.GenderStatus genderStatus = apoitNursingPage.getGenderStatus();
+			if (genderStatus != null)
+			{
+				event.setGenderID(genderStatus.getId());
+			}
+
+			EnumConfig.AgeRage age = apoitNursingPage.getAgeRage();
+			if (age != null)
+			{
+				event.setPatientAge(age.getName());
+			}
+
+			EnumConfig.WeightRage weight = apoitNursingPage.getWeightRage();
+			if (weight != null)
+			{
+				event.setPatientWeight(weight.getName());
+			}
+
+			EnumConfig.PatientState patientState = apoitNursingPage.getPatientState();
+			if (patientState != null)
+			{
+				event.setPatientStatusID(patientState.getId());
+			}
+
+			event.setPatientRemark("");
+
+			int totalCharge = nurseOrderConfirmPage.getTotalCharge();
+			event.setTotalCharge(totalCharge);
+
+			DNursingDate nursingDate = apoitNursingPage.getNursingDate();
+			if (nursingDate == null)
+			{
+				RegisterDialog.GetInstance().setMsg("nursingDate == null", this);
+				RegisterDialog.GetInstance().show();
+				return;
+			}
+
+			String allDescription = nursingDate.getSchedualAllDescription();
+			event.setAllDescription(allDescription);
+
+			String dayDescription = nursingDate.getSchedualDayDescription();
+			event.setDayDescription(dayDescription);
+
+			String nightDescription = nursingDate.getSchedualNightDescription();
+			event.setNightDescription(nightDescription);
+
+			m_eventBus.post(event);
+		}
+	}
 }

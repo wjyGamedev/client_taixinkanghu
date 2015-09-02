@@ -199,6 +199,69 @@ public class BaseListItem
 
 		return;
 	}
+	protected void waitCashPayfuncAction(BaseListItem baseListItem)
+	{
+		//只有确认支付，取消订单两个按钮
+		m_funcBtn_1.setVisibility(View.VISIBLE);
+		m_funcBtn_2.setVisibility(View.GONE);
+		m_funcBtn_3.setVisibility(View.GONE);
+		m_funcBtn_4.setVisibility(View.GONE);
+		m_funcBtn_5.setVisibility(View.GONE);
+
+		//取消订单
+		m_funcBtn_1.setText(AppUtil.GetResources().getString(R.string.cancel_order));
+
+		FuncBtnTabObject funcBtnTabObject02 = new FuncBtnTabObject(baseListItem.getNurseOrder(), NurseOrderActivity.FUNC_BTN_TAG_CANCEL_ORDER);
+		m_funcBtn_1.setTag(funcBtnTabObject02);
+		m_funcBtn_1.setOnClickListener(m_handleClickEventOnNurseOrder);
+
+		return;
+	}
+
+	//等待评价
+	protected void waitCommentfuncAction(BaseListItem baseListItem)
+	{
+		//只有确认续订，评论订单两个按钮
+		m_funcBtn_1.setVisibility(View.VISIBLE);
+		m_funcBtn_2.setVisibility(View.VISIBLE);
+		m_funcBtn_3.setVisibility(View.GONE);
+		m_funcBtn_4.setVisibility(View.GONE);
+		m_funcBtn_5.setVisibility(View.GONE);
+
+		//确认续订
+		m_funcBtn_1.setText(AppUtil.GetResources().getString(R.string.repeat_order));
+
+		FuncBtnTabObject funcBtnTabObject01 = new FuncBtnTabObject(baseListItem.getNurseOrder(), NurseOrderActivity.FUNC_BTN_TAG_REPEAT_ORDER);
+		m_funcBtn_1.setTag(funcBtnTabObject01);
+		m_funcBtn_1.setOnClickListener(m_handleClickEventOnNurseOrder);
+
+		//评论
+		m_funcBtn_2.setText(AppUtil.GetResources().getString(R.string.commente_order));
+
+		FuncBtnTabObject funcBtnTabObject04 = new FuncBtnTabObject(baseListItem.getNurseOrder(), NurseOrderActivity.FUNC_BTN_TAG_COMMENT_ORDER);
+		m_funcBtn_2.setTag(funcBtnTabObject04);
+		m_funcBtn_2.setOnClickListener(m_handleClickEventOnNurseOrder);
+	}
+
+	//已取消订单
+	protected void cancelfuncAction(BaseListItem baseListItem)
+	{
+		//只有续订按钮
+		m_funcBtn_1.setVisibility(View.VISIBLE);
+		m_funcBtn_2.setVisibility(View.GONE);
+		m_funcBtn_3.setVisibility(View.GONE);
+		m_funcBtn_4.setVisibility(View.GONE);
+		m_funcBtn_5.setVisibility(View.GONE);
+
+		//取消订单
+		m_funcBtn_1.setText(AppUtil.GetResources().getString(R.string.repeat_order));
+
+		FuncBtnTabObject funcBtnTabObject01 = new FuncBtnTabObject(baseListItem.getNurseOrder(), NurseOrderActivity.FUNC_BTN_TAG_REPEAT_ORDER);
+		m_funcBtn_1.setTag(funcBtnTabObject01);
+		m_funcBtn_1.setOnClickListener(m_handleClickEventOnNurseOrder);
+
+	}
+
 
 	protected void waitServicefuncAction(BaseListItem baseListItem)
 	{

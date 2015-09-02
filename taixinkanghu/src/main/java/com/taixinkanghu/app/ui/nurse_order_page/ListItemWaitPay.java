@@ -14,6 +14,7 @@
 
 package com.taixinkanghu.app.ui.nurse_order_page;
 
+import com.taixinkanghu.app.model.config.EnumConfig;
 import com.taixinkanghu.app.model.data.net.DNurseOrder;
 
 public class ListItemWaitPay extends BaseListItem
@@ -21,7 +22,15 @@ public class ListItemWaitPay extends BaseListItem
 	@Override
 	public void initFuncWidget(DNurseOrder nurseOrder)
 	{
-		waitPayfuncAction(this);
+		EnumConfig.NurseOrderStatus orderStatus = nurseOrder.getOrderStatus();
+		if (orderStatus == EnumConfig.NurseOrderStatus.WAIT_PAYMENT)
+		{
+			waitPayfuncAction(this);
+		}
+		else if (orderStatus == EnumConfig.NurseOrderStatus.WAIT_CASH_PAYMENT)
+		{
+			waitCashPayfuncAction(this);
+		}
 		return;
 	}
 }

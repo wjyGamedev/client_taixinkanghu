@@ -35,7 +35,7 @@ public class NurseOrderConfig
 	public final static String SCHEDULE_DAY       = NurseBasicListConfig.SCHEDULE_DAY;
 	public final static String SCHEDULE_NIGHT     = NurseBasicListConfig.SCHEDULE_NIGHT;
 	public final static String NURSE_INFO     = "carer";
-	public final static String BEGIN_DATE_FOR_CHANGE_NURSE    = "from_date";
+	public final static String BEGIN_DATE_FOR_CHANGE_NURSE    = "date";
 
 
 	//02. confirm
@@ -66,6 +66,11 @@ public class NurseOrderConfig
 	//recv
 	public final static String ORDER_PAY_MORE_OBJECT = "addon";        //补差价的返回对象
 
+	//07. change nurse
+	public final static String CHANGE_NURSE_BEGIN_DATE = "begin_date";
+	public final static String CHANGE_NURSE_TODAY = "tody";
+	public final static String CHANGE_NURSE_END_DATE = "end_date";
+	public final static String CHANGE_NURSE_DATE_DESCRIPTION = "date_description";
 	//logical
 	public final static int NURSE_IN_SERVICE = -2;
 

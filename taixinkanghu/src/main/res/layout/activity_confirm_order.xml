@@ -34,7 +34,8 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:background="@color/white"
-					android:orientation="horizontal">
+					android:orientation="horizontal"
+					android:id="@+id/select_begin_date_region_ll">
 
 					<TextView
 						android:layout_width="wrap_content"
@@ -47,7 +48,7 @@
 						android:textSize="14.0sp"/>
 
 					<TextView
-						android:id="@+id/service_address_tv"
+						android:id="@+id/select_begin_date_tv"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginRight="10dp"
